@@ -55,6 +55,7 @@ import '../runner/flutter_command.dart';
 class AttachCommand extends FlutterCommand {
   AttachCommand({bool verboseHelp = false, this.hotRunnerFactory}) {
     addBuildModeFlags(defaultToRelease: false);
+    addEnableExperimentation(hide: !verboseHelp);
     usesIsolateFilterOption(hide: !verboseHelp);
     usesTargetOption();
     usesPortOptions();

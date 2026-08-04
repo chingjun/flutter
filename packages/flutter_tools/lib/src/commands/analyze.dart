@@ -19,6 +19,7 @@ import 'analyze_continuously.dart';
 import 'analyze_once.dart';
 import 'android_analyze.dart';
 import 'ios_analyze.dart';
+import 'rewrite_imports.dart';
 import 'validate_project.dart';
 
 class AnalyzeCommand extends FlutterCommand {
@@ -87,6 +88,16 @@ class AnalyzeCommand extends FlutterCommand {
       hide: !verboseHelp,
     );
     argParser.addFlag('suggestions', help: 'Show suggestions about the current flutter project.');
+    argParser.addFlag(
+      'rewrite-imports',
+      negatable: false,
+      hide: !verboseHelp,
+      help:
+          'Rewrite the imports of every Dart library under the target path so '
+          'that each symbol from "dart:ui" or "package:flutter" is imported '
+          'directly from the library that defines it, and remove all "export" '
+          'directives. Used by internal tools only.',
+    );
     addMachineOutputFlag(verboseHelp: verboseHelp);
 
     // Hidden option to enable a benchmarking mode.
@@ -253,6 +264,18 @@ class AnalyzeCommand extends FlutterCommand {
 
   @override
   Future<FlutterCommandResult> runCommand() async {
+    if (boolArg('rewrite-imports')) {
+      final Set<String> items = findDirectories(argResults!, _fileSystem);
+      final List<String> targetPaths = <String>[
+        if (items.isEmpty) _fileSystem.currentDirectory.path else ...items,
+      ].map((String p) => _fileSystem.path.normalize(_fileSystem.path.absolute(p))).toList();
+      await RewriteImports(
+        fileSystem: _fileSystem,
+        logger: _logger,
+        targetPaths: targetPaths,
+      ).run();
+      return FlutterCommandResult.success();
+    }
     if (boolArg('android')) {
       final AndroidAnalyzeOption option;
       final String? buildVariant;

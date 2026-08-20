@@ -8,6 +8,7 @@
 ///
 /// This library depends only on core Dart libraries and the `foundation`
 /// library.
+//ignore-for-file: no_export_directive
 library services;
 
 export 'src/services/app_version.dart';

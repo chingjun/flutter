@@ -28,6 +28,7 @@
 /// @docImport 'src/rendering/binding.dart';
 /// @docImport 'src/rendering/box.dart';
 /// @docImport 'src/rendering/object.dart';
+//ignore-for-file: no_export_directive
 library rendering;
 
 export 'package:flutter/foundation.dart'

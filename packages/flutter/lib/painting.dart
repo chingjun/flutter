@@ -19,6 +19,7 @@
 /// @docImport 'src/painting/box_decoration.dart';
 /// @docImport 'src/painting/decoration.dart';
 /// @docImport 'src/painting/text_painter.dart';
+//ignore-for-file: no_export_directive
 library painting;
 
 export 'dart:ui'

@@ -11,6 +11,7 @@
 ///
 /// The library makes sure that tasks are only run when appropriate.
 /// For example, an idle-task is only executed when no animation is running.
+//ignore-for-file: no_export_directive
 library scheduler;
 
 export 'src/scheduler/binding.dart';

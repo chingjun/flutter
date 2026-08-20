@@ -20,6 +20,7 @@
 ///  * [flutter.dev/widgets](https://docs.flutter.dev/ui/widgets)
 ///    for a catalog of commonly-used Flutter widgets.
 
+//ignore-for-file: no_export_directive
 library cupertino;
 
 export 'src/cupertino/activity_indicator.dart';

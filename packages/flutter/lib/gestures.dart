@@ -5,6 +5,7 @@
 /// The Flutter gesture recognizers.
 ///
 /// To use, import `package:flutter/gestures.dart`.
+//ignore-for-file: no_export_directive
 library gestures;
 
 export 'src/gestures/arena.dart';

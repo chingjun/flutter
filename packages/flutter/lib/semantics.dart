@@ -13,6 +13,7 @@
 /// and is used by the platform-specific accessibility services.
 ///
 /// @docImport 'src/semantics/semantics.dart';
+//ignore-for-file: no_export_directive
 library semantics;
 
 export 'dart:ui' show LocaleStringAttribute, SpellOutStringAttribute;

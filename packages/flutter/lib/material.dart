@@ -14,6 +14,7 @@
 ///    for a catalog of commonly-used Material component widgets.
 ///  * [m3.material.io](https://m3.material.io/) for the Material 3 specification
 ///  * [m2.material.io](https://m2.material.io/) for the Material 2 specification
+//ignore-for-file: no_export_directive
 library material;
 
 export 'src/material/about.dart';

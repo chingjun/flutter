@@ -160,6 +160,7 @@
 ///    explicit [Animation] to animate their properties.
 ///
 /// @docImport 'package:flutter/material.dart';
+//ignore-for-file: no_export_directive
 library animation;
 
 // AnimationController can throw TickerCanceled

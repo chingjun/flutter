@@ -19,6 +19,7 @@ import 'analyze_continuously.dart';
 import 'analyze_once.dart';
 import 'android_analyze.dart';
 import 'ios_analyze.dart';
+import 'output_imports.dart';
 import 'rewrite_imports.dart';
 import 'validate_project.dart';
 
@@ -97,6 +98,15 @@ class AnalyzeCommand extends FlutterCommand {
           'that each symbol from "dart:ui" or "package:flutter" is imported '
           'directly from the library that defines it, and remove all "export" '
           'directives. Used by internal tools only.',
+    );
+    argParser.addOption(
+      'output-imports',
+      aliases: const <String>['output_imports'],
+      valueHelp: 'file',
+      hide: !verboseHelp,
+      help:
+          'Output every imported symbol that is used in every file, and where '
+          'the symbol is imported from, into a CSV file. Used by internal tools only.',
     );
     addMachineOutputFlag(verboseHelp: verboseHelp);
 
@@ -238,6 +248,10 @@ class AnalyzeCommand extends FlutterCommand {
 
   @override
   bool get shouldRunPub {
+    if (stringArg('output-imports') != null || boolArg('rewrite-imports')) {
+      return false;
+    }
+
     // If they're not analyzing the current project.
     if (!boolArg('current-package')) {
       return false;
@@ -264,6 +278,20 @@ class AnalyzeCommand extends FlutterCommand {
 
   @override
   Future<FlutterCommandResult> runCommand() async {
+    final String? outputImportsFile = stringArg('output-imports');
+    if (outputImportsFile != null) {
+      final Set<String> items = findDirectories(argResults!, _fileSystem);
+      final List<String> targetPaths = <String>[
+        if (items.isEmpty) _fileSystem.currentDirectory.path else ...items,
+      ].map((String p) => _fileSystem.path.normalize(_fileSystem.path.absolute(p))).toList();
+      await OutputImports(
+        fileSystem: _fileSystem,
+        logger: _logger,
+        targetPaths: targetPaths,
+        outputPath: outputImportsFile,
+      ).run();
+      return FlutterCommandResult.success();
+    }
     if (boolArg('rewrite-imports')) {
       final Set<String> items = findDirectories(argResults!, _fileSystem);
       final List<String> targetPaths = <String>[

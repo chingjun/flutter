@@ -21,6 +21,7 @@ import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, E
 import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode;
 import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
 import 'package:flutter/src/widgets/_window_positioner.dart' show WindowPositioner;
+import 'package:flutter/src/widgets/_windowing_callbacks.dart' show createDefaultWindowingOwnerCallback;
 import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding, WidgetsFlutterBinding;
 import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedWidget, State, StatefulWidget, StatelessWidget, Widget, WidgetBuilder;
 import 'package:flutter/src/widgets/inherited_model.dart' show InheritedModel;
@@ -247,7 +248,8 @@ abstract class WindowController extends BaseWindowController {
       assert(constraints.isSatisfiedBy(size));
     }
 
-    final WindowingOwner owner = WidgetsBinding.instance.windowingOwner;
+    _ensureWindowingCallbackRegistered();
+    final owner = WidgetsBinding.instance.windowingOwner as WindowingOwner;
     return owner.createWindowController(
       delegate: delegate ?? WindowControllerDelegate(),
       size: size,
@@ -298,9 +300,10 @@ abstract class WindowController extends BaseWindowController {
       throw UnsupportedError(_kWindowingDisabledErrorMessage);
     }
 
+    _ensureWindowingCallbackRegistered();
     WidgetsFlutterBinding.ensureInitialized();
 
-    final WindowingOwner owner = WidgetsBinding.instance.windowingOwner;
+    final owner = WidgetsBinding.instance.windowingOwner as WindowingOwner;
     return owner.createWindowController(
       delegate: delegate ?? WindowControllerDelegate(),
       constraints: constraints,
@@ -585,13 +588,14 @@ abstract class DialogWindowController extends BaseWindowController {
       throw UnsupportedError(_kWindowingDisabledErrorMessage);
     }
 
+    _ensureWindowingCallbackRegistered();
     WidgetsFlutterBinding.ensureInitialized();
 
     if (constraints != null) {
       assert(constraints.isSatisfiedBy(size));
     }
 
-    final WindowingOwner owner = WidgetsBinding.instance.windowingOwner;
+    final owner = WidgetsBinding.instance.windowingOwner as WindowingOwner;
     return owner.createDialogWindowController(
       delegate: delegate ?? DialogWindowControllerDelegate(),
       size: size,
@@ -625,8 +629,9 @@ abstract class DialogWindowController extends BaseWindowController {
       throw UnsupportedError(_kWindowingDisabledErrorMessage);
     }
 
+    _ensureWindowingCallbackRegistered();
     WidgetsFlutterBinding.ensureInitialized();
-    final WindowingOwner owner = WidgetsBinding.instance.windowingOwner;
+    final owner = WidgetsBinding.instance.windowingOwner as WindowingOwner;
     return owner.createDialogWindowController(
       delegate: delegate ?? DialogWindowControllerDelegate(),
       constraints: constraints,
@@ -819,8 +824,9 @@ abstract class TooltipWindowController extends BaseWindowController {
       throw UnsupportedError(_kWindowingDisabledErrorMessage);
     }
 
+    _ensureWindowingCallbackRegistered();
     WidgetsFlutterBinding.ensureInitialized();
-    final WindowingOwner owner = WidgetsBinding.instance.windowingOwner;
+    final owner = WidgetsBinding.instance.windowingOwner as WindowingOwner;
     final TooltipWindowController controller = owner.createTooltipWindowController(
       parent: parent,
       constraints: constraints,
@@ -958,8 +964,9 @@ abstract class PopupWindowController extends BaseWindowController {
       throw UnsupportedError(_kWindowingDisabledErrorMessage);
     }
 
+    _ensureWindowingCallbackRegistered();
     WidgetsFlutterBinding.ensureInitialized();
-    final WindowingOwner owner = WidgetsBinding.instance.windowingOwner;
+    final owner = WidgetsBinding.instance.windowingOwner as WindowingOwner;
     return owner.createPopupWindowController(
       parent: parent,
       constraints: constraints ?? const BoxConstraints(),
@@ -1203,7 +1210,8 @@ abstract class SatelliteWindowController extends BaseWindowController {
       assert(constraints.isSatisfiedBy(size));
     }
 
-    final WindowingOwner owner = WidgetsBinding.instance.windowingOwner;
+    _ensureWindowingCallbackRegistered();
+    final owner = WidgetsBinding.instance.windowingOwner as WindowingOwner;
     return owner.createSatelliteWindowController(
       delegate: delegate ?? SatelliteWindowControllerDelegate(),
       parent: parent,
@@ -1241,8 +1249,9 @@ abstract class SatelliteWindowController extends BaseWindowController {
       throw UnsupportedError(_kWindowingDisabledErrorMessage);
     }
 
+    _ensureWindowingCallbackRegistered();
     WidgetsFlutterBinding.ensureInitialized();
-    final WindowingOwner owner = WidgetsBinding.instance.windowingOwner;
+    final owner = WidgetsBinding.instance.windowingOwner as WindowingOwner;
     return owner.createSatelliteWindowController(
       delegate: delegate ?? SatelliteWindowControllerDelegate(),
       parent: parent,
@@ -1515,6 +1524,13 @@ class _WindowingOwnerUnsupported extends WindowingOwner {
   }) {
     throw UnimplementedError(errorMessage);
   }
+}
+
+/// Ensures the windowing owner factory is registered with the binding.
+///
+/// Called from window controller constructors before they access the binding.
+void _ensureWindowingCallbackRegistered() {
+  createDefaultWindowingOwnerCallback ??= createDefaultWindowingOwner;
 }
 
 /// The [Window] widget provides a way to render a regular window in the

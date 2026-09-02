@@ -39,7 +39,7 @@ import 'package:flutter/src/services/predictive_back_event.dart' show Predictive
 import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
 import 'package:flutter/src/services/system_navigator.dart' show SystemNavigator;
 import 'package:flutter/src/widgets/_accessibility_evaluations.dart' show EvaluationResult, LabeledTapTargetEvaluation, MinimumTapTargetEvaluation, MinimumTextContrastEvaluation, Violation, accessibilityRootElementGetter;
-import 'package:flutter/src/widgets/_window.dart' show WindowingOwner, createDefaultWindowingOwner;
+import 'package:flutter/src/widgets/_windowing_callbacks.dart' show createDefaultWindowingOwnerCallback;
 import 'package:flutter/src/widgets/accessibility_inspector.dart' show AccessibilityInspector;
 import 'package:flutter/src/widgets/debug_flags.dart' show debugAllowBannerOverrideFlag, debugProfileBuildsEnabled, debugProfileBuildsEnabledUserWidgets, debugShowPerformanceOverlayOverride;
 import 'package:flutter/src/widgets/focus_manager.dart' show FocusManager;
@@ -583,7 +583,6 @@ mixin WidgetsBinding
       return true;
     }());
     platformMenuDelegate = DefaultPlatformMenuDelegate();
-    _windowingOwner = createDefaultWindowingOwner();
     accessibilityRootElementGetter = () => rootElement;
   }
 
@@ -1854,24 +1853,24 @@ mixin WidgetsBinding
     return platformDispatcher.computePlatformResolvedLocale(supportedLocales);
   }
 
-  /// The [WindowingOwner] is responsible for creating and managing [BaseWindowController]s.
+  /// The windowing owner is responsible for creating and managing window controllers.
   ///
-  /// The default [WindowingOwner] supports macOS, Linux, and Windows.
+  /// The default windowing owner supports macOS, Linux, and Windows.
   ///
-  /// A custom [WindowingOwner] can be provided by the setter.
+  /// A custom windowing owner can be provided by the setter.
   ///
   /// {@template flutter.widgets.binding.window.experimental}
   /// Do not use this API in production applications or packages published to
   /// pub.dev. Flutter will make breaking changes to this API, even in patch
   /// versions.
   ///
-  /// This API throws an [UnsupportedError] error unless Flutter’s windowing
+  /// This API throws an [UnsupportedError] error unless Flutter's windowing
   /// feature is enabled by [isWindowingEnabled].
   ///
   /// See: https://github.com/flutter/flutter/issues/30701.
   /// {@endtemplate}
   @internal
-  WindowingOwner get windowingOwner {
+  Object get windowingOwner {
     if (!isWindowingEnabled) {
       throw UnsupportedError('''
 Windowing APIs are not enabled.
@@ -1886,18 +1885,18 @@ To try experimental windowing APIs:
 See: https://github.com/flutter/flutter/issues/30701.
 ''');
     }
-    return _windowingOwner;
+    return _windowingOwner ??= createDefaultWindowingOwnerCallback!();
   }
 
-  /// Sets the [WindowingOwner].
+  /// Sets the windowing owner.
   ///
-  /// The default [WindowingOwner] supports macOS, Linux, and Windows.
+  /// The default windowing owner supports macOS, Linux, and Windows.
   ///
-  /// This setter can be used to provide a custom [WindowingOwner].
+  /// This setter can be used to provide a custom windowing owner.
   ///
   /// {@macro flutter.widgets.binding.window.experimental}
   @internal
-  set windowingOwner(WindowingOwner owner) {
+  set windowingOwner(Object owner) {
     if (!isWindowingEnabled) {
       throw UnsupportedError('''
 Windowing APIs are not enabled.
@@ -1915,7 +1914,7 @@ See: https://github.com/flutter/flutter/issues/30701.
     _windowingOwner = owner;
   }
 
-  late WindowingOwner _windowingOwner;
+  Object? _windowingOwner;
 }
 
 /// Inflate the given widget and attach it to the view.

@@ -44,7 +44,6 @@ import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
 import 'package:flutter/src/widgets/focus_scope.dart' show Focus;
 import 'package:flutter/src/widgets/focus_traversal.dart' show FocusTraversalGroup, TraversalEdgeBehavior;
 import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, InheritedWidget, State, StatefulElement, StatefulWidget, Widget;
-import 'package:flutter/src/widgets/heroes.dart' show HeroController;
 import 'package:flutter/src/widgets/notification_core.dart' show Notification;
 import 'package:flutter/src/widgets/notification_listener.dart' show NotificationListener;
 import 'package:flutter/src/widgets/overlay.dart' show Overlay, OverlayEntry, OverlayState;
@@ -877,7 +876,7 @@ class HeroControllerScope extends InheritedWidget {
   /// Creates a widget to host the input [controller].
   const HeroControllerScope({
     super.key,
-    required HeroController this.controller,
+    required NavigatorObserver this.controller,
     required super.child,
   });
 
@@ -886,9 +885,12 @@ class HeroControllerScope extends InheritedWidget {
   const HeroControllerScope.none({super.key, required super.child}) : controller = null;
 
   /// The hero controller that is hosted inside this widget.
-  final HeroController? controller;
+  ///
+  /// Typically a [HeroController] instance. Stored as [NavigatorObserver]
+  /// to avoid a circular dependency between navigator and heroes.
+  final NavigatorObserver? controller;
 
-  /// Retrieves the [HeroController] from the closest [HeroControllerScope]
+  /// Retrieves the [NavigatorObserver] from the closest [HeroControllerScope]
   /// ancestor, or null if none exists.
   ///
   /// Calling this method will create a dependency on the closest
@@ -898,13 +900,13 @@ class HeroControllerScope extends InheritedWidget {
   ///
   /// * [HeroControllerScope.of], which is similar to this method, but asserts
   ///   if no [HeroControllerScope] ancestor is found.
-  static HeroController? maybeOf(BuildContext context) {
+  static NavigatorObserver? maybeOf(BuildContext context) {
     final HeroControllerScope? host = context
         .dependOnInheritedWidgetOfExactType<HeroControllerScope>();
     return host?.controller;
   }
 
-  /// Retrieves the [HeroController] from the closest [HeroControllerScope]
+  /// Retrieves the [NavigatorObserver] from the closest [HeroControllerScope]
   /// ancestor.
   ///
   /// If no ancestor is found, this method will assert in debug mode, and throw
@@ -917,8 +919,8 @@ class HeroControllerScope extends InheritedWidget {
   ///
   /// * [HeroControllerScope.maybeOf], which is similar to this method, but
   ///   returns null if no [HeroControllerScope] ancestor is found.
-  static HeroController of(BuildContext context) {
-    final HeroController? controller = maybeOf(context);
+  static NavigatorObserver of(BuildContext context) {
+    final NavigatorObserver? controller = maybeOf(context);
     assert(() {
       if (controller == null) {
         throw FlutterError(
@@ -3783,7 +3785,7 @@ class NavigatorState extends State<Navigator> with TickerProviderStateMixin, Res
 
   bool _debugLocked = false; // used to prevent re-entrant calls to push, pop, and friends
 
-  HeroController? _heroControllerFromScope;
+  NavigatorObserver? _heroControllerFromScope;
 
   late List<NavigatorObserver> _effectiveObservers;
 
@@ -4005,7 +4007,7 @@ class NavigatorState extends State<Navigator> with TickerProviderStateMixin, Res
     }
   }
 
-  void _updateHeroController(HeroController? newHeroController) {
+  void _updateHeroController(NavigatorObserver? newHeroController) {
     if (_heroControllerFromScope != newHeroController) {
       if (newHeroController != null) {
         // Makes sure the same hero controller is not shared between two navigators.

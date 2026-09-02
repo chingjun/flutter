@@ -12,18 +12,23 @@ import 'package:flutter/src/foundation/constants.dart' show precisionErrorTolera
 import 'package:flutter/src/painting/colors.dart' show HSLColor;
 import 'package:flutter/src/painting/matrix_utils.dart' show MatrixUtils;
 import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
 import 'package:flutter/src/rendering/box.dart' show RenderBox;
 import 'package:flutter/src/rendering/layer.dart' show OffsetLayer;
 import 'package:flutter/src/rendering/object.dart' show RenderObject;
 import 'package:flutter/src/rendering/view.dart' show RenderView;
 import 'package:flutter/src/semantics/semantics.dart' show SemanticsData, SemanticsNode;
-import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding;
 import 'package:flutter/src/widgets/editable_text.dart' show EditableText;
 import 'package:flutter/src/widgets/framework.dart' show Element, Widget;
 import 'package:flutter/src/widgets/text.dart' show DefaultTextStyle, Text;
 import 'package:flutter/src/widgets/title.dart' show Title;
 import 'package:meta/meta.dart' show internal;
 import 'package:vector_math/vector_math_64.dart' show Matrix4;
+
+/// A callback to obtain the root element, set by [WidgetsBinding] to break the
+/// import cycle between binding.dart and _accessibility_evaluations.dart.
+@internal
+Element? Function()? accessibilityRootElementGetter;
 
 const String _kAccessibilityEvaluationsDisabledErrorMessage = '''
 Accessibility evaluations APIs are not enabled.
@@ -76,14 +81,14 @@ abstract class AccessibilityEvaluation {
   const AccessibilityEvaluation();
 
   /// Evaluate whether the current state of the `binding` conforms to the rule.
-  FutureOr<EvaluationResult> evaluate(WidgetsBinding binding) {
+  FutureOr<EvaluationResult> evaluate(RendererBinding binding) {
     if (!isAccessibilityEvaluationsEnabled) {
       throw UnsupportedError(_kAccessibilityEvaluationsDisabledErrorMessage);
     }
     return _evaluate(binding);
   }
 
-  FutureOr<EvaluationResult> _evaluate(WidgetsBinding binding);
+  FutureOr<EvaluationResult> _evaluate(RendererBinding binding);
 }
 
 /// {@macro flutter.widgets.accessibility_evaluations.internal}
@@ -106,7 +111,7 @@ class MinimumTapTargetEvaluation extends AccessibilityEvaluation {
   static const double _kMinimumGapToBoundary = 0.001;
 
   @override
-  FutureOr<EvaluationResult> _evaluate(WidgetsBinding binding) {
+  FutureOr<EvaluationResult> _evaluate(RendererBinding binding) {
     final violations = <Violation>[];
     for (final RenderView view in binding.renderViews) {
       violations.addAll(
@@ -205,7 +210,7 @@ class LabeledTapTargetEvaluation extends AccessibilityEvaluation {
   const LabeledTapTargetEvaluation();
 
   @override
-  FutureOr<EvaluationResult> _evaluate(WidgetsBinding binding) {
+  FutureOr<EvaluationResult> _evaluate(RendererBinding binding) {
     final violations = <Violation>[];
 
     for (final RenderView view in binding.renderViews) {
@@ -252,7 +257,7 @@ abstract class _ContrastEvaluation extends AccessibilityEvaluation {
   static const double _kContrastTolerance = -0.01;
 
   @override
-  Future<EvaluationResult> _evaluate(WidgetsBinding binding) async {
+  Future<EvaluationResult> _evaluate(RendererBinding binding) async {
     final violations = <Violation>[];
     for (final RenderView renderView in binding.renderViews) {
       final layer = renderView.debugLayer! as OffsetLayer;
@@ -392,7 +397,7 @@ class MinimumTextContrastEvaluation extends _ContrastEvaluation {
     final violations = <Violation>[];
     final String text = data.label.isEmpty ? data.value : data.label;
     final Iterable<Element> elements = _collectElementsByText(
-      WidgetsBinding.instance.rootElement!,
+      accessibilityRootElementGetter!()!,
       text,
     );
     for (final element in elements) {
@@ -790,7 +795,7 @@ class UnlabeledLeafNodeEvaluation extends AccessibilityEvaluation {
   const UnlabeledLeafNodeEvaluation();
 
   @override
-  FutureOr<EvaluationResult> _evaluate(WidgetsBinding binding) {
+  FutureOr<EvaluationResult> _evaluate(RendererBinding binding) {
     final violations = <Violation>[];
     for (final RenderView view in binding.renderViews) {
       violations.addAll(_traverse(view.owner!.semanticsOwner!.rootSemanticsNode!));
@@ -848,10 +853,11 @@ class TitleEvaluation extends AccessibilityEvaluation {
   const TitleEvaluation();
 
   @override
-  FutureOr<EvaluationResult> _evaluate(WidgetsBinding binding) {
+  FutureOr<EvaluationResult> _evaluate(RendererBinding binding) {
     final violations = <Violation>[];
 
-    if (binding.rootElement != null && !_hasTitleWidget(binding.rootElement!)) {
+    final Element? rootElement = accessibilityRootElementGetter?.call();
+    if (rootElement != null && !_hasTitleWidget(rootElement)) {
       final SemanticsNode rootNode =
           binding.renderViews.first.owner!.semanticsOwner!.rootSemanticsNode!;
       violations.add(

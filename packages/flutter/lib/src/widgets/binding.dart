@@ -38,7 +38,7 @@ import 'package:flutter/src/services/message_codec.dart' show MethodCall, Missin
 import 'package:flutter/src/services/predictive_back_event.dart' show PredictiveBackEvent;
 import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
 import 'package:flutter/src/services/system_navigator.dart' show SystemNavigator;
-import 'package:flutter/src/widgets/_accessibility_evaluations.dart' show EvaluationResult, LabeledTapTargetEvaluation, MinimumTapTargetEvaluation, MinimumTextContrastEvaluation, Violation;
+import 'package:flutter/src/widgets/_accessibility_evaluations.dart' show EvaluationResult, LabeledTapTargetEvaluation, MinimumTapTargetEvaluation, MinimumTextContrastEvaluation, Violation, accessibilityRootElementGetter;
 import 'package:flutter/src/widgets/_window.dart' show WindowingOwner, createDefaultWindowingOwner;
 import 'package:flutter/src/widgets/accessibility_inspector.dart' show AccessibilityInspector;
 import 'package:flutter/src/widgets/debug_flags.dart' show debugAllowBannerOverrideFlag, debugProfileBuildsEnabled, debugProfileBuildsEnabledUserWidgets, debugShowPerformanceOverlayOverride;
@@ -584,6 +584,7 @@ mixin WidgetsBinding
     }());
     platformMenuDelegate = DefaultPlatformMenuDelegate();
     _windowingOwner = createDefaultWindowingOwner();
+    accessibilityRootElementGetter = () => rootElement;
   }
 
   /// The current [WidgetsBinding], if one has been created.

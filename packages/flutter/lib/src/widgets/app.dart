@@ -20,6 +20,7 @@ import 'actions.dart';
 import 'banner.dart';
 import 'basic.dart';
 import 'binding.dart';
+import 'debug_flags.dart';
 import 'default_text_editing_shortcuts.dart';
 import 'focus_manager.dart';
 import 'focus_scope.dart';
@@ -1218,7 +1219,10 @@ class WidgetsApp extends StatefulWidget {
   /// If true, forces the performance overlay to be visible in all instances.
   ///
   /// Used by the `showPerformanceOverlay` VM service extension.
-  static bool showPerformanceOverlayOverride = false;
+  static bool get showPerformanceOverlayOverride => debugShowPerformanceOverlayOverride;
+  static set showPerformanceOverlayOverride(bool value) {
+    debugShowPerformanceOverlayOverride = value;
+  }
 
   /// If true, forces the widget inspector to be visible.
   ///
@@ -1256,7 +1260,10 @@ class WidgetsApp extends StatefulWidget {
   ///
   /// This is how `flutter run` turns off the banner when you take a screen shot
   /// with "s".
-  static bool debugAllowBannerOverride = true;
+  static bool get debugAllowBannerOverride => debugAllowBannerOverrideFlag;
+  static set debugAllowBannerOverride(bool value) {
+    debugAllowBannerOverrideFlag = value;
+  }
 
   static const Map<ShortcutActivator, Intent> _defaultShortcuts = <ShortcutActivator, Intent>{
     // Activation

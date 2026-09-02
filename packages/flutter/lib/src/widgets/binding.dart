@@ -8,6 +8,7 @@
 /// @docImport 'package:flutter_test/flutter_test.dart';
 ///
 /// @docImport 'adapter.dart';
+/// @docImport 'app.dart';
 /// @docImport 'app_lifecycle_listener.dart';
 /// @docImport 'basic.dart';
 /// @docImport 'focus_scope.dart';
@@ -39,7 +40,6 @@ import '../foundation/_features.dart';
 import '_accessibility_evaluations.dart';
 import '_window.dart';
 import 'accessibility_inspector.dart';
-import 'app.dart';
 import 'debug.dart';
 import 'focus_manager.dart';
 import 'framework.dart';
@@ -704,12 +704,12 @@ mixin WidgetsBinding
       if (!kIsWeb) {
         registerBoolServiceExtension(
           name: WidgetsServiceExtensions.showPerformanceOverlay.name,
-          getter: () => Future<bool>.value(WidgetsApp.showPerformanceOverlayOverride),
+          getter: () => Future<bool>.value(debugShowPerformanceOverlayOverride),
           setter: (bool value) {
-            if (WidgetsApp.showPerformanceOverlayOverride == value) {
+            if (debugShowPerformanceOverlayOverride == value) {
               return Future<void>.value();
             }
-            WidgetsApp.showPerformanceOverlayOverride = value;
+            debugShowPerformanceOverlayOverride = value;
             return _forceRebuild();
           },
         );
@@ -799,12 +799,12 @@ mixin WidgetsBinding
     assert(() {
       registerBoolServiceExtension(
         name: WidgetsServiceExtensions.debugAllowBanner.name,
-        getter: () => Future<bool>.value(WidgetsApp.debugAllowBannerOverride),
+        getter: () => Future<bool>.value(debugAllowBannerOverrideFlag),
         setter: (bool value) {
-          if (WidgetsApp.debugAllowBannerOverride == value) {
+          if (debugAllowBannerOverrideFlag == value) {
             return Future<void>.value();
           }
-          WidgetsApp.debugAllowBannerOverride = value;
+          debugAllowBannerOverrideFlag = value;
           return _forceRebuild();
         },
       );

@@ -6,6 +6,7 @@
 /// @docImport 'package:flutter/rendering.dart';
 /// @docImport 'package:flutter/scheduler.dart';
 ///
+/// @docImport 'app.dart';
 /// @docImport 'binding.dart';
 /// @docImport 'focus_manager.dart';
 /// @docImport 'focus_scope.dart';
@@ -227,3 +228,20 @@ bool debugAssertAllWidgetVarsUnset(String reason) {
   }());
   return true;
 }
+
+/// If true, forces the performance overlay to be visible in all instances.
+///
+/// Used by the `showPerformanceOverlay` VM service extension.
+///
+/// This variable backs [WidgetsApp.showPerformanceOverlayOverride].
+bool debugShowPerformanceOverlayOverride = false;
+
+/// If false, prevents the debug banner from being visible.
+///
+/// Used by the `debugAllowBanner` VM service extension.
+///
+/// This is how `flutter run` turns off the banner when you take a screen shot
+/// with "s".
+///
+/// This variable backs [WidgetsApp.debugAllowBannerOverride].
+bool debugAllowBannerOverrideFlag = true;

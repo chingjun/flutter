@@ -5,6 +5,7 @@
 /// @docImport 'package:flutter/material.dart';
 ///
 /// @docImport 'decorated_sliver.dart';
+/// @docImport 'image.dart';
 /// @docImport 'implicit_animations.dart';
 /// @docImport 'transitions.dart';
 library;
@@ -14,10 +15,36 @@ import 'package:flutter/rendering.dart';
 
 import 'basic.dart';
 import 'framework.dart';
-import 'image.dart';
+import 'localizations.dart';
+import 'media_query.dart';
 
 // Examples can assume:
 // late BuildContext context;
+
+/// Creates an [ImageConfiguration] based on the given [BuildContext] (and
+/// optionally size).
+///
+/// This is the object that must be passed to [BoxPainter.paint] and to
+/// [ImageProvider.resolve].
+///
+/// If this is not called from a build method, then it should be reinvoked
+/// whenever the dependencies change, e.g. by calling it from
+/// [State.didChangeDependencies], so that any changes in the environment are
+/// picked up (e.g. if the device pixel ratio changes).
+///
+/// See also:
+///
+///  * [ImageProvider], which has an example showing how this might be used.
+ImageConfiguration createLocalImageConfiguration(BuildContext context, {Size? size}) {
+  return ImageConfiguration(
+    bundle: DefaultAssetBundle.of(context),
+    devicePixelRatio: MediaQuery.maybeDevicePixelRatioOf(context) ?? 1.0,
+    locale: Localizations.maybeLocaleOf(context),
+    textDirection: Directionality.maybeOf(context),
+    size: size,
+    platform: defaultTargetPlatform,
+  );
+}
 
 /// A widget that paints a [Decoration] either before or after its child paints.
 ///

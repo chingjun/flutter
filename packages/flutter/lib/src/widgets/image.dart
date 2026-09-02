@@ -22,9 +22,9 @@ import '../painting/_web_image_info_io.dart'
 import '_web_image_io.dart' if (dart.library.js_interop) '_web_image_web.dart';
 import 'basic.dart';
 import 'binding.dart';
+import 'container.dart';
 import 'disposable_build_context.dart';
 import 'framework.dart';
-import 'localizations.dart';
 import 'media_query.dart';
 import 'placeholder.dart';
 import 'scroll_aware_image_provider.dart';
@@ -50,30 +50,10 @@ export 'package:flutter/painting.dart'
 // late bool isPaused;
 // late AssetImage myAnimatedGif;
 
-/// Creates an [ImageConfiguration] based on the given [BuildContext] (and
-/// optionally size).
-///
-/// This is the object that must be passed to [BoxPainter.paint] and to
-/// [ImageProvider.resolve].
-///
-/// If this is not called from a build method, then it should be reinvoked
-/// whenever the dependencies change, e.g. by calling it from
-/// [State.didChangeDependencies], so that any changes in the environment are
-/// picked up (e.g. if the device pixel ratio changes).
-///
-/// See also:
-///
-///  * [ImageProvider], which has an example showing how this might be used.
-ImageConfiguration createLocalImageConfiguration(BuildContext context, {Size? size}) {
-  return ImageConfiguration(
-    bundle: DefaultAssetBundle.of(context),
-    devicePixelRatio: MediaQuery.maybeDevicePixelRatioOf(context) ?? 1.0,
-    locale: Localizations.maybeLocaleOf(context),
-    textDirection: Directionality.maybeOf(context),
-    size: size,
-    platform: defaultTargetPlatform,
-  );
-}
+// createLocalImageConfiguration is defined in container.dart (to avoid a
+// cyclic import) and re-exported here for backward compatibility.
+export 'container.dart' show createLocalImageConfiguration;
+
 
 /// Prefetches an image into the image cache.
 ///

@@ -24,101 +24,10 @@ import 'navigator.dart';
 import 'restoration.dart';
 import 'restoration_properties.dart';
 
-/// A piece of routing information.
-///
-/// The route information consists of a location string of the application and
-/// a state object that configures the application in that location.
-///
-/// This information flows two ways, from the [RouteInformationProvider] to the
-/// [Router] or from the [Router] to [RouteInformationProvider].
-///
-/// In the former case, the [RouteInformationProvider] notifies the [Router]
-/// widget when a new [RouteInformation] is available. The [Router] widget takes
-/// these information and navigates accordingly.
-///
-/// The latter case happens in web application where the [Router] reports route
-/// changes back to the web engine.
-///
-/// The current [RouteInformation] of an application is also used for state
-/// restoration purposes. Before an application is killed, the [Router] converts
-/// its current configurations into a [RouteInformation] object utilizing the
-/// [RouteInformationProvider]. The [RouteInformation] object is then serialized
-/// out and persisted. During state restoration, the object is deserialized and
-/// passed back to the [RouteInformationProvider], which turns it into a
-/// configuration for the [Router] again to restore its state from.
-class RouteInformation {
-  /// Creates a route information object.
-  ///
-  /// Either `location` or `uri` must not be null.
-  const RouteInformation({
-    @Deprecated(
-      'Pass Uri.parse(location) to uri parameter instead. '
-      'This feature was deprecated after v3.8.0-3.0.pre.',
-    )
-    String? location,
-    Uri? uri,
-    this.state,
-  }) : _location = location,
-       _uri = uri,
-       assert((location != null) != (uri != null));
+// RouteInformation is defined in binding.dart (to avoid a cyclic import)
+// and re-exported here for backward compatibility.
+export 'binding.dart' show RouteInformation;
 
-  /// The location of the application.
-  ///
-  /// The string is usually in the format of multiple string identifiers with
-  /// slashes in between. ex: `/`, `/path`, `/path/to/the/app`.
-  @Deprecated(
-    'Use uri instead. '
-    'This feature was deprecated after v3.8.0-3.0.pre.',
-  )
-  String get location {
-    return _location ??
-        Uri.decodeComponent(
-          Uri(
-            path: uri.path.isEmpty ? '/' : uri.path,
-            queryParameters: uri.queryParametersAll.isEmpty ? null : uri.queryParametersAll,
-            fragment: uri.fragment.isEmpty ? null : uri.fragment,
-          ).toString(),
-        );
-  }
-
-  final String? _location;
-
-  /// The uri location of the application.
-  ///
-  /// The host and scheme will not be empty if this object is created from a
-  /// deep link request. They represents the website that redirect the deep
-  /// link.
-  ///
-  /// In web platform, the host and scheme are always empty.
-  Uri get uri {
-    if (_uri != null) {
-      return _uri;
-    }
-    return Uri.parse(_location!);
-  }
-
-  final Uri? _uri;
-
-  /// The state of the application in the [uri].
-  ///
-  /// The app can have different states even in the same location. For example,
-  /// the text inside a [TextField] or the scroll position in a [ScrollView].
-  /// These widget states can be stored in the [state].
-  ///
-  /// On the web, this information is stored in the browser history when the
-  /// [Router] reports this route information back to the web engine
-  /// through the [PlatformRouteInformationProvider]. The information
-  /// is then passed back, along with the [uri], when the user
-  /// clicks the back or forward buttons.
-  ///
-  /// This information is also serialized and persisted alongside the
-  /// [uri] for state restoration purposes. During state restoration,
-  /// the information is made available again to the [Router] so it can restore
-  /// its configuration to the previous state.
-  ///
-  /// The state must be serializable.
-  final Object? state;
-}
 
 /// A convenient bundle to configure a [Router] widget.
 ///

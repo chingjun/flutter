@@ -4,6 +4,8 @@
 
 /// @docImport 'scroll_delegate.dart';
 /// @docImport 'scroll_view.dart';
+/// @docImport 'sliver.dart';
+/// @docImport 'two_dimensional_viewport.dart';
 library;
 
 import 'dart:async';
@@ -14,7 +16,6 @@ import 'package:flutter/scheduler.dart';
 
 import 'framework.dart';
 import 'notification_listener.dart';
-import 'sliver.dart';
 
 /// Allows subtrees to request to be kept alive in lazy lists.
 ///
@@ -494,5 +495,102 @@ class _NullWidget extends StatelessWidget {
       'Widgets that mix AutomaticKeepAliveClientMixin into their State must '
       'call super.build() but must ignore the return value of the superclass.',
     );
+  }
+}
+
+/// Mark a child as needing to stay alive even when it's in a lazy list that
+/// would otherwise remove it.
+///
+/// This widget is used in [RenderAbstractViewport]s, such as [Viewport] or
+/// [TwoDimensionalViewport], to manage the lifecycle of widgets that need to
+/// remain alive even when scrolled out of view.
+///
+/// The [SliverChildBuilderDelegate] and [SliverChildListDelegate] delegates,
+/// used with [SliverList] and [SliverGrid], as well as the scroll view
+/// counterparts [ListView] and [GridView], have an `addAutomaticKeepAlives`
+/// feature, which is enabled by default. This feature inserts
+/// [AutomaticKeepAlive] widgets around each child, which in turn configure
+/// [KeepAlive] widgets in response to [KeepAliveNotification]s.
+///
+/// The same `addAutomaticKeepAlives` feature is supported by
+/// [TwoDimensionalChildBuilderDelegate] and [TwoDimensionalChildListDelegate].
+///
+/// Keep-alive behavior can be managed by using [KeepAlive] directly or by
+/// relying on notifications. For convenience, [AutomaticKeepAliveClientMixin]
+/// may be mixed into a [State] subclass. Further details are available in the
+/// documentation for [AutomaticKeepAliveClientMixin].
+///
+/// {@tool dartpad}
+/// This sample demonstrates how to use the [KeepAlive] widget
+/// to preserve the state of individual list items in a [ListView] when they are
+/// scrolled out of view.
+///
+/// By default, [ListView.builder] only keeps the widgets currently visible in
+/// the viewport alive. When an item scrolls out of view, it may be disposed to
+/// free up resources. This can cause the state of [StatefulWidget]s to be lost
+/// if not explicitly preserved.
+///
+/// In this example, each item in the list is a [StatefulWidget] that maintains
+/// a counter. Tapping the "+" button increments the counter. To selectively
+/// preserve the state, each item is wrapped in a [KeepAlive] widget, with the
+/// keepAlive parameter set based on the item's index:
+///
+/// - For even-indexed items, `keepAlive: true`, so their state is preserved
+///   even when scrolled off-screen.
+/// - For odd-indexed items, `keepAlive: false`, so their state is discarded
+///   when they are no longer visible.
+///
+/// ** See code in examples/api/lib/widgets/keep_alive/keep_alive.0.dart **
+/// {@end-tool}
+///
+/// See also:
+///
+///  * [AutomaticKeepAlive], which allows subtrees to request to be kept alive
+///    in lazy lists.
+///  * [AutomaticKeepAliveClientMixin], which is a mixin with convenience
+///    methods for clients of [AutomaticKeepAlive]. Used with [State]
+///    subclasses.
+class KeepAlive extends ParentDataWidget<KeepAliveParentDataMixin> {
+  /// Marks a child as needing to remain alive.
+  const KeepAlive({super.key, required this.keepAlive, required super.child});
+
+  /// Whether to keep the child alive.
+  ///
+  /// If this is false, it is as if this widget was omitted.
+  final bool keepAlive;
+
+  @override
+  void applyParentData(RenderObject renderObject) {
+    assert(renderObject.parentData is KeepAliveParentDataMixin);
+    final parentData = renderObject.parentData! as KeepAliveParentDataMixin;
+    if (parentData.keepAlive != keepAlive) {
+      // No need to redo layout if it became true.
+      parentData.keepAlive = keepAlive;
+      if (!keepAlive) {
+        renderObject.parent?.markNeedsLayout();
+      }
+    }
+  }
+
+  // We only return true if [keepAlive] is true, because turning _off_ keep
+  // alive requires a layout to do the garbage collection (but turning it on
+  // requires nothing, since by definition the widget is already alive and won't
+  // go away _unless_ we do a layout).
+  @override
+  bool debugCanApplyOutOfTurn() => keepAlive;
+
+  @override
+  Type get debugTypicalAncestorWidgetClass => throw FlutterError(
+    'Multiple Types are supported, use debugTypicalAncestorWidgetDescription.',
+  );
+
+  @override
+  String get debugTypicalAncestorWidgetDescription =>
+      'SliverWithKeepAliveWidget or TwoDimensionalViewport';
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty<bool>('keepAlive', keepAlive));
   }
 }

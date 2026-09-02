@@ -18,10 +18,21 @@ import 'package:flutter/services.dart' show LogicalKeyboardKey;
 import 'framework.dart';
 import 'overscroll_indicator.dart';
 import 'scroll_physics.dart';
-import 'scroll_view.dart';
 import 'scrollable.dart';
 import 'scrollable_helpers.dart';
 import 'scrollbar.dart';
+
+/// A representation of how a [ScrollView] should dismiss the on-screen
+/// keyboard.
+enum ScrollViewKeyboardDismissBehavior {
+  /// `manual` means there is no automatic dismissal of the on-screen keyboard.
+  /// It is up to the client to dismiss the keyboard.
+  manual,
+
+  /// `onDrag` means that the [ScrollView] will dismiss an on-screen keyboard
+  /// when a drag begins.
+  onDrag,
+}
 
 const Color _kDefaultGlowColor = Color(0xFFFFFFFF);
 

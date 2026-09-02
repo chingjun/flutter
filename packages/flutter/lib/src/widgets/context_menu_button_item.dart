@@ -8,7 +8,7 @@
 /// @docImport 'text_selection.dart';
 library;
 
-import 'framework.dart';
+import 'package:flutter/foundation.dart';
 
 /// The buttons that can appear in a context menu by default.
 ///

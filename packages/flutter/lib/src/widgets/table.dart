@@ -506,3 +506,39 @@ class _TableSlot with Diagnosticable {
     properties.add(IntProperty('y', row));
   }
 }
+
+/// Returns true if there is a [Table] widget ancestor.
+///
+/// Used by various widgets to make sure that they are only used in an
+/// appropriate context.
+///
+/// To invoke this function, use the following pattern, typically in the
+/// relevant Widget's build method:
+///
+/// ```dart
+/// assert(debugCheckHasTable(context));
+/// ```
+///
+/// Always place this before any early returns, so that the assert is always
+/// checked.
+///
+/// Does not check for [DataTable], which is a [Table] itself and will
+/// therefore pass the test.
+///
+/// This method can be expensive (it walks the element tree).
+///
+/// Does nothing if asserts are disabled. Always returns true.
+bool debugCheckHasTable(BuildContext context) {
+  assert(() {
+    if (context.widget is! Table && context.findAncestorWidgetOfExactType<Table>() == null) {
+      throw FlutterError.fromParts(<DiagnosticsNode>[
+        ErrorSummary('No Table widget found.'),
+        ErrorDescription('${context.widget.runtimeType} widgets require a Table widget ancestor.'),
+        context.describeWidget('The specific widget that could not find a Table ancestor was'),
+        context.describeOwnershipChain('The ownership chain for the affected widget is'),
+      ]);
+    }
+    return true;
+  }());
+  return true;
+}

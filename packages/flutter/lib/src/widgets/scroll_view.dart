@@ -35,17 +35,7 @@ import 'viewport.dart';
 // Examples can assume:
 // late int itemCount;
 
-/// A representation of how a [ScrollView] should dismiss the on-screen
-/// keyboard.
-enum ScrollViewKeyboardDismissBehavior {
-  /// `manual` means there is no automatic dismissal of the on-screen keyboard.
-  /// It is up to the client to dismiss the keyboard.
-  manual,
-
-  /// `onDrag` means that the [ScrollView] will dismiss an on-screen keyboard
-  /// when a drag begins.
-  onDrag,
-}
+export 'scroll_configuration.dart' show ScrollViewKeyboardDismissBehavior;
 
 /// A widget that combines a [Scrollable] and a [Viewport] to create an
 /// interactive scrolling pane of content in one dimension.

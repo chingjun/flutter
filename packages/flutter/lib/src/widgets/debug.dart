@@ -18,7 +18,6 @@ import 'localizations.dart';
 import 'lookup_boundary.dart';
 import 'media_query.dart';
 import 'overlay.dart';
-import 'table.dart';
 
 export 'debug_flags.dart';
 // debugChildrenHaveDuplicateKeys, debugItemsHaveDuplicateKeys, and
@@ -26,45 +25,15 @@ export 'debug_flags.dart';
 // import) and re-exported here for backward compatibility.
 export 'framework.dart'
     show debugChildrenHaveDuplicateKeys, debugItemsHaveDuplicateKeys, debugWidgetBuilderValue;
+// debugCheckHasTable is defined in table.dart (to avoid a cyclic import)
+// and re-exported here for backward compatibility.
+export 'table.dart' show debugCheckHasTable;
 
 // Examples can assume:
 // late BuildContext context;
 // List<Widget> children = <Widget>[];
 // List<Widget> items = <Widget>[];
 
-
-/// Asserts that the given context has a [Table] ancestor.
-///
-/// Used by [TableRowInkWell] to make sure that it is only used in an appropriate context.
-///
-/// To invoke this function, use the following pattern, typically in the
-/// relevant Widget's build method:
-///
-/// ```dart
-/// assert(debugCheckHasTable(context));
-/// ```
-///
-/// Always place this before any early returns, so that the invariant is checked
-/// in all cases. This prevents bugs from hiding until a particular codepath is
-/// hit.
-///
-/// This method can be expensive (it walks the element tree).
-///
-/// Does nothing if asserts are disabled. Always returns true.
-bool debugCheckHasTable(BuildContext context) {
-  assert(() {
-    if (context.widget is! Table && context.findAncestorWidgetOfExactType<Table>() == null) {
-      throw FlutterError.fromParts(<DiagnosticsNode>[
-        ErrorSummary('No Table widget found.'),
-        ErrorDescription('${context.widget.runtimeType} widgets require a Table widget ancestor.'),
-        context.describeWidget('The specific widget that could not find a Table ancestor was'),
-        context.describeOwnershipChain('The ownership chain for the affected widget is'),
-      ]);
-    }
-    return true;
-  }());
-  return true;
-}
 
 /// Asserts that the given context has a [MediaQuery] ancestor.
 ///

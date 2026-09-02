@@ -18,7 +18,6 @@ import 'scroll_controller.dart';
 import 'scroll_delegate.dart';
 import 'scroll_notification.dart';
 import 'scroll_physics.dart';
-import 'scroll_view.dart';
 import 'scrollable.dart';
 import 'scrollable_helpers.dart';
 import 'two_dimensional_viewport.dart';

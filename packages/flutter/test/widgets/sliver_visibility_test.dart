@@ -2,8 +2,22 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Locale, TextDirection;
+
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/rendering/sliver.dart' show RenderSliver;
+import 'package:flutter/src/rendering/viewport.dart' show RenderViewport;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Directionality, SliverToBoxAdapter;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/indexed_stack.dart' show SliverVisibility;
+import 'package:flutter/src/widgets/localizations.dart' show DefaultWidgetsLocalizations, Localizations, LocalizationsDelegate;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/scroll_view.dart' show CustomScrollView;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/ticker_provider.dart' show TickerMode;
+import 'package:flutter/src/widgets/viewport.dart' show Viewport;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'semantics_tester.dart';

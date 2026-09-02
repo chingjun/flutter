@@ -7,15 +7,23 @@
 /// @docImport 'selectable_text.dart';
 library;
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/rendering.dart';
-
-import 'adaptive_text_selection_toolbar.dart';
-import 'debug.dart';
-import 'desktop_text_selection.dart';
-import 'magnifier.dart';
-import 'text_selection.dart';
-import 'theme.dart';
+import 'package:flutter/src/cupertino/desktop_text_selection.dart' show cupertinoDesktopTextSelectionHandleControls;
+import 'package:flutter/src/cupertino/text_selection.dart' show cupertinoTextSelectionHandleControls;
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/material/adaptive_text_selection_toolbar.dart' show AdaptiveTextSelectionToolbar;
+import 'package:flutter/src/material/debug.dart' show debugCheckHasMaterialLocalizations;
+import 'package:flutter/src/material/desktop_text_selection.dart' show desktopTextSelectionHandleControls;
+import 'package:flutter/src/material/magnifier.dart' show TextMagnifier;
+import 'package:flutter/src/material/text_selection.dart' show materialTextSelectionHandleControls;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/rendering/selection.dart' show SelectedContent;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/magnifier.dart' show TextMagnifierConfiguration;
+import 'package:flutter/src/widgets/selectable_region.dart' show SelectableRegion, SelectableRegionContextMenuBuilder, SelectableRegionState;
+import 'package:flutter/src/widgets/text_selection.dart' show TextSelectionControls;
+import 'package:meta/meta.dart' show protected;
 
 /// A widget that introduces an area for user selections with adaptive selection
 /// controls.

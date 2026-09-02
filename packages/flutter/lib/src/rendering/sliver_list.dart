@@ -6,11 +6,10 @@
 /// @docImport 'sliver_grid.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-
-import 'box.dart';
-import 'sliver.dart';
-import 'sliver_multi_box_adaptor.dart';
+import 'package:flutter/src/foundation/constants.dart' show precisionErrorTolerance;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/sliver.dart' show SliverConstraints, SliverGeometry;
+import 'package:flutter/src/rendering/sliver_multi_box_adaptor.dart' show RenderSliverMultiBoxAdaptor, SliverMultiBoxAdaptorParentData;
 
 /// A sliver that places multiple box children in a linear array along the main
 /// axis.

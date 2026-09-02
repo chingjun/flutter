@@ -5,18 +5,24 @@
 /// @docImport 'package:flutter/rendering.dart';
 library;
 
+import 'dart:ui' show Offset, Rect, Size, TextDirection;
 import 'dart:ui_web' as ui_web;
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/src/foundation/constants.dart' show precisionErrorTolerance;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty, DoubleProperty, EnumProperty;
+import 'package:flutter/src/painting/_web_image_info_web.dart' show WebImageInfo;
+import 'package:flutter/src/painting/alignment.dart' show Alignment, AlignmentGeometry;
+import 'package:flutter/src/painting/box_fit.dart' show BoxFit, FittedSizes, applyBoxFit;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, BoxParentData, RenderBox;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, RenderObject;
+import 'package:flutter/src/rendering/platform_view.dart' show PlatformViewHitTestBehavior;
+import 'package:flutter/src/rendering/shifted_box.dart' show RenderShiftedBox;
+import 'package:flutter/src/widgets/basic.dart' show Directionality, SizedBox;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, SingleChildRenderObjectWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/platform_view.dart' show HtmlElementView;
+import 'package:meta/meta.dart' show protected;
 
-import '../painting/_web_image_info_web.dart';
-import '../rendering/box.dart';
-import '../rendering/platform_view.dart';
-import '../rendering/shifted_box.dart';
 import '../web.dart' as web;
-import 'basic.dart';
-import 'framework.dart';
-import 'platform_view.dart';
 
 /// Displays an `<img>` element with `src` set to [src].
 class ImgElementPlatformView extends StatelessWidget {

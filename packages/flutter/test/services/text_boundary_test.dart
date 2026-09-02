@@ -2,8 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
+import 'dart:ui' show TextDirection, TextPosition, TextRange;
+
+import 'package:flutter/src/painting/text_painter.dart' show TextPainter;
+import 'package:flutter/src/painting/text_span.dart' show TextSpan;
+import 'package:flutter/src/services/text_boundary.dart' show CharacterBoundary, DocumentBoundary, LineBoundary, ParagraphBoundary, TextBoundary;
+import 'package:flutter/src/services/text_editing.dart' show TextSelection;
+import 'package:flutter/src/services/text_layout_metrics.dart' show TextLayoutMetrics;
 import 'package:flutter_test/flutter_test.dart';
 
 class _ConsistentTextRangeImplementationMatcher extends Matcher {

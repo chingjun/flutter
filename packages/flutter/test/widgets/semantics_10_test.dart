@@ -2,8 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show TextDirection;
+
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderProxyBox;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsConfiguration;
+import 'package:flutter/src/widgets/basic.dart' show Column, Directionality, ExcludeSemantics, Semantics;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, SingleChildRenderObjectWidget, Widget;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'semantics_tester.dart';

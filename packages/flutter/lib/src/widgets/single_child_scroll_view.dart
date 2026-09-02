@@ -8,22 +8,32 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show Clip, Offset, Rect, Size;
 
-import 'package:flutter/gestures.dart' show DragStartBehavior;
-import 'package:flutter/rendering.dart';
-
-import 'basic.dart';
-import 'focus_manager.dart';
-import 'focus_scope.dart';
-import 'framework.dart';
-import 'notification_listener.dart';
-import 'primary_scroll_controller.dart';
-import 'scroll_configuration.dart';
-import 'scroll_controller.dart';
-import 'scroll_notification.dart';
-import 'scroll_physics.dart';
-import 'scroll_view.dart';
-import 'scrollable.dart';
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty;
+import 'package:flutter/src/gestures/recognizer.dart' show DragStartBehavior;
+import 'package:flutter/src/painting/basic_types.dart' show Axis, AxisDirection, axisDirectionToAxis;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsetsGeometry;
+import 'package:flutter/src/painting/matrix_utils.dart' show MatrixUtils;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, BoxHitTestResult, RenderBox;
+import 'package:flutter/src/rendering/layer.dart' show ClipRectLayer, LayerHandle;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, ParentData, PipelineOwner, RenderObject, RenderObjectWithChildMixin;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior;
+import 'package:flutter/src/rendering/viewport.dart' show RenderAbstractViewport, RenderViewportBase, RevealedOffset;
+import 'package:flutter/src/rendering/viewport_offset.dart' show ViewportOffset;
+import 'package:flutter/src/widgets/basic.dart' show Padding, getAxisDirectionFromAxisReverseAndDirectionality;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusManager, FocusScopeNode;
+import 'package:flutter/src/widgets/focus_scope.dart' show FocusScope;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, NotifiableElementMixin, SingleChildRenderObjectElement, SingleChildRenderObjectWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/notification_listener.dart' show NotificationListener;
+import 'package:flutter/src/widgets/primary_scroll_controller.dart' show PrimaryScrollController;
+import 'package:flutter/src/widgets/scroll_configuration.dart' show ScrollConfiguration, ScrollViewKeyboardDismissBehavior;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_notification.dart' show ScrollUpdateNotification, ViewportElementMixin;
+import 'package:flutter/src/widgets/scroll_physics.dart' show ScrollPhysics;
+import 'package:flutter/src/widgets/scrollable.dart' show Scrollable;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 /// A box in which a single widget can be scrolled.
 ///

@@ -10,12 +10,22 @@
 library;
 
 import 'dart:async';
+import 'dart:ui' show Color, FontWeight;
 
-import 'package:flutter/widgets.dart';
-
-import 'colors.dart';
-import 'icons.dart';
-import 'theme.dart';
+import 'package:flutter/src/cupertino/colors.dart' show CupertinoColors;
+import 'package:flutter/src/cupertino/icons.dart' show CupertinoIcons;
+import 'package:flutter/src/cupertino/theme.dart' show CupertinoTheme;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsDirectional, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/text_painter.dart' show TextOverflow;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/rendering/flex.dart' show CrossAxisAlignment, MainAxisAlignment;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior;
+import 'package:flutter/src/widgets/basic.dart' show Center, ColoredBox, Column, ConstrainedBox, Expanded, Padding, Row, SizedBox;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/text.dart' show DefaultTextStyle;
 
 // These constants were eyeballed from iOS 14.4 Settings app for base, Notes for
 // notched without leading, and Reminders app for notched with leading.

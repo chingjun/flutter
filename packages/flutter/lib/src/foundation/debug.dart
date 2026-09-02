@@ -9,15 +9,15 @@
 /// @docImport 'package:flutter/widgets.dart';
 library;
 
+import 'dart:async' show Future;
 import 'dart:ui' as ui show Brightness;
 
-import 'assertions.dart';
-import 'memory_allocations.dart';
-import 'platform.dart';
-import 'print.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/memory_allocations.dart' show FlutterMemoryAllocations, kFlutterMemoryAllocationsEnabled;
+import 'package:flutter/src/foundation/platform.dart' show debugDefaultTargetPlatformOverride;
+import 'package:flutter/src/foundation/print.dart' show DebugPrintCallback, debugPrint, debugPrintThrottled;
 
 export 'dart:ui' show Brightness;
-
 export 'print.dart' show DebugPrintCallback;
 
 /// Returns true if none of the foundation library debug variables have been

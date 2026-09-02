@@ -2,8 +2,19 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color, Rect, Size;
+
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/curves.dart' show Curves;
+import 'package:flutter/src/animation/tween.dart' show Animatable, ColorTween, ConstantTween, CurveTween, IntTween, RectTween, ReverseTween, SizeTween, StepTween, Tween;
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode;
+import 'package:flutter/src/painting/borders.dart' show BorderSide;
+import 'package:flutter/src/painting/box_border.dart' show Border;
+import 'package:flutter/src/widgets/implicit_animations.dart' show BorderRadiusTween, BorderTween, Matrix4Tween;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 const String kApiDocsLink =
     'See "Types with special considerations" at https://api.flutter.dev/flutter/animation/Tween-class.html for more information.';

@@ -2,7 +2,15 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show TextDirection;
+
+import 'package:flutter/src/foundation/key.dart' show ValueKey;
+import 'package:flutter/src/widgets/basic.dart' show Directionality;
+import 'package:flutter/src/widgets/framework.dart' show GlobalKey;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/navigator.dart' show Navigator, NavigatorState, Page;
+import 'package:flutter/src/widgets/pages.dart' show PageRouteBuilder;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'test_page_tester.dart';

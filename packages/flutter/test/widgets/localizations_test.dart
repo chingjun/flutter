@@ -3,9 +3,14 @@
 // found in the LICENSE file.
 
 import 'dart:async';
+import 'dart:ui' show Locale, Size, TextDirection, VoidCallback;
 
-import 'package:flutter/semantics.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsNode;
+import 'package:flutter/src/widgets/basic.dart' show Center, Column, Directionality, Semantics, SizedBox;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show GlobalKey, Widget;
+import 'package:flutter/src/widgets/localizations.dart' show DefaultWidgetsLocalizations, Localizations, LocalizationsDelegate, LocalizationsResolver, WidgetsLocalizations;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

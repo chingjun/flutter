@@ -2,7 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show TextBaseline, TextDirection;
+
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/text_span.dart' show TextSpan;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/custom_paint.dart' show RenderCustomPaint;
+import 'package:flutter/src/rendering/paragraph.dart' show RenderParagraph;
+import 'package:flutter/src/rendering/shifted_box.dart' show RenderConstrainedOverflowBox, RenderPositionedBox;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'rendering_tester.dart';

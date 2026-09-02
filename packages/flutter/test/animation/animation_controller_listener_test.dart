@@ -2,7 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/animation.dart';
+import 'package:flutter/src/animation/animation.dart' show AnimationStatus;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

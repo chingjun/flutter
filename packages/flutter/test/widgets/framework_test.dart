@@ -2,13 +2,39 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color, Size, TextDirection;
+
+import 'package:flutter/src/animation/curves.dart' show Curves;
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError, FlutterErrorDetails, FlutterExceptionHandler;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, DiagnosticsNode, DiagnosticsProperty, describeIdentity;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey, ValueKey;
+import 'package:flutter/src/foundation/print.dart' show DebugPrintCallback, debugPrint;
+import 'package:flutter/src/gestures/binding.dart' show GestureBinding;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/layer.dart' show LayerLink, LeaderLayer;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, RenderObject;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderProxyBox;
+import 'package:flutter/src/services/raw_keyboard.dart' show RawKeyEventHandler, RawKeyboard;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Center, ColoredBox, Column, Directionality, MetaData, Row, SizedBox, Stack, StatefulBuilder;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/debug_flags.dart' show debugPrintGlobalKeyedWidgetLifecycle;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusManager;
+import 'package:flutter/src/widgets/focus_traversal.dart' show FocusTraversalOrder;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, BuildOwner, BuildScope, Element, ElementVisitor, GlobalKey, GlobalObjectKey, IndexedSlot, InheritedElement, InheritedWidget, LeafRenderObjectWidget, MultiChildRenderObjectElement, ObjectKey, ProxyWidget, RenderObjectElement, RootElementMixin, SingleChildRenderObjectWidget, State, StateSetter, StatefulElement, StatefulWidget, StatelessElement, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/layout_builder.dart' show LayoutBuilder;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/page_view.dart' show PageController, PageView;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_view.dart' show CustomScrollView;
+import 'package:flutter/src/widgets/sliver.dart' show SliverList, SliverMultiBoxAdaptorElement;
+import 'package:flutter/src/widgets/table.dart' show Table;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/value_listenable_builder.dart' show ValueListenableBuilder;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:leak_tracker_testing/leak_tracker_testing.dart';
+import 'package:listen/listen.dart' show ValueNotifier;
+import 'package:meta/meta.dart' show optionalTypeArgs;
 
 typedef ElementRebuildCallback = void Function(StatefulElement element);
 

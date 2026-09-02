@@ -8,22 +8,42 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show Color, FontWeight;
 
-import 'package:flutter/gestures.dart' show DragStartBehavior;
-import 'package:flutter/widgets.dart';
-
-import 'card.dart';
-import 'constants.dart';
-import 'data_table.dart';
-import 'data_table_source.dart';
-import 'debug.dart';
-import 'dropdown.dart';
-import 'icon_button.dart';
-import 'icons.dart';
-import 'ink_decoration.dart';
-import 'material_localizations.dart';
-import 'progress_indicator.dart';
-import 'theme.dart';
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged, ValueSetter;
+import 'package:flutter/src/gestures/recognizer.dart' show DragStartBehavior;
+import 'package:flutter/src/material/card.dart' show Card;
+import 'package:flutter/src/material/constants.dart' show kMinInteractiveDimension;
+import 'package:flutter/src/material/data_table.dart' show DataCell, DataColumn, DataRow, DataTable;
+import 'package:flutter/src/material/data_table_source.dart' show DataTableSource;
+import 'package:flutter/src/material/debug.dart' show debugCheckHasMaterialLocalizations;
+import 'package:flutter/src/material/dropdown.dart' show DropdownButton, DropdownButtonHideUnderline, DropdownMenuItem;
+import 'package:flutter/src/material/icon_button.dart' show IconButton;
+import 'package:flutter/src/material/icons.dart' show Icons;
+import 'package:flutter/src/material/ink_decoration.dart' show Ink;
+import 'package:flutter/src/material/material_localizations.dart' show MaterialLocalizations;
+import 'package:flutter/src/material/progress_indicator.dart' show CircularProgressIndicator;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/alignment.dart' show AlignmentDirectional;
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsDirectional;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/rendering/flex.dart' show CrossAxisAlignment, MainAxisAlignment;
+import 'package:flutter/src/widgets/basic.dart' show Align, Column, ConstrainedBox, Expanded, Padding, Row, Semantics, SizedBox;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/icon_theme.dart' show IconTheme;
+import 'package:flutter/src/widgets/icon_theme_data.dart' show IconThemeData;
+import 'package:flutter/src/widgets/layout_builder.dart' show LayoutBuilder;
+import 'package:flutter/src/widgets/page_storage.dart' show PageStorage;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/single_child_scroll_view.dart' show SingleChildScrollView;
+import 'package:flutter/src/widgets/text.dart' show DefaultTextStyle, Text;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetStateProperty;
+import 'package:meta/meta.dart' show protected;
 
 /// A table that follows the
 /// [Material 2](https://material.io/go/design-data-tables)

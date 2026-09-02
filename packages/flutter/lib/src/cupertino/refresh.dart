@@ -8,15 +8,23 @@
 /// @docImport 'nav_bar.dart';
 library;
 
+import 'dart:async' show Future;
 import 'dart:math';
+import 'dart:ui' show Clip, Offset, clampDouble;
 
-import 'package:flutter/foundation.dart' show clampDouble;
-import 'package:flutter/rendering.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
-
-import 'activity_indicator.dart';
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves, Interval;
+import 'package:flutter/src/cupertino/activity_indicator.dart' show CupertinoActivityIndicator;
+import 'package:flutter/src/painting/basic_types.dart' show AxisDirection;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, RenderObject, RenderObjectWithChildMixin;
+import 'package:flutter/src/rendering/sliver.dart' show GrowthDirection, RenderSliver, SliverConstraints, SliverGeometry;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding, SchedulerPhase;
+import 'package:flutter/src/services/haptic_feedback.dart' show HapticFeedback;
+import 'package:flutter/src/widgets/basic.dart' show Center, LimitedBox, Opacity, Positioned, SizedBox, Stack;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, SingleChildRenderObjectWidget, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/layout_builder.dart' show LayoutBuilder;
+import 'package:meta/meta.dart' show visibleForTesting;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 const double _kActivityIndicatorRadius = 14.0;
 const double _kActivityIndicatorMargin = 16.0;

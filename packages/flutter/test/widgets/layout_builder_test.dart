@@ -2,8 +2,31 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color, Size, TextDirection;
+
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, RenderObject, RenderObjectWithLayoutCallbackMixin;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderProxyBox;
+import 'package:flutter/src/rendering/sliver.dart' show RenderSliver, SliverConstraints;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Center, ColoredBox, ConstrainedBox, Directionality, Padding, SizedBox, SliverPadding, SliverToBoxAdapter, StatefulBuilder, UnconstrainedBox;
+import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/editable_text.dart' show EditableText, TextEditingController;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, GlobalKey, LeafRenderObjectElement, LeafRenderObjectWidget, StateSetter, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/layout_builder.dart' show ConstrainedLayoutBuilder, LayoutBuilder, RenderAbstractLayoutBuilderMixin;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/overlay.dart' show Overlay, OverlayEntry, OverlayState;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_view.dart' show CustomScrollView;
+import 'package:flutter/src/widgets/sliver.dart' show SliverList;
+import 'package:flutter/src/widgets/sliver_layout_builder.dart' show SliverLayoutBuilder;
+import 'package:flutter/src/widgets/text.dart' show DefaultTextStyle, Text;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

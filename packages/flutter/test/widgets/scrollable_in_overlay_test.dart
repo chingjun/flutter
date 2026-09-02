@@ -2,7 +2,18 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show TextDirection;
+
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/widgets/basic.dart' show Directionality, Row;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
+import 'package:flutter/src/widgets/overlay.dart' show Overlay, OverlayEntry;
+import 'package:flutter/src/widgets/scroll_physics.dart' show AlwaysScrollableScrollPhysics;
+import 'package:flutter/src/widgets/scroll_position.dart' show ScrollPosition;
+import 'package:flutter/src/widgets/scroll_position_with_single_context.dart' show ScrollPositionWithSingleContext;
+import 'package:flutter/src/widgets/scrollable.dart' show ScrollableState;
+import 'package:flutter/src/widgets/single_child_scroll_view.dart' show SingleChildScrollView;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

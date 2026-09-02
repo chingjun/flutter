@@ -7,11 +7,11 @@
 library;
 
 import 'dart:ui' as ui show lerpDouble;
+import 'dart:ui' show Offset, Rect, Size, TextDirection;
 
-import 'package:flutter/foundation.dart';
-
-import 'basic_types.dart';
-import 'debug.dart';
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/painting/debug.dart' show debugCheckCanResolveTextDirection;
+import 'package:meta/meta.dart' show immutable;
 
 /// Base class for [Alignment] that allows for text-direction aware
 /// resolution.

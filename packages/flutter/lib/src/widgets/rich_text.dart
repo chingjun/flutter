@@ -8,16 +8,22 @@
 library;
 
 import 'dart:ui' as ui show TextHeightBehavior;
+import 'dart:ui' show Color, Locale, TextAlign, TextDirection, TextHeightBehavior;
 
-import 'package:flutter/rendering.dart';
-
-import 'basic.dart';
-import 'debug.dart';
-import 'framework.dart';
-import 'localizations.dart';
-import 'media_query.dart';
-import 'view.dart';
-import 'widget_span.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty, EnumProperty, FlagProperty, IntProperty, StringProperty;
+import 'package:flutter/src/painting/inline_span.dart' show InlineSpan;
+import 'package:flutter/src/painting/strut_style.dart' show StrutStyle;
+import 'package:flutter/src/painting/text_painter.dart' show TextOverflow, TextWidthBasis;
+import 'package:flutter/src/painting/text_scaler.dart' show TextScaler;
+import 'package:flutter/src/rendering/paragraph.dart' show RenderParagraph;
+import 'package:flutter/src/rendering/selection.dart' show SelectionRegistrar;
+import 'package:flutter/src/widgets/basic.dart' show Directionality;
+import 'package:flutter/src/widgets/debug.dart' show debugCheckHasDirectionality;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, MultiChildRenderObjectWidget;
+import 'package:flutter/src/widgets/localizations.dart' show Localizations;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/view.dart' show View;
+import 'package:flutter/src/widgets/widget_span.dart' show WidgetSpan;
 
 /// A paragraph of rich text.
 ///

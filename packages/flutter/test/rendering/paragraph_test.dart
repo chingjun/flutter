@@ -3,12 +3,34 @@
 // found in the LICENSE file.
 
 import 'dart:ui' as ui show BoxHeightStyle, BoxWidthStyle, ClipOp, Paragraph, TextBox;
+import 'dart:ui' show Canvas, Color, Locale, Paint, PaintingStyle, Rect, SemanticsAction, TextAlign, TextBox, TextDirection, TextPosition, TextRange;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, DiagnosticsNode;
+import 'package:flutter/src/gestures/hit_test.dart' show HitTestEntry, HitTestTarget;
+import 'package:flutter/src/gestures/long_press.dart' show LongPressGestureRecognizer;
+import 'package:flutter/src/gestures/multitap.dart' show DoubleTapGestureRecognizer, MultiTapGestureRecognizer;
+import 'package:flutter/src/gestures/tap.dart' show TapGestureRecognizer;
+import 'package:flutter/src/painting/inline_span.dart' show InlineSpan;
+import 'package:flutter/src/painting/matrix_utils.dart' show MatrixUtils;
+import 'package:flutter/src/painting/text_painter.dart' show TextOverflow;
+import 'package:flutter/src/painting/text_scaler.dart' show TextScaler;
+import 'package:flutter/src/painting/text_span.dart' show TextSpan;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, BoxHitTestResult, RenderBox;
+import 'package:flutter/src/rendering/layer.dart' show ContainerLayer, LayerLink, LeaderLayer;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, PaintingContextCallback;
+import 'package:flutter/src/rendering/paragraph.dart' show PlaceholderSpanIndexSemanticsTag, RenderParagraph, TextParentData;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderConstrainedBox;
+import 'package:flutter/src/rendering/selection.dart' show ClearSelectionEvent, DirectionallyExtendSelectionEvent, GranularlyExtendSelectionEvent, SelectAllSelectionEvent, SelectWordSelectionEvent, Selectable, SelectionEdgeUpdateEvent, SelectionExtendDirection, SelectionGeometry, SelectionRegistrar, SelectionStatus, TextGranularity;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsConfiguration, SemanticsData, SemanticsNode, SemanticsTag;
+import 'package:flutter/src/services/text_editing.dart' show TextSelection;
+import 'package:flutter/src/widgets/basic.dart' show SizedBox;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/widget_span.dart' show WidgetSpan;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 import 'rendering_tester.dart';
 

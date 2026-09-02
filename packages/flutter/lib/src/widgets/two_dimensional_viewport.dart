@@ -8,13 +8,27 @@
 /// @docImport 'viewport.dart';
 library;
 
-import 'package:flutter/animation.dart';
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Clip, Offset, Rect, Size;
 
-import 'framework.dart';
-import 'scroll_delegate.dart';
-import 'scroll_notification.dart';
-import 'scroll_position.dart';
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves;
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorHint, ErrorSummary, FlutterError;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode;
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/painting/basic_types.dart' show Axis, AxisDirection;
+import 'package:flutter/src/painting/matrix_utils.dart' show MatrixUtils;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, BoxHitTestResult, RenderBox;
+import 'package:flutter/src/rendering/debug.dart' show debugCheckHasBoundedAxis;
+import 'package:flutter/src/rendering/layer.dart' show ClipRectLayer, LayerHandle;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, ParentData, PipelineOwner, RenderObject, RenderObjectVisitor;
+import 'package:flutter/src/rendering/sliver_multi_box_adaptor.dart' show KeepAliveParentDataMixin;
+import 'package:flutter/src/rendering/viewport.dart' show CacheExtentStyle, RenderAbstractViewport, RevealedOffset, ScrollCacheExtent;
+import 'package:flutter/src/rendering/viewport_offset.dart' show ViewportOffset;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, ElementVisitor, NotifiableElementMixin, RenderObjectElement, RenderObjectWidget, Widget;
+import 'package:flutter/src/widgets/scroll_delegate.dart' show TwoDimensionalChildDelegate;
+import 'package:flutter/src/widgets/scroll_notification.dart' show ViewportElementMixin;
+import 'package:flutter/src/widgets/scroll_position.dart' show ScrollPosition;
+import 'package:meta/meta.dart' show immutable, mustCallSuper, protected;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 export 'package:flutter/rendering.dart' show AxisDirection;
 

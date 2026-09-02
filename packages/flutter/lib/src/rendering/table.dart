@@ -4,13 +4,21 @@
 
 import 'dart:collection';
 import 'dart:math' as math;
+import 'dart:ui' show Canvas, Offset, Rect, SemanticsRole, Size, TextBaseline, TextDirection;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/semantics.dart';
-
-import 'box.dart';
-import 'object.dart';
-import 'table_border.dart';
+import 'package:flutter/src/foundation/constants.dart' show precisionErrorTolerance;
+import 'package:flutter/src/foundation/debug.dart' show debugFormatDouble;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, DiagnosticsNode, DiagnosticsProperty, IterableProperty, MessageProperty;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/painting/decoration.dart' show BoxPainter, Decoration;
+import 'package:flutter/src/painting/image_provider.dart' show ImageConfiguration;
+import 'package:flutter/src/painting/matrix_utils.dart' show MatrixUtils;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, BoxHitTestResult, BoxParentData, RenderBox;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, PipelineOwner, RenderObject, RenderObjectVisitor;
+import 'package:flutter/src/rendering/table_border.dart' show TableBorder;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsConfiguration, SemanticsNode;
+import 'package:meta/meta.dart' show immutable, protected;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 /// Parent data used by [RenderTable] for its children.
 class TableCellParentData extends BoxParentData {

@@ -12,17 +12,16 @@ library;
 
 import 'dart:ui' show Offset, PointerDeviceKind;
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/src/foundation/bitfield.dart' show kMaxUnsignedSMI;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsProperty, DoubleProperty, EnumProperty, FlagProperty, IntProperty;
+import 'package:flutter/src/gestures/constants.dart' show kPanSlop, kPrecisePointerHitSlop, kPrecisePointerPanSlop, kPrecisePointerScaleSlop, kScaleSlop, kTouchSlop;
+import 'package:flutter/src/gestures/gesture_settings.dart' show DeviceGestureSettings;
+import 'package:meta/meta.dart' show immutable;
 import 'package:vector_math/vector_math_64.dart';
 
-import 'constants.dart';
-import 'gesture_settings.dart';
-
 export 'dart:ui' show Offset, PointerDeviceKind;
-
 export 'package:flutter/foundation.dart' show DiagnosticPropertiesBuilder;
 export 'package:vector_math/vector_math_64.dart' show Matrix4;
-
 export 'gesture_settings.dart' show DeviceGestureSettings;
 
 /// The bit of [PointerEvent.buttons] that corresponds to a cross-device

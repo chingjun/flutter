@@ -5,12 +5,12 @@
 /// @docImport 'editable_text.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
-
-import 'focus_manager.dart';
-import 'focus_scope.dart';
-import 'framework.dart';
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty;
+import 'package:flutter/src/services/hardware_keyboard.dart' show KeyEvent;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode, KeyEventResult;
+import 'package:flutter/src/widgets/focus_scope.dart' show Focus;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
 
 export 'package:flutter/services.dart' show KeyEvent;
 

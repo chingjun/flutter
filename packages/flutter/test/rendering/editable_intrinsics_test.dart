@@ -2,8 +2,18 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
+import 'dart:ui' show Locale, TextDirection, TextPosition;
+
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel;
+import 'package:flutter/src/painting/strut_style.dart' show StrutStyle;
+import 'package:flutter/src/painting/text_scaler.dart' show TextScaler;
+import 'package:flutter/src/painting/text_span.dart' show TextSpan;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/editable.dart' show RenderEditable;
+import 'package:flutter/src/rendering/layer.dart' show LayerLink;
+import 'package:flutter/src/rendering/viewport_offset.dart' show ViewportOffset;
+import 'package:flutter/src/services/text_editing.dart' show TextSelection;
+import 'package:flutter/src/services/text_input.dart' show SelectionChangedCause, TextSelectionDelegate;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

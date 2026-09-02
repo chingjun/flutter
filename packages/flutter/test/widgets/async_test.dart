@@ -3,9 +3,14 @@
 // found in the LICENSE file.
 
 import 'dart:async';
+import 'dart:ui' show TextDirection;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/synchronous_future.dart' show SynchronousFuture;
+import 'package:flutter/src/widgets/async.dart' show AsyncSnapshot, ConnectionState, FutureBuilder, StreamBuilder, StreamBuilderBase;
+import 'package:flutter/src/widgets/basic.dart' show Column;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, Widget;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

@@ -5,22 +5,23 @@
 /// @docImport 'package:flutter/material.dart';
 library;
 
-import 'package:flutter/foundation.dart';
+import 'dart:ui' show BlurStyle, Canvas, Color, Offset, Paint, Path, PathFillType, Rect, Size, TextDirection, VoidCallback;
 
-import 'basic_types.dart';
-import 'borders.dart';
-import 'box_border.dart';
-import 'box_decoration.dart';
-import 'box_shadow.dart';
-import 'circle_border.dart';
-import 'colors.dart';
-import 'debug.dart';
-import 'decoration.dart';
-import 'decoration_image.dart';
-import 'edge_insets.dart';
-import 'gradient.dart';
-import 'image_provider.dart';
-import 'rounded_rectangle_border.dart';
+import 'package:flutter/src/foundation/collections.dart' show listEquals;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty, DiagnosticsTreeStyle, IterableProperty;
+import 'package:flutter/src/painting/borders.dart' show BorderSide, BorderStyle, OutlinedBorder, ShapeBorder;
+import 'package:flutter/src/painting/box_border.dart' show Border, BoxShape;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/box_shadow.dart' show BoxShadow;
+import 'package:flutter/src/painting/circle_border.dart' show CircleBorder;
+import 'package:flutter/src/painting/colors.dart' show ColorProperty;
+import 'package:flutter/src/painting/debug.dart' show debugDisableShadows;
+import 'package:flutter/src/painting/decoration.dart' show BoxPainter, Decoration;
+import 'package:flutter/src/painting/decoration_image.dart' show DecorationImage, DecorationImagePainter;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsetsGeometry;
+import 'package:flutter/src/painting/gradient.dart' show Gradient;
+import 'package:flutter/src/painting/image_provider.dart' show ImageConfiguration;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
 
 /// An immutable description of how to paint an arbitrary shape.
 ///

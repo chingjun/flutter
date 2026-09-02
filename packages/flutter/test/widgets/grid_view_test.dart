@@ -2,9 +2,28 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/gestures.dart' show DragStartBehavior;
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Clip, Color, Size, TextDirection;
+
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey, ValueKey;
+import 'package:flutter/src/gestures/recognizer.dart' show DragStartBehavior;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/basic_types.dart' show Axis, AxisDirection;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/rendering/sliver.dart' show GrowthDirection, SliverConstraints;
+import 'package:flutter/src/rendering/sliver_grid.dart' show SliverGridDelegate, SliverGridDelegateWithFixedCrossAxisCount, SliverGridDelegateWithMaxCrossAxisExtent, SliverGridLayout;
+import 'package:flutter/src/rendering/viewport.dart' show RenderViewport;
+import 'package:flutter/src/rendering/viewport_offset.dart' show ScrollDirection;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Center, ColoredBox, Directionality, SizedBox, StatefulBuilder;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StateSetter, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_delegate.dart' show SliverChildBuilderDelegate;
+import 'package:flutter/src/widgets/scroll_position.dart' show ScrollPosition;
+import 'package:flutter/src/widgets/scroll_view.dart' show GridView;
+import 'package:flutter/src/widgets/scrollable.dart' show Scrollable, ScrollableState;
+import 'package:flutter/src/widgets/single_child_scroll_view.dart' show SingleChildScrollView;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 import '../rendering/rendering_tester.dart' show TestClipPaintingContext;

@@ -2,7 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color;
+
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/widgets/basic.dart' show SizedBox;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget, WidgetBuilder;
+import 'package:flutter/src/widgets/navigator.dart' show Page, Route, RouteSettings;
+import 'package:flutter/src/widgets/page_transitions_builder.dart' show PageTransitionsBuilder;
+import 'package:flutter/src/widgets/pages.dart' show PageRoute;
 
 /// A [PageRoute] for usage in tests.
 ///

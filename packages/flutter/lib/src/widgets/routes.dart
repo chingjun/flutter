@@ -16,28 +16,37 @@ library;
 
 import 'dart:async';
 import 'dart:ui' as ui;
+import 'dart:ui' show Color, Offset, VoidCallback;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
-
-import 'actions.dart';
-import 'basic.dart';
-import 'display_feature_sub_screen.dart';
-import 'focus_manager.dart';
-import 'focus_scope.dart';
-import 'focus_traversal.dart';
-import 'framework.dart';
-import 'inherited_model.dart';
-import 'modal_barrier.dart';
-import 'navigator.dart';
-import 'overlay.dart';
-import 'page_storage.dart';
-import 'primary_scroll_controller.dart';
-import 'restoration.dart';
-import 'scroll_controller.dart';
-import 'transitions.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation, AnimationStatus, AnimationStatusListener;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/animations.dart' show ProxyAnimation, TrainHoppingAnimation, kAlwaysCompleteAnimation, kAlwaysDismissedAnimation;
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves;
+import 'package:flutter/src/animation/tween.dart' show ColorTween, CurveTween;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, FlagProperty;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/physics/simulation.dart' show Simulation;
+import 'package:flutter/src/scheduler/binding.dart' show PerformanceModeRequestHandle, SchedulerBinding, SchedulerPhase;
+import 'package:flutter/src/scheduler/ticker.dart' show TickerFuture;
+import 'package:flutter/src/semantics/semantics.dart' show OrdinalSortKey;
+import 'package:flutter/src/widgets/actions.dart' show Action, Actions, DismissAction, DismissIntent, Intent;
+import 'package:flutter/src/widgets/basic.dart' show BackdropFilter, Builder, IgnorePointer, Offstage, RepaintBoundary, Semantics;
+import 'package:flutter/src/widgets/display_feature_sub_screen.dart' show DisplayFeatureSubScreen;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusScopeNode;
+import 'package:flutter/src/widgets/focus_scope.dart' show FocusScope;
+import 'package:flutter/src/widgets/focus_traversal.dart' show TraversalEdgeBehavior;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/inherited_model.dart' show InheritedModel;
+import 'package:flutter/src/widgets/modal_barrier.dart' show AnimatedModalBarrier, ModalBarrier;
+import 'package:flutter/src/widgets/navigator.dart' show NavigationNotification, Navigator, NavigatorObserver, Route, RoutePopDisposition, RoutePredicate, RouteSettings, WillPopCallback;
+import 'package:flutter/src/widgets/overlay.dart' show OverlayEntry;
+import 'package:flutter/src/widgets/page_storage.dart' show PageStorage, PageStorageBucket;
+import 'package:flutter/src/widgets/primary_scroll_controller.dart' show PrimaryScrollController;
+import 'package:flutter/src/widgets/restoration.dart' show RestorationScope;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/transitions.dart' show AnimatedBuilder, DelegatedTransitionBuilder, FadeTransition, ListenableBuilder;
+import 'package:listen/listen.dart' show Listenable, ValueListenable, ValueNotifier;
+import 'package:meta/meta.dart' show awaitNotRequired, factory, optionalTypeArgs, protected, visibleForTesting;
 
 // Examples can assume:
 // late NavigatorState navigator;

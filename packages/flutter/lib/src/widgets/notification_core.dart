@@ -11,9 +11,9 @@
 /// @docImport 'size_changed_layout_notifier.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-
-import 'framework.dart';
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext;
+import 'package:meta/meta.dart' show mustCallSuper, protected;
 
 /// A notification that can bubble up the widget tree.
 ///

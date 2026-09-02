@@ -5,8 +5,10 @@
 import 'dart:async';
 import 'dart:ui' as ui show Image;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/painting.dart';
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/foundation/synchronous_future.dart' show SynchronousFuture;
+import 'package:flutter/src/painting/image_provider.dart' show DecoderBufferCallback, ImageConfiguration, ImageDecoderCallback, ImageProvider;
+import 'package:flutter/src/painting/image_stream.dart' show ImageInfo, ImageStream, ImageStreamCompleter, ImageStreamListener, OneFrameImageStreamCompleter;
 
 class TestImageInfo extends ImageInfo {
   TestImageInfo(this.value, {required super.image, super.scale, super.debugLabel});

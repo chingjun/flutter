@@ -2,11 +2,18 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:ui';
+import 'dart:ui' show BlendMode, Canvas, Clip, Color, ColorFilter, EngineLayer, FlutterView, ImageFilter, OffsetEngineLayer, OpacityEngineLayer, Paint, Path, Picture, PictureRecorder, RRect, RSuperellipse, Radius, Rect, SceneBuilder, Shader, TileMode, VoidCallback;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, DiagnosticsNode, describeIdentity;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/gradient.dart' show Gradient, RadialGradient;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/rendering/layer.dart' show BackdropFilterLayer, ClipPathLayer, ClipRRectLayer, ClipRSuperellipseLayer, ClipRectLayer, ColorFilterLayer, ContainerLayer, FollowerLayer, ImageFilterLayer, Layer, LayerHandle, LayerLink, LeaderLayer, OffsetLayer, OpacityLayer, PerformanceOverlayLayer, PictureLayer, PlatformViewLayer, ShaderMaskLayer, TextureLayer;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderDecoratedBox, RenderLeaderLayer, RenderOpacity, RenderRepaintBoundary;
+import 'package:flutter/src/rendering/view.dart' show RenderView, ViewConfiguration;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 import 'rendering_tester.dart';
 

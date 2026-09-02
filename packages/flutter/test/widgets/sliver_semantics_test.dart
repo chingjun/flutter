@@ -2,8 +2,22 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Locale, SemanticsAction, SemanticsFlag, TextDirection;
+
+import 'package:flutter/src/rendering/viewport.dart' show RenderViewport;
+import 'package:flutter/src/rendering/viewport_offset.dart' show ViewportOffset;
+import 'package:flutter/src/semantics/semantics.dart' show DebugSemanticsDumpOrder, SemanticsTag, debugResetSemanticsIdCounter;
+import 'package:flutter/src/widgets/basic.dart' show Align, Center, Directionality, Semantics, SizedBox, SliverToBoxAdapter;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, Widget;
+import 'package:flutter/src/widgets/localizations.dart' show DefaultWidgetsLocalizations, Localizations, LocalizationsDelegate;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_view.dart' show CustomScrollView;
+import 'package:flutter/src/widgets/scrollable.dart' show Scrollable;
+import 'package:flutter/src/widgets/sliver.dart' show SliverList;
+import 'package:flutter/src/widgets/sliver_persistent_header.dart' show SliverPersistentHeader, SliverPersistentHeaderDelegate;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/viewport.dart' show Viewport;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'semantics_tester.dart';

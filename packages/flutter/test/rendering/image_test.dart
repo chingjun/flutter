@@ -3,9 +3,12 @@
 // found in the LICENSE file.
 
 import 'dart:ui' as ui show Image;
+import 'dart:ui' show BlendMode;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/rendering/image.dart' show RenderImage;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'rendering_tester.dart';

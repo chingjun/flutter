@@ -11,27 +11,41 @@ library;
 
 import 'dart:math' as math;
 import 'dart:math';
-import 'dart:ui' show lerpDouble;
+import 'dart:ui' show Color, Offset, Path, RRect, Rect, Size, TextBaseline, TextDirection, clampDouble, lerpDouble;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
-
-import 'button_style.dart';
-import 'button_style_button.dart';
-import 'color_scheme.dart';
-import 'colors.dart';
-import 'constants.dart';
-import 'icons.dart';
-import 'ink_well.dart';
-import 'material.dart';
-import 'material_state.dart';
-import 'segmented_button_theme.dart';
-import 'text_button.dart';
-import 'text_button_theme.dart';
-import 'theme.dart';
-import 'theme_data.dart';
-import 'tooltip.dart';
+import 'package:flutter/src/foundation/collections.dart' show listEquals, setEquals;
+import 'package:flutter/src/material/button_style.dart' show ButtonStyle;
+import 'package:flutter/src/material/button_style_button.dart' show ButtonStyleButton, IconAlignment;
+import 'package:flutter/src/material/color_scheme.dart' show ColorScheme;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/constants.dart' show kMinInteractiveDimension;
+import 'package:flutter/src/material/icons.dart' show Icons;
+import 'package:flutter/src/material/ink_well.dart' show InteractiveInkFeatureFactory;
+import 'package:flutter/src/material/material.dart' show Material, MaterialType;
+import 'package:flutter/src/material/material_state.dart' show MaterialStatePropertyAll, MaterialStatesController;
+import 'package:flutter/src/material/segmented_button_theme.dart' show SegmentedButtonTheme, SegmentedButtonThemeData;
+import 'package:flutter/src/material/text_button.dart' show TextButton;
+import 'package:flutter/src/material/text_button_theme.dart' show TextButtonTheme, TextButtonThemeData;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show MaterialTapTargetSize, ThemeData, VisualDensity;
+import 'package:flutter/src/material/tooltip.dart' show Tooltip;
+import 'package:flutter/src/painting/alignment.dart' show AlignmentGeometry;
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/painting/borders.dart' show BorderSide, OutlinedBorder;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsDirectional, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
+import 'package:flutter/src/painting/stadium_border.dart' show StadiumBorder;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show BaselineOffset, BoxConstraints, BoxHitTestResult, ContainerBoxParentData, RenderBox, RenderBoxContainerDefaultsMixin;
+import 'package:flutter/src/rendering/flex.dart' show MainAxisSize;
+import 'package:flutter/src/rendering/object.dart' show ContainerRenderObjectMixin, PaintingContext, RenderObject;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor;
+import 'package:flutter/src/widgets/basic.dart' show Directionality, Flexible, MergeSemantics, Padding, Row, Semantics, SizedBox;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, MultiChildRenderObjectWidget, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateProperty, WidgetStatePropertyAll, WidgetStatesConstraint;
+import 'package:meta/meta.dart' show protected, visibleForTesting;
 
 /// Data describing a segment of a [SegmentedButton].
 class ButtonSegment<T> {

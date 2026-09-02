@@ -8,21 +8,24 @@ library;
 
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
-
-import 'binding.dart';
-import 'hardware_keyboard.dart';
-import 'raw_keyboard_android.dart';
-import 'raw_keyboard_fuchsia.dart';
-import 'raw_keyboard_ios.dart';
-import 'raw_keyboard_linux.dart';
-import 'raw_keyboard_macos.dart';
-import 'raw_keyboard_web.dart';
-import 'raw_keyboard_windows.dart';
-import 'system_channels.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, FlutterError, FlutterErrorDetails, InformationCollector;
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsNode, DiagnosticsProperty;
+import 'package:flutter/src/foundation/print.dart' show debugPrint;
+import 'package:flutter/src/services/binding.dart' show ServicesBinding;
+import 'package:flutter/src/services/hardware_keyboard.dart' show KeyMessage, KeyMessageHandler;
+import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey, PhysicalKeyboardKey;
+import 'package:flutter/src/services/raw_keyboard_android.dart' show RawKeyEventDataAndroid;
+import 'package:flutter/src/services/raw_keyboard_fuchsia.dart' show RawKeyEventDataFuchsia;
+import 'package:flutter/src/services/raw_keyboard_ios.dart' show RawKeyEventDataIos;
+import 'package:flutter/src/services/raw_keyboard_linux.dart' show KeyHelper, RawKeyEventDataLinux;
+import 'package:flutter/src/services/raw_keyboard_macos.dart' show RawKeyEventDataMacOs;
+import 'package:flutter/src/services/raw_keyboard_web.dart' show RawKeyEventDataWeb;
+import 'package:flutter/src/services/raw_keyboard_windows.dart' show RawKeyEventDataWindows;
+import 'package:meta/meta.dart' show immutable, visibleForTesting;
 
 export 'package:flutter/foundation.dart' show DiagnosticPropertiesBuilder, ValueChanged;
-
 export 'keyboard_key.g.dart' show LogicalKeyboardKey, PhysicalKeyboardKey;
 
 /// An enum describing the side of the keyboard that a key is on, to allow

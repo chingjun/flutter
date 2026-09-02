@@ -2,9 +2,16 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color, FontWeight, Rect, Size, TextAlign, TextDirection;
+
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/services/text_input.dart' show SelectionRect, TextInput, TextInputClient, TextInputConfiguration, TextInputControl, TextInputStyle;
+import 'package:flutter/src/widgets/basic.dart' show Directionality;
+import 'package:flutter/src/widgets/editable_text.dart' show EditableText, TextEditingController;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 class FakeTextInputControl with TextInputControl {
   TextInputStyle? lastStyle;

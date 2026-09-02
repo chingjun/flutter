@@ -2,7 +2,20 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/material.dart';
+import 'dart:ui' show Radius, Rect, Size, TextDirection;
+
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/divider.dart' show Divider, VerticalDivider;
+import 'package:flutter/src/material/material.dart' show Material;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/box_border.dart' show Border;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/widgets/basic.dart' show Center, Directionality, Row, SizedBox;
+import 'package:flutter/src/widgets/container.dart' show Container, DecoratedBox;
+import 'package:flutter/src/widgets/framework.dart' show Widget;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

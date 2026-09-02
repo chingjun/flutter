@@ -2,9 +2,40 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Color, PointerDeviceKind, RRect, Radius, Size, TextDirection;
+
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, DiagnosticsNode;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/color_scheme.dart' show ColorScheme;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/material.dart' show Material, MaterialInkController;
+import 'package:flutter/src/material/material_state.dart' show MaterialStatePropertyAll;
+import 'package:flutter/src/material/range_slider.dart' show RangeSlider;
+import 'package:flutter/src/material/range_slider_parts.dart' show RangeLabels, RangeValues, RectangularRangeSliderTrackShape, RoundRangeSliderThumbShape, RoundRangeSliderTickMarkShape, RoundedRectRangeSliderTrackShape;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/slider.dart' show Slider, SliderInteraction;
+import 'package:flutter/src/material/slider_parts.dart' show DropSliderValueIndicatorShape, RectangularSliderTrackShape, RoundSliderThumbShape, RoundSliderTickMarkShape, RoundedRectSliderTrackShape, SliderTickMarkShape;
+import 'package:flutter/src/material/slider_theme.dart' show ShowValueIndicator, SliderTheme, SliderThemeData;
+import 'package:flutter/src/material/slider_value_indicator_shape.dart' show PaddleRangeSliderValueIndicatorShape, PaddleSliderValueIndicatorShape, RectangularRangeSliderValueIndicatorShape, RectangularSliderValueIndicatorShape, RoundSliderOverlayShape, SliderComponentShape;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/debug.dart' show debugDisableShadows;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsDirectional, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/text_scaler.dart' show TextScaler;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, RenderObject;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor, SystemMouseCursors;
+import 'package:flutter/src/widgets/basic.dart' show Center, Directionality, Expanded, IntrinsicHeight, Row, SizedBox, StatefulBuilder;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusHighlightStrategy, FocusNode;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StateSetter, Widget;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/overlay.dart' show Overlay;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateColor, WidgetStateMouseCursor, WidgetStateProperty, WidgetStatePropertyAll, WidgetStatesConstraint;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

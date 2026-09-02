@@ -6,12 +6,15 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show Offset, Rect, Size, TextDirection;
 
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty, EnumProperty;
+import 'package:flutter/src/painting/basic_types.dart' show Axis, AxisDirection;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsGeometry;
+import 'package:flutter/src/rendering/debug.dart' show debugPaintPadding, debugPaintSizeEnabled;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, RenderObject, RenderObjectWithChildMixin;
+import 'package:flutter/src/rendering/sliver.dart' show RenderSliver, SliverConstraints, SliverGeometry, SliverHitTestResult, SliverPhysicalParentData, applyGrowthDirectionToAxisDirection;
 import 'package:vector_math/vector_math_64.dart';
-
-import 'debug.dart';
-import 'object.dart';
-import 'sliver.dart';
 
 /// Insets a [RenderSliver] by applying [resolvedPadding] on each side.
 ///

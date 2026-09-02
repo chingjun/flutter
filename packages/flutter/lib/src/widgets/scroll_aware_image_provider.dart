@@ -7,12 +7,13 @@ library;
 
 import 'dart:async';
 
-import 'package:flutter/painting.dart';
-import 'package:flutter/scheduler.dart';
-
-import 'disposable_build_context.dart';
-import 'framework.dart';
-import 'scrollable.dart';
+import 'package:flutter/src/painting/binding.dart' show PaintingBinding;
+import 'package:flutter/src/painting/image_provider.dart' show DecoderBufferCallback, ImageConfiguration, ImageDecoderCallback, ImageProvider;
+import 'package:flutter/src/painting/image_stream.dart' show ImageErrorListener, ImageStream, ImageStreamCompleter;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
+import 'package:flutter/src/widgets/disposable_build_context.dart' show DisposableBuildContext;
+import 'package:flutter/src/widgets/scrollable.dart' show Scrollable;
+import 'package:meta/meta.dart' show immutable, optionalTypeArgs;
 
 /// An [ImageProvider] that makes use of
 /// [Scrollable.recommendDeferredLoadingForContext] to avoid loading images when

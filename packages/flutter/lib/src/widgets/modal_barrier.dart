@@ -5,17 +5,27 @@
 /// @docImport 'routes.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
+import 'dart:ui' show Color, Rect, VoidCallback;
 
-import 'basic.dart';
-import 'debug.dart';
-import 'framework.dart';
-import 'gesture_detector.dart';
-import 'navigator.dart';
-import 'transitions.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/gestures/events.dart' show PointerCancelEvent, PointerDownEvent, PointerUpEvent;
+import 'package:flutter/src/gestures/tap.dart' show BaseTapGestureRecognizer;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/object.dart' show PipelineOwner;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior, RenderProxyBox;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsConfiguration;
+import 'package:flutter/src/services/mouse_cursor.dart' show SystemMouseCursors;
+import 'package:flutter/src/services/system_sound.dart' show SystemSound, SystemSoundType;
+import 'package:flutter/src/widgets/basic.dart' show BlockSemantics, ColoredBox, ConstrainedBox, Directionality, ExcludeSemantics, MouseRegion, Semantics;
+import 'package:flutter/src/widgets/debug.dart' show debugCheckHasDirectionality;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, SingleChildRenderObjectWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureRecognizerFactory, RawGestureDetector;
+import 'package:flutter/src/widgets/navigator.dart' show Navigator;
+import 'package:flutter/src/widgets/transitions.dart' show AnimatedWidget;
+import 'package:listen/listen.dart' show ValueNotifier;
+import 'package:meta/meta.dart' show protected;
 
 /// A widget that modifies the size of the [SemanticsNode.rect] created by its
 /// child widget.

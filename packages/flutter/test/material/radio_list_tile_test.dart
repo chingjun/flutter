@@ -2,12 +2,47 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
+import 'dart:ui' show Color, PaintingStyle, PointerDeviceKind, Radius, Rect, SemanticsAction, SemanticsFlag, Size, TextDirection;
+
+import 'package:flutter/src/cupertino/radio.dart' show CupertinoRadio;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/constants.dart' show kRadialReactionAlpha;
+import 'package:flutter/src/material/ink_well.dart' show InkWell;
+import 'package:flutter/src/material/list_tile.dart' show ListTile, ListTileControlAffinity, ListTileTitleAlignment;
+import 'package:flutter/src/material/list_tile_theme.dart' show ListTileTheme, ListTileThemeData;
+import 'package:flutter/src/material/material.dart' show Material;
+import 'package:flutter/src/material/material_state.dart' show MaterialStatePropertyAll;
+import 'package:flutter/src/material/radio.dart' show Radio;
+import 'package:flutter/src/material/radio_list_tile.dart' show RadioListTile;
+import 'package:flutter/src/material/radio_theme.dart' show RadioThemeData;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/theme_data.dart' show MaterialTapTargetSize, ThemeData, VisualDensity;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/borders.dart' show BorderSide, ShapeBorder;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/rendering/paragraph.dart' show RenderParagraph;
+import 'package:flutter/src/services/mouse_cursor.dart' show SystemMouseCursors;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:flutter/src/widgets/basic.dart' show Center, Column, Directionality, MouseRegion, SizedBox, StatefulBuilder, Transform;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusHighlightStrategy, FocusNode;
+import 'package:flutter/src/widgets/focus_scope.dart' show Focus;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, GlobalKey, StateSetter, Widget;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/radio_group.dart' show RadioGroup;
+import 'package:flutter/src/widgets/safe_area.dart' show SafeArea;
+import 'package:flutter/src/widgets/scroll_view.dart' show ListView;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateColor, WidgetStateProperty, WidgetStatesController;
 import 'package:flutter_test/flutter_test.dart';
 
 import '../widgets/feedback_tester.dart';

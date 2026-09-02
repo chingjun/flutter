@@ -5,13 +5,16 @@
 /// @docImport 'binding.dart';
 library;
 
-import 'dart:ui';
+import 'dart:ui' show Offset, PointerDeviceKind, VoidCallback;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/services.dart';
-
-import 'object.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsProperty, IntProperty, describeIdentity;
+import 'package:flutter/src/gestures/events.dart' show PointerAddedEvent, PointerEnterEvent, PointerEvent, PointerExitEvent, PointerRemovedEvent, PointerSignalEvent;
+import 'package:flutter/src/gestures/hit_test.dart' show HitTestEntry, HitTestResult;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor, MouseCursorManager, SystemMouseCursors;
+import 'package:flutter/src/services/mouse_tracking.dart' show MouseTrackerAnnotation;
+import 'package:listen/listen.dart' show ChangeNotifier;
+import 'package:meta/meta.dart' show immutable, visibleForTesting;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 export 'package:flutter/services.dart' show MouseCursor, SystemMouseCursors;
 

@@ -5,7 +5,8 @@
 @TestOn('!chrome')
 library;
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorHint, FlutterError, FlutterErrorDetails;
+import 'package:flutter/src/foundation/print.dart' show debugPrint, debugPrintThrottled;
 import 'package:flutter_test/flutter_test.dart';
 
 Object getAssertionErrorWithMessage() {

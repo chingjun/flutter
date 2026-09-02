@@ -12,17 +12,25 @@ library;
 import 'dart:async';
 import 'dart:io';
 import 'dart:math' as math;
+import 'dart:typed_data' show Uint8List;
 import 'dart:ui' as ui;
+import 'dart:ui' show Size, TextDirection;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, FlutterError, FlutterErrorDetails, InformationCollector;
+import 'package:flutter/src/foundation/constants.dart' show kReleaseMode;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode, DiagnosticsProperty, describeIdentity;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/foundation/synchronous_future.dart' show SynchronousFuture;
+import 'package:flutter/src/painting/binding.dart' show PaintingBinding, imageCache;
+import 'package:flutter/src/painting/image_cache.dart' show ImageCache, ImageCacheStatus;
+import 'package:flutter/src/painting/image_stream.dart' show ImageErrorListener, ImageStream, ImageStreamCompleter, MultiFrameImageStreamCompleter;
+import 'package:flutter/src/services/asset_bundle.dart' show AssetBundle, rootBundle;
+import 'package:meta/meta.dart' show awaitNotRequired, immutable, nonVirtual, optionalTypeArgs, protected;
 
 import '_network_image_io.dart'
     if (dart.library.js_interop) '_network_image_web.dart'
     as network_image;
-import 'binding.dart';
-import 'image_cache.dart';
-import 'image_stream.dart';
 
 /// Signature for the callback taken by [ImageProvider._createErrorHandlerAndKey].
 typedef _KeyAndErrorHandlerCallback<T> = void Function(T key, ImageErrorListener handleError);

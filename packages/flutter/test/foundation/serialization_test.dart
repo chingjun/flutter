@@ -2,7 +2,10 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
+import 'dart:typed_data' show ByteData, Endian, Float32List, Float64List, Int32List, Int64List;
+
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/serialization.dart' show ReadBuffer, WriteBuffer;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

@@ -10,12 +10,16 @@
 /// @docImport 'theme_data.dart';
 library;
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Offset, Size, TextDirection;
 
-import 'button_bar_theme.dart';
-import 'button_theme.dart';
-import 'dialog.dart';
+import 'package:flutter/src/material/button_bar_theme.dart' show ButtonBarTheme, ButtonBarThemeData;
+import 'package:flutter/src/material/button_theme.dart' show ButtonBarLayoutBehavior, ButtonTextTheme, ButtonTheme, ButtonThemeData;
+import 'package:flutter/src/painting/basic_types.dart' show Axis, VerticalDirection;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsGeometry;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/flex.dart' show FlexParentData, MainAxisAlignment, MainAxisSize, RenderFlex;
+import 'package:flutter/src/widgets/basic.dart' show Center, ConstrainedBox, Flex, Padding;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
 
 /// An end-aligned row of buttons, laying out into a column if there is not
 /// enough horizontal space.

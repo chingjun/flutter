@@ -4,7 +4,7 @@
 
 // This file defines basic widgets for use in tests for Widgets in `flutter/widgets`.
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color;
 
 /// Get a color for use in a widget test.
 ///

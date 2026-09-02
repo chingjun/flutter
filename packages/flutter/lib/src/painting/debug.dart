@@ -18,7 +18,9 @@ library;
 import 'dart:io';
 import 'dart:ui' show Image, Picture, Size, TextDirection;
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorHint, ErrorSummary, FlutterError;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode;
+import 'package:meta/meta.dart' show immutable;
 
 /// Whether to replace all shadows with solid color blocks.
 ///

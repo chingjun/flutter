@@ -16,13 +16,18 @@
 /// @docImport 'scrollable.dart';
 library;
 
-import 'package:flutter/animation.dart';
-import 'package:flutter/foundation.dart';
+import 'dart:async' show Future;
+import 'dart:ui' show VoidCallback;
 
-import 'scroll_context.dart';
-import 'scroll_physics.dart';
-import 'scroll_position.dart';
-import 'scroll_position_with_single_context.dart';
+import 'package:flutter/src/animation/curves.dart' show Curve;
+import 'package:flutter/src/foundation/diagnostics.dart' show describeIdentity;
+import 'package:flutter/src/foundation/memory_allocations.dart' show kFlutterMemoryAllocationsEnabled;
+import 'package:flutter/src/widgets/scroll_context.dart' show ScrollContext;
+import 'package:flutter/src/widgets/scroll_physics.dart' show ScrollPhysics;
+import 'package:flutter/src/widgets/scroll_position.dart' show ScrollPosition;
+import 'package:flutter/src/widgets/scroll_position_with_single_context.dart' show ScrollPositionWithSingleContext;
+import 'package:listen/listen.dart' show ChangeNotifier;
+import 'package:meta/meta.dart' show awaitNotRequired, mustCallSuper;
 
 // Examples can assume:
 // TrackingScrollController _trackingScrollController = TrackingScrollController();

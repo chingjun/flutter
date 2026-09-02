@@ -3,9 +3,9 @@
 // found in the LICENSE file.
 
 import 'dart:developer' as developer;
-import 'dart:ui';
+import 'dart:ui' show FrameTiming;
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding, WidgetsFlutterBinding;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

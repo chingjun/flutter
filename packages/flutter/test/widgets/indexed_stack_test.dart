@@ -2,8 +2,22 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Clip, Size, TextDirection;
+
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior;
+import 'package:flutter/src/rendering/stack.dart' show RenderIndexedStack, StackFit, StackParentData;
+import 'package:flutter/src/widgets/basic.dart' show Center, ConstrainedBox, CustomPaint, Directionality, Positioned, SizedBox;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/focus_scope.dart' show Focus;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/indexed_stack.dart' show IndexedStack, Visibility;
+import 'package:flutter/src/widgets/layout_builder.dart' show LayoutBuilder;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 import '../rendering/rendering_tester.dart' show TestCallbackPainter;

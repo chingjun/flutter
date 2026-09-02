@@ -2,7 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Size, TextDirection;
+
+import 'package:flutter/src/widgets/basic.dart' show Center, Directionality, SizedBox;
+import 'package:flutter/src/widgets/framework.dart' show GlobalKey, Widget;
+import 'package:flutter/src/widgets/page_view.dart' show PageView;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 Size pageSize = const Size(600.0, 300.0);

@@ -11,25 +11,36 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show Brightness, Clip, Color, Size, VoidCallback;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
-
-import 'button_style.dart';
-import 'button_style_button.dart';
-import 'color_scheme.dart';
-import 'colors.dart';
-import 'constants.dart';
-import 'debug.dart';
-import 'icon_button_theme.dart';
-import 'icons.dart';
-import 'ink_well.dart';
-import 'material.dart';
-import 'material_state.dart';
-import 'theme.dart';
-import 'theme_data.dart';
-import 'tooltip.dart';
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty, ObjectFlagProperty, StringProperty;
+import 'package:flutter/src/material/button_style.dart' show ButtonStyle;
+import 'package:flutter/src/material/button_style_button.dart' show ButtonStyleButton;
+import 'package:flutter/src/material/color_scheme.dart' show ColorScheme;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/constants.dart' show kDefaultIconDarkColor, kDefaultIconLightColor, kMinInteractiveDimension, kThemeChangeDuration;
+import 'package:flutter/src/material/debug.dart' show debugCheckHasMaterial;
+import 'package:flutter/src/material/icon_button_theme.dart' show IconButtonTheme;
+import 'package:flutter/src/material/ink_well.dart' show InkResponse, InteractiveInkFeatureFactory;
+import 'package:flutter/src/material/material.dart' show Material;
+import 'package:flutter/src/material/material_state.dart' show MaterialStatePropertyAll, MaterialStatesController;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show MaterialTapTargetSize, ThemeData, VisualDensity;
+import 'package:flutter/src/material/tooltip.dart' show Tooltip;
+import 'package:flutter/src/painting/alignment.dart' show Alignment, AlignmentGeometry;
+import 'package:flutter/src/painting/borders.dart' show BorderSide, OutlinedBorder;
+import 'package:flutter/src/painting/colors.dart' show ColorProperty;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/stadium_border.dart' show StadiumBorder;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor, SystemMouseCursors;
+import 'package:flutter/src/widgets/basic.dart' show Align, ConstrainedBox, Padding, Semantics, SizedBox;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/icon_theme.dart' show IconTheme;
+import 'package:flutter/src/widgets/icon_theme_data.dart' show IconThemeData;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateMouseCursor, WidgetStateProperty, WidgetStatePropertyAll, WidgetStatesConstraint;
 
 // Examples can assume:
 // late BuildContext context;

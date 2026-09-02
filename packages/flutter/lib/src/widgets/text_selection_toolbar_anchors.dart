@@ -5,8 +5,11 @@
 /// @docImport 'package:flutter/material.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Offset, Rect, clampDouble;
+
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/editable.dart' show TextSelectionPoint;
+import 'package:meta/meta.dart' show immutable;
 
 /// The position information for a text selection toolbar.
 ///

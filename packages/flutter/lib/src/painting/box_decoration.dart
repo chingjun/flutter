@@ -6,21 +6,21 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show BlendMode, BlurStyle, Canvas, Color, Offset, Paint, Path, RRect, Rect, Size, TextDirection, VoidCallback;
 
-import 'package:flutter/foundation.dart';
-
-import 'basic_types.dart';
-import 'border_radius.dart';
-import 'borders.dart';
-import 'box_border.dart';
-import 'box_shadow.dart';
-import 'colors.dart';
-import 'debug.dart';
-import 'decoration.dart';
-import 'decoration_image.dart';
-import 'edge_insets.dart';
-import 'gradient.dart';
-import 'image_provider.dart';
+import 'package:flutter/src/foundation/collections.dart' show listEquals;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty, DiagnosticsTreeStyle, EnumProperty, IterableProperty;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius, BorderRadiusGeometry;
+import 'package:flutter/src/painting/borders.dart' show BorderSide, BorderStyle;
+import 'package:flutter/src/painting/box_border.dart' show Border, BorderDirectional, BoxBorder, BoxShape;
+import 'package:flutter/src/painting/box_shadow.dart' show BoxShadow;
+import 'package:flutter/src/painting/colors.dart' show ColorProperty;
+import 'package:flutter/src/painting/debug.dart' show debugDisableShadows;
+import 'package:flutter/src/painting/decoration.dart' show BoxPainter, Decoration;
+import 'package:flutter/src/painting/decoration_image.dart' show DecorationImage, DecorationImagePainter;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/gradient.dart' show Gradient;
+import 'package:flutter/src/painting/image_provider.dart' show ImageConfiguration;
 
 /// An immutable description of how to paint a box.
 ///

@@ -2,8 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/services/message_codec.dart' show MethodCall;
+import 'package:flutter/src/services/sensitive_content.dart' show ContentSensitivity;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/sensitive_content.dart' show SensitiveContent, SensitiveContentHost;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

@@ -2,12 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/animation.dart';
-
-import 'framework.dart';
-import 'ticker_provider.dart';
-import 'transitions.dart';
-import 'value_listenable_builder.dart';
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/animations.dart' show CurvedAnimation;
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves;
+import 'package:flutter/src/animation/tween.dart' show Animatable;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/ticker_provider.dart' show SingleTickerProviderStateMixin;
+import 'package:flutter/src/widgets/transitions.dart' show AnimatedBuilder;
+import 'package:flutter/src/widgets/value_listenable_builder.dart' show ValueWidgetBuilder;
 
 /// Configures how [RepeatingAnimationBuilder] loops its animation.
 enum RepeatMode {

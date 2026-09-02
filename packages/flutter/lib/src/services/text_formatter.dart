@@ -6,14 +6,16 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show TextRange;
 
 import 'package:characters/characters.dart';
-import 'package:flutter/foundation.dart';
-
-import 'text_input.dart';
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/services/text_editing.dart' show TextSelection;
+import 'package:flutter/src/services/text_input.dart' show TextEditingValue;
+import 'package:meta/meta.dart' show visibleForTesting;
 
 export 'package:flutter/foundation.dart' show TargetPlatform;
-
 export 'text_input.dart' show TextEditingValue;
 
 // Examples can assume:

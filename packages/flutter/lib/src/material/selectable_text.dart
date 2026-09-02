@@ -9,18 +9,44 @@
 library;
 
 import 'dart:ui' as ui show BoxHeightStyle, BoxWidthStyle;
+import 'dart:ui' show AppLifecycleState, Color, Offset, Radius, TextAlign, TextDirection, TextHeightBehavior;
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/scheduler.dart';
-
-import 'adaptive_text_selection_toolbar.dart';
-import 'desktop_text_selection.dart';
-import 'magnifier.dart';
-import 'text_selection.dart';
-import 'theme.dart';
+import 'package:flutter/src/cupertino/colors.dart' show CupertinoColors;
+import 'package:flutter/src/cupertino/desktop_text_selection.dart' show cupertinoDesktopTextSelectionHandleControls;
+import 'package:flutter/src/cupertino/text_selection.dart' show cupertinoTextSelectionHandleControls;
+import 'package:flutter/src/cupertino/theme.dart' show CupertinoTheme, CupertinoThemeData;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty, DoubleProperty, EnumProperty, FlagProperty, IntProperty;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/gestures/recognizer.dart' show DragStartBehavior;
+import 'package:flutter/src/gestures/tap.dart' show GestureTapCallback;
+import 'package:flutter/src/gestures/tap_and_drag.dart' show TapDragUpDetails;
+import 'package:flutter/src/material/adaptive_text_selection_toolbar.dart' show AdaptiveTextSelectionToolbar;
+import 'package:flutter/src/material/desktop_text_selection.dart' show desktopTextSelectionHandleControls;
+import 'package:flutter/src/material/magnifier.dart' show TextMagnifier;
+import 'package:flutter/src/material/text_selection.dart' show materialTextSelectionHandleControls;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/strut_style.dart' show StrutStyle;
+import 'package:flutter/src/painting/text_painter.dart' show TextWidthBasis;
+import 'package:flutter/src/painting/text_scaler.dart' show TextScaler;
+import 'package:flutter/src/painting/text_span.dart' show TextSpan;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
+import 'package:flutter/src/services/text_editing.dart' show TextSelection;
+import 'package:flutter/src/services/text_input.dart' show SelectionChangedCause, TextEditingValue;
+import 'package:flutter/src/widgets/basic.dart' show RepaintBoundary, Semantics;
+import 'package:flutter/src/widgets/debug.dart' show debugCheckHasDirectionality, debugCheckHasMediaQuery;
+import 'package:flutter/src/widgets/default_selection_style.dart' show DefaultSelectionStyle;
+import 'package:flutter/src/widgets/editable_text.dart' show EditableText, EditableTextContextMenuBuilder, EditableTextState, SelectionChangedCallback, TextEditingController, ToolbarOptions;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/magnifier.dart' show TextMagnifierConfiguration;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/scroll_configuration.dart' show ScrollBehavior;
+import 'package:flutter/src/widgets/scroll_physics.dart' show ScrollPhysics;
+import 'package:flutter/src/widgets/text.dart' show DefaultTextStyle;
+import 'package:flutter/src/widgets/text_selection.dart' show TextSelectionControls, TextSelectionGestureDetectorBuilder, TextSelectionGestureDetectorBuilderDelegate;
 
 // Examples can assume:
 // late BuildContext context;

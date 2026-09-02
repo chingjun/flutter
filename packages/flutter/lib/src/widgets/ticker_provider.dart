@@ -5,11 +5,17 @@
 /// @docImport 'package:flutter/animation.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/scheduler.dart';
+import 'dart:ui' show VoidCallback;
 
-import 'basic.dart';
-import 'framework.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorHint, ErrorSummary, FlutterError;
+import 'package:flutter/src/foundation/constants.dart' show kDebugMode;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsNode, DiagnosticsProperty, FlagProperty, describeIdentity;
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/scheduler/ticker.dart' show Ticker, TickerCallback, TickerProvider;
+import 'package:flutter/src/widgets/basic.dart' show Builder;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedWidget, State, StatefulWidget, Widget;
+import 'package:listen/listen.dart' show ValueListenable, ValueNotifier;
+import 'package:meta/meta.dart' show immutable, optionalTypeArgs;
 
 export 'package:flutter/scheduler.dart' show TickerProvider;
 

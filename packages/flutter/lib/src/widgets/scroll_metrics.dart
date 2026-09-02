@@ -11,9 +11,10 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show clampDouble;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/painting/basic_types.dart' show Axis, AxisDirection, axisDirectionToAxis;
 
 /// A description of a [Scrollable]'s contents, useful for modeling the state
 /// of its viewport.

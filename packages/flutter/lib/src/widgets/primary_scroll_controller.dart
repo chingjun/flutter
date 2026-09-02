@@ -14,12 +14,13 @@
 /// @docImport 'shortcuts.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/painting.dart';
-
-import 'framework.dart';
-import 'scroll_configuration.dart';
-import 'scroll_controller.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedWidget;
+import 'package:flutter/src/widgets/scroll_configuration.dart' show ScrollConfiguration;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
 
 const Set<TargetPlatform> _kMobilePlatforms = <TargetPlatform>{
   TargetPlatform.android,

@@ -9,11 +9,12 @@ library;
 
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
-
-import 'editable_text.dart';
-import 'restoration.dart';
+import 'package:flutter/src/services/restoration.dart' show debugIsSerializableForRestoration;
+import 'package:flutter/src/services/text_input.dart' show TextEditingValue;
+import 'package:flutter/src/widgets/editable_text.dart' show TextEditingController;
+import 'package:flutter/src/widgets/restoration.dart' show RestorableProperty;
+import 'package:listen/listen.dart' show ChangeNotifier, Listenable;
+import 'package:meta/meta.dart' show mustCallSuper, protected;
 
 /// A [RestorableProperty] that makes the wrapped value accessible to the owning
 /// [State] object via the [value] getter and setter.

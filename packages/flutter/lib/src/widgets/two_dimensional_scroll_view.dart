@@ -5,22 +5,24 @@
 /// @docImport 'scroll_position.dart';
 library;
 
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Clip;
 
-import 'focus_manager.dart';
-import 'focus_scope.dart';
-import 'framework.dart';
-import 'notification_listener.dart';
-import 'primary_scroll_controller.dart';
-import 'scroll_configuration.dart';
-import 'scroll_controller.dart';
-import 'scroll_delegate.dart';
-import 'scroll_notification.dart';
-import 'scroll_physics.dart';
-import 'scrollable.dart';
-import 'scrollable_helpers.dart';
-import 'two_dimensional_viewport.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty, EnumProperty, FlagProperty;
+import 'package:flutter/src/gestures/recognizer.dart' show DragStartBehavior;
+import 'package:flutter/src/painting/basic_types.dart' show Axis, axisDirectionToAxis;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior;
+import 'package:flutter/src/rendering/viewport.dart' show CacheExtentStyle, ScrollCacheExtent;
+import 'package:flutter/src/rendering/viewport_offset.dart' show ViewportOffset;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusManager, FocusScopeNode;
+import 'package:flutter/src/widgets/focus_scope.dart' show FocusScope;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/notification_listener.dart' show NotificationListener;
+import 'package:flutter/src/widgets/primary_scroll_controller.dart' show PrimaryScrollController;
+import 'package:flutter/src/widgets/scroll_configuration.dart' show ScrollConfiguration, ScrollViewKeyboardDismissBehavior;
+import 'package:flutter/src/widgets/scroll_delegate.dart' show TwoDimensionalChildDelegate;
+import 'package:flutter/src/widgets/scroll_notification.dart' show ScrollUpdateNotification;
+import 'package:flutter/src/widgets/scrollable.dart' show DiagonalDragBehavior, TwoDimensionalScrollable;
+import 'package:flutter/src/widgets/scrollable_helpers.dart' show ScrollableDetails;
 
 /// A widget that combines a [TwoDimensionalScrollable] and a
 /// [TwoDimensionalViewport] to create an interactive scrolling pane of content

@@ -12,23 +12,25 @@ library;
 import 'dart:async';
 import 'dart:collection';
 import 'dart:ui' as ui show HitTestRequest, HitTestResponse, PointerDataPacket;
+import 'dart:ui' show Offset, PointerDeviceKind;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/scheduler.dart';
-
-import 'arena.dart';
-import 'converter.dart';
-import 'debug.dart';
-import 'events.dart';
-import 'hit_test.dart';
-import 'pointer_router.dart';
-import 'pointer_signal_resolver.dart';
-import 'resampler.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, FlutterError, FlutterErrorDetails;
+import 'package:flutter/src/foundation/binding.dart' show BindingBase;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticsNode, DiagnosticsProperty, DiagnosticsTreeStyle;
+import 'package:flutter/src/foundation/print.dart' show debugPrint;
+import 'package:flutter/src/gestures/arena.dart' show GestureArenaManager;
+import 'package:flutter/src/gestures/converter.dart' show PointerEventConverter;
+import 'package:flutter/src/gestures/debug.dart' show debugPrintHitTestResults, debugPrintMouseHoverEvents, debugPrintResamplingMargin;
+import 'package:flutter/src/gestures/events.dart' show PointerAddedEvent, PointerCancelEvent, PointerDownEvent, PointerEvent, PointerHoverEvent, PointerPanZoomEndEvent, PointerPanZoomStartEvent, PointerPanZoomUpdateEvent, PointerRemovedEvent, PointerSignalEvent, PointerUpEvent;
+import 'package:flutter/src/gestures/hit_test.dart' show HitTestDispatcher, HitTestEntry, HitTestResult, HitTestTarget, HitTestable, NativeHitTestTarget;
+import 'package:flutter/src/gestures/pointer_router.dart' show PointerRouter;
+import 'package:flutter/src/gestures/pointer_signal_resolver.dart' show PointerSignalResolver;
+import 'package:flutter/src/gestures/resampler.dart' show HandleEventCallback, PointerEventResampler;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
+import 'package:meta/meta.dart' show protected;
 
 export 'dart:ui' show Offset;
-
 export 'package:flutter/foundation.dart' show DiagnosticsNode, InformationCollector;
-
 export 'arena.dart' show GestureArenaManager;
 export 'events.dart' show PointerEvent;
 export 'hit_test.dart' show HitTestEntry, HitTestResult, HitTestTarget;

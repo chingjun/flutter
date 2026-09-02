@@ -16,16 +16,17 @@
 
 import 'dart:async';
 import 'dart:ffi' as ffi;
+import 'dart:ffi' show DynamicLibraryExtension, NativeFunctionPointer, StructPointer, Uint16Pointer;
 import 'dart:io';
 import 'dart:typed_data';
-import 'dart:ui' show Display, FlutterView;
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Display, FlutterView, Offset, PlatformDispatcher, Rect, Size;
 
-import '../foundation/_features.dart';
-import '_window.dart';
-import '_window_positioner.dart';
-import 'binding.dart';
+import 'package:flutter/src/foundation/_features.dart' show isWindowingEnabled;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/widgets/_window.dart' show BaseWindowController, DialogWindowController, DialogWindowControllerDelegate, PopupWindowController, PopupWindowControllerDelegate, SatelliteWindowController, SatelliteWindowControllerDelegate, TooltipWindowController, TooltipWindowControllerDelegate, WindowController, WindowControllerDelegate, WindowingOwner;
+import 'package:flutter/src/widgets/_window_positioner.dart' show WindowPositioner;
+import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding;
+import 'package:meta/meta.dart' show internal;
 
 /// A Win32 window handle.
 ///

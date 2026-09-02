@@ -5,7 +5,8 @@
 /// @docImport 'package:flutter/painting.dart';
 library;
 
-import 'dart:ui';
+import 'dart:async' show Future;
+import 'dart:ui' show Codec, FrameInfo, ImmutableBuffer;
 
 /// Returns a [Codec] that throws on all member invocations.
 Codec createNoOpCodec() => _NoOpCodec();

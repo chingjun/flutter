@@ -2,8 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Clip, Size, TextDirection;
+
+import 'package:flutter/src/rendering/viewport.dart' show RenderShrinkWrappingViewport;
+import 'package:flutter/src/rendering/viewport_offset.dart' show ViewportOffset;
+import 'package:flutter/src/widgets/basic.dart' show Center, Directionality, SliverToBoxAdapter;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show Widget;
+import 'package:flutter/src/widgets/viewport.dart' show ShrinkWrappingViewport;
 import 'package:flutter_test/flutter_test.dart';
 
 import '../rendering/rendering_tester.dart' show TestClipPaintingContext;

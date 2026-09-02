@@ -5,10 +5,14 @@
 /// @docImport 'tab_scaffold.dart';
 library;
 
-import 'package:flutter/widgets.dart';
-
-import 'app.dart' show CupertinoApp;
-import 'route.dart';
+import 'package:flutter/src/cupertino/app.dart' show CupertinoApp;
+import 'package:flutter/src/cupertino/route.dart' show CupertinoPageRoute;
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StatefulWidget, Widget, WidgetBuilder;
+import 'package:flutter/src/widgets/heroes.dart' show HeroController;
+import 'package:flutter/src/widgets/navigator.dart' show Navigator, NavigatorObserver, NavigatorState, Route, RouteFactory, RouteSettings;
+import 'package:flutter/src/widgets/navigator_pop_handler.dart' show NavigatorPopHandler;
+import 'package:flutter/src/widgets/ticker_provider.dart' show TickerMode;
 
 /// A single tab view with its own [Navigator] state and history.
 ///

@@ -2,8 +2,10 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/gestures.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/animation/curves.dart' show Curves;
+import 'package:flutter/src/gestures/events.dart' show PointerDownEvent, PointerMoveEvent;
+import 'package:flutter/src/gestures/force_press.dart' show ForcePressDetails, ForcePressGestureRecognizer;
+import 'package:flutter/src/gestures/monodrag.dart' show PanGestureRecognizer;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'gesture_tester.dart';

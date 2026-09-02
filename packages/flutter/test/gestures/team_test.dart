@@ -2,7 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/gestures.dart';
+import 'package:flutter/src/gestures/arena.dart' show GestureDisposition;
+import 'package:flutter/src/gestures/drag_details.dart' show DragStartDetails;
+import 'package:flutter/src/gestures/events.dart' show PointerCancelEvent, PointerDownEvent, PointerEvent, PointerUpEvent;
+import 'package:flutter/src/gestures/monodrag.dart' show HorizontalDragGestureRecognizer, VerticalDragGestureRecognizer;
+import 'package:flutter/src/gestures/recognizer.dart' show OneSequenceGestureRecognizer;
+import 'package:flutter/src/gestures/tap.dart' show TapGestureRecognizer;
+import 'package:flutter/src/gestures/team.dart' show GestureArenaTeam;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'gesture_tester.dart';

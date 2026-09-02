@@ -8,7 +8,10 @@
 /// @docImport 'text_selection_toolbar_layout_delegate.dart';
 library;
 
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Offset, Size;
+
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/rendering/shifted_box.dart' show SingleChildLayoutDelegate;
 
 /// Positions the toolbar at [anchor] if it fits, otherwise moves it so that it
 /// just fits fully on-screen.

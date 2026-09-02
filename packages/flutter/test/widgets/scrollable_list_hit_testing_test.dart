@@ -2,8 +2,17 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/gestures.dart' show DragStartBehavior;
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show TextDirection;
+
+import 'package:flutter/src/gestures/recognizer.dart' show DragStartBehavior;
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/widgets/basic.dart' show Center, Directionality, SizedBox;
+import 'package:flutter/src/widgets/framework.dart' show Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/scroll_view.dart' show ListView;
+import 'package:flutter/src/widgets/scrollable.dart' show Scrollable, ScrollableState;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 const List<int> items = <int>[0, 1, 2, 3, 4, 5];

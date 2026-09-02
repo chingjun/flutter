@@ -8,12 +8,14 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show Offset, Size;
 
-import 'box.dart';
-import 'object.dart';
-import 'sliver.dart';
-import 'sliver_fixed_extent_list.dart';
-import 'sliver_multi_box_adaptor.dart';
+import 'package:flutter/src/painting/basic_types.dart' show Axis, AxisDirection;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/object.dart' show RenderObject, RenderObjectVisitor;
+import 'package:flutter/src/rendering/sliver.dart' show RenderSliverSingleBoxAdapter, SliverConstraints, SliverGeometry, SliverPhysicalParentData, applyGrowthDirectionToAxisDirection;
+import 'package:flutter/src/rendering/sliver_fixed_extent_list.dart' show RenderSliverFixedExtentBoxAdaptor;
+import 'package:flutter/src/rendering/sliver_multi_box_adaptor.dart' show SliverMultiBoxAdaptorParentData;
 
 /// A sliver that contains multiple box children that each fill the viewport.
 ///

@@ -2,10 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+import 'dart:async' show Future;
 import 'dart:ui' as ui show Codec;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/painting.dart';
+import 'package:flutter/src/foundation/synchronous_future.dart' show SynchronousFuture;
+import 'package:flutter/src/painting/image_provider.dart' show ImageConfiguration, ImageDecoderCallback, ImageProvider;
+import 'package:flutter/src/painting/image_stream.dart' show ImageStreamCompleter, MultiFrameImageStreamCompleter;
 
 /// An image provider implementation for testing that is using a [ui.Codec]
 /// that it was given at construction time (typically the job of real image

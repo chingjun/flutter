@@ -7,7 +7,16 @@
 @Tags(<String>['reduced-test-set'])
 library;
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color, Size;
+
+import 'package:flutter/src/gestures/tap.dart' show TapDownDetails;
+import 'package:flutter/src/painting/box_border.dart' show Border;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/widgets/basic.dart' show Center;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

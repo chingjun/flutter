@@ -6,12 +6,18 @@
 /// @docImport 'tooltip.dart';
 library;
 
-import 'dart:ui' show lerpDouble;
+import 'dart:ui' show TextAlign, lerpDouble;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
-
-import 'theme.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsProperty, DoubleProperty, FlagProperty;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/painting/decoration.dart' show Decoration;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsetsGeometry;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
+import 'package:flutter/src/widgets/inherited_theme.dart' show InheritedTheme;
+import 'package:flutter/src/widgets/raw_tooltip.dart' show TooltipTriggerMode;
+import 'package:meta/meta.dart' show immutable;
 
 // Examples can assume:
 // late BuildContext context;

@@ -9,11 +9,14 @@ library;
 
 import 'dart:ui' show lerpDouble;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
-
-import 'button_theme.dart';
-import 'theme.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsProperty, DoubleProperty, FlagProperty;
+import 'package:flutter/src/material/button_theme.dart' show ButtonBarLayoutBehavior, ButtonTextTheme;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/painting/basic_types.dart' show VerticalDirection;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsetsGeometry;
+import 'package:flutter/src/rendering/flex.dart' show MainAxisAlignment, MainAxisSize;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedWidget;
+import 'package:meta/meta.dart' show immutable;
 
 // Examples can assume:
 // late BuildContext context;

@@ -7,9 +7,37 @@
 @Tags(<String>['reduced-test-set'])
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Clip, Color, Radius, Rect;
+
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, DiagnosticsNode;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/dialog.dart' show AlertDialog, Dialog, SimpleDialog, showDialog;
+import 'package:flutter/src/material/dialog_theme.dart' show DialogTheme, DialogThemeData;
+import 'package:flutter/src/material/elevated_button.dart' show ElevatedButton;
+import 'package:flutter/src/material/icons.dart' show Icons;
+import 'package:flutter/src/material/material.dart' show Material;
+import 'package:flutter/src/material/text_theme.dart' show TextTheme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/alignment.dart' show Alignment, AlignmentGeometry;
+import 'package:flutter/src/painting/beveled_rectangle_border.dart' show BeveledRectangleBorder;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/paragraph.dart' show RenderParagraph;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Center, Padding, RepaintBoundary, SizedBox;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessElement, Widget;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/icon_data.dart' show IconData;
+import 'package:flutter/src/widgets/icon_theme_data.dart' show IconThemeData;
+import 'package:flutter/src/widgets/modal_barrier.dart' show ModalBarrier;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/rich_text.dart' show RichText;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 MaterialApp _appWithDialog(

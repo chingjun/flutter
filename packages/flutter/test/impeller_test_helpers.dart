@@ -3,7 +3,8 @@
 // found in the LICENSE file.
 
 import 'dart:io' as io;
-import 'package:flutter/foundation.dart';
+
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
 
 /// Whether or not Flutter CI has configured Impeller for this test run.
 ///

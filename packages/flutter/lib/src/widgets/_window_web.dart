@@ -14,9 +14,8 @@
 //
 // See: https://github.com/flutter/flutter/issues/30701.
 
-import 'package:flutter/foundation.dart';
-
-import '_window.dart';
+import 'package:flutter/src/widgets/_window.dart' show WindowingOwner;
+import 'package:meta/meta.dart' show internal;
 
 /// Creates a default [WindowingOwner] for web.
 ///

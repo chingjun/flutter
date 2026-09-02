@@ -3,10 +3,13 @@
 // found in the LICENSE file.
 
 import 'dart:async';
-import 'dart:ui';
+import 'dart:typed_data' show ByteData;
+import 'dart:ui' show AppExitResponse, AppLifecycleState;
 
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/services/message_codec.dart' show MethodCall;
+import 'package:flutter/src/services/message_codecs.dart' show JSONMethodCodec, StringCodec;
+import 'package:flutter/src/widgets/app_lifecycle_listener.dart' show AppLifecycleListener;
+import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding, WidgetsFlutterBinding;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:leak_tracker_flutter_testing/leak_tracker_flutter_testing.dart';
 

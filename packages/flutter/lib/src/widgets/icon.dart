@@ -8,16 +8,23 @@
 /// @docImport 'image_icon.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show BlendMode, Color, FontVariation, FontWeight, Paint, Shadow, TextDirection, TextLeadingDistribution;
 
-import 'basic.dart';
-import 'debug.dart';
-import 'framework.dart';
-import 'icon_data.dart';
-import 'icon_theme.dart';
-import 'icon_theme_data.dart';
-import 'media_query.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty, DoubleProperty, EnumProperty, IterableProperty, StringProperty;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/colors.dart' show ColorProperty;
+import 'package:flutter/src/painting/text_painter.dart' show TextOverflow, kDefaultFontSize;
+import 'package:flutter/src/painting/text_span.dart' show TextSpan;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/widgets/basic.dart' show Center, Directionality, ExcludeSemantics, Semantics, SizedBox, Transform;
+import 'package:flutter/src/widgets/debug.dart' show debugCheckHasDirectionality;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/icon_data.dart' show IconData, IconDataProperty;
+import 'package:flutter/src/widgets/icon_theme.dart' show IconTheme;
+import 'package:flutter/src/widgets/icon_theme_data.dart' show IconThemeData;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/rich_text.dart' show RichText;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 /// A graphical icon widget drawn with a glyph from a font described in
 /// an [IconData] such as material's predefined [IconData]s in [Icons].

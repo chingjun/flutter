@@ -2,7 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Rect, Size, TextDirection;
+
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/widgets/basic.dart' show Center, Directionality, SizedBox, SliverToBoxAdapter, StatefulBuilder;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StateSetter, Widget;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/scroll_view.dart' show CustomScrollView;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

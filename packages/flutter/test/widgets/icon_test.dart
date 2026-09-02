@@ -2,7 +2,18 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show BlendMode, Color, FontVariation, FontWeight, Size, TextDirection, TextLeadingDistribution;
+
+import 'package:flutter/src/painting/text_scaler.dart' show TextScaler;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/widgets/basic.dart' show Center, Directionality, SizedBox;
+import 'package:flutter/src/widgets/framework.dart' show Element;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/icon_data.dart' show IconData;
+import 'package:flutter/src/widgets/icon_theme.dart' show IconTheme;
+import 'package:flutter/src/widgets/icon_theme_data.dart' show IconThemeData;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/rich_text.dart' show RichText;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'semantics_tester.dart';

@@ -6,14 +6,13 @@
 library;
 
 import 'dart:ui' as ui show lerpDouble;
+import 'dart:ui' show Canvas, Offset, Paint, Path, RRect, Radius, Rect, TextDirection;
 
-import 'package:flutter/foundation.dart';
-
-import 'basic_types.dart';
-import 'border_radius.dart';
-import 'borders.dart';
-import 'circle_border.dart';
-import 'rounded_rectangle_border.dart';
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius, BorderRadiusGeometry;
+import 'package:flutter/src/painting/borders.dart' show BorderSide, BorderStyle, OutlinedBorder, ShapeBorder;
+import 'package:flutter/src/painting/circle_border.dart' show CircleBorder;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
 
 /// A border that fits a stadium-shaped border (a box with semicircles on the ends)
 /// within the rectangle of the widget it is applied to.

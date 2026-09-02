@@ -2,7 +2,10 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show TextDirection;
+
+import 'package:flutter/src/foundation/key.dart' show UniqueKey;
+import 'package:flutter/src/widgets/basic.dart' show Directionality, Semantics, SizedBox;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

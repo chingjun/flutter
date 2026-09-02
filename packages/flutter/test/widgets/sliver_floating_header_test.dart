@@ -2,7 +2,17 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Rect;
+
+import 'package:flutter/src/animation/animation_style.dart' show AnimationStyle;
+import 'package:flutter/src/animation/curves.dart' show Curves;
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/widgets/basic.dart' show SizedBox;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
+import 'package:flutter/src/widgets/scroll_view.dart' show CustomScrollView;
+import 'package:flutter/src/widgets/sliver.dart' show SliverList;
+import 'package:flutter/src/widgets/sliver_floating_header.dart' show FloatingHeaderSnapMode, SliverFloatingHeader;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

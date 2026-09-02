@@ -7,12 +7,33 @@ library;
 
 import 'dart:collection';
 import 'dart:math' as math;
+import 'dart:ui' show Color, Offset, Paint, PaintingStyle, RSuperellipse, Radius, Rect, Size, TextBaseline, TextDirection;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
-
-import 'theme.dart';
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/tween.dart' show ColorTween;
+import 'package:flutter/src/cupertino/theme.dart' show CupertinoTheme;
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/gestures/tap.dart' show TapDownDetails;
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show BaselineOffset, BoxConstraints, BoxHitTestResult, ContainerBoxParentData, RenderBox, RenderBoxContainerDefaultsMixin;
+import 'package:flutter/src/rendering/object.dart' show ContainerRenderObjectMixin, PaintingContext, RenderObject;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior;
+import 'package:flutter/src/services/hardware_keyboard.dart' show KeyEvent;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor, SystemMouseCursors;
+import 'package:flutter/src/widgets/actions.dart' show Action, Actions, Intent, VoidCallbackAction, VoidCallbackIntent;
+import 'package:flutter/src/widgets/basic.dart' show Center, Directionality, MouseRegion, Padding, Semantics, UnconstrainedBox;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode, KeyEventResult;
+import 'package:flutter/src/widgets/focus_scope.dart' show Focus;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, MultiChildRenderObjectWidget, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/icon_theme.dart' show IconTheme;
+import 'package:flutter/src/widgets/icon_theme_data.dart' show IconThemeData;
+import 'package:flutter/src/widgets/radio_group.dart' show RadioClient, RadioGroup;
+import 'package:flutter/src/widgets/text.dart' show DefaultTextStyle;
+import 'package:flutter/src/widgets/ticker_provider.dart' show TickerProviderStateMixin;
 
 // Minimum padding from edges of the segmented control to edges of
 // encompassing widget.

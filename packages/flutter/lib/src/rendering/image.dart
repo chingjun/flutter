@@ -3,12 +3,17 @@
 // found in the LICENSE file.
 
 import 'dart:ui' as ui show Image;
+import 'dart:ui' show BlendMode, Color, ColorFilter, FilterQuality, Offset, Rect, Size, TextDirection;
 
-import 'package:flutter/animation.dart';
-import 'package:flutter/foundation.dart';
-
-import 'box.dart';
-import 'object.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty, DoubleProperty, EnumProperty, FlagProperty;
+import 'package:flutter/src/painting/alignment.dart' show Alignment, AlignmentGeometry;
+import 'package:flutter/src/painting/box_fit.dart' show BoxFit;
+import 'package:flutter/src/painting/colors.dart' show ColorProperty;
+import 'package:flutter/src/painting/decoration_image.dart' show ImageRepeat, paintImage;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, PipelineOwner;
+import 'package:meta/meta.dart' show protected;
 
 export 'package:flutter/painting.dart' show BoxFit, ImageRepeat;
 

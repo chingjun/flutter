@@ -2,8 +2,15 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Size, TextDirection;
+
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/foundation/print.dart' show DebugPrintCallback, debugPrint;
+import 'package:flutter/src/widgets/basic.dart' show Center, Directionality;
+import 'package:flutter/src/widgets/debug_flags.dart' show debugPrintBuildScope;
+import 'package:flutter/src/widgets/framework.dart' show GlobalKey;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/transitions.dart' show FadeTransition;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

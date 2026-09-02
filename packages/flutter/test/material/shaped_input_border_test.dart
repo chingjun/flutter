@@ -2,9 +2,20 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:ui';
+import 'dart:ui' show Canvas, Paint, Path, PictureRecorder, Radius, Rect;
 
-import 'package:flutter/material.dart';
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/input_border.dart' show ShapedInputBorder;
+import 'package:flutter/src/material/input_decorator.dart' show FloatingLabelBehavior, InputDecoration;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/text_field.dart' show TextField;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/borders.dart' show BorderSide, ShapeBorder;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder, RoundedSuperellipseBorder;
+import 'package:flutter/src/painting/stadium_border.dart' show StadiumBorder;
+import 'package:flutter/src/widgets/basic.dart' show Center;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

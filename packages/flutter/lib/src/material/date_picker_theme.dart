@@ -10,18 +10,28 @@
 /// @docImport 'scaffold.dart';
 library;
 
-import 'dart:ui' show lerpDouble;
+import 'dart:ui' show Brightness, Color, Locale, Radius, lerpDouble;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
-
-import 'button_style.dart';
-import 'color_scheme.dart';
-import 'colors.dart';
-import 'input_decorator.dart';
-import 'text_button.dart';
-import 'text_theme.dart';
-import 'theme.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsProperty, DoubleProperty;
+import 'package:flutter/src/material/button_style.dart' show ButtonStyle;
+import 'package:flutter/src/material/color_scheme.dart' show ColorScheme;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/input_decorator.dart' show InputDecorationTheme, InputDecorationThemeData;
+import 'package:flutter/src/material/text_button.dart' show TextButton;
+import 'package:flutter/src/material/text_theme.dart' show TextTheme;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/borders.dart' show BorderSide, OutlinedBorder, ShapeBorder;
+import 'package:flutter/src/painting/circle_border.dart' show CircleBorder;
+import 'package:flutter/src/painting/colors.dart' show ColorProperty;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
+import 'package:flutter/src/painting/stadium_border.dart' show StadiumBorder;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
+import 'package:flutter/src/widgets/inherited_theme.dart' show InheritedTheme;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateProperty, WidgetStatePropertyAll;
+import 'package:meta/meta.dart' show immutable;
 
 // Examples can assume:
 // late BuildContext context;

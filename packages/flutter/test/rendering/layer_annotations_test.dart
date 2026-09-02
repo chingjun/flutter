@@ -2,9 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:ui';
+import 'dart:ui' show EngineLayer, Path, RRect, Radius, SceneBuilder, Size;
 
-import 'package:flutter/rendering.dart';
+import 'package:flutter/src/rendering/layer.dart' show AnnotatedRegionLayer, AnnotationEntry, AnnotationResult, ClipPathLayer, ClipRRectLayer, ClipRectLayer, ContainerLayer, Layer, LayerLink, LeaderLayer, OffsetLayer, TransformLayer;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:vector_math/vector_math_64.dart';
 

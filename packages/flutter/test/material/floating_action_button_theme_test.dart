@@ -2,9 +2,34 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Color, PointerDeviceKind, Radius;
+
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, DiagnosticsNode;
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/button.dart' show RawMaterialButton;
+import 'package:flutter/src/material/color_scheme.dart' show ColorScheme;
+import 'package:flutter/src/material/floating_action_button.dart' show FloatingActionButton;
+import 'package:flutter/src/material/floating_action_button_theme.dart' show FloatingActionButtonTheme, FloatingActionButtonThemeData;
+import 'package:flutter/src/material/icons.dart' show Icons;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/beveled_rectangle_border.dart' show BeveledRectangleBorder;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/borders.dart' show ShapeBorder;
+import 'package:flutter/src/painting/circle_border.dart' show CircleBorder;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsetsDirectional;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
+import 'package:flutter/src/painting/stadium_border.dart' show StadiumBorder;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/services/mouse_cursor.dart' show SystemMouseCursors;
+import 'package:flutter/src/widgets/basic.dart' show SizedBox;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/rich_text.dart' show RichText;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetStateMouseCursor, WidgetStateProperty;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

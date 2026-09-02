@@ -2,7 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show TextDirection;
+
+import 'package:flutter/src/widgets/basic.dart' show Directionality, Positioned, Stack;
+import 'package:flutter/src/widgets/framework.dart' show Widget;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/view.dart' show View, ViewAnchor;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'multi_view_testing.dart';

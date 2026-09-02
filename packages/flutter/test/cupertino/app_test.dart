@@ -2,12 +2,52 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
+import 'dart:typed_data' show ByteData;
+import 'dart:ui' show Brightness, Color, Size;
+
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/cupertino/app.dart' show CupertinoApp, CupertinoScrollBehavior;
+import 'package:flutter/src/cupertino/button.dart' show CupertinoButton;
+import 'package:flutter/src/cupertino/colors.dart' show CupertinoColors, CupertinoDynamicColor;
+import 'package:flutter/src/cupertino/localizations.dart' show CupertinoLocalizations;
+import 'package:flutter/src/cupertino/page_scaffold.dart' show CupertinoPageScaffold;
+import 'package:flutter/src/cupertino/route.dart' show CupertinoPage, CupertinoPageRoute;
+import 'package:flutter/src/cupertino/theme.dart' show CupertinoThemeData;
+import 'package:flutter/src/foundation/debug.dart' show debugBrightnessOverride;
+import 'package:flutter/src/foundation/key.dart' show UniqueKey, ValueKey;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/foundation/synchronous_future.dart' show SynchronousFuture;
+import 'package:flutter/src/gestures/recognizer.dart' show MultitouchDragStrategy;
+import 'package:flutter/src/painting/basic_types.dart' show AxisDirection;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/editable.dart' show RenderEditable;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/rendering/paragraph.dart' show RenderParagraph;
+import 'package:flutter/src/services/message_codec.dart' show MethodCall;
+import 'package:flutter/src/services/message_codecs.dart' show JSONMethodCodec;
+import 'package:flutter/src/services/system_chrome.dart' show SystemChrome, SystemUiOverlayStyle;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Center, Column, SizedBox;
+import 'package:flutter/src/widgets/binding.dart' show RouteInformation;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/default_selection_style.dart' show DefaultSelectionStyle;
+import 'package:flutter/src/widgets/editable_text.dart' show EditableText, TextEditingController;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, Widget, WidgetBuilder;
+import 'package:flutter/src/widgets/heroes.dart' show Hero;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/navigator.dart' show NavigationNotification, Navigator, NavigatorState, Page, Route;
+import 'package:flutter/src/widgets/pages.dart' show PageRouteBuilder;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/router.dart' show PlatformRouteInformationProvider, PopNavigatorRouterDelegateMixin, RootBackButtonDispatcher, RouteInformationParser, RouterConfig, RouterDelegate;
+import 'package:flutter/src/widgets/scroll_configuration.dart' show ScrollBehavior, ScrollConfiguration, ScrollViewKeyboardDismissBehavior;
+import 'package:flutter/src/widgets/scroll_physics.dart' show NeverScrollableScrollPhysics, ScrollPhysics;
+import 'package:flutter/src/widgets/scroll_view.dart' show ListView;
+import 'package:flutter/src/widgets/scrollable_helpers.dart' show ScrollableDetails;
+import 'package:flutter/src/widgets/single_child_scroll_view.dart' show SingleChildScrollView;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/title.dart' show Title;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:listen/listen.dart' show ChangeNotifier;
 
 void main() {
   testWidgets('Heroes work', (WidgetTester tester) async {

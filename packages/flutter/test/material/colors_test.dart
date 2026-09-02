@@ -2,7 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/material.dart';
+import 'dart:ui' show Color;
+
+import 'package:flutter/src/material/colors.dart' show Colors, MaterialAccentColor, MaterialColor;
 import 'package:flutter_test/flutter_test.dart';
 
 const List<int> primaryKeys = <int>[50, 100, 200, 300, 400, 500, 600, 700, 800, 900];

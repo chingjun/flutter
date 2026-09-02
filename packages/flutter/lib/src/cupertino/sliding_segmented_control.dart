@@ -7,15 +7,51 @@ library;
 
 import 'dart:math' as math;
 import 'dart:math';
+import 'dart:ui' show Clip, Color, FontWeight, Offset, Paint, RSuperellipse, Radius, Rect, Size, TextBaseline, TextDirection, clampDouble;
 
 import 'package:collection/collection.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/physics.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
-
-import 'colors.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/curves.dart' show Curves, Interval;
+import 'package:flutter/src/animation/tween.dart' show Animatable, CurveTween, RectTween, Tween;
+import 'package:flutter/src/animation/tween_sequence.dart' show TweenSequence, TweenSequenceItem;
+import 'package:flutter/src/cupertino/colors.dart' show CupertinoColors, CupertinoDynamicColor;
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/key.dart' show ValueKey;
+import 'package:flutter/src/gestures/drag_details.dart' show DragDownDetails, DragEndDetails, DragUpdateDetails;
+import 'package:flutter/src/gestures/events.dart' show PointerDownEvent, PointerEvent;
+import 'package:flutter/src/gestures/long_press.dart' show LongPressGestureRecognizer;
+import 'package:flutter/src/gestures/monodrag.dart' show HorizontalDragGestureRecognizer;
+import 'package:flutter/src/gestures/tap.dart' show TapGestureRecognizer, TapUpDetails;
+import 'package:flutter/src/gestures/team.dart' show GestureArenaTeam;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/box_shadow.dart' show BoxShadow;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedSuperellipseBorder;
+import 'package:flutter/src/painting/shape_decoration.dart' show ShapeDecoration;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/physics/spring_simulation.dart' show SpringDescription, SpringSimulation;
+import 'package:flutter/src/rendering/box.dart' show BaselineOffset, BoxConstraints, BoxHitTestEntry, BoxHitTestResult, ContainerBoxParentData, RenderBox, RenderBoxContainerDefaultsMixin;
+import 'package:flutter/src/rendering/object.dart' show ContainerRenderObjectMixin, PaintingContext, PipelineOwner, RenderObject;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior;
+import 'package:flutter/src/services/hardware_keyboard.dart' show KeyEvent;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor, SystemMouseCursors;
+import 'package:flutter/src/widgets/actions.dart' show Action, Actions, Intent, VoidCallbackAction, VoidCallbackIntent;
+import 'package:flutter/src/widgets/basic.dart' show Directionality, MetaData, MouseRegion, Padding, Semantics, SizedBox, UnconstrainedBox;
+import 'package:flutter/src/widgets/container.dart' show Container, DecoratedBox;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode, KeyEventResult;
+import 'package:flutter/src/widgets/focus_scope.dart' show Focus;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, MultiChildRenderObjectWidget, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/implicit_animations.dart' show AnimatedDefaultTextStyle, AnimatedOpacity;
+import 'package:flutter/src/widgets/indexed_stack.dart' show IndexedStack;
+import 'package:flutter/src/widgets/radio_group.dart' show RadioClient, RadioGroup;
+import 'package:flutter/src/widgets/text.dart' show DefaultTextStyle;
+import 'package:flutter/src/widgets/ticker_provider.dart' show TickerProviderStateMixin;
+import 'package:flutter/src/widgets/transitions.dart' show AnimatedBuilder, ScaleTransition;
 
 // Extracted from https://developer.apple.com/design/resources/.
 // Default values have been updated to match iOS 17 figma file: https://www.figma.com/community/file/1248375255495415511.

@@ -5,7 +5,8 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/painting/binding.dart' show imageCache;
+import 'package:flutter/src/widgets/image.dart' show Image;
 import 'package:flutter_test/flutter_test.dart';
 
 import '../image_data.dart';

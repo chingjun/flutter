@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'framework.dart';
+import 'package:flutter/src/widgets/framework.dart' show GlobalKey, State, StatefulWidget;
 
 /// Base class for stateful widgets that have exactly one inflated instance in
 /// the tree.

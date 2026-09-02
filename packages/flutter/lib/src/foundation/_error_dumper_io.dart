@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'print.dart';
+import 'package:flutter/src/foundation/print.dart' show debugPrint;
 
 /// Dumps error messages to the console.
 class ErrorToConsoleDumper {

@@ -10,12 +10,15 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show clampDouble;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-
-import 'basic.dart';
-import 'framework.dart';
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/rendering/sliver.dart' show RenderSliverSingleBoxAdapter, SliverConstraints, SliverGeometry;
+import 'package:flutter/src/rendering/viewport.dart' show RenderViewport;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsConfiguration;
+import 'package:flutter/src/widgets/basic.dart' show Semantics;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, SingleChildRenderObjectWidget, StatelessWidget, Widget;
 
 /// A sliver that keeps its Widget child at the top of the a [CustomScrollView].
 ///

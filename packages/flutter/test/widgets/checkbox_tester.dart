@@ -2,7 +2,16 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color;
+
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/painting/box_border.dart' show Border;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior;
+import 'package:flutter/src/widgets/basic.dart' show Center, Semantics, SizedBox;
+import 'package:flutter/src/widgets/container.dart' show DecoratedBox;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
 
 /// A minimal checkbox widget for testing purposes to avoid relying on
 /// widgets from material.dart.

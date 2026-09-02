@@ -6,15 +6,16 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show VoidCallback;
 
-import 'package:flutter/foundation.dart';
-
-import 'animation.dart';
-import 'curves.dart';
-import 'listener_helpers.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation, AnimationStatus, AnimationStatusListener;
+import 'package:flutter/src/animation/curves.dart' show Curve;
+import 'package:flutter/src/animation/listener_helpers.dart' show AnimationEagerListenerMixin, AnimationLazyListenerMixin, AnimationLocalListenersMixin, AnimationLocalStatusListenersMixin;
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/debug.dart' show debugMaybeDispatchCreated, debugMaybeDispatchDisposed;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
 
 export 'dart:ui' show VoidCallback;
-
 export 'animation.dart' show Animation, AnimationStatus, AnimationStatusListener;
 export 'curves.dart' show Curve;
 

@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
 
 /// Structure that specifies maximum allowable magnitudes for distances,
 /// durations, and velocity differences to be considered equal.

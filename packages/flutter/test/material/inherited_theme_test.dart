@@ -2,7 +2,44 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/material.dart';
+import 'dart:ui' show Color;
+
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/banner.dart' show MaterialBanner;
+import 'package:flutter/src/material/banner_theme.dart' show MaterialBannerTheme, MaterialBannerThemeData;
+import 'package:flutter/src/material/divider.dart' show Divider;
+import 'package:flutter/src/material/divider_theme.dart' show DividerTheme, DividerThemeData;
+import 'package:flutter/src/material/elevated_button.dart' show ElevatedButton;
+import 'package:flutter/src/material/icons.dart' show Icons;
+import 'package:flutter/src/material/list_tile.dart' show ListTile;
+import 'package:flutter/src/material/list_tile_theme.dart' show ListTileTheme;
+import 'package:flutter/src/material/material.dart' show Material;
+import 'package:flutter/src/material/material_state.dart' show MaterialStatePropertyAll;
+import 'package:flutter/src/material/page.dart' show MaterialPageRoute;
+import 'package:flutter/src/material/popup_menu.dart' show PopupMenuButton, PopupMenuEntry, PopupMenuItem;
+import 'package:flutter/src/material/popup_menu_theme.dart' show PopupMenuTheme, PopupMenuThemeData;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/slider.dart' show Slider;
+import 'package:flutter/src/material/slider_theme.dart' show SliderTheme, SliderThemeData;
+import 'package:flutter/src/material/text_button.dart' show TextButton;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/material/toggle_buttons.dart' show ToggleButtons;
+import 'package:flutter/src/material/toggle_buttons_theme.dart' show ToggleButtonsTheme, ToggleButtonsThemeData;
+import 'package:flutter/src/painting/borders.dart' show BorderSide;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/flex.dart' show MainAxisSize;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Center, Column;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/inherited_theme.dart' show InheritedTheme;
+import 'package:flutter/src/widgets/navigator.dart' show Navigator;
+import 'package:flutter/src/widgets/rich_text.dart' show RichText;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

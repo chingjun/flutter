@@ -2,7 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/material.dart';
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/material.dart' show Material;
+import 'package:flutter/src/material/material_localizations.dart' show DefaultMaterialLocalizations, MaterialLocalizations;
+import 'package:flutter/src/widgets/basic.dart' show SizedBox;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show GlobalKey;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

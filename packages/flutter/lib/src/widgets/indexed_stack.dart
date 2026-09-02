@@ -9,14 +9,20 @@
 /// @docImport 'transitions.dart';
 library;
 
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Clip, Offset, TextDirection;
 
-import 'basic.dart';
-import 'debug.dart';
-import 'focus_scope.dart';
-import 'framework.dart';
-import 'sliver.dart';
-import 'ticker_provider.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, FlagProperty;
+import 'package:flutter/src/painting/alignment.dart' show AlignmentDirectional, AlignmentGeometry;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, RenderObject, RenderObjectVisitor;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderProxyBox;
+import 'package:flutter/src/rendering/proxy_sliver.dart' show RenderProxySliver;
+import 'package:flutter/src/rendering/stack.dart' show RenderIndexedStack, StackFit;
+import 'package:flutter/src/widgets/basic.dart' show Directionality, IgnorePointer, Offstage, SizedBox, SliverToBoxAdapter, Stack;
+import 'package:flutter/src/widgets/debug.dart' show debugCheckHasDirectionality;
+import 'package:flutter/src/widgets/focus_scope.dart' show ExcludeFocus;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, ElementVisitor, InheritedElement, InheritedWidget, MultiChildRenderObjectElement, SingleChildRenderObjectWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/sliver.dart' show SliverIgnorePointer, SliverOffstage;
+import 'package:flutter/src/widgets/ticker_provider.dart' show TickerMode;
 
 /// A [Stack] that shows a single child from a list of children.
 ///

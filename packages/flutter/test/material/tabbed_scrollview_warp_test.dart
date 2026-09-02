@@ -2,7 +2,18 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/material.dart';
+import 'package:flutter/src/foundation/key.dart' show ValueKey;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/app_bar.dart' show AppBar;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/tab_controller.dart' show TabController;
+import 'package:flutter/src/material/tabs.dart' show Tab, TabBar, TabBarView;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/scroll_view.dart' show CustomScrollView;
+import 'package:flutter/src/widgets/sliver_persistent_header.dart' show SliverPersistentHeader, SliverPersistentHeaderDelegate;
+import 'package:flutter/src/widgets/ticker_provider.dart' show TickerProviderStateMixin;
 import 'package:flutter_test/flutter_test.dart';
 
 // This is a regression test for https://github.com/flutter/flutter/issues/10549

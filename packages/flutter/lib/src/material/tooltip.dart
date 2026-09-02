@@ -10,16 +10,35 @@
 /// @docImport 'popup_menu.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Brightness, Offset, Radius, TextAlign;
 
-import 'colors.dart';
-import 'text_theme.dart';
-import 'theme.dart';
-import 'tooltip_theme.dart';
-import 'tooltip_visibility.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty, DoubleProperty, FlagProperty, StringProperty, kNoDefaultValue;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/text_theme.dart' show TextTheme;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/material/tooltip_theme.dart' show TooltipTheme, TooltipThemeData;
+import 'package:flutter/src/material/tooltip_visibility.dart' show TooltipVisibility;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/decoration.dart' show Decoration;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/geometry.dart' show positionDependentBox;
+import 'package:flutter/src/painting/inline_span.dart' show InlineSpan;
+import 'package:flutter/src/painting/text_span.dart' show TextSpan;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor;
+import 'package:flutter/src/widgets/basic.dart' show Center, ConstrainedBox, MouseRegion, SizedBox;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/raw_tooltip.dart' show RawTooltip, RawTooltipState, TooltipPositionContext, TooltipPositionDelegate, TooltipTriggerMode, TooltipTriggeredCallback;
+import 'package:flutter/src/widgets/text.dart' show DefaultTextStyle, Text;
+import 'package:flutter/src/widgets/ticker_provider.dart' show SingleTickerProviderStateMixin;
+import 'package:flutter/src/widgets/transitions.dart' show FadeTransition;
+import 'package:meta/meta.dart' show protected;
 
 /// A Material Design tooltip.
 ///

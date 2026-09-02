@@ -2,7 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/material.dart';
+import 'dart:ui' show TextDirection;
+
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Directionality;
+import 'package:flutter/src/widgets/focus_scope.dart' show FocusScope;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

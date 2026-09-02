@@ -3,9 +3,13 @@
 // found in the LICENSE file.
 
 import 'dart:async';
+import 'dart:ui' show TextDirection;
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/widgets/basic.dart' show Directionality, Row;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 const String _actualContent = 'Actual Content';

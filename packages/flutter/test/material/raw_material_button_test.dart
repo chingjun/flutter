@@ -2,11 +2,29 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/src/services/keyboard_key.g.dart';
+import 'dart:ui' show Color, PointerDeviceKind, Rect, Size, TextDirection, VoidCallback;
+
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/button.dart' show RawMaterialButton;
+import 'package:flutter/src/material/ink_well.dart' show InkWell;
+import 'package:flutter/src/material/material.dart' show Material;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show MaterialTapTargetSize, ThemeData, VisualDensity;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/flex.dart' show CrossAxisAlignment, MainAxisAlignment;
+import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
+import 'package:flutter/src/services/mouse_cursor.dart' show SystemMouseCursors;
+import 'package:flutter/src/widgets/actions.dart' show ActivateIntent, Intent;
+import 'package:flutter/src/widgets/basic.dart' show Center, Column, Directionality, MouseRegion, SizedBox;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusHighlightStrategy, FocusManager, FocusNode;
+import 'package:flutter/src/widgets/focus_scope.dart' show FocusScope;
+import 'package:flutter/src/widgets/framework.dart' show Widget;
+import 'package:flutter/src/widgets/shortcuts.dart' show ShortcutActivator, Shortcuts, SingleActivator;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

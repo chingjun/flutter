@@ -6,20 +6,21 @@
 library;
 
 import 'dart:async';
+import 'dart:ui' show Offset, PointerDeviceKind;
 
-import 'package:flutter/foundation.dart';
-
-import 'arena.dart';
-import 'binding.dart';
-import 'constants.dart';
-import 'events.dart';
-import 'gesture_details.dart';
-import 'pointer_router.dart';
-import 'recognizer.dart';
-import 'tap.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsProperty, EnumProperty, IntProperty;
+import 'package:flutter/src/gestures/arena.dart' show GestureArenaEntry, GestureDisposition;
+import 'package:flutter/src/gestures/binding.dart' show GestureBinding;
+import 'package:flutter/src/gestures/constants.dart' show kDoubleTapMinTime, kDoubleTapSlop, kDoubleTapTimeout, kDoubleTapTouchSlop;
+import 'package:flutter/src/gestures/events.dart' show PointerCancelEvent, PointerDownEvent, PointerEvent, PointerMoveEvent, PointerUpEvent, computeHitSlop, kPrimaryButton;
+import 'package:flutter/src/gestures/gesture_details.dart' show PositionedGestureDetails;
+import 'package:flutter/src/gestures/gesture_settings.dart' show DeviceGestureSettings;
+import 'package:flutter/src/gestures/pointer_router.dart' show PointerRoute;
+import 'package:flutter/src/gestures/recognizer.dart' show GestureRecognizer, OffsetPair;
+import 'package:flutter/src/gestures/tap.dart' show GestureTapCancelCallback, GestureTapDownCallback, TapDownDetails, TapUpDetails;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 export 'dart:ui' show Offset, PointerDeviceKind;
-
 export 'events.dart' show PointerDownEvent;
 export 'tap.dart'
     show GestureTapCancelCallback, GestureTapDownCallback, TapDownDetails, TapUpDetails;

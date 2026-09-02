@@ -2,11 +2,11 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
-
-import 'action_buttons.dart';
-import 'theme.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsProperty;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget, WidgetBuilder;
+import 'package:flutter/src/widgets/inherited_theme.dart' show InheritedTheme;
+import 'package:meta/meta.dart' show immutable;
 
 // Examples can assume:
 // late BuildContext context;

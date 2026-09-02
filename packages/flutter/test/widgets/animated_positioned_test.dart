@@ -2,7 +2,15 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Rect, Size, TextDirection;
+
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/widgets/basic.dart' show Center, Directionality, SizedBox, Stack;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show GlobalKey, Widget;
+import 'package:flutter/src/widgets/implicit_animations.dart' show AnimatedPositioned, AnimatedPositionedDirectional;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

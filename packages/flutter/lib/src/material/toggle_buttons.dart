@@ -8,20 +8,38 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show Color, Offset, Paint, Path, RRect, Radius, Rect, Size, TextBaseline, TextDirection;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
-
-import 'button_style.dart';
-import 'color_scheme.dart';
-import 'constants.dart';
-import 'ink_ripple.dart';
-import 'material_state.dart';
-import 'text_button.dart';
-import 'theme.dart';
-import 'theme_data.dart';
-import 'toggle_buttons_theme.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsProperty, DoubleProperty, FlagProperty;
+import 'package:flutter/src/material/button_style.dart' show ButtonStyle;
+import 'package:flutter/src/material/color_scheme.dart' show ColorScheme;
+import 'package:flutter/src/material/constants.dart' show kMinInteractiveDimension, kThemeChangeDuration;
+import 'package:flutter/src/material/ink_ripple.dart' show InkRipple;
+import 'package:flutter/src/material/material_state.dart' show MaterialStatePropertyAll;
+import 'package:flutter/src/material/text_button.dart' show TextButton;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show MaterialTapTargetSize, ThemeData, VisualDensity;
+import 'package:flutter/src/material/toggle_buttons_theme.dart' show ToggleButtonsTheme, ToggleButtonsThemeData;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/basic_types.dart' show Axis, VerticalDirection;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/borders.dart' show BorderSide, OutlinedBorder;
+import 'package:flutter/src/painting/colors.dart' show ColorProperty;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsDirectional, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/matrix_utils.dart' show MatrixUtils;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show BaselineOffset, BoxConstraints, BoxHitTestResult, BoxParentData, RenderBox;
+import 'package:flutter/src/rendering/flex.dart' show CrossAxisAlignment, MainAxisSize;
+import 'package:flutter/src/rendering/layout_helper.dart' show ChildLayoutHelper, ChildLayouter;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, RenderObject;
+import 'package:flutter/src/rendering/shifted_box.dart' show RenderShiftedBox;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor;
+import 'package:flutter/src/widgets/basic.dart' show Center, ClipRRect, Column, Directionality, IntrinsicHeight, IntrinsicWidth, MergeSemantics, Row, Semantics;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, SingleChildRenderObjectWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateProperty;
+import 'package:meta/meta.dart' show immutable;
 
 // Examples can assume:
 // List<bool> isSelected = <bool>[];

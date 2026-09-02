@@ -2,7 +2,17 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/material.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/page.dart' show MaterialPageRoute;
+import 'package:flutter/src/material/page_transitions_theme.dart' show FadeForwardsPageTransitionsBuilder, ZoomPageTransitionsBuilder;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/text_button.dart' show TextButton;
+import 'package:flutter/src/widgets/basic.dart' show Center, Column;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
+import 'package:flutter/src/widgets/navigator.dart' show Navigator, NavigatorObserver, RouteSettings;
+import 'package:flutter/src/widgets/page_transitions_builder.dart' show PageTransitionsBuilder;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

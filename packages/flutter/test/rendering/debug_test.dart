@@ -2,8 +2,23 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Canvas, Color, Rect, Size;
+
+import 'package:flutter/src/foundation/diagnostics.dart' show singleLineTextConfiguration, sparseTextConfiguration;
+import 'package:flutter/src/painting/basic_types.dart' show Axis, AxisDirection;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/matrix_utils.dart' show TransformProperty, debugDescribeTransform;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/debug.dart' show debugAssertAllRenderVarsUnset, debugCheckHasBoundedAxis, debugDisableClipLayers, debugDisableOpacityLayers, debugDisablePhysicalShapeLayers, debugPaintPadding, debugPaintSizeEnabled, debugProfileLayoutsEnabled;
+import 'package:flutter/src/rendering/layer.dart' show ContainerLayer, OffsetLayer, OpacityLayer;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderConstrainedBox, RenderDecoratedBox, RenderOpacity, RenderRepaintBoundary;
+import 'package:flutter/src/rendering/shifted_box.dart' show RenderPadding;
+import 'package:flutter/src/rendering/sliver.dart' show RenderSliver, RenderSliverToBoxAdapter;
+import 'package:flutter/src/rendering/sliver_padding.dart' show RenderSliverPadding;
+import 'package:flutter/src/rendering/viewport.dart' show RenderViewport;
+import 'package:flutter/src/rendering/viewport_offset.dart' show ViewportOffset;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:vector_math/vector_math_64.dart';
 

@@ -2,10 +2,51 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:ui';
+import 'dart:ui' show Clip, Color, DisplayFeature, DisplayFeatureState, DisplayFeatureType, PointerDeviceKind, Radius, Rect, Size, TextDirection;
 
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/material/action_buttons.dart' show CloseButton;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/app_bar.dart' show AppBar;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/date.dart' show CalendarDelegate, DatePickerEntryMode, DateTimeRange, GregorianCalendarDelegate;
+import 'package:flutter/src/material/date_picker.dart' show DateRangePickerDialog, SelectableDayForRangePredicate, showDateRangePicker;
+import 'package:flutter/src/material/date_picker_theme.dart' show DatePickerThemeData;
+import 'package:flutter/src/material/dialog.dart' show Dialog, DialogRoute;
+import 'package:flutter/src/material/elevated_button.dart' show ElevatedButton;
+import 'package:flutter/src/material/icon_button.dart' show IconButton;
+import 'package:flutter/src/material/icons.dart' show Icons;
+import 'package:flutter/src/material/ink_well.dart' show InkResponse;
+import 'package:flutter/src/material/input_border.dart' show InputBorder, OutlineInputBorder, UnderlineInputBorder;
+import 'package:flutter/src/material/input_decorator.dart' show InputDecoration, InputDecorationTheme, InputDecorationThemeData;
+import 'package:flutter/src/material/material.dart' show Material;
+import 'package:flutter/src/material/material_localizations.dart' show MaterialLocalizations;
+import 'package:flutter/src/material/outlined_button.dart' show OutlinedButton;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/text_button.dart' show TextButton;
+import 'package:flutter/src/material/text_field.dart' show TextField;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/beveled_rectangle_border.dart' show BeveledRectangleBorder;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/borders.dart' show OutlinedBorder;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
+import 'package:flutter/src/painting/shape_decoration.dart' show ShapeDecoration;
+import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
+import 'package:flutter/src/services/restoration.dart' show RestorationBucket;
+import 'package:flutter/src/services/text_input.dart' show TextInputType;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Center, Column, ConstrainedBox, CustomPaint, Directionality, SizedBox;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/icon_theme_data.dart' show IconThemeData;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/navigator.dart' show NavigatorState, RestorableRouteFuture, Route;
+import 'package:flutter/src/widgets/restoration.dart' show RestorationMixin;
+import 'package:flutter/src/widgets/restoration_properties.dart' show RestorableDateTimeN;
+import 'package:flutter/src/widgets/scroll_view.dart' show CustomScrollView, GridView;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetStatePropertyAll;
 import 'package:flutter_test/flutter_test.dart';
 
 import '../widgets/feedback_tester.dart';

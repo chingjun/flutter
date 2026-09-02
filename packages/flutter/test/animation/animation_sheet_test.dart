@@ -7,7 +7,17 @@
 @Tags(<String>['reduced-test-set'])
 library;
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Canvas, Color, Paint, Rect, Size, TextDirection;
+
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/tween.dart' show RectTween;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/rendering/custom_paint.dart' show CustomPainter;
+import 'package:flutter/src/widgets/basic.dart' show Align, CustomPaint, Directionality, Stack;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/ticker_provider.dart' show SingleTickerProviderStateMixin;
+import 'package:flutter/src/widgets/transitions.dart' show AnimatedBuilder;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

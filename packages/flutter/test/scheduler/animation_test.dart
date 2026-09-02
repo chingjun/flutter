@@ -2,9 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/src/foundation/binding.dart' show BindingBase;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding, timeDilation;
+import 'package:flutter/src/services/binding.dart' show ServicesBinding;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'scheduler_tester.dart';

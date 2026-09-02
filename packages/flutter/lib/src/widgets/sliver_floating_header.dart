@@ -9,15 +9,24 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show Offset, clampDouble;
 
-import 'package:flutter/animation.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-
-import 'framework.dart';
-import 'scroll_position.dart';
-import 'scrollable.dart';
-import 'ticker_provider.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/animation_style.dart' show AnimationStyle;
+import 'package:flutter/src/animation/curves.dart' show Curves;
+import 'package:flutter/src/animation/tween.dart' show CurveTween, Tween;
+import 'package:flutter/src/painting/basic_types.dart' show Axis, AxisDirection;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, RenderObject;
+import 'package:flutter/src/rendering/sliver.dart' show RenderSliverSingleBoxAdapter, SliverGeometry, applyGrowthDirectionToAxisDirection;
+import 'package:flutter/src/rendering/viewport_offset.dart' show ScrollDirection;
+import 'package:flutter/src/scheduler/ticker.dart' show TickerProvider;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, SingleChildRenderObjectWidget, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/scroll_position.dart' show ScrollPosition;
+import 'package:flutter/src/widgets/scrollable.dart' show Scrollable;
+import 'package:flutter/src/widgets/ticker_provider.dart' show SingleTickerProviderStateMixin;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 /// Specifies how a partially visible [SliverFloatingHeader] animates
 /// into a view when a user scroll gesture ends.

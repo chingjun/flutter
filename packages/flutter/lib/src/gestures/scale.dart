@@ -3,16 +3,17 @@
 // found in the LICENSE file.
 
 import 'dart:math' as math;
+import 'dart:ui' show Offset, PointerDeviceKind;
 
-import 'package:flutter/foundation.dart';
-
-import 'constants.dart';
-import 'events.dart';
-import 'recognizer.dart';
-import 'velocity_tracker.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsProperty, DoubleProperty, IntProperty;
+import 'package:flutter/src/gestures/arena.dart' show GestureDisposition;
+import 'package:flutter/src/gestures/constants.dart' show kMaxFlingVelocity, kMinFlingVelocity;
+import 'package:flutter/src/gestures/events.dart' show PointerCancelEvent, PointerDownEvent, PointerEvent, PointerMoveEvent, PointerPanZoomEndEvent, PointerPanZoomStartEvent, PointerPanZoomUpdateEvent, PointerUpEvent, computePanSlop, computeScaleSlop;
+import 'package:flutter/src/gestures/recognizer.dart' show DragStartBehavior, OneSequenceGestureRecognizer;
+import 'package:flutter/src/gestures/velocity_tracker.dart' show Velocity, VelocityTracker;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 export 'dart:ui' show Offset, PointerDeviceKind;
-
 export 'events.dart' show PointerDownEvent, PointerEvent, PointerPanZoomStartEvent;
 export 'recognizer.dart' show DragStartBehavior;
 export 'velocity_tracker.dart' show Velocity;

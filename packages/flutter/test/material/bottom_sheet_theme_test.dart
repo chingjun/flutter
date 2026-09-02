@@ -2,8 +2,28 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Brightness, Clip, Color, Radius, Size;
+
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, DiagnosticsNode;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/bottom_sheet.dart' show BottomSheet, showBottomSheet, showModalBottomSheet;
+import 'package:flutter/src/material/bottom_sheet_theme.dart' show BottomSheetThemeData;
+import 'package:flutter/src/material/button.dart' show RawMaterialButton;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/material.dart' show Material;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/beveled_rectangle_border.dart' show BeveledRectangleBorder;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/borders.dart' show ShapeBorder;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Column;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
+import 'package:flutter/src/widgets/modal_barrier.dart' show ModalBarrier;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

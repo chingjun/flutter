@@ -2,7 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Size;
+
+import 'package:flutter/src/painting/basic_types.dart' show AxisDirection;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/sliver.dart' show RenderSliver;
+import 'package:flutter/src/rendering/sliver_persistent_header.dart' show RenderSliverFloatingPersistentHeader, RenderSliverFloatingPinnedPersistentHeader;
+import 'package:flutter/src/rendering/viewport.dart' show RenderViewport;
+import 'package:flutter/src/rendering/viewport_offset.dart' show ViewportOffset;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'rendering_tester.dart';

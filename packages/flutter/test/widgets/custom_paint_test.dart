@@ -2,8 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Canvas, Size, TextDirection;
+
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/rendering/custom_paint.dart' show CustomPainter, RenderCustomPaint;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext;
+import 'package:flutter/src/widgets/basic.dart' show Center, CustomPaint, Directionality, SizedBox;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show GlobalKey;
 import 'package:flutter_test/flutter_test.dart';
 
 class TestCustomPainter extends CustomPainter {

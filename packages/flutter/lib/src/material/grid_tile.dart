@@ -5,7 +5,8 @@
 /// @docImport 'grid_tile_bar.dart';
 library;
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/widgets/basic.dart' show Positioned, Stack;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
 
 /// A tile in a Material Design grid list.
 ///

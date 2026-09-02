@@ -5,9 +5,11 @@
 /// @docImport 'dart:io';
 library;
 
-import 'package:flutter/foundation.dart';
+import 'dart:async' show Future;
 
-import 'system_channels.dart';
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
 
 /// Controls specific aspects of the system navigation stack.
 abstract final class SystemNavigator {

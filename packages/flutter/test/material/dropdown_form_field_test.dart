@@ -3,11 +3,41 @@
 // found in the LICENSE file.
 
 import 'dart:math' as math;
-import 'dart:ui' show PointerDeviceKind;
+import 'dart:ui' show Color, Locale, PointerDeviceKind, RRect, Radius, Rect, Size, TextDirection, VoidCallback;
 
-import 'package:flutter/foundation.dart' show kIsWeb;
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart' show RendererBinding;
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey, ValueKey;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/button_theme.dart' show ButtonTheme;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/dropdown.dart' show DropdownButton, DropdownButtonFormField, DropdownMenuItem;
+import 'package:flutter/src/material/icons.dart' show Icons;
+import 'package:flutter/src/material/input_decorator.dart' show InputDecoration, InputDecorator;
+import 'package:flutter/src/material/material.dart' show Material;
+import 'package:flutter/src/material/material_localizations.dart' show DefaultMaterialLocalizations;
+import 'package:flutter/src/material/page.dart' show MaterialPageRoute;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/shadows.dart' show kElevationToShadow;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/painting/alignment.dart' show Alignment, AlignmentDirectional, AlignmentGeometry;
+import 'package:flutter/src/painting/box_shadow.dart' show BoxShadow;
+import 'package:flutter/src/painting/debug.dart' show debugDisableShadows;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/services/mouse_cursor.dart' show SystemMouseCursors;
+import 'package:flutter/src/widgets/basic.dart' show Align, Builder, Center, CustomPaint, Directionality, RepaintBoundary, StatefulBuilder;
+import 'package:flutter/src/widgets/form.dart' show AutovalidateMode, Form, FormFieldState, FormState;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StateSetter, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/indexed_stack.dart' show IndexedStack;
+import 'package:flutter/src/widgets/localizations.dart' show DefaultWidgetsLocalizations, Localizations, LocalizationsDelegate;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/navigator.dart' show Navigator, RouteSettings;
+import 'package:flutter/src/widgets/rich_text.dart' show RichText;
+import 'package:flutter/src/widgets/scroll_view.dart' show ListView;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 const List<String> menuItems = <String>['one', 'two', 'three', 'four'];

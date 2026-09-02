@@ -2,7 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Rect;
+
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/widgets/basic.dart' show SizedBox;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/drag_boundary.dart' show DragBoundary, DragBoundaryDelegate;
+import 'package:flutter/src/widgets/framework.dart' show GlobalKey;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

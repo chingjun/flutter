@@ -3,9 +3,22 @@
 // found in the LICENSE file.
 
 import 'dart:ui' as ui;
+import 'dart:ui' show Canvas, FontWeight, PlaceholderAlignment, Rect, Size, TextAffinity, TextAlign, TextBaseline, TextBox, TextDirection, TextHeightBehavior, TextLeadingDistribution, TextPosition, TextRange, kTextHeightNone;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'package:characters/characters.dart' show CharacterRange;
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError, FlutterErrorDetails;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/painting/inline_span.dart' show InlineSpan;
+import 'package:flutter/src/painting/strut_style.dart' show StrutStyle;
+import 'package:flutter/src/painting/text_painter.dart' show PlaceholderDimensions, TextPainter, TextWidthBasis;
+import 'package:flutter/src/painting/text_scaler.dart' show TextScaler;
+import 'package:flutter/src/painting/text_span.dart' show TextSpan;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/stack.dart' show RelativeRect;
+import 'package:flutter/src/services/text_editing.dart' show TextSelection;
+import 'package:flutter/src/widgets/basic.dart' show SizedBox;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/widget_span.dart' show WidgetSpan;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:leak_tracker_flutter_testing/leak_tracker_flutter_testing.dart';
 

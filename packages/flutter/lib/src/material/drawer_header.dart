@@ -7,11 +7,21 @@
 /// @docImport 'user_accounts_drawer_header.dart';
 library;
 
-import 'package:flutter/widgets.dart';
-
-import 'debug.dart';
-import 'divider.dart';
-import 'theme.dart';
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves;
+import 'package:flutter/src/material/debug.dart' show debugCheckHasMaterial;
+import 'package:flutter/src/material/divider.dart' show Divider;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/box_border.dart' show Border;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/decoration.dart' show Decoration;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsGeometry;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/debug.dart' show debugCheckHasMediaQuery;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/implicit_animations.dart' show AnimatedContainer;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/text.dart' show DefaultTextStyle;
 
 const double _kDrawerHeaderHeight = 160.0 + 1.0; // bottom edge
 

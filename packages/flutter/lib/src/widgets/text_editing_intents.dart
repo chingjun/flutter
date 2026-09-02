@@ -6,11 +6,13 @@
 /// @docImport 'editable_text.dart';
 library;
 
-import 'package:flutter/services.dart';
+import 'dart:ui' show TextRange;
 
-import 'actions.dart';
-import 'basic.dart';
-import 'focus_manager.dart';
+import 'package:flutter/src/gestures/events.dart' show PointerDownEvent, PointerUpEvent;
+import 'package:flutter/src/services/text_editing.dart' show TextSelection;
+import 'package:flutter/src/services/text_input.dart' show SelectionChangedCause, TextEditingValue;
+import 'package:flutter/src/widgets/actions.dart' show Intent;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
 
 /// An [Intent] to send the event straight to the engine.
 ///

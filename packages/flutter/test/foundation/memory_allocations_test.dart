@@ -2,11 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:ui';
+import 'dart:ui' show Canvas, Image, Picture, PictureRecorder, Rect;
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/src/foundation/memory_allocations.dart' show FlutterMemoryAllocations, ObjectDisposed, ObjectEvent, kFlutterMemoryAllocationsEnabled;
+import 'package:flutter/src/foundation/print.dart' show DebugPrintCallback, debugPrint;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:leak_tracker_flutter_testing/leak_tracker_flutter_testing.dart';
+import 'package:listen/listen.dart' show ChangeNotifier, ValueNotifier;
 
 class PrintOverrideTestBinding extends AutomatedTestWidgetsFlutterBinding {
   @override

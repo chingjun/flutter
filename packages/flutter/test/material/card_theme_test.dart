@@ -7,8 +7,23 @@
 @Tags(<String>['reduced-test-set'])
 library;
 
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
+import 'dart:ui' show Clip, Color, Radius, Size;
+
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, DiagnosticsNode;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/card.dart' show Card;
+import 'package:flutter/src/material/card_theme.dart' show CardTheme, CardThemeData;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/material.dart' show Material;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/beveled_rectangle_border.dart' show BeveledRectangleBorder;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/borders.dart' show ShapeBorder;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
+import 'package:flutter/src/widgets/basic.dart' show Center, Padding, RepaintBoundary, SizedBox;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

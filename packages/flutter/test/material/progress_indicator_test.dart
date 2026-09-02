@@ -14,11 +14,36 @@
 library;
 
 import 'dart:ui' as ui;
+import 'dart:ui' show Color, PaintingStyle, RRect, Radius, Rect, Size, StrokeCap, TextDirection;
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'package:flutter/src/animation/animation.dart' show AnimationStatus;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/animations.dart' show AlwaysStoppedAnimation;
+import 'package:flutter/src/animation/curves.dart' show Cubic, Interval;
+import 'package:flutter/src/cupertino/activity_indicator.dart' show CupertinoActivityIndicator;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/color_scheme.dart' show ColorScheme;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/material.dart' show Material, MaterialType;
+import 'package:flutter/src/material/progress_indicator.dart' show CircularProgressIndicator, LinearProgressIndicator, RefreshProgressIndicator;
+import 'package:flutter/src/material/progress_indicator_theme.dart' show ProgressIndicatorTheme, ProgressIndicatorThemeData;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsGeometry;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/rendering/layer.dart' show Layer;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Center, ConstrainedBox, Directionality, Padding, SizedBox, StatefulBuilder;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StateSetter, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/scroll_view.dart' show ListView;
+import 'package:flutter/src/widgets/ticker_provider.dart' show SingleTickerProviderStateMixin;
+import 'package:flutter/src/widgets/transitions.dart' show AnimatedBuilder;
+import 'package:flutter/src/widgets/value_listenable_builder.dart' show ValueListenableBuilder;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:listen/listen.dart' show ValueNotifier;
 
 void main() {
   final theme = ThemeData();

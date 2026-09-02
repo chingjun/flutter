@@ -12,16 +12,20 @@
 /// @docImport 'text_theme.dart';
 library;
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Brightness, Clip, Color, VoidCallback;
 
-import 'button.dart';
-import 'button_theme.dart';
-import 'constants.dart';
-import 'ink_well.dart';
-import 'material.dart';
-import 'theme.dart';
-import 'theme_data.dart';
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty, FlagProperty;
+import 'package:flutter/src/material/button.dart' show RawMaterialButton;
+import 'package:flutter/src/material/button_theme.dart' show ButtonTextTheme, ButtonTheme, ButtonThemeData;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show MaterialTapTargetSize, ThemeData, VisualDensity;
+import 'package:flutter/src/painting/borders.dart' show ShapeBorder;
+import 'package:flutter/src/painting/colors.dart' show ColorProperty;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsetsGeometry;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
 
 /// A utility class for building Material buttons that depend on the
 /// ambient [ButtonTheme] and [Theme].

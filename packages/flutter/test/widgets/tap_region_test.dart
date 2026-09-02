@@ -2,11 +2,19 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:ui';
+import 'dart:ui' show PointerDeviceKind, Rect, SemanticsAction, SemanticsActionEvent, Size, TextDirection;
 
-import 'package:flutter/gestures.dart';
-import 'package:flutter/semantics.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/key.dart' show Key, ValueKey;
+import 'package:flutter/src/gestures/events.dart' show PointerEvent, kSecondaryButton, kTertiaryButton;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsNode;
+import 'package:flutter/src/widgets/basic.dart' show Center, Column, ConstrainedBox, Directionality, Positioned, Row, SizedBox, Stack;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget, WidgetBuilder;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/navigator.dart' show Navigator;
+import 'package:flutter/src/widgets/tap_region.dart' show TapRegion, TapRegionSurface;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'test_page_tester.dart';

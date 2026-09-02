@@ -2,7 +2,20 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color, TextDirection;
+
+import 'package:flutter/src/animation/curves.dart' show Curves;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/widgets/basic.dart' show Directionality, SizedBox;
+import 'package:flutter/src/widgets/container.dart' show DecoratedBox;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/layout_builder.dart' show LayoutBuilder;
+import 'package:flutter/src/widgets/scroll_configuration.dart' show ScrollBehavior, ScrollConfiguration;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_view.dart' show ListView;
+import 'package:flutter/src/widgets/scrollable.dart' show Scrollable, ScrollableState;
 import 'package:flutter_test/flutter_test.dart';
 
 class Foo extends StatefulWidget {

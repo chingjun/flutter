@@ -6,13 +6,18 @@
 library;
 
 import 'dart:collection';
+import 'dart:ui' show Canvas, Offset, Rect, Size, VoidCallback;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/semantics.dart';
-
-import 'box.dart';
-import 'object.dart';
-import 'proxy_box.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorHint, ErrorSummary, FlutterError;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, DiagnosticsNode, DiagnosticsProperty, MessageProperty, describeIdentity;
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, BoxHitTestResult, RenderBox;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, PipelineOwner;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderProxyBox;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsConfiguration, SemanticsNode, SemanticsProperties, SemanticsTag;
+import 'package:listen/listen.dart' show Listenable;
+import 'package:meta/meta.dart' show immutable;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 /// Signature of the function returned by [CustomPainter.semanticsBuilder].
 ///

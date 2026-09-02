@@ -6,15 +6,23 @@
 /// @docImport 'text_field.dart';
 library;
 
-import 'package:flutter/widgets.dart';
-
-import 'date.dart';
-import 'date_picker_theme.dart';
-import 'input_border.dart';
-import 'input_decorator.dart';
-import 'material_localizations.dart';
-import 'text_form_field.dart';
-import 'theme.dart';
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/material/date.dart' show CalendarDelegate, GregorianCalendarDelegate;
+import 'package:flutter/src/material/date_picker_theme.dart' show DatePickerThemeData;
+import 'package:flutter/src/material/input_border.dart' show InputBorder, OutlineInputBorder, UnderlineInputBorder;
+import 'package:flutter/src/material/input_decorator.dart' show InputDecoration, InputDecorationTheme, InputDecorationThemeData;
+import 'package:flutter/src/material/material_localizations.dart' show MaterialLocalizations;
+import 'package:flutter/src/material/text_form_field.dart' show TextFormField;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/services/text_editing.dart' show TextSelection;
+import 'package:flutter/src/services/text_input.dart' show TextEditingValue, TextInputType;
+import 'package:flutter/src/widgets/basic.dart' show Semantics;
+import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding;
+import 'package:flutter/src/widgets/date.dart' show SelectableDayPredicate;
+import 'package:flutter/src/widgets/editable_text.dart' show TextEditingController;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
 
 /// A [TextFormField] configured to accept and validate a date entered by a user.
 ///

@@ -3,9 +3,11 @@
 // found in the LICENSE file.
 
 import 'dart:ui' as ui;
+import 'dart:ui' show Rect;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
+import 'package:flutter/src/foundation/memory_allocations.dart' show FlutterMemoryAllocations, ObjectEvent;
+import 'package:flutter/src/rendering/layer.dart' show Layer;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:leak_tracker_flutter_testing/leak_tracker_flutter_testing.dart';
 

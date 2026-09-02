@@ -3,8 +3,37 @@
 // found in the LICENSE file.
 
 import 'dart:typed_data';
+import 'dart:ui' show Brightness, Color, Rect, Size, TextDirection;
 
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/src/cupertino/app.dart' show CupertinoApp;
+import 'package:flutter/src/cupertino/bottom_tab_bar.dart' show CupertinoTabBar;
+import 'package:flutter/src/cupertino/button.dart' show CupertinoButton;
+import 'package:flutter/src/cupertino/colors.dart' show CupertinoColors, CupertinoDynamicColor;
+import 'package:flutter/src/cupertino/nav_bar.dart' show CupertinoNavigationBar;
+import 'package:flutter/src/cupertino/page_scaffold.dart' show CupertinoPageScaffold;
+import 'package:flutter/src/cupertino/route.dart' show CupertinoPageRoute;
+import 'package:flutter/src/cupertino/tab_scaffold.dart' show CupertinoTabScaffold;
+import 'package:flutter/src/cupertino/tab_view.dart' show CupertinoTabView;
+import 'package:flutter/src/cupertino/text_field.dart' show CupertinoTextField;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/image_provider.dart' show MemoryImage;
+import 'package:flutter/src/painting/text_scaler.dart' show TextScaler;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Center, Directionality, SizedBox, Stack;
+import 'package:flutter/src/widgets/bottom_navigation_bar_item.dart' show BottomNavigationBarItem;
+import 'package:flutter/src/widgets/container.dart' show Container, DecoratedBox;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/image_icon.dart' show ImageIcon;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/navigator.dart' show Navigator;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/primary_scroll_controller.dart' show PrimaryScrollController;
+import 'package:flutter/src/widgets/rich_text.dart' show RichText;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_view.dart' show ListView;
+import 'package:flutter/src/widgets/scrollable.dart' show Scrollable, ScrollableState;
+import 'package:flutter/src/widgets/single_child_scroll_view.dart' show SingleChildScrollView;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 import '../image_data.dart';

@@ -3,9 +3,24 @@
 // found in the LICENSE file.
 
 import 'dart:async';
+import 'dart:ui' show Color, TextDirection;
 
-import 'package:flutter/gestures.dart' show DragStartBehavior;
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey, ValueKey;
+import 'package:flutter/src/gestures/recognizer.dart' show DragStartBehavior;
+import 'package:flutter/src/painting/basic_types.dart' show Axis, AxisDirection;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior;
+import 'package:flutter/src/widgets/basic.dart' show AspectRatio, Center, Column, Directionality, Listener, SizedBox, Stack, StatefulBuilder;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/dismissible.dart' show DismissDirection, DismissUpdateDetails, Dismissible;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, ObjectKey, StateSetter, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_physics.dart' show NeverScrollableScrollPhysics, ScrollPhysics;
+import 'package:flutter/src/widgets/scroll_view.dart' show ListView;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 const DismissDirection defaultDismissDirection = DismissDirection.horizontal;

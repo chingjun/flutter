@@ -2,9 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:ui';
-import 'package:flutter/foundation.dart';
-import '_window.dart';
+import 'dart:ui' show Offset, Rect, Size, clampDouble;
+
+import 'package:meta/meta.dart' show internal;
 
 /// Defines how a child window will be placed relative to the anchor rectangle
 /// of its parent.

@@ -5,10 +5,20 @@
 /// @docImport 'package:flutter/material.dart';
 library;
 
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color, Offset, Radius;
 
-import 'colors.dart';
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/cupertino/colors.dart' show CupertinoDynamicColor;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/gestures/tap.dart' show TapDownDetails;
+import 'package:flutter/src/gestures/velocity_tracker.dart' show Velocity;
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/services/haptic_feedback.dart' show HapticFeedback;
+import 'package:flutter/src/widgets/basic.dart' show Directionality;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/scroll_configuration.dart' show ScrollConfiguration;
+import 'package:flutter/src/widgets/scroll_notification.dart' show ScrollNotificationPredicate, defaultScrollNotificationPredicate;
+import 'package:flutter/src/widgets/scrollbar.dart' show RawScrollbar, RawScrollbarState;
 
 // All values eyeballed.
 const double _kScrollbarMinLength = 36.0;

@@ -2,11 +2,15 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/src/foundation/_features.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color;
+
+import 'package:flutter/src/foundation/_features.dart' show debugEnabledFeatureFlags;
+import 'package:flutter/src/foundation/binding.dart' show ServiceExtensionCallback;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/widgets/basic.dart' show Center, ColoredBox, Semantics, SizedBox;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:meta/meta.dart' show protected;
 
 class AccessibilityEvaluationTestBinding extends AutomatedTestWidgetsFlutterBinding {
   static AccessibilityEvaluationTestBinding? _instance;

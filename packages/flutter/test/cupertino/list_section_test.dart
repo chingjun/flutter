@@ -2,7 +2,19 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/cupertino.dart';
+import 'dart:ui' show Clip, Color, Size, TextDirection;
+
+import 'package:flutter/src/cupertino/app.dart' show CupertinoApp;
+import 'package:flutter/src/cupertino/colors.dart' show CupertinoColors;
+import 'package:flutter/src/cupertino/list_section.dart' show CupertinoListSection;
+import 'package:flutter/src/cupertino/list_tile.dart' show CupertinoListTile;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/widgets/basic.dart' show Center, ClipRSuperellipse, Column, Directionality, SizedBox;
+import 'package:flutter/src/widgets/container.dart' show Container, DecoratedBox;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

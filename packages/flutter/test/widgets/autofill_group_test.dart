@@ -2,7 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/services/autofill.dart' show AutofillHints;
+import 'package:flutter/src/widgets/autofill.dart' show AutofillContextAction, AutofillGroup, AutofillGroupState;
+import 'package:flutter/src/widgets/basic.dart' show Column, StatefulBuilder;
+import 'package:flutter/src/widgets/editable_text.dart' show EditableText;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StateSetter, Widget;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'editable_text_tester.dart';

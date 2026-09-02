@@ -2,9 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/platform.dart';
+import 'package:flutter/src/cupertino/button.dart' show CupertinoButton;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/material/text_button.dart' show TextButton;
+import 'package:flutter/src/widgets/basic.dart' show CustomPaint;
+import 'package:flutter/src/widgets/framework.dart' show Widget;
+import 'package:flutter/src/widgets/standard_component_type.dart' show StandardComponentType;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'editable_text_utils.dart';

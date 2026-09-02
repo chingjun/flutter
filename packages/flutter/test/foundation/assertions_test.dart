@@ -2,7 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/src/foundation/assertions.dart' show DiagnosticsStackTrace, ErrorDescription, ErrorSpacer, ErrorSummary, FlutterError, FlutterErrorDetails, PartialStackFrame, RepetitiveStackFrameFilter, debugPrintStack;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, DiagnosticsNode;
+import 'package:flutter/src/foundation/stack_frame.dart' show StackFrame;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'capture_output.dart';

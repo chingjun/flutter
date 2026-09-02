@@ -8,18 +8,42 @@
 /// @docImport 'scaffold.dart';
 library;
 
-import 'dart:ui';
+import 'dart:ui' show Color, Offset, Radius, Rect, TextDirection, VoidCallback, lerpDouble;
 
-import 'package:flutter/widgets.dart';
-
-import 'color_scheme.dart';
-import 'ink_well.dart';
-import 'material.dart';
-import 'material_localizations.dart';
-import 'navigation_bar.dart';
-import 'navigation_rail_theme.dart';
-import 'text_theme.dart';
-import 'theme.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/animations.dart' show CurvedAnimation, ReverseAnimation;
+import 'package:flutter/src/animation/curves.dart' show Curves, Interval;
+import 'package:flutter/src/animation/tween.dart' show CurveTween;
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/material/color_scheme.dart' show ColorScheme;
+import 'package:flutter/src/material/ink_well.dart' show InkResponse;
+import 'package:flutter/src/material/material.dart' show Material, MaterialType, RectCallback;
+import 'package:flutter/src/material/material_localizations.dart' show MaterialLocalizations;
+import 'package:flutter/src/material/navigation_bar.dart' show NavigationIndicator;
+import 'package:flutter/src/material/navigation_rail_theme.dart' show NavigationRailTheme, NavigationRailThemeData;
+import 'package:flutter/src/material/text_theme.dart' show TextTheme;
+import 'package:flutter/src/material/theme.dart' show Theme, kThemeAnimationDuration;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/alignment.dart' show Alignment, AlignmentDirectional;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/borders.dart' show ShapeBorder;
+import 'package:flutter/src/painting/box_border.dart' show BoxShape;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/stadium_border.dart' show StadiumBorder;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/flex.dart' show MainAxisAlignment, MainAxisSize;
+import 'package:flutter/src/widgets/basic.dart' show Align, Center, ClipRect, Column, ConstrainedBox, Directionality, Flexible, Padding, Row, Semantics, SizedBox, Stack;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedWidget, State, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/icon_theme.dart' show IconTheme;
+import 'package:flutter/src/widgets/icon_theme_data.dart' show IconThemeData;
+import 'package:flutter/src/widgets/indexed_stack.dart' show Visibility;
+import 'package:flutter/src/widgets/safe_area.dart' show SafeArea;
+import 'package:flutter/src/widgets/single_child_scroll_view.dart' show SingleChildScrollView;
+import 'package:flutter/src/widgets/text.dart' show DefaultTextStyle;
+import 'package:flutter/src/widgets/ticker_provider.dart' show TickerProviderStateMixin;
+import 'package:flutter/src/widgets/transitions.dart' show FadeTransition;
 
 const double _kCircularIndicatorDiameter = 56;
 const double _kIndicatorHeight = 32;

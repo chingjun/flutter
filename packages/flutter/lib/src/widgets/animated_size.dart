@@ -5,11 +5,16 @@
 /// @docImport 'transitions.dart';
 library;
 
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Clip, VoidCallback;
 
-import 'basic.dart';
-import 'framework.dart';
-import 'ticker_provider.dart';
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty, IntProperty;
+import 'package:flutter/src/painting/alignment.dart' show Alignment, AlignmentGeometry;
+import 'package:flutter/src/rendering/animated_size.dart' show RenderAnimatedSize;
+import 'package:flutter/src/scheduler/ticker.dart' show TickerProvider;
+import 'package:flutter/src/widgets/basic.dart' show Directionality;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, SingleChildRenderObjectWidget, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/ticker_provider.dart' show SingleTickerProviderStateMixin;
 
 /// Animated widget that automatically transitions its size over a given
 /// duration whenever the given child's size changes.

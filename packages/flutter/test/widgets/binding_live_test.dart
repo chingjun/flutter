@@ -2,8 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show TextDirection;
+
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/widgets/basic.dart' show Center, Directionality;
+import 'package:flutter/src/widgets/binding.dart' show runApp;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 // This file is for tests for WidgetsBinding that require a `LiveTestWidgetsFlutterBinding`.

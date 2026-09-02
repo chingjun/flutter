@@ -2,8 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color, Size;
+
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/services/system_chrome.dart' show SystemChrome, SystemUiOverlayStyle;
+import 'package:flutter/src/widgets/annotated_region.dart' show AnnotatedRegion;
+import 'package:flutter/src/widgets/basic.dart' show Align, Column, Expanded, SizedBox;
+import 'package:flutter/src/widgets/framework.dart' show Widget;
 import 'package:flutter_test/flutter_test.dart';
 
 /// Matches the legacy `Colors.blue` value while avoiding a dependency on the

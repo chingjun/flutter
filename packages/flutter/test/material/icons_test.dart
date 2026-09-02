@@ -7,10 +7,18 @@
 @Tags(<String>['reduced-test-set'])
 library;
 
+import 'dart:typed_data' show ByteData;
+
 import 'package:file/file.dart';
 import 'package:file/local.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/icons.dart' show Icons;
+import 'package:flutter/src/services/font_loader.dart' show FontLoader;
+import 'package:flutter/src/widgets/basic.dart' show Wrap;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/icon_theme.dart' show IconTheme;
+import 'package:flutter/src/widgets/icon_theme_data.dart' show IconThemeData;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:platform/platform.dart';
 

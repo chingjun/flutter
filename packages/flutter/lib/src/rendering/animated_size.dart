@@ -2,13 +2,19 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/animation.dart';
-import 'package:flutter/foundation.dart';
+import 'dart:ui' show Clip, Offset, Rect, Size, TextBaseline, VoidCallback;
 
-import 'box.dart';
-import 'layer.dart';
-import 'object.dart';
-import 'shifted_box.dart';
+import 'package:flutter/src/animation/animation.dart' show AnimationStatus;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/animations.dart' show CurvedAnimation;
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves;
+import 'package:flutter/src/animation/tween.dart' show SizeTween;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/layer.dart' show ClipRectLayer, LayerHandle;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, PipelineOwner;
+import 'package:flutter/src/rendering/shifted_box.dart' show RenderAligningShiftedBox;
+import 'package:flutter/src/scheduler/ticker.dart' show TickerProvider;
+import 'package:meta/meta.dart' show protected, visibleForTesting;
 
 /// A [RenderAnimatedSize] can be in exactly one of these states.
 @visibleForTesting

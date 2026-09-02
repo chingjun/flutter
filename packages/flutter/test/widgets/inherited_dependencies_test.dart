@@ -2,8 +2,11 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/src/widgets/basic.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'dart:ui' show TextDirection;
+
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Directionality, SizedBox;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, InheritedElement;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

@@ -2,8 +2,19 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Clip, Color, Rect, TextDirection;
+
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/painting/alignment.dart' show Alignment, AlignmentDirectional;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, RenderObject;
+import 'package:flutter/src/rendering/stack.dart' show RenderStack, StackFit, StackParentData;
+import 'package:flutter/src/widgets/basic.dart' show Center, ConstrainedBox, Directionality, Positioned, PositionedDirectional, SizedBox, Stack;
+import 'package:flutter/src/widgets/container.dart' show DecoratedBox;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, Widget;
+import 'package:flutter/src/widgets/layout_builder.dart' show LayoutBuilder;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:leak_tracker_flutter_testing/leak_tracker_flutter_testing.dart';
 

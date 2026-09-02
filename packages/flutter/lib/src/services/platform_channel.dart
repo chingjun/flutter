@@ -4,21 +4,25 @@
 
 import 'dart:async';
 import 'dart:developer';
+import 'dart:typed_data' show ByteData;
+import 'dart:ui' show PlatformMessageResponseCallback;
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, FlutterError, FlutterErrorDetails;
+import 'package:flutter/src/foundation/binding.dart' show BindingBase;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb, kReleaseMode;
+import 'package:flutter/src/foundation/print.dart' show debugPrint;
+import 'package:flutter/src/services/binary_messenger.dart' show BinaryMessenger, MessageHandler;
+import 'package:flutter/src/services/binding.dart' show ServicesBinding;
+import 'package:flutter/src/services/debug.dart' show debugProfilePlatformChannels;
+import 'package:flutter/src/services/message_codec.dart' show MessageCodec, MethodCall, MethodCodec, MissingPluginException, PlatformException;
+import 'package:flutter/src/services/message_codecs.dart' show StandardMethodCodec;
+import 'package:meta/meta.dart' show optionalTypeArgs;
 
 import '_background_isolate_binary_messenger_io.dart'
     if (dart.library.js_interop) '_background_isolate_binary_messenger_web.dart';
 
-import 'binary_messenger.dart';
-import 'binding.dart';
-import 'debug.dart';
-import 'message_codec.dart';
-import 'message_codecs.dart';
-
 export '_background_isolate_binary_messenger_io.dart'
     if (dart.library.js_interop) '_background_isolate_binary_messenger_web.dart';
-
 export 'binary_messenger.dart' show BinaryMessenger;
 export 'binding.dart' show RootIsolateToken;
 export 'message_codec.dart' show MessageCodec, MethodCall, MethodCodec;

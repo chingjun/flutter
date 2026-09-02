@@ -2,8 +2,54 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Color, Locale, Radius, Rect, SemanticsFlag, Size, TextDirection, VoidCallback;
+
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/material/action_buttons.dart' show BackButton;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/app_bar.dart' show AppBar, SliverAppBar;
+import 'package:flutter/src/material/app_bar_theme.dart' show AppBarTheme;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/constants.dart' show kTextTabBarHeight, kToolbarHeight;
+import 'package:flutter/src/material/drawer.dart' show Drawer;
+import 'package:flutter/src/material/filled_button.dart' show FilledButton;
+import 'package:flutter/src/material/flexible_space_bar.dart' show FlexibleSpaceBar;
+import 'package:flutter/src/material/icon_button.dart' show IconButton;
+import 'package:flutter/src/material/icons.dart' show Icons;
+import 'package:flutter/src/material/material.dart' show Material, MaterialType;
+import 'package:flutter/src/material/material_localizations.dart' show DefaultMaterialLocalizations;
+import 'package:flutter/src/material/page.dart' show MaterialPageRoute;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/tab_controller.dart' show DefaultTabController;
+import 'package:flutter/src/material/tabs.dart' show Tab, TabBar;
+import 'package:flutter/src/material/text_button.dart' show TextButton;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
+import 'package:flutter/src/rendering/paragraph.dart' show RenderParagraph;
+import 'package:flutter/src/rendering/sliver.dart' show RenderSliver;
+import 'package:flutter/src/semantics/semantics.dart' show debugResetSemanticsIdCounter;
+import 'package:flutter/src/widgets/basic.dart' show Align, Builder, Center, ClipRect, ConstrainedBox, Directionality, ExcludeSemantics, Semantics, SizedBox, SliverPadding, SliverToBoxAdapter, StatefulBuilder;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StateSetter, Widget;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/implicit_animations.dart' show AnimatedOpacity;
+import 'package:flutter/src/widgets/localizations.dart' show DefaultWidgetsLocalizations, Localizations, LocalizationsDelegate;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/navigation_toolbar.dart' show NavigationToolbar;
+import 'package:flutter/src/widgets/navigator.dart' show Navigator;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/preferred_size.dart' show PreferredSize;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_position.dart' show ScrollPosition;
+import 'package:flutter/src/widgets/scroll_view.dart' show CustomScrollView;
+import 'package:flutter/src/widgets/scrollable.dart' show Scrollable, ScrollableState;
+import 'package:flutter/src/widgets/sliver.dart' show SliverList;
+import 'package:flutter/src/widgets/sliver_persistent_header.dart' show SliverPersistentHeader, SliverPersistentHeaderDelegate;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateColor;
 import 'package:flutter_test/flutter_test.dart';
 
 import '../widgets/semantics_tester.dart';

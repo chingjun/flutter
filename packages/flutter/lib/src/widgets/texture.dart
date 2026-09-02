@@ -2,8 +2,10 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
-import 'framework.dart';
+import 'dart:ui' show FilterQuality;
+
+import 'package:flutter/src/rendering/texture.dart' show TextureBox;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, LeafRenderObjectWidget;
 
 /// A rectangle upon which a backend texture is mapped.
 ///

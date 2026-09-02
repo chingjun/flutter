@@ -7,7 +7,15 @@
 @Tags(<String>['reduced-test-set'])
 library;
 
-import 'package:flutter/material.dart';
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/slider.dart' show Slider;
+import 'package:flutter/src/material/slider_theme.dart' show ShowValueIndicator, SliderTheme;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Center;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

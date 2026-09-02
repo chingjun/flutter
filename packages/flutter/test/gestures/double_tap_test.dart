@@ -3,7 +3,12 @@
 // found in the LICENSE file.
 
 import 'package:fake_async/fake_async.dart';
-import 'package:flutter/gestures.dart';
+import 'package:flutter/src/gestures/arena.dart' show GestureArenaEntry, GestureArenaMember, GestureDisposition;
+import 'package:flutter/src/gestures/binding.dart' show GestureBinding;
+import 'package:flutter/src/gestures/constants.dart' show kDoubleTapMinTime, kDoubleTapTimeout;
+import 'package:flutter/src/gestures/events.dart' show PointerDownEvent, PointerMoveEvent, PointerUpEvent, kPrimaryButton, kSecondaryButton, kSecondaryMouseButton;
+import 'package:flutter/src/gestures/multitap.dart' show DoubleTapGestureRecognizer;
+import 'package:flutter/src/gestures/tap.dart' show TapDownDetails, TapGestureRecognizer;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'gesture_tester.dart';

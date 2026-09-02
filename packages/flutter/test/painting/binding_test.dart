@@ -2,13 +2,17 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+import 'dart:typed_data' show ByteData;
 import 'dart:ui' as ui;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/basic_types.dart' show AsyncCallback, AsyncValueGetter, AsyncValueSetter;
+import 'package:flutter/src/foundation/binding.dart' show BindingBase, ServiceExtensionCallback;
+import 'package:flutter/src/painting/binding.dart' show PaintingBinding, imageCache;
+import 'package:flutter/src/painting/image_cache.dart' show ImageCache;
+import 'package:flutter/src/painting/image_stream.dart' show ImageInfo, OneFrameImageStreamCompleter;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
+import 'package:flutter/src/services/binding.dart' show ServicesBinding;
+import 'package:flutter/src/services/message_codecs.dart' show JSONMessageCodec;
 import 'package:flutter_test/flutter_test.dart';
 
 Future<void> main() async {

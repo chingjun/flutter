@@ -9,10 +9,11 @@
 /// @docImport 'text_input.dart';
 library;
 
-import 'package:flutter/foundation.dart';
+import 'dart:async' show Future;
 
-import 'message_codec.dart';
-import 'system_channels.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/services/platform_channel.dart' show MethodChannel;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
 
 /// An interface into Android's stylus handwriting text input.
 ///

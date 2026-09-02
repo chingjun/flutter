@@ -2,8 +2,11 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/semantics.dart';
-import 'package:flutter/services.dart' show SystemChannels;
+import 'dart:ui' show TextDirection;
+
+import 'package:flutter/src/semantics/semantics_event.dart' show Assertiveness;
+import 'package:flutter/src/semantics/semantics_service.dart' show SemanticsService;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

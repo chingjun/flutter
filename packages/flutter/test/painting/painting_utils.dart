@@ -2,12 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+import 'dart:async' show Future;
 import 'dart:ui' as ui;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/src/foundation/binding.dart' show BindingBase;
+import 'package:flutter/src/painting/binding.dart' show PaintingBinding;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
+import 'package:flutter/src/services/binding.dart' show ServicesBinding;
 
 class PaintingBindingSpy extends BindingBase
     with SchedulerBinding, ServicesBinding, PaintingBinding {

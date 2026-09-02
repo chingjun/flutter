@@ -2,8 +2,19 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
+import 'dart:ui' show PointerDeviceKind;
+
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError, FlutterErrorDetails, FlutterExceptionHandler;
+import 'package:flutter/src/gestures/binding.dart' show GestureBinding;
+import 'package:flutter/src/gestures/constants.dart' show kDoubleTapTimeout;
+import 'package:flutter/src/gestures/drag_details.dart' show DragEndDetails, DragStartDetails, DragUpdateDetails;
+import 'package:flutter/src/gestures/events.dart' show PointerCancelEvent, PointerDownEvent, PointerMoveEvent, PointerUpEvent;
+import 'package:flutter/src/gestures/long_press.dart' show LongPressEndDetails, LongPressGestureRecognizer, LongPressMoveUpdateDetails, LongPressStartDetails;
+import 'package:flutter/src/gestures/monodrag.dart' show HorizontalDragGestureRecognizer, PanGestureRecognizer, VerticalDragGestureRecognizer;
+import 'package:flutter/src/gestures/multitap.dart' show DoubleTapGestureRecognizer;
+import 'package:flutter/src/gestures/recognizer.dart' show DragStartBehavior;
+import 'package:flutter/src/gestures/tap.dart' show TapDownDetails, TapGestureRecognizer, TapUpDetails;
+import 'package:flutter/src/gestures/tap_and_drag.dart' show BaseTapAndDragGestureRecognizer, TapAndDragGestureRecognizer, TapAndHorizontalDragGestureRecognizer, TapAndPanGestureRecognizer, TapDragDownDetails, TapDragEndDetails, TapDragStartDetails, TapDragUpDetails, TapDragUpdateDetails;
 import 'package:flutter_test/flutter_test.dart';
 
 import '../gestures/gesture_tester.dart';

@@ -2,11 +2,22 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:ui';
+import 'dart:ui' show PointerDeviceKind, SemanticsAction, SemanticsFlag, TextDirection;
 
-import 'package:flutter/gestures.dart' show DragStartBehavior;
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/gestures/recognizer.dart' show DragStartBehavior;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/drawer.dart' show Drawer;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold, ScaffoldState;
+import 'package:flutter/src/material/text_button.dart' show TextButton;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/widgets/basic.dart' show Align, Builder, Directionality, MouseRegion, SizedBox;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, Widget;
+import 'package:flutter/src/widgets/navigator.dart' show Navigator;
+import 'package:flutter/src/widgets/scroll_view.dart' show ListView;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'semantics_tester.dart';

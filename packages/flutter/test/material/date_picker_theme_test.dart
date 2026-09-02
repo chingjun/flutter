@@ -2,10 +2,50 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'dart:ui' show Color, Locale, PointerDeviceKind, RRect, Radius, Size, TextDirection;
+
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, DiagnosticsNode;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/app_bar.dart' show AppBar;
+import 'package:flutter/src/material/button_style.dart' show ButtonStyle;
+import 'package:flutter/src/material/calendar_date_picker.dart' show YearPicker;
+import 'package:flutter/src/material/color_scheme.dart' show ColorScheme;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/date.dart' show DatePickerEntryMode, DatePickerMode, DateTimeRange;
+import 'package:flutter/src/material/date_picker.dart' show DatePickerDialog, DateRangePickerDialog;
+import 'package:flutter/src/material/date_picker_theme.dart' show DatePickerTheme, DatePickerThemeData;
+import 'package:flutter/src/material/dialog.dart' show Dialog;
+import 'package:flutter/src/material/divider.dart' show Divider, VerticalDivider;
+import 'package:flutter/src/material/icons.dart' show Icons;
+import 'package:flutter/src/material/ink_decoration.dart' show Ink;
+import 'package:flutter/src/material/input_border.dart' show OutlineInputBorder, UnderlineInputBorder;
+import 'package:flutter/src/material/input_decorator.dart' show InputDecoration, InputDecorationTheme, InputDecorationThemeData;
+import 'package:flutter/src/material/material.dart' show Material, MaterialInkController;
+import 'package:flutter/src/material/material_state.dart' show MaterialStatePropertyAll;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/text_button.dart' show TextButton;
+import 'package:flutter/src/material/text_field.dart' show TextField;
+import 'package:flutter/src/material/text_theme.dart' show TextTheme;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/borders.dart' show BorderSide, OutlinedBorder;
+import 'package:flutter/src/painting/circle_border.dart' show CircleBorder;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
+import 'package:flutter/src/painting/shape_decoration.dart' show ShapeDecoration;
+import 'package:flutter/src/painting/stadium_border.dart' show StadiumBorder;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Center, Directionality;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/focus_scope.dart' show Focus;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateProperty;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

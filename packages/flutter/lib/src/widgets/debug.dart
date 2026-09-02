@@ -12,21 +12,18 @@
 /// @docImport 'widget_inspector.dart';
 library;
 
-import 'basic.dart';
-import 'framework.dart';
-import 'localizations.dart';
-import 'lookup_boundary.dart';
-import 'media_query.dart';
-import 'overlay.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorHint, ErrorSummary, FlutterError;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode;
+import 'package:flutter/src/widgets/basic.dart' show Directionality;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext;
+import 'package:flutter/src/widgets/localizations.dart' show Localizations, WidgetsLocalizations;
+import 'package:flutter/src/widgets/lookup_boundary.dart' show LookupBoundary;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/overlay.dart' show Overlay;
 
 export 'debug_flags.dart';
-// debugChildrenHaveDuplicateKeys, debugItemsHaveDuplicateKeys, and
-// debugWidgetBuilderValue are defined in framework.dart (to avoid a cyclic
-// import) and re-exported here for backward compatibility.
 export 'framework.dart'
     show debugChildrenHaveDuplicateKeys, debugItemsHaveDuplicateKeys, debugWidgetBuilderValue;
-// debugCheckHasTable is defined in table.dart (to avoid a cyclic import)
-// and re-exported here for backward compatibility.
 export 'table.dart' show debugCheckHasTable;
 
 // Examples can assume:

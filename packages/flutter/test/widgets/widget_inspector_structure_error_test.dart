@@ -2,8 +2,10 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, FlutterError, FlutterErrorDetails, FlutterExceptionHandler;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/widgets/binding.dart' show WidgetsFlutterBinding;
+import 'package:flutter/src/widgets/widget_inspector.dart' show WidgetInspectorService;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'widget_inspector_test_utils.dart';

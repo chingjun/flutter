@@ -2,12 +2,42 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
+import 'dart:ui' show Brightness, Color, PointerDeviceKind, SemanticsAction, SemanticsFlag, Size, TextDirection;
+
+import 'package:flutter/src/cupertino/app.dart' show CupertinoApp;
+import 'package:flutter/src/cupertino/button.dart' show CupertinoButton, CupertinoButtonSize;
+import 'package:flutter/src/cupertino/colors.dart' show CupertinoColors, CupertinoDynamicColor;
+import 'package:flutter/src/cupertino/constants.dart' show kCupertinoButtonDefaultIconSize, kCupertinoButtonMinSize, kCupertinoButtonPadding, kCupertinoButtonSizeBorderRadius, kCupertinoFocusColorBrightness, kCupertinoFocusColorOpacity, kCupertinoFocusColorSaturation;
+import 'package:flutter/src/cupertino/text_theme.dart' show CupertinoTextThemeData;
+import 'package:flutter/src/cupertino/theme.dart' show CupertinoTheme, CupertinoThemeData;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/borders.dart' show BorderSide;
+import 'package:flutter/src/painting/colors.dart' show HSLColor;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedSuperellipseBorder;
+import 'package:flutter/src/painting/shape_decoration.dart' show ShapeDecoration;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
+import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor, SystemMouseCursors;
+import 'package:flutter/src/widgets/basic.dart' show Align, Builder, Center, Directionality, SizedBox, StatefulBuilder;
+import 'package:flutter/src/widgets/container.dart' show DecoratedBox;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusHighlightStrategy, FocusNode;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StateSetter, Widget;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/icon_data.dart' show IconData;
+import 'package:flutter/src/widgets/icon_theme.dart' show IconTheme;
+import 'package:flutter/src/widgets/icon_theme_data.dart' show IconThemeData;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/rich_text.dart' show RichText;
+import 'package:flutter/src/widgets/scroll_view.dart' show ListView;
+import 'package:flutter/src/widgets/text.dart' show DefaultTextStyle, Text;
+import 'package:flutter/src/widgets/transitions.dart' show FadeTransition;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateMouseCursor, WidgetStateProperty, WidgetStatesConstraint;
 import 'package:flutter_test/flutter_test.dart';
 
 import '../widgets/semantics_tester.dart';

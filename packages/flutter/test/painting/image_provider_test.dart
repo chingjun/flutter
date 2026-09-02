@@ -4,12 +4,17 @@
 
 import 'dart:async';
 import 'dart:io';
-import 'dart:ui';
+import 'dart:typed_data' show ByteData, Uint8List;
+import 'dart:ui' show Codec, ImmutableBuffer;
 
 import 'package:file/memory.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError, FlutterErrorDetails, FlutterExceptionHandler;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/diagnostics.dart' show describeIdentity;
+import 'package:flutter/src/painting/binding.dart' show PaintingBinding, imageCache;
+import 'package:flutter/src/painting/image_provider.dart' show AssetBundleImageKey, ExactAssetImage, FileImage, ImageConfiguration, ImageProvider, MemoryImage, NetworkImage, ResizeImage;
+import 'package:flutter/src/painting/image_stream.dart' show ImageInfo, ImageStream, ImageStreamListener, MultiFrameImageStreamCompleter;
+import 'package:flutter/src/services/asset_bundle.dart' show CachingAssetBundle;
 import 'package:flutter_test/flutter_test.dart';
 
 import '../image_data.dart';

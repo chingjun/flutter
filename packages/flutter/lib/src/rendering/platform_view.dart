@@ -5,17 +5,31 @@
 /// @docImport 'package:flutter/widgets.dart';
 library;
 
+import 'dart:async' show Future;
 import 'dart:ui' as ui show SemanticsHitTestBehavior;
+import 'dart:ui' show Clip, Offset, Size;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/semantics.dart';
-import 'package:flutter/services.dart';
-
-import 'box.dart';
-import 'layer.dart';
-import 'object.dart';
+import 'package:flutter/src/foundation/basic_types.dart' show Factory;
+import 'package:flutter/src/foundation/collections.dart' show setEquals;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/gestures/arena.dart' show GestureDisposition;
+import 'package:flutter/src/gestures/binding.dart' show GestureBinding;
+import 'package:flutter/src/gestures/events.dart' show PointerDownEvent, PointerEvent, PointerHoverEvent;
+import 'package:flutter/src/gestures/hit_test.dart' show HitTestEntry, NativeHitTestTarget;
+import 'package:flutter/src/gestures/long_press.dart' show LongPressGestureRecognizer;
+import 'package:flutter/src/gestures/monodrag.dart' show DragGestureRecognizer;
+import 'package:flutter/src/gestures/recognizer.dart' show OneSequenceGestureRecognizer;
+import 'package:flutter/src/gestures/tap.dart' show TapGestureRecognizer;
+import 'package:flutter/src/gestures/team.dart' show GestureArenaTeam;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, BoxHitTestEntry, BoxHitTestResult, RenderBox;
+import 'package:flutter/src/rendering/layer.dart' show ClipRectLayer, LayerHandle, PlatformViewLayer, TextureLayer;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, PipelineOwner;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsConfiguration;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor;
+import 'package:flutter/src/services/mouse_tracking.dart' show MouseTrackerAnnotation, PointerEnterEventListener, PointerExitEventListener;
+import 'package:flutter/src/services/platform_views.dart' show AndroidViewController, AppKitViewController, DarwinPlatformViewController, PlatformViewController, UiKitViewController;
+import 'package:meta/meta.dart' show protected;
 
 /// How an embedded platform view behave during hit tests.
 enum PlatformViewHitTestBehavior {

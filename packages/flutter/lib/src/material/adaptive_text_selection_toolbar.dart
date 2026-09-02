@@ -7,16 +7,30 @@
 /// @docImport 'text_field.dart';
 library;
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show VoidCallback;
 
-import 'debug.dart';
-import 'desktop_text_selection_toolbar.dart';
-import 'desktop_text_selection_toolbar_button.dart';
-import 'material_localizations.dart';
-import 'text_selection_toolbar.dart';
-import 'text_selection_toolbar_text_button.dart';
-import 'theme.dart';
+import 'package:flutter/src/cupertino/desktop_text_selection_toolbar.dart' show CupertinoDesktopTextSelectionToolbar;
+import 'package:flutter/src/cupertino/desktop_text_selection_toolbar_button.dart' show CupertinoDesktopTextSelectionToolbarButton;
+import 'package:flutter/src/cupertino/text_selection_toolbar.dart' show CupertinoTextSelectionToolbar;
+import 'package:flutter/src/cupertino/text_selection_toolbar_button.dart' show CupertinoTextSelectionToolbarButton;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/material/debug.dart' show debugCheckHasMaterialLocalizations;
+import 'package:flutter/src/material/desktop_text_selection_toolbar.dart' show DesktopTextSelectionToolbar;
+import 'package:flutter/src/material/desktop_text_selection_toolbar_button.dart' show DesktopTextSelectionToolbarButton;
+import 'package:flutter/src/material/material_localizations.dart' show MaterialLocalizations;
+import 'package:flutter/src/material/text_selection_toolbar.dart' show TextSelectionToolbar;
+import 'package:flutter/src/material/text_selection_toolbar_text_button.dart' show TextSelectionToolbarTextButton;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/painting/alignment.dart' show AlignmentDirectional;
+import 'package:flutter/src/rendering/selection.dart' show SelectionGeometry;
+import 'package:flutter/src/widgets/basic.dart' show SizedBox;
+import 'package:flutter/src/widgets/context_menu_button_item.dart' show ContextMenuButtonItem, ContextMenuButtonType;
+import 'package:flutter/src/widgets/editable_text.dart' show EditableText, EditableTextState;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/selectable_region.dart' show SelectableRegion, SelectableRegionState;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/text_selection.dart' show ClipboardStatus;
+import 'package:flutter/src/widgets/text_selection_toolbar_anchors.dart' show TextSelectionToolbarAnchors;
 
 /// The default context menu for text selection for the current platform.
 ///

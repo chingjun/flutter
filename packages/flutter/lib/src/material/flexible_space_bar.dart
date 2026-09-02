@@ -8,14 +8,27 @@ library;
 
 import 'dart:math' as math;
 import 'dart:ui' as ui;
+import 'dart:ui' show Offset, TextDirection, clampDouble;
 
-import 'package:flutter/foundation.dart' show clampDouble;
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
-
-import 'colors.dart';
-import 'constants.dart';
-import 'theme.dart';
+import 'package:flutter/src/animation/curves.dart' show Interval;
+import 'package:flutter/src/animation/tween.dart' show Tween;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/constants.dart' show kToolbarHeight;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsetsDirectional, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/rendering/layer.dart' show OpacityLayer;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, RenderObject;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderOpacity;
+import 'package:flutter/src/widgets/basic.dart' show Align, BackdropFilter, ClipRect, ColoredBox, Directionality, Opacity, Padding, Positioned, Semantics, SizedBox, Stack, Transform;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedWidget, SingleChildRenderObjectWidget, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/layout_builder.dart' show LayoutBuilder;
+import 'package:flutter/src/widgets/text.dart' show DefaultTextStyle;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 /// The collapsing effect while the space bar collapses from its full size.
 enum CollapseMode {

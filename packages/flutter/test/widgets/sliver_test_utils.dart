@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/rendering/sliver.dart' show RenderSliver, SliverGeometry;
+import 'package:flutter/src/widgets/framework.dart' show GlobalKey;
 import 'package:flutter_test/flutter_test.dart';
 
 /// Verify that the [RenderSliver] identified by [key] has the expected

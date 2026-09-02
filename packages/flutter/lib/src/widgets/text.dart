@@ -14,17 +14,30 @@ library;
 
 import 'dart:math';
 import 'dart:ui' as ui show TextHeightBehavior;
+import 'dart:ui' show Color, FontWeight, Locale, Rect, TextAlign, TextDirection, TextHeightBehavior;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-
-import 'basic.dart';
-import 'default_selection_style.dart';
-import 'framework.dart';
-import 'inherited_theme.dart';
-import 'media_query.dart';
-import 'selectable_region.dart';
-import 'selection_container.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/constants.dart' show precisionErrorTolerance;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty, DiagnosticsTreeStyle, DoubleProperty, EnumProperty, FlagProperty, IntProperty, StringProperty;
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/painting/inline_span.dart' show InlineSpan;
+import 'package:flutter/src/painting/matrix_utils.dart' show MatrixUtils;
+import 'package:flutter/src/painting/strut_style.dart' show StrutStyle;
+import 'package:flutter/src/painting/text_painter.dart' show TextOverflow, TextWidthBasis;
+import 'package:flutter/src/painting/text_scaler.dart' show TextScaler;
+import 'package:flutter/src/painting/text_span.dart' show TextSpan;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/paragraph.dart' show RenderParagraph;
+import 'package:flutter/src/rendering/selection.dart' show ClearSelectionEvent, SelectParagraphSelectionEvent, Selectable, SelectedContentRange, SelectionEdgeUpdateEvent, SelectionEvent, SelectionEventType, SelectionGeometry, SelectionRegistrar, SelectionResult, TextGranularity;
+import 'package:flutter/src/services/mouse_cursor.dart' show SystemMouseCursors;
+import 'package:flutter/src/widgets/basic.dart' show Builder, ExcludeSemantics, MouseRegion, Semantics;
+import 'package:flutter/src/widgets/default_selection_style.dart' show DefaultSelectionStyle;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/inherited_theme.dart' show InheritedTheme;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/rich_text.dart' show RichText;
+import 'package:flutter/src/widgets/selectable_region.dart' show StaticSelectionContainerDelegate;
+import 'package:flutter/src/widgets/selection_container.dart' show SelectionContainer;
 
 // Examples can assume:
 // late BuildContext context;

@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/scheduler.dart';
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
 
 // flutter_ignore: deprecation_syntax (see analyze.dart)
 @Deprecated('scheduler_tester is not compatible with dart:async')

@@ -2,7 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color;
+
+import 'package:flutter/src/widgets/app.dart' show WidgetsApp;
+import 'package:flutter/src/widgets/banner.dart' show CheckedModeBanner;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/navigator.dart' show Navigator, RouteSettings;
+import 'package:flutter/src/widgets/performance_overlay.dart' show PerformanceOverlay;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'route_tester.dart';

@@ -5,8 +5,10 @@
 import 'dart:async';
 import 'dart:ui' as ui;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/painting.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show describeIdentity;
+import 'package:flutter/src/foundation/synchronous_future.dart' show SynchronousFuture;
+import 'package:flutter/src/painting/image_provider.dart' show DecoderBufferCallback, ImageConfiguration, ImageDecoderCallback, ImageProvider;
+import 'package:flutter/src/painting/image_stream.dart' show ImageErrorListener, ImageInfo, ImageStream, ImageStreamCompleter, OneFrameImageStreamCompleter;
 
 class TestImageProvider extends ImageProvider<TestImageProvider> {
   TestImageProvider(this.testImage);

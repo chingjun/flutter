@@ -2,7 +2,11 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/painting.dart';
+import 'dart:ui' show Color, Rect;
+
+import 'package:flutter/src/painting/borders.dart' show BorderSide, ShapeBorder;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/oval_border.dart' show OvalBorder;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

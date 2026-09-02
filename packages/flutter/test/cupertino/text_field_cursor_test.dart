@@ -8,8 +8,13 @@
 @TestOn('!chrome')
 library;
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Radius;
+
+import 'package:flutter/src/cupertino/app.dart' show CupertinoApp;
+import 'package:flutter/src/cupertino/text_field.dart' show CupertinoTextField;
+import 'package:flutter/src/rendering/editable.dart' show RenderEditable;
+import 'package:flutter/src/widgets/editable_text.dart' show EditableText, EditableTextState;
+import 'package:flutter/src/widgets/framework.dart' show Widget;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

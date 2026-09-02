@@ -2,15 +2,16 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+import 'dart:async' show Future;
 import 'dart:math' show max;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart'
-    show ContentSensitivity, PlatformException, SensitiveContentService;
-
-import 'async.dart' show AsyncSnapshot, ConnectionState, FutureBuilder;
-import 'basic.dart' show SizedBox;
-import 'framework.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, FlutterError, FlutterErrorDetails;
+import 'package:flutter/src/services/message_codec.dart' show PlatformException;
+import 'package:flutter/src/services/sensitive_content.dart' show ContentSensitivity, SensitiveContentService;
+import 'package:flutter/src/widgets/async.dart' show AsyncSnapshot, ConnectionState, FutureBuilder;
+import 'package:flutter/src/widgets/basic.dart' show SizedBox;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:meta/meta.dart' show visibleForTesting;
 
 /// Data structure used to track the [SensitiveContent] widgets in the
 /// widget tree.

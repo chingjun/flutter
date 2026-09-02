@@ -7,12 +7,14 @@
 /// @docImport 'box_decoration.dart';
 library;
 
-import 'package:flutter/foundation.dart';
+import 'dart:ui' show Canvas, Color, Offset, Paint, PaintingStyle, Path, RRect, Radius, Rect, TextDirection;
 
-import 'basic_types.dart';
-import 'border_radius.dart';
-import 'borders.dart';
-import 'edge_insets.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorSummary, FlutterError;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/borders.dart' show BorderSide, BorderStyle, ShapeBorder, paintBorder;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsDirectional, EdgeInsetsGeometry;
 
 // Examples can assume:
 // late BuildContext context;

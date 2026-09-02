@@ -2,7 +2,17 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show TextDirection;
+
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey, ValueKey;
+import 'package:flutter/src/widgets/automatic_keep_alive.dart' show AutomaticKeepAliveClientMixin;
+import 'package:flutter/src/widgets/basic.dart' show Center, Directionality, SizedBox;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/scroll_delegate.dart' show SliverChildBuilderDelegate, SliverChildListDelegate;
+import 'package:flutter/src/widgets/scroll_view.dart' show CustomScrollView;
+import 'package:flutter/src/widgets/sliver.dart' show SliverList;
+import 'package:flutter/src/widgets/sliver_fill.dart' show SliverFillViewport;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

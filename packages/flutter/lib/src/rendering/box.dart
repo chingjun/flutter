@@ -14,13 +14,21 @@ library;
 
 import 'dart:math' as math;
 import 'dart:ui' as ui show ViewConstraints, lerpDouble;
+import 'dart:ui' show Color, Offset, Paint, PaintingStyle, Path, Rect, Size, TextBaseline, clampDouble;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorHint, ErrorSummary, FlutterError, InformationCollector;
+import 'package:flutter/src/foundation/constants.dart' show kReleaseMode;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsNode, DiagnosticsProperty, DiagnosticsTreeStyle, describeIdentity, shortHash;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/foundation/timeline.dart' show FlutterTimeline;
+import 'package:flutter/src/gestures/events.dart' show PointerCancelEvent, PointerDownEvent, PointerEvent, PointerUpEvent;
+import 'package:flutter/src/gestures/hit_test.dart' show HitTestEntry, HitTestResult;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsetsGeometry;
+import 'package:flutter/src/painting/matrix_utils.dart' show MatrixUtils;
+import 'package:flutter/src/rendering/debug.dart' show debugCheckIntrinsicSizes, debugEnhanceLayoutTimelineArguments, debugPaintBaselinesEnabled, debugPaintPointersEnabled, debugPaintSizeEnabled, debugProfileLayoutsEnabled;
+import 'package:flutter/src/rendering/object.dart' show Constraints, ContainerParentDataMixin, ContainerRenderObjectMixin, PaintingContext, ParentData, PipelineOwner, RenderObject;
+import 'package:meta/meta.dart' show mustCallSuper, protected, visibleForOverriding, visibleForTesting;
 import 'package:vector_math/vector_math_64.dart' show Matrix4, Vector3;
-
-import 'debug.dart';
-import 'object.dart';
 
 // Examples can assume:
 // abstract class RenderBar extends RenderBox { }

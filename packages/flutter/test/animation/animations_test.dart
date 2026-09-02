@@ -2,7 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation, AnimationStatus;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/animations.dart' show AlwaysStoppedAnimation, AnimationMax, AnimationMean, AnimationMin, CurvedAnimation, ProxyAnimation, ReverseAnimation, TrainHoppingAnimation, kAlwaysCompleteAnimation, kAlwaysDismissedAnimation;
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves, Interval;
+import 'package:flutter/src/animation/tween.dart' show ConstantTween, CurveTween, Tween;
+import 'package:flutter/src/animation/tween_sequence.dart' show TweenSequence, TweenSequenceItem;
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding, WidgetsFlutterBinding;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:leak_tracker_flutter_testing/leak_tracker_flutter_testing.dart';
 

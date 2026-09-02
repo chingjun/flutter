@@ -7,9 +7,8 @@
 /// @docImport 'app.dart';
 library;
 
-import 'package:flutter/rendering.dart';
-
-import 'framework.dart';
+import 'package:flutter/src/rendering/performance_overlay.dart' show PerformanceOverlayOption, RenderPerformanceOverlay;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, LeafRenderObjectWidget;
 
 /// Displays performance statistics.
 ///

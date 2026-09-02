@@ -2,9 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
-import 'colors.dart';
+import 'dart:ui' show Color, Shadow;
+
+import 'package:flutter/src/cupertino/colors.dart' show CupertinoDynamicColor, createCupertinoColorProperty;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext;
+import 'package:flutter/src/widgets/icon_theme_data.dart' show IconThemeData;
 
 /// An [IconThemeData] subclass that automatically resolves its [color] when retrieved
 /// using [IconTheme.of].

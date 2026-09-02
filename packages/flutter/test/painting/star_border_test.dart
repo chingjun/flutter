@@ -5,7 +5,20 @@
 @Tags(<String>['reduced-test-set'])
 library;
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color, Radius, TextDirection;
+
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/borders.dart' show BorderSide, BorderStyle, ShapeBorder;
+import 'package:flutter/src/painting/circle_border.dart' show CircleBorder;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
+import 'package:flutter/src/painting/shape_decoration.dart' show ShapeDecoration;
+import 'package:flutter/src/painting/stadium_border.dart' show StadiumBorder;
+import 'package:flutter/src/painting/star_border.dart' show StarBorder;
+import 'package:flutter/src/rendering/stack.dart' show RelativeRect;
+import 'package:flutter/src/widgets/basic.dart' show Center, Directionality, Positioned, SizedBox, Stack;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show Widget;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

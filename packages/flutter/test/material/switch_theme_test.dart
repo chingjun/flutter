@@ -2,9 +2,27 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Color, PointerDeviceKind, Size;
+
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, DiagnosticsNode;
+import 'package:flutter/src/gestures/recognizer.dart' show DragStartBehavior;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/icons.dart' show Icons;
+import 'package:flutter/src/material/material.dart' show Material, MaterialInkController;
+import 'package:flutter/src/material/material_state.dart' show MaterialStatePropertyAll;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/switch.dart' show Switch;
+import 'package:flutter/src/material/switch_theme.dart' show SwitchTheme, SwitchThemeData;
+import 'package:flutter/src/material/theme_data.dart' show MaterialTapTargetSize, ThemeData;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor, SystemMouseCursors;
+import 'package:flutter/src/widgets/basic.dart' show Center, SizedBox;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusHighlightStrategy;
+import 'package:flutter/src/widgets/framework.dart' show Widget;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/icon_data.dart' show IconData;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateProperty;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

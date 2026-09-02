@@ -5,9 +5,24 @@
 @Tags(<String>['reduced-test-set'])
 library;
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import 'dart:ui' show Color, Rect;
+
+import 'package:flutter/src/cupertino/magnifier.dart' show CupertinoTextMagnifier;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/magnifier.dart' show Magnifier, TextMagnifier;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/widgets/basic.dart' show Center, ColoredBox, Positioned;
+import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
+import 'package:flutter/src/widgets/implicit_animations.dart' show AnimatedPositioned;
+import 'package:flutter/src/widgets/magnifier.dart' show MagnifierController, MagnifierInfo;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:listen/listen.dart' show ValueNotifier;
 
 void main() {
   final magnifierController = MagnifierController();

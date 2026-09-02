@@ -2,8 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_view.dart' show ListView;
+import 'package:flutter/src/widgets/selectable_region.dart' show SelectableRegion;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/text_selection.dart' show emptyTextSelectionControls;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

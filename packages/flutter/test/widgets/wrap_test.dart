@@ -2,8 +2,18 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Clip, Color, Size, TextBaseline, TextDirection;
+
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/basic_types.dart' show Axis, VerticalDirection;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior;
+import 'package:flutter/src/rendering/wrap.dart' show RenderWrap, WrapAlignment, WrapCrossAlignment;
+import 'package:flutter/src/widgets/basic.dart' show Align, Baseline, Center, ColoredBox, Column, Directionality, IntrinsicHeight, IntrinsicWidth, Row, SizedBox, Wrap;
+import 'package:flutter/src/widgets/framework.dart' show Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/text.dart' show DefaultTextStyle, Text;
 import 'package:flutter_test/flutter_test.dart';
 
 void verify(WidgetTester tester, List<Offset> answerKey) {

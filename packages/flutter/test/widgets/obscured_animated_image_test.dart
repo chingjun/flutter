@@ -5,8 +5,12 @@
 import 'dart:typed_data';
 import 'dart:ui' as ui show Image;
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/painting/binding.dart' show imageCache;
+import 'package:flutter/src/rendering/image.dart' show RenderImage;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, WidgetBuilder;
+import 'package:flutter/src/widgets/image.dart' show Image;
+import 'package:flutter/src/widgets/navigator.dart' show Navigator;
 import 'package:flutter_test/flutter_test.dart';
 
 import '../image_data.dart';

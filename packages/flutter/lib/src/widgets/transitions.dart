@@ -7,13 +7,26 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show FilterQuality, Offset, Rect, Size, TextAlign, TextDirection;
 
-import 'package:flutter/rendering.dart';
-
-import 'basic.dart';
-import 'container.dart';
-import 'framework.dart';
-import 'text.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/animation/tween.dart' show Tween;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty, FlagProperty;
+import 'package:flutter/src/painting/alignment.dart' show Alignment, AlignmentDirectional, AlignmentGeometry;
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/painting/decoration.dart' show Decoration;
+import 'package:flutter/src/painting/text_painter.dart' show TextOverflow;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/proxy_box.dart' show DecorationPosition, RenderAnimatedOpacity;
+import 'package:flutter/src/rendering/proxy_sliver.dart' show RenderSliverAnimatedOpacity;
+import 'package:flutter/src/rendering/stack.dart' show RelativeRect;
+import 'package:flutter/src/widgets/basic.dart' show Align, ClipRect, FractionalTranslation, Positioned, Transform;
+import 'package:flutter/src/widgets/container.dart' show DecoratedBox;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, SingleChildRenderObjectWidget, State, StatefulWidget, TransitionBuilder, Widget;
+import 'package:flutter/src/widgets/text.dart' show DefaultTextStyle;
+import 'package:listen/listen.dart' show Listenable;
+import 'package:meta/meta.dart' show protected;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 export 'package:flutter/rendering.dart' show RelativeRect;
 

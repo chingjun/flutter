@@ -2,7 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/gestures.dart';
+import 'dart:ui' show PointerDeviceKind;
+
+import 'package:flutter/src/gestures/constants.dart' show kLongPressTimeout, kPressTimeout;
+import 'package:flutter/src/gestures/events.dart' show PointerDownEvent;
+import 'package:flutter/src/gestures/multitap.dart' show MultiTapGestureRecognizer;
+import 'package:flutter/src/gestures/tap.dart' show TapDownDetails, TapUpDetails;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'gesture_tester.dart';

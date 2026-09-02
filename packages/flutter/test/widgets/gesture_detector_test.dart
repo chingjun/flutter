@@ -2,10 +2,31 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color, PointerDeviceKind, SemanticsAction, TextDirection;
+
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, DiagnosticsNode;
+import 'package:flutter/src/foundation/key.dart' show UniqueKey;
+import 'package:flutter/src/gestures/constants.dart' show kDoubleTapMinTime, kLongPressTimeout, kPressTimeout;
+import 'package:flutter/src/gestures/drag_details.dart' show DragDownDetails, DragEndDetails, DragStartDetails, DragUpdateDetails;
+import 'package:flutter/src/gestures/events.dart' show PointerDownEvent, PointerMoveEvent, kPrimaryButton, kSecondaryButton, kTertiaryButton;
+import 'package:flutter/src/gestures/long_press.dart' show LongPressDownDetails, LongPressEndDetails, LongPressGestureRecognizer, LongPressStartDetails;
+import 'package:flutter/src/gestures/monodrag.dart' show HorizontalDragGestureRecognizer, PanGestureRecognizer, VerticalDragGestureRecognizer;
+import 'package:flutter/src/gestures/recognizer.dart' show DragStartBehavior;
+import 'package:flutter/src/gestures/tap.dart' show TapDownDetails, TapGestureRecognizer, TapUpDetails;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/matrix_utils.dart' show MatrixUtils;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior, RenderSemanticsGestureHandler;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsNode, SemanticsOwner;
+import 'package:flutter/src/widgets/basic.dart' show Center, Directionality, Listener, Padding, SizedBox, Stack;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show GlobalKey, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector, GestureRecognizerFactory, GestureRecognizerFactoryWithHandlers, RawGestureDetector, RawGestureDetectorState, SemanticsGestureDelegate;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 void main() {
   const forcePressOffset = Offset(400.0, 50.0);

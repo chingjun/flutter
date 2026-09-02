@@ -6,10 +6,13 @@
 /// @docImport 'theme.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color, FontWeight, TextDecoration;
 
-import 'colors.dart';
+import 'package:flutter/src/cupertino/colors.dart' show CupertinoColors, CupertinoDynamicColor;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsProperty;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext;
+import 'package:meta/meta.dart' show immutable;
 
 // Please update _TextThemeDefaultsBuilder accordingly after changing the default
 // color here, as their implementation depends on the default value of the color

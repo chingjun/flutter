@@ -2,12 +2,36 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
+import 'dart:ui' show Color, PointerDeviceKind, Rect, Size, TextBox, TextPosition;
+
+import 'package:flutter/src/cupertino/desktop_text_selection.dart' show cupertinoDesktopTextSelectionHandleControls;
+import 'package:flutter/src/cupertino/text_selection.dart' show cupertinoTextSelectionHandleControls;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/gestures/constants.dart' show kDoubleTapTimeout;
+import 'package:flutter/src/material/adaptive_text_selection_toolbar.dart' show AdaptiveTextSelectionToolbar;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/desktop_text_selection.dart' show desktopTextSelectionHandleControls;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/selection_area.dart' show SelectionArea;
+import 'package:flutter/src/material/text_selection.dart' show materialTextSelectionHandleControls;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/box_fit.dart' show BoxFit;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/paragraph.dart' show RenderParagraph;
+import 'package:flutter/src/rendering/selection.dart' show SelectedContent;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:flutter/src/services/text_editing.dart' show TextSelection;
+import 'package:flutter/src/widgets/basic.dart' show Center, Column, CustomPaint, FittedBox, Padding, SizedBox;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, Widget;
+import 'package:flutter/src/widgets/overlay.dart' show Overlay;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/rich_text.dart' show RichText;
+import 'package:flutter/src/widgets/selectable_region.dart' show SelectableRegion, SelectableRegionState;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'process_text_utils.dart';

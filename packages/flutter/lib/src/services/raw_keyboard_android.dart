@@ -5,13 +5,12 @@
 /// @docImport 'hardware_keyboard.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-
-import 'keyboard_maps.g.dart';
-import 'raw_keyboard.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty;
+import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey, PhysicalKeyboardKey;
+import 'package:flutter/src/services/keyboard_maps.g.dart' show kAndroidNumPadMap, kAndroidToLogicalKey, kAndroidToPhysicalKey;
+import 'package:flutter/src/services/raw_keyboard.dart' show KeyboardSide, ModifierKey, RawKeyEventData;
 
 export 'package:flutter/foundation.dart' show DiagnosticPropertiesBuilder;
-
 export 'keyboard_key.g.dart' show LogicalKeyboardKey, PhysicalKeyboardKey;
 
 // Android sets the 0x80000000 bit on a character to indicate that it is a

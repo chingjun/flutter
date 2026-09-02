@@ -13,7 +13,9 @@
 /// @docImport 'typography.dart';
 library;
 
-import 'package:flutter/painting.dart';
+import 'dart:ui' show Color;
+
+import 'package:flutter/src/painting/colors.dart' show ColorSwatch;
 
 /// Defines a single color as well a color swatch with ten shades of the color.
 ///

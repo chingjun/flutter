@@ -2,11 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
+import 'dart:ui' show Color;
 
-import 'basic.dart';
-import 'framework.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, StringProperty;
+import 'package:flutter/src/painting/colors.dart' show ColorProperty;
+import 'package:flutter/src/services/system_chrome.dart' show ApplicationSwitcherDescription, SystemChrome;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
 
 /// A widget that describes this app in the operating system.
 class Title extends StatefulWidget {

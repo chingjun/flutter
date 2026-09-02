@@ -3,8 +3,11 @@
 // found in the LICENSE file.
 
 import 'dart:convert';
+import 'dart:typed_data' show ByteData;
 
-import 'package:flutter/services.dart';
+import 'package:flutter/src/services/asset_bundle.dart' show AssetBundle;
+import 'package:flutter/src/services/asset_manifest.dart' show AssetManifest, AssetMetadata;
+import 'package:flutter/src/services/message_codecs.dart' show StandardMessageCodec;
 import 'package:flutter_test/flutter_test.dart';
 
 class TestAssetBundle extends AssetBundle {

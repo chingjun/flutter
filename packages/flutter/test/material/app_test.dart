@@ -2,13 +2,59 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
+import 'dart:typed_data' show ByteData;
+import 'dart:ui' show Brightness, Clip, Color, Rect, Size;
+
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/animation/animation_style.dart' show AnimationStyle;
+import 'package:flutter/src/animation/curves.dart' show Curves;
+import 'package:flutter/src/animation/tween.dart' show Tween;
+import 'package:flutter/src/cupertino/localizations.dart' show CupertinoLocalizations;
+import 'package:flutter/src/foundation/key.dart' show UniqueKey, ValueKey;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/foundation/synchronous_future.dart' show SynchronousFuture;
+import 'package:flutter/src/material/app.dart' show MaterialApp, MaterialScrollBehavior, ThemeMode;
+import 'package:flutter/src/material/arc.dart' show MaterialRectArcTween;
+import 'package:flutter/src/material/color_scheme.dart' show ColorScheme;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/elevated_button.dart' show ElevatedButton;
+import 'package:flutter/src/material/material.dart' show Material;
+import 'package:flutter/src/material/material_localizations.dart' show MaterialLocalizations;
+import 'package:flutter/src/material/page.dart' show MaterialPage;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/text_field.dart' show TextField;
+import 'package:flutter/src/material/theme.dart' show AnimatedTheme, Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/basic_types.dart' show Axis, AxisDirection;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/text_scaler.dart' show TextScaler;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderClipRect;
+import 'package:flutter/src/services/message_codec.dart' show MethodCall;
+import 'package:flutter/src/services/message_codecs.dart' show JSONMethodCodec;
+import 'package:flutter/src/widgets/app.dart' show WidgetsApp;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Center, Column, CustomPaint, Opacity, Padding, SizedBox, UnconstrainedBox;
+import 'package:flutter/src/widgets/binding.dart' show RouteInformation;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode, FocusScopeNode;
+import 'package:flutter/src/widgets/focus_scope.dart' show FocusScope;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StatefulWidget, Widget, WidgetBuilder;
+import 'package:flutter/src/widgets/heroes.dart' show HeroController;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/navigator.dart' show NavigationNotification, Navigator, NavigatorState, Page, Route, RouteSettings;
+import 'package:flutter/src/widgets/overscroll_indicator.dart' show GlowingOverscrollIndicator, StretchingOverscrollIndicator;
+import 'package:flutter/src/widgets/pages.dart' show PageRouteBuilder;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/router.dart' show PlatformRouteInformationProvider, PopNavigatorRouterDelegateMixin, RootBackButtonDispatcher, RouteInformationParser, RouterConfig, RouterDelegate;
+import 'package:flutter/src/widgets/scroll_configuration.dart' show ScrollBehavior, ScrollConfiguration, ScrollViewKeyboardDismissBehavior;
+import 'package:flutter/src/widgets/scroll_physics.dart' show NeverScrollableScrollPhysics, ScrollPhysics;
+import 'package:flutter/src/widgets/scroll_view.dart' show ListView;
+import 'package:flutter/src/widgets/scrollable_helpers.dart' show ScrollableDetails;
+import 'package:flutter/src/widgets/single_child_scroll_view.dart' show SingleChildScrollView;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:leak_tracker_flutter_testing/leak_tracker_flutter_testing.dart';
+import 'package:listen/listen.dart' show ChangeNotifier;
 
 class StateMarker extends StatefulWidget {
   const StateMarker({super.key, this.child});

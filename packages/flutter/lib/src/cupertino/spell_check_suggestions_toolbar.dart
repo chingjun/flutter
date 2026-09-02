@@ -5,14 +5,21 @@
 /// @docImport 'package:flutter/material.dart';
 library;
 
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart' show SelectionChangedCause, SuggestionSpan;
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show TextRange;
 
-import 'debug.dart';
-import 'localizations.dart';
-import 'text_selection_toolbar.dart';
-import 'text_selection_toolbar_button.dart';
+import 'package:flutter/src/cupertino/debug.dart' show debugCheckHasCupertinoLocalizations;
+import 'package:flutter/src/cupertino/localizations.dart' show CupertinoLocalizations;
+import 'package:flutter/src/cupertino/text_selection_toolbar.dart' show CupertinoTextSelectionToolbar;
+import 'package:flutter/src/cupertino/text_selection_toolbar_button.dart' show CupertinoTextSelectionToolbarButton;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
+import 'package:flutter/src/services/spell_check.dart' show SuggestionSpan;
+import 'package:flutter/src/services/text_editing.dart' show TextSelection;
+import 'package:flutter/src/services/text_input.dart' show SelectionChangedCause, TextEditingValue;
+import 'package:flutter/src/widgets/basic.dart' show SizedBox;
+import 'package:flutter/src/widgets/context_menu_button_item.dart' show ContextMenuButtonItem;
+import 'package:flutter/src/widgets/editable_text.dart' show EditableTextState;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/text_selection_toolbar_anchors.dart' show TextSelectionToolbarAnchors;
 
 /// iOS only shows 3 spell check suggestions in the toolbar.
 const int _kMaxSuggestions = 3;

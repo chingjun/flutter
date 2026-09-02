@@ -2,7 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/painting/image_provider.dart' show ExactAssetImage;
+import 'package:flutter/src/painting/image_resolution.dart' show AssetImage;
+import 'package:flutter/src/widgets/image.dart' show Image;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

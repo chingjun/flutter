@@ -2,7 +2,36 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/cupertino.dart';
+import 'dart:ui' show Brightness, Color, FontWeight, Radius, Size, TextDirection;
+
+import 'package:flutter/src/cupertino/app.dart' show CupertinoApp;
+import 'package:flutter/src/cupertino/colors.dart' show CupertinoColors;
+import 'package:flutter/src/cupertino/icons.dart' show CupertinoIcons;
+import 'package:flutter/src/cupertino/nav_bar.dart' show CupertinoSliverNavigationBar;
+import 'package:flutter/src/cupertino/page_scaffold.dart' show CupertinoPageScaffold;
+import 'package:flutter/src/cupertino/search_field.dart' show CupertinoSearchTextField;
+import 'package:flutter/src/cupertino/text_field.dart' show CupertinoTextField, OverlayVisibilityMode;
+import 'package:flutter/src/cupertino/theme.dart' show CupertinoThemeData;
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/services/text_editing.dart' show TextSelection;
+import 'package:flutter/src/services/text_input.dart' show SmartDashesType, SmartQuotesType, TextInputType;
+import 'package:flutter/src/widgets/basic.dart' show Center, Directionality, Opacity, SizedBox, SliverToBoxAdapter, StatefulBuilder;
+import 'package:flutter/src/widgets/container.dart' show DecoratedBox;
+import 'package:flutter/src/widgets/editable_text.dart' show EditableText, TextEditingController;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StateSetter, Widget;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/icon_data.dart' show IconData;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/rich_text.dart' show RichText;
+import 'package:flutter/src/widgets/scroll_view.dart' show CustomScrollView;
+import 'package:flutter/src/widgets/sliver_fill.dart' show SliverFillRemaining;
+import 'package:flutter/src/widgets/sliver_resizing_header.dart' show SliverResizingHeader;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

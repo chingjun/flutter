@@ -21,15 +21,23 @@ library;
 import 'dart:collection' show HashMap, SplayTreeMap;
 import 'dart:math' as math;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty, FlagProperty;
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/rendering/proxy_sliver.dart' show RenderProxySliver, RenderSliverConstrainedCrossAxis, RenderSliverIgnorePointer, RenderSliverOffstage, RenderSliverOpacity;
+import 'package:flutter/src/rendering/sliver.dart' show ItemExtentBuilder, RenderSliver, SliverConstraints, SliverPhysicalContainerParentData, SliverPhysicalParentData;
+import 'package:flutter/src/rendering/sliver_fixed_extent_list.dart' show RenderSliverFixedExtentList, RenderSliverVariedExtentList;
+import 'package:flutter/src/rendering/sliver_grid.dart' show RenderSliverGrid, SliverGridDelegate, SliverGridDelegateWithFixedCrossAxisCount, SliverGridDelegateWithMaxCrossAxisExtent;
+import 'package:flutter/src/rendering/sliver_group.dart' show RenderSliverCrossAxisGroup, RenderSliverMainAxisGroup;
+import 'package:flutter/src/rendering/sliver_list.dart' show RenderSliverList;
+import 'package:flutter/src/rendering/sliver_multi_box_adaptor.dart' show RenderSliverBoxChildManager, RenderSliverMultiBoxAdaptor, RenderSliverWithKeepAliveMixin, SliverMultiBoxAdaptorParentData;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, ElementVisitor, MultiChildRenderObjectElement, MultiChildRenderObjectWidget, NullableIndexedWidgetBuilder, ParentDataWidget, RenderObjectElement, RenderObjectWidget, SingleChildRenderObjectElement, SingleChildRenderObjectWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/scroll_delegate.dart' show ChildIndexGetter, SliverChildBuilderDelegate, SliverChildDelegate, SliverChildListDelegate;
 
-import 'basic.dart';
-import 'framework.dart';
-import 'scroll_delegate.dart';
-
-// KeepAlive is defined in automatic_keep_alive.dart (to avoid a cyclic import)
-// and re-exported here for backward compatibility.
 export 'automatic_keep_alive.dart' show KeepAlive;
 
 /// A base class for slivers that have [KeepAlive] children.

@@ -2,11 +2,35 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color, PointerDeviceKind, Rect, SemanticsAction, SemanticsFlag, TextDirection;
+
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey, ValueKey;
+import 'package:flutter/src/gestures/constants.dart' show kLongPressTimeout;
+import 'package:flutter/src/gestures/drag_details.dart' show DragUpdateDetails;
+import 'package:flutter/src/gestures/events.dart' show kPrimaryButton, kSecondaryButton, kTertiaryButton;
+import 'package:flutter/src/gestures/recognizer.dart' show DragStartBehavior;
+import 'package:flutter/src/gestures/velocity_tracker.dart' show Velocity;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsTag;
+import 'package:flutter/src/services/message_codec.dart' show MethodCall;
+import 'package:flutter/src/services/mouse_cursor.dart' show SystemMouseCursors;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:flutter/src/widgets/basic.dart' show Align, Center, Column, Directionality, Expanded, IgnorePointer, Listener, MetaData, MouseRegion, Positioned, SizedBox, Stack, Transform;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/drag_target.dart' show DragTarget, DragTargetDetails, Draggable, DraggableDetails, LongPressDraggable;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/navigator.dart' show Navigator, NavigatorState, RouteSettings;
+import 'package:flutter/src/widgets/overlay.dart' show Overlay, OverlayEntry;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/scroll_view.dart' show ListView;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/value_listenable_builder.dart' show ValueListenableBuilder;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:listen/listen.dart' show ValueNotifier;
 
 import 'route_tester.dart';
 import 'semantics_tester.dart';

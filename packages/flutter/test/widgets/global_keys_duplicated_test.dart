@@ -2,8 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show TextDirection;
+
+import 'package:flutter/src/foundation/diagnostics.dart' show describeIdentity;
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/widgets/basic.dart' show ConstrainedBox, LimitedBox, Stack, StatefulBuilder;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalObjectKey, StateSetter, StatelessWidget, Widget;
 import 'package:flutter_test/flutter_test.dart';
 
 // There's also some duplicate GlobalKey tests in the framework_test.dart file.

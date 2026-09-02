@@ -3,9 +3,12 @@
 // found in the LICENSE file.
 
 import 'dart:ui' as ui;
+import 'dart:ui' show VoidCallback;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
+import 'package:flutter/src/foundation/binding.dart' show BindingBase;
+import 'package:flutter/src/gestures/binding.dart' show GestureBinding;
+import 'package:flutter/src/gestures/events.dart' show PointerDownEvent, PointerEvent, PointerUpEvent;
+import 'package:flutter/src/gestures/hit_test.dart' show HitTestEntry;
 import 'package:flutter_test/flutter_test.dart';
 
 typedef HandleEventCallback = void Function(PointerEvent event);

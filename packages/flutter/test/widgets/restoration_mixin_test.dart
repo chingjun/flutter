@@ -2,7 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show TextDirection, VoidCallback;
+
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/services/restoration.dart' show RestorationBucket;
+import 'package:flutter/src/widgets/basic.dart' show Row;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/restoration.dart' show RestorableProperty, RestorationMixin, RestorationScope, RootRestorationScope, UnmanagedRestorationScope;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'restoration.dart';

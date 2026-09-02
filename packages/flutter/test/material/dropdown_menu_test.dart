@@ -2,12 +2,62 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:ui';
+import 'dart:ui' show Color, FontStyle, FontWeight, PointerDeviceKind, Radius, Rect, SemanticsAction, SemanticsFlag, SemanticsInputType, Size, TextAlign, TextDecoration, TextDirection;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/key.dart' show Key, ValueKey;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/button_style.dart' show ButtonStyle;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/dropdown_menu.dart' show DropdownMenu, DropdownMenuCloseBehavior, DropdownMenuEntry, SearchCallback;
+import 'package:flutter/src/material/elevated_button.dart' show ElevatedButton;
+import 'package:flutter/src/material/icon_button.dart' show IconButton;
+import 'package:flutter/src/material/icons.dart' show Icons;
+import 'package:flutter/src/material/input_border.dart' show OutlineInputBorder;
+import 'package:flutter/src/material/input_decorator.dart' show InputDecoration, InputDecorationTheme, InputDecorator;
+import 'package:flutter/src/material/material.dart' show Material;
+import 'package:flutter/src/material/menu_anchor.dart' show MenuAnchor, MenuItemButton;
+import 'package:flutter/src/material/menu_button_theme.dart' show MenuButtonThemeData;
+import 'package:flutter/src/material/menu_style.dart' show MenuStyle;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/scrollbar.dart' show Scrollbar;
+import 'package:flutter/src/material/text_button.dart' show TextButton;
+import 'package:flutter/src/material/text_field.dart' show TextField;
+import 'package:flutter/src/material/text_theme.dart' show TextTheme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/alignment.dart' show Alignment, AlignmentGeometry;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsDirectional, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/rendering/paragraph.dart' show RenderParagraph;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderProxyBox;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsNode;
+import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
+import 'package:flutter/src/services/mouse_cursor.dart' show SystemMouseCursors;
+import 'package:flutter/src/services/text_editing.dart' show TextSelection;
+import 'package:flutter/src/services/text_formatter.dart' show FilteringTextInputFormatter, TextInputFormatter;
+import 'package:flutter/src/services/text_input.dart' show TextInputType;
+import 'package:flutter/src/widgets/basic.dart' show Align, Center, Column, Directionality, Expanded, Padding, Row, SizedBox, StatefulBuilder;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/editable_text.dart' show EditableText, EditableTextState, TextEditingController;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode, primaryFocus;
+import 'package:flutter/src/widgets/focus_scope.dart' show Focus;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, SingleChildRenderObjectWidget, StateSetter, StatelessElement, Widget;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/raw_menu_anchor.dart' show MenuController;
+import 'package:flutter/src/widgets/rich_text.dart' show RichText;
+import 'package:flutter/src/widgets/safe_area.dart' show SafeArea;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_view.dart' show ListView;
+import 'package:flutter/src/widgets/single_child_scroll_view.dart' show SingleChildScrollView;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateProperty, WidgetStatePropertyAll;
 import 'package:flutter_test/flutter_test.dart';
 
 import '../widgets/semantics_tester.dart';

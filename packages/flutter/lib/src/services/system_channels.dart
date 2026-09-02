@@ -22,10 +22,8 @@
 /// @docImport 'text_input.dart';
 library;
 
-import 'dart:ui';
-
-import 'message_codecs.dart';
-import 'platform_channel.dart';
+import 'package:flutter/src/services/message_codecs.dart' show JSONMessageCodec, JSONMethodCodec, StandardMessageCodec, StringCodec;
+import 'package:flutter/src/services/platform_channel.dart' show BasicMessageChannel, MethodChannel, OptionalMethodChannel;
 
 export 'platform_channel.dart' show BasicMessageChannel, MethodChannel;
 

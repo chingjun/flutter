@@ -2,9 +2,44 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/gestures.dart' show DragStartBehavior;
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Color, Size;
+
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel;
+import 'package:flutter/src/gestures/recognizer.dart' show DragStartBehavior;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/card.dart' show Card;
+import 'package:flutter/src/material/checkbox.dart' show Checkbox;
+import 'package:flutter/src/material/color_scheme.dart' show ColorScheme;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/data_table.dart' show DataCell, DataColumn, DataRow, DataTable;
+import 'package:flutter/src/material/data_table_source.dart' show DataTableSource;
+import 'package:flutter/src/material/data_table_theme.dart' show DataTableThemeData;
+import 'package:flutter/src/material/elevated_button.dart' show ElevatedButton;
+import 'package:flutter/src/material/icon_button.dart' show IconButton;
+import 'package:flutter/src/material/icons.dart' show Icons;
+import 'package:flutter/src/material/material.dart' show Material;
+import 'package:flutter/src/material/material_state.dart' show MaterialStatePropertyAll;
+import 'package:flutter/src/material/paginated_data_table.dart' show PaginatedDataTable, PaginatedDataTableState;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/box_border.dart' show Border;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/paragraph.dart' show RenderParagraph;
+import 'package:flutter/src/widgets/basic.dart' show Align, Center, Padding, SizedBox;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show Widget;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/overflow_bar.dart' show OverflowBar;
+import 'package:flutter/src/widgets/primary_scroll_controller.dart' show PrimaryScrollController;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scrollable.dart' show Scrollable;
+import 'package:flutter/src/widgets/table.dart' show Table, TableRow;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateProperty;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'data_table_test_utils.dart';

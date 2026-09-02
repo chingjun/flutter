@@ -9,31 +9,36 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show Clip;
 
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-
-import 'basic.dart';
-import 'debug.dart';
-import 'focus_manager.dart';
-import 'focus_scope.dart';
-import 'framework.dart';
-import 'media_query.dart';
-import 'notification_listener.dart';
-import 'primary_scroll_controller.dart';
-import 'scroll_configuration.dart';
-import 'scroll_controller.dart';
-import 'scroll_delegate.dart';
-import 'scroll_notification.dart';
-import 'scroll_physics.dart';
-import 'scrollable.dart';
-import 'scrollable_helpers.dart';
-import 'sliver.dart';
-import 'sliver_prototype_extent_list.dart';
-import 'viewport.dart';
-
-// Examples can assume:
-// late int itemCount;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty, DoubleProperty, EnumProperty, FlagProperty;
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/gestures/recognizer.dart' show DragStartBehavior;
+import 'package:flutter/src/painting/basic_types.dart' show Axis, AxisDirection;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsGeometry;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior;
+import 'package:flutter/src/rendering/sliver.dart' show ItemExtentBuilder;
+import 'package:flutter/src/rendering/sliver_grid.dart' show SliverGridDelegate, SliverGridDelegateWithFixedCrossAxisCount, SliverGridDelegateWithMaxCrossAxisExtent;
+import 'package:flutter/src/rendering/viewport.dart' show ScrollCacheExtent, SliverPaintOrder;
+import 'package:flutter/src/rendering/viewport_offset.dart' show ViewportOffset;
+import 'package:flutter/src/widgets/basic.dart' show SliverPadding, getAxisDirectionFromAxisReverseAndDirectionality;
+import 'package:flutter/src/widgets/debug.dart' show debugCheckHasDirectionality;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusManager, FocusScopeNode;
+import 'package:flutter/src/widgets/focus_scope.dart' show FocusScope;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, IndexedWidgetBuilder, NullableIndexedWidgetBuilder, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/notification_listener.dart' show NotificationListener;
+import 'package:flutter/src/widgets/primary_scroll_controller.dart' show PrimaryScrollController;
+import 'package:flutter/src/widgets/scroll_configuration.dart' show ScrollBehavior, ScrollConfiguration, ScrollViewKeyboardDismissBehavior;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_delegate.dart' show ChildIndexGetter, SliverChildBuilderDelegate, SliverChildDelegate, SliverChildListDelegate;
+import 'package:flutter/src/widgets/scroll_notification.dart' show ScrollUpdateNotification;
+import 'package:flutter/src/widgets/scroll_physics.dart' show AlwaysScrollableScrollPhysics, ScrollPhysics;
+import 'package:flutter/src/widgets/scrollable.dart' show Scrollable;
+import 'package:flutter/src/widgets/sliver.dart' show SliverFixedExtentList, SliverGrid, SliverList, SliverVariedExtentList;
+import 'package:flutter/src/widgets/sliver_prototype_extent_list.dart' show SliverPrototypeExtentList;
+import 'package:flutter/src/widgets/viewport.dart' show ShrinkWrappingViewport, Viewport;
+import 'package:meta/meta.dart' show protected;
 
 export 'scroll_configuration.dart' show ScrollViewKeyboardDismissBehavior;
 

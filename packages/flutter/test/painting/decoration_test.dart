@@ -3,11 +3,27 @@
 // found in the LICENSE file.
 
 import 'dart:async';
+import 'dart:typed_data' show Uint8List;
 import 'dart:ui' as ui show ColorFilter, Image;
+import 'dart:ui' show BlendMode, BlurStyle, Canvas, Color, FilterQuality, Paint, Path, Radius, Rect, Size;
 
 import 'package:fake_async/fake_async.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/painting.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsProperty, describeIdentity;
+import 'package:flutter/src/foundation/synchronous_future.dart' show SynchronousFuture;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/box_border.dart' show BoxShape;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/box_fit.dart' show BoxFit;
+import 'package:flutter/src/painting/box_shadow.dart' show BoxShadow;
+import 'package:flutter/src/painting/decoration.dart' show BoxPainter, Decoration;
+import 'package:flutter/src/painting/decoration_image.dart' show DecorationImage, DecorationImagePainter, ImageRepeat, paintImage;
+import 'package:flutter/src/painting/flutter_logo.dart' show FlutterLogoDecoration;
+import 'package:flutter/src/painting/gradient.dart' show Gradient, LinearGradient;
+import 'package:flutter/src/painting/image_provider.dart' show ImageConfiguration, ImageDecoderCallback, ImageProvider, MemoryImage;
+import 'package:flutter/src/painting/image_stream.dart' show ImageInfo, ImageStream, ImageStreamCompleter, ImageStreamListener, OneFrameImageStreamCompleter;
 import 'package:flutter_test/flutter_test.dart';
 
 import '../image_data.dart';

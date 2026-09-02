@@ -2,11 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:ui';
+import 'dart:typed_data' show ByteData;
+import 'dart:ui' show PlatformDispatcher;
 
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
+import 'package:flutter/src/services/message_codecs.dart' show StringCodec;
+import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding, WidgetsFlutterBinding;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

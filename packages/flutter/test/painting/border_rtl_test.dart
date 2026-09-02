@@ -2,7 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/painting.dart';
+import 'dart:ui' show Canvas, Color, Rect, Size, TextDirection;
+
+import 'package:flutter/src/painting/borders.dart' show BorderSide, BorderStyle;
+import 'package:flutter/src/painting/box_border.dart' show Border, BorderDirectional, BoxBorder;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/decoration.dart' show BoxPainter;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsetsDirectional;
+import 'package:flutter/src/painting/image_provider.dart' show ImageConfiguration;
 import 'package:flutter_test/flutter_test.dart';
 
 class SillyBorder extends BoxBorder {

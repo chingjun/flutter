@@ -8,12 +8,27 @@
 /// @docImport 'switch.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Brightness, Canvas, Color, Offset, Paint, PaintingStyle, Path, Radius, Rect, Size, StrokeCap;
 
-import 'colors.dart';
-import 'constants.dart';
-import 'theme.dart';
+import 'package:flutter/src/cupertino/colors.dart' show CupertinoColors, CupertinoDynamicColor;
+import 'package:flutter/src/cupertino/constants.dart' show kCupertinoFocusColorBrightness, kCupertinoFocusColorOpacity, kCupertinoFocusColorSaturation, kMinInteractiveDimensionCupertino;
+import 'package:flutter/src/cupertino/theme.dart' show CupertinoTheme;
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/borders.dart' show BorderSide, OutlinedBorder;
+import 'package:flutter/src/painting/colors.dart' show HSLColor;
+import 'package:flutter/src/painting/gradient.dart' show LinearGradient;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor, SystemMouseCursors;
+import 'package:flutter/src/widgets/basic.dart' show Semantics;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/ticker_provider.dart' show TickerProviderStateMixin;
+import 'package:flutter/src/widgets/toggleable.dart' show ToggleablePainter, ToggleableStateMixin;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateBorderSide, WidgetStateProperty;
 
 // Examples can assume:
 // bool _throwShotAway = false;

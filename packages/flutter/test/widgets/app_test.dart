@@ -2,10 +2,42 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:typed_data' show ByteData;
+import 'dart:ui' show AppLifecycleState, Color, Locale, Size;
+
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/key.dart' show ValueKey;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/foundation/synchronous_future.dart' show SynchronousFuture;
+import 'package:flutter/src/painting/text_scaler.dart' show TextScaler;
+import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
+import 'package:flutter/src/services/message_codec.dart' show MethodCall;
+import 'package:flutter/src/services/message_codecs.dart' show JSONMethodCodec, StringCodec;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:flutter/src/widgets/actions.dart' show Action, Actions, ActivateIntent, CallbackAction, Intent;
+import 'package:flutter/src/widgets/app.dart' show WidgetsApp;
+import 'package:flutter/src/widgets/basic.dart' show Center, SizedBox;
+import 'package:flutter/src/widgets/binding.dart' show RouteInformation;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/focus_scope.dart' show Focus;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/localizations.dart' show LocalizationsDelegate, basicLocaleListResolution;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/navigator.dart' show NavigationNotification, Navigator, NavigatorState, Page, Route, RouteSettings;
+import 'package:flutter/src/widgets/pages.dart' show PageRouteBuilder;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/router.dart' show PlatformRouteInformationProvider, PopNavigatorRouterDelegateMixin, RootBackButtonDispatcher, RouteInformationParser, RouterConfig, RouterDelegate;
+import 'package:flutter/src/widgets/scroll_configuration.dart' show ScrollBehavior, ScrollConfiguration;
+import 'package:flutter/src/widgets/shortcuts.dart' show ShortcutActivator, SingleActivator;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/text_editing_intents.dart' show CopySelectionTextIntent, PasteTextIntent, SelectAllTextIntent;
+import 'package:flutter/src/widgets/title.dart' show Title;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:listen/listen.dart' show ChangeNotifier;
 
 import 'test_page_tester.dart';
 

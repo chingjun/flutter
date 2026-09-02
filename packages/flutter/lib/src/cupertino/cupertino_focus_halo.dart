@@ -5,9 +5,19 @@
 /// @docImport 'dart:ui';
 library;
 
-import 'package:flutter/widgets.dart';
-import 'colors.dart';
-import 'constants.dart';
+import 'dart:ui' show Color;
+
+import 'package:flutter/src/cupertino/colors.dart' show CupertinoColors;
+import 'package:flutter/src/cupertino/constants.dart' show kCupertinoFocusColorBrightness, kCupertinoFocusColorOpacity, kCupertinoFocusColorSaturation;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius, BorderRadiusGeometry;
+import 'package:flutter/src/painting/borders.dart' show BorderSide, ShapeBorder;
+import 'package:flutter/src/painting/colors.dart' show HSLColor;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder, RoundedSuperellipseBorder;
+import 'package:flutter/src/painting/shape_decoration.dart' show ShapeDecoration;
+import 'package:flutter/src/rendering/proxy_box.dart' show DecorationPosition;
+import 'package:flutter/src/widgets/container.dart' show DecoratedBox;
+import 'package:flutter/src/widgets/focus_scope.dart' show Focus;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
 
 /// Applies an iOS-style focus border around its child when any of child focus nodes gain focus.
 ///

@@ -5,7 +5,7 @@
 /// @docImport 'binding.dart';
 library;
 
-import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart' show immutable;
 
 /// A task priority, as passed to [SchedulerBinding.scheduleTask].
 @immutable

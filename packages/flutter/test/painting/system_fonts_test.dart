@@ -3,12 +3,30 @@
 // found in the LICENSE file.
 
 import 'dart:async';
+import 'dart:typed_data' show ByteData;
+import 'dart:ui' show TextDirection;
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/src/cupertino/app.dart' show CupertinoApp;
+import 'package:flutter/src/cupertino/date_picker.dart' show CupertinoDatePicker, CupertinoDatePickerMode, CupertinoTimerPicker;
+import 'package:flutter/src/foundation/constants.dart' show precisionErrorTolerance;
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/elevated_button.dart' show ElevatedButton;
+import 'package:flutter/src/material/material.dart' show Material;
+import 'package:flutter/src/material/range_slider.dart' show RangeSlider;
+import 'package:flutter/src/material/range_slider_parts.dart' show RangeValues;
+import 'package:flutter/src/material/selectable_text.dart' show SelectableText;
+import 'package:flutter/src/material/slider.dart' show Slider;
+import 'package:flutter/src/material/time.dart' show TimeOfDay;
+import 'package:flutter/src/material/time_picker.dart' show showTimePicker;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/object.dart' show RelayoutWhenSystemFontsChangeMixin, RenderObject;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:flutter/src/widgets/banner.dart' show Banner, BannerLocation;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Center, CustomPaint, Directionality, WidgetToRenderBoxAdapter;
+import 'package:flutter/src/widgets/editable_text.dart' show EditableText, EditableTextState;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, Widget;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 Future<void> verifyMarkedNeedsLayoutDuringTransientCallbacksPhase(

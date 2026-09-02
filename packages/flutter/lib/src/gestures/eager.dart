@@ -5,10 +5,11 @@
 /// @docImport 'package:flutter/widgets.dart';
 library;
 
-import 'recognizer.dart';
+import 'package:flutter/src/gestures/arena.dart' show GestureDisposition;
+import 'package:flutter/src/gestures/events.dart' show PointerDownEvent, PointerEvent;
+import 'package:flutter/src/gestures/recognizer.dart' show OneSequenceGestureRecognizer;
 
 export 'dart:ui' show PointerDeviceKind;
-
 export 'events.dart' show PointerDownEvent, PointerEvent;
 
 /// A gesture recognizer that eagerly claims victory in all gesture arenas.

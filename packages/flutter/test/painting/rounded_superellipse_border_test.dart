@@ -5,7 +5,18 @@
 @Tags(<String>['reduced-test-set'])
 library;
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Canvas, Color, RSuperellipse, Radius, Rect, Size;
+
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius, BorderRadiusDirectional, BorderRadiusGeometry;
+import 'package:flutter/src/painting/borders.dart' show BorderSide, ShapeBorder;
+import 'package:flutter/src/painting/circle_border.dart' show CircleBorder;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedSuperellipseBorder;
+import 'package:flutter/src/painting/shape_decoration.dart' show ShapeDecoration;
+import 'package:flutter/src/widgets/basic.dart' show Center, ClipRect, OverflowBox, Padding;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show Widget;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'common_matchers.dart';

@@ -2,7 +2,26 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/material.dart';
+import 'dart:ui' show Color, RRect, Radius, Rect;
+
+import 'package:flutter/src/foundation/key.dart' show ValueKey;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/material.dart' show MaterialType, kMaterialEdges;
+import 'package:flutter/src/material/mergeable_material.dart' show MaterialGap, MaterialSlice, MergeableMaterial, MergeableMaterialItem;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/borders.dart' show BorderSide;
+import 'package:flutter/src/painting/box_border.dart' show Border;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/debug.dart' show debugDisableShadows;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/widgets/basic.dart' show SizedBox;
+import 'package:flutter/src/widgets/container.dart' show Container, DecoratedBox;
+import 'package:flutter/src/widgets/framework.dart' show Element, Widget;
+import 'package:flutter/src/widgets/implicit_animations.dart' show AnimatedContainer;
+import 'package:flutter/src/widgets/single_child_scroll_view.dart' show SingleChildScrollView;
 import 'package:flutter_test/flutter_test.dart';
 
 enum RadiusType { Sharp, Shifting, Round }

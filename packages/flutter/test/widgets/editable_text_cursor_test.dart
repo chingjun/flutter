@@ -9,11 +9,30 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show Color, RRect, Radius, Rect, TextAffinity, TextAlign, TextDecoration, TextDirection, TextPosition;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/key.dart' show Key, ValueKey;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, debugDefaultTargetPlatformOverride;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/text_span.dart' show TextSpan;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/editable.dart' show RenderEditable;
+import 'package:flutter/src/services/clipboard.dart' show Clipboard, ClipboardData;
+import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
+import 'package:flutter/src/services/message_codec.dart' show MethodCall;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:flutter/src/services/text_editing.dart' show TextSelection;
+import 'package:flutter/src/services/text_input.dart' show FloatingCursorDragState, RawFloatingCursorPoint, SelectionChangedCause, TextInputType;
+import 'package:flutter/src/widgets/actions.dart' show Actions;
+import 'package:flutter/src/widgets/basic.dart' show Column, Directionality, Padding, RepaintBoundary, SizedBox;
+import 'package:flutter/src/widgets/editable_text.dart' show EditableText, EditableTextState, TextEditingController;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode, FocusScopeNode, primaryFocus;
+import 'package:flutter/src/widgets/focus_scope.dart' show FocusScope;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/text_editing_intents.dart' show DeleteCharacterIntent;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'editable_text_tester.dart';

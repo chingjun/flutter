@@ -2,7 +2,17 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Canvas, Color, Paint, Path, Radius, Rect, TextDirection;
+
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/borders.dart' show BorderSide, BorderStyle, ShapeBorder;
+import 'package:flutter/src/painting/box_border.dart' show Border, BorderDirectional, BoxBorder, BoxShape;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsDirectional, EdgeInsetsGeometry;
+import 'package:flutter/src/widgets/basic.dart' show Directionality;
+import 'package:flutter/src/widgets/container.dart' show DecoratedBox;
+import 'package:flutter/src/widgets/framework.dart' show Widget;
 import 'package:flutter_test/flutter_test.dart';
 
 class TestCanvas implements Canvas {

@@ -3,10 +3,26 @@
 // found in the LICENSE file.
 
 import 'dart:math' as math;
+import 'dart:ui' show Color, Rect, Size, TextDirection, VoidCallback;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart' show HitTestEntry, HitTestResult;
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/key.dart' show Key, ValueKey;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/gestures/hit_test.dart' show HitTestEntry, HitTestResult;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/flex.dart' show MainAxisSize;
+import 'package:flutter/src/widgets/basic.dart' show Align, Center, ColoredBox, Column, Directionality, Flexible, Padding, Semantics, SizedBox, SliverToBoxAdapter;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/flutter_logo.dart' show FlutterLogo;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, Widget;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_view.dart' show CustomScrollView;
+import 'package:flutter/src/widgets/scrollable.dart' show Scrollable;
+import 'package:flutter/src/widgets/sliver.dart' show SliverFixedExtentList;
+import 'package:flutter/src/widgets/sliver_fill.dart' show SliverFillRemaining;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'button_tester.dart';

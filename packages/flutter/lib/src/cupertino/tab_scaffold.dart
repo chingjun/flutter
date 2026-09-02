@@ -9,11 +9,28 @@
 /// @docImport 'tab_view.dart';
 library;
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color;
 
-import 'bottom_tab_bar.dart';
-import 'colors.dart';
-import 'theme.dart';
+import 'package:flutter/src/cupertino/bottom_tab_bar.dart' show CupertinoTabBar;
+import 'package:flutter/src/cupertino/colors.dart' show CupertinoDynamicColor;
+import 'package:flutter/src/cupertino/theme.dart' show CupertinoTheme;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/rendering/stack.dart' show StackFit;
+import 'package:flutter/src/services/restoration.dart' show RestorationBucket;
+import 'package:flutter/src/widgets/basic.dart' show Align, Builder, Offstage, Padding, SizedBox, Stack;
+import 'package:flutter/src/widgets/container.dart' show DecoratedBox;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusScopeNode;
+import 'package:flutter/src/widgets/focus_scope.dart' show FocusScope;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, IndexedWidgetBuilder, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/heroes.dart' show HeroMode;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/restoration.dart' show RestorationMixin;
+import 'package:flutter/src/widgets/restoration_properties.dart' show RestorableChangeNotifier;
+import 'package:flutter/src/widgets/ticker_provider.dart' show TickerMode;
+import 'package:listen/listen.dart' show ChangeNotifier;
+import 'package:meta/meta.dart' show mustCallSuper;
 
 /// Coordinates tab selection between a [CupertinoTabBar] and a [CupertinoTabScaffold].
 ///

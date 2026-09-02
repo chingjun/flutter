@@ -2,12 +2,15 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
+import 'dart:ui' show VoidCallback;
 
-import 'animation.dart';
+import 'package:flutter/src/animation/animation.dart' show AnimationStatus, AnimationStatusListener;
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, FlutterError, FlutterErrorDetails, InformationCollector;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode, DiagnosticsProperty, DiagnosticsTreeStyle;
+import 'package:flutter/src/foundation/observer_list.dart' show HashedObserverList, ObserverList;
+import 'package:meta/meta.dart' show mustCallSuper, protected;
 
 export 'dart:ui' show VoidCallback;
-
 export 'animation.dart' show AnimationStatus, AnimationStatusListener;
 
 /// A mixin that helps listen to another object only when this object has registered listeners.

@@ -2,8 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/painting.dart';
+import 'dart:ui' show Rect, TextAffinity, TextBaseline, TextBox, TextDirection, TextPosition, TextRange;
+
+import 'package:flutter/src/foundation/unicode.dart' show Unicode;
+import 'package:flutter/src/painting/text_painter.dart' show TextPainter;
+import 'package:flutter/src/painting/text_span.dart' show TextSpan;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/services/text_editing.dart' show TextSelection;
 import 'package:flutter_test/flutter_test.dart';
 
 const bool skipTestsWithKnownBugs = true;

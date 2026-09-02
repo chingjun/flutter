@@ -5,7 +5,7 @@
 /// @docImport 'tooltip.dart';
 library;
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedWidget, StatelessWidget, Widget;
 
 class _TooltipVisibilityScope extends InheritedWidget {
   const _TooltipVisibilityScope({required super.child, required this.visible});

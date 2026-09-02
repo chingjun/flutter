@@ -5,11 +5,11 @@
 /// @docImport 'value_listenable_builder.dart';
 library;
 
-import 'dart:async' show StreamSubscription;
+import 'dart:async' show Future, Stream, StreamSubscription;
 
-import 'package:flutter/foundation.dart';
-
-import 'framework.dart';
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:meta/meta.dart' show immutable;
 
 /// Base class for widgets that build themselves based on interaction with
 /// a specified [Stream].

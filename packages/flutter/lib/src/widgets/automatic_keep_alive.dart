@@ -9,13 +9,18 @@
 library;
 
 import 'dart:async';
+import 'dart:ui' show VoidCallback;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/scheduler.dart';
-
-import 'framework.dart';
-import 'notification_listener.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty, FlagProperty;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/rendering/sliver_multi_box_adaptor.dart' show KeepAliveParentDataMixin;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding, SchedulerPhase;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, ParentDataElement, ParentDataWidget, State, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/notification_core.dart' show Notification;
+import 'package:flutter/src/widgets/notification_listener.dart' show NotificationListener;
+import 'package:listen/listen.dart' show ChangeNotifier, Listenable;
+import 'package:meta/meta.dart' show mustCallSuper, optionalTypeArgs, protected;
 
 /// Allows subtrees to request to be kept alive in lazy lists.
 ///

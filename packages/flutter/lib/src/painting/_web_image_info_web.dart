@@ -2,10 +2,11 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:ui';
+import 'dart:ui' show Image;
+
+import 'package:flutter/src/painting/image_stream.dart' show ImageInfo;
 
 import '../web.dart' as web;
-import 'image_stream.dart';
 
 /// An [ImageInfo] object indicating that the image can only be displayed in
 /// an HTML element, and no [dart:ui.Image] can be created for it.

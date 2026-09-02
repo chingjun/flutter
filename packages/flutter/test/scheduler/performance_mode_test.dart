@@ -2,10 +2,10 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:ui';
+import 'dart:ui' show DartPerformanceMode;
 
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/scheduler/binding.dart' show PerformanceModeRequestHandle, SchedulerBinding;
+import 'package:flutter/src/widgets/binding.dart' show WidgetsFlutterBinding;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:leak_tracker_flutter_testing/leak_tracker_flutter_testing.dart';
 

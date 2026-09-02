@@ -2,7 +2,15 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/material.dart';
+import 'dart:ui' show Color, Rect;
+
+import 'package:flutter/src/material/app_bar.dart' show AppBar;
+import 'package:flutter/src/material/material.dart' show Material;
+import 'package:flutter/src/material/tabs.dart' show TabBar;
+import 'package:flutter/src/widgets/basic.dart' show ClipRect, PhysicalModel;
+import 'package:flutter/src/widgets/primary_scroll_controller.dart' show PrimaryScrollController;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_view.dart' show CustomScrollView;
 import 'package:flutter_test/flutter_test.dart';
 
 Finder findAppBarPhysicalModel() {

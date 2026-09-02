@@ -8,12 +8,12 @@
 /// @docImport 'image_icon.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-
-import 'basic.dart';
-import 'framework.dart';
-import 'icon_theme_data.dart';
-import 'inherited_theme.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder;
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/widgets/basic.dart' show Builder;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
+import 'package:flutter/src/widgets/icon_theme_data.dart' show IconThemeData;
+import 'package:flutter/src/widgets/inherited_theme.dart' show InheritedTheme;
 
 // Examples can assume:
 // late BuildContext context;

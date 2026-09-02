@@ -2,7 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color;
+
+import 'package:flutter/src/painting/borders.dart' show BorderSide, OutlinedBorder;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateBorderSide, WidgetStateColor, WidgetStateMouseCursor, WidgetStateOutlinedBorder, WidgetStateProperty, WidgetStatePropertyAll, WidgetStateTextStyle, WidgetStatesConstraint;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

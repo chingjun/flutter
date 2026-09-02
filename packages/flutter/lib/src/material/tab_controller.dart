@@ -9,10 +9,16 @@ library;
 
 import 'dart:math' as math;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
-
-import 'constants.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves;
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/memory_allocations.dart' show kFlutterMemoryAllocationsEnabled;
+import 'package:flutter/src/material/constants.dart' show kTabScrollDuration;
+import 'package:flutter/src/scheduler/ticker.dart' show TickerProvider;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedWidget, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/ticker_provider.dart' show SingleTickerProviderStateMixin, TickerMode;
+import 'package:listen/listen.dart' show ChangeNotifier;
 
 // Examples can assume:
 // late BuildContext context;

@@ -7,12 +7,15 @@ library;
 
 import 'dart:ui' show Color, Rect, Size;
 
-import 'package:flutter/foundation.dart';
-
-import 'animations.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/animation/animations.dart' show AnimationWithParentMixin;
+import 'package:flutter/src/animation/curves.dart' show Curve;
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorHint, ErrorSummary, FlutterError;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:meta/meta.dart' show protected;
 
 export 'dart:ui' show Color, Rect, Size;
-
 export 'animation.dart' show Animation;
 export 'curves.dart' show Curve;
 

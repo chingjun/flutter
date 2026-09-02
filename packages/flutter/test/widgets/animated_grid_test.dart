@@ -2,8 +2,27 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Clip, Size, TextDirection;
+
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/animation/curves.dart' show Curves;
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticsProperty;
+import 'package:flutter/src/foundation/key.dart' show Key, ValueKey;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/rendering/sliver_grid.dart' show SliverGridDelegateWithFixedCrossAxisCount, SliverGridDelegateWithMaxCrossAxisExtent;
+import 'package:flutter/src/rendering/viewport.dart' show ScrollCacheExtent;
+import 'package:flutter/src/widgets/animated_scroll_view.dart' show AnimatedGrid, AnimatedGridState, SliverAnimatedGrid, SliverAnimatedGridState;
+import 'package:flutter/src/widgets/basic.dart' show Center, Directionality, SizedBox, StatefulBuilder;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, GlobalKey, ObjectKey, State, StateSetter, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_view.dart' show CustomScrollView;
+import 'package:flutter/src/widgets/sliver.dart' show SliverList;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/transitions.dart' show ScaleTransition;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

@@ -4,15 +4,36 @@
 
 import 'dart:async';
 import 'dart:convert';
+import 'dart:typed_data' show ByteData;
 import 'dart:ui' as ui;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/binding.dart' show BindingBase, ServiceExtensionCallback;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/foundation/print.dart' show debugPrint, debugPrintThrottled;
+import 'package:flutter/src/foundation/service_extensions.dart' show FoundationServiceExtensions;
+import 'package:flutter/src/gestures/binding.dart' show GestureBinding;
+import 'package:flutter/src/painting/binding.dart' show PaintingBinding;
+import 'package:flutter/src/painting/debug.dart' show debugInvertOversizedImages;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/rendering/debug.dart' show debugDisableClipLayers, debugDisableOpacityLayers, debugDisablePhysicalShapeLayers, debugPaintBaselinesEnabled, debugPaintSizeEnabled, debugProfileLayoutsEnabled, debugProfilePaintsEnabled, debugRepaintRainbowEnabled;
+import 'package:flutter/src/rendering/object.dart' show PipelineOwner;
+import 'package:flutter/src/rendering/service_extensions.dart' show RenderingServiceExtensions;
+import 'package:flutter/src/rendering/view.dart' show RenderView;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding, timeDilation;
+import 'package:flutter/src/scheduler/service_extensions.dart' show SchedulerServiceExtensions;
+import 'package:flutter/src/semantics/binding.dart' show SemanticsBinding;
+import 'package:flutter/src/services/asset_bundle.dart' show rootBundle;
+import 'package:flutter/src/services/binding.dart' show ServicesBinding;
+import 'package:flutter/src/services/debug.dart' show debugProfilePlatformChannels;
+import 'package:flutter/src/services/service_extensions.dart' show ServicesServiceExtensions;
+import 'package:flutter/src/widgets/app.dart' show WidgetsApp;
+import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding;
+import 'package:flutter/src/widgets/debug_flags.dart' show debugProfileBuildsEnabled, debugProfileBuildsEnabledUserWidgets;
+import 'package:flutter/src/widgets/service_extensions.dart' show WidgetsServiceExtensions;
+import 'package:flutter/src/widgets/widget_inspector.dart' show WidgetInspectorService;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:meta/meta.dart' show protected;
 
 class TestServiceExtensionsBinding extends BindingBase
     with

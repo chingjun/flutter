@@ -2,7 +2,10 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Canvas, Path, Rect, TextDirection;
+
+import 'package:flutter/src/painting/borders.dart' show ShapeBorder;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsetsDirectional, EdgeInsetsGeometry;
 
 typedef Logger = void Function(String caller);
 

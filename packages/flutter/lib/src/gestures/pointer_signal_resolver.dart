@@ -7,9 +7,9 @@
 /// @docImport 'binding.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-
-import 'events.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, FlutterError, FlutterErrorDetails, InformationCollector;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode, DiagnosticsProperty, DiagnosticsTreeStyle;
+import 'package:flutter/src/gestures/events.dart' show PointerSignalEvent;
 
 export 'events.dart' show PointerSignalEvent;
 

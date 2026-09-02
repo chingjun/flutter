@@ -2,11 +2,36 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/src/foundation/constants.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Rect, Size, TextDirection, VoidCallback;
+
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/flex.dart' show CrossAxisAlignment, MainAxisSize;
+import 'package:flutter/src/rendering/object.dart' show Constraints, PaintingContext, RenderObject;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderConstrainedBox, RenderProxyBox;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsNode;
+import 'package:flutter/src/widgets/automatic_keep_alive.dart' show KeepAlive;
+import 'package:flutter/src/widgets/basic.dart' show Align, Builder, Center, Column, Directionality, KeyedSubtree, MetaData, Padding, Positioned, RepaintBoundary, Row, Semantics, SizedBox, Stack, StatefulBuilder, StatefulWidgetBuilder, Transform, UnconstrainedBox, WidgetToRenderBoxAdapter;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, GlobalKey, GlobalObjectKey, SingleChildRenderObjectWidget, State, StateSetter, StatefulWidget, StatelessWidget, Widget, WidgetBuilder;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/layout_builder.dart' show LayoutBuilder, RenderAbstractLayoutBuilderMixin;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/overlay.dart' show Overlay, OverlayChildLocation, OverlayEntry, OverlayPortal, OverlayPortalController, OverlayState;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_view.dart' show ListView;
+import 'package:flutter/src/widgets/table.dart' show Table, TableRow;
+import 'package:flutter/src/widgets/text.dart' show DefaultTextStyle, Text;
+import 'package:flutter/src/widgets/view.dart' show View, ViewAnchor;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:leak_tracker_flutter_testing/leak_tracker_flutter_testing.dart';
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 import 'multi_view_testing.dart';
 import 'semantics_tester.dart';

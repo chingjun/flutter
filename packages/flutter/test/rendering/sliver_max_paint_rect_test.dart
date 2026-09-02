@@ -2,7 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Rect;
+
+import 'package:flutter/src/painting/basic_types.dart' show AxisDirection;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext;
+import 'package:flutter/src/rendering/sliver.dart' show GrowthDirection, RenderSliver, SliverConstraints, SliverGeometry;
+import 'package:flutter/src/rendering/viewport_offset.dart' show ScrollDirection;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'rendering_tester.dart';

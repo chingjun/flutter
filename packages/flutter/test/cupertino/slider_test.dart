@@ -2,12 +2,25 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
+import 'dart:ui' show Brightness, Color, PointerDeviceKind, Size, TextDirection;
+
+import 'package:flutter/src/cupertino/app.dart' show CupertinoApp;
+import 'package:flutter/src/cupertino/colors.dart' show CupertinoColors, CupertinoDynamicColor;
+import 'package:flutter/src/cupertino/interface_level.dart' show CupertinoUserInterfaceLevel, CupertinoUserInterfaceLevelData;
+import 'package:flutter/src/cupertino/slider.dart' show CupertinoSlider;
+import 'package:flutter/src/cupertino/theme.dart' show CupertinoTheme, CupertinoThemeData;
+import 'package:flutter/src/cupertino/thumb_painter.dart' show CupertinoThumbPainter;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
+import 'package:flutter/src/services/message_codec.dart' show MethodCall;
+import 'package:flutter/src/services/mouse_cursor.dart' show SystemMouseCursors;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:flutter/src/widgets/basic.dart' show Center, Directionality, SizedBox, StatefulBuilder;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StateSetter, Widget;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
 import 'package:flutter_test/flutter_test.dart';
 
 const CupertinoDynamicColor _kSystemFill = CupertinoDynamicColor(

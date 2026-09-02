@@ -5,16 +5,17 @@
 /// @docImport 'app.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/services.dart';
-
-import 'actions.dart';
-import 'focus_traversal.dart';
-import 'framework.dart';
-import 'scrollable_helpers.dart';
-import 'shortcuts.dart';
-import 'text_editing_intents.dart';
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/painting/basic_types.dart' show AxisDirection;
+import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
+import 'package:flutter/src/services/text_input.dart' show SelectionChangedCause;
+import 'package:flutter/src/widgets/actions.dart' show DismissIntent, Intent;
+import 'package:flutter/src/widgets/focus_traversal.dart' show NextFocusIntent, PreviousFocusIntent;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/scrollable_helpers.dart' show ScrollIncrementType, ScrollIntent;
+import 'package:flutter/src/widgets/shortcuts.dart' show LockState, ShortcutActivator, Shortcuts, SingleActivator;
+import 'package:flutter/src/widgets/text_editing_intents.dart' show CopySelectionTextIntent, DeleteCharacterIntent, DeleteToLineBreakIntent, DeleteToNextWordBoundaryIntent, DoNothingAndStopPropagationTextIntent, ExpandSelectionToDocumentBoundaryIntent, ExpandSelectionToLineBreakIntent, ExtendSelectionByCharacterIntent, ExtendSelectionToDocumentBoundaryIntent, ExtendSelectionToLineBreakIntent, ExtendSelectionToNextParagraphBoundaryIntent, ExtendSelectionToNextParagraphBoundaryOrCaretLocationIntent, ExtendSelectionToNextWordBoundaryIntent, ExtendSelectionToNextWordBoundaryOrCaretLocationIntent, ExtendSelectionVerticallyToAdjacentLineIntent, ExtendSelectionVerticallyToAdjacentPageIntent, PasteTextIntent, RedoTextIntent, ScrollToDocumentBoundaryIntent, SelectAllTextIntent, TransposeCharactersIntent, UndoTextIntent;
 
 /// A widget with the shortcuts used for the default text editing behavior.
 ///

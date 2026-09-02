@@ -2,8 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/gestures.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show TextDirection;
+
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/gestures/tap.dart' show TapGestureRecognizer;
+import 'package:flutter/src/painting/text_span.dart' show TextSpan;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/widgets/basic.dart' show Center;
+import 'package:flutter/src/widgets/rich_text.dart' show RichText;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

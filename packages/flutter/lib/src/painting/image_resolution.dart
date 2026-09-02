@@ -8,10 +8,12 @@ library;
 import 'dart:async';
 import 'dart:collection';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
-
-import 'image_provider.dart';
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/foundation/synchronous_future.dart' show SynchronousFuture;
+import 'package:flutter/src/painting/image_provider.dart' show AssetBundleImageKey, AssetBundleImageProvider, ImageConfiguration;
+import 'package:flutter/src/services/asset_bundle.dart' show AssetBundle, rootBundle;
+import 'package:flutter/src/services/asset_manifest.dart' show AssetManifest, AssetMetadata;
+import 'package:meta/meta.dart' show immutable;
 
 /// A screen with a device-pixel ratio strictly less than this value is
 /// considered a low-resolution screen (typically entry-level to mid-range

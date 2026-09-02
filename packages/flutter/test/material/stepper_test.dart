@@ -2,8 +2,44 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+import 'dart:ui' show Brightness, Clip, Color, Radius, Rect, Size, TextDirection;
+
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError, FlutterErrorDetails, FlutterExceptionHandler;
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/color_scheme.dart' show ColorScheme;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/icons.dart' show Icons;
+import 'package:flutter/src/material/material.dart' show Material;
+import 'package:flutter/src/material/material_state.dart' show MaterialStateProperty;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/stepper.dart' show ControlsDetails, Step, StepState, StepStyle, Stepper, StepperType;
+import 'package:flutter/src/material/text_button.dart' show TextButton;
+import 'package:flutter/src/material/theme.dart' show Theme, kThemeAnimationDuration;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/borders.dart' show OutlinedBorder;
+import 'package:flutter/src/painting/box_border.dart' show Border;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsDirectional, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/gradient.dart' show LinearGradient;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/widgets/basic.dart' show Center, ClipRect, ColoredBox, ConstrainedBox, Padding, PositionedDirectional, Row, SizedBox, StatefulBuilder;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/flutter_logo.dart' show FlutterLogo;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/focus_scope.dart' show Focus;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StateSetter, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/implicit_animations.dart' show AnimatedContainer;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_physics.dart' show NeverScrollableScrollPhysics, ScrollPhysics;
+import 'package:flutter/src/widgets/scroll_view.dart' show ListView;
+import 'package:flutter/src/widgets/scrollable.dart' show Scrollable, ScrollableState;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateProperty, WidgetStatePropertyAll;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

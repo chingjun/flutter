@@ -2,8 +2,17 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Canvas, Color, Size;
+
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/decoration.dart' show Decoration;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, RenderObject, RenderObjectVisitor, RenderObjectWithChildMixin;
+import 'package:flutter/src/rendering/proxy_box.dart' show DecorationPosition, RenderDecoratedBox;
+import 'package:flutter/src/widgets/container.dart' show Container, DecoratedBox;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, SingleChildRenderObjectElement, SingleChildRenderObjectWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData, Orientation;
 import 'package:flutter_test/flutter_test.dart';
 
 final BoxDecoration kBoxDecorationA = BoxDecoration(border: nonconst(null));

@@ -3,11 +3,40 @@
 // found in the LICENSE file.
 
 import 'dart:collection';
-import 'dart:ui';
+import 'dart:ui' show Color, DisplayFeature, DisplayFeatureState, DisplayFeatureType, Rect, SemanticsAction, SemanticsFlag, Size, TextDirection, VoidCallback;
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/physics.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/animation/animations.dart' show CurvedAnimation, ProxyAnimation, TrainHoppingAnimation, kAlwaysDismissedAnimation;
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves;
+import 'package:flutter/src/animation/tween.dart' show CurveTween, Tween;
+import 'package:flutter/src/cupertino/route.dart' show CupertinoPageRoute, CupertinoPageTransition;
+import 'package:flutter/src/cupertino/sheet.dart' show CupertinoSheetRoute;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey, ValueKey;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/physics/gravity_simulation.dart' show GravitySimulation;
+import 'package:flutter/src/physics/simulation.dart' show Simulation;
+import 'package:flutter/src/scheduler/ticker.dart' show TickerFuture;
+import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Center, ClipRSuperellipse, Column, Directionality, FractionalTranslation, Padding, Semantics, SizedBox;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/editable_text.dart' show TextEditingController;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode, FocusScopeNode;
+import 'package:flutter/src/widgets/focus_scope.dart' show Focus, FocusScope;
+import 'package:flutter/src/widgets/focus_traversal.dart' show TraversalEdgeBehavior;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, GlobalKey, State, StatefulElement, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/modal_barrier.dart' show AnimatedModalBarrier, ModalBarrier;
+import 'package:flutter/src/widgets/navigator.dart' show NavigationNotification, Navigator, NavigatorObserver, NavigatorState, Route, RoutePopDisposition, RouteSettings;
+import 'package:flutter/src/widgets/notification_listener.dart' show NotificationListener;
+import 'package:flutter/src/widgets/overlay.dart' show OverlayEntry;
+import 'package:flutter/src/widgets/pages.dart' show PageRoute, PageRouteBuilder;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/pop_scope.dart' show PopScope;
+import 'package:flutter/src/widgets/routes.dart' show LocalHistoryEntry, LocalHistoryRoute, ModalRoute, PopupRoute, RawDialogRoute, RouteAware, RouteBarrierDetails, RouteObserver, showGeneralDialog;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/transitions.dart' show AnimatedBuilder, FadeTransition, ScaleTransition;
+import 'package:flutter/src/widgets/will_pop_scope.dart' show WillPopScope;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'button_tester.dart';

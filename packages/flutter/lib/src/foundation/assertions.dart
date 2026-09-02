@@ -5,13 +5,12 @@
 /// @docImport 'package:flutter/widgets.dart';
 library;
 
+import 'package:flutter/src/foundation/_error_dumper_io.dart' show ErrorToConsoleDumper;
+import 'package:flutter/src/foundation/basic_types.dart' show IterableFilter;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb, kReleaseMode;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticableNode, DiagnosticableTreeMixin, DiagnosticsBlock, DiagnosticsNode, DiagnosticsProperty, DiagnosticsTreeStyle, TextTreeConfiguration, TextTreeRenderer;
+import 'package:flutter/src/foundation/stack_frame.dart' show StackFrame;
 import 'package:meta/meta.dart';
-
-import 'basic_types.dart';
-import 'constants.dart';
-import 'diagnostics.dart';
-import 'error_dumper.dart';
-import 'stack_frame.dart';
 
 export 'basic_types.dart' show IterableFilter;
 export 'diagnostics.dart'

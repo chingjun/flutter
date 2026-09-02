@@ -10,13 +10,15 @@ library;
 
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
-
-import 'actions.dart';
-import 'focus_manager.dart';
-import 'framework.dart';
-import 'text_editing_intents.dart';
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/services/undo_manager.dart' show UndoDirection, UndoManager, UndoManagerClient;
+import 'package:flutter/src/widgets/actions.dart' show Action, Actions, CallbackAction, Intent;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/text_editing_intents.dart' show RedoTextIntent, UndoTextIntent;
+import 'package:listen/listen.dart' show ChangeNotifier, ValueNotifier;
+import 'package:meta/meta.dart' show immutable, protected, visibleForTesting;
 
 /// Provides undo/redo capabilities for a [ValueNotifier].
 ///

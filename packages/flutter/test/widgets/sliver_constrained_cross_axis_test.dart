@@ -2,8 +2,16 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show TextDirection;
+
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/sliver.dart' show RenderSliver, SliverPhysicalParentData;
+import 'package:flutter/src/widgets/basic.dart' show Center, Directionality, SizedBox, SliverToBoxAdapter;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show Widget;
+import 'package:flutter/src/widgets/scroll_view.dart' show CustomScrollView;
+import 'package:flutter/src/widgets/sliver.dart' show SliverConstrainedCrossAxis;
 import 'package:flutter_test/flutter_test.dart';
 
 const double VIEWPORT_HEIGHT = 500;

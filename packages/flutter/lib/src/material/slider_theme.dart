@@ -7,18 +7,23 @@
 /// @docImport 'text_theme.dart';
 library;
 
-import 'dart:ui' show lerpDouble;
+import 'dart:ui' show Color, Size, lerpDouble;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
-
-import 'colors.dart';
-import 'range_slider_parts.dart';
-import 'slider.dart';
-import 'slider_parts.dart';
-import 'slider_value_indicator_shape.dart';
-import 'theme.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsProperty, DoubleProperty, EnumProperty;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/range_slider_parts.dart' show RangeSliderThumbShape, RangeSliderTickMarkShape, RangeSliderTrackShape, RangeSliderValueIndicatorShape, RangeThumbSelector, RoundRangeSliderThumbShape, RoundRangeSliderTickMarkShape, RoundedRectRangeSliderTrackShape;
+import 'package:flutter/src/material/slider.dart' show SliderInteraction;
+import 'package:flutter/src/material/slider_parts.dart' show RoundSliderThumbShape, RoundSliderTickMarkShape, RoundedRectSliderTrackShape, SliderTickMarkShape, SliderTrackShape;
+import 'package:flutter/src/material/slider_value_indicator_shape.dart' show PaddleRangeSliderValueIndicatorShape, PaddleSliderValueIndicatorShape, RoundSliderOverlayShape, SliderComponentShape;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/painting/colors.dart' show ColorProperty;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsetsGeometry;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
+import 'package:flutter/src/widgets/inherited_theme.dart' show InheritedTheme;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetStateProperty;
+import 'package:meta/meta.dart' show immutable;
 
 /// Applies a slider theme to descendant [Slider] widgets.
 ///

@@ -8,8 +8,21 @@
 @TestOn('!chrome')
 library;
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show BlendMode, Color, ColorFilter, Size, TextDirection;
+
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/box_border.dart' show BoxShape;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/rendering/layer.dart' show ColorFilterLayer;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/widgets/basic.dart' show Align, Center, ColoredBox, Column, Directionality, Expanded, Padding, RepaintBoundary, SizedBox;
+import 'package:flutter/src/widgets/color_filter.dart' show ColorFiltered;
+import 'package:flutter/src/widgets/container.dart' show DecoratedBox;
+import 'package:flutter/src/widgets/flutter_logo.dart' show FlutterLogo;
+import 'package:flutter/src/widgets/framework.dart' show Widget;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

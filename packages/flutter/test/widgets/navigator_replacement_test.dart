@@ -2,7 +2,20 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color;
+
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/animation/tween.dart' show Tween;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/widgets/basic.dart' show Padding;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget, WidgetBuilder;
+import 'package:flutter/src/widgets/heroes.dart' show Hero, HeroController;
+import 'package:flutter/src/widgets/navigator.dart' show Navigator, NavigatorObserver, NavigatorState, Route, RouteSettings;
+import 'package:flutter/src/widgets/pages.dart' show PageRoute, PageRouteBuilder;
+import 'package:flutter/src/widgets/routes.dart' show ModalRoute;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/transitions.dart' show SlideTransition;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'observer_tester.dart';

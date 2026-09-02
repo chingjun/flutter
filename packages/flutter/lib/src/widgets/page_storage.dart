@@ -12,9 +12,11 @@
 /// @docImport 'single_child_scroll_view.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-
-import 'framework.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/collections.dart' show listEquals;
+import 'package:flutter/src/foundation/key.dart' show Key, ValueKey;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, StatelessWidget, Widget;
+import 'package:meta/meta.dart' show immutable;
 
 // Examples can assume:
 // late BuildContext context;

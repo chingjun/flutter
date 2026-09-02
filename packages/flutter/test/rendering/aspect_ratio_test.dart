@@ -2,7 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Size;
+
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError, FlutterErrorDetails;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderAspectRatio;
+import 'package:flutter/src/rendering/shifted_box.dart' show RenderConstrainedOverflowBox;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'rendering_tester.dart';

@@ -8,22 +8,42 @@
 /// @docImport 'list_tile.dart';
 library;
 
-import 'dart:ui';
+import 'dart:async' show Future;
+import 'dart:ui' show Brightness, Color, SemanticsInputType;
 
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
-
-import 'app_bar.dart';
-import 'app_bar_theme.dart';
-import 'color_scheme.dart';
-import 'colors.dart';
-import 'debug.dart';
-import 'input_border.dart';
-import 'input_decorator.dart';
-import 'material_localizations.dart';
-import 'scaffold.dart';
-import 'text_field.dart';
-import 'theme.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation, AnimationStatus;
+import 'package:flutter/src/animation/animations.dart' show ProxyAnimation, kAlwaysDismissedAnimation;
+import 'package:flutter/src/foundation/key.dart' show ValueKey;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/material/app_bar.dart' show AppBar;
+import 'package:flutter/src/material/app_bar_theme.dart' show AppBarThemeData;
+import 'package:flutter/src/material/color_scheme.dart' show ColorScheme;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/debug.dart' show debugCheckHasMaterialLocalizations;
+import 'package:flutter/src/material/input_border.dart' show InputBorder;
+import 'package:flutter/src/material/input_decorator.dart' show InputDecoration, InputDecorationTheme;
+import 'package:flutter/src/material/material_localizations.dart' show MaterialLocalizations;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/text_field.dart' show TextField;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/services/hardware_keyboard.dart' show KeyDownEvent, KeyEvent;
+import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
+import 'package:flutter/src/services/system_chrome.dart' show SystemUiOverlayStyle;
+import 'package:flutter/src/services/text_editing.dart' show TextSelection;
+import 'package:flutter/src/services/text_input.dart' show TextEditingValue, TextInputAction, TextInputType;
+import 'package:flutter/src/widgets/animated_switcher.dart' show AnimatedSwitcher;
+import 'package:flutter/src/widgets/basic.dart' show KeyedSubtree, Semantics;
+import 'package:flutter/src/widgets/editable_text.dart' show TextEditingController;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode, KeyEventResult;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/navigator.dart' show Navigator, Route;
+import 'package:flutter/src/widgets/pages.dart' show PageRoute;
+import 'package:flutter/src/widgets/preferred_size.dart' show PreferredSizeWidget;
+import 'package:flutter/src/widgets/transitions.dart' show FadeTransition;
+import 'package:listen/listen.dart' show ValueNotifier;
+import 'package:meta/meta.dart' show mustCallSuper;
 
 /// Shows a full screen search page and returns the search result selected by
 /// the user when the page is closed.

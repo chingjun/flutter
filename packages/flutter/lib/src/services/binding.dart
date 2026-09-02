@@ -12,26 +12,31 @@ library;
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+import 'dart:typed_data' show ByteData;
 import 'dart:ui' as ui;
+import 'dart:ui' show AppLifecycleState;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/scheduler.dart';
-
-import 'asset_bundle.dart';
-import 'binary_messenger.dart';
-import 'debug.dart';
-import 'hardware_keyboard.dart';
-import 'message_codec.dart';
-import 'platform_channel.dart';
-import 'raw_keyboard.dart' show RawKeyboard;
-import 'restoration.dart';
-import 'service_extensions.dart';
-import 'system_channels.dart';
-import 'system_chrome.dart';
-import 'text_input.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, FlutterError, FlutterErrorDetails;
+import 'package:flutter/src/foundation/binding.dart' show BindingBase;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb, kReleaseMode;
+import 'package:flutter/src/foundation/isolates.dart' show compute;
+import 'package:flutter/src/foundation/licenses.dart' show LicenseEntry, LicenseEntryWithLineBreaks, LicenseRegistry;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
+import 'package:flutter/src/services/asset_bundle.dart' show rootBundle;
+import 'package:flutter/src/services/binary_messenger.dart' show BinaryMessenger, MessageHandler;
+import 'package:flutter/src/services/debug.dart' show debugProfilePlatformChannels;
+import 'package:flutter/src/services/hardware_keyboard.dart' show HardwareKeyboard, KeyEventManager;
+import 'package:flutter/src/services/message_codec.dart' show MethodCall;
+import 'package:flutter/src/services/raw_keyboard.dart' show RawKeyboard;
+import 'package:flutter/src/services/restoration.dart' show RestorationManager;
+import 'package:flutter/src/services/service_extensions.dart' show ServicesServiceExtensions;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:flutter/src/services/system_chrome.dart' show SystemChrome;
+import 'package:flutter/src/services/text_input.dart' show TextInput;
+import 'package:listen/listen.dart' show ValueNotifier;
+import 'package:meta/meta.dart' show mustCallSuper, protected;
 
 export 'dart:ui' show ChannelBuffers, RootIsolateToken;
-
 export 'binary_messenger.dart' show BinaryMessenger;
 export 'hardware_keyboard.dart' show HardwareKeyboard, KeyEventManager;
 export 'restoration.dart' show RestorationManager;

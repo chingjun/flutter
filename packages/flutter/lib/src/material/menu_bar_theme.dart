@@ -5,12 +5,12 @@
 /// @docImport 'menu_button_theme.dart';
 library;
 
-import 'package:flutter/widgets.dart';
-
-import 'menu_anchor.dart';
-import 'menu_style.dart';
-import 'menu_theme.dart';
-import 'theme.dart';
+import 'package:flutter/src/material/menu_style.dart' show MenuStyle;
+import 'package:flutter/src/material/menu_theme.dart' show MenuThemeData;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
+import 'package:flutter/src/widgets/inherited_theme.dart' show InheritedTheme;
+import 'package:meta/meta.dart' show immutable;
 
 // Examples can assume:
 // late Widget child;

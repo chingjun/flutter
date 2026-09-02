@@ -8,11 +8,11 @@ library;
 
 import 'dart:math' as math;
 import 'dart:ui' as ui show Shadow, lerpDouble;
+import 'dart:ui' show BlurStyle, Color, MaskFilter, Offset, Paint;
 
-import 'package:flutter/foundation.dart';
-
-import 'basic_types.dart';
-import 'debug.dart';
+import 'package:flutter/src/foundation/debug.dart' show debugFormatDouble;
+import 'package:flutter/src/painting/debug.dart' show debugDisableShadows;
+import 'package:meta/meta.dart' show immutable;
 
 /// A shadow cast by a box.
 ///

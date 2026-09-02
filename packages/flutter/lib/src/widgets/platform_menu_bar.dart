@@ -3,16 +3,23 @@
 // found in the LICENSE file.
 
 import 'dart:async';
+import 'dart:collection' show IterableExtensions;
+import 'dart:ui' show VoidCallback;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
-
-import 'actions.dart';
-import 'basic.dart';
-import 'binding.dart';
-import 'focus_manager.dart';
-import 'framework.dart';
-import 'shortcuts.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, FlutterError, FlutterErrorDetails;
+import 'package:flutter/src/foundation/collections.dart' show listEquals;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticableTreeMixin, DiagnosticsNode, DiagnosticsProperty, FlagProperty, IterableProperty, StringProperty, describeIdentity;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
+import 'package:flutter/src/services/message_codec.dart' show MethodCall;
+import 'package:flutter/src/services/platform_channel.dart' show MethodChannel;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:flutter/src/widgets/actions.dart' show Actions, Intent;
+import 'package:flutter/src/widgets/basic.dart' show SizedBox;
+import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusManager;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/shortcuts.dart' show ShortcutActivator;
 
 // "flutter/menu" Method channel methods.
 const String _kMenuSetMethod = 'Menu.setMenus';

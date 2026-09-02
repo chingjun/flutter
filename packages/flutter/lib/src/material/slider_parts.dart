@@ -8,15 +8,19 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show Canvas, Color, Offset, Paint, PaintingStyle, Path, RRect, Radius, Rect, Size, TextDirection;
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
-
-import 'colors.dart';
-import 'slider.dart';
-import 'slider_theme.dart';
-import 'slider_value_indicator_shape.dart';
-import 'theme.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/animation/tween.dart' show ColorTween, Tween;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/slider_theme.dart' show SliderThemeData;
+import 'package:flutter/src/material/slider_value_indicator_shape.dart' show SliderComponentShape;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/debug.dart' show debugDisableShadows;
+import 'package:flutter/src/painting/text_painter.dart' show TextPainter;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState;
 
 /// Base class for [Slider] tick mark shapes.
 ///

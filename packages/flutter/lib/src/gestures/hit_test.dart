@@ -5,15 +5,16 @@
 /// @docImport 'package:flutter/rendering.dart';
 library;
 
-import 'package:flutter/foundation.dart';
+import 'dart:ui' show Offset;
+
+import 'package:flutter/src/foundation/constants.dart' show precisionErrorTolerance;
+import 'package:flutter/src/foundation/diagnostics.dart' show describeIdentity;
+import 'package:flutter/src/gestures/events.dart' show PointerEvent;
+import 'package:meta/meta.dart' show immutable, optionalTypeArgs, protected;
 import 'package:vector_math/vector_math_64.dart';
 
-import 'events.dart';
-
 export 'dart:ui' show Offset;
-
 export 'package:vector_math/vector_math_64.dart' show Matrix4;
-
 export 'events.dart' show PointerEvent;
 
 /// An object that can hit-test pointers.

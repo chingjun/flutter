@@ -3,9 +3,19 @@
 // found in the LICENSE file.
 
 import 'dart:math' as math;
+import 'dart:ui' show Clip, Size, TextBaseline, TextDirection;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError, FlutterErrorDetails, FlutterExceptionHandler;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel;
+import 'package:flutter/src/painting/basic_types.dart' show Axis, VerticalDirection;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/text_span.dart' show TextSpan;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/flex.dart' show CrossAxisAlignment, FlexFit, FlexParentData, MainAxisAlignment, MainAxisSize, RenderFlex;
+import 'package:flutter/src/rendering/paragraph.dart' show RenderParagraph;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderAspectRatio, RenderConstrainedBox, RenderDecoratedBox;
+import 'package:flutter/src/rendering/shifted_box.dart' show RenderConstrainedOverflowBox;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'rendering_tester.dart';

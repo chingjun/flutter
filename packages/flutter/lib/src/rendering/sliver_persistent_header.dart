@@ -6,17 +6,26 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show Offset, Rect, clampDouble;
 
-import 'package:flutter/animation.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/semantics.dart';
-
-import 'box.dart';
-import 'object.dart';
-import 'sliver.dart';
-import 'viewport.dart';
-import 'viewport_offset.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation, AnimationStatus;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves;
+import 'package:flutter/src/animation/tween.dart' show CurveTween, Tween;
+import 'package:flutter/src/foundation/assertions.dart' show ErrorSummary, FlutterError;
+import 'package:flutter/src/foundation/basic_types.dart' show AsyncCallback;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsNode, DoubleProperty;
+import 'package:flutter/src/painting/basic_types.dart' show Axis, AxisDirection;
+import 'package:flutter/src/painting/matrix_utils.dart' show MatrixUtils;
+import 'package:flutter/src/rendering/box.dart' show BoxHitTestResult, RenderBox;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, RenderObject, RenderObjectWithChildMixin;
+import 'package:flutter/src/rendering/sliver.dart' show RenderSliver, RenderSliverHelpers, SliverConstraints, SliverGeometry, SliverHitTestResult, applyGrowthDirectionToAxisDirection;
+import 'package:flutter/src/rendering/viewport.dart' show RenderViewport;
+import 'package:flutter/src/rendering/viewport_offset.dart' show ScrollDirection;
+import 'package:flutter/src/scheduler/ticker.dart' show TickerProvider;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsConfiguration;
+import 'package:meta/meta.dart' show immutable, protected;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 // Trims the specified edges of the given `Rect` [original], so that they do not
 // exceed the given values.

@@ -2,9 +2,25 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:typed_data' show ByteData;
+import 'dart:ui' show AppLifecycleState;
+
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/rendering/flex.dart' show MainAxisAlignment;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior;
+import 'package:flutter/src/services/message_codec.dart' show MethodCall;
+import 'package:flutter/src/services/message_codecs.dart' show StringCodec;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:flutter/src/widgets/basic.dart' show Center, Column, StatefulBuilder;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, StateSetter, Widget, WidgetBuilder;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/navigator.dart' show Navigator, NavigatorState, RoutePopDisposition, RouteSettings;
+import 'package:flutter/src/widgets/pages.dart' show PageRouteBuilder;
+import 'package:flutter/src/widgets/pop_scope.dart' show PopScope;
+import 'package:flutter/src/widgets/routes.dart' show ModalRoute;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'navigator_utils.dart';

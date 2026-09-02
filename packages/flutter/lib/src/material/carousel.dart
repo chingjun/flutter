@@ -5,19 +5,50 @@
 /// @docImport 'color_scheme.dart';
 library;
 
+import 'dart:async' show Future;
 import 'dart:math' as math;
+import 'dart:ui' show Clip, Color, Radius, clampDouble;
 
 import 'package:collection/collection.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
-
-import 'carousel_theme.dart';
-import 'color_scheme.dart';
-import 'colors.dart';
-import 'ink_well.dart';
-import 'material.dart';
-import 'theme.dart';
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves;
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/foundation/constants.dart' show precisionErrorTolerance;
+import 'package:flutter/src/material/carousel_theme.dart' show CarouselViewTheme, CarouselViewThemeData;
+import 'package:flutter/src/material/color_scheme.dart' show ColorScheme;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/ink_well.dart' show InkWell;
+import 'package:flutter/src/material/material.dart' show Material;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/basic_types.dart' show Axis, AxisDirection;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/borders.dart' show ShapeBorder;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
+import 'package:flutter/src/physics/simulation.dart' show Simulation;
+import 'package:flutter/src/physics/spring_simulation.dart' show ScrollSpringSimulation;
+import 'package:flutter/src/physics/tolerance.dart' show Tolerance;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/sliver.dart' show ItemExtentBuilder, SliverConstraints, SliverGeometry, SliverLayoutDimensions;
+import 'package:flutter/src/rendering/sliver_fixed_extent_list.dart' show RenderSliverFixedExtentBoxAdaptor;
+import 'package:flutter/src/rendering/sliver_multi_box_adaptor.dart' show SliverMultiBoxAdaptorParentData;
+import 'package:flutter/src/rendering/stack.dart' show StackFit;
+import 'package:flutter/src/rendering/viewport.dart' show ScrollCacheExtent;
+import 'package:flutter/src/widgets/basic.dart' show Padding, Stack;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, NullableIndexedWidgetBuilder, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/layout_builder.dart' show LayoutBuilder;
+import 'package:flutter/src/widgets/scroll_configuration.dart' show ScrollConfiguration;
+import 'package:flutter/src/widgets/scroll_context.dart' show ScrollContext;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_delegate.dart' show SliverChildBuilderDelegate;
+import 'package:flutter/src/widgets/scroll_metrics.dart' show FixedScrollMetrics, ScrollMetrics;
+import 'package:flutter/src/widgets/scroll_physics.dart' show ScrollPhysics;
+import 'package:flutter/src/widgets/scroll_position.dart' show ScrollPosition;
+import 'package:flutter/src/widgets/scroll_position_with_single_context.dart' show ScrollPositionWithSingleContext;
+import 'package:flutter/src/widgets/scroll_view.dart' show CustomScrollView;
+import 'package:flutter/src/widgets/sliver.dart' show SliverMultiBoxAdaptorElement, SliverMultiBoxAdaptorWidget;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateProperty;
 
 // Examples can assume:
 // late BuildContext context;

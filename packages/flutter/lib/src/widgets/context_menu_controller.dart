@@ -5,10 +5,12 @@
 /// @docImport 'package:flutter/services.dart';
 library;
 
-import 'framework.dart';
-import 'inherited_theme.dart';
-import 'navigator.dart';
-import 'overlay.dart';
+import 'dart:ui' show VoidCallback;
+
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget, WidgetBuilder;
+import 'package:flutter/src/widgets/inherited_theme.dart' show CapturedThemes, InheritedTheme;
+import 'package:flutter/src/widgets/navigator.dart' show Navigator;
+import 'package:flutter/src/widgets/overlay.dart' show Overlay, OverlayEntry, OverlayState;
 
 /// Builds and manages a context menu at a given location.
 ///

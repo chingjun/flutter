@@ -8,12 +8,20 @@
 library;
 
 import 'dart:async';
+import 'dart:typed_data' show ByteData, Uint8List;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/scheduler.dart';
-
-import 'message_codecs.dart';
-import 'system_channels.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorSummary, FlutterError;
+import 'package:flutter/src/foundation/debug.dart' show debugMaybeDispatchCreated, debugMaybeDispatchDisposed;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode;
+import 'package:flutter/src/foundation/memory_allocations.dart' show kFlutterMemoryAllocationsEnabled;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/foundation/synchronous_future.dart' show SynchronousFuture;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
+import 'package:flutter/src/services/message_codec.dart' show MethodCall;
+import 'package:flutter/src/services/message_codecs.dart' show StandardMessageCodec;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:listen/listen.dart' show ChangeNotifier;
+import 'package:meta/meta.dart' show protected, visibleForTesting;
 
 export 'dart:typed_data' show Uint8List;
 

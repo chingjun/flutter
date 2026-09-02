@@ -2,9 +2,23 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Clip, Color, Path, Radius, TextDirection, VoidCallback;
+
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/painting/beveled_rectangle_border.dart' show BeveledRectangleBorder;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/borders.dart' show ShapeBorder;
+import 'package:flutter/src/painting/continuous_rectangle_border.dart' show ContinuousRectangleBorder;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
+import 'package:flutter/src/rendering/proxy_box.dart' show CustomClipper, RenderPhysicalShape, ShapeBorderClipper;
+import 'package:flutter/src/widgets/basic.dart' show Builder, SizedBox, StatefulBuilder;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, InheritedWidget, SingleChildRenderObjectWidget, State, StateSetter, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/inherited_notifier.dart' show InheritedNotifier;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:listen/listen.dart' show ChangeNotifier;
+import 'package:meta/meta.dart' show immutable;
 
 import 'test_widgets.dart';
 

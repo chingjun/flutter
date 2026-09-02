@@ -2,9 +2,31 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color, TextDirection;
+
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError, FlutterErrorDetails, FlutterExceptionHandler;
+import 'package:flutter/src/foundation/key.dart' show Key, ValueKey;
+import 'package:flutter/src/gestures/tap.dart' show TapDownDetails;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior;
+import 'package:flutter/src/rendering/proxy_sliver.dart' show RenderSliverConstrainedCrossAxis;
+import 'package:flutter/src/rendering/sliver.dart' show RenderSliver, SliverPhysicalParentData;
+import 'package:flutter/src/rendering/sliver_group.dart' show RenderSliverCrossAxisGroup;
+import 'package:flutter/src/rendering/sliver_list.dart' show RenderSliverList;
+import 'package:flutter/src/rendering/sliver_persistent_header.dart' show RenderSliverPersistentHeader;
+import 'package:flutter/src/widgets/basic.dart' show Align, Center, Directionality, KeyedSubtree, SizedBox, SliverToBoxAdapter;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, ObjectKey, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_delegate.dart' show SliverChildBuilderDelegate;
+import 'package:flutter/src/widgets/scroll_view.dart' show CustomScrollView;
+import 'package:flutter/src/widgets/sliver.dart' show SliverConstrainedCrossAxis, SliverCrossAxisExpanded, SliverCrossAxisGroup, SliverList;
+import 'package:flutter/src/widgets/sliver_persistent_header.dart' show SliverPersistentHeader, SliverPersistentHeaderDelegate;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:leak_tracker_flutter_testing/leak_tracker_flutter_testing.dart';
 

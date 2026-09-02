@@ -5,14 +5,17 @@
 /// @docImport 'package:flutter/material.dart';
 library;
 
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Color;
 
-import 'basic.dart';
-import 'framework.dart';
-import 'icon.dart';
-import 'icon_theme.dart';
-import 'icon_theme_data.dart';
-import 'image.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty, DoubleProperty;
+import 'package:flutter/src/painting/box_fit.dart' show BoxFit;
+import 'package:flutter/src/painting/colors.dart' show ColorProperty;
+import 'package:flutter/src/painting/image_provider.dart' show ImageProvider;
+import 'package:flutter/src/widgets/basic.dart' show Semantics, SizedBox;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/icon_theme.dart' show IconTheme;
+import 'package:flutter/src/widgets/icon_theme_data.dart' show IconThemeData;
+import 'package:flutter/src/widgets/image.dart' show Image;
 
 /// An icon that comes from an [ImageProvider], e.g. an [AssetImage].
 ///

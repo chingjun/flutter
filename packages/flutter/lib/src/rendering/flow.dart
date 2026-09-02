@@ -8,13 +8,16 @@
 library;
 
 import 'dart:ui' as ui show Color;
+import 'dart:ui' show Clip, Offset, Size;
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, BoxHitTestResult, ContainerBoxParentData, RenderBox, RenderBoxContainerDefaultsMixin;
+import 'package:flutter/src/rendering/layer.dart' show ClipRectLayer, LayerHandle;
+import 'package:flutter/src/rendering/object.dart' show ContainerRenderObjectMixin, PaintingContext, ParentData, PipelineOwner;
+import 'package:listen/listen.dart' show Listenable;
+import 'package:meta/meta.dart' show protected;
 import 'package:vector_math/vector_math_64.dart';
-
-import 'box.dart';
-import 'layer.dart';
-import 'object.dart';
 
 /// A context in which a [FlowDelegate] paints.
 ///

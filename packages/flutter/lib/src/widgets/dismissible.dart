@@ -5,15 +5,28 @@
 /// @docImport 'scroll_view.dart';
 library;
 
-import 'package:flutter/gestures.dart';
+import 'dart:async' show Future;
+import 'dart:ui' show Offset, Rect, Size, TextDirection, VoidCallback;
 
-import 'automatic_keep_alive.dart';
-import 'basic.dart';
-import 'debug.dart';
-import 'framework.dart';
-import 'gesture_detector.dart';
-import 'ticker_provider.dart';
-import 'transitions.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation, AnimationStatus;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves, Interval;
+import 'package:flutter/src/animation/tween.dart' show CurveTween, Tween;
+import 'package:flutter/src/foundation/assertions.dart' show ErrorHint, ErrorSummary, FlutterError;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode;
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/gestures/drag_details.dart' show DragEndDetails, DragStartDetails, DragUpdateDetails;
+import 'package:flutter/src/gestures/recognizer.dart' show DragStartBehavior;
+import 'package:flutter/src/gestures/velocity_tracker.dart' show Velocity;
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/rendering/proxy_box.dart' show CustomClipper, HitTestBehavior;
+import 'package:flutter/src/widgets/automatic_keep_alive.dart' show AutomaticKeepAliveClientMixin;
+import 'package:flutter/src/widgets/basic.dart' show ClipRect, Directionality, KeyedSubtree, Positioned, SizedBox, Stack;
+import 'package:flutter/src/widgets/debug.dart' show debugCheckHasDirectionality;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/ticker_provider.dart' show TickerProviderStateMixin;
+import 'package:flutter/src/widgets/transitions.dart' show SizeTransition, SlideTransition;
 
 const Curve _kResizeTimeCurve = Interval(0.4, 1.0, curve: Curves.ease);
 const double _kMinFlingVelocity = 700.0;

@@ -2,8 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, DiagnosticableTreeMixin, DiagnosticsNode, DiagnosticsProperty, DiagnosticsSerializationDelegate, DiagnosticsTreeStyle, DoubleProperty, IntProperty, StringProperty;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, State, StatefulElement, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

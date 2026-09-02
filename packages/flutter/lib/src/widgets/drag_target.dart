@@ -5,18 +5,29 @@
 /// @docImport 'scrollable.dart';
 library;
 
-import 'package:flutter/foundation.dart' show kIsWeb;
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
+import 'dart:ui' show Offset, VoidCallback;
 
-import 'basic.dart';
-import 'binding.dart';
-import 'debug.dart';
-import 'framework.dart';
-import 'media_query.dart';
-import 'overlay.dart';
-import 'view.dart';
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/gestures/constants.dart' show kLongPressTimeout;
+import 'package:flutter/src/gestures/drag.dart' show Drag;
+import 'package:flutter/src/gestures/drag_details.dart' show DragEndDetails, DragUpdateDetails;
+import 'package:flutter/src/gestures/events.dart' show PointerDownEvent;
+import 'package:flutter/src/gestures/hit_test.dart' show HitTestEntry, HitTestResult;
+import 'package:flutter/src/gestures/multidrag.dart' show DelayedMultiDragGestureRecognizer, GestureMultiDragStartCallback, HorizontalMultiDragGestureRecognizer, ImmediateMultiDragGestureRecognizer, MultiDragGestureRecognizer, VerticalMultiDragGestureRecognizer;
+import 'package:flutter/src/gestures/recognizer.dart' show AllowedButtonsFilter, GestureRecognizer;
+import 'package:flutter/src/gestures/velocity_tracker.dart' show Velocity;
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior, RenderMetaData;
+import 'package:flutter/src/services/haptic_feedback.dart' show HapticFeedback;
+import 'package:flutter/src/widgets/basic.dart' show ExcludeSemantics, IgnorePointer, Listener, MetaData, Positioned;
+import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding;
+import 'package:flutter/src/widgets/debug.dart' show debugCheckHasOverlay;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/overlay.dart' show Overlay, OverlayEntry, OverlayState;
+import 'package:flutter/src/widgets/view.dart' show View;
+import 'package:meta/meta.dart' show protected;
 
 /// Signature for determining whether the given data will be accepted by a [DragTarget].
 ///

@@ -10,9 +10,11 @@
 /// @docImport 'text_theme.dart';
 library;
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Radius;
 
-import 'button.dart';
+import 'package:flutter/src/cupertino/button.dart' show CupertinoButtonSize;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsGeometry;
 
 /// The minimum dimension of any interactive region according to the iOS Human
 /// Interface Guidelines.

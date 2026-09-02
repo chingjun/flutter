@@ -2,7 +2,11 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Rect, SemanticsFlag, TextDirection;
+
+import 'package:flutter/src/rendering/flex.dart' show CrossAxisAlignment;
+import 'package:flutter/src/widgets/basic.dart' show Column, ExcludeSemantics, Semantics, SizedBox;
+import 'package:flutter/src/widgets/framework.dart' show Widget;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'semantics_tester.dart';

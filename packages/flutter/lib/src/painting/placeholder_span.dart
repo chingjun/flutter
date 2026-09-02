@@ -6,14 +6,10 @@
 library;
 
 import 'dart:ui' as ui show PlaceholderAlignment;
+import 'dart:ui' show TextBaseline;
 
-import 'package:flutter/foundation.dart';
-
-import 'basic_types.dart';
-import 'inline_span.dart';
-import 'text_painter.dart';
-import 'text_span.dart';
-import 'text_style.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, EnumProperty;
+import 'package:flutter/src/painting/inline_span.dart' show InlineSpan, InlineSpanSemanticsInformation;
 
 /// An immutable placeholder that is embedded inline within text.
 ///

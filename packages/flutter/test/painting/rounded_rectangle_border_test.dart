@@ -2,7 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/painting.dart';
+import 'dart:ui' show Canvas, Color, RRect, Radius, Rect;
+
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius, BorderRadiusDirectional;
+import 'package:flutter/src/painting/borders.dart' show BorderSide, ShapeBorder;
+import 'package:flutter/src/painting/circle_border.dart' show CircleBorder;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'common_matchers.dart';

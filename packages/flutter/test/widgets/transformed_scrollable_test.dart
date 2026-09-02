@@ -3,9 +3,19 @@
 // found in the LICENSE file.
 
 import 'dart:math' as math;
+import 'dart:ui' show Color;
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/gestures/events.dart' show PointerEvent;
+import 'package:flutter/src/painting/matrix_utils.dart' show MatrixUtils;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/widgets/basic.dart' show Center, SizedBox, Transform;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_view.dart' show ListView;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 const Color _kBlue = Color(0xFF0000FF);
 const Color _kRed = Color(0xFFFF0000);

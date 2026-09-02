@@ -2,17 +2,67 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:ui';
+import 'dart:ui' show Brightness, Canvas, Color, FontWeight, Paint, PaintingStyle, PointerDeviceKind, RRect, Radius, Rect, SemanticsAction, SemanticsFlag, Size, TextDirection;
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/animation/tween.dart' show Tween;
+import 'package:flutter/src/cupertino/colors.dart' show CupertinoColors;
+import 'package:flutter/src/cupertino/slider.dart' show CupertinoSlider;
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, DiagnosticsNode;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/gestures/constants.dart' show kLongPressTimeout, kPressTimeout;
+import 'package:flutter/src/gestures/drag_details.dart' show DragStartDetails;
+import 'package:flutter/src/gestures/gesture_settings.dart' show DeviceGestureSettings;
+import 'package:flutter/src/material/app.dart' show MaterialApp, ThemeMode;
+import 'package:flutter/src/material/color_scheme.dart' show ColorScheme;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/constants.dart' show kRadialReactionDuration;
+import 'package:flutter/src/material/elevated_button.dart' show ElevatedButton;
+import 'package:flutter/src/material/material.dart' show Material, MaterialInkController;
+import 'package:flutter/src/material/material_state.dart' show MaterialStatePropertyAll;
+import 'package:flutter/src/material/page.dart' show MaterialPageRoute;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/slider.dart' show Slider, SliderInteraction;
+import 'package:flutter/src/material/slider_parts.dart' show RectangularSliderTrackShape, RoundedRectSliderTrackShape, SliderTickMarkShape;
+import 'package:flutter/src/material/slider_theme.dart' show ShowValueIndicator, SliderTheme, SliderThemeData;
+import 'package:flutter/src/material/slider_value_indicator_shape.dart' show RoundSliderOverlayShape, SliderComponentShape;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/debug.dart' show debugDisableShadows;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsDirectional, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/inline_span.dart' show InlineSpan;
+import 'package:flutter/src/painting/text_painter.dart' show TextPainter;
+import 'package:flutter/src/painting/text_scaler.dart' show TextScaler;
 import 'package:flutter/src/physics/utils.dart' show nearEqual;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/flex.dart' show MainAxisAlignment;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, RenderObject;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsOwner;
+import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor, SystemMouseCursors;
+import 'package:flutter/src/widgets/actions.dart' show Intent;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Center, Column, Directionality, IntrinsicHeight, IntrinsicWidth, MouseRegion, OverflowBox, SizedBox, StatefulBuilder;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusHighlightStrategy, FocusNode;
+import 'package:flutter/src/widgets/focus_traversal.dart' show DirectionalFocusIntent, TraversalDirection;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, GlobalKey, StateSetter, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData, NavigationMode;
+import 'package:flutter/src/widgets/navigator.dart' show Navigator;
+import 'package:flutter/src/widgets/overlay.dart' show Overlay;
+import 'package:flutter/src/widgets/scroll_view.dart' show ListView;
+import 'package:flutter/src/widgets/shortcuts.dart' show ShortcutActivator, Shortcuts, SingleActivator;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/value_listenable_builder.dart' show ValueListenableBuilder;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateColor, WidgetStateMouseCursor;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:listen/listen.dart' show ValueNotifier;
 
 import '../widgets/semantics_tester.dart';
 

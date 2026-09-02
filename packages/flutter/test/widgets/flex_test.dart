@@ -2,8 +2,17 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Clip, Color, TextDirection;
+
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/debug.dart' show debugCheckIntrinsicSizes;
+import 'package:flutter/src/rendering/flex.dart' show MainAxisAlignment, MainAxisSize, RenderFlex;
+import 'package:flutter/src/widgets/basic.dart' show Center, ColoredBox, Column, Directionality, Expanded, Flex, Flexible, Positioned, Row, SizedBox, Stack;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

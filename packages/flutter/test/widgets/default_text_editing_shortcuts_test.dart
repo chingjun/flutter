@@ -2,9 +2,23 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color, TextAlign;
+
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/services/hardware_keyboard.dart' show HardwareKeyboard, KeyboardLockMode;
+import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
+import 'package:flutter/src/services/text_input.dart' show TextInputType;
+import 'package:flutter/src/widgets/actions.dart' show Action, Actions, CallbackAction, Intent;
+import 'package:flutter/src/widgets/basic.dart' show Align, SizedBox;
+import 'package:flutter/src/widgets/editable_text.dart' show EditableText, TextEditingController;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/focus_scope.dart' show Focus;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/shortcuts.dart' show SingleActivator;
+import 'package:flutter/src/widgets/text_editing_intents.dart' show CopySelectionTextIntent, DeleteCharacterIntent, DeleteToLineBreakIntent, DeleteToNextWordBoundaryIntent, ExpandSelectionToDocumentBoundaryIntent, ExpandSelectionToLineBreakIntent, ExtendSelectionByCharacterIntent, ExtendSelectionToDocumentBoundaryIntent, ExtendSelectionToLineBreakIntent, ExtendSelectionToNextParagraphBoundaryIntent, ExtendSelectionToNextWordBoundaryIntent, ExtendSelectionToNextWordBoundaryOrCaretLocationIntent, ExtendSelectionVerticallyToAdjacentLineIntent, ExtendSelectionVerticallyToAdjacentPageIntent, PasteTextIntent;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'editable_text_tester.dart';

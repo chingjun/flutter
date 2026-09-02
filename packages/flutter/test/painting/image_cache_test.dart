@@ -4,9 +4,11 @@
 
 import 'dart:ui' as ui;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/scheduler.dart';
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/painting/binding.dart' show PaintingBinding, imageCache;
+import 'package:flutter/src/painting/image_provider.dart' show ImageConfiguration;
+import 'package:flutter/src/painting/image_stream.dart' show ImageInfo, ImageStreamCompleter, ImageStreamListener;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
 import 'package:flutter_test/flutter_test.dart';
 
 import '../rendering/rendering_tester.dart';

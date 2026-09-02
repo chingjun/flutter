@@ -2,14 +2,53 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/gestures.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:async' show Future;
+import 'dart:ui' show Brightness, Color, FilterQuality, Offset, Radius, VoidCallback;
 
-import 'colors.dart';
-import 'interface_level.dart';
-import 'route.dart';
-import 'theme.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation, AnimationStatus;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/animations.dart' show CurvedAnimation;
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves;
+import 'package:flutter/src/animation/tween.dart' show Animatable, Tween;
+import 'package:flutter/src/cupertino/colors.dart' show CupertinoColors;
+import 'package:flutter/src/cupertino/interface_level.dart' show CupertinoUserInterfaceLevel, CupertinoUserInterfaceLevelData;
+import 'package:flutter/src/cupertino/route.dart' show CupertinoPageRoute;
+import 'package:flutter/src/cupertino/theme.dart' show CupertinoTheme;
+import 'package:flutter/src/foundation/basic_types.dart' show ValueGetter;
+import 'package:flutter/src/gestures/drag.dart' show Drag;
+import 'package:flutter/src/gestures/drag_details.dart' show DragEndDetails, DragStartDetails, DragUpdateDetails;
+import 'package:flutter/src/gestures/events.dart' show PointerDownEvent, PointerEvent;
+import 'package:flutter/src/gestures/monodrag.dart' show VerticalDragGestureRecognizer;
+import 'package:flutter/src/gestures/velocity_tracker.dart' show IOSScrollViewFlingVelocityTracker, VelocityTracker;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius, BorderRadiusGeometry;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedSuperellipseBorder;
+import 'package:flutter/src/painting/shape_decoration.dart' show ShapeDecoration;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior;
+import 'package:flutter/src/rendering/stack.dart' show StackFit;
+import 'package:flutter/src/services/system_chrome.dart' show SystemUiOverlayStyle;
+import 'package:flutter/src/widgets/annotated_region.dart' show AnnotatedRegion;
+import 'package:flutter/src/widgets/basic.dart' show Align, ClipRSuperellipse, ColoredBox, Listener, Padding, SizedBox, Stack;
+import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding;
+import 'package:flutter/src/widgets/container.dart' show DecoratedBox;
+import 'package:flutter/src/widgets/draggable_scrollable_sheet.dart' show ScrollableWidgetBuilder;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, InheritedWidget, State, StatefulWidget, Widget, WidgetBuilder;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/navigator.dart' show Navigator, NavigatorState, Route, RouteSettings;
+import 'package:flutter/src/widgets/navigator_pop_handler.dart' show NavigatorPopHandler;
+import 'package:flutter/src/widgets/pages.dart' show PageRoute;
+import 'package:flutter/src/widgets/pop_scope.dart' show PopScope;
+import 'package:flutter/src/widgets/routes.dart' show ModalRoute, TransitionRoute;
+import 'package:flutter/src/widgets/scroll_activity.dart' show ScrollActivity;
+import 'package:flutter/src/widgets/scroll_context.dart' show ScrollContext;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_physics.dart' show AlwaysScrollableScrollPhysics, ScrollPhysics;
+import 'package:flutter/src/widgets/scroll_position.dart' show ScrollPosition;
+import 'package:flutter/src/widgets/scroll_position_with_single_context.dart' show ScrollPositionWithSingleContext;
+import 'package:flutter/src/widgets/ticker_provider.dart' show SingleTickerProviderStateMixin;
+import 'package:flutter/src/widgets/transitions.dart' show AnimatedBuilder, DelegatedTransitionBuilder, FadeTransition, ScaleTransition, SlideTransition;
+import 'package:meta/meta.dart' show protected;
 
 // Smoothing factor applied to the device's top padding (which approximates the corner radius)
 // to achieve a smoother end to the corner radius animation.  A value of 1.0 would use

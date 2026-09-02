@@ -2,7 +2,16 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Size, TextDirection;
+
+import 'package:flutter/src/animation/curves.dart' show Curves;
+import 'package:flutter/src/animation/tween.dart' show CurveTween, IntTween, Tween;
+import 'package:flutter/src/animation/tween_sequence.dart' show TweenSequence, TweenSequenceItem;
+import 'package:flutter/src/widgets/basic.dart' show Center, Directionality, SizedBox;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/repeating_animation_builder.dart' show RepeatMode, RepeatingAnimationBuilder;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

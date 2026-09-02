@@ -2,8 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Rect, Size, TextDirection;
+
+import 'package:flutter/src/rendering/box.dart' show BoxHitTestResult, BoxParentData, ContainerBoxParentData, RenderBox, RenderBoxContainerDefaultsMixin;
+import 'package:flutter/src/rendering/object.dart' show ContainerRenderObjectMixin, PaintingContext, RenderObject, RenderObjectVisitor, RenderObjectWithChildMixin;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsConfiguration, SemanticsNode;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 import 'rendering_tester.dart';
 

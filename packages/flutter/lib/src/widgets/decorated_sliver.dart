@@ -8,11 +8,12 @@
 /// @docImport 'scroll_view.dart';
 library;
 
-import 'package:flutter/rendering.dart';
-
-import 'basic.dart';
-import 'framework.dart';
-import 'image.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, DiagnosticsProperty, EnumProperty;
+import 'package:flutter/src/painting/decoration.dart' show Decoration;
+import 'package:flutter/src/rendering/decorated_sliver.dart' show RenderDecoratedSliver;
+import 'package:flutter/src/rendering/proxy_box.dart' show DecorationPosition;
+import 'package:flutter/src/widgets/container.dart' show createLocalImageConfiguration;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, SingleChildRenderObjectWidget, Widget;
 
 /// A sliver widget that paints a [Decoration] either before or after its child
 /// paints.

@@ -7,7 +7,7 @@ library;
 
 import 'dart:ui_web' as ui_web;
 
-import 'package:flutter/foundation.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

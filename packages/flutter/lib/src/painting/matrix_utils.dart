@@ -5,10 +5,13 @@
 /// @docImport 'package:flutter/rendering.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:vector_math/vector_math_64.dart';
+import 'dart:typed_data' show Float64List;
+import 'dart:ui' show Offset, Rect;
 
-import 'basic_types.dart';
+import 'package:flutter/src/foundation/debug.dart' show debugFormatDouble;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsProperty, TextTreeConfiguration;
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:vector_math/vector_math_64.dart';
 
 /// Utility functions for working with matrices.
 abstract final class MatrixUtils {

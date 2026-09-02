@@ -2,7 +2,18 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/cupertino.dart';
+import 'dart:ui' show Brightness, Color;
+
+import 'package:flutter/src/cupertino/app.dart' show CupertinoApp;
+import 'package:flutter/src/cupertino/colors.dart' show CupertinoDynamicColor;
+import 'package:flutter/src/cupertino/interface_level.dart' show CupertinoUserInterfaceLevel, CupertinoUserInterfaceLevelData;
+import 'package:flutter/src/cupertino/theme.dart' show CupertinoTheme, CupertinoThemeData;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/widgets/basic.dart' show Builder, SizedBox;
+import 'package:flutter/src/widgets/container.dart' show DecoratedBox;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
 import 'package:flutter_test/flutter_test.dart';
 
 class DependentWidget extends StatelessWidget {

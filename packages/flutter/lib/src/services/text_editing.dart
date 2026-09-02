@@ -4,7 +4,8 @@
 
 import 'dart:ui' show TextAffinity, TextPosition, TextRange;
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:meta/meta.dart' show immutable;
 
 export 'dart:ui' show TextAffinity, TextPosition;
 

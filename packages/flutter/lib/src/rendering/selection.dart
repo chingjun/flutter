@@ -6,11 +6,15 @@
 /// @docImport 'package:flutter/material.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:vector_math/vector_math_64.dart';
+import 'dart:ui' show Offset, Rect, Size, TextDirection;
 
-import 'layer.dart';
-import 'object.dart';
+import 'package:flutter/src/foundation/collections.dart' show listEquals;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsProperty, DoubleProperty, EnumProperty, IntProperty, IterableProperty, StringProperty;
+import 'package:flutter/src/rendering/layer.dart' show LayerLink;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:listen/listen.dart' show ValueListenable;
+import 'package:meta/meta.dart' show immutable;
+import 'package:vector_math/vector_math_64.dart';
 
 /// The result after handling a [SelectionEvent].
 ///

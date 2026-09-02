@@ -5,9 +5,9 @@
 /// @docImport 'form.dart';
 library;
 
-import 'framework.dart';
-import 'navigator.dart';
-import 'routes.dart';
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/navigator.dart' show WillPopCallback;
+import 'package:flutter/src/widgets/routes.dart' show ModalRoute;
 
 /// Registers a callback to veto attempts by the user to dismiss the enclosing
 /// [ModalRoute].

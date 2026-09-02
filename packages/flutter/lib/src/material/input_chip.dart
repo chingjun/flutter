@@ -9,18 +9,32 @@
 /// @docImport 'material.dart';
 library;
 
-import 'package:flutter/foundation.dart' show clampDouble;
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Clip, Color, Radius, VoidCallback, clampDouble;
 
-import 'chip.dart';
-import 'chip_theme.dart';
-import 'color_scheme.dart';
-import 'colors.dart';
-import 'debug.dart';
-import 'icons.dart';
-import 'text_theme.dart';
-import 'theme.dart';
-import 'theme_data.dart';
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/material/chip.dart' show CheckmarkableChipAttributes, ChipAnimationStyle, ChipAttributes, DeletableChipAttributes, DisabledChipAttributes, RawChip, SelectableChipAttributes, TappableChipAttributes;
+import 'package:flutter/src/material/chip_theme.dart' show ChipThemeData;
+import 'package:flutter/src/material/color_scheme.dart' show ColorScheme;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/debug.dart' show debugCheckHasMaterial;
+import 'package:flutter/src/material/icons.dart' show Icons;
+import 'package:flutter/src/material/text_theme.dart' show TextTheme;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show MaterialTapTargetSize, VisualDensity;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/borders.dart' show BorderSide, OutlinedBorder, ShapeBorder;
+import 'package:flutter/src/painting/circle_border.dart' show CircleBorder;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/icon_theme_data.dart' show IconThemeData;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateProperty;
 
 /// A Material Design input chip.
 ///

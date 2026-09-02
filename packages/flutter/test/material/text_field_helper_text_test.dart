@@ -2,7 +2,10 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/material.dart';
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/input_decorator.dart' show InputDecoration;
+import 'package:flutter/src/material/material.dart' show Material;
+import 'package:flutter/src/material/text_field.dart' show TextField;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

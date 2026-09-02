@@ -2,14 +2,41 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:ui';
+import 'dart:ui' show Color, PointerDeviceKind, SemanticsFlag, Size, TextDirection;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/animation/animation_style.dart' show AnimationStyle;
+import 'package:flutter/src/animation/curves.dart' show Curves;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, DiagnosticsNode;
+import 'package:flutter/src/foundation/key.dart' show UniqueKey, ValueKey;
+import 'package:flutter/src/gestures/constants.dart' show kLongPressTimeout, kPressTimeout;
+import 'package:flutter/src/gestures/events.dart' show PointerEnterEvent;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/geometry.dart' show positionDependentBox;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/rendering/paragraph.dart' show RenderParagraph;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsNode;
+import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:flutter/src/widgets/app.dart' show WidgetsApp;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Center, ColoredBox, Column, Directionality, MouseRegion, Padding, Positioned, SizedBox, Stack;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, GlobalKey, Widget, WidgetBuilder;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/navigator.dart' show RouteSettings;
+import 'package:flutter/src/widgets/overlay.dart' show Overlay, OverlayEntry;
+import 'package:flutter/src/widgets/pages.dart' show PageRouteBuilder;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/raw_tooltip.dart' show RawTooltip, RawTooltipState, TooltipPositionContext, TooltipTriggerMode, TooltipTriggeredCallback;
+import 'package:flutter/src/widgets/scroll_view.dart' show ListView;
+import 'package:flutter/src/widgets/spacer.dart' show Spacer;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/transitions.dart' show FadeTransition;
 import 'package:flutter_test/flutter_test.dart';
+
 import '../widgets/feedback_tester.dart';
 import '../widgets/semantics_tester.dart';
 

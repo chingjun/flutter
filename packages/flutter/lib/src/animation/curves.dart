@@ -7,9 +7,12 @@
 library;
 
 import 'dart:math' as math;
-import 'dart:ui';
+import 'dart:ui' show Offset, clampDouble, lerpDouble;
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/diagnostics.dart' show describeIdentity;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:meta/meta.dart' show immutable, protected;
 
 export 'dart:ui' show Offset;
 

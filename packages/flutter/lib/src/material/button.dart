@@ -11,18 +11,33 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show Clip, Color, Offset, Size, TextBaseline, VoidCallback;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
-
-import 'button_theme.dart';
-import 'constants.dart';
-import 'ink_well.dart';
-import 'material.dart';
-import 'material_state_mixin.dart';
-import 'theme.dart';
-import 'theme_data.dart';
+import 'package:flutter/src/foundation/annotations.dart' show Category;
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/material/constants.dart' show kMinInteractiveDimension, kThemeChangeDuration;
+import 'package:flutter/src/material/ink_well.dart' show InkWell;
+import 'package:flutter/src/material/material.dart' show Material, MaterialType;
+import 'package:flutter/src/material/material_state_mixin.dart' show MaterialStateMixin;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show MaterialTapTargetSize, VisualDensity;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/borders.dart' show ShapeBorder;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/matrix_utils.dart' show MatrixUtils;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, BoxHitTestResult, BoxParentData, RenderBox;
+import 'package:flutter/src/rendering/layout_helper.dart' show ChildLayoutHelper, ChildLayouter;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/rendering/shifted_box.dart' show RenderShiftedBox;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor;
+import 'package:flutter/src/widgets/basic.dart' show Center, ConstrainedBox, Padding, Semantics;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, SingleChildRenderObjectWidget, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/icon_theme.dart' show IconTheme;
+import 'package:flutter/src/widgets/icon_theme_data.dart' show IconThemeData;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateMouseCursor, WidgetStateProperty;
 
 /// Creates a button based on [Semantics], [Material], and [InkWell]
 /// widgets.

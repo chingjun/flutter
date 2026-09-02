@@ -7,8 +7,17 @@
 @Tags(<String>['reduced-test-set'])
 library;
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/scheduler.dart';
+import 'dart:ui' show Brightness, Color, RRect, Radius, Rect, Size;
+
+import 'package:flutter/src/cupertino/activity_indicator.dart' show CupertinoActivityIndicator, CupertinoLinearActivityIndicator;
+import 'package:flutter/src/cupertino/app.dart' show CupertinoApp;
+import 'package:flutter/src/cupertino/colors.dart' show CupertinoColors;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
+import 'package:flutter/src/widgets/basic.dart' show Center, ColoredBox, RepaintBoundary, SizedBox;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show Widget;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

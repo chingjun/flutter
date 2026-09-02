@@ -7,9 +7,51 @@
 @Tags(<String>['reduced-test-set'])
 library;
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
+import 'dart:ui' show Brightness, Color, SemanticsFlag, Size, TextDirection;
+
+import 'package:flutter/src/cupertino/app.dart' show CupertinoApp;
+import 'package:flutter/src/cupertino/button.dart' show CupertinoButton;
+import 'package:flutter/src/cupertino/colors.dart' show CupertinoColors, CupertinoDynamicColor;
+import 'package:flutter/src/cupertino/icons.dart' show CupertinoIcons;
+import 'package:flutter/src/cupertino/nav_bar.dart' show CupertinoNavigationBar, CupertinoNavigationBarBackButton, CupertinoSliverNavigationBar, NavigationBarBottomMode;
+import 'package:flutter/src/cupertino/page_scaffold.dart' show CupertinoPageScaffold;
+import 'package:flutter/src/cupertino/route.dart' show CupertinoPageRoute;
+import 'package:flutter/src/cupertino/search_field.dart' show CupertinoSearchTextField;
+import 'package:flutter/src/cupertino/segmented_control.dart' show CupertinoSegmentedControl;
+import 'package:flutter/src/cupertino/sheet.dart' show CupertinoSheetRoute;
+import 'package:flutter/src/cupertino/text_field.dart' show OverlayVisibilityMode;
+import 'package:flutter/src/cupertino/theme.dart' show CupertinoThemeData;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/borders.dart' show BorderSide;
+import 'package:flutter/src/painting/box_border.dart' show Border;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsDirectional;
+import 'package:flutter/src/painting/text_scaler.dart' show TextScaler;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/paragraph.dart' show RenderParagraph;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderAnimatedOpacity, RenderOpacity;
+import 'package:flutter/src/services/system_chrome.dart' show SystemChrome, SystemUiOverlayStyle;
+import 'package:flutter/src/widgets/app.dart' show WidgetsApp;
+import 'package:flutter/src/widgets/basic.dart' show Align, BackdropFilter, Builder, Center, ClipRect, ColoredBox, Column, ConstrainedBox, Directionality, Padding, RepaintBoundary, SizedBox, SliverToBoxAdapter, StatefulBuilder;
+import 'package:flutter/src/widgets/container.dart' show Container, DecoratedBox;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, GlobalKey, StateSetter, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/icon_data.dart' show IconData;
+import 'package:flutter/src/widgets/implicit_animations.dart' show AnimatedOpacity;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/navigation_toolbar.dart' show NavigationToolbar;
+import 'package:flutter/src/widgets/navigator.dart' show Navigator, NavigatorState, RouteSettings;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/preferred_size.dart' show PreferredSize;
+import 'package:flutter/src/widgets/rich_text.dart' show RichText;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_view.dart' show CustomScrollView, ListView;
+import 'package:flutter/src/widgets/scrollable.dart' show Scrollable;
+import 'package:flutter/src/widgets/sliver_fill.dart' show SliverFillRemaining;
+import 'package:flutter/src/widgets/sliver_persistent_header.dart' show SliverPersistentHeader;
+import 'package:flutter/src/widgets/text.dart' show DefaultTextStyle, Text;
 import 'package:flutter_test/flutter_test.dart';
 
 import '../widgets/semantics_tester.dart';

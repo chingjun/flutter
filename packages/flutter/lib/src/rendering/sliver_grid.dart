@@ -10,12 +10,13 @@ library;
 
 import 'dart:math' as math;
 
-import 'package:flutter/foundation.dart';
-
-import 'box.dart';
-import 'object.dart';
-import 'sliver.dart';
-import 'sliver_multi_box_adaptor.dart';
+import 'package:flutter/src/foundation/constants.dart' show precisionErrorTolerance;
+import 'package:flutter/src/painting/basic_types.dart' show axisDirectionIsReversed;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/rendering/sliver.dart' show SliverConstraints, SliverGeometry;
+import 'package:flutter/src/rendering/sliver_multi_box_adaptor.dart' show RenderSliverMultiBoxAdaptor, SliverMultiBoxAdaptorParentData;
+import 'package:meta/meta.dart' show immutable;
 
 /// Describes the placement of a child in a [RenderSliverGrid].
 ///

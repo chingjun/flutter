@@ -2,8 +2,35 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Color, Radius;
+
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, DiagnosticsNode;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/floating_action_button.dart' show FloatingActionButton;
+import 'package:flutter/src/material/icons.dart' show Icons;
+import 'package:flutter/src/material/material.dart' show Material;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold, ScaffoldMessenger;
+import 'package:flutter/src/material/snack_bar.dart' show SnackBar, SnackBarAction;
+import 'package:flutter/src/material/snack_bar_theme.dart' show SnackBarBehavior, SnackBarTheme, SnackBarThemeData;
+import 'package:flutter/src/material/text_button.dart' show TextButton;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/material/typography.dart' show Typography;
+import 'package:flutter/src/painting/beveled_rectangle_border.dart' show BeveledRectangleBorder;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/borders.dart' show ShapeBorder;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/paragraph.dart' show RenderParagraph;
+import 'package:flutter/src/widgets/basic.dart' show Builder;
+import 'package:flutter/src/widgets/dismissible.dart' show DismissDirection;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateColor;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

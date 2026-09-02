@@ -8,9 +8,22 @@
 @Tags(<String>['reduced-test-set'])
 library;
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Clip, Color, Path, Radius, Rect, Size, TextDirection;
+
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/beveled_rectangle_border.dart' show BeveledRectangleBorder;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius, BorderRadiusDirectional;
+import 'package:flutter/src/painting/borders.dart' show ShapeBorder;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/rendering/debug.dart' show debugPaintSizeEnabled;
+import 'package:flutter/src/rendering/proxy_box.dart' show CustomClipper, HitTestBehavior, RenderClipOval, RenderClipPath, RenderClipRRect, RenderClipRect, ShapeBorderClipper;
+import 'package:flutter/src/widgets/basic.dart' show Align, Center, ClipOval, ClipPath, ClipRRect, ClipRSuperellipse, ClipRect, ColoredBox, Directionality, FittedBox, Opacity, Padding, PhysicalModel, PhysicalShape, Positioned, RepaintBoundary, Semantics, SizedBox, Stack, StatefulBuilder, Transform;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StateSetter, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:listen/listen.dart' show ValueNotifier;
 
 import 'test_border.dart' show TestBorder;
 

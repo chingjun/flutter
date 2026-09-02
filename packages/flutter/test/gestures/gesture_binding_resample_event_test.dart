@@ -6,9 +6,11 @@ import 'dart:ui' as ui;
 
 import 'package:clock/clock.dart';
 import 'package:fake_async/fake_async.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/scheduler.dart';
+import 'package:flutter/src/foundation/binding.dart' show BindingBase;
+import 'package:flutter/src/gestures/binding.dart' show GestureBinding, SamplingClock;
+import 'package:flutter/src/gestures/events.dart' show PointerDownEvent, PointerEvent, PointerMoveEvent, PointerUpEvent;
+import 'package:flutter/src/gestures/hit_test.dart' show HitTestEntry;
+import 'package:flutter/src/scheduler/binding.dart' show FrameCallback, SchedulerBinding;
 import 'package:flutter_test/flutter_test.dart';
 
 typedef HandleEventCallback = void Function(PointerEvent event);

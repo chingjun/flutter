@@ -2,11 +2,15 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:ui';
+import 'dart:ui' show Rect, SemanticsUpdate, VoidCallback;
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError, FlutterErrorDetails;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/layer.dart' show OffsetLayer;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, PipelineManifold, PipelineOwner, RenderObject;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsConfiguration;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:listen/listen.dart' show ChangeNotifier;
 
 void main() {
   FlutterError.presentError = (FlutterErrorDetails details) {

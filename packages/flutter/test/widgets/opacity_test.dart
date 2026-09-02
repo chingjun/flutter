@@ -8,9 +8,17 @@
 library;
 
 import 'dart:ui' as ui;
+import 'dart:ui' show Color, Rect, TextDirection;
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/rendering/debug.dart' show debugDisableOpacityLayers;
+import 'package:flutter/src/rendering/flex.dart' show CrossAxisAlignment;
+import 'package:flutter/src/rendering/layer.dart' show OffsetLayer;
+import 'package:flutter/src/widgets/basic.dart' show ColoredBox, Column, Directionality, Opacity, Padding, Positioned, RepaintBoundary, SizedBox, Stack;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show Element, GlobalKey, Widget;
+import 'package:flutter/src/widgets/single_child_scroll_view.dart' show SingleChildScrollView;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'semantics_tester.dart';

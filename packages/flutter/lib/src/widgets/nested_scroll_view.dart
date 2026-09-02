@@ -9,26 +9,47 @@
 /// @docImport 'scrollable.dart';
 library;
 
+import 'dart:async' show Future;
 import 'dart:math' as math;
+import 'dart:ui' show Clip, Color, Offset, Paint, PaintingStyle, VoidCallback, clampDouble;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/scheduler.dart';
-
-import 'basic.dart';
-import 'framework.dart';
-import 'primary_scroll_controller.dart';
-import 'scroll_activity.dart';
-import 'scroll_configuration.dart';
-import 'scroll_context.dart';
-import 'scroll_controller.dart';
-import 'scroll_metrics.dart';
-import 'scroll_physics.dart';
-import 'scroll_position.dart';
-import 'scroll_view.dart';
-import 'sliver_fill.dart';
-import 'viewport.dart';
+import 'package:flutter/src/animation/curves.dart' show Curve;
+import 'package:flutter/src/foundation/constants.dart' show precisionErrorTolerance;
+import 'package:flutter/src/foundation/debug.dart' show debugMaybeDispatchCreated, debugMaybeDispatchDisposed;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty;
+import 'package:flutter/src/foundation/memory_allocations.dart' show kFlutterMemoryAllocationsEnabled;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/gestures/drag.dart' show Drag;
+import 'package:flutter/src/gestures/drag_details.dart' show DragStartDetails;
+import 'package:flutter/src/gestures/recognizer.dart' show DragStartBehavior;
+import 'package:flutter/src/painting/basic_types.dart' show Axis, AxisDirection;
+import 'package:flutter/src/painting/paint_utilities.dart' show paintZigZag;
+import 'package:flutter/src/physics/simulation.dart' show Simulation;
+import 'package:flutter/src/rendering/debug.dart' show debugPaintSizeEnabled;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, PipelineOwner, RenderObject, RenderObjectWithChildMixin;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior;
+import 'package:flutter/src/rendering/sliver.dart' show RenderSliver, SliverGeometry, SliverHitTestResult;
+import 'package:flutter/src/rendering/viewport.dart' show RenderViewport;
+import 'package:flutter/src/rendering/viewport_offset.dart' show ScrollDirection, ViewportOffset;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
+import 'package:flutter/src/scheduler/ticker.dart' show TickerProvider;
+import 'package:flutter/src/widgets/basic.dart' show Builder;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedWidget, SingleChildRenderObjectWidget, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/primary_scroll_controller.dart' show PrimaryScrollController;
+import 'package:flutter/src/widgets/scroll_activity.dart' show BallisticScrollActivity, DragScrollActivity, DrivenScrollActivity, HoldScrollActivity, IdleScrollActivity, ScrollActivity, ScrollActivityDelegate, ScrollDragController, ScrollHoldController;
+import 'package:flutter/src/widgets/scroll_configuration.dart' show ScrollBehavior, ScrollConfiguration;
+import 'package:flutter/src/widgets/scroll_context.dart' show ScrollContext;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_metrics.dart' show FixedScrollMetrics;
+import 'package:flutter/src/widgets/scroll_physics.dart' show ClampingScrollPhysics, ScrollPhysics;
+import 'package:flutter/src/widgets/scroll_position.dart' show ScrollPosition;
+import 'package:flutter/src/widgets/scroll_view.dart' show CustomScrollView;
+import 'package:flutter/src/widgets/sliver_fill.dart' show SliverFillRemaining;
+import 'package:flutter/src/widgets/viewport.dart' show Viewport;
+import 'package:listen/listen.dart' show ChangeNotifier;
+import 'package:meta/meta.dart' show mustCallSuper, protected;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 /// Signature used by [NestedScrollView] for building its header.
 ///

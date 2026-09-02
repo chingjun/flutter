@@ -6,13 +6,16 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show Color, TextDecoration, TextRange;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/services.dart'
-    show SpellCheckResults, SpellCheckService, SuggestionSpan, TextEditingValue;
-
-import 'editable_text.dart' show EditableTextContextMenuBuilder;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/painting/text_span.dart' show TextSpan;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/services/spell_check.dart' show SpellCheckResults, SpellCheckService, SuggestionSpan;
+import 'package:flutter/src/services/text_input.dart' show TextEditingValue;
+import 'package:flutter/src/widgets/editable_text.dart' show EditableTextContextMenuBuilder;
+import 'package:meta/meta.dart' show immutable;
 
 /// Controls how spell check is performed for text input.
 ///

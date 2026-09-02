@@ -2,11 +2,19 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:ui';
+import 'dart:ui' show Locale, LocaleStringAttribute, PlaceholderAlignment, PointerDeviceKind, SpellOutStringAttribute, TextAlign, TextDirection, TextPosition, TextRange;
 
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/gestures/events.dart' show PointerEnterEvent, PointerEvent, PointerExitEvent;
+import 'package:flutter/src/painting/basic_types.dart' show RenderComparison;
+import 'package:flutter/src/painting/inline_span.dart' show InlineSpan, InlineSpanSemanticsInformation, combineSemanticsInfo;
+import 'package:flutter/src/painting/text_span.dart' show TextSpan;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/services/mouse_cursor.dart' show SystemMouseCursors;
+import 'package:flutter/src/widgets/basic.dart' show Center, Directionality, SizedBox;
+import 'package:flutter/src/widgets/rich_text.dart' show RichText;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/widget_span.dart' show WidgetSpan;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

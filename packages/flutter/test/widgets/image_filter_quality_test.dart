@@ -8,10 +8,14 @@
 library;
 
 import 'dart:async';
+import 'dart:typed_data' show Uint8List;
 import 'dart:ui' as ui;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show describeIdentity;
+import 'package:flutter/src/foundation/synchronous_future.dart' show SynchronousFuture;
+import 'package:flutter/src/painting/image_provider.dart' show ImageConfiguration, ImageDecoderCallback, ImageProvider;
+import 'package:flutter/src/painting/image_stream.dart' show ImageChunkEvent, ImageInfo, ImageStreamCompleter, ImageStreamListener, OneFrameImageStreamCompleter;
+import 'package:flutter/src/widgets/image.dart' show Image;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

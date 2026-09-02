@@ -6,18 +6,29 @@
 /// @docImport 'primary_scroll_controller.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Clip;
 
-import 'basic.dart';
-import 'framework.dart';
-import 'media_query.dart';
-import 'scroll_controller.dart';
-import 'scroll_delegate.dart';
-import 'scroll_physics.dart';
-import 'scroll_view.dart';
-import 'sliver.dart';
-import 'ticker_provider.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/animations.dart' show kAlwaysCompleteAnimation;
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorHint, ErrorSummary, FlutterError;
+import 'package:flutter/src/foundation/collections.dart' show binarySearch;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode;
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsGeometry;
+import 'package:flutter/src/rendering/sliver_grid.dart' show SliverGridDelegate;
+import 'package:flutter/src/rendering/viewport.dart' show ScrollCacheExtent;
+import 'package:flutter/src/widgets/basic.dart' show SliverPadding;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_delegate.dart' show ChildIndexGetter, SliverChildBuilderDelegate, SliverChildDelegate;
+import 'package:flutter/src/widgets/scroll_physics.dart' show ScrollPhysics;
+import 'package:flutter/src/widgets/scroll_view.dart' show CustomScrollView;
+import 'package:flutter/src/widgets/sliver.dart' show SliverGrid, SliverList;
+import 'package:flutter/src/widgets/ticker_provider.dart' show TickerProviderStateMixin;
+import 'package:meta/meta.dart' show protected;
 
 /// A scrolling container that animates items when they are inserted or removed.
 ///

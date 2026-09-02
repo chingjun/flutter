@@ -4,7 +4,7 @@
 
 // This test verifies that ScrollCacheExtent is re-exported from the widgets
 // library alone.
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/rendering/viewport.dart' show ScrollCacheExtent;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

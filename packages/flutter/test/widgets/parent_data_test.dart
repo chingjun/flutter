@@ -2,8 +2,16 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show TextDirection;
+
+import 'package:flutter/src/foundation/print.dart' show debugPrint;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/object.dart' show ParentData, RenderObject;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderDecoratedBox, RenderProxyBox;
+import 'package:flutter/src/rendering/stack.dart' show RenderStack, StackParentData;
+import 'package:flutter/src/widgets/basic.dart' show Directionality, Expanded, Positioned, Row, Stack;
+import 'package:flutter/src/widgets/container.dart' show Container, DecoratedBox;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, GlobalKey, MultiChildRenderObjectElement, ParentDataWidget, SingleChildRenderObjectWidget, StatelessWidget, Widget;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'test_widgets.dart';

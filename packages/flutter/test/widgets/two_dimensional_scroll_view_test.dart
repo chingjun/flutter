@@ -2,10 +2,28 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/src/gestures/monodrag.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color, TextDirection;
+
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError, FlutterErrorDetails, FlutterExceptionHandler;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/gestures/recognizer.dart' show DragStartBehavior;
+import 'package:flutter/src/gestures/tap.dart' show TapUpDetails;
+import 'package:flutter/src/painting/basic_types.dart' show Axis, AxisDirection;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior;
+import 'package:flutter/src/rendering/viewport.dart' show CacheExtentStyle;
+import 'package:flutter/src/widgets/basic.dart' show Center, Column, Directionality, Expanded, Positioned, SizedBox, Stack;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/primary_scroll_controller.dart' show PrimaryScrollController;
+import 'package:flutter/src/widgets/scroll_configuration.dart' show ScrollViewKeyboardDismissBehavior;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_delegate.dart' show TwoDimensionalChildBuilderDelegate;
+import 'package:flutter/src/widgets/scrollable.dart' show DiagonalDragBehavior, TwoDimensionalScrollable, TwoDimensionalScrollableState;
+import 'package:flutter/src/widgets/scrollable_helpers.dart' show ScrollableDetails;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/two_dimensional_viewport.dart' show ChildVicinity;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'editable_text_tester.dart';

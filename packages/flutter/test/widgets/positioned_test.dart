@@ -3,9 +3,15 @@
 // found in the LICENSE file.
 
 import 'dart:async';
+import 'dart:ui' show Rect, Size, TextDirection;
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/rendering/box.dart' show BoxParentData, RenderBox;
+import 'package:flutter/src/rendering/stack.dart' show RelativeRect;
+import 'package:flutter/src/widgets/basic.dart' show Center, Directionality, Positioned, SizedBox, Stack;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show GlobalKey, Widget;
+import 'package:flutter/src/widgets/transitions.dart' show PositionedTransition, RelativeRectTween;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

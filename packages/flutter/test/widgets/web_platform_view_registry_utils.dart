@@ -5,7 +5,8 @@
 import 'dart:ui_web' as ui_web;
 
 import 'package:collection/collection.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/src/services/message_codec.dart' show MethodCall, PlatformException;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
 import 'package:flutter_test/flutter_test.dart';
 
 typedef FakeViewFactory = ({String viewType, bool isVisible, Function viewFactory});

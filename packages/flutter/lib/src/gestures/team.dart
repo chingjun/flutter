@@ -9,8 +9,8 @@
 /// @docImport 'tap.dart';
 library;
 
-import 'arena.dart';
-import 'binding.dart';
+import 'package:flutter/src/gestures/arena.dart' show GestureArenaEntry, GestureArenaMember, GestureDisposition;
+import 'package:flutter/src/gestures/binding.dart' show GestureBinding;
 
 export 'arena.dart' show GestureArenaEntry, GestureArenaMember;
 

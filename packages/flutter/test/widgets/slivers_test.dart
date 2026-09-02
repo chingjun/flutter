@@ -2,9 +2,34 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color, SemanticsAction, Size, TextDirection, VoidCallback;
+
+import 'package:flutter/src/foundation/assertions.dart' show FlutterErrorDetails;
+import 'package:flutter/src/foundation/collections.dart' show listEquals;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey, ValueKey;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior;
+import 'package:flutter/src/rendering/sliver.dart' show RenderSliver, RenderSliverToBoxAdapter, SliverConstraints;
+import 'package:flutter/src/rendering/sliver_fixed_extent_list.dart' show RenderSliverFixedExtentBoxAdaptor;
+import 'package:flutter/src/rendering/sliver_grid.dart' show SliverGridDelegate, SliverGridDelegateWithFixedCrossAxisCount, SliverGridDelegateWithMaxCrossAxisExtent, SliverGridGeometry, SliverGridLayout;
+import 'package:flutter/src/rendering/viewport.dart' show RenderViewport;
+import 'package:flutter/src/rendering/viewport_offset.dart' show ViewportOffset;
+import 'package:flutter/src/widgets/automatic_keep_alive.dart' show AutomaticKeepAliveClientMixin;
+import 'package:flutter/src/widgets/basic.dart' show Align, Center, ColoredBox, Directionality, IndexedSemantics, KeyedSubtree, Padding, SizedBox, SliverToBoxAdapter;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, ErrorWidget, ErrorWidgetBuilder, State, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_delegate.dart' show SliverChildBuilderDelegate, SliverChildListDelegate;
+import 'package:flutter/src/widgets/scroll_physics.dart' show AlwaysScrollableScrollPhysics, BouncingScrollPhysics;
+import 'package:flutter/src/widgets/scroll_view.dart' show CustomScrollView;
+import 'package:flutter/src/widgets/scrollable.dart' show Scrollable;
+import 'package:flutter/src/widgets/sliver.dart' show SliverEnsureSemantics, SliverFixedExtentList, SliverGrid, SliverIgnorePointer, SliverList, SliverOffstage, SliverOpacity;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/viewport.dart' show Viewport;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'semantics_tester.dart';

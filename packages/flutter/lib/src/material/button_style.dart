@@ -17,15 +17,20 @@
 /// @docImport 'theme.dart';
 library;
 
-import 'dart:ui' show lerpDouble;
+import 'dart:ui' show Color, Size, lerpDouble;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
-
-import 'button_style_button.dart';
-import 'ink_well.dart';
-import 'theme_data.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsProperty, EnumProperty;
+import 'package:flutter/src/material/button_style_button.dart' show IconAlignment;
+import 'package:flutter/src/material/ink_well.dart' show InteractiveInkFeatureFactory;
+import 'package:flutter/src/material/theme_data.dart' show MaterialTapTargetSize, VisualDensity;
+import 'package:flutter/src/painting/alignment.dart' show AlignmentGeometry;
+import 'package:flutter/src/painting/borders.dart' show BorderSide, OutlinedBorder;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsetsGeometry;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateBorderSide, WidgetStateProperty;
+import 'package:meta/meta.dart' show immutable;
 
 // Examples can assume:
 // late BuildContext context;

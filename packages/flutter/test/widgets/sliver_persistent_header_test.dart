@@ -3,9 +3,29 @@
 // found in the LICENSE file.
 
 import 'dart:ui' as ui;
+import 'dart:ui' show Color, Rect, TextDirection;
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/animation/curves.dart' show Curves;
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/rendering/sliver.dart' show RenderSliver, SliverGeometry, SliverPhysicalParentData;
+import 'package:flutter/src/rendering/sliver_persistent_header.dart' show OverScrollHeaderStretchConfiguration, PersistentHeaderShowOnScreenConfiguration, RenderSliverPinnedPersistentHeader, RenderSliverScrollingPersistentHeader;
+import 'package:flutter/src/rendering/viewport.dart' show RenderViewport;
+import 'package:flutter/src/rendering/viewport_offset.dart' show ScrollDirection;
+import 'package:flutter/src/widgets/basic.dart' show Directionality, SizedBox;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, LeafRenderObjectWidget, Widget;
+import 'package:flutter/src/widgets/scroll_delegate.dart' show SliverChildBuilderDelegate, SliverChildListDelegate;
+import 'package:flutter/src/widgets/scroll_physics.dart' show BouncingScrollPhysics;
+import 'package:flutter/src/widgets/scroll_position.dart' show ScrollPosition;
+import 'package:flutter/src/widgets/scroll_position_with_single_context.dart' show ScrollPositionWithSingleContext;
+import 'package:flutter/src/widgets/scroll_view.dart' show CustomScrollView;
+import 'package:flutter/src/widgets/scrollable.dart' show Scrollable, ScrollableState;
+import 'package:flutter/src/widgets/sliver.dart' show SliverFixedExtentList, SliverList;
+import 'package:flutter/src/widgets/sliver_persistent_header.dart' show SliverPersistentHeader, SliverPersistentHeaderDelegate;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'sliver_test_utils.dart';

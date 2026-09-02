@@ -2,7 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Size, TextBaseline;
+
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/shifted_box.dart' show RenderBaseline, RenderConstrainedOverflowBox, RenderFractionallySizedOverflowBox, RenderPadding, RenderPositionedBox, RenderSizedOverflowBox;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'rendering_tester.dart';

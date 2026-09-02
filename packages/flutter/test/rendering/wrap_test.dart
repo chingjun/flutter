@@ -2,7 +2,17 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Clip, TextDirection;
+
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel;
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/painting/text_span.dart' show TextSpan;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/paragraph.dart' show RenderParagraph;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderConstrainedBox;
+import 'package:flutter/src/rendering/rotated_box.dart' show RenderRotatedBox;
+import 'package:flutter/src/rendering/wrap.dart' show RenderWrap;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'rendering_tester.dart';

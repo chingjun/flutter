@@ -2,9 +2,16 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:collection' show IterableExtensions;
+import 'dart:ui' show Locale, LocaleStringAttribute, SemanticsFlag, TextDirection;
+
+import 'package:flutter/src/gestures/tap.dart' show TapGestureRecognizer;
+import 'package:flutter/src/painting/text_span.dart' show TextSpan;
+import 'package:flutter/src/semantics/semantics.dart' show DebugSemanticsDumpOrder, SemanticsNode;
+import 'package:flutter/src/widgets/basic.dart' show Directionality, Semantics;
+import 'package:flutter/src/widgets/selectable_region.dart' show SelectableRegion;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/text_selection.dart' show emptyTextSelectionControls;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'semantics_tester.dart';

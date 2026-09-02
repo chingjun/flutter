@@ -11,17 +11,23 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show Canvas, Clip, Color, Offset, Paint, PaintingStyle, Rect, Size, clampDouble;
 
-import 'package:flutter/animation.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/semantics.dart';
-
-import 'box.dart';
-import 'debug.dart';
-import 'layer.dart';
-import 'object.dart';
-import 'sliver.dart';
-import 'viewport_offset.dart';
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves;
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorHint, ErrorSummary, FlutterError;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsNode, DiagnosticsProperty, DoubleProperty, EnumProperty;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/painting/basic_types.dart' show Axis, AxisDirection, axisDirectionToAxis;
+import 'package:flutter/src/painting/matrix_utils.dart' show MatrixUtils;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, BoxHitTestResult, RenderBox;
+import 'package:flutter/src/rendering/debug.dart' show debugCheckHasBoundedAxis;
+import 'package:flutter/src/rendering/layer.dart' show ClipRectLayer, LayerHandle;
+import 'package:flutter/src/rendering/object.dart' show ContainerParentDataMixin, ContainerRenderObjectMixin, PaintingContext, PipelineOwner, RenderObject, RenderObjectVisitor;
+import 'package:flutter/src/rendering/sliver.dart' show GrowthDirection, RenderSliver, SliverConstraints, SliverGeometry, SliverHitTestResult, SliverLogicalContainerParentData, SliverLogicalParentData, SliverPhysicalContainerParentData, SliverPhysicalParentData, applyGrowthDirectionToAxisDirection, applyGrowthDirectionToScrollDirection;
+import 'package:flutter/src/rendering/viewport_offset.dart' show ScrollDirection, ViewportOffset;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsConfiguration, SemanticsTag;
+import 'package:meta/meta.dart' show immutable, protected;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 /// The amount of additional content to display and lay out around the viewport.
 ///

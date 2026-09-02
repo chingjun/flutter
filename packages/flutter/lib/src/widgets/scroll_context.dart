@@ -12,11 +12,11 @@
 /// @docImport 'viewport.dart';
 library;
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/scheduler.dart';
+import 'dart:ui' show SemanticsAction;
 
-import 'framework.dart';
-import 'ticker_provider.dart';
+import 'package:flutter/src/painting/basic_types.dart' show AxisDirection;
+import 'package:flutter/src/scheduler/ticker.dart' show TickerProvider;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext;
 
 /// An interface that [Scrollable] widgets implement in order to use
 /// [ScrollPosition].

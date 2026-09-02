@@ -7,13 +7,52 @@
 @Tags(<String>['reduced-test-set'])
 library;
 
-import 'dart:ui';
+import 'dart:ui' show Clip, Color, PointerDeviceKind, Rect, SemanticsAction, SemanticsActionEvent, SemanticsFlag, Size, TextDirection, VoidCallback;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey, ValueKey;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/app_bar.dart' show AppBar;
+import 'package:flutter/src/material/badge.dart' show Badge;
+import 'package:flutter/src/material/button_style.dart' show ButtonStyle;
+import 'package:flutter/src/material/color_scheme.dart' show ColorScheme;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/icon_button.dart' show IconButton;
+import 'package:flutter/src/material/icon_button_theme.dart' show IconButtonTheme, IconButtonThemeData;
+import 'package:flutter/src/material/icons.dart' show Icons;
+import 'package:flutter/src/material/material.dart' show Material, MaterialType;
+import 'package:flutter/src/material/material_state.dart' show MaterialStatePropertyAll, MaterialStatesController;
+import 'package:flutter/src/material/outlined_button.dart' show OutlinedButton;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show MaterialTapTargetSize, ThemeData, VisualDensity;
+import 'package:flutter/src/material/tooltip.dart' show Tooltip;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/borders.dart' show BorderSide;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/stadium_border.dart' show StadiumBorder;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/flex.dart' show CrossAxisAlignment;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
+import 'package:flutter/src/services/mouse_cursor.dart' show SystemMouseCursors;
+import 'package:flutter/src/widgets/basic.dart' show Align, Builder, Center, ColoredBox, Column, Directionality, Padding, RepaintBoundary, Row, SizedBox, StatefulBuilder;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusHighlightMode, FocusManager, FocusNode;
+import 'package:flutter/src/widgets/focus_traversal.dart' show FocusTraversalGroup, ReadingOrderTraversalPolicy;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StateSetter, Widget;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/icon_data.dart' show IconData;
+import 'package:flutter/src/widgets/icon_theme.dart' show IconTheme;
+import 'package:flutter/src/widgets/icon_theme_data.dart' show IconThemeData;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData, NavigationMode;
+import 'package:flutter/src/widgets/rich_text.dart' show RichText;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateColor, WidgetStateProperty, WidgetStatePropertyAll, WidgetStatesConstraint;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 import '../widgets/feedback_tester.dart';
 import '../widgets/semantics_tester.dart';

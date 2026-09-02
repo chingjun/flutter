@@ -2,14 +2,66 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:ui';
+import 'dart:ui' show Brightness, Clip, Color, DisplayFeature, DisplayFeatureState, DisplayFeatureType, Locale, Radius, Rect, SemanticsFlag, SemanticsHitTestBehavior, SemanticsRole, Size, TextDirection;
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/animation/animation_style.dart' show AnimationStyle;
+import 'package:flutter/src/animation/curves.dart' show Curves;
+import 'package:flutter/src/cupertino/dialog.dart' show CupertinoAlertDialog;
+import 'package:flutter/src/foundation/assertions.dart' show ErrorSummary, FlutterError;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey, ValueKey;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/material/action_buttons.dart' show BackButton, CloseButton;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/app_bar.dart' show AppBar;
+import 'package:flutter/src/material/bottom_sheet.dart' show ModalBottomSheetRoute;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/dialog.dart' show AlertDialog, Dialog, DialogRoute, SimpleDialog, SimpleDialogOption, showAdaptiveDialog, showDialog;
+import 'package:flutter/src/material/dialog_theme.dart' show DialogThemeData;
+import 'package:flutter/src/material/elevated_button.dart' show ElevatedButton;
+import 'package:flutter/src/material/icons.dart' show Icons;
+import 'package:flutter/src/material/material.dart' show Material;
+import 'package:flutter/src/material/material_localizations.dart' show DefaultMaterialLocalizations;
+import 'package:flutter/src/material/outlined_button.dart' show OutlinedButton;
+import 'package:flutter/src/material/page.dart' show MaterialPageRoute;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold, ScaffoldState;
+import 'package:flutter/src/material/text_button.dart' show TextButton;
+import 'package:flutter/src/material/text_field.dart' show TextField;
+import 'package:flutter/src/material/text_theme.dart' show TextTheme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/basic_types.dart' show VerticalDirection;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/borders.dart' show ShapeBorder;
+import 'package:flutter/src/painting/box_border.dart' show Border;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/flex.dart' show MainAxisAlignment;
+import 'package:flutter/src/rendering/paragraph.dart' show RenderParagraph;
+import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
+import 'package:flutter/src/widgets/actions.dart' show Actions;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Center, Column, Directionality, Padding, Semantics, SizedBox, StatefulBuilder;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/dismissible.dart' show DismissDirection, Dismissible;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode, primaryFocus;
+import 'package:flutter/src/widgets/focus_scope.dart' show Focus, FocusScope;
+import 'package:flutter/src/widgets/focus_traversal.dart' show NextFocusIntent, PreviousFocusIntent, TraversalEdgeBehavior;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, StateSetter, StatelessElement, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/localizations.dart' show DefaultWidgetsLocalizations, Localizations, LocalizationsDelegate;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/modal_barrier.dart' show ModalBarrier;
+import 'package:flutter/src/widgets/navigator.dart' show Navigator, NavigatorObserver, NavigatorState, Route, RouteSettings;
+import 'package:flutter/src/widgets/overflow_bar.dart' show OverflowBar, OverflowBarAlignment;
+import 'package:flutter/src/widgets/pages.dart' show PageRouteBuilder;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/routes.dart' show RawDialogRoute;
+import 'package:flutter/src/widgets/scroll_view.dart' show ListView;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
+
 import '../widgets/semantics_tester.dart';
 
 MaterialApp _buildAppWithDialog(

@@ -2,8 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Canvas, Paint, Size;
+
+import 'package:flutter/src/rendering/custom_paint.dart' show CustomPainter;
+import 'package:flutter/src/rendering/layer.dart' show Layer;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/widgets/basic.dart' show CustomPaint, RepaintBoundary, SizedBox;
+import 'package:flutter/src/widgets/framework.dart' show GlobalKey;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

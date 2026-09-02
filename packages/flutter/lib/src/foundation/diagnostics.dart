@@ -12,12 +12,11 @@ import 'dart:collection';
 import 'dart:math' as math;
 import 'dart:ui' show clampDouble;
 
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/constants.dart' show kProfileMode, kReleaseMode;
+import 'package:flutter/src/foundation/debug.dart' show debugFormatDouble;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
 import 'package:meta/meta.dart';
-
-import 'assertions.dart';
-import 'constants.dart';
-import 'debug.dart';
-import 'object.dart';
 
 // Examples can assume:
 // late int rows, columns;

@@ -6,17 +6,21 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show Clip, Offset, Rect, Size;
 
-import 'package:flutter/animation.dart';
-import 'package:flutter/foundation.dart';
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves;
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/gestures/events.dart' show PointerEvent;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/painting/matrix_utils.dart' show MatrixUtils;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, BoxHitTestResult, ContainerBoxParentData, RenderBox;
+import 'package:flutter/src/rendering/layer.dart' show ClipRectLayer, LayerHandle, OpacityLayer;
+import 'package:flutter/src/rendering/object.dart' show ContainerRenderObjectMixin, PaintingContext, PipelineOwner, RenderObject;
+import 'package:flutter/src/rendering/viewport.dart' show RenderAbstractViewport, RevealedOffset;
+import 'package:flutter/src/rendering/viewport_offset.dart' show ViewportOffset;
+import 'package:meta/meta.dart' show protected;
 import 'package:vector_math/vector_math_64.dart' show Matrix4;
-
-import 'box.dart';
-import 'layer.dart';
-import 'object.dart';
-import 'proxy_box.dart';
-import 'viewport.dart';
-import 'viewport_offset.dart';
 
 typedef _ChildSizingFunction = double Function(RenderBox child);
 

@@ -8,14 +8,33 @@ library;
 import 'dart:collection';
 import 'dart:math' as math show pi;
 import 'dart:ui' as ui;
+import 'dart:ui' show Brightness, Canvas, Color, Offset, Paint, PaintingStyle, Path, RRect, Radius, Rect, Size, StrokeCap, StrokeJoin, TextBaseline, TileMode, clampDouble;
 
-import 'package:flutter/foundation.dart' show Brightness, clampDouble;
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
-
-import 'colors.dart';
-import 'text_selection_toolbar_button.dart';
-import 'theme.dart';
+import 'package:flutter/src/animation/animation.dart' show AnimationStatus;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/curves.dart' show Curves;
+import 'package:flutter/src/cupertino/colors.dart' show CupertinoColors, CupertinoDynamicColor;
+import 'package:flutter/src/cupertino/text_selection_toolbar_button.dart' show CupertinoTextSelectionToolbarButton;
+import 'package:flutter/src/cupertino/theme.dart' show CupertinoTheme;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode;
+import 'package:flutter/src/gestures/drag_details.dart' show DragEndDetails;
+import 'package:flutter/src/painting/box_shadow.dart' show BoxShadow;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, BoxHitTestResult, BoxParentData, RenderBox, RenderBoxContainerDefaultsMixin;
+import 'package:flutter/src/rendering/custom_paint.dart' show CustomPainter;
+import 'package:flutter/src/rendering/layer.dart' show ClipPathLayer, LayerHandle;
+import 'package:flutter/src/rendering/object.dart' show ContainerRenderObjectMixin, PaintingContext, PipelineOwner, RenderObject, RenderObjectVisitor;
+import 'package:flutter/src/rendering/shifted_box.dart' show RenderShiftedBox;
+import 'package:flutter/src/widgets/animated_size.dart' show AnimatedSize;
+import 'package:flutter/src/widgets/basic.dart' show Center, ColoredBox, CustomPaint, CustomSingleChildLayout, IgnorePointer, Padding;
+import 'package:flutter/src/widgets/debug.dart' show debugCheckHasMediaQuery;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, ElementVisitor, GlobalKey, IndexedSlot, RenderObjectElement, RenderObjectWidget, SingleChildRenderObjectWidget, State, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/text_selection.dart' show ToolbarItemsParentData;
+import 'package:flutter/src/widgets/text_selection_toolbar_layout_delegate.dart' show TextSelectionToolbarLayoutDelegate;
+import 'package:flutter/src/widgets/ticker_provider.dart' show TickerProviderStateMixin;
+import 'package:flutter/src/widgets/transitions.dart' show FadeTransition;
 
 // The radius of the toolbar RRect shape.
 // Value extracted from https://developer.apple.com/design/resources/.

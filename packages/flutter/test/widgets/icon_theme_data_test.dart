@@ -2,7 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color, Shadow;
+
+import 'package:flutter/src/widgets/icon_theme_data.dart' show IconThemeData;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

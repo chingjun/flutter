@@ -6,9 +6,13 @@
 library;
 
 import 'dart:io';
+import 'dart:ui' show SemanticsAction, SemanticsFlag, TextDirection;
 
-import 'package:flutter/semantics.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/semantics/semantics.dart' show DebugSemanticsDumpOrder, SemanticsTag, debugResetSemanticsIdCounter;
+import 'package:flutter/src/widgets/basic.dart' show Semantics;
+import 'package:flutter/src/widgets/framework.dart' show Widget;
+import 'package:flutter/src/widgets/scroll_view.dart' show ListView;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'semantics_tester.dart';

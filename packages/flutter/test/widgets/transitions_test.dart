@@ -2,9 +2,42 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color, FilterQuality, Locale, Radius, Rect, Size, TextDirection;
+
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/animations.dart' show CurvedAnimation, kAlwaysCompleteAnimation;
+import 'package:flutter/src/animation/curves.dart' show Curves;
+import 'package:flutter/src/animation/tween.dart' show RectTween, Tween;
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/painting/alignment.dart' show Alignment, AlignmentGeometry;
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/borders.dart' show BorderStyle;
+import 'package:flutter/src/painting/box_border.dart' show Border, BoxShape;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/box_shadow.dart' show BoxShadow;
+import 'package:flutter/src/painting/decoration.dart' show Decoration;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/layer.dart' show ImageFilterLayer;
+import 'package:flutter/src/rendering/proxy_box.dart' show DecorationPosition, RenderDecoratedBox;
+import 'package:flutter/src/rendering/shifted_box.dart' show RenderPositionedBox;
+import 'package:flutter/src/rendering/tweens.dart' show AlignmentTween;
+import 'package:flutter/src/widgets/basic.dart' show Align, Center, Directionality, Positioned, SizedBox, SliverToBoxAdapter, Stack, Transform;
+import 'package:flutter/src/widgets/container.dart' show DecoratedBox;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/implicit_animations.dart' show DecorationTween, TextStyleTween;
+import 'package:flutter/src/widgets/localizations.dart' show DefaultWidgetsLocalizations, Localizations, LocalizationsDelegate;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/scroll_view.dart' show CustomScrollView;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/transitions.dart' show AlignTransition, AnimatedBuilder, DecoratedBoxTransition, DefaultTextStyleTransition, FadeTransition, ListenableBuilder, MatrixTransition, RelativePositionedTransition, RotationTransition, ScaleTransition, SizeTransition, SliverFadeTransition;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:listen/listen.dart' show ChangeNotifier;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 void main() {
   testWidgets('toString control test', (WidgetTester tester) async {

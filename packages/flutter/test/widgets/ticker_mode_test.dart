@@ -2,10 +2,18 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show TextDirection, VoidCallback;
+
+import 'package:flutter/src/foundation/key.dart' show LocalKey, UniqueKey, ValueKey;
+import 'package:flutter/src/scheduler/ticker.dart' show Ticker;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Directionality, Row;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StatefulWidget, Widget, WidgetBuilder;
+import 'package:flutter/src/widgets/navigator.dart' show Navigator, NavigatorState;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/ticker_provider.dart' show SingleTickerProviderStateMixin, TickerMode, TickerModeData, TickerProviderStateMixin;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:listen/listen.dart' show ValueListenable;
 
 void main() {
   testWidgets('Nested TickerMode cannot turn tickers back on', (WidgetTester tester) async {

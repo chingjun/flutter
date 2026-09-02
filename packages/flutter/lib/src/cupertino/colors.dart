@@ -10,12 +10,14 @@ library;
 
 import 'dart:ui' show Brightness, Color, ColorSpace;
 
-import '../../foundation.dart';
-import '../widgets/basic.dart';
-import '../widgets/framework.dart';
-import '../widgets/media_query.dart';
-import 'interface_level.dart';
-import 'theme.dart';
+import 'package:flutter/src/cupertino/interface_level.dart' show CupertinoUserInterfaceLevel, CupertinoUserInterfaceLevelData;
+import 'package:flutter/src/cupertino/theme.dart' show CupertinoTheme;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsProperty, DiagnosticsTreeStyle, MessageProperty, kNoDefaultValue;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/painting/colors.dart' show ColorProperty;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:meta/meta.dart' show immutable;
 
 // Examples can assume:
 // late Widget child;

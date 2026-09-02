@@ -8,19 +8,23 @@
 library;
 
 import 'dart:collection';
-import 'dart:ui'
-    show FlutterView, SemanticsUpdate, ViewFocusDirection, ViewFocusEvent, ViewFocusState;
+import 'dart:ui' show FlutterView, SemanticsUpdate, ViewFocusDirection, ViewFocusEvent, ViewFocusState;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-
-import 'binding.dart';
-import 'focus_manager.dart';
-import 'focus_scope.dart';
-import 'focus_traversal.dart';
-import 'framework.dart';
-import 'lookup_boundary.dart';
-import 'media_query.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorHint, ErrorSummary, FlutterError, FlutterErrorDetails;
+import 'package:flutter/src/foundation/constants.dart' show kDebugMode, kReleaseMode;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode, DiagnosticsTreeStyle, describeIdentity;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/object.dart' show DiagnosticsDebugCreator, PipelineOwner, RenderObject;
+import 'package:flutter/src/rendering/view.dart' show RenderView;
+import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding, WidgetsBindingObserver;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusManager, FocusNode, FocusScopeNode;
+import 'package:flutter/src/widgets/focus_scope.dart' show FocusScope;
+import 'package:flutter/src/widgets/focus_traversal.dart' show FocusTraversalGroup, FocusTraversalPolicy, ReadingOrderTraversalPolicy;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, DebugCreator, Element, ElementVisitor, ErrorWidget, GlobalKey, InheritedWidget, RenderObjectElement, RenderObjectWidget, RenderTreeRootElement, State, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/lookup_boundary.dart' show LookupBoundary;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:meta/meta.dart' show optionalTypeArgs;
 
 /// Bootstraps a render tree that is rendered into the provided [FlutterView].
 ///

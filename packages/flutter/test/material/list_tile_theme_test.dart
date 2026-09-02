@@ -2,9 +2,42 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Color, FontStyle, PointerDeviceKind, Radius, Rect, Size;
+
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, DiagnosticsNode;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/circle_avatar.dart' show CircleAvatar;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/drawer.dart' show Drawer;
+import 'package:flutter/src/material/icons.dart' show Icons;
+import 'package:flutter/src/material/ink_well.dart' show InkWell;
+import 'package:flutter/src/material/list_tile.dart' show ListTile, ListTileStyle, ListTileTitleAlignment;
+import 'package:flutter/src/material/list_tile_theme.dart' show ListTileTheme, ListTileThemeData;
+import 'package:flutter/src/material/material.dart' show Material;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold, ScaffoldState;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData, VisualDensity;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/borders.dart' show ShapeBorder;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
+import 'package:flutter/src/painting/stadium_border.dart' show StadiumBorder;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/paragraph.dart' show RenderParagraph;
+import 'package:flutter/src/services/mouse_cursor.dart' show SystemMouseCursors;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Center, SizedBox, StatefulBuilder;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StateSetter, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/icon_theme.dart' show IconTheme;
+import 'package:flutter/src/widgets/icon_theme_data.dart' show IconThemeData;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/scroll_view.dart' show ListView;
+import 'package:flutter/src/widgets/text.dart' show DefaultTextStyle, Text;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateColor, WidgetStateMouseCursor, WidgetStateProperty;
 import 'package:flutter_test/flutter_test.dart';
 
 class TestIcon extends StatefulWidget {

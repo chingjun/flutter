@@ -9,19 +9,39 @@
 /// @docImport 'tab_view.dart';
 library;
 
-import 'package:flutter/gestures.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Brightness, Color, Locale, VoidCallback;
 
-import 'button.dart';
-import 'colors.dart';
-import 'constants.dart';
-import 'icons.dart';
-import 'interface_level.dart';
-import 'localizations.dart';
-import 'route.dart';
-import 'scrollbar.dart';
-import 'theme.dart';
+import 'package:flutter/src/cupertino/button.dart' show CupertinoButton;
+import 'package:flutter/src/cupertino/colors.dart' show CupertinoDynamicColor;
+import 'package:flutter/src/cupertino/constants.dart' show kMinInteractiveDimensionCupertino;
+import 'package:flutter/src/cupertino/icons.dart' show CupertinoIcons;
+import 'package:flutter/src/cupertino/interface_level.dart' show CupertinoUserInterfaceLevel, CupertinoUserInterfaceLevelData;
+import 'package:flutter/src/cupertino/localizations.dart' show DefaultCupertinoLocalizations;
+import 'package:flutter/src/cupertino/route.dart' show CupertinoPageRoute;
+import 'package:flutter/src/cupertino/scrollbar.dart' show CupertinoScrollbar;
+import 'package:flutter/src/cupertino/theme.dart' show CupertinoTheme, CupertinoThemeData;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/gestures/recognizer.dart' show MultitouchDragStrategy;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/services/system_chrome.dart' show SystemChrome, SystemUiOverlayStyle;
+import 'package:flutter/src/widgets/actions.dart' show Action, Intent;
+import 'package:flutter/src/widgets/app.dart' show GenerateAppTitle, InitialRouteListFactory, WidgetsApp;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Padding;
+import 'package:flutter/src/widgets/default_selection_style.dart' show DefaultSelectionStyle;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, GlobalObjectKey, State, StatefulWidget, TransitionBuilder, Widget, WidgetBuilder;
+import 'package:flutter/src/widgets/heroes.dart' show HeroController;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/icon_data.dart' show IconData;
+import 'package:flutter/src/widgets/localizations.dart' show LocaleListResolutionCallback, LocaleResolutionCallback, LocalizationsDelegate;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/navigator.dart' show HeroControllerScope, NavigationNotification, NavigatorObserver, NavigatorState, RouteFactory, RouteSettings;
+import 'package:flutter/src/widgets/notification_listener.dart' show NotificationListenerCallback;
+import 'package:flutter/src/widgets/router.dart' show BackButtonDispatcher, RouteInformationParser, RouteInformationProvider, RouterConfig, RouterDelegate;
+import 'package:flutter/src/widgets/scroll_configuration.dart' show ScrollBehavior, ScrollConfiguration;
+import 'package:flutter/src/widgets/scroll_physics.dart' show BouncingScrollPhysics, ScrollDecelerationRate, ScrollPhysics;
+import 'package:flutter/src/widgets/scrollable_helpers.dart' show ScrollableDetails;
+import 'package:flutter/src/widgets/shortcuts.dart' show ShortcutActivator;
+import 'package:flutter/src/widgets/widget_inspector.dart' show InspectorButton, InspectorButtonVariant;
 
 /// An application that uses Cupertino design.
 ///

@@ -7,11 +7,12 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show Brightness, Color;
 
-import 'package:flutter/widgets.dart';
-
-import 'colors.dart';
-import 'theme.dart';
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext;
 
 /// A utility class for dealing with the overlay color needed
 /// to indicate elevation of surfaces.

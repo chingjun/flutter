@@ -2,10 +2,30 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
+import 'dart:ui' show Brightness, Canvas, Color, FontWeight, SemanticsAction, Size, TextDirection, VoidCallback;
+
+import 'package:flutter/src/cupertino/app.dart' show CupertinoApp;
+import 'package:flutter/src/cupertino/colors.dart' show CupertinoColors, CupertinoDynamicColor;
+import 'package:flutter/src/cupertino/picker.dart' show CupertinoPicker, CupertinoPickerDefaultSelectionOverlay;
+import 'package:flutter/src/cupertino/theme.dart' show CupertinoThemeData;
+import 'package:flutter/src/foundation/key.dart' show ValueKey;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, debugDefaultTargetPlatformOverride;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadiusDirectional, BorderRadiusGeometry;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsetsDirectional, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedSuperellipseBorder;
+import 'package:flutter/src/painting/shape_decoration.dart' show ShapeDecoration;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/custom_paint.dart' show CustomPainter;
+import 'package:flutter/src/rendering/paragraph.dart' show RenderParagraph;
+import 'package:flutter/src/services/message_codec.dart' show MethodCall;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:flutter/src/widgets/basic.dart' show Align, Center, CustomPaint, Directionality, ExcludeSemantics, SizedBox;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/list_wheel_scroll_view.dart' show ChangeReportingBehavior, FixedExtentScrollController, ListWheelScrollView;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 import '../widgets/semantics_tester.dart';

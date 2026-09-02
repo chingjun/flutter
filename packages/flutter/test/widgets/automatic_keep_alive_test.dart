@@ -2,11 +2,25 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart' show DragStartBehavior;
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show TextDirection;
+
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/foundation/memory_allocations.dart' show kFlutterMemoryAllocationsEnabled;
+import 'package:flutter/src/gestures/recognizer.dart' show DragStartBehavior;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/object.dart' show RenderObjectVisitor;
+import 'package:flutter/src/rendering/sliver.dart' show RenderSliver, RenderSliverHelpers;
+import 'package:flutter/src/rendering/sliver_multi_box_adaptor.dart' show KeepAliveParentDataMixin, RenderSliverWithKeepAliveMixin;
+import 'package:flutter/src/widgets/automatic_keep_alive.dart' show AutomaticKeepAlive, AutomaticKeepAliveClientMixin, KeepAliveHandle, KeepAliveNotification;
+import 'package:flutter/src/widgets/basic.dart' show Directionality, SizedBox, Stack;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalObjectKey, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/scroll_position.dart' show ScrollPosition;
+import 'package:flutter/src/widgets/scroll_view.dart' show GridView, ListView;
+import 'package:flutter/src/widgets/scrollable.dart' show Scrollable, ScrollableState;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:listen/listen.dart' show ChangeNotifier, Listenable;
 
 class Leaf extends StatefulWidget {
   const Leaf({required Key super.key, required this.child});

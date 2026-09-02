@@ -6,9 +6,9 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show Offset, Path, PathOperation, Radius, Rect;
 
-import 'basic_types.dart';
-import 'borders.dart';
+import 'package:flutter/src/painting/borders.dart' show ShapeBorder;
 
 /// A shape with a notch in its outline.
 ///

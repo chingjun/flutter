@@ -3,7 +3,8 @@
 // found in the LICENSE file.
 
 import 'dart:ui' as ui show RootIsolateToken;
-import 'binding.dart';
+
+import 'package:flutter/src/services/binary_messenger.dart' show BinaryMessenger;
 
 /// Stand-in for non-web platforms' [BackgroundIsolateBinaryMessenger].
 class BackgroundIsolateBinaryMessenger {

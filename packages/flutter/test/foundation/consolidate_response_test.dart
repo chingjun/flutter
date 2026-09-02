@@ -7,8 +7,9 @@ library;
 
 import 'dart:async';
 import 'dart:io';
+import 'dart:typed_data' show Uint8List;
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/src/foundation/consolidate_response.dart' show consolidateHttpClientResponseBytes;
 import 'package:flutter_test/flutter_test.dart';
 
 final Uint8List chunkOne = Uint8List.fromList(<int>[0, 1, 2, 3, 4, 5]);

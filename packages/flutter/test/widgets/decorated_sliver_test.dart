@@ -7,8 +7,30 @@
 @Tags(<String>['reduced-test-set'])
 library;
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Canvas, Color, PaintingStyle, Rect, Size, TextDirection, VoidCallback;
+
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/painting/borders.dart' show BorderSide;
+import 'package:flutter/src/painting/box_border.dart' show Border;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/decoration.dart' show BoxPainter, Decoration;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/image_provider.dart' show ImageConfiguration;
+import 'package:flutter/src/rendering/proxy_box.dart' show DecorationPosition;
+import 'package:flutter/src/rendering/sliver_persistent_header.dart' show OverScrollHeaderStretchConfiguration;
+import 'package:flutter/src/widgets/basic.dart' show Align, Directionality, RepaintBoundary, SizedBox, SliverPadding, SliverToBoxAdapter, StatefulBuilder;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/decorated_sliver.dart' show DecoratedSliver;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StateSetter, Widget;
+import 'package:flutter/src/widgets/pinned_header_sliver.dart' show PinnedHeaderSliver;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_delegate.dart' show SliverChildListDelegate;
+import 'package:flutter/src/widgets/scroll_physics.dart' show BouncingScrollPhysics;
+import 'package:flutter/src/widgets/scroll_view.dart' show CustomScrollView;
+import 'package:flutter/src/widgets/sliver.dart' show SliverCrossAxisGroup, SliverList, SliverMainAxisGroup;
+import 'package:flutter/src/widgets/sliver_persistent_header.dart' show SliverPersistentHeader, SliverPersistentHeaderDelegate;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

@@ -2,15 +2,17 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:ui';
+import 'dart:ui' show Locale, LocaleStringAttribute, Rect, SemanticsAction, SemanticsFlag, SemanticsFlags, SemanticsInputType, SemanticsRole, SemanticsValidationResult, SpellOutStringAttribute, StringAttribute, TextDirection;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/physics.dart';
-import 'package:flutter/rendering.dart';
+import 'package:flutter/src/foundation/collections.dart' show setEquals;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/physics/utils.dart' show nearEqual;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/semantics/semantics.dart' show AttributedString, DebugSemanticsDumpOrder, SemanticsData, SemanticsHintOverrides, SemanticsNode, SemanticsTag;
+import 'package:flutter/src/services/text_editing.dart' show TextSelection;
 import 'package:flutter_test/flutter_test.dart';
-
-export 'dart:ui' show SemanticsAction, SemanticsFlag, SemanticsFlags;
-export 'package:flutter/rendering.dart' show SemanticsData;
+import 'package:meta/meta.dart' show mustCallSuper;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 const String _matcherHelp =
     'Try dumping the semantics with debugDumpSemanticsTree(DebugSemanticsDumpOrder.inverseHitTest) from the package:flutter/rendering.dart library to see what the semantics tree looks like.';

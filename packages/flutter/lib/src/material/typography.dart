@@ -7,12 +7,15 @@
 /// @docImport 'theme_data.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/painting.dart';
+import 'dart:ui' show Brightness, Color, FontWeight, TextBaseline, TextDecoration, TextLeadingDistribution;
 
-import 'color_scheme.dart';
-import 'colors.dart';
-import 'text_theme.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsProperty;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/material/color_scheme.dart' show ColorScheme;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/text_theme.dart' show TextTheme;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:meta/meta.dart' show immutable;
 
 // Examples can assume:
 // late TargetPlatform platform;

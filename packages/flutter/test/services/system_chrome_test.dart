@@ -2,10 +2,15 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+import 'dart:typed_data' show ByteData;
 import 'dart:ui' as ui show AppLifecycleState;
+import 'dart:ui' show Brightness, Color;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError, FlutterErrorDetails, FlutterExceptionHandler;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, DiagnosticsNode;
+import 'package:flutter/src/services/message_codec.dart' show MethodCall, PlatformException;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:flutter/src/services/system_chrome.dart' show ApplicationSwitcherDescription, DeviceOrientation, SystemChrome, SystemUiMode, SystemUiOverlay, SystemUiOverlayStyle;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

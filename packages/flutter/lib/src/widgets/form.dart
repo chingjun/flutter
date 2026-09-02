@@ -7,24 +7,26 @@
 library;
 
 import 'dart:async';
-import 'dart:ui';
+import 'dart:ui' show FlutterView, SemanticsRole, SemanticsValidationResult, TextDirection, VoidCallback;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-
-import 'basic.dart';
-import 'binding.dart';
-import 'focus_manager.dart';
-import 'focus_scope.dart';
-import 'framework.dart';
-import 'media_query.dart';
-import 'navigator.dart';
-import 'pop_scope.dart';
-import 'restoration.dart';
-import 'restoration_properties.dart';
-import 'routes.dart';
-import 'view.dart';
-import 'will_pop_scope.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, FlutterError, FlutterErrorDetails;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/semantics/semantics_event.dart' show Assertiveness;
+import 'package:flutter/src/semantics/semantics_service.dart' show SemanticsService;
+import 'package:flutter/src/services/restoration.dart' show RestorationBucket;
+import 'package:flutter/src/widgets/basic.dart' show Directionality, Semantics;
+import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/focus_scope.dart' show Focus;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedWidget, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/navigator.dart' show PopInvokedWithResultCallback, WillPopCallback;
+import 'package:flutter/src/widgets/pop_scope.dart' show PopInvokedCallback, PopScope;
+import 'package:flutter/src/widgets/restoration.dart' show RestorationMixin;
+import 'package:flutter/src/widgets/restoration_properties.dart' show RestorableBool, RestorableStringN;
+import 'package:flutter/src/widgets/view.dart' show View;
+import 'package:flutter/src/widgets/will_pop_scope.dart' show WillPopScope;
+import 'package:meta/meta.dart' show protected;
 
 // Duration for delay before announcement in IOS so that the announcement won't be interrupted.
 const Duration _kIOSAnnouncementDelayDuration = Duration(seconds: 1);

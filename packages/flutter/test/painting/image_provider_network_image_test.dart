@@ -5,10 +5,14 @@
 import 'dart:async';
 import 'dart:io';
 import 'dart:math' as math;
+import 'dart:typed_data' show Uint8List;
 import 'dart:ui' show Codec, ImmutableBuffer;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/painting.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError, FlutterErrorDetails, FlutterExceptionHandler;
+import 'package:flutter/src/painting/binding.dart' show PaintingBinding, imageCache;
+import 'package:flutter/src/painting/debug.dart' show debugNetworkImageHttpClientProvider;
+import 'package:flutter/src/painting/image_provider.dart' show ImageConfiguration, ImageProvider, NetworkImage, NetworkImageLoadException, ResizeImage;
+import 'package:flutter/src/painting/image_stream.dart' show ImageChunkEvent, ImageInfo, ImageStream, ImageStreamCompleter, ImageStreamListener;
 import 'package:flutter_test/flutter_test.dart';
 
 import '../image_data.dart';

@@ -2,7 +2,11 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show TextDirection;
+
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderConstrainedBox, RenderSemanticsAnnotations;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsConfiguration, SemanticsProperties;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'rendering_tester.dart';

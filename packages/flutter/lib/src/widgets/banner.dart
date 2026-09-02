@@ -8,12 +8,20 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show Canvas, Color, FontWeight, Offset, Paint, Rect, Size, TextAlign, TextDirection;
 
-import 'package:flutter/foundation.dart';
-
-import 'basic.dart';
-import 'debug.dart';
-import 'framework.dart';
+import 'package:flutter/src/foundation/debug.dart' show debugMaybeDispatchCreated, debugMaybeDispatchDisposed;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsNode, EnumProperty, StringProperty;
+import 'package:flutter/src/painting/binding.dart' show PaintingBinding;
+import 'package:flutter/src/painting/box_shadow.dart' show BoxShadow;
+import 'package:flutter/src/painting/colors.dart' show ColorProperty;
+import 'package:flutter/src/painting/text_painter.dart' show TextPainter;
+import 'package:flutter/src/painting/text_span.dart' show TextSpan;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/custom_paint.dart' show CustomPainter;
+import 'package:flutter/src/widgets/basic.dart' show CustomPaint, Directionality;
+import 'package:flutter/src/widgets/debug.dart' show debugCheckHasDirectionality;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, StatelessWidget, Widget;
 
 const double _kOffset = 40.0; // distance to bottom of banner, at a 45 degree angle inwards
 const double _kHeight = 12.0; // height of banner

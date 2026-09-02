@@ -7,14 +7,33 @@ library;
 
 import 'dart:async';
 import 'dart:math' as math;
+import 'dart:ui' show Color, clampDouble;
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart' show clampDouble;
-
-import 'debug.dart';
-import 'material_localizations.dart';
-import 'progress_indicator.dart';
-import 'theme.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/animations.dart' show AlwaysStoppedAnimation;
+import 'package:flutter/src/animation/curves.dart' show Interval;
+import 'package:flutter/src/animation/tween.dart' show Animatable, ColorTween, CurveTween, Tween;
+import 'package:flutter/src/cupertino/activity_indicator.dart' show CupertinoActivityIndicator;
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/material/debug.dart' show debugCheckHasMaterialLocalizations;
+import 'package:flutter/src/material/material_localizations.dart' show MaterialLocalizations;
+import 'package:flutter/src/material/progress_indicator.dart' show RefreshProgressIndicator;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/alignment.dart' show Alignment, AlignmentDirectional;
+import 'package:flutter/src/painting/basic_types.dart' show AxisDirection;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/widgets/basic.dart' show Align, Padding, Positioned, Stack;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/notification_listener.dart' show NotificationListener;
+import 'package:flutter/src/widgets/overscroll_indicator.dart' show OverscrollIndicatorNotification;
+import 'package:flutter/src/widgets/scroll_notification.dart' show OverscrollNotification, ScrollEndNotification, ScrollNotification, ScrollNotificationPredicate, ScrollStartNotification, ScrollUpdateNotification, defaultScrollNotificationPredicate;
+import 'package:flutter/src/widgets/ticker_provider.dart' show TickerProviderStateMixin;
+import 'package:flutter/src/widgets/transitions.dart' show AnimatedBuilder, ScaleTransition, SizeTransition;
+import 'package:meta/meta.dart' show protected;
 
 // The over-scroll distance that moves the indicator to its maximum
 // displacement, as a percentage of the scrollable's container extent.

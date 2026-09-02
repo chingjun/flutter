@@ -2,8 +2,32 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+import 'dart:ui' show Color, Radius, TextDecoration;
+
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, DiagnosticsNode;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/dropdown_menu.dart' show DropdownMenu, DropdownMenuEntry;
+import 'package:flutter/src/material/dropdown_menu_theme.dart' show DropdownMenuTheme, DropdownMenuThemeData;
+import 'package:flutter/src/material/icon_button.dart' show IconButton;
+import 'package:flutter/src/material/icons.dart' show Icons;
+import 'package:flutter/src/material/input_border.dart' show OutlineInputBorder;
+import 'package:flutter/src/material/input_decorator.dart' show InputDecorationTheme;
+import 'package:flutter/src/material/material.dart' show Material;
+import 'package:flutter/src/material/material_state.dart' show MaterialStatePropertyAll;
+import 'package:flutter/src/material/menu_anchor.dart' show MenuAnchor, MenuItemButton;
+import 'package:flutter/src/material/menu_style.dart' show MenuStyle;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/shadows.dart' show kElevationToShadow;
+import 'package:flutter/src/material/text_field.dart' show TextField;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/borders.dart' show OutlinedBorder;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/widgets/basic.dart' show Center;
+import 'package:flutter/src/widgets/editable_text.dart' show EditableText;
+import 'package:flutter/src/widgets/framework.dart' show Widget;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

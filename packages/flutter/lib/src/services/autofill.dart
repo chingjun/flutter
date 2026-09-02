@@ -2,9 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-
-import 'text_input.dart';
+import 'package:flutter/src/foundation/collections.dart' show listEquals;
+import 'package:flutter/src/services/text_input.dart' show TextEditingValue, TextInput, TextInputClient, TextInputConfiguration, TextInputConnection;
+import 'package:meta/meta.dart' show immutable;
 
 export 'text_input.dart'
     show TextEditingValue, TextInputClient, TextInputConfiguration, TextInputConnection;

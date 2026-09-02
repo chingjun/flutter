@@ -3,11 +3,14 @@
 // found in the LICENSE file.
 
 import 'dart:math' as math;
+import 'dart:ui' show Offset, Size, TextBaseline;
 
-import 'package:flutter/foundation.dart';
-
-import 'box.dart';
-import 'object.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorHint, ErrorSummary, FlutterError;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsNode, EnumProperty;
+import 'package:flutter/src/painting/basic_types.dart' show Axis, AxisDirection, axisDirectionToAxis;
+import 'package:flutter/src/rendering/box.dart' show BaselineOffset, BoxConstraints, BoxHitTestResult, ContainerBoxParentData, RenderBox, RenderBoxContainerDefaultsMixin;
+import 'package:flutter/src/rendering/object.dart' show ContainerRenderObjectMixin, PaintingContext;
+import 'package:meta/meta.dart' show protected;
 
 /// Parent data for use with [RenderListBody].
 class ListBodyParentData extends ContainerBoxParentData<RenderBox> {}

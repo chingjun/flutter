@@ -5,9 +5,9 @@
 /// @docImport 'package:flutter/material.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-
-import 'curves.dart';
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsProperty;
+import 'package:meta/meta.dart' show immutable, optionalTypeArgs;
 
 /// Used to override the default parameters of an animation.
 ///

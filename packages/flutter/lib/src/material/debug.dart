@@ -2,11 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
-
-import 'material.dart';
-import 'material_localizations.dart';
-import 'scaffold.dart' show Scaffold, ScaffoldMessenger;
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorHint, ErrorSummary, FlutterError;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode;
+import 'package:flutter/src/material/material.dart' show Material;
+import 'package:flutter/src/material/material_localizations.dart' show MaterialLocalizations;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold, ScaffoldMessenger;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext;
+import 'package:flutter/src/widgets/localizations.dart' show Localizations;
+import 'package:flutter/src/widgets/lookup_boundary.dart' show LookupBoundary;
 
 // Examples can assume:
 // late BuildContext context;

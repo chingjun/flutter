@@ -4,12 +4,22 @@
 
 import 'dart:ui' as ui;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/src/foundation/binding.dart' show BindingBase;
+import 'package:flutter/src/foundation/diagnostics.dart' show Diagnosticable;
+import 'package:flutter/src/gestures/binding.dart' show GestureBinding;
+import 'package:flutter/src/gestures/events.dart' show PointerEvent, PointerHoverEvent;
+import 'package:flutter/src/gestures/hit_test.dart' show HitTestEntry, HitTestTarget;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/rendering/box.dart' show BoxHitTest, BoxHitTestResult, RenderBox;
+import 'package:flutter/src/rendering/object.dart' show PipelineOwner;
+import 'package:flutter/src/rendering/view.dart' show RenderView;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding, SchedulerPhase;
+import 'package:flutter/src/semantics/binding.dart' show SemanticsBinding;
+import 'package:flutter/src/services/binding.dart' show ServicesBinding;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor;
+import 'package:flutter/src/services/mouse_tracking.dart' show MouseTrackerAnnotation, PointerEnterEventListener, PointerExitEventListener, PointerHoverEventListener;
 import 'package:flutter_test/flutter_test.dart' show TestDefaultBinaryMessengerBinding;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 class _TestHitTester extends RenderBox {
   _TestHitTester(this.hitTestOverride);

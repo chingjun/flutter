@@ -10,17 +10,23 @@
 /// @docImport 'scroll_view.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart' show LogicalKeyboardKey;
+import 'dart:ui' show Color, PointerDeviceKind;
 
-import 'framework.dart';
-import 'overscroll_indicator.dart';
-import 'scroll_physics.dart';
-import 'scrollable.dart';
-import 'scrollable_helpers.dart';
-import 'scrollbar.dart';
+import 'package:flutter/src/foundation/collections.dart' show setEquals;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/gestures/events.dart' show PointerEvent;
+import 'package:flutter/src/gestures/monodrag.dart' show GestureVelocityTrackerBuilder;
+import 'package:flutter/src/gestures/recognizer.dart' show MultitouchDragStrategy;
+import 'package:flutter/src/gestures/velocity_tracker.dart' show IOSScrollViewFlingVelocityTracker, MacOSScrollViewFlingVelocityTracker, VelocityTracker;
+import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedWidget, Widget;
+import 'package:flutter/src/widgets/overscroll_indicator.dart' show GlowingOverscrollIndicator;
+import 'package:flutter/src/widgets/scroll_physics.dart' show BouncingScrollPhysics, ClampingScrollPhysics, RangeMaintainingScrollPhysics, ScrollDecelerationRate, ScrollPhysics;
+import 'package:flutter/src/widgets/scrollable_helpers.dart' show ScrollableDetails;
+import 'package:flutter/src/widgets/scrollbar.dart' show RawScrollbar;
+import 'package:meta/meta.dart' show immutable;
 
 /// A representation of how a [ScrollView] should dismiss the on-screen
 /// keyboard.

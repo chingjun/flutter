@@ -3,9 +3,10 @@
 // found in the LICENSE file.
 
 import 'dart:ui' as ui;
+import 'dart:ui' show Rect;
 
-import 'package:flutter/foundation.dart' show kIsWeb;
-import 'package:flutter/rendering.dart';
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/rendering/image_filter_config.dart' show ImageFilterConfig, ImageFilterContext;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

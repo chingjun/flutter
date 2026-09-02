@@ -6,12 +6,21 @@
 library;
 
 import 'dart:async';
+import 'dart:ui' show Color, Rect;
 import 'dart:ui_web' as ui_web;
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/rendering/platform_view.dart' show PlatformViewHitTestBehavior;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsNode;
+import 'package:flutter/src/services/platform_views.dart' show platformViewsRegistry;
+import 'package:flutter/src/widgets/basic.dart' show Align, Center, Column, Semantics, SizedBox;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show GlobalKey, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/platform_view.dart' show HtmlElementView, PlatformViewSurface;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 import 'package:web/web.dart' as web;
 
 import 'web_platform_view_registry_utils.dart';

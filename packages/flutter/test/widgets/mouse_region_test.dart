@@ -2,11 +2,31 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Canvas, Color, PointerDeviceKind, Size, TextDirection, VoidCallback;
+
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, DiagnosticsNode;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey, ValueKey;
+import 'package:flutter/src/gestures/events.dart' show PointerEnterEvent, PointerEvent, PointerExitEvent, PointerHoverEvent;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/rendering/custom_paint.dart' show CustomPainter;
+import 'package:flutter/src/rendering/error.dart' show RenderErrorBox;
+import 'package:flutter/src/rendering/flex.dart' show CrossAxisAlignment, MainAxisAlignment;
+import 'package:flutter/src/rendering/layer.dart' show TransformLayer;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior, RenderMouseRegion;
+import 'package:flutter/src/services/mouse_cursor.dart' show SystemMouseCursors;
+import 'package:flutter/src/services/mouse_tracking.dart' show PointerEnterEventListener, PointerExitEventListener, PointerHoverEventListener;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:flutter/src/widgets/basic.dart' show Align, Center, Column, CustomPaint, Directionality, MouseRegion, Positioned, RepaintBoundary, Row, SizedBox, Stack, StatefulBuilder, Transform;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/drag_target.dart' show Draggable;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StateSetter, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/text.dart' show DefaultTextStyle, Text;
 import 'package:flutter_test/flutter_test.dart';
 
 class HoverClient extends StatefulWidget {

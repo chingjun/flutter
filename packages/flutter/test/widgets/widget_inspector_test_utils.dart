@@ -4,9 +4,11 @@
 
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/binding.dart' show ServiceExtensionCallback;
+import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding;
+import 'package:flutter/src/widgets/widget_inspector.dart' show RegisterServiceExtensionCallback, WidgetInspectorService;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:meta/meta.dart' show immutable;
 
 /// Tuple-like test class for storing a [stream] and [eventKind].
 ///

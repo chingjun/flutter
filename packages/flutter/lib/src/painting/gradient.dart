@@ -9,13 +9,16 @@ library;
 
 import 'dart:collection';
 import 'dart:math' as math;
+import 'dart:typed_data' show Float64List;
 import 'dart:ui' as ui show Gradient, lerpDouble;
+import 'dart:ui' show Color, Offset, Rect, Shader, TextDirection, TileMode;
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/src/foundation/collections.dart' show listEquals;
+import 'package:flutter/src/foundation/debug.dart' show debugFormatDouble;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/painting/alignment.dart' show Alignment, AlignmentGeometry;
+import 'package:meta/meta.dart' show factory, immutable, protected;
 import 'package:vector_math/vector_math_64.dart';
-
-import 'alignment.dart';
-import 'basic_types.dart';
 
 class _ColorsAndStops {
   _ColorsAndStops(this.colors, this.stops);

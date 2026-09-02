@@ -12,15 +12,19 @@
 /// @docImport 'view.dart';
 library;
 
+import 'dart:async' show Future;
 import 'dart:ui' as ui;
+import 'dart:ui' show BlendMode, Clip, ColorFilter, Offset, Path, RRect, RSuperellipse, Rect, Shader, Size, VoidCallback;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:vector_math/vector_math_64.dart' show Vector4;
-
-import 'debug.dart';
+import 'package:flutter/src/foundation/debug.dart' show debugMaybeDispatchCreated, debugMaybeDispatchDisposed;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, DiagnosticableTreeMixin, DiagnosticsNode, DiagnosticsProperty, EnumProperty, IntProperty, describeIdentity;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/gestures/events.dart' show PointerEvent;
+import 'package:flutter/src/painting/matrix_utils.dart' show MatrixUtils, TransformProperty;
+import 'package:flutter/src/rendering/debug.dart' show debugDisableClipLayers, debugDisableOpacityLayers;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
+import 'package:meta/meta.dart' show immutable, mustCallSuper, protected, visibleForTesting;
+import 'package:vector_math/vector_math_64.dart' show Matrix4, Vector4;
 
 /// Information collected for an annotation that is found in the layer tree.
 ///

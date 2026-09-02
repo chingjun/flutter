@@ -9,11 +9,13 @@
 /// @docImport 'box_decoration.dart';
 library;
 
-import 'package:flutter/foundation.dart';
+import 'dart:ui' show Canvas, Offset, Path, Rect, Size, TextDirection, VoidCallback;
 
-import 'basic_types.dart';
-import 'edge_insets.dart';
-import 'image_provider.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show Diagnosticable;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/image_provider.dart' show ImageConfiguration;
+import 'package:meta/meta.dart' show factory, immutable, mustCallSuper, protected;
 
 // Examples can assume:
 // late Decoration myDecoration;

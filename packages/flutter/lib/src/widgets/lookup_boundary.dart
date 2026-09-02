@@ -5,7 +5,8 @@
 /// @docImport 'package:flutter/material.dart';
 library;
 
-import 'framework.dart';
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, ConditionalElementVisitor, Element, ElementVisitor, InheritedElement, InheritedWidget, RenderObjectElement, State, StatefulElement, Widget;
 
 // Examples can assume:
 // class MyWidget extends StatelessWidget { const MyWidget({super.key, required this.child}); final Widget child; @override Widget build(BuildContext context) => child; }

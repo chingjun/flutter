@@ -2,11 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:ui';
+import 'dart:ui' show SemanticsUpdate, TextDirection;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError, FlutterErrorDetails, FlutterExceptionHandler;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsNode, SemanticsOwner;
+import 'package:flutter/src/semantics/semantics_event.dart' show AnnounceSemanticsEvent;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
 import 'package:flutter_test/flutter_test.dart';
 
 import '../rendering/rendering_tester.dart';

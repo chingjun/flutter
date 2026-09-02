@@ -2,9 +2,23 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/semantics.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Size, TextDirection;
+
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/key.dart' show UniqueKey;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsNode;
+import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor, SystemMouseCursors;
+import 'package:flutter/src/widgets/actions.dart' show Intent, VoidCallbackIntent;
+import 'package:flutter/src/widgets/basic.dart' show Center, Column, Directionality, Semantics, SizedBox;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/radio_group.dart' show RadioGroup;
+import 'package:flutter/src/widgets/raw_radio.dart' show RawRadio;
+import 'package:flutter/src/widgets/shortcuts.dart' show ShortcutActivator, Shortcuts, SingleActivator;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/toggleable.dart' show ToggleableStateMixin;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetStateProperty;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'checkbox_tester.dart';

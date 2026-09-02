@@ -2,7 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Rect, TextDirection;
+
+import 'package:flutter/src/rendering/selection.dart' show SelectionResult, SelectionUtils;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

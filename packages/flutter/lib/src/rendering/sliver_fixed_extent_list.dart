@@ -8,11 +8,13 @@ library;
 
 import 'dart:math' as math;
 
-import 'package:flutter/foundation.dart';
-
-import 'box.dart';
-import 'sliver.dart';
-import 'sliver_multi_box_adaptor.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorSummary, FlutterError;
+import 'package:flutter/src/foundation/constants.dart' show precisionErrorTolerance;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/sliver.dart' show ItemExtentBuilder, SliverConstraints, SliverGeometry, SliverLayoutDimensions;
+import 'package:flutter/src/rendering/sliver_multi_box_adaptor.dart' show RenderSliverMultiBoxAdaptor, SliverMultiBoxAdaptorParentData;
+import 'package:meta/meta.dart' show protected, visibleForTesting;
 
 /// A sliver that contains multiple box children that have the explicit extent in
 /// the main axis.

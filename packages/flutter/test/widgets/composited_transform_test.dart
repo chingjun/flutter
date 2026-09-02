@@ -3,10 +3,21 @@
 // found in the LICENSE file.
 
 import 'dart:ui' as ui;
+import 'dart:ui' show Color, Size, TextDirection, VoidCallback;
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/layer.dart' show ContainerLayer, LayerLink;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior, RenderProxyBox;
+import 'package:flutter/src/widgets/basic.dart' show Center, ClipRect, ColoredBox, CompositedTransformFollower, CompositedTransformTarget, Directionality, Padding, Positioned, RepaintBoundary, SizedBox, Stack, Transform;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, SingleChildRenderObjectWidget, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/layout_builder.dart' show LayoutBuilder;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 void main() {
   final link = LayerLink();

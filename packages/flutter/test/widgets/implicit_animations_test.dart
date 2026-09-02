@@ -2,8 +2,34 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color, FontStyle, Size, TextDirection, VoidCallback;
+
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/animations.dart' show CurvedAnimation;
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves, Interval;
+import 'package:flutter/src/animation/tween.dart' show Tween;
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior;
+import 'package:flutter/src/widgets/basic.dart' show Center, Directionality, Offstage, PhysicalModel, SizedBox, SliverToBoxAdapter, Stack;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/implicit_animations.dart' show AnimatedAlign, AnimatedContainer, AnimatedDefaultTextStyle, AnimatedFractionallySizedBox, AnimatedOpacity, AnimatedPadding, AnimatedPhysicalModel, AnimatedPositioned, AnimatedPositionedDirectional, AnimatedRotation, AnimatedScale, AnimatedSlide, BoxConstraintsTween, DecorationTween, EdgeInsetsTween, ImplicitlyAnimatedWidgetState, Matrix4Tween, SliverAnimatedOpacity;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/scroll_view.dart' show CustomScrollView;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/transitions.dart' show FadeTransition, RotationTransition, ScaleTransition, SlideTransition, SliverFadeTransition;
+import 'package:flutter/src/widgets/tween_animation_builder.dart' show TweenAnimationBuilder;
+import 'package:flutter/src/widgets/value_listenable_builder.dart' show ValueListenableBuilder;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:listen/listen.dart' show ValueNotifier;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 class MockOnEndFunction {
   int called = 0;

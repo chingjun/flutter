@@ -2,12 +2,21 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart' show ValueListenable, clampDouble;
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Offset, Rect, Size, VoidCallback, clampDouble;
 
-import 'desktop_text_selection_toolbar.dart';
-import 'desktop_text_selection_toolbar_button.dart';
-import 'localizations.dart';
+import 'package:flutter/src/cupertino/desktop_text_selection_toolbar.dart' show CupertinoDesktopTextSelectionToolbar;
+import 'package:flutter/src/cupertino/desktop_text_selection_toolbar_button.dart' show CupertinoDesktopTextSelectionToolbarButton;
+import 'package:flutter/src/cupertino/localizations.dart' show CupertinoLocalizations;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/rendering/editable.dart' show TextSelectionPoint;
+import 'package:flutter/src/rendering/selection.dart' show TextSelectionHandleType;
+import 'package:flutter/src/services/text_input.dart' show TextSelectionDelegate;
+import 'package:flutter/src/widgets/basic.dart' show SizedBox;
+import 'package:flutter/src/widgets/debug.dart' show debugCheckHasMediaQuery;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/text_selection.dart' show ClipboardStatus, TextSelectionControls, TextSelectionHandleControls;
+import 'package:listen/listen.dart' show ValueListenable;
 
 /// MacOS Cupertino styled text selection handle controls.
 ///

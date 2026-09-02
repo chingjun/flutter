@@ -2,10 +2,16 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
+import 'dart:async' show Future;
 
-import 'service_extensions.dart';
+import 'package:flutter/src/foundation/binding.dart' show ServiceExtensionCallback;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/rendering/object.dart' show PipelineOwner;
+import 'package:flutter/src/rendering/view.dart' show RenderView;
+import 'package:flutter/src/semantics/binding.dart' show SemanticsBinding, SemanticsHandle;
+import 'package:flutter/src/semantics/semantics.dart' show DebugSemanticsDumpOrder, SemanticsNode, SemanticsOwner;
+import 'package:flutter/src/widgets/service_extensions.dart' show AccessibilityServiceExtensions;
+import 'package:meta/meta.dart' show visibleForTesting;
 
 /// Service that handles accessibility and semantics inspection.
 class AccessibilityInspector {

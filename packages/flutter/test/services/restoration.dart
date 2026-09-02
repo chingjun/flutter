@@ -2,7 +2,10 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/services.dart';
+import 'dart:typed_data' show Uint8List;
+
+import 'package:flutter/src/services/binding.dart' show ServicesBinding;
+import 'package:flutter/src/services/restoration.dart' show RestorationBucket;
 import 'package:flutter_test/flutter_test.dart';
 
 class MockRestorationManager extends TestRestorationManager {

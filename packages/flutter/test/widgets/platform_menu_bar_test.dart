@@ -2,9 +2,20 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError, FlutterErrorDetails, FlutterExceptionHandler;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, DiagnosticsNode;
+import 'package:flutter/src/services/binary_messenger.dart' show BinaryMessenger;
+import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
+import 'package:flutter/src/services/message_codec.dart' show MethodCall, MethodCodec;
+import 'package:flutter/src/services/message_codecs.dart' show StandardMethodCodec;
+import 'package:flutter/src/services/platform_channel.dart' show MethodChannel;
+import 'package:flutter/src/widgets/actions.dart' show DoNothingIntent, Intent;
+import 'package:flutter/src/widgets/basic.dart' show Center, SizedBox;
+import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/platform_menu_bar.dart' show DefaultPlatformMenuDelegate, MenuSerializableShortcut, PlatformMenu, PlatformMenuBar, PlatformMenuDelegate, PlatformMenuItem, PlatformMenuItemGroup, ShortcutSerialization;
+import 'package:flutter/src/widgets/shortcuts.dart' show SingleActivator;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:leak_tracker_flutter_testing/leak_tracker_flutter_testing.dart';
 

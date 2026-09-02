@@ -8,15 +8,29 @@
 library;
 
 import 'dart:math' as math;
-import 'dart:ui';
+import 'dart:ui' show Canvas, Color, Offset, Paint, PaintingStyle, Path, RRect, Radius, Rect, SemanticsRole, Size, StrokeCap, TextDirection, clampDouble;
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
-
-import 'color_scheme.dart';
-import 'material.dart';
-import 'progress_indicator_theme.dart';
-import 'theme.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/curves.dart' show Cubic, Curve, Curves, Interval, SawTooth;
+import 'package:flutter/src/animation/tween.dart' show Animatable, CurveTween, Tween;
+import 'package:flutter/src/animation/tween_sequence.dart' show TweenSequence, TweenSequenceItem;
+import 'package:flutter/src/cupertino/activity_indicator.dart' show CupertinoActivityIndicator;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, PercentProperty;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/material/color_scheme.dart' show ColorScheme;
+import 'package:flutter/src/material/material.dart' show Material, MaterialType;
+import 'package:flutter/src/material/progress_indicator_theme.dart' show ProgressIndicatorTheme, ProgressIndicatorThemeData;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius, BorderRadiusGeometry;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsGeometry;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/rendering/custom_paint.dart' show CustomPainter;
+import 'package:flutter/src/widgets/basic.dart' show Builder, ClipRRect, ConstrainedBox, CustomPaint, Directionality, Opacity, Padding, Semantics, SizedBox, Transform;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/ticker_provider.dart' show SingleTickerProviderStateMixin;
+import 'package:flutter/src/widgets/transitions.dart' show AnimatedBuilder;
 
 // This value is extracted from
 // https://cs.android.com/android/platform/superproject/+/master:frameworks/base/core/res/res/anim/progress_indeterminate_material.xml;drc=9cb5b4c2d93acb9d6f5e14167e265c328c487d6b

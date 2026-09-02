@@ -2,8 +2,10 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
+import 'dart:async' show Future;
+
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/services/message_codec.dart' show MethodCall;
 
 const String fakeAction1Id = 'fakeActivity.fakeAction1';
 const String fakeAction2Id = 'fakeActivity.fakeAction2';

@@ -2,7 +2,21 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/material.dart';
+import 'dart:ui' show Color, Radius;
+
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/button.dart' show RawMaterialButton;
+import 'package:flutter/src/material/floating_action_button.dart' show FloatingActionButton;
+import 'package:flutter/src/material/icons.dart' show Icons;
+import 'package:flutter/src/material/theme_data.dart' show MaterialTapTargetSize, ThemeData;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/borders.dart' show ShapeBorder;
+import 'package:flutter/src/painting/circle_border.dart' show CircleBorder;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/widgets/basic.dart' show Center;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
 import 'package:flutter_test/flutter_test.dart';
 
 const Duration defaultButtonDuration = Duration(milliseconds: 200);

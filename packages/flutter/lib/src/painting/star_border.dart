@@ -7,15 +7,14 @@ library;
 
 import 'dart:math' as math;
 import 'dart:ui' as ui show lerpDouble;
+import 'dart:ui' show Canvas, Offset, Path, Rect, TextDirection, clampDouble;
 
-import 'package:flutter/foundation.dart';
-
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/painting/borders.dart' show BorderSide, BorderStyle, OutlinedBorder, ShapeBorder;
+import 'package:flutter/src/painting/circle_border.dart' show CircleBorder;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
+import 'package:flutter/src/painting/stadium_border.dart' show StadiumBorder;
 import 'package:vector_math/vector_math_64.dart' show Matrix4;
-import 'basic_types.dart';
-import 'borders.dart';
-import 'circle_border.dart';
-import 'rounded_rectangle_border.dart';
-import 'stadium_border.dart';
 
 // Conversion from radians to degrees.
 const double _kRadToDeg = 180 / math.pi;

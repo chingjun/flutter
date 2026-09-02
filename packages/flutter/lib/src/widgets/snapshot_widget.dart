@@ -6,14 +6,17 @@
 library;
 
 import 'dart:ui' as ui;
+import 'dart:ui' show FilterQuality, Offset, Paint, Rect, Size;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-
-import 'basic.dart';
-import 'debug.dart';
-import 'framework.dart';
-import 'media_query.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/memory_allocations.dart' show kFlutterMemoryAllocationsEnabled;
+import 'package:flutter/src/rendering/layer.dart' show OffsetLayer;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, PaintingContextCallback, PipelineOwner, RenderObject;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderProxyBox;
+import 'package:flutter/src/widgets/debug.dart' show debugCheckHasMediaQuery;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, SingleChildRenderObjectWidget;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:listen/listen.dart' show ChangeNotifier;
 
 /// Controls how the [SnapshotWidget] paints its child.
 enum SnapshotMode {

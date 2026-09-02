@@ -5,7 +5,7 @@
 /// @docImport 'package:flutter_test/flutter_test.dart';
 library;
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/src/foundation/key.dart' show ValueKey;
 
 /// An enum identifying standard UI components.
 ///

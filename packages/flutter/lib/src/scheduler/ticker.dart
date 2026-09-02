@@ -7,13 +7,16 @@
 library;
 
 import 'dart:async';
+import 'dart:ui' show VoidCallback;
 
-import 'package:flutter/foundation.dart';
-
-import 'binding.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorSummary, FlutterError;
+import 'package:flutter/src/foundation/debug.dart' show debugMaybeDispatchCreated, debugMaybeDispatchDisposed;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode, DiagnosticsProperty, describeIdentity;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding, SchedulerPhase;
+import 'package:meta/meta.dart' show awaitNotRequired, factory, mustCallSuper, protected;
 
 export 'dart:ui' show VoidCallback;
-
 export 'package:flutter/foundation.dart' show DiagnosticsNode;
 
 /// Signature for the callback passed to the [Ticker] class's constructor.

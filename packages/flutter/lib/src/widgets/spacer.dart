@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'basic.dart';
-import 'framework.dart';
+import 'package:flutter/src/widgets/basic.dart' show Expanded, SizedBox;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
 
 /// Spacer creates an adjustable, empty spacer that can be used to tune the
 /// spacing between widgets in a [Flex] container, like [Row] or [Column].

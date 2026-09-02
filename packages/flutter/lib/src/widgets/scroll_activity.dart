@@ -13,15 +13,23 @@ library;
 
 import 'dart:async';
 import 'dart:math' as math;
+import 'dart:ui' show PointerDeviceKind, VoidCallback;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-
-import 'basic.dart';
-import 'framework.dart';
-import 'scroll_metrics.dart';
-import 'scroll_notification.dart';
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/curves.dart' show Curve;
+import 'package:flutter/src/foundation/constants.dart' show kDebugMode, precisionErrorTolerance;
+import 'package:flutter/src/foundation/debug.dart' show debugMaybeDispatchCreated, debugMaybeDispatchDisposed;
+import 'package:flutter/src/foundation/diagnostics.dart' show describeIdentity;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/gestures/drag.dart' show Drag;
+import 'package:flutter/src/gestures/drag_details.dart' show DragEndDetails, DragStartDetails, DragUpdateDetails;
+import 'package:flutter/src/painting/basic_types.dart' show AxisDirection, axisDirectionIsReversed;
+import 'package:flutter/src/physics/simulation.dart' show Simulation;
+import 'package:flutter/src/scheduler/ticker.dart' show TickerProvider;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext;
+import 'package:flutter/src/widgets/scroll_metrics.dart' show ScrollMetrics;
+import 'package:flutter/src/widgets/scroll_notification.dart' show OverscrollNotification, ScrollEndNotification, ScrollStartNotification, ScrollUpdateNotification;
+import 'package:meta/meta.dart' show mustCallSuper, protected;
 
 /// A backend for a [ScrollActivity].
 ///

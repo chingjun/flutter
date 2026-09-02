@@ -3,9 +3,18 @@
 // found in the LICENSE file.
 
 import 'dart:ui' as ui show Image;
+import 'dart:ui' show Rect, TextDirection;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/synchronous_future.dart' show SynchronousFuture;
+import 'package:flutter/src/painting/alignment.dart' show Alignment, AlignmentDirectional;
+import 'package:flutter/src/painting/binding.dart' show imageCache;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/decoration_image.dart' show DecorationImage, ImageRepeat;
+import 'package:flutter/src/painting/image_provider.dart' show ImageConfiguration, ImageDecoderCallback, ImageProvider;
+import 'package:flutter/src/painting/image_stream.dart' show ImageInfo, ImageStreamCompleter, OneFrameImageStreamCompleter;
+import 'package:flutter/src/widgets/basic.dart' show Center, Directionality, SizedBox;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/image.dart' show Image;
 import 'package:flutter_test/flutter_test.dart';
 
 class _TestImageProvider extends ImageProvider<_TestImageProvider> {

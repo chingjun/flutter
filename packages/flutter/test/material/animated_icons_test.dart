@@ -6,9 +6,16 @@
 library;
 
 import 'dart:math' as math show pi;
+import 'dart:ui' show Canvas, Color, Paint, Path, Rect, Size, TextDirection;
 
-import 'package:flutter/material.dart';
+import 'package:flutter/src/animation/animations.dart' show AlwaysStoppedAnimation;
+import 'package:flutter/src/material/animated_icons.dart' show AnimatedIcon, AnimatedIcons;
+import 'package:flutter/src/widgets/basic.dart' show CustomPaint, Directionality, RepaintBoundary;
+import 'package:flutter/src/widgets/icon_theme.dart' show IconTheme;
+import 'package:flutter/src/widgets/icon_theme_data.dart' show IconThemeData;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:meta/meta.dart' show immutable;
+
 import '../widgets/semantics_tester.dart';
 
 class MockCanvas extends Fake implements Canvas {

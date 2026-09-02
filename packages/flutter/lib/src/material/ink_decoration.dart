@@ -5,11 +5,26 @@
 /// @docImport 'ink_well.dart';
 library;
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Canvas, Color, ColorFilter, Offset, Rect;
 
-import 'debug.dart';
-import 'material.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty;
+import 'package:flutter/src/material/debug.dart' show debugCheckHasMaterial;
+import 'package:flutter/src/material/material.dart' show InkFeature, Material;
+import 'package:flutter/src/painting/alignment.dart' show Alignment, AlignmentGeometry;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/box_fit.dart' show BoxFit;
+import 'package:flutter/src/painting/decoration.dart' show BoxPainter, Decoration;
+import 'package:flutter/src/painting/decoration_image.dart' show DecorationImage, ImageRepeat;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/image_provider.dart' show ImageConfiguration, ImageProvider;
+import 'package:flutter/src/painting/image_stream.dart' show ImageErrorListener;
+import 'package:flutter/src/painting/matrix_utils.dart' show MatrixUtils;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/widgets/basic.dart' show Builder, ConstrainedBox, Padding, SizedBox;
+import 'package:flutter/src/widgets/container.dart' show createLocalImageConfiguration;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/indexed_stack.dart' show Visibility;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 /// A convenience widget for drawing images and other decorations on [Material]
 /// widgets, so that [InkWell] and [InkResponse] splashes will render over them.

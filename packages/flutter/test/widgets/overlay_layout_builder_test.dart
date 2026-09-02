@@ -2,8 +2,17 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color, Rect, Size, TextDirection;
+
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/matrix_utils.dart' show MatrixUtils;
+import 'package:flutter/src/rendering/layer.dart' show LayerLink;
+import 'package:flutter/src/widgets/basic.dart' show ColoredBox, CompositedTransformFollower, Directionality, Positioned, SizedBox, StatefulBuilder, Transform;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, GlobalKey, StateSetter, Widget;
+import 'package:flutter/src/widgets/overlay.dart' show Overlay, OverlayChildLayoutInfo, OverlayEntry, OverlayPortal, OverlayPortalController;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 void main() {
   final controller1 = OverlayPortalController(debugLabel: 'controller1');

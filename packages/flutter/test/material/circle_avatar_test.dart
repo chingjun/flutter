@@ -8,9 +8,25 @@
 library;
 
 import 'dart:typed_data';
+import 'dart:ui' show Color, Size, TextDirection;
 
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/circle_avatar.dart' show CircleAvatar;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/binding.dart' show imageCache;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/box_fit.dart' show BoxFit;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/image_provider.dart' show MemoryImage;
+import 'package:flutter/src/painting/text_scaler.dart' show TextScaler;
+import 'package:flutter/src/rendering/paragraph.dart' show RenderParagraph;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderConstrainedBox, RenderDecoratedBox;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Center, Directionality, RepaintBoundary, SizedBox, UnconstrainedBox;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 import '../image_data.dart';

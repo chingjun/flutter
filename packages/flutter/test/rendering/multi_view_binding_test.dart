@@ -2,9 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:ui';
+import 'dart:ui' show FlutterView, Scene, SemanticsAction, SemanticsActionEvent, Size, ViewConstraints, ViewPadding;
 
-import 'package:flutter/rendering.dart';
+import 'package:flutter/src/gestures/hit_test.dart' show HitTestResult;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding, RenderingFlutterBinding;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/rendering/object.dart' show PipelineOwner;
+import 'package:flutter/src/rendering/view.dart' show RenderView;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsOwner;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

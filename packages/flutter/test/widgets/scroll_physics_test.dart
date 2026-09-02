@@ -2,8 +2,23 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color, TextDirection;
+
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsProperty, DiagnosticsTreeStyle;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/painting/basic_types.dart' show AxisDirection;
+import 'package:flutter/src/widgets/basic.dart' show Directionality, SliverToBoxAdapter;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
+import 'package:flutter/src/widgets/nested_scroll_view.dart' show NestedScrollView;
+import 'package:flutter/src/widgets/page_view.dart' show PageScrollPhysics;
+import 'package:flutter/src/widgets/scroll_metrics.dart' show FixedScrollMetrics, ScrollMetrics;
+import 'package:flutter/src/widgets/scroll_physics.dart' show AlwaysScrollableScrollPhysics, BouncingScrollPhysics, ClampingScrollPhysics, NeverScrollableScrollPhysics, ScrollDecelerationRate, ScrollPhysics;
+import 'package:flutter/src/widgets/scroll_position.dart' show ScrollPosition;
+import 'package:flutter/src/widgets/scroll_view.dart' show ListView;
+import 'package:flutter/src/widgets/scrollable.dart' show Scrollable, ScrollableState;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 class TestScrollPhysics extends ScrollPhysics {

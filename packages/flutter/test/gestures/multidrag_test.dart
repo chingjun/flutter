@@ -2,7 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/gestures.dart';
+import 'dart:ui' show PointerDeviceKind;
+
+import 'package:flutter/src/gestures/constants.dart' show kLongPressTimeout;
+import 'package:flutter/src/gestures/drag.dart' show Drag;
+import 'package:flutter/src/gestures/events.dart' show PointerDownEvent, kMiddleMouseButton;
+import 'package:flutter/src/gestures/multidrag.dart' show DelayedMultiDragGestureRecognizer, GestureMultiDragStartCallback, ImmediateMultiDragGestureRecognizer, MultiDragPointerState;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:leak_tracker_flutter_testing/leak_tracker_flutter_testing.dart';
 

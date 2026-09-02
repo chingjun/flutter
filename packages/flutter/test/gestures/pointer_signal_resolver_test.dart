@@ -2,8 +2,10 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/gestures.dart';
+import 'package:flutter/src/gestures/events.dart' show PointerScrollEvent, PointerSignalEvent;
+import 'package:flutter/src/gestures/pointer_signal_resolver.dart' show PointerSignalResolver;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 class TestPointerSignalListener {
   TestPointerSignalListener(this.event);

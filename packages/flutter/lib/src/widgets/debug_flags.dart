@@ -14,9 +14,9 @@
 /// @docImport 'widget_inspector.dart';
 library;
 
-import 'dart:developer' show Timeline; // to disambiguate reference in dartdocs below
+import 'dart:developer' show Timeline;
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
 
 /// Callback type for [debugIsLocalCreationCallback].
 ///

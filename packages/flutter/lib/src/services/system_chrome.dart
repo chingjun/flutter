@@ -7,15 +7,15 @@
 library;
 
 import 'dart:async';
-import 'dart:ui';
+import 'dart:ui' show AppLifecycleState, Brightness, Color;
 
-import 'package:flutter/foundation.dart';
-
-import 'binding.dart';
-import 'system_channels.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, FlutterError, FlutterErrorDetails;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsProperty;
+import 'package:flutter/src/services/binding.dart' show ServicesBinding, SystemUiChangeCallback;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:meta/meta.dart' show immutable, visibleForTesting;
 
 export 'dart:ui' show Brightness, Color;
-
 export 'binding.dart' show SystemUiChangeCallback;
 
 // Examples can assume:

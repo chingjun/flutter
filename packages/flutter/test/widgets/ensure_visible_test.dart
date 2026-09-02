@@ -3,10 +3,23 @@
 // found in the LICENSE file.
 
 import 'dart:math' as math;
+import 'dart:ui' show Color, Rect, TextDirection;
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/key.dart' show ValueKey;
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/rendering/viewport_offset.dart' show ViewportOffset;
+import 'package:flutter/src/widgets/basic.dart' show Center, Column, Directionality, ListBody, Row, SizedBox, SliverToBoxAdapter, Transform;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
+import 'package:flutter/src/widgets/scroll_position.dart' show ScrollPositionAlignmentPolicy;
+import 'package:flutter/src/widgets/scroll_view.dart' show ListView;
+import 'package:flutter/src/widgets/scrollable.dart' show Scrollable, ScrollableState;
+import 'package:flutter/src/widgets/scrollable_helpers.dart' show ScrollableDetails;
+import 'package:flutter/src/widgets/single_child_scroll_view.dart' show SingleChildScrollView;
+import 'package:flutter/src/widgets/two_dimensional_viewport.dart' show ChildVicinity;
+import 'package:flutter/src/widgets/viewport.dart' show Viewport;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 import 'two_dimensional_utils.dart';
 

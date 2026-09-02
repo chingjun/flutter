@@ -2,8 +2,28 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+import 'dart:ui' show Color, Size, TextDirection;
+
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/animation/curves.dart' show Curves;
+import 'package:flutter/src/animation/tween.dart' show CurveTween, Tween;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, debugDefaultTargetPlatformOverride;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/material.dart' show Material;
+import 'package:flutter/src/material/page_transitions_theme.dart' show PageTransitionsTheme;
+import 'package:flutter/src/material/text_button.dart' show TextButton;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/widgets/basic.dart' show Center, ColoredBox, Directionality;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget, WidgetBuilder;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/navigator.dart' show Navigator, NavigatorState, RouteSettings;
+import 'package:flutter/src/widgets/page_transitions_builder.dart' show FadeUpwardsPageTransitionsBuilder, OpenUpwardsPageTransitionsBuilder, PageTransitionsBuilder;
+import 'package:flutter/src/widgets/pages.dart' show PageRoute;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/transitions.dart' show FadeTransition, ScaleTransition, SlideTransition;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

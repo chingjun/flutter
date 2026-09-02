@@ -2,12 +2,34 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+import 'dart:typed_data' show ByteData, Float64List;
 import 'dart:ui' as ui show Gradient, Image, ImageFilter;
+import 'dart:ui' show Clip, Color, Path, RRect, Rect, SemanticsAction, Size, TextBaseline;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError, FlutterErrorDetails;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, debugDefaultTargetPlatformOverride;
+import 'package:flutter/src/gestures/drag_details.dart' show DragUpdateDetails;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/box_fit.dart' show BoxFit;
+import 'package:flutter/src/painting/circle_border.dart' show CircleBorder;
+import 'package:flutter/src/painting/stadium_border.dart' show StadiumBorder;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, BoxHitTestResult, RenderBox;
+import 'package:flutter/src/rendering/custom_paint.dart' show RenderCustomPaint;
+import 'package:flutter/src/rendering/image_filter_config.dart' show ImageFilterConfig;
+import 'package:flutter/src/rendering/layer.dart' show BackdropFilterLayer, ClipPathLayer, ClipRRectLayer, ClipRectLayer, Layer, LayerLink, LeaderLayer, OffsetLayer, OpacityLayer, ShaderMaskLayer, TransformLayer;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, PipelineOwner, RenderObjectWithChildMixin;
+import 'package:flutter/src/rendering/proxy_box.dart' show CustomClipper, RenderAnimatedOpacity, RenderBackdropFilter, RenderClipOval, RenderClipPath, RenderClipRRect, RenderClipRect, RenderConstrainedBox, RenderDecoratedBox, RenderFittedBox, RenderFollowerLayer, RenderFractionalTranslation, RenderMouseRegion, RenderOffstage, RenderOpacity, RenderPhysicalModel, RenderPhysicalShape, RenderProxyBox, RenderProxyBoxMixin, RenderRepaintBoundary, RenderSemanticsAnnotations, RenderSemanticsGestureHandler, RenderShaderMask, RenderTransform, ShapeBorderClipper;
+import 'package:flutter/src/rendering/proxy_sliver.dart' show RenderSliverAnimatedOpacity;
+import 'package:flutter/src/rendering/shifted_box.dart' show RenderPositionedBox;
+import 'package:flutter/src/rendering/sliver.dart' show RenderSliver, RenderSliverToBoxAdapter;
+import 'package:flutter/src/rendering/stack.dart' show RenderStack;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsConfiguration, SemanticsProperties;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 import 'rendering_tester.dart';
 

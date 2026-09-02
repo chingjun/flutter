@@ -8,10 +8,13 @@
 /// @docImport 'theme_data.dart';
 library;
 
-import 'dart:ui' show lerpDouble;
+import 'dart:ui' show Clip, Color, Size, lerpDouble;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsProperty, DoubleProperty;
+import 'package:flutter/src/painting/borders.dart' show ShapeBorder;
+import 'package:flutter/src/painting/colors.dart' show ColorProperty;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:meta/meta.dart' show immutable;
 
 /// Defines default property values for [BottomSheet]'s [Material].
 ///

@@ -2,15 +2,33 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart' show SelectionChangedCause, SuggestionSpan;
+import 'dart:ui' show Offset, TextRange;
 
-import 'adaptive_text_selection_toolbar.dart';
-import 'colors.dart';
-import 'material.dart';
-import 'spell_check_suggestions_toolbar_layout_delegate.dart';
-import 'text_selection_toolbar_text_button.dart';
+import 'package:flutter/src/cupertino/text_selection_toolbar.dart' show CupertinoTextSelectionToolbar;
+import 'package:flutter/src/material/adaptive_text_selection_toolbar.dart' show AdaptiveTextSelectionToolbar;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/material.dart' show Material, MaterialType;
+import 'package:flutter/src/material/spell_check_suggestions_toolbar_layout_delegate.dart' show SpellCheckSuggestionsToolbarLayoutDelegate;
+import 'package:flutter/src/material/text_selection_toolbar_text_button.dart' show TextSelectionToolbarTextButton;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/borders.dart' show BorderSide;
+import 'package:flutter/src/painting/box_border.dart' show Border;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/flex.dart' show CrossAxisAlignment, MainAxisSize;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
+import 'package:flutter/src/services/spell_check.dart' show SuggestionSpan;
+import 'package:flutter/src/services/text_input.dart' show SelectionChangedCause, TextEditingValue;
+import 'package:flutter/src/widgets/animated_size.dart' show AnimatedSize;
+import 'package:flutter/src/widgets/basic.dart' show Column, CustomSingleChildLayout, Padding, SizedBox;
+import 'package:flutter/src/widgets/container.dart' show DecoratedBox;
+import 'package:flutter/src/widgets/context_menu_button_item.dart' show ContextMenuButtonItem, ContextMenuButtonType;
+import 'package:flutter/src/widgets/editable_text.dart' show EditableTextState;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/text_selection_toolbar_anchors.dart' show TextSelectionToolbarAnchors;
 
 // The default height of the SpellCheckSuggestionsToolbar, which
 // assumes there are the maximum number of spell check suggestions available, 3.

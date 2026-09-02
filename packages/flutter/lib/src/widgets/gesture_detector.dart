@@ -8,14 +8,31 @@
 /// @docImport 'scrollable.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Offset, PointerDeviceKind, Rect, SemanticsAction, Size;
 
-import 'basic.dart';
-import 'framework.dart';
-import 'media_query.dart';
-import 'scroll_configuration.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorHint, ErrorSummary, FlutterError;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, DiagnosticsNode, DiagnosticsProperty, EnumProperty, IterableProperty;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/gestures/drag_details.dart' show DragDownDetails, DragEndDetails, DragStartDetails, DragUpdateDetails, GestureDragDownCallback, GestureDragStartCallback, GestureDragUpdateCallback;
+import 'package:flutter/src/gestures/events.dart' show PointerDownEvent, PointerPanZoomStartEvent;
+import 'package:flutter/src/gestures/force_press.dart' show ForcePressGestureRecognizer, GestureForcePressEndCallback, GestureForcePressPeakCallback, GestureForcePressStartCallback, GestureForcePressUpdateCallback;
+import 'package:flutter/src/gestures/gesture_settings.dart' show DeviceGestureSettings;
+import 'package:flutter/src/gestures/long_press.dart' show GestureLongPressCallback, GestureLongPressCancelCallback, GestureLongPressDownCallback, GestureLongPressEndCallback, GestureLongPressMoveUpdateCallback, GestureLongPressStartCallback, GestureLongPressUpCallback, LongPressDownDetails, LongPressEndDetails, LongPressGestureRecognizer, LongPressStartDetails;
+import 'package:flutter/src/gestures/monodrag.dart' show GestureDragCancelCallback, GestureDragEndCallback, HorizontalDragGestureRecognizer, PanGestureRecognizer, VerticalDragGestureRecognizer;
+import 'package:flutter/src/gestures/multitap.dart' show DoubleTapGestureRecognizer;
+import 'package:flutter/src/gestures/recognizer.dart' show DragStartBehavior, GestureRecognizer;
+import 'package:flutter/src/gestures/scale.dart' show GestureScaleEndCallback, GestureScaleStartCallback, GestureScaleUpdateCallback, ScaleGestureRecognizer, kDefaultTrackpadScrollToScaleFactor;
+import 'package:flutter/src/gestures/tap.dart' show GestureTapCallback, GestureTapCancelCallback, GestureTapDownCallback, GestureTapMoveCallback, GestureTapUpCallback, TapDownDetails, TapGestureRecognizer, TapUpDetails;
+import 'package:flutter/src/painting/matrix_utils.dart' show MatrixUtils;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior, RenderSemanticsGestureHandler;
+import 'package:flutter/src/widgets/basic.dart' show Listener;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, SingleChildRenderObjectWidget, State, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/scroll_configuration.dart' show ScrollBehavior, ScrollConfiguration;
+import 'package:meta/meta.dart' show optionalTypeArgs, protected;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 export 'package:flutter/gestures.dart'
     show

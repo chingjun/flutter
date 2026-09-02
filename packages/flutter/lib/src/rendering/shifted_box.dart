@@ -8,16 +8,21 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show Clip, Color, Offset, Paint, PaintingStyle, Path, Rect, Size, TextBaseline, TextDirection;
 
-import 'package:flutter/foundation.dart';
-
-import 'box.dart';
-import 'debug.dart';
-import 'debug_overflow_indicator.dart';
-import 'layer.dart';
-import 'layout_helper.dart';
-import 'object.dart';
-import 'stack.dart' show RelativeRect;
+import 'package:flutter/src/foundation/constants.dart' show kReleaseMode;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty, DoubleProperty, EnumProperty;
+import 'package:flutter/src/painting/alignment.dart' show Alignment, AlignmentGeometry;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsGeometry;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, BoxHitTestResult, BoxParentData, RenderBox;
+import 'package:flutter/src/rendering/debug.dart' show debugPaintPadding;
+import 'package:flutter/src/rendering/debug_overflow_indicator.dart' show DebugOverflowIndicatorMixin;
+import 'package:flutter/src/rendering/layer.dart' show ClipRectLayer, LayerHandle;
+import 'package:flutter/src/rendering/layout_helper.dart' show ChildBaselineGetter, ChildLayoutHelper, ChildLayouter;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, PipelineOwner, RenderObject, RenderObjectWithChildMixin;
+import 'package:flutter/src/rendering/stack.dart' show RelativeRect;
+import 'package:listen/listen.dart' show Listenable;
+import 'package:meta/meta.dart' show protected;
 
 /// Signature for a function that transforms a [BoxConstraints] to another
 /// [BoxConstraints].

@@ -14,18 +14,22 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show clampDouble;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/painting.dart' show AxisDirection;
-import 'package:flutter/physics.dart';
-
-import 'binding.dart' show WidgetsBinding;
-import 'framework.dart';
-import 'overscroll_indicator.dart';
-import 'scroll_metrics.dart';
-import 'scroll_simulation.dart';
-import 'view.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorSummary, FlutterError;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode, DiagnosticsProperty, DiagnosticsTreeStyle;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/gestures/constants.dart' show kMaxFlingVelocity, kMinFlingVelocity, kTouchSlop;
+import 'package:flutter/src/painting/basic_types.dart' show AxisDirection;
+import 'package:flutter/src/physics/simulation.dart' show Simulation;
+import 'package:flutter/src/physics/spring_simulation.dart' show ScrollSpringSimulation, SpringDescription;
+import 'package:flutter/src/physics/tolerance.dart' show Tolerance;
+import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext;
+import 'package:flutter/src/widgets/scroll_metrics.dart' show FixedScrollMetrics, ScrollMetrics;
+import 'package:flutter/src/widgets/scroll_simulation.dart' show BouncingScrollSimulation, ClampingScrollSimulation;
+import 'package:flutter/src/widgets/view.dart' show View;
+import 'package:meta/meta.dart' show immutable, mustCallSuper, protected;
 
 export 'package:flutter/physics.dart' show ScrollSpringSimulation, Simulation, Tolerance;
 

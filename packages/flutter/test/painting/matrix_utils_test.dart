@@ -3,8 +3,9 @@
 // found in the LICENSE file.
 
 import 'dart:math';
+import 'dart:ui' show Rect;
 
-import 'package:flutter/painting.dart';
+import 'package:flutter/src/painting/matrix_utils.dart' show MatrixUtils;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:vector_math/vector_math_64.dart';
 

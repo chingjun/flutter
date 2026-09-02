@@ -14,14 +14,24 @@
 /// @docImport 'switch_theme.dart';
 library;
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color;
 
-import 'list_tile.dart';
-import 'list_tile_theme.dart';
-import 'radio.dart';
-import 'radio_theme.dart';
-import 'theme.dart';
-import 'theme_data.dart';
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/material/list_tile.dart' show ListTile, ListTileControlAffinity, ListTileTitleAlignment;
+import 'package:flutter/src/material/list_tile_theme.dart' show ListTileTheme, ListTileThemeData;
+import 'package:flutter/src/material/radio.dart' show Radio;
+import 'package:flutter/src/material/radio_theme.dart' show RadioTheme, RadioThemeData;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show MaterialTapTargetSize, ThemeData, VisualDensity;
+import 'package:flutter/src/painting/borders.dart' show BorderSide, ShapeBorder;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsetsGeometry;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor;
+import 'package:flutter/src/widgets/basic.dart' show MergeSemantics, Transform;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/focus_scope.dart' show ExcludeFocus;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/radio_group.dart' show RadioClient, RadioGroup, RadioGroupRegistry;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateProperty, WidgetStatesController;
 
 // Examples can assume:
 // void setState(VoidCallback fn) { }

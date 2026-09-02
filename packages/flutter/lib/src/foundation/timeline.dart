@@ -5,10 +5,10 @@
 import 'dart:developer';
 import 'dart:typed_data';
 
+import 'package:flutter/src/foundation/constants.dart' show kReleaseMode;
 import 'package:meta/meta.dart';
 
 import '_timeline_io.dart' if (dart.library.js_interop) '_timeline_web.dart' as impl;
-import 'constants.dart';
 
 /// Measures how long blocks of code take to run.
 ///

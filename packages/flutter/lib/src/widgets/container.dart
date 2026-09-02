@@ -10,13 +10,21 @@
 /// @docImport 'transitions.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Clip, Color, Offset, Path, Size, TextDirection;
 
-import 'basic.dart';
-import 'framework.dart';
-import 'localizations.dart';
-import 'media_query.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, DiagnosticsProperty, EnumProperty, ObjectFlagProperty;
+import 'package:flutter/src/foundation/platform.dart' show defaultTargetPlatform;
+import 'package:flutter/src/painting/alignment.dart' show AlignmentGeometry;
+import 'package:flutter/src/painting/decoration.dart' show Decoration;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsetsGeometry;
+import 'package:flutter/src/painting/image_provider.dart' show ImageConfiguration;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/rendering/proxy_box.dart' show CustomClipper, DecorationPosition, RenderDecoratedBox;
+import 'package:flutter/src/widgets/basic.dart' show Align, ClipPath, ColoredBox, ConstrainedBox, DefaultAssetBundle, Directionality, LimitedBox, Padding, Transform;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, SingleChildRenderObjectWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/localizations.dart' show Localizations;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 // Examples can assume:
 // late BuildContext context;

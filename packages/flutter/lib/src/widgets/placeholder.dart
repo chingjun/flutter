@@ -2,10 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
+import 'dart:ui' show Canvas, Color, Offset, Paint, PaintingStyle, Path, Rect, Size;
 
-import 'basic.dart';
-import 'framework.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DoubleProperty;
+import 'package:flutter/src/painting/colors.dart' show ColorProperty;
+import 'package:flutter/src/rendering/custom_paint.dart' show CustomPainter;
+import 'package:flutter/src/widgets/basic.dart' show CustomPaint, LimitedBox;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
 
 class _PlaceholderPainter extends CustomPainter {
   const _PlaceholderPainter({required this.color, required this.strokeWidth});

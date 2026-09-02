@@ -6,7 +6,7 @@
 /// @docImport 'recognizer.dart';
 library;
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
 
 // Any changes to this file should be reflected in the debugAssertAllGesturesVarsUnset()
 // function below.

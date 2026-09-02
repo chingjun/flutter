@@ -3,11 +3,25 @@
 // found in the LICENSE file.
 
 import 'dart:math' as math;
+import 'dart:ui' show Clip, Color, PointerDeviceKind, Rect, Size, TextDirection;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/animation/animations.dart' show CurvedAnimation;
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/foundation/memory_allocations.dart' show ObjectEvent;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/gestures/scale.dart' show ScaleEndDetails, ScaleStartDetails, ScaleUpdateDetails;
+import 'package:flutter/src/gestures/tap.dart' show TapUpDetails;
+import 'package:flutter/src/gestures/velocity_tracker.dart' show Velocity;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderClipRect;
+import 'package:flutter/src/widgets/basic.dart' show Center, ClipRect, Column, Directionality, SizedBox, Transform;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/interactive_viewer.dart' show InteractiveViewer, PanAxis, TransformationController;
+import 'package:flutter/src/widgets/layout_builder.dart' show LayoutBuilder;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:leak_tracker_flutter_testing/leak_tracker_flutter_testing.dart';
 import 'package:vector_math/vector_math_64.dart' show Matrix4, Quad, Vector3;

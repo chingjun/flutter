@@ -8,20 +8,21 @@
 library;
 
 import 'dart:math';
+import 'dart:ui' show Offset, PointerDeviceKind, clampDouble;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/scheduler.dart';
-
-import 'constants.dart';
-import 'drag_details.dart';
-import 'events.dart';
-import 'recognizer.dart';
-import 'velocity_tracker.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, EnumProperty;
+import 'package:flutter/src/gestures/arena.dart' show GestureDisposition;
+import 'package:flutter/src/gestures/constants.dart' show kMaxFlingVelocity, kMinFlingVelocity;
+import 'package:flutter/src/gestures/drag_details.dart' show DragDownDetails, DragEndDetails, DragStartDetails, DragUpdateDetails, GestureDragDownCallback, GestureDragStartCallback, GestureDragUpdateCallback;
+import 'package:flutter/src/gestures/events.dart' show PointerCancelEvent, PointerDownEvent, PointerEvent, PointerMoveEvent, PointerPanZoomEndEvent, PointerPanZoomStartEvent, PointerPanZoomUpdateEvent, PointerUpEvent, computeHitSlop, computePanSlop, kPrimaryButton;
+import 'package:flutter/src/gestures/recognizer.dart' show DragStartBehavior, MultitouchDragStrategy, OffsetPair, OneSequenceGestureRecognizer;
+import 'package:flutter/src/gestures/velocity_tracker.dart' show Velocity, VelocityEstimate, VelocityTracker;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
+import 'package:meta/meta.dart' show visibleForTesting;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 export 'dart:ui' show PointerDeviceKind;
-
 export 'package:flutter/foundation.dart' show DiagnosticPropertiesBuilder;
-
 export 'drag.dart' show DragEndDetails, DragUpdateDetails;
 export 'drag_details.dart'
     show

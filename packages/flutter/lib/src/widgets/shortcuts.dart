@@ -10,16 +10,22 @@
 library;
 
 import 'dart:collection';
+import 'dart:ui' show VoidCallback;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
-
-import 'actions.dart';
-import 'focus_manager.dart';
-import 'focus_scope.dart';
-import 'framework.dart';
-import 'platform_menu_bar.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/collections.dart' show mapEquals, setEquals;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsProperty, FlagProperty, MessageProperty, TextTreeConfiguration, describeIdentity;
+import 'package:flutter/src/foundation/memory_allocations.dart' show kFlutterMemoryAllocationsEnabled;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
+import 'package:flutter/src/services/hardware_keyboard.dart' show HardwareKeyboard, KeyDownEvent, KeyEvent, KeyRepeatEvent, KeyboardLockMode;
+import 'package:flutter/src/services/keyboard_key.g.dart' show KeyboardKey, LogicalKeyboardKey;
+import 'package:flutter/src/widgets/actions.dart' show Action, Actions, Intent;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode, KeyEventResult, primaryFocus;
+import 'package:flutter/src/widgets/focus_scope.dart' show Focus;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedWidget, State, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/platform_menu_bar.dart' show MenuSerializableShortcut, ShortcutSerialization;
+import 'package:listen/listen.dart' show ChangeNotifier;
+import 'package:meta/meta.dart' show immutable, mustCallSuper, protected;
 
 final Set<LogicalKeyboardKey> _controlSynonyms = LogicalKeyboardKey.expandSynonyms(
   <LogicalKeyboardKey>{LogicalKeyboardKey.control},

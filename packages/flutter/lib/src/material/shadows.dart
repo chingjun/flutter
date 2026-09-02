@@ -7,7 +7,9 @@
 /// @docImport 'material.dart';
 library;
 
-import 'package:flutter/painting.dart';
+import 'dart:ui' show Color, Offset;
+
+import 'package:flutter/src/painting/box_shadow.dart' show BoxShadow;
 
 // Based on https://material.io/design/environment/elevation.html
 // Currently, only the elevation values that are bound to one or more widgets are

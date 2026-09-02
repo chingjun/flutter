@@ -2,9 +2,29 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color, VoidCallback;
+
+import 'package:flutter/src/foundation/basic_types.dart' show ValueSetter;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, DiagnosticsNode;
+import 'package:flutter/src/painting/basic_types.dart' show AxisDirection;
+import 'package:flutter/src/services/hardware_keyboard.dart' show HardwareKeyboard, KeyDownEvent, KeyEvent, KeyRepeatEvent, KeyboardLockMode;
+import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
+import 'package:flutter/src/services/text_input.dart' show SelectionChangedCause;
+import 'package:flutter/src/widgets/actions.dart' show Action, Actions, ActivateIntent, CallbackAction, DoNothingAction, DoNothingAndStopPropagationIntent, DoNothingIntent, Intent, PrioritizedIntents, VoidCallbackAction, VoidCallbackIntent;
+import 'package:flutter/src/widgets/basic.dart' show Center, SizedBox, StatefulBuilder;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/editable_text.dart' show TextEditingController;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusHighlightStrategy, FocusNode, KeyEventResult, primaryFocus;
+import 'package:flutter/src/widgets/focus_scope.dart' show Focus;
+import 'package:flutter/src/widgets/focus_traversal.dart' show DirectionalFocusIntent, NextFocusIntent, TraversalDirection;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StateSetter, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/primary_scroll_controller.dart' show PrimaryScrollController;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_view.dart' show ListView;
+import 'package:flutter/src/widgets/scrollable_helpers.dart' show ScrollIncrementType, ScrollIntent;
+import 'package:flutter/src/widgets/shortcuts.dart' show CallbackShortcuts, CharacterActivator, LockState, LogicalKeySet, ShortcutActivator, ShortcutManager, ShortcutRegistrar, ShortcutRegistry, ShortcutRegistryEntry, Shortcuts, SingleActivator;
+import 'package:flutter/src/widgets/text_editing_intents.dart' show SelectAllTextIntent;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:leak_tracker_flutter_testing/leak_tracker_flutter_testing.dart';
 

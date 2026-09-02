@@ -6,9 +6,12 @@
 library;
 
 import 'dart:math' as math;
-import 'dart:ui' show Color, lerpDouble;
+import 'dart:ui' show Color, clampDouble, lerpDouble;
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/src/foundation/collections.dart' show mapEquals;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsProperty, DiagnosticsSerializationDelegate;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:meta/meta.dart' show immutable, protected;
 
 double _getHue(double red, double green, double blue, double max, double delta) {
   late double hue;

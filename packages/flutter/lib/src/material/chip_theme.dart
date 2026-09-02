@@ -11,14 +11,22 @@
 /// @docImport 'material.dart';
 library;
 
-import 'dart:ui' show lerpDouble;
+import 'dart:ui' show Brightness, Color, lerpDouble;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
-
-import 'colors.dart';
-import 'theme.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsProperty, DoubleProperty, EnumProperty;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/borders.dart' show BorderSide, OutlinedBorder, ShapeBorder;
+import 'package:flutter/src/painting/colors.dart' show ColorProperty;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
+import 'package:flutter/src/widgets/icon_theme_data.dart' show IconThemeData;
+import 'package:flutter/src/widgets/inherited_theme.dart' show InheritedTheme;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateBorderSide, WidgetStateProperty;
+import 'package:meta/meta.dart' show immutable;
 
 /// Applies a chip theme to descendant [RawChip]-based widgets, like [Chip],
 /// [InputChip], [ChoiceChip], [FilterChip], and [ActionChip].

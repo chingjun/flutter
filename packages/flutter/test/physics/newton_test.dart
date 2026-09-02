@@ -2,10 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/physics.dart';
-import 'package:flutter/widgets.dart';
-
+import 'package:flutter/src/foundation/constants.dart' show precisionErrorTolerance;
+import 'package:flutter/src/physics/friction_simulation.dart' show BoundedFrictionSimulation, FrictionSimulation;
+import 'package:flutter/src/physics/gravity_simulation.dart' show GravitySimulation;
+import 'package:flutter/src/physics/spring_simulation.dart' show SpringDescription, SpringSimulation, SpringType;
+import 'package:flutter/src/physics/tolerance.dart' show Tolerance;
+import 'package:flutter/src/widgets/scroll_simulation.dart' show BouncingScrollSimulation;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

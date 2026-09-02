@@ -3,12 +3,32 @@
 // found in the LICENSE file.
 
 import 'dart:async';
+import 'dart:typed_data' show ByteData;
+import 'dart:ui' show Color, VoidCallback;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/key.dart' show ValueKey;
+import 'package:flutter/src/foundation/memory_allocations.dart' show kFlutterMemoryAllocationsEnabled;
+import 'package:flutter/src/foundation/synchronous_future.dart' show SynchronousFuture;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/services/message_codec.dart' show MethodCall;
+import 'package:flutter/src/services/message_codecs.dart' show JSONMethodCodec;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:flutter/src/widgets/app.dart' show WidgetsApp;
+import 'package:flutter/src/widgets/basic.dart' show Column, StatefulBuilder;
+import 'package:flutter/src/widgets/binding.dart' show RouteInformation;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StateSetter, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/inherited_notifier.dart' show InheritedNotifier;
+import 'package:flutter/src/widgets/navigator.dart' show Navigator, NavigatorState, Page, Route;
+import 'package:flutter/src/widgets/pages.dart' show PageRouteBuilder;
+import 'package:flutter/src/widgets/router.dart' show BackButtonDispatcher, BackButtonListener, ChildBackButtonDispatcher, PlatformRouteInformationProvider, PopNavigatorRouterDelegateMixin, RootBackButtonDispatcher, RouteInformationParser, RouteInformationProvider, RouteInformationReportingType, Router, RouterConfig, RouterDelegate;
+import 'package:flutter/src/widgets/text.dart' show DefaultTextStyle, Text;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:leak_tracker_flutter_testing/leak_tracker_flutter_testing.dart';
+import 'package:listen/listen.dart' show ChangeNotifier, ValueListenable, ValueNotifier;
 
 import 'button_tester.dart';
 import 'test_page_tester.dart';

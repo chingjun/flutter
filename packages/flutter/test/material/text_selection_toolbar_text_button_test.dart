@@ -2,7 +2,23 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/material.dart';
+import 'dart:ui' show Brightness, Color, Size;
+
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/button_style.dart' show ButtonStyle;
+import 'package:flutter/src/material/color_scheme.dart' show ColorScheme;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/material_state.dart' show MaterialStatePropertyAll;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/text_button.dart' show TextButton;
+import 'package:flutter/src/material/text_button_theme.dart' show TextButtonThemeData;
+import 'package:flutter/src/material/text_selection_toolbar_text_button.dart' show TextSelectionToolbarTextButton;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/widgets/basic.dart' show Center, SizedBox, StatefulBuilder;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StateSetter;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

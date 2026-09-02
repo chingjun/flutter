@@ -2,7 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/services.dart';
+import 'package:flutter/src/services/haptic_feedback.dart' show HapticFeedback;
+import 'package:flutter/src/services/message_codec.dart' show MethodCall;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

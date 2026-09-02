@@ -7,11 +7,14 @@
 /// @docImport 'sliver_fill.dart';
 library;
 
-import 'package:flutter/rendering.dart';
-
-import 'framework.dart';
-import 'scroll_delegate.dart';
-import 'sliver.dart';
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/object.dart' show PipelineOwner, RenderObject, RenderObjectVisitor;
+import 'package:flutter/src/rendering/sliver_fixed_extent_list.dart' show RenderSliverFixedExtentBoxAdaptor;
+import 'package:flutter/src/rendering/sliver_multi_box_adaptor.dart' show RenderSliverMultiBoxAdaptor;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, ElementVisitor, NullableIndexedWidgetBuilder, Widget;
+import 'package:flutter/src/widgets/scroll_delegate.dart' show ChildIndexGetter, SliverChildBuilderDelegate, SliverChildListDelegate;
+import 'package:flutter/src/widgets/sliver.dart' show SliverMultiBoxAdaptorElement, SliverMultiBoxAdaptorWidget;
 
 /// A sliver that places its box children in a linear array and constrains them
 /// to have the same extent as a prototype item along the main axis.

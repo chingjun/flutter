@@ -5,8 +5,10 @@
 /// @docImport 'app.dart';
 library;
 
-import 'framework.dart';
-import 'inherited_model.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorHint, ErrorSummary, FlutterError;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/inherited_model.dart' show InheritedModel;
 
 /// The type of the [SharedAppData.getValue] `init` parameter.
 ///

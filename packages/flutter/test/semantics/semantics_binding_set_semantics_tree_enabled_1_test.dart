@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:ui';
+import 'dart:ui' show PlatformDispatcher;
 
 import 'package:flutter_test/flutter_test.dart';
 

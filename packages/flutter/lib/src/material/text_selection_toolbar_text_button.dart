@@ -6,12 +6,18 @@
 /// @docImport 'text_selection_toolbar.dart';
 library;
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Brightness, Color, FontWeight, Size, VoidCallback;
 
-import 'color_scheme.dart';
-import 'constants.dart';
-import 'text_button.dart';
-import 'theme.dart';
+import 'package:flutter/src/material/color_scheme.dart' show ColorScheme;
+import 'package:flutter/src/material/constants.dart' show kMinInteractiveDimension;
+import 'package:flutter/src/material/text_button.dart' show TextButton;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/alignment.dart' show AlignmentGeometry;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsetsDirectional, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
 
 enum _TextSelectionToolbarItemPosition {
   /// The first item among multiple in the menu.

@@ -7,20 +7,37 @@ library;
 
 import 'dart:math' as math;
 import 'dart:ui' as ui show BoxHeightStyle, BoxWidthStyle, LineMetrics, SemanticsInputType, TextBox;
+import 'dart:ui' show Canvas, Clip, Color, GlyphInfo, Locale, Offset, Paint, RRect, Radius, Rect, Size, StringAttribute, TextAffinity, TextAlign, TextBaseline, TextBox, TextDirection, TextHeightBehavior, TextPosition, TextRange, VoidCallback, clampDouble;
 
 import 'package:characters/characters.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/semantics.dart';
-import 'package:flutter/services.dart';
-
-import 'box.dart';
-import 'custom_paint.dart';
-import 'layer.dart';
-import 'layout_helper.dart';
-import 'object.dart';
-import 'paragraph.dart';
-import 'viewport_offset.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsNode, DiagnosticsProperty, DiagnosticsTreeStyle, IntProperty;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/gestures/events.dart' show PointerDownEvent, PointerEvent;
+import 'package:flutter/src/gestures/hit_test.dart' show HitTestEntry, HitTestTarget;
+import 'package:flutter/src/gestures/long_press.dart' show GestureLongPressCallback, LongPressGestureRecognizer;
+import 'package:flutter/src/gestures/multitap.dart' show DoubleTapGestureRecognizer;
+import 'package:flutter/src/gestures/tap.dart' show TapDownDetails, TapGestureRecognizer;
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/painting/colors.dart' show ColorProperty;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/inline_span.dart' show InlineSpan, InlineSpanSemanticsInformation, combineSemanticsInfo;
+import 'package:flutter/src/painting/strut_style.dart' show StrutStyle;
+import 'package:flutter/src/painting/text_painter.dart' show PlaceholderDimensions, TextPainter, TextWidthBasis, WordBoundary;
+import 'package:flutter/src/painting/text_scaler.dart' show TextScaler;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, BoxHitTestEntry, BoxHitTestResult, RenderBox;
+import 'package:flutter/src/rendering/layer.dart' show ClipRectLayer, LayerHandle, LayerLink, LeaderLayer;
+import 'package:flutter/src/rendering/layout_helper.dart' show ChildLayoutHelper;
+import 'package:flutter/src/rendering/object.dart' show ContainerRenderObjectMixin, PaintingContext, PipelineOwner, RelayoutWhenSystemFontsChangeMixin, RenderObject, RenderObjectVisitor;
+import 'package:flutter/src/rendering/paragraph.dart' show PlaceholderSpanIndexSemanticsTag, RenderInlineChildrenContainerDefaults, TextParentData;
+import 'package:flutter/src/rendering/viewport_offset.dart' show ViewportOffset;
+import 'package:flutter/src/semantics/semantics.dart' show AttributedString, OrdinalSortKey, SemanticsConfiguration, SemanticsNode;
+import 'package:flutter/src/services/text_editing.dart' show TextSelection;
+import 'package:flutter/src/services/text_input.dart' show FloatingCursorDragState, SelectionChangedCause, TextEditingValue, TextSelectionDelegate;
+import 'package:flutter/src/services/text_layout_metrics.dart' show TextLayoutMetrics;
+import 'package:listen/listen.dart' show ChangeNotifier, ValueListenable, ValueNotifier;
+import 'package:meta/meta.dart' show immutable, protected, visibleForTesting;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 const double _kCaretGap = 1.0; // pixels
 const double _kCaretHeightOffset = 2.0; // pixels

@@ -3,9 +3,14 @@
 // found in the LICENSE file.
 
 import 'dart:ui' as ui;
+import 'dart:ui' show Canvas, ColorFilter, Paint, Rect, Size;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError, FlutterErrorDetails, FlutterExceptionHandler;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/binding.dart' show PaintingBinding;
+import 'package:flutter/src/painting/box_fit.dart' show BoxFit;
+import 'package:flutter/src/painting/debug.dart' show ImageSizeInfo, debugInvertOversizedImages, debugOnPaintImage;
+import 'package:flutter/src/painting/decoration_image.dart' show debugFlushLastFrameImageSizeInfo, paintImage;
 import 'package:flutter_test/flutter_test.dart';
 
 class TestCanvas implements Canvas {

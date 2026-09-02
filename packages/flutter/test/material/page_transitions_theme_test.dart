@@ -2,11 +2,42 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
+import 'dart:typed_data' show ByteData;
+import 'dart:ui' show Color;
+
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/tween.dart' show Tween;
+import 'package:flutter/src/cupertino/route.dart' show CupertinoPageTransition, CupertinoPageTransitionsBuilder;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, debugDefaultTargetPlatformOverride, defaultTargetPlatform;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/app_bar.dart' show AppBar;
+import 'package:flutter/src/material/color_scheme.dart' show ColorScheme;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/elevated_button.dart' show ElevatedButton;
+import 'package:flutter/src/material/material.dart' show Material;
+import 'package:flutter/src/material/page.dart' show MaterialPageRoute;
+import 'package:flutter/src/material/page_transitions_theme.dart' show FadeForwardsPageTransitionsBuilder, PageTransitionsTheme, ZoomPageTransitionsBuilder;
+import 'package:flutter/src/material/predictive_back_page_transitions_builder.dart' show PredictiveBackPageTransitionsBuilder;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/text_button.dart' show TextButton;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/flex.dart' show MainAxisAlignment;
+import 'package:flutter/src/rendering/layer.dart' show Layer, OpacityLayer, TransformLayer;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderAnimatedOpacity;
+import 'package:flutter/src/services/message_codec.dart' show MethodCall;
+import 'package:flutter/src/services/message_codecs.dart' show JSONMethodCodec, StandardMethodCodec;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Center, ColoredBox, Column, SizedBox, StatefulBuilder;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StateSetter, Widget, WidgetBuilder;
+import 'package:flutter/src/widgets/navigator.dart' show Navigator, NavigatorState, RouteSettings;
+import 'package:flutter/src/widgets/page_transitions_builder.dart' show FadeUpwardsPageTransitionsBuilder, PageTransitionsBuilder;
+import 'package:flutter/src/widgets/pages.dart' show PageRouteBuilder;
+import 'package:flutter/src/widgets/primary_scroll_controller.dart' show PrimaryScrollController;
+import 'package:flutter/src/widgets/snapshot_widget.dart' show SnapshotWidget;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

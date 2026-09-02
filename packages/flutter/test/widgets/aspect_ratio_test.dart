@@ -2,7 +2,15 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Size, TextDirection;
+
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/widgets/basic.dart' show AspectRatio, Center, ConstrainedBox, Directionality;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/single_child_scroll_view.dart' show SingleChildScrollView;
 import 'package:flutter_test/flutter_test.dart';
 
 Future<Size> _getSize(WidgetTester tester, BoxConstraints constraints, double aspectRatio) async {

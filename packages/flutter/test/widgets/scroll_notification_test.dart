@@ -2,8 +2,20 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/gestures.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/gestures/recognizer.dart' show DragStartBehavior;
+import 'package:flutter/src/gestures/velocity_tracker.dart' show Velocity;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/widgets/basic.dart' show Builder, SizedBox;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
+import 'package:flutter/src/widgets/notification_core.dart' show Notification;
+import 'package:flutter/src/widgets/notification_listener.dart' show NotificationListener;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_notification.dart' show ScrollEndNotification, ScrollNotification, ScrollStartNotification, ScrollUpdateNotification, UserScrollNotification;
+import 'package:flutter/src/widgets/scroll_notification_observer.dart' show ScrollNotificationObserver, ScrollNotificationObserverState;
+import 'package:flutter/src/widgets/scroll_position.dart' show ScrollMetricsNotification;
+import 'package:flutter/src/widgets/scrollbar.dart' show RawScrollbar;
+import 'package:flutter/src/widgets/single_child_scroll_view.dart' show SingleChildScrollView;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

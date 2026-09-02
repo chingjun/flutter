@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/semantics.dart';
+import 'package:flutter/src/semantics/semantics_event.dart' show FocusSemanticEvent, SemanticsEvent;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

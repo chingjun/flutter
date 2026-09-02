@@ -6,14 +6,18 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show Clip, Offset, Rect, Size, TextBaseline, TextDirection;
 
-import 'package:flutter/foundation.dart';
-
-import 'box.dart';
-import 'debug_overflow_indicator.dart';
-import 'layer.dart';
-import 'layout_helper.dart';
-import 'object.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorHint, ErrorSummary, FlutterError;
+import 'package:flutter/src/foundation/constants.dart' show kReleaseMode, precisionErrorTolerance;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsNode, DiagnosticsProperty, DiagnosticsTreeStyle, DoubleProperty, EnumProperty;
+import 'package:flutter/src/painting/basic_types.dart' show Axis, VerticalDirection;
+import 'package:flutter/src/rendering/box.dart' show BaselineOffset, BoxConstraints, BoxHitTestResult, ContainerBoxParentData, RenderBox, RenderBoxContainerDefaultsMixin;
+import 'package:flutter/src/rendering/debug_overflow_indicator.dart' show DebugOverflowIndicatorMixin;
+import 'package:flutter/src/rendering/layer.dart' show ClipRectLayer, LayerHandle;
+import 'package:flutter/src/rendering/layout_helper.dart' show ChildBaselineGetter, ChildLayoutHelper, ChildLayouter;
+import 'package:flutter/src/rendering/object.dart' show ContainerRenderObjectMixin, PaintingContext, RenderObject;
+import 'package:meta/meta.dart' show protected;
 
 // A 2D vector that uses a [RenderFlex]'s main axis and cross axis as its first and second coordinate axes.
 // It represents the same vector as (double mainAxisExtent, double crossAxisExtent).

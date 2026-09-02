@@ -3,8 +3,14 @@
 // found in the LICENSE file.
 
 import 'dart:math' as math;
+import 'dart:ui' show Canvas, Color, Rect, Size, TextDirection;
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/painting/box_shadow.dart' show BoxShadow;
+import 'package:flutter/src/painting/debug.dart' show debugDisableShadows;
+import 'package:flutter/src/widgets/banner.dart' show Banner, BannerLocation, BannerPainter, CheckedModeBanner;
+import 'package:flutter/src/widgets/basic.dart' show Center, CustomPaint, Directionality, SizedBox;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:leak_tracker_flutter_testing/leak_tracker_flutter_testing.dart';
 

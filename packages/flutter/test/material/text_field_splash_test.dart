@@ -2,8 +2,26 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/gestures.dart' show kPressTimeout;
-import 'package:flutter/material.dart';
+import 'dart:ui' show Color, TextDirection, VoidCallback;
+
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/gestures/constants.dart' show kPressTimeout;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/ink_splash.dart' show InkSplash;
+import 'package:flutter/src/material/ink_well.dart' show InteractiveInkFeature, InteractiveInkFeatureFactory;
+import 'package:flutter/src/material/input_decorator.dart' show InputDecoration;
+import 'package:flutter/src/material/material.dart' show Material, MaterialInkController, RectCallback;
+import 'package:flutter/src/material/text_field.dart' show TextField;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/borders.dart' show ShapeBorder;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/widgets/basic.dart' show Column;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show Widget;
+import 'package:flutter/src/widgets/scroll_view.dart' show ListView;
 import 'package:flutter_test/flutter_test.dart';
 
 bool confirmCalled = false;

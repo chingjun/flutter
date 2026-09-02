@@ -3,11 +3,10 @@
 // found in the LICENSE file.
 
 import 'dart:ui' as ui show lerpDouble;
+import 'dart:ui' show Offset, Rect, Size;
 
-import 'package:flutter/foundation.dart';
-
-import 'alignment.dart';
-import 'basic_types.dart';
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:meta/meta.dart' show immutable;
 
 /// An offset that's expressed as a fraction of a [Size].
 ///

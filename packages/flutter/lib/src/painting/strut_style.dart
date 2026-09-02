@@ -5,10 +5,14 @@
 /// @docImport 'text_span.dart';
 library;
 
-import 'package:flutter/foundation.dart';
+import 'dart:ui' show FontStyle, FontWeight, TextLeadingDistribution;
 
-import 'basic_types.dart';
-import 'text_style.dart';
+import 'package:flutter/src/foundation/collections.dart' show listEquals;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsNode, DiagnosticsProperty, DoubleProperty, EnumProperty, FlagProperty, IterableProperty, MessageProperty, StringProperty;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/painting/basic_types.dart' show RenderComparison;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:meta/meta.dart' show immutable;
 
 /// Defines the strut, which sets the minimum height a line can be
 /// relative to the baseline.

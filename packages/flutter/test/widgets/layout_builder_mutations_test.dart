@@ -2,14 +2,19 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/src/widgets/basic.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/layout_builder.dart';
-import 'package:flutter/src/widgets/media_query.dart';
-import 'package:flutter/src/widgets/scroll_view.dart';
-import 'package:flutter/src/widgets/sliver_layout_builder.dart';
+import 'dart:ui' show Brightness, TextDirection;
+
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderProxyBox;
+import 'package:flutter/src/rendering/sliver.dart' show SliverConstraints;
+import 'package:flutter/src/widgets/basic.dart' show Center, Directionality, Row, SizedBox, SliverPadding, StatefulBuilder;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, LeafRenderObjectWidget, StateSetter, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/layout_builder.dart' show LayoutBuilder;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/scroll_view.dart' show CustomScrollView;
+import 'package:flutter/src/widgets/sliver_layout_builder.dart' show SliverLayoutBuilder;
 import 'package:flutter_test/flutter_test.dart';
 
 class Wrapper extends StatelessWidget {

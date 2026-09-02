@@ -3,17 +3,27 @@
 // found in the LICENSE file.
 
 import 'dart:async';
+import 'dart:typed_data' show ByteData;
 import 'dart:ui' as ui;
+import 'dart:ui' show Color, FontWeight, Offset, Rect, SemanticsAction, Size;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-
-import '../foundation/_features.dart';
-import 'binding.dart';
-import 'editable_text.dart';
-import 'framework.dart';
-import 'text.dart';
-import 'title.dart';
+import 'package:flutter/src/foundation/_features.dart' show isAccessibilityEvaluationsEnabled;
+import 'package:flutter/src/foundation/constants.dart' show precisionErrorTolerance;
+import 'package:flutter/src/painting/colors.dart' show HSLColor;
+import 'package:flutter/src/painting/matrix_utils.dart' show MatrixUtils;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/layer.dart' show OffsetLayer;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/rendering/view.dart' show RenderView;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsData, SemanticsNode;
+import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding;
+import 'package:flutter/src/widgets/editable_text.dart' show EditableText;
+import 'package:flutter/src/widgets/framework.dart' show Element, Widget;
+import 'package:flutter/src/widgets/text.dart' show DefaultTextStyle, Text;
+import 'package:flutter/src/widgets/title.dart' show Title;
+import 'package:meta/meta.dart' show internal;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 const String _kAccessibilityEvaluationsDisabledErrorMessage = '''
 Accessibility evaluations APIs are not enabled.

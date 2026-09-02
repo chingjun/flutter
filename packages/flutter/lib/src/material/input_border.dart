@@ -6,10 +6,12 @@
 library;
 
 import 'dart:math' as math;
-import 'dart:ui' show lerpDouble;
+import 'dart:ui' show Canvas, Offset, Paint, Path, PathOperation, RRect, Radius, Rect, TextDirection, clampDouble, lerpDouble;
 
-import 'package:flutter/foundation.dart' show clampDouble;
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/borders.dart' show BorderSide, BorderStyle, OutlinedBorder, ShapeBorder;
+import 'package:flutter/src/painting/box_border.dart' show BoxBorder;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsGeometry;
 
 /// Defines the appearance of an [InputDecorator]'s border.
 ///

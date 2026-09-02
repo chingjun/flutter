@@ -7,12 +7,21 @@
 /// @docImport 'text_theme.dart';
 library;
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
+import 'dart:ui' show Brightness;
 
-import 'material_localizations.dart';
-import 'theme_data.dart';
-import 'typography.dart';
+import 'package:flutter/src/animation/tween.dart' show Tween;
+import 'package:flutter/src/cupertino/theme.dart' show CupertinoTheme, CupertinoThemeData, InheritedCupertinoTheme;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty;
+import 'package:flutter/src/material/material_localizations.dart' show MaterialLocalizations;
+import 'package:flutter/src/material/theme_data.dart' show CupertinoBasedMaterialThemeData, MaterialBasedCupertinoThemeData, ThemeData;
+import 'package:flutter/src/material/typography.dart' show ScriptCategory;
+import 'package:flutter/src/widgets/default_selection_style.dart' show DefaultSelectionStyle;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/icon_theme.dart' show IconTheme;
+import 'package:flutter/src/widgets/implicit_animations.dart' show AnimatedWidgetBaseState, ImplicitlyAnimatedWidget, TweenVisitor;
+import 'package:flutter/src/widgets/inherited_theme.dart' show InheritedTheme;
+import 'package:flutter/src/widgets/localizations.dart' show Localizations;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
 
 export 'theme_data.dart' show Brightness, MaterialTapTargetSize, ThemeData;
 

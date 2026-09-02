@@ -3,12 +3,52 @@
 // found in the LICENSE file.
 
 import 'dart:async';
-import 'dart:ui';
+import 'dart:ui' show Color, DisplayFeature, DisplayFeatureState, DisplayFeatureType, Rect, Size, TextDirection;
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'package:flutter/src/cupertino/dialog.dart' show CupertinoAlertDialog, CupertinoDialogAction;
+import 'package:flutter/src/cupertino/scrollbar.dart' show CupertinoScrollbar;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey, ValueKey;
+import 'package:flutter/src/foundation/licenses.dart' show LicenseEntry, LicenseEntryWithLineBreaks, LicenseParagraph, LicenseRegistry;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, debugDefaultTargetPlatformOverride;
+import 'package:flutter/src/material/about.dart' show AboutDialog, AboutListTile, LicensePage, showAboutDialog, showAdaptiveAboutDialog, showLicensePage;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/app_bar.dart' show AppBar;
+import 'package:flutter/src/material/app_bar_theme.dart' show AppBarTheme;
+import 'package:flutter/src/material/color_scheme.dart' show ColorScheme;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/dialog.dart' show AlertDialog, DialogRoute;
+import 'package:flutter/src/material/drawer.dart' show Drawer;
+import 'package:flutter/src/material/elevated_button.dart' show ElevatedButton;
+import 'package:flutter/src/material/icon_button.dart' show IconButton;
+import 'package:flutter/src/material/icons.dart' show Icons;
+import 'package:flutter/src/material/list_tile.dart' show ListTile;
+import 'package:flutter/src/material/material.dart' show Material;
+import 'package:flutter/src/material/page.dart' show MaterialPageRoute;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/scrollbar.dart' show Scrollbar;
+import 'package:flutter/src/material/text_button.dart' show TextButton;
+import 'package:flutter/src/material/text_theme.dart' show TextTheme;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/paragraph.dart' show RenderParagraph;
+import 'package:flutter/src/widgets/async.dart' show ConnectionState;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Center, Directionality, SizedBox;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/flutter_logo.dart' show FlutterLogo;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/modal_barrier.dart' show ModalBarrier;
+import 'package:flutter/src/widgets/navigator.dart' show Navigator, NavigatorObserver, Route, RouteSettings;
+import 'package:flutter/src/widgets/pages.dart' show PageRouteBuilder;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/scroll_view.dart' show ListView;
+import 'package:flutter/src/widgets/scrollbar.dart' show RawScrollbar;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

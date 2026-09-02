@@ -3,11 +3,14 @@
 // found in the LICENSE file.
 
 import 'dart:ui' as ui;
-import 'dart:ui' show PointerChange;
+import 'dart:ui' show PointerChange, PointerDeviceKind;
 
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
+import 'package:flutter/src/gestures/events.dart' show PointerEnterEvent, PointerEvent, PointerExitEvent, PointerHoverEvent;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/rendering/box.dart' show BoxHitTestResult;
+import 'package:flutter/src/rendering/mouse_tracker.dart' show MouseTracker;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 import 'mouse_tracker_test_utils.dart';
 

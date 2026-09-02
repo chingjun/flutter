@@ -3,11 +3,16 @@
 // found in the LICENSE file.
 
 import 'dart:async';
+import 'dart:typed_data' show ByteData, Uint8List;
+import 'dart:ui' show Size, TextDirection;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/collections.dart' show listEquals;
+import 'package:flutter/src/gestures/events.dart' show PointerEvent;
+import 'package:flutter/src/services/message_codec.dart' show MethodCall, MethodCodec, PlatformException;
+import 'package:flutter/src/services/platform_views.dart' show AndroidMotionEvent, AndroidViewController, PlatformViewController, PlatformViewCreatedCallback, PointTransformer;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:meta/meta.dart' show immutable;
 
 /// Used in internal testing.
 class FakePlatformViewController extends PlatformViewController {

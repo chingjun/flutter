@@ -7,7 +7,9 @@
 /// @docImport 'raw_keyboard.dart';
 library;
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb, kReleaseMode;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, StringProperty;
+import 'package:meta/meta.dart' show immutable;
 
 export 'package:flutter/foundation.dart' show DiagnosticPropertiesBuilder;
 

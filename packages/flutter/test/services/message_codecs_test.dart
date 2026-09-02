@@ -8,7 +8,9 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-import 'package:flutter/services.dart';
+import 'package:flutter/src/foundation/serialization.dart' show WriteBuffer;
+import 'package:flutter/src/services/message_codec.dart' show MessageCodec, MethodCall, MethodCodec, MissingPluginException, PlatformException;
+import 'package:flutter/src/services/message_codecs.dart' show BinaryCodec, JSONMessageCodec, JSONMethodCodec, StandardMessageCodec, StandardMethodCodec, StringCodec;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'message_codecs_testing.dart';

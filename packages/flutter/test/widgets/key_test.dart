@@ -2,8 +2,10 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/key.dart' show Key, LocalKey, UniqueKey, ValueKey;
+import 'package:flutter/src/widgets/framework.dart' show GlobalKey, GlobalObjectKey, ObjectKey;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:meta/meta.dart' show immutable;
 
 class TestValueKey<T> extends ValueKey<T> {
   const TestValueKey(super.value);

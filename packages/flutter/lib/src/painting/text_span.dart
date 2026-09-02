@@ -11,15 +11,22 @@ library;
 import 'dart:ui'
     as ui
     show Locale, LocaleStringAttribute, ParagraphBuilder, SpellOutStringAttribute, StringAttribute;
+import 'dart:ui' show TextAffinity, TextPosition, TextRange;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/services.dart';
-
-import 'basic_types.dart';
-import 'inline_span.dart';
-import 'text_painter.dart';
-import 'text_scaler.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, FlutterError, FlutterErrorDetails;
+import 'package:flutter/src/foundation/collections.dart' show listEquals;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsNode, DiagnosticsProperty, FlagsSummary, StringProperty;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/gestures/events.dart' show PointerDownEvent, PointerEvent;
+import 'package:flutter/src/gestures/hit_test.dart' show HitTestEntry, HitTestTarget;
+import 'package:flutter/src/gestures/recognizer.dart' show GestureRecognizer;
+import 'package:flutter/src/painting/basic_types.dart' show RenderComparison;
+import 'package:flutter/src/painting/inline_span.dart' show Accumulator, InlineSpan, InlineSpanSemanticsInformation, InlineSpanVisitor;
+import 'package:flutter/src/painting/text_painter.dart' show PlaceholderDimensions;
+import 'package:flutter/src/painting/text_scaler.dart' show TextScaler;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor, SystemMouseCursors;
+import 'package:flutter/src/services/mouse_tracking.dart' show MouseTrackerAnnotation, PointerEnterEventListener, PointerExitEventListener;
+import 'package:meta/meta.dart' show immutable, protected;
 
 // Examples can assume:
 // late TextSpan myTextSpan;

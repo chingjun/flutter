@@ -9,13 +9,39 @@ library;
 
 import 'dart:math' as math;
 import 'dart:ui' as ui;
-import 'dart:ui';
+import 'dart:ui' show BlendMode, Canvas, Clip, Color, FilterQuality, Locale, LocaleStringAttribute, Paint, PointerDeviceKind, Rect, SemanticsInputType, SemanticsRole, Size, SpellOutStringAttribute, StringAttribute, TextBaseline, TextDirection, TextRange;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/animation/animations.dart' show AlwaysStoppedAnimation;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, DiagnosticsNode;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey, ValueKey;
+import 'package:flutter/src/gestures/events.dart' show PointerDownEvent;
+import 'package:flutter/src/gestures/hit_test.dart' show HitTestEntry, HitTestResult;
+import 'package:flutter/src/painting/alignment.dart' show Alignment, AlignmentGeometry;
+import 'package:flutter/src/painting/basic_types.dart' show Axis, VerticalDirection;
+import 'package:flutter/src/painting/box_fit.dart' show BoxFit;
+import 'package:flutter/src/painting/circle_border.dart' show CircleBorder;
+import 'package:flutter/src/painting/decoration_image.dart' show ImageRepeat;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/flex.dart' show CrossAxisAlignment, MainAxisSize;
+import 'package:flutter/src/rendering/image.dart' show RenderImage;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, RenderObject;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderPhysicalShape, ShapeBorderClipper;
+import 'package:flutter/src/rendering/shifted_box.dart' show RenderConstraintsTransformBox;
+import 'package:flutter/src/semantics/semantics.dart' show AttributedString, SemanticsData, SemanticsNode;
+import 'package:flutter/src/services/mouse_cursor.dart' show SystemMouseCursors;
+import 'package:flutter/src/widgets/basic.dart' show AbsorbPointer, Align, Center, ColoredBox, Column, ConstrainedBox, ConstraintsTransformBox, Directionality, Flex, FractionalTranslation, IgnoreBaseline, IgnorePointer, IntrinsicHeight, LimitedBox, Listener, MouseRegion, Offstage, Padding, PhysicalShape, RawImage, RepaintBoundary, Row, Semantics, SizedBox, Stack, StatefulBuilder, Transform, UnconstrainedBox, Wrap;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/flutter_logo.dart' show FlutterLogo;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StateSetter, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 import 'button_tester.dart';
 

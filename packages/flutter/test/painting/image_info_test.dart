@@ -4,7 +4,7 @@
 
 import 'dart:ui' as ui show Image;
 
-import 'package:flutter/painting.dart';
+import 'package:flutter/src/painting/image_stream.dart' show ImageInfo;
 import 'package:flutter_test/flutter_test.dart';
 
 Future<void> main() async {

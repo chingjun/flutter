@@ -6,9 +6,12 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show clampDouble;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/physics.dart';
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/physics/friction_simulation.dart' show FrictionSimulation;
+import 'package:flutter/src/physics/simulation.dart' show Simulation;
+import 'package:flutter/src/physics/spring_simulation.dart' show ScrollSpringSimulation, SpringDescription;
 
 /// An implementation of scroll physics that matches iOS.
 ///

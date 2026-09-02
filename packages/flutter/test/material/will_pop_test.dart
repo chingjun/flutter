@@ -2,7 +2,23 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/material.dart';
+import 'package:flutter/src/foundation/key.dart' show Key, LocalKey, UniqueKey, ValueKey;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/app_bar.dart' show AppBar;
+import 'package:flutter/src/material/dialog.dart' show AlertDialog, showDialog;
+import 'package:flutter/src/material/page.dart' show MaterialPageRoute;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/text_button.dart' show TextButton;
+import 'package:flutter/src/material/text_field.dart' show TextField;
+import 'package:flutter/src/widgets/app.dart' show WidgetsApp;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Center, KeyedSubtree, SizedBox, StatefulBuilder;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/form.dart' show Form;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StateSetter, StatefulWidget, StatelessWidget, Widget, WidgetBuilder;
+import 'package:flutter/src/widgets/navigator.dart' show Navigator, Page, Route, WillPopCallback;
+import 'package:flutter/src/widgets/routes.dart' show ModalRoute;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/will_pop_scope.dart' show WillPopScope;
 import 'package:flutter_test/flutter_test.dart';
 
 bool willPopValue = false;

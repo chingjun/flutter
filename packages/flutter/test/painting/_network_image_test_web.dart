@@ -3,16 +3,31 @@
 // found in the LICENSE file.
 
 import 'dart:async';
+import 'dart:typed_data' show Uint8List;
 import 'dart:ui' as ui;
+import 'dart:ui' show Color, Rect, Size;
 import 'dart:ui_web' as ui_web;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/src/painting/_network_image_web.dart' hide NetworkImage;
-import 'package:flutter/src/painting/_web_image_info_web.dart';
+import 'package:flutter/src/foundation/collections.dart' show mapEquals;
+import 'package:flutter/src/foundation/diagnostics.dart' show describeIdentity;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/foundation/synchronous_future.dart' show SynchronousFuture;
+import 'package:flutter/src/painting/_network_image_web.dart' show debugRestoreHttpRequestFactory, debugRestoreImgElementFactory, httpRequestFactory, imgElementFactory;
+import 'package:flutter/src/painting/_web_image_info_web.dart' show WebImageInfo;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/binding.dart' show imageCache;
+import 'package:flutter/src/painting/box_fit.dart' show BoxFit;
+import 'package:flutter/src/painting/image_provider.dart' show ImageConfiguration, ImageDecoderCallback, ImageProvider, NetworkImage, NetworkImageLoadException, WebHtmlElementStrategy;
+import 'package:flutter/src/painting/image_stream.dart' show ImageChunkEvent, ImageInfo, ImageStream, ImageStreamCompleter, ImageStreamListener;
+import 'package:flutter/src/rendering/box.dart' show BoxParentData, RenderBox;
+import 'package:flutter/src/rendering/layer.dart' show ClipRectLayer;
 import 'package:flutter/src/web.dart' as web_shim;
-import 'package:flutter/src/widgets/_web_image_web.dart';
-import 'package:flutter/widgets.dart' hide NetworkImage;
+import 'package:flutter/src/widgets/_web_image_web.dart' show RawWebImage, RenderWebImage;
+import 'package:flutter/src/widgets/basic.dart' show Center, RawImage, RepaintBoundary, SizedBox;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/image.dart' show Image;
+import 'package:flutter/src/widgets/platform_view.dart' show PlatformViewLink;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:web/web.dart' as web;
 

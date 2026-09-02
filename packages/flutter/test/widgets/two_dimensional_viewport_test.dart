@@ -2,10 +2,38 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Canvas, Clip, Color, PointerDeviceKind, Rect, Size, TextDirection;
+
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError, FlutterErrorDetails, FlutterExceptionHandler;
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey, ValueKey;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/gestures/recognizer.dart' show DragStartBehavior;
+import 'package:flutter/src/painting/basic_types.dart' show Axis, AxisDirection;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/object.dart' show ParentData;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior;
+import 'package:flutter/src/rendering/viewport.dart' show CacheExtentStyle, RenderAbstractViewport, RevealedOffset;
+import 'package:flutter/src/rendering/viewport_offset.dart' show ViewportOffset;
+import 'package:flutter/src/widgets/app.dart' show WidgetsApp;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Center, Column, Directionality, RepaintBoundary, Row, SizedBox;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/pages.dart' show PageRoute;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/restoration.dart' show RestorationScope;
+import 'package:flutter/src/widgets/routes.dart' show ModalRoute;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_delegate.dart' show TwoDimensionalChildBuilderDelegate, TwoDimensionalChildDelegate, TwoDimensionalChildListDelegate;
+import 'package:flutter/src/widgets/scroll_physics.dart' show AlwaysScrollableScrollPhysics, ClampingScrollPhysics;
+import 'package:flutter/src/widgets/scrollable.dart' show DiagonalDragBehavior, Scrollable, ScrollableState, TwoDimensionalScrollable, TwoDimensionalScrollableState;
+import 'package:flutter/src/widgets/scrollable_helpers.dart' show ScrollIncrementDetails, ScrollIncrementType, ScrollableDetails;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/ticker_provider.dart' show TickerProviderStateMixin;
+import 'package:flutter/src/widgets/toggleable.dart' show ToggleablePainter, ToggleableStateMixin;
+import 'package:flutter/src/widgets/two_dimensional_viewport.dart' show ChildVicinity, RenderTwoDimensionalViewport, TwoDimensionalChildManager, TwoDimensionalViewportParentData;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'two_dimensional_utils.dart';

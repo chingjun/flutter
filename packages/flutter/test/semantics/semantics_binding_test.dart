@@ -2,8 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/semantics.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Rect, Size, TextDirection;
+
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/semantics/binding.dart' show SemanticsBinding;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsNode, SemanticsOwner;
+import 'package:flutter/src/widgets/basic.dart' show Align, Directionality, Semantics, SizedBox, Transform;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:leak_tracker_flutter_testing/leak_tracker_flutter_testing.dart';
 

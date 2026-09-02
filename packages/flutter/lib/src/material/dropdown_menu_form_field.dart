@@ -5,12 +5,24 @@
 /// @docImport 'text_theme.dart';
 library;
 
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Offset, TextAlign;
 
-import 'dropdown_menu.dart';
-import 'input_decorator.dart';
-import 'menu_style.dart';
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/material/dropdown_menu.dart' show DropdownMenu, DropdownMenuCloseBehavior, DropdownMenuDecorationBuilder, DropdownMenuEntry, FilterCallback, SearchCallback;
+import 'package:flutter/src/material/input_decorator.dart' show InputDecoration;
+import 'package:flutter/src/material/menu_style.dart' show MenuStyle;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsetsGeometry;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/services/restoration.dart' show RestorationBucket;
+import 'package:flutter/src/services/text_formatter.dart' show TextInputFormatter;
+import 'package:flutter/src/services/text_input.dart' show TextEditingValue, TextInputAction, TextInputType;
+import 'package:flutter/src/widgets/editable_text.dart' show TextEditingController;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/form.dart' show AutovalidateMode, FormField, FormFieldState;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
+import 'package:flutter/src/widgets/raw_menu_anchor.dart' show MenuController;
+import 'package:flutter/src/widgets/restoration.dart' show UnmanagedRestorationScope;
+import 'package:flutter/src/widgets/restoration_properties.dart' show RestorableTextEditingController;
 
 /// A [FormField] that contains a [DropdownMenu].
 ///

@@ -6,14 +6,12 @@
 /// @docImport 'package:flutter/widgets.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-
-import 'mouse_cursor.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsProperty, FlagsSummary;
+import 'package:flutter/src/gestures/events.dart' show PointerEnterEvent, PointerExitEvent, PointerHoverEvent;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor;
 
 export 'package:flutter/foundation.dart' show DiagnosticPropertiesBuilder;
 export 'package:flutter/gestures.dart' show PointerEnterEvent, PointerExitEvent, PointerHoverEvent;
-
 export 'mouse_cursor.dart' show MouseCursor;
 
 /// Signature for listening to [PointerEnterEvent] events.

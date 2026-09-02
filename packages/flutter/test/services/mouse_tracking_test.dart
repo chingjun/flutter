@@ -2,9 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
-
+import 'package:flutter/src/foundation/diagnostics.dart' show shortHash;
+import 'package:flutter/src/services/mouse_cursor.dart' show SystemMouseCursors;
+import 'package:flutter/src/services/mouse_tracking.dart' show MouseTrackerAnnotation;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

@@ -9,9 +9,8 @@
 /// @docImport 'scroll_position.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-
-import 'framework.dart';
+import 'package:flutter/src/widgets/framework.dart' show InheritedElement, InheritedWidget, Widget;
+import 'package:listen/listen.dart' show Listenable;
 
 /// An inherited widget for a [Listenable] [notifier], which updates its
 /// dependencies when the [notifier] is triggered.

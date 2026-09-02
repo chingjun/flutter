@@ -3,15 +3,37 @@
 // found in the LICENSE file.
 
 import 'dart:ui' as ui show BoxHeightStyle, BoxWidthStyle;
+import 'dart:ui' show Brightness, Clip, Color, Locale, Radius, TextAlign, TextDirection, VoidCallback;
 
-import 'package:flutter/gestures.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
-
-import 'adaptive_text_selection_toolbar.dart';
-import 'input_decorator.dart';
-import 'material_state.dart';
-import 'text_field.dart';
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/gestures/recognizer.dart' show DragStartBehavior;
+import 'package:flutter/src/gestures/tap.dart' show GestureTapCallback;
+import 'package:flutter/src/material/adaptive_text_selection_toolbar.dart' show AdaptiveTextSelectionToolbar;
+import 'package:flutter/src/material/input_decorator.dart' show InputDecoration, InputDecorationTheme;
+import 'package:flutter/src/material/material_state.dart' show MaterialStatesController;
+import 'package:flutter/src/material/text_field.dart' show InputCounterWidgetBuilder, TextField;
+import 'package:flutter/src/painting/alignment.dart' show TextAlignVertical;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/strut_style.dart' show StrutStyle;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor;
+import 'package:flutter/src/services/restoration.dart' show RestorationBucket;
+import 'package:flutter/src/services/text_formatter.dart' show MaxLengthEnforcement, TextInputFormatter;
+import 'package:flutter/src/services/text_input.dart' show SmartDashesType, SmartQuotesType, TextCapitalization, TextEditingValue, TextInputAction, TextInputType;
+import 'package:flutter/src/widgets/editable_text.dart' show AppPrivateCommandCallback, ContentInsertionConfiguration, EditableText, EditableTextContextMenuBuilder, EditableTextState, TextEditingController, ToolbarOptions;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/form.dart' show AutovalidateMode, FormField, FormFieldState;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
+import 'package:flutter/src/widgets/magnifier.dart' show TextMagnifierConfiguration;
+import 'package:flutter/src/widgets/restoration.dart' show UnmanagedRestorationScope;
+import 'package:flutter/src/widgets/restoration_properties.dart' show RestorableTextEditingController;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_physics.dart' show ScrollPhysics;
+import 'package:flutter/src/widgets/spell_check.dart' show SpellCheckConfiguration;
+import 'package:flutter/src/widgets/system_context_menu.dart' show SystemContextMenu;
+import 'package:flutter/src/widgets/tap_region.dart' show TapRegionCallback, TapRegionUpCallback;
+import 'package:flutter/src/widgets/text_selection.dart' show TextSelectionControls;
+import 'package:flutter/src/widgets/undo_history.dart' show UndoHistoryController;
 
 export 'package:flutter/services.dart' show SmartDashesType, SmartQuotesType;
 

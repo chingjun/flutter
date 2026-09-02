@@ -6,15 +6,25 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show Brightness, Color;
 
-import 'package:flutter/widgets.dart';
-
-import 'colors.dart';
-import 'debug.dart';
-import 'icon_button.dart';
-import 'icons.dart';
-import 'material_localizations.dart';
-import 'theme.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/curves.dart' show Curves;
+import 'package:flutter/src/animation/tween.dart' show Animatable, CurveTween, Tween;
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/debug.dart' show debugCheckHasMaterial, debugCheckHasMaterialLocalizations;
+import 'package:flutter/src/material/icon_button.dart' show IconButton;
+import 'package:flutter/src/material/icons.dart' show Icons;
+import 'package:flutter/src/material/material_localizations.dart' show MaterialLocalizations;
+import 'package:flutter/src/material/theme.dart' show Theme, kThemeAnimationDuration;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsGeometry;
+import 'package:flutter/src/widgets/basic.dart' show Semantics;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/ticker_provider.dart' show SingleTickerProviderStateMixin;
+import 'package:flutter/src/widgets/transitions.dart' show RotationTransition;
 
 /// A widget representing a rotating expand/collapse button. The icon rotates
 /// 180 degrees when pressed, then reverts the animation on a second press.

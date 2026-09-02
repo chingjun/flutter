@@ -2,7 +2,16 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Size, TextDirection;
+
+import 'package:flutter/src/foundation/key.dart' show UniqueKey;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor, SystemMouseCursors;
+import 'package:flutter/src/widgets/basic.dart' show Column, Directionality, SizedBox;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
+import 'package:flutter/src/widgets/raw_radio.dart' show RawRadio;
+import 'package:flutter/src/widgets/toggleable.dart' show ToggleableStateMixin;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetStateProperty;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'radio_group_tester.dart';

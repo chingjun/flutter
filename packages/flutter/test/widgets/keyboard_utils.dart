@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
+import 'package:flutter/src/widgets/shortcuts.dart' show SingleActivator;
 import 'package:flutter_test/flutter_test.dart';
 
 Future<void> sendKeyCombination(WidgetTester tester, SingleActivator activator) async {

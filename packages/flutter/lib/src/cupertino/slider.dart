@@ -3,17 +3,32 @@
 // found in the LICENSE file.
 
 import 'dart:math' as math;
-import 'dart:ui' show lerpDouble;
+import 'dart:ui' show Canvas, Color, Offset, Paint, RRect, Rect, TextDirection, clampDouble, lerpDouble;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
-
-import 'colors.dart';
-import 'theme.dart';
-import 'thumb_painter.dart';
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/curves.dart' show Curves;
+import 'package:flutter/src/cupertino/colors.dart' show CupertinoColors, CupertinoDynamicColor;
+import 'package:flutter/src/cupertino/theme.dart' show CupertinoTheme;
+import 'package:flutter/src/cupertino/thumb_painter.dart' show CupertinoThumbPainter;
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DoubleProperty;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/gestures/drag_details.dart' show DragEndDetails, DragStartDetails, DragUpdateDetails;
+import 'package:flutter/src/gestures/events.dart' show PointerDownEvent, PointerEvent;
+import 'package:flutter/src/gestures/monodrag.dart' show HorizontalDragGestureRecognizer;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, BoxHitTestEntry;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderConstrainedBox;
+import 'package:flutter/src/scheduler/ticker.dart' show TickerProvider;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsConfiguration;
+import 'package:flutter/src/services/haptic_feedback.dart' show HapticFeedback;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor, SystemMouseCursors;
+import 'package:flutter/src/services/mouse_tracking.dart' show MouseTrackerAnnotation, PointerEnterEventListener, PointerExitEventListener, PointerHoverEventListener;
+import 'package:flutter/src/widgets/basic.dart' show Directionality;
+import 'package:flutter/src/widgets/debug.dart' show debugCheckHasDirectionality;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, LeafRenderObjectWidget, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/ticker_provider.dart' show TickerProviderStateMixin;
 
 typedef _SliderValueChanged = void Function(double value, bool isFastDrag)?;
 

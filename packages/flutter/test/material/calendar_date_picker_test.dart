@@ -2,11 +2,38 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:ui';
+import 'dart:typed_data' show ByteData;
+import 'dart:ui' show Color, PaintingStyle, Path, PointerDeviceKind, Rect, TextDirection, Tristate;
 
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError, FlutterErrorDetails;
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/calendar_date_picker.dart' show CalendarDatePicker, YearPicker;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/date.dart' show DatePickerMode, DateUtils, GregorianCalendarDelegate;
+import 'package:flutter/src/material/date_picker_theme.dart' show DatePickerThemeData;
+import 'package:flutter/src/material/icon_button.dart' show IconButton;
+import 'package:flutter/src/material/ink_well.dart' show InkWell;
+import 'package:flutter/src/material/material.dart' show Material, MaterialInkController;
+import 'package:flutter/src/material/material_localizations.dart' show DefaultMaterialLocalizations, MaterialLocalizations;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/borders.dart' show BorderSide;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
+import 'package:flutter/src/services/message_codecs.dart' show StandardMessageCodec;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:flutter/src/widgets/actions.dart' show FocusableActionDetector;
+import 'package:flutter/src/widgets/basic.dart' show Directionality, Semantics, SizedBox;
+import 'package:flutter/src/widgets/date.dart' show SelectableDayPredicate;
+import 'package:flutter/src/widgets/framework.dart' show Widget;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/page_view.dart' show PageView;
+import 'package:flutter/src/widgets/scroll_view.dart' show GridView;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetStateProperty;
 import 'package:flutter_test/flutter_test.dart';
 
 import '../widgets/feedback_tester.dart';

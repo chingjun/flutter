@@ -3,9 +3,30 @@
 // found in the LICENSE file.
 
 import 'dart:ui' as ui;
+import 'dart:ui' show Locale, SemanticsAction, SemanticsFlag, Size, TextDirection;
 
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/app_bar.dart' show AppBar, SliverAppBar;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/material_localizations.dart' show DefaultMaterialLocalizations;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderPhysicalModel;
+import 'package:flutter/src/rendering/sliver.dart' show RenderSliver, SliverGeometry;
+import 'package:flutter/src/rendering/sliver_persistent_header.dart' show RenderSliverFloatingPersistentHeader, RenderSliverFloatingPinnedPersistentHeader, RenderSliverPinnedPersistentHeader, RenderSliverScrollingPersistentHeader;
+import 'package:flutter/src/widgets/basic.dart' show Center, Directionality, PhysicalModel, SizedBox, SliverToBoxAdapter;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, Widget;
+import 'package:flutter/src/widgets/localizations.dart' show DefaultWidgetsLocalizations, Localizations, LocalizationsDelegate;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/preferred_size.dart' show PreferredSize;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_delegate.dart' show SliverChildBuilderDelegate;
+import 'package:flutter/src/widgets/scroll_physics.dart' show BouncingScrollPhysics, ClampingScrollPhysics;
+import 'package:flutter/src/widgets/scroll_view.dart' show CustomScrollView;
+import 'package:flutter/src/widgets/sliver.dart' show SliverFixedExtentList, SliverList;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 import '../widgets/semantics_tester.dart';

@@ -10,18 +10,23 @@
 /// @docImport 'text_editing_intents.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
+import 'dart:ui' show VoidCallback;
 
-import 'basic.dart';
-import 'focus_manager.dart';
-import 'focus_scope.dart';
-import 'framework.dart';
-import 'media_query.dart';
-import 'shortcuts.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorHint, ErrorSummary, FlutterError, FlutterErrorDetails, InformationCollector;
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/foundation/collections.dart' show mapEquals;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsNode, DiagnosticsProperty, DiagnosticsTreeStyle;
+import 'package:flutter/src/foundation/observer_list.dart' show ObserverList;
+import 'package:flutter/src/gestures/events.dart' show PointerEnterEvent, PointerExitEvent;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding, SchedulerPhase;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor;
+import 'package:flutter/src/widgets/basic.dart' show MouseRegion;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusHighlightMode, FocusManager, FocusNode, KeyEventResult, primaryFocus;
+import 'package:flutter/src/widgets/focus_scope.dart' show Focus;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, GlobalKey, InheritedElement, InheritedWidget, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, NavigationMode;
+import 'package:flutter/src/widgets/shortcuts.dart' show ShortcutActivator, Shortcuts;
+import 'package:meta/meta.dart' show immutable, mustCallSuper, protected, visibleForTesting;
 
 // Examples can assume:
 // late BuildContext context;

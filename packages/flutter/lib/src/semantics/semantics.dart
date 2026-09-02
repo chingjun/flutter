@@ -11,33 +11,27 @@ library;
 
 import 'dart:core';
 import 'dart:math' as math;
-import 'dart:ui'
-    show
-        CheckedState,
-        Locale,
-        Offset,
-        Rect,
-        SemanticsAction,
-        SemanticsFlag,
-        SemanticsFlags,
-        SemanticsInputType,
-        SemanticsRole,
-        SemanticsUpdate,
-        SemanticsUpdateBuilder,
-        SemanticsValidationResult,
-        StringAttribute,
-        TextDirection,
-        Tristate;
+import 'dart:typed_data' show Float64List, Int32List;
 import 'dart:ui' as ui show SemanticsHitTestBehavior;
+import 'dart:ui' show CheckedState, Locale, Offset, Rect, SemanticsAction, SemanticsFlag, SemanticsFlags, SemanticsInputType, SemanticsRole, SemanticsUpdate, SemanticsUpdateBuilder, SemanticsValidationResult, StringAttribute, TextDirection, TextRange, Tristate, VoidCallback;
 
 import 'package:collection/collection.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/painting.dart' show MatrixUtils, TransformProperty;
-import 'package:flutter/services.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorHint, ErrorSpacer, ErrorSummary, FlutterError, FlutterErrorDetails;
+import 'package:flutter/src/foundation/collections.dart' show listEquals, mapEquals, setEquals;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/debug.dart' show debugMaybeDispatchCreated, debugMaybeDispatchDisposed;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticableNode, DiagnosticableTree, DiagnosticableTreeMixin, DiagnosticsNode, DiagnosticsProperty, DiagnosticsTreeStyle, DoubleProperty, EnumProperty, FlagProperty, IntProperty, IterableProperty, MessageProperty, StringProperty, TextTreeConfiguration, describeIdentity;
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/foundation/unicode.dart' show Unicode;
+import 'package:flutter/src/painting/matrix_utils.dart' show MatrixUtils, TransformProperty;
+import 'package:flutter/src/semantics/binding.dart' show SemanticsBinding;
+import 'package:flutter/src/semantics/semantics_event.dart' show SemanticsEvent;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:flutter/src/services/text_editing.dart' show TextSelection;
+import 'package:listen/listen.dart' show ChangeNotifier;
+import 'package:meta/meta.dart' show immutable, protected, visibleForTesting;
 import 'package:vector_math/vector_math_64.dart';
-
-import 'binding.dart' show SemanticsBinding;
-import 'semantics_event.dart';
 
 export 'dart:ui'
     show
@@ -51,7 +45,6 @@ export 'dart:ui'
         StringAttribute,
         TextDirection,
         VoidCallback;
-
 export 'package:flutter/foundation.dart'
     show
         DiagnosticLevel,
@@ -62,7 +55,6 @@ export 'package:flutter/foundation.dart'
         TextTreeConfiguration;
 export 'package:flutter/services.dart' show TextSelection;
 export 'package:vector_math/vector_math_64.dart' show Matrix4;
-
 export 'semantics_event.dart' show SemanticsEvent;
 
 /// Signature for a function that is called for each [SemanticsNode].

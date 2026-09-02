@@ -5,8 +5,11 @@
 import 'dart:async';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
+import 'dart:ui' show Size;
 
-import 'package:flutter/painting.dart';
+import 'package:flutter/src/painting/binding.dart' show PaintingBinding;
+import 'package:flutter/src/painting/image_provider.dart' show ImageConfiguration, ImageProvider, MemoryImage, ResizeImage, ResizeImageKey, ResizeImagePolicy;
+import 'package:flutter/src/painting/image_stream.dart' show ImageInfo, ImageStream, ImageStreamListener;
 import 'package:flutter_test/flutter_test.dart';
 
 import '../image_data.dart';

@@ -5,11 +5,14 @@
 /// @docImport 'time_picker.dart';
 library;
 
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
-
-import 'debug.dart';
-import 'material_localizations.dart';
+import 'package:flutter/src/material/debug.dart' show debugCheckHasMaterialLocalizations;
+import 'package:flutter/src/material/material_localizations.dart' show MaterialLocalizations;
+import 'package:flutter/src/services/restoration.dart' show debugIsSerializableForRestoration;
+import 'package:flutter/src/widgets/debug.dart' show debugCheckHasMediaQuery;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/restoration_properties.dart' show RestorableValue;
+import 'package:meta/meta.dart' show immutable;
 
 /// Whether the [TimeOfDay] is before or after noon.
 enum DayPeriod {

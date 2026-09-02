@@ -2,10 +2,15 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:ui';
+import 'dart:ui' show PointerDeviceKind;
 
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/tooltip.dart' show Tooltip, TooltipState;
+import 'package:flutter/src/material/tooltip_visibility.dart' show TooltipVisibility;
+import 'package:flutter/src/widgets/basic.dart' show Center, MouseRegion, SizedBox;
+import 'package:flutter/src/widgets/framework.dart' show GlobalKey;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/raw_tooltip.dart' show RawTooltip, TooltipTriggerMode;
 import 'package:flutter_test/flutter_test.dart';
 
 const String tooltipText = 'TIP';

@@ -5,14 +5,11 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-import 'package:flutter/foundation.dart' show ReadBuffer, WriteBuffer;
-
-import 'message_codec.dart';
+import 'package:flutter/src/foundation/serialization.dart' show ReadBuffer, WriteBuffer;
+import 'package:flutter/src/services/message_codec.dart' show MessageCodec, MethodCall, MethodCodec, PlatformException;
 
 export 'dart:typed_data' show ByteData;
-
 export 'package:flutter/foundation.dart' show ReadBuffer, WriteBuffer;
-
 export 'message_codec.dart' show MethodCall;
 
 const int _writeBufferStartCapacity = 64;

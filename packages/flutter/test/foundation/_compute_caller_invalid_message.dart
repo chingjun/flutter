@@ -4,9 +4,10 @@
 
 // A test script that invokes compute() to start an isolate.
 
+import 'dart:async' show Future;
 import 'dart:isolate';
 
-import 'package:flutter/src/foundation/_isolates_io.dart';
+import 'package:flutter/src/foundation/_isolates_io.dart' show compute;
 
 int getLength(ReceivePort s) {
   return 0;

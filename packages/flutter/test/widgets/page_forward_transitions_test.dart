@@ -2,7 +2,18 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color;
+
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Column;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, Widget;
+import 'package:flutter/src/widgets/heroes.dart' show HeroController;
+import 'package:flutter/src/widgets/modal_barrier.dart' show ModalBarrier;
+import 'package:flutter/src/widgets/navigator.dart' show HeroControllerScope, Navigator, NavigatorState, RouteSettings;
+import 'package:flutter/src/widgets/pages.dart' show PageRoute;
+import 'package:flutter/src/widgets/routes.dart' show ModalRoute;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/transitions.dart' show AnimatedWidget;
 import 'package:flutter_test/flutter_test.dart';
 
 class TestTransition extends AnimatedWidget {

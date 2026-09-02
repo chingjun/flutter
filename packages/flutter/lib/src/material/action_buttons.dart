@@ -9,17 +9,20 @@
 /// @docImport 'material.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
-
-import 'action_icons_theme.dart';
-import 'button_style.dart';
-import 'debug.dart';
-import 'icon_button.dart';
-import 'icons.dart';
-import 'material_localizations.dart';
-import 'scaffold.dart';
-import 'theme.dart';
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/material/action_icons_theme.dart' show ActionIconTheme, ActionIconThemeData;
+import 'package:flutter/src/material/debug.dart' show debugCheckHasMaterialLocalizations;
+import 'package:flutter/src/material/icon_button.dart' show IconButton;
+import 'package:flutter/src/material/icons.dart' show Icons;
+import 'package:flutter/src/material/material_localizations.dart' show MaterialLocalizations;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget, WidgetBuilder;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/icon_data.dart' show IconData;
+import 'package:flutter/src/widgets/navigator.dart' show Navigator;
+import 'package:flutter/src/widgets/standard_component_type.dart' show StandardComponentType;
 
 abstract class _ActionButton extends IconButton {
   /// Creates a Material Design icon button.

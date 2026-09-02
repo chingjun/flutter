@@ -5,8 +5,11 @@
 /// @docImport 'ink_well.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty;
+import 'package:flutter/src/widgets/framework.dart' show State, StatefulWidget;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState;
+import 'package:meta/meta.dart' show optionalTypeArgs, protected;
 
 /// Mixin for [State] classes that require knowledge of changing [WidgetState]
 /// values for their child widgets.

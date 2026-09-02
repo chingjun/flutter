@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/src/foundation/binding.dart' show BindingBase;
 import 'package:flutter_test/flutter_test.dart';
 
 // based on the sample code in foundation/binding.dart

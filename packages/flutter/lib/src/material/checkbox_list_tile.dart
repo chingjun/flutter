@@ -14,14 +14,23 @@
 /// @docImport 'switch_list_tile.dart';
 library;
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color;
 
-import 'checkbox.dart';
-import 'checkbox_theme.dart';
-import 'list_tile.dart';
-import 'list_tile_theme.dart';
-import 'theme.dart';
-import 'theme_data.dart';
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/material/checkbox.dart' show Checkbox;
+import 'package:flutter/src/material/checkbox_theme.dart' show CheckboxTheme, CheckboxThemeData;
+import 'package:flutter/src/material/list_tile.dart' show ListTile, ListTileControlAffinity, ListTileTitleAlignment;
+import 'package:flutter/src/material/list_tile_theme.dart' show ListTileTheme, ListTileThemeData;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show MaterialTapTargetSize, ThemeData, VisualDensity;
+import 'package:flutter/src/painting/borders.dart' show BorderSide, OutlinedBorder, ShapeBorder;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsetsGeometry;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor;
+import 'package:flutter/src/widgets/basic.dart' show MergeSemantics, Transform;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/focus_scope.dart' show ExcludeFocus;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateProperty, WidgetStatesController;
 
 // Examples can assume:
 // late bool? _throwShotAway;

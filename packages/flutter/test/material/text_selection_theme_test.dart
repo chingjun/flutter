@@ -2,8 +2,26 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Color;
+
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, DiagnosticsNode;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/material.dart' show Material;
+import 'package:flutter/src/material/selectable_text.dart' show SelectableText;
+import 'package:flutter/src/material/text_field.dart' show TextField;
+import 'package:flutter/src/material/text_selection.dart' show materialTextSelectionControls;
+import 'package:flutter/src/material/text_selection_theme.dart' show TextSelectionTheme, TextSelectionThemeData;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/editable.dart' show RenderEditable;
+import 'package:flutter/src/rendering/selection.dart' show TextSelectionHandleType;
+import 'package:flutter/src/widgets/basic.dart' show Builder, CustomPaint;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/default_selection_style.dart' show DefaultSelectionStyle;
+import 'package:flutter/src/widgets/editable_text.dart' show EditableText, EditableTextState;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

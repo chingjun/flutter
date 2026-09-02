@@ -5,12 +5,13 @@
 /// @docImport 'package:flutter/widgets.dart';
 library;
 
+import 'dart:async' show Future;
 import 'dart:developer';
 import 'dart:ui' as ui;
 
-import 'package:flutter/foundation.dart';
-
-import 'debug.dart';
+import 'package:flutter/src/foundation/constants.dart' show kReleaseMode;
+import 'package:flutter/src/painting/debug.dart' show debugCaptureShaderWarmUpImage, debugCaptureShaderWarmUpPicture;
+import 'package:meta/meta.dart' show protected;
 
 /// Interface for drawing an image to warm up Skia shader compilations.
 ///

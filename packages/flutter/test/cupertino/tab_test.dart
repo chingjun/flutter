@@ -2,8 +2,24 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/services.dart';
+import 'dart:typed_data' show ByteData;
+import 'dart:ui' show Size;
+
+import 'package:flutter/src/cupertino/app.dart' show CupertinoApp;
+import 'package:flutter/src/cupertino/bottom_tab_bar.dart' show CupertinoTabBar;
+import 'package:flutter/src/cupertino/button.dart' show CupertinoButton;
+import 'package:flutter/src/cupertino/route.dart' show CupertinoPageRoute;
+import 'package:flutter/src/cupertino/tab_scaffold.dart' show CupertinoTabScaffold;
+import 'package:flutter/src/cupertino/tab_view.dart' show CupertinoTabView;
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/services/message_codec.dart' show MethodCall;
+import 'package:flutter/src/services/message_codecs.dart' show JSONMethodCodec;
+import 'package:flutter/src/widgets/basic.dart' show Center, SizedBox;
+import 'package:flutter/src/widgets/bottom_navigation_bar_item.dart' show BottomNavigationBarItem;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, WidgetBuilder;
+import 'package:flutter/src/widgets/navigator.dart' show Navigator, NavigatorState, RouteSettings;
+import 'package:flutter/src/widgets/pop_scope.dart' show PopScope;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:leak_tracker_flutter_testing/leak_tracker_flutter_testing.dart';
 

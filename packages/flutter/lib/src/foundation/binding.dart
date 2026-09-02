@@ -18,23 +18,20 @@ import 'dart:developer' as developer;
 import 'dart:io' show exit;
 import 'dart:ui' as ui show Brightness, PlatformDispatcher, SingletonFlutterWindow, window;
 
-// Before adding any more dart:ui imports, please read the README.
-
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorHint, ErrorSummary, FlutterError, FlutterErrorDetails;
+import 'package:flutter/src/foundation/basic_types.dart' show AsyncCallback, AsyncValueGetter, AsyncValueSetter;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb, kReleaseMode;
+import 'package:flutter/src/foundation/debug.dart' show activeDevToolsServerAddress, connectedVmServiceUri, debugBrightnessOverride, debugInstrumentAction, debugInstrumentationEnabled;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, debugDefaultTargetPlatformOverride, defaultTargetPlatform;
+import 'package:flutter/src/foundation/print.dart' show debugPrint;
+import 'package:flutter/src/foundation/service_extensions.dart' show FoundationServiceExtensions;
+import 'package:flutter/src/foundation/timeline.dart' show FlutterTimeline;
 import 'package:listen/listen.dart';
 import 'package:meta/meta.dart';
 
-import 'assertions.dart';
-import 'basic_types.dart';
-import 'constants.dart';
-import 'debug.dart';
-import 'object.dart';
-import 'platform.dart';
-import 'print.dart';
-import 'service_extensions.dart';
-import 'timeline.dart';
-
 export 'dart:ui' show PlatformDispatcher, SingletonFlutterWindow, clampDouble;
-
 export 'basic_types.dart' show AsyncCallback, AsyncValueGetter, AsyncValueSetter;
 
 // Examples can assume:

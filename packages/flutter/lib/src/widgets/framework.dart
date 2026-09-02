@@ -14,14 +14,26 @@ library;
 
 import 'dart:async';
 import 'dart:collection';
+import 'dart:ui' show Size, VoidCallback;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-
-import 'binding.dart';
-import 'debug_flags.dart';
-import 'focus_manager.dart';
-import 'notification_core.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorHint, ErrorSpacer, ErrorSummary, FlutterError, FlutterErrorDetails, InformationCollector, debugPrintStack;
+import 'package:flutter/src/foundation/constants.dart' show kDebugMode, kReleaseMode;
+import 'package:flutter/src/foundation/debug.dart' show debugMaybeDispatchCreated, debugMaybeDispatchDisposed;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticableTree, DiagnosticableTreeNode, DiagnosticsBlock, DiagnosticsNode, DiagnosticsProperty, DiagnosticsSerializationDelegate, DiagnosticsTreeStyle, EnumProperty, FlagProperty, ObjectFlagProperty, StringProperty, describeIdentity, shortHash;
+import 'package:flutter/src/foundation/key.dart' show Key, LocalKey, UniqueKey;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/foundation/persistent_hash_map.dart' show PersistentHashMap;
+import 'package:flutter/src/foundation/print.dart' show debugPrint;
+import 'package:flutter/src/foundation/timeline.dart' show FlutterTimeline;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/error.dart' show RenderErrorBox;
+import 'package:flutter/src/rendering/object.dart' show ContainerParentDataMixin, ContainerRenderObjectMixin, DiagnosticsDebugCreator, ParentData, RenderObject, RenderObjectWithChildMixin;
+import 'package:flutter/src/rendering/sliver.dart' show RenderSliver;
+import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding;
+import 'package:flutter/src/widgets/debug_flags.dart' show debugEnhanceBuildTimelineArguments, debugIsLocalCreationCallback, debugOnRebuildDirtyWidget, debugPrintBuildScope, debugPrintGlobalKeyedWidgetLifecycle, debugPrintRebuildDirtyWidgets, debugPrintScheduleBuildForStacks, debugProfileBuildsEnabled, debugProfileBuildsEnabledUserWidgets;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusManager;
+import 'package:flutter/src/widgets/notification_core.dart' show Notification;
+import 'package:meta/meta.dart' show factory, immutable, mustCallSuper, nonVirtual, optionalTypeArgs, protected, visibleForOverriding, visibleForTesting;
 
 export 'package:flutter/foundation.dart'
     show

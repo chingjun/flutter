@@ -4,7 +4,7 @@
 
 import 'dart:async';
 
-import 'system_channels.dart';
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
 
 // Examples can assume:
 // // so that we can import the fake "split_component.dart" in an example below:

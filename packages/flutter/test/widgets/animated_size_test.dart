@@ -2,8 +2,18 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Clip, Size, TextDirection;
+
+import 'package:flutter/src/animation/curves.dart' show Curves;
+import 'package:flutter/src/foundation/key.dart' show Key, ValueKey;
+import 'package:flutter/src/rendering/animated_size.dart' show RenderAnimatedSize, RenderAnimatedSizeState;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext;
+import 'package:flutter/src/widgets/animated_size.dart' show AnimatedSize;
+import 'package:flutter/src/widgets/basic.dart' show Center, Directionality, IntrinsicHeight, Row, SizedBox, StatefulBuilder, Wrap;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, StateSetter, Widget;
+import 'package:flutter/src/widgets/implicit_animations.dart' show AnimatedContainer;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 class TestPaintingContext implements PaintingContext {

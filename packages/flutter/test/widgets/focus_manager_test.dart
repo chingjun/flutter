@@ -3,12 +3,27 @@
 // found in the LICENSE file.
 
 import 'dart:math' as math;
+import 'dart:typed_data' show ByteData;
+import 'dart:ui' show AppLifecycleState, PointerDeviceKind, Rect, Size, TextDirection;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, DiagnosticsNode;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/foundation/print.dart' show DebugPrintCallback, debugPrint;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/services/hardware_keyboard.dart' show KeyDownEvent, KeyEvent;
+import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
+import 'package:flutter/src/services/message_codecs.dart' show StringCodec;
+import 'package:flutter/src/services/raw_keyboard.dart' show RawKeyEvent;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:flutter/src/widgets/basic.dart' show Column, Directionality, Padding, SizedBox, Transform;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusAttachment, FocusHighlightMode, FocusHighlightStrategy, FocusManager, FocusNode, FocusScopeNode, KeyEventResult, UnfocusDisposition, debugDescribeFocusTree, debugFocusChanges;
+import 'package:flutter/src/widgets/focus_scope.dart' show Focus, FocusScope;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, Widget;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:leak_tracker_flutter_testing/leak_tracker_flutter_testing.dart';
 

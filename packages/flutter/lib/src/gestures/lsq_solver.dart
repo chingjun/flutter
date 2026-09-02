@@ -3,8 +3,10 @@
 // found in the LICENSE file.
 
 import 'dart:math' as math;
+import 'dart:typed_data' show Float64List;
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/src/foundation/constants.dart' show precisionErrorTolerance;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
 
 // TODO(abarth): Consider using vector_math.
 class _Vector {

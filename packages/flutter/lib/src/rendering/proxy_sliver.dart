@@ -4,15 +4,16 @@
 
 import 'dart:math';
 import 'dart:ui' as ui show Color;
+import 'dart:ui' show Locale, Offset, Rect, TextDirection;
 
-import 'package:flutter/animation.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/semantics.dart';
-
-import 'layer.dart';
-import 'object.dart';
-import 'proxy_box.dart';
-import 'sliver.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsNode, DiagnosticsProperty, DiagnosticsTreeStyle, DoubleProperty, FlagProperty;
+import 'package:flutter/src/rendering/layer.dart' show OpacityLayer;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, RenderObject, RenderObjectVisitor, RenderObjectWithChildMixin, SemanticsAnnotationsMixin;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderAnimatedOpacityMixin;
+import 'package:flutter/src/rendering/sliver.dart' show RenderSliver, SliverGeometry, SliverHitTestResult, SliverPhysicalParentData;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsConfiguration, SemanticsProperties;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 /// A base class for sliver render objects that resemble their children.
 ///

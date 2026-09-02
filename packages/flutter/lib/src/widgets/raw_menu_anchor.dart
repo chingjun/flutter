@@ -6,23 +6,28 @@
 library;
 
 import 'dart:ui' as ui;
+import 'dart:ui' show Offset, Rect, Size, VoidCallback;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
-
-import 'actions.dart';
-import 'basic.dart';
-import 'focus_manager.dart';
-import 'focus_traversal.dart';
-import 'framework.dart';
-import 'media_query.dart';
-import 'overlay.dart';
-import 'scroll_position.dart';
-import 'scrollable.dart';
-import 'shortcuts.dart';
-import 'tap_region.dart';
+import 'package:flutter/src/foundation/constants.dart' show kReleaseMode;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, FlagProperty, ObjectFlagProperty, describeIdentity;
+import 'package:flutter/src/foundation/print.dart' show debugPrint;
+import 'package:flutter/src/gestures/events.dart' show PointerDownEvent;
+import 'package:flutter/src/painting/matrix_utils.dart' show MatrixUtils;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding, SchedulerPhase;
+import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
+import 'package:flutter/src/widgets/actions.dart' show Action, Actions, ActivateIntent, DismissAction, DismissIntent, Intent;
+import 'package:flutter/src/widgets/basic.dart' show Builder, SizedBox;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/focus_traversal.dart' show DirectionalFocusIntent, TraversalDirection;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, InheritedWidget, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/overlay.dart' show OverlayChildLayoutInfo, OverlayChildLocation, OverlayPortal, OverlayPortalController;
+import 'package:flutter/src/widgets/scroll_position.dart' show ScrollPosition;
+import 'package:flutter/src/widgets/scrollable.dart' show Scrollable;
+import 'package:flutter/src/widgets/shortcuts.dart' show ShortcutActivator, Shortcuts, SingleActivator;
+import 'package:flutter/src/widgets/tap_region.dart' show TapRegion;
+import 'package:meta/meta.dart' show immutable, nonVirtual, optionalTypeArgs, protected;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 // Examples can assume:
 // late BuildContext context;

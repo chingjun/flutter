@@ -5,10 +5,17 @@
 /// @docImport 'form_section.dart';
 library;
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show FontWeight;
 
-import 'colors.dart';
-import 'theme.dart';
+import 'package:flutter/src/cupertino/colors.dart' show CupertinoColors, CupertinoDynamicColor;
+import 'package:flutter/src/cupertino/theme.dart' show CupertinoTheme, CupertinoThemeData;
+import 'package:flutter/src/painting/alignment.dart' show AlignmentDirectional;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsetsDirectional, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/flex.dart' show MainAxisAlignment;
+import 'package:flutter/src/widgets/basic.dart' show Align, Column, Flexible, Padding, Row;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/text.dart' show DefaultTextStyle;
 
 // Content padding determined via SwiftUI's `Form` view in the iOS 14.2 SDK.
 const EdgeInsetsGeometry _kDefaultPadding = EdgeInsetsDirectional.fromSTEB(20.0, 6.0, 6.0, 6.0);

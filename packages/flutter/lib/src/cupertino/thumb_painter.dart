@@ -6,9 +6,10 @@
 /// @docImport 'switch.dart';
 library;
 
-import 'package:flutter/painting.dart';
+import 'dart:ui' show Canvas, Color, Offset, Paint, RRect, Radius, Rect;
 
-import 'colors.dart';
+import 'package:flutter/src/cupertino/colors.dart' show CupertinoColors;
+import 'package:flutter/src/painting/box_shadow.dart' show BoxShadow;
 
 const Color _kThumbBorderColor = Color(0x0A000000);
 

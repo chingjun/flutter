@@ -7,13 +7,19 @@
 /// @docImport 'list_tile.dart';
 library;
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Clip, Color, Radius;
 
-import 'card_theme.dart';
-import 'color_scheme.dart';
-import 'colors.dart';
-import 'material.dart';
-import 'theme.dart';
+import 'package:flutter/src/material/card_theme.dart' show CardTheme, CardThemeData;
+import 'package:flutter/src/material/color_scheme.dart' show ColorScheme;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/material.dart' show Material, MaterialType;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/borders.dart' show BorderSide, ShapeBorder;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
+import 'package:flutter/src/widgets/basic.dart' show Padding, Semantics;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
 
 enum _CardVariant { elevated, filled, outlined }
 

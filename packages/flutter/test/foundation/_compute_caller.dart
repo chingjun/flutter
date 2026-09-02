@@ -4,7 +4,9 @@
 
 // A test script that invokes compute() to start an isolate.
 
-import 'package:flutter/src/foundation/_isolates_io.dart';
+import 'dart:async' show Future;
+
+import 'package:flutter/src/foundation/_isolates_io.dart' show compute;
 
 int getLength(String s) {
   return s.length;

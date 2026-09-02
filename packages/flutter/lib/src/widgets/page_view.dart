@@ -8,30 +8,41 @@
 /// @docImport 'text.dart';
 library;
 
+import 'dart:async' show Future;
 import 'dart:math' as math;
+import 'dart:ui' show Clip, TextDirection, clampDouble;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart' show DragStartBehavior;
-import 'package:flutter/rendering.dart';
-
-import 'basic.dart';
-import 'debug.dart';
-import 'framework.dart';
-import 'notification_listener.dart';
-import 'page_storage.dart';
-import 'scroll_configuration.dart';
-import 'scroll_context.dart';
-import 'scroll_controller.dart';
-import 'scroll_delegate.dart';
-import 'scroll_metrics.dart';
-import 'scroll_notification.dart';
-import 'scroll_physics.dart';
-import 'scroll_position.dart';
-import 'scroll_position_with_single_context.dart';
-import 'scroll_view.dart';
-import 'scrollable.dart';
-import 'sliver_fill.dart';
-import 'viewport.dart';
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves;
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/foundation/constants.dart' show precisionErrorTolerance;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty, EnumProperty, FlagProperty;
+import 'package:flutter/src/gestures/recognizer.dart' show DragStartBehavior;
+import 'package:flutter/src/painting/basic_types.dart' show Axis, AxisDirection, flipAxisDirection, textDirectionToAxisDirection;
+import 'package:flutter/src/physics/simulation.dart' show Simulation;
+import 'package:flutter/src/physics/spring_simulation.dart' show ScrollSpringSimulation;
+import 'package:flutter/src/physics/tolerance.dart' show Tolerance;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior;
+import 'package:flutter/src/rendering/viewport.dart' show ScrollCacheExtent;
+import 'package:flutter/src/rendering/viewport_offset.dart' show ViewportOffset;
+import 'package:flutter/src/widgets/basic.dart' show Directionality;
+import 'package:flutter/src/widgets/debug.dart' show debugCheckHasDirectionality;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, NullableIndexedWidgetBuilder, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/notification_listener.dart' show NotificationListener;
+import 'package:flutter/src/widgets/page_storage.dart' show PageStorage;
+import 'package:flutter/src/widgets/scroll_configuration.dart' show ScrollBehavior, ScrollConfiguration;
+import 'package:flutter/src/widgets/scroll_context.dart' show ScrollContext;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_delegate.dart' show ChildIndexGetter, SliverChildBuilderDelegate, SliverChildDelegate, SliverChildListDelegate;
+import 'package:flutter/src/widgets/scroll_metrics.dart' show FixedScrollMetrics, ScrollMetrics;
+import 'package:flutter/src/widgets/scroll_notification.dart' show ScrollNotification, ScrollUpdateNotification;
+import 'package:flutter/src/widgets/scroll_physics.dart' show ScrollPhysics;
+import 'package:flutter/src/widgets/scroll_position.dart' show ScrollPosition, ScrollPositionAlignmentPolicy;
+import 'package:flutter/src/widgets/scroll_position_with_single_context.dart' show ScrollPositionWithSingleContext;
+import 'package:flutter/src/widgets/scrollable.dart' show Scrollable;
+import 'package:flutter/src/widgets/sliver_fill.dart' show SliverFillViewport;
+import 'package:flutter/src/widgets/viewport.dart' show Viewport;
+import 'package:meta/meta.dart' show awaitNotRequired;
 
 /// A controller for [PageView].
 ///

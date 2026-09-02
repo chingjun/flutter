@@ -9,14 +9,16 @@
 library;
 
 import 'dart:math' as math;
-import 'dart:ui' show lerpDouble;
+import 'dart:ui' show Clip, Offset, Rect, Size, TextBaseline, TextDirection, lerpDouble;
 
-import 'package:flutter/foundation.dart';
-
-import 'box.dart';
-import 'layer.dart';
-import 'layout_helper.dart';
-import 'object.dart';
+import 'package:flutter/src/foundation/debug.dart' show debugFormatDouble;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsNode, DiagnosticsProperty, DiagnosticsTreeStyle, EnumProperty, IntProperty;
+import 'package:flutter/src/painting/alignment.dart' show Alignment, AlignmentDirectional, AlignmentGeometry;
+import 'package:flutter/src/rendering/box.dart' show BaselineOffset, BoxConstraints, BoxHitTestResult, ContainerBoxParentData, RenderBox, RenderBoxContainerDefaultsMixin;
+import 'package:flutter/src/rendering/layer.dart' show ClipRectLayer, LayerHandle;
+import 'package:flutter/src/rendering/layout_helper.dart' show ChildLayoutHelper, ChildLayouter;
+import 'package:flutter/src/rendering/object.dart' show ContainerRenderObjectMixin, PaintingContext, RenderObject, RenderObjectVisitor;
+import 'package:meta/meta.dart' show immutable, protected;
 
 /// An immutable 2D, axis-aligned, floating-point rectangle whose coordinates
 /// are given relative to another rectangle's edges, known as the container.

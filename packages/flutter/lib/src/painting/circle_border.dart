@@ -9,11 +9,10 @@
 library;
 
 import 'dart:ui' as ui show lerpDouble;
+import 'dart:ui' show Canvas, Offset, Paint, Path, RRect, Radius, Rect, TextDirection, clampDouble;
 
-import 'package:flutter/foundation.dart';
-
-import 'basic_types.dart';
-import 'borders.dart';
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/painting/borders.dart' show BorderSide, BorderStyle, OutlinedBorder, ShapeBorder;
 
 /// A border that fits a circle within the available space.
 ///

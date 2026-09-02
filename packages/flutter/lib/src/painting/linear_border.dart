@@ -5,13 +5,12 @@
 /// @docImport 'package:flutter/material.dart';
 library;
 
-import 'dart:ui' show lerpDouble;
+import 'dart:ui' show Canvas, Color, Paint, PaintingStyle, Path, Rect, TextDirection, lerpDouble;
 
-import 'package:flutter/foundation.dart';
-
-import 'basic_types.dart';
-import 'borders.dart';
-import 'edge_insets.dart';
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/painting/borders.dart' show BorderSide, BorderStyle, OutlinedBorder, ShapeBorder;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsDirectional, EdgeInsetsGeometry;
+import 'package:meta/meta.dart' show immutable;
 
 /// Defines the relative size and alignment of one [LinearBorder] edge.
 ///

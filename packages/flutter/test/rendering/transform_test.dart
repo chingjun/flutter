@@ -3,9 +3,15 @@
 // found in the LICENSE file.
 
 import 'dart:math' as math;
+import 'dart:ui' show Size;
 
-import 'package:flutter/rendering.dart';
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderTransform;
+import 'package:flutter/src/rendering/shifted_box.dart' show RenderPadding;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 import 'rendering_tester.dart';
 

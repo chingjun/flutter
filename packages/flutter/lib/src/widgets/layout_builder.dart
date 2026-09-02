@@ -7,11 +7,16 @@
 /// @docImport 'sliver_layout_builder.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/scheduler.dart';
+import 'dart:ui' show Offset, Size, TextBaseline, VoidCallback;
 
-import 'framework.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, FlutterError, FlutterErrorDetails, InformationCollector;
+import 'package:flutter/src/foundation/constants.dart' show kDebugMode;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, BoxHitTestResult, RenderBox;
+import 'package:flutter/src/rendering/object.dart' show Constraints, DiagnosticsDebugCreator, LayoutCallback, PaintingContext, RenderObject, RenderObjectWithChildMixin, RenderObjectWithLayoutCallbackMixin;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding, SchedulerPhase;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, BuildScope, DebugCreator, Element, ElementVisitor, ErrorWidget, RenderObjectElement, RenderObjectWidget, Widget, debugWidgetBuilderValue;
+import 'package:meta/meta.dart' show protected, visibleForOverriding;
 
 /// The signature of the [LayoutBuilder] builder function.
 typedef LayoutWidgetBuilder = Widget Function(BuildContext context, BoxConstraints constraints);

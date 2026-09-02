@@ -3,8 +3,14 @@
 // found in the LICENSE file.
 
 import 'dart:math' as math;
+import 'dart:ui' show PointerDeviceKind;
 
-import 'package:flutter/gestures.dart';
+import 'package:flutter/src/gestures/drag_details.dart' show DragEndDetails, DragStartDetails;
+import 'package:flutter/src/gestures/events.dart' show PointerDownEvent, PointerPanZoomStartEvent;
+import 'package:flutter/src/gestures/monodrag.dart' show HorizontalDragGestureRecognizer;
+import 'package:flutter/src/gestures/recognizer.dart' show DragStartBehavior;
+import 'package:flutter/src/gestures/scale.dart' show ScaleEndDetails, ScaleGestureRecognizer, ScaleStartDetails, ScaleUpdateDetails;
+import 'package:flutter/src/gestures/tap.dart' show TapGestureRecognizer;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'gesture_tester.dart';

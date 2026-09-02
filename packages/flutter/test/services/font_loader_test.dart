@@ -3,7 +3,9 @@
 // found in the LICENSE file.
 
 import 'dart:async';
-import 'package:flutter/services.dart';
+import 'dart:typed_data' show ByteData, Uint8List;
+
+import 'package:flutter/src/services/font_loader.dart' show FontLoader;
 import 'package:flutter_test/flutter_test.dart';
 
 class TestFontLoader extends FontLoader {

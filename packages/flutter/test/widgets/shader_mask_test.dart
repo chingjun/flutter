@@ -7,7 +7,13 @@
 @Tags(<String>['reduced-test-set'])
 library;
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color, Rect, Shader, TileMode;
+
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/gradient.dart' show LinearGradient, RadialGradient;
+import 'package:flutter/src/widgets/basic.dart' show Align, RepaintBoundary, ShaderMask, SizedBox;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show Widget;
 import 'package:flutter_test/flutter_test.dart';
 
 Shader createShader(Rect bounds) {

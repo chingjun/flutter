@@ -8,8 +8,19 @@
 library;
 
 import 'dart:async';
+import 'dart:ui' show Color, Radius;
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/painting/beveled_rectangle_border.dart' show BeveledRectangleBorder;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/box_shadow.dart' show BoxShadow;
+import 'package:flutter/src/painting/debug.dart' show debugDisableShadows;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/shape_decoration.dart' show ShapeDecoration;
+import 'package:flutter/src/rendering/proxy_box.dart' show ShapeBorderClipper;
+import 'package:flutter/src/widgets/basic.dart' show Center, PhysicalModel, PhysicalShape, RepaintBoundary, SizedBox;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show Widget;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

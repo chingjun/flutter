@@ -9,16 +9,34 @@
 library;
 
 import 'dart:ui' as ui;
+import 'dart:ui' show Color, FilterQuality, Offset, Paint, Rect, Size;
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
-
-import 'color_scheme.dart';
-import 'colors.dart';
-import 'predictive_back_page_transitions_builder.dart';
-import 'theme.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation, AnimationStatus;
+import 'package:flutter/src/animation/animations.dart' show ReverseAnimation, kAlwaysCompleteAnimation;
+import 'package:flutter/src/animation/curves.dart' show Cubic, Curve, Curves, Interval;
+import 'package:flutter/src/animation/tween.dart' show Animatable, CurveTween, Tween;
+import 'package:flutter/src/animation/tween_sequence.dart' show TweenSequence, TweenSequenceItem;
+import 'package:flutter/src/cupertino/route.dart' show CupertinoPageTransitionsBuilder;
+import 'package:flutter/src/foundation/collections.dart' show listEquals;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsProperty;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/material/color_scheme.dart' show ColorScheme;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/predictive_back_page_transitions_builder.dart' show PredictiveBackPageTransitionsBuilder;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/rendering/layer.dart' show LayerHandle, OpacityLayer, TransformLayer;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, PaintingContextCallback;
+import 'package:flutter/src/widgets/basic.dart' show ColoredBox, IgnorePointer;
+import 'package:flutter/src/widgets/dual_transition_builder.dart' show DualTransitionBuilder;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/page_transitions_builder.dart' show PageTransitionsBuilder;
+import 'package:flutter/src/widgets/pages.dart' show PageRoute;
+import 'package:flutter/src/widgets/routes.dart' show ModalRoute;
+import 'package:flutter/src/widgets/snapshot_widget.dart' show SnapshotController, SnapshotMode, SnapshotPainter, SnapshotWidget;
+import 'package:flutter/src/widgets/transitions.dart' show AnimatedBuilder, DelegatedTransitionBuilder, FadeTransition, ScaleTransition, SlideTransition;
+import 'package:meta/meta.dart' show immutable;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 // Zooms and fades a new page in, zooming out the previous page. This transition
 // is designed to match the Android Q activity transition.

@@ -9,10 +9,22 @@
 library;
 
 import 'dart:async';
+import 'dart:typed_data' show ByteData, Uint8List;
 import 'dart:ui' as ui;
+import 'dart:ui' show Color, Rect, TextDirection;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/binding.dart' show imageCache;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/box_fit.dart' show BoxFit;
+import 'package:flutter/src/painting/decoration_image.dart' show DecorationImage, ImageRepeat;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/image_provider.dart' show ImageConfiguration, MemoryImage;
+import 'package:flutter/src/painting/image_stream.dart' show ImageInfo, ImageStream, ImageStreamListener;
+import 'package:flutter/src/widgets/basic.dart' show Align, ColoredBox, Padding, RepaintBoundary, SizedBox, Wrap;
+import 'package:flutter/src/widgets/container.dart' show DecoratedBox;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
 import 'package:flutter_test/flutter_test.dart';
 
 const Color _pink = Color(0xFFE91E63);

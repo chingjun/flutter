@@ -7,7 +7,7 @@ library;
 
 import 'dart:ui' as ui;
 
-import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart' show immutable;
 
 /// Context information provided when resolving an [ImageFilterConfig].
 ///

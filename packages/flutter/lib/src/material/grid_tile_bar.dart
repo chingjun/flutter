@@ -6,10 +6,21 @@
 /// @docImport 'icon_button.dart';
 library;
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color;
 
-import 'colors.dart';
-import 'theme.dart';
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsetsDirectional;
+import 'package:flutter/src/painting/text_painter.dart' show TextOverflow;
+import 'package:flutter/src/rendering/flex.dart' show CrossAxisAlignment, MainAxisAlignment;
+import 'package:flutter/src/widgets/basic.dart' show Column, Expanded, Padding, Row;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/icon_theme.dart' show IconTheme;
+import 'package:flutter/src/widgets/icon_theme_data.dart' show IconThemeData;
+import 'package:flutter/src/widgets/text.dart' show DefaultTextStyle;
 
 /// A header used in a Material Design [GridTile].
 ///

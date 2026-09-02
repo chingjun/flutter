@@ -7,7 +7,16 @@
 @Tags(<String>['reduced-test-set'])
 library;
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show BlurStyle, Color;
+
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/painting/borders.dart' show BorderSide, BorderStyle;
+import 'package:flutter/src/painting/box_border.dart' show Border;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/box_shadow.dart' show BoxShadow;
+import 'package:flutter/src/painting/debug.dart' show debugDisableShadows;
+import 'package:flutter/src/widgets/basic.dart' show Center, RepaintBoundary;
+import 'package:flutter/src/widgets/container.dart' show Container;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

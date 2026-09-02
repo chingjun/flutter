@@ -5,7 +5,7 @@
 /// @docImport 'package:flutter/material.dart';
 library;
 
-import 'framework.dart';
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, InheritedElement, InheritedWidget, StatelessWidget, Widget;
 
 // Examples can assume:
 // TooltipThemeData data = const TooltipThemeData();

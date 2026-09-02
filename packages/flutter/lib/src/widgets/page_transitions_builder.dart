@@ -6,11 +6,20 @@
 /// @docImport 'package:flutter/material.dart';
 library;
 
-import 'basic.dart';
-import 'framework.dart';
-import 'layout_builder.dart';
-import 'pages.dart';
-import 'transitions.dart';
+import 'dart:ui' show Color, Offset, Size;
+
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/animation/animations.dart' show CurvedAnimation;
+import 'package:flutter/src/animation/curves.dart' show Cubic, Curve, Curves;
+import 'package:flutter/src/animation/tween.dart' show Animatable, CurveTween, Tween;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/widgets/basic.dart' show Align, ClipRect, ColoredBox, FractionalTranslation, OverflowBox, SizedBox;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/layout_builder.dart' show LayoutBuilder;
+import 'package:flutter/src/widgets/pages.dart' show PageRoute;
+import 'package:flutter/src/widgets/transitions.dart' show AnimatedBuilder, DelegatedTransitionBuilder, FadeTransition, SlideTransition;
+import 'package:listen/listen.dart' show Listenable;
 
 /// Defines a page transition animation for a [PageRoute].
 ///

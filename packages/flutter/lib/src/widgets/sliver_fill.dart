@@ -8,12 +8,18 @@
 /// @docImport 'sliver_prototype_extent_list.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show clampDouble;
 
-import 'framework.dart';
-import 'scroll_delegate.dart';
-import 'sliver.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty, IterableProperty;
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/rendering/sliver.dart' show SliverConstraints;
+import 'package:flutter/src/rendering/sliver_fill.dart' show RenderSliverFillRemaining, RenderSliverFillRemainingAndOverscroll, RenderSliverFillRemainingWithScrollable, RenderSliverFillViewport;
+import 'package:flutter/src/rendering/sliver_padding.dart' show RenderSliverEdgeInsetsPadding;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, SingleChildRenderObjectWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/scroll_delegate.dart' show SliverChildDelegate;
+import 'package:flutter/src/widgets/sliver.dart' show SliverMultiBoxAdaptorElement, SliverMultiBoxAdaptorWidget;
 
 /// A sliver that contains multiple box children that each fills the viewport.
 ///

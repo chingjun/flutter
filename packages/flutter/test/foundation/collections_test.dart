@@ -4,7 +4,7 @@
 
 import 'dart:math';
 
-import 'package:flutter/src/foundation/collections.dart';
+import 'package:flutter/src/foundation/collections.dart' show binarySearch, listEquals, mapEquals, mergeSort, setEquals;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

@@ -5,9 +5,23 @@
 @Tags(<String>['reduced-test-set'])
 library;
 
+import 'dart:ui' show Clip, Color, Rect, Size;
+
 import 'package:fake_async/fake_async.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/animation/animation.dart' show AnimationStatus;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/painting/box_shadow.dart' show BoxShadow;
+import 'package:flutter/src/scheduler/ticker.dart' show TickerFuture;
+import 'package:flutter/src/widgets/basic.dart' show Positioned, Stack;
+import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, Widget;
+import 'package:flutter/src/widgets/magnifier.dart' show MagnifierController, MagnifierDecoration, MagnifierInfo, RawMagnifier;
+import 'package:flutter/src/widgets/overlay.dart' show Overlay, OverlayEntry;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 class _MockAnimationController extends AnimationController {

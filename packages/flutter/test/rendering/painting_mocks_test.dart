@@ -3,12 +3,18 @@
 // found in the LICENSE file.
 
 import 'dart:ui' as ui;
+import 'dart:ui' show Canvas, Rect;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/src/foundation/binding.dart' show BindingBase;
+import 'package:flutter/src/gestures/binding.dart' show GestureBinding;
+import 'package:flutter/src/painting/binding.dart' show PaintingBinding;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/rendering/layer.dart' show ContainerLayer;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, PipelineOwner;
+import 'package:flutter/src/rendering/view.dart' show RenderView, ViewConfiguration;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
+import 'package:flutter/src/semantics/binding.dart' show SemanticsBinding;
+import 'package:flutter/src/services/binding.dart' show ServicesBinding;
 import 'package:flutter_test/flutter_test.dart';
 
 final List<String> log = <String>[];

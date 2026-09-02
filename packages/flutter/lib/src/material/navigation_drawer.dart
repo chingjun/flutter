@@ -5,19 +5,37 @@
 /// @docImport 'scaffold.dart';
 library;
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color, Size, VoidCallback;
 
-import 'color_scheme.dart';
-import 'colors.dart';
-import 'drawer.dart';
-import 'ink_decoration.dart';
-import 'ink_well.dart';
-import 'material.dart';
-import 'material_localizations.dart';
-import 'navigation_bar.dart';
-import 'navigation_drawer_theme.dart';
-import 'text_theme.dart';
-import 'theme.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/material/color_scheme.dart' show ColorScheme;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/drawer.dart' show Drawer;
+import 'package:flutter/src/material/ink_decoration.dart' show Ink;
+import 'package:flutter/src/material/ink_well.dart' show InkWell;
+import 'package:flutter/src/material/material.dart' show Material, MaterialType;
+import 'package:flutter/src/material/material_localizations.dart' show MaterialLocalizations;
+import 'package:flutter/src/material/navigation_bar.dart' show NavigationIndicator;
+import 'package:flutter/src/material/navigation_drawer_theme.dart' show NavigationDrawerTheme, NavigationDrawerThemeData;
+import 'package:flutter/src/material/text_theme.dart' show TextTheme;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/borders.dart' show ShapeBorder;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/stadium_border.dart' show StadiumBorder;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/widgets/basic.dart' show Column, Expanded, Padding, Row, Semantics, SizedBox, Stack;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedWidget, State, StatefulWidget, StatelessWidget, TransitionBuilder, Widget, WidgetBuilder;
+import 'package:flutter/src/widgets/icon_theme.dart' show IconTheme;
+import 'package:flutter/src/widgets/icon_theme_data.dart' show IconThemeData;
+import 'package:flutter/src/widgets/safe_area.dart' show SafeArea;
+import 'package:flutter/src/widgets/scroll_view.dart' show ListView;
+import 'package:flutter/src/widgets/status_transitions.dart' show StatusTransitionWidget;
+import 'package:flutter/src/widgets/text.dart' show DefaultTextStyle;
+import 'package:flutter/src/widgets/ticker_provider.dart' show SingleTickerProviderStateMixin;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateProperty;
 
 /// Material Design Navigation Drawer component.
 ///

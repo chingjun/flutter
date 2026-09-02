@@ -2,7 +2,11 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/services.dart';
+import 'dart:typed_data' show ByteData;
+
+import 'package:flutter/src/services/message_codec.dart' show MessageCodec, MethodCall, MethodCodec, MissingPluginException, PlatformException;
+import 'package:flutter/src/services/message_codecs.dart' show JSONMessageCodec, JSONMethodCodec, StringCodec;
+import 'package:flutter/src/services/platform_channel.dart' show BasicMessageChannel, EventChannel, MethodChannel, OptionalMethodChannel;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

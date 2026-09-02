@@ -6,13 +6,13 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show Offset, Size;
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, BoxHitTestResult, RenderBox;
+import 'package:flutter/src/rendering/layer.dart' show LayerHandle, TransformLayer;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, RenderObjectWithChildMixin;
+import 'package:meta/meta.dart' show protected;
 import 'package:vector_math/vector_math_64.dart' show Matrix4;
-
-import 'box.dart';
-import 'layer.dart';
-import 'object.dart';
 
 const double _kQuarterTurnsInRadians = math.pi / 2.0;
 

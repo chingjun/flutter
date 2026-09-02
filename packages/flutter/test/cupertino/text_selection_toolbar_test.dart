@@ -7,9 +7,33 @@
 @Tags(<String>['reduced-test-set'])
 library;
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
+import 'dart:ui' show Brightness, Color, RRect, Radius, Rect, Size;
+
+import 'package:flutter/src/cupertino/app.dart' show CupertinoApp;
+import 'package:flutter/src/cupertino/button.dart' show CupertinoButton;
+import 'package:flutter/src/cupertino/colors.dart' show CupertinoColors, CupertinoDynamicColor;
+import 'package:flutter/src/cupertino/text_field.dart' show CupertinoTextField;
+import 'package:flutter/src/cupertino/text_selection.dart' show CupertinoTextSelectionControls;
+import 'package:flutter/src/cupertino/text_selection_toolbar.dart' show CupertinoTextSelectionToolbar;
+import 'package:flutter/src/cupertino/text_selection_toolbar_button.dart' show CupertinoTextSelectionToolbarButton;
+import 'package:flutter/src/cupertino/theme.dart' show CupertinoThemeData;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/painting/debug.dart' show debugDisableShadows;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/rendering/editable.dart' show TextSelectionPoint;
+import 'package:flutter/src/services/text_input.dart' show TextSelectionDelegate;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Center, CustomPaint, CustomSingleChildLayout, Padding, RepaintBoundary, SizedBox, StatefulBuilder;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/context_menu_button_item.dart' show ContextMenuButtonItem, ContextMenuButtonType;
+import 'package:flutter/src/widgets/editable_text.dart' show TextEditingController;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, StateSetter, Widget;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/text_selection.dart' show ClipboardStatus;
+import 'package:flutter/src/widgets/text_selection_toolbar_layout_delegate.dart' show TextSelectionToolbarLayoutDelegate;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:listen/listen.dart' show ValueListenable;
 
 import 'editable_text_utils.dart' show textOffsetToPosition;
 

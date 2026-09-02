@@ -2,7 +2,15 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/painting/basic_types.dart' show AxisDirection;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show GlobalKey;
+import 'package:flutter/src/widgets/notification_core.dart' show Notification;
+import 'package:flutter/src/widgets/notification_listener.dart' show NotificationListener;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/scroll_metrics.dart' show FixedScrollMetrics;
+import 'package:flutter/src/widgets/scroll_notification.dart' show ScrollUpdateNotification;
+import 'package:flutter/src/widgets/scroll_position.dart' show ScrollMetricsNotification;
 import 'package:flutter_test/flutter_test.dart';
 
 class MyNotification extends Notification {}

@@ -2,7 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color;
+
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/gestures/scale.dart' show ScaleStartDetails, ScaleUpdateDetails;
+import 'package:flutter/src/widgets/basic.dart' show Center;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

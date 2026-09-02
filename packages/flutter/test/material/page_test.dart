@@ -6,13 +6,48 @@
 library;
 
 import 'dart:ui' as ui;
+import 'dart:ui' show Locale, Rect, Size, TextDirection;
 
-import 'package:flutter/cupertino.dart' show CupertinoPageRoute;
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/cupertino/route.dart' show CupertinoPageRoute;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/key.dart' show Key, LocalKey, UniqueKey;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/app_bar.dart' show AppBar;
+import 'package:flutter/src/material/elevated_button.dart' show ElevatedButton;
+import 'package:flutter/src/material/material.dart' show Material;
+import 'package:flutter/src/material/material_localizations.dart' show DefaultMaterialLocalizations;
+import 'package:flutter/src/material/page.dart' show MaterialPage, MaterialPageRoute;
+import 'package:flutter/src/material/page_transitions_theme.dart' show PageTransitionsTheme, ZoomPageTransitionsBuilder;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/text_button.dart' show TextButton;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/rendering/layer.dart' show Layer, OffsetLayer, OpacityLayer, PictureLayer, TransformLayer;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderDecoratedBox;
+import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
+import 'package:flutter/src/services/restoration.dart' show RestorationBucket;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Center, Column, Directionality, Padding, RepaintBoundary, SizedBox;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusScopeNode;
+import 'package:flutter/src/widgets/focus_scope.dart' show FocusScope;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, GlobalKey, State, StatefulWidget, StatelessWidget, Widget, WidgetBuilder;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/localizations.dart' show DefaultWidgetsLocalizations, Localizations, LocalizationsDelegate;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/navigator.dart' show DefaultTransitionDelegate, Navigator, NavigatorState, Page, PopPageCallback, Route, RouteSettings, RouteTransitionRecord, TransitionDelegate;
+import 'package:flutter/src/widgets/page_transitions_builder.dart' show FadeUpwardsPageTransitionsBuilder, PageTransitionsBuilder;
+import 'package:flutter/src/widgets/pages.dart' show PageRouteBuilder;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/restoration.dart' show RestorationMixin, RootRestorationScope;
+import 'package:flutter/src/widgets/restoration_properties.dart' show RestorableInt;
+import 'package:flutter/src/widgets/snapshot_widget.dart' show SnapshotWidget;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/view.dart' show View;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:listen/listen.dart' show ValueNotifier;
 
 void main() {
   testWidgets(

@@ -3,8 +3,20 @@
 // found in the LICENSE file.
 
 import 'dart:ui' as ui;
+import 'dart:ui' show TextDirection;
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/key.dart' show ValueKey;
+import 'package:flutter/src/gestures/drag_details.dart' show DragDownDetails, DragUpdateDetails;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior;
+import 'package:flutter/src/widgets/basic.dart' show Directionality;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/drag_target.dart' show Draggable;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/scroll_view.dart' show CustomScrollView;
+import 'package:flutter/src/widgets/sliver.dart' show SliverFixedExtentList;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 class TestResult {

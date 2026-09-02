@@ -2,7 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
+import 'dart:async' show Stream;
+
+import 'package:flutter/src/foundation/synchronous_future.dart' show SynchronousFuture;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

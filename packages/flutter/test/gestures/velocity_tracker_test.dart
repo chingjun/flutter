@@ -2,8 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/gestures.dart';
+import 'dart:ui' show PointerDeviceKind;
+
+import 'package:flutter/src/gestures/events.dart' show PointerDownEvent, PointerEvent, PointerMoveEvent, PointerUpEvent;
+import 'package:flutter/src/gestures/velocity_tracker.dart' show IOSScrollViewFlingVelocityTracker, MacOSScrollViewFlingVelocityTracker, Velocity, VelocityTracker;
 import 'package:flutter_test/flutter_test.dart';
+
 import 'velocity_tracker_data.dart';
 
 bool _withinTolerance(double actual, double expected) {

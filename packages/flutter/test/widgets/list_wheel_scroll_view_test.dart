@@ -7,9 +7,29 @@
 @Tags(<String>['reduced-test-set'])
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Clip, Color, Rect, Size, TextDirection;
+
+import 'package:flutter/src/animation/curves.dart' show Curves;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey, ValueKey;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, debugDefaultTargetPlatformOverride;
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/rendering/layer.dart' show OpacityLayer;
+import 'package:flutter/src/rendering/list_wheel_viewport.dart' show RenderListWheelViewport;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/rendering/viewport.dart' show RevealedOffset;
+import 'package:flutter/src/widgets/basic.dart' show Align, Center, CustomPaint, Directionality, KeyedSubtree, RepaintBoundary, SizedBox;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/implicit_animations.dart' show AnimatedContainer;
+import 'package:flutter/src/widgets/list_wheel_scroll_view.dart' show ChangeReportingBehavior, FixedExtentScrollController, FixedExtentScrollPhysics, ListWheelChildBuilderDelegate, ListWheelChildListDelegate, ListWheelChildLoopingListDelegate, ListWheelScrollView, ListWheelViewport;
+import 'package:flutter/src/widgets/notification_listener.dart' show NotificationListener;
+import 'package:flutter/src/widgets/page_storage.dart' show PageStorage, PageStorageBucket, PageStorageKey;
+import 'package:flutter/src/widgets/page_view.dart' show PageController, PageView;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_notification.dart' show ScrollNotification, ScrollUpdateNotification;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 import '../rendering/rendering_tester.dart' show TestCallbackPainter, TestClipPaintingContext;

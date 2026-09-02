@@ -13,18 +13,35 @@
 library;
 
 import 'dart:ui' as ui show TextHeightBehavior;
+import 'dart:ui' show Clip, Color, FilterQuality, Offset, Rect, TextAlign, VoidCallback;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation, AnimationStatus;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/animations.dart' show CurvedAnimation;
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves;
+import 'package:flutter/src/animation/tween.dart' show ColorTween, Tween;
+import 'package:flutter/src/foundation/constants.dart' show kDebugMode;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty, DoubleProperty, EnumProperty, FlagProperty, IntProperty, ObjectFlagProperty;
+import 'package:flutter/src/painting/alignment.dart' show Alignment, AlignmentGeometry;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/box_border.dart' show Border, BoxShape;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/colors.dart' show ColorProperty;
+import 'package:flutter/src/painting/decoration.dart' show Decoration;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/text_painter.dart' show TextOverflow, TextWidthBasis;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/rendering/tweens.dart' show AlignmentGeometryTween;
+import 'package:flutter/src/widgets/basic.dart' show Align, Directionality, FractionallySizedBox, Padding, PhysicalModel, Positioned;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/debug.dart' show debugCheckHasDirectionality;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/text.dart' show DefaultTextStyle;
+import 'package:flutter/src/widgets/ticker_provider.dart' show SingleTickerProviderStateMixin;
+import 'package:flutter/src/widgets/transitions.dart' show FadeTransition, RotationTransition, ScaleTransition, SlideTransition, SliverFadeTransition;
+import 'package:meta/meta.dart' show protected;
 import 'package:vector_math/vector_math_64.dart';
-
-import 'basic.dart';
-import 'container.dart';
-import 'debug.dart';
-import 'framework.dart';
-import 'text.dart';
-import 'ticker_provider.dart';
-import 'transitions.dart';
 
 // Examples can assume:
 // class MyWidget extends ImplicitlyAnimatedWidget {

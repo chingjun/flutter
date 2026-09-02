@@ -10,11 +10,13 @@
 library;
 
 import 'dart:ui' as ui show lerpDouble;
+import 'dart:ui' show Color, Shadow, clampDouble;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/painting.dart';
-
-import 'framework.dart' show BuildContext;
+import 'package:flutter/src/foundation/collections.dart' show listEquals;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsProperty, DoubleProperty, IterableProperty;
+import 'package:flutter/src/painting/colors.dart' show ColorProperty;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext;
+import 'package:meta/meta.dart' show immutable;
 
 /// Defines the size, font variations, color, opacity, and shadows of icons.
 ///

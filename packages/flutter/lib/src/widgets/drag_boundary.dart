@@ -2,9 +2,11 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:ui';
+import 'dart:ui' show Offset, Rect, clampDouble;
 
-import 'framework.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedElement, InheritedWidget;
 
 /// The interface for defining the algorithm for a boundary that a specified shape is dragged within.
 ///

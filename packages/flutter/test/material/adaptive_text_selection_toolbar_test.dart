@@ -2,11 +2,38 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'dart:ui' show Color, Size;
+
+import 'package:flutter/src/cupertino/desktop_text_selection_toolbar.dart' show CupertinoDesktopTextSelectionToolbar;
+import 'package:flutter/src/cupertino/desktop_text_selection_toolbar_button.dart' show CupertinoDesktopTextSelectionToolbarButton;
+import 'package:flutter/src/cupertino/text_selection_toolbar.dart' show CupertinoTextSelectionToolbar;
+import 'package:flutter/src/cupertino/text_selection_toolbar_button.dart' show CupertinoTextSelectionToolbarButton;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/material/adaptive_text_selection_toolbar.dart' show AdaptiveTextSelectionToolbar;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/desktop_text_selection_toolbar.dart' show DesktopTextSelectionToolbar;
+import 'package:flutter/src/material/desktop_text_selection_toolbar_button.dart' show DesktopTextSelectionToolbarButton;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/text_selection.dart' show materialTextSelectionHandleControls;
+import 'package:flutter/src/material/text_selection_toolbar.dart' show TextSelectionToolbar;
+import 'package:flutter/src/material/text_selection_toolbar_text_button.dart' show TextSelectionToolbarTextButton;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/services/clipboard.dart' show Clipboard, ClipboardData;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:flutter/src/services/text_editing.dart' show TextSelection;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Center, SizedBox;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/context_menu_button_item.dart' show ContextMenuButtonItem, ContextMenuButtonType;
+import 'package:flutter/src/widgets/editable_text.dart' show EditableText, EditableTextState, TextEditingController;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, Widget;
+import 'package:flutter/src/widgets/scroll_view.dart' show ListView;
+import 'package:flutter/src/widgets/text_selection.dart' show ClipboardStatus;
+import 'package:flutter/src/widgets/text_selection_toolbar_anchors.dart' show TextSelectionToolbarAnchors;
 import 'package:flutter_test/flutter_test.dart';
+
 import '../widgets/clipboard_utils.dart';
 import '../widgets/text_selection_toolbar_utils.dart';
 import 'editable_text_utils.dart';

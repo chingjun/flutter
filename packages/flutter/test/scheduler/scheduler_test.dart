@@ -3,10 +3,13 @@
 // found in the LICENSE file.
 
 import 'dart:async';
+import 'dart:ui' show FrameTiming, PlatformDispatcher, VoidCallback;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError, FlutterErrorDetails;
+import 'package:flutter/src/foundation/binding.dart' show BindingBase;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding, SchedulerPhase, timeDilation;
+import 'package:flutter/src/scheduler/priority.dart' show Priority;
+import 'package:flutter/src/services/binding.dart' show ServicesBinding;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'scheduler_tester.dart';

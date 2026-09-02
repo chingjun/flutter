@@ -4,8 +4,20 @@
 
 import 'dart:typed_data';
 import 'dart:ui' as ui;
+import 'dart:ui' show Color, TextDirection;
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/services/text_input.dart' show SelectionChangedCause;
+import 'package:flutter/src/widgets/actions.dart' show Actions;
+import 'package:flutter/src/widgets/basic.dart' show Align, ColoredBox, Directionality;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/overlay.dart' show Overlay, OverlayEntry;
+import 'package:flutter/src/widgets/selectable_region.dart' show SelectableRegion;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/text_editing_intents.dart' show SelectAllTextIntent;
+import 'package:flutter/src/widgets/text_selection.dart' show emptyTextSelectionControls;
 import 'package:flutter_test/flutter_test.dart';
 
 import '../impeller_test_helpers.dart';

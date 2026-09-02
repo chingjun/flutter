@@ -8,11 +8,11 @@
 library;
 
 import 'dart:ui' as ui show lerpDouble;
+import 'dart:ui' show clampDouble;
 
-import 'package:flutter/foundation.dart';
-
-import 'borders.dart';
-import 'circle_border.dart';
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/painting/borders.dart' show BorderSide, ShapeBorder;
+import 'package:flutter/src/painting/circle_border.dart' show CircleBorder;
 
 /// A border that fits an elliptical shape.
 ///

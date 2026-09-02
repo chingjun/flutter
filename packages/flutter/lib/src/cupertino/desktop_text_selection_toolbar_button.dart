@@ -2,13 +2,22 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/gestures.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show FontWeight, Radius, VoidCallback;
 
-import 'button.dart';
-import 'colors.dart';
-import 'text_selection_toolbar_button.dart';
-import 'theme.dart';
+import 'package:flutter/src/cupertino/button.dart' show CupertinoButton;
+import 'package:flutter/src/cupertino/colors.dart' show CupertinoColors, CupertinoDynamicColor;
+import 'package:flutter/src/cupertino/text_selection_toolbar_button.dart' show CupertinoTextSelectionToolbarButton;
+import 'package:flutter/src/cupertino/theme.dart' show CupertinoTheme;
+import 'package:flutter/src/gestures/events.dart' show PointerEnterEvent, PointerExitEvent;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/text_painter.dart' show TextOverflow;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/widgets/basic.dart' show MouseRegion, SizedBox;
+import 'package:flutter/src/widgets/context_menu_button_item.dart' show ContextMenuButtonItem;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/text.dart' show Text;
 
 // These values were measured from a screenshot of the native context menu on
 // macOS 13.2 on a Macbook Pro.

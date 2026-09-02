@@ -5,6 +5,7 @@
 /// @docImport 'dart:ui';
 library;
 
+import 'dart:async' show Future;
 import 'dart:collection';
 
 // COMMON SIGNATURES

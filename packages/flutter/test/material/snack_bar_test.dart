@@ -8,12 +8,50 @@
 library;
 
 import 'dart:async';
-import 'dart:ui';
+import 'dart:ui' show Brightness, Clip, Color, ImageFilter, Rect, Size, TextDirection, VoidCallback;
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'package:flutter/src/cupertino/route.dart' show CupertinoPageTransitionsBuilder;
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError, FlutterErrorDetails, FlutterExceptionHandler;
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/app_bar.dart' show AppBar;
+import 'package:flutter/src/material/banner.dart' show MaterialBanner;
+import 'package:flutter/src/material/bottom_navigation_bar.dart' show BottomNavigationBar;
+import 'package:flutter/src/material/button_style.dart' show ButtonStyle;
+import 'package:flutter/src/material/color_scheme.dart' show ColorScheme;
+import 'package:flutter/src/material/colors.dart' show Colors, MaterialColor;
+import 'package:flutter/src/material/elevated_button.dart' show ElevatedButton;
+import 'package:flutter/src/material/floating_action_button.dart' show FloatingActionButton;
+import 'package:flutter/src/material/floating_action_button_location.dart' show FabEndOffsetX, FabFloatOffsetY, FloatingActionButtonLocation, StandardFabLocation;
+import 'package:flutter/src/material/icons.dart' show Icons;
+import 'package:flutter/src/material/material.dart' show Material;
+import 'package:flutter/src/material/material_localizations.dart' show MaterialLocalizations;
+import 'package:flutter/src/material/page_transitions_theme.dart' show PageTransitionsTheme;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold, ScaffoldFeatureController, ScaffoldMessenger, ScaffoldMessengerState, ScaffoldState;
+import 'package:flutter/src/material/snack_bar.dart' show SnackBar, SnackBarAction, SnackBarClosedReason;
+import 'package:flutter/src/material/snack_bar_theme.dart' show SnackBarBehavior, SnackBarThemeData;
+import 'package:flutter/src/material/text_button.dart' show TextButton;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/flex.dart' show CrossAxisAlignment, MainAxisAlignment;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior, RenderPhysicalModel;
+import 'package:flutter/src/widgets/basic.dart' show BackdropFilter, Builder, Center, ColoredBox, Column, Directionality, SizedBox;
+import 'package:flutter/src/widgets/bottom_navigation_bar_item.dart' show BottomNavigationBarItem;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/dismissible.dart' show DismissDirection;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, GlobalKey, Widget, WidgetBuilder;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/navigator.dart' show Navigator;
+import 'package:flutter/src/widgets/page_transitions_builder.dart' show PageTransitionsBuilder;
+import 'package:flutter/src/widgets/rich_text.dart' show RichText;
+import 'package:flutter/src/widgets/text.dart' show DefaultTextStyle, Text;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateColor;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

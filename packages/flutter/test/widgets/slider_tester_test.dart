@@ -2,8 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/semantics.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show SemanticsAction, Size, TextDirection;
+
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsNode;
+import 'package:flutter/src/widgets/basic.dart' show Center, Directionality, SizedBox, StatefulBuilder;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StateSetter, Widget;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'slider_tester.dart';

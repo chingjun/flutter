@@ -8,12 +8,16 @@
 /// @docImport 'package:flutter_driver/driver_extension.dart';
 library;
 
+import 'dart:async' show Future;
 import 'dart:ui' as ui;
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart' show ServicesBinding;
+import 'dart:ui' show VoidCallback;
 
-import 'image_cache.dart';
-import 'shader_warm_up.dart';
+import 'package:flutter/src/foundation/binding.dart' show BindingBase;
+import 'package:flutter/src/painting/image_cache.dart' show ImageCache;
+import 'package:flutter/src/painting/shader_warm_up.dart' show ShaderWarmUp;
+import 'package:flutter/src/services/binding.dart' show ServicesBinding;
+import 'package:listen/listen.dart' show Listenable;
+import 'package:meta/meta.dart' show protected;
 
 /// Binding for the painting library.
 ///

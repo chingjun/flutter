@@ -4,15 +4,22 @@
 
 import 'dart:async';
 import 'dart:io';
+import 'dart:typed_data' show Uint8List;
 import 'dart:ui' as ui;
 
 import 'package:collection/collection.dart';
-import 'package:flutter/foundation.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, FlutterError, FlutterErrorDetails;
+import 'package:flutter/src/foundation/collections.dart' show mapEquals;
+import 'package:flutter/src/foundation/consolidate_response.dart' show consolidateHttpClientResponseBytes;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode, DiagnosticsProperty;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/foundation/synchronous_future.dart' show SynchronousFuture;
+import 'package:flutter/src/painting/binding.dart' show PaintingBinding;
+import 'package:flutter/src/painting/debug.dart' show debugNetworkImageHttpClientProvider;
+import 'package:flutter/src/painting/image_stream.dart' show ImageChunkEvent, ImageStreamCompleter, MultiFrameImageStreamCompleter;
+import 'package:meta/meta.dart' show immutable;
 
-import 'binding.dart';
-import 'debug.dart';
 import 'image_provider.dart' as image_provider;
-import 'image_stream.dart';
 
 // Method signature for _loadAsync decode callbacks.
 typedef _SimpleDecoderCallback = Future<ui.Codec> Function(ui.ImmutableBuffer buffer);

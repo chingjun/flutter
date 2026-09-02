@@ -13,24 +13,22 @@ library;
 import 'dart:async';
 import 'dart:collection';
 import 'dart:developer' show Flow, Timeline, TimelineTask;
-import 'dart:ui'
-    show
-        AppLifecycleState,
-        DartPerformanceMode,
-        FramePhase,
-        FrameTiming,
-        PlatformDispatcher,
-        TimingsCallback;
+import 'dart:ui' show AppLifecycleState, DartPerformanceMode, FramePhase, FrameTiming, PlatformDispatcher, TimingsCallback, VoidCallback;
 
 import 'package:collection/collection.dart' show HeapPriorityQueue, PriorityQueue;
-import 'package:flutter/foundation.dart';
-
-import 'debug.dart';
-import 'priority.dart';
-import 'service_extensions.dart';
+import 'package:flutter/src/foundation/assertions.dart' show DiagnosticsStackTrace, ErrorDescription, ErrorHint, ErrorSummary, FlutterError, FlutterErrorDetails, InformationCollector, debugPrintStack;
+import 'package:flutter/src/foundation/binding.dart' show BindingBase;
+import 'package:flutter/src/foundation/constants.dart' show kDebugMode, kProfileMode, kReleaseMode;
+import 'package:flutter/src/foundation/debug.dart' show debugMaybeDispatchCreated, debugMaybeDispatchDisposed;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode, DiagnosticsProperty, DiagnosticsTreeStyle;
+import 'package:flutter/src/foundation/print.dart' show debugPrint;
+import 'package:flutter/src/foundation/timeline.dart' show FlutterTimeline;
+import 'package:flutter/src/scheduler/debug.dart' show debugPrintBeginFrameBanner, debugPrintEndFrameBanner, debugPrintScheduleFrameStacks, debugTracePostFrameCallbacks;
+import 'package:flutter/src/scheduler/priority.dart' show Priority;
+import 'package:flutter/src/scheduler/service_extensions.dart' show SchedulerServiceExtensions;
+import 'package:meta/meta.dart' show mustCallSuper, protected, visibleForTesting;
 
 export 'dart:ui' show AppLifecycleState, FrameTiming, TimingsCallback;
-
 export 'priority.dart' show Priority;
 
 /// Slows down animations by this factor to help in development.

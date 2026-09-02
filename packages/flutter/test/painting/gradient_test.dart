@@ -8,8 +8,13 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show Canvas, Color, Paint, Rect, Shader, Size, TextDirection, TileMode;
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/painting/alignment.dart' show Alignment, AlignmentDirectional;
+import 'package:flutter/src/painting/gradient.dart' show Gradient, GradientRotation, LinearGradient, RadialGradient, SweepGradient;
+import 'package:flutter/src/rendering/custom_paint.dart' show CustomPainter;
+import 'package:flutter/src/widgets/basic.dart' show Center, CustomPaint, RepaintBoundary, SizedBox;
 import 'package:flutter_test/flutter_test.dart';
 
 bool _listDoubleMatches(List<double>? x, List<double>? y) {

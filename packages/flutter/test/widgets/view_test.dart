@@ -2,11 +2,26 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:ui';
+import 'dart:ui' show Color, FlutterView, Size, TextDirection, ViewConstraints, ViewFocusDirection, ViewFocusEvent, ViewFocusState;
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/object.dart' show PipelineOwner, RenderObject;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderConstrainedBox;
+import 'package:flutter/src/rendering/view.dart' show RenderView;
+import 'package:flutter/src/services/binding.dart' show ServicesBinding;
+import 'package:flutter/src/widgets/basic.dart' show Builder, ColoredBox, Column, Directionality, SizedBox;
+import 'package:flutter/src/widgets/binding.dart' show runApp;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusManager, FocusNode;
+import 'package:flutter/src/widgets/focus_scope.dart' show Focus;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, Widget;
+import 'package:flutter/src/widgets/lookup_boundary.dart' show LookupBoundary;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/view.dart' show View, ViewAnchor, ViewCollection;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:leak_tracker_flutter_testing/leak_tracker_flutter_testing.dart';
 

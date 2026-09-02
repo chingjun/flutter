@@ -8,11 +8,36 @@
 @Tags(<String>['reduced-test-set'])
 library;
 
+import 'dart:ui' show Color, PointerDeviceKind, Radius, Rect, Size;
+
 import 'package:clock/clock.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/cupertino/app.dart' show CupertinoApp;
+import 'package:flutter/src/cupertino/colors.dart' show CupertinoColors;
+import 'package:flutter/src/cupertino/context_menu.dart' show CupertinoContextMenu, CupertinoContextMenuBuilder;
+import 'package:flutter/src/cupertino/context_menu_action.dart' show CupertinoContextMenuAction;
+import 'package:flutter/src/cupertino/page_scaffold.dart' show CupertinoPageScaffold;
+import 'package:flutter/src/cupertino/route.dart' show CupertinoPageRoute;
+import 'package:flutter/src/cupertino/scrollbar.dart' show CupertinoScrollbar;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/gestures/events.dart' show PointerDownEvent, PointerUpEvent;
+import 'package:flutter/src/painting/alignment.dart' show Alignment, AlignmentDirectional;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/physics/tolerance.dart' show Tolerance;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/services/mouse_cursor.dart' show SystemMouseCursors;
+import 'package:flutter/src/widgets/basic.dart' show Align, BackdropFilter, Builder, Center, ClipRSuperellipse, ColoredBox, FittedBox, Listener, SizedBox, StatefulBuilder, Transform;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StateSetter, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/navigator.dart' show Navigator, RouteSettings;
+import 'package:flutter/src/widgets/scroll_view.dart' show GridView, ListView;
+import 'package:flutter/src/widgets/scrollable.dart' show Scrollable;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/ticker_provider.dart' show TickerMode;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

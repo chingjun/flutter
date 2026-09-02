@@ -7,10 +7,8 @@
 /// @docImport 'text_field.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
-
-import 'material_localizations.dart';
+import 'package:flutter/src/material/material_localizations.dart' show MaterialLocalizations;
+import 'package:meta/meta.dart' show immutable, optionalTypeArgs;
 
 /// Controls the calendar system used in the date picker.
 ///

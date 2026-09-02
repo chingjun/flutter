@@ -2,10 +2,33 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
+import 'dart:typed_data' show ByteData;
+import 'dart:ui' show SemanticsValidationResult, Size, TextDirection, TextRange;
+
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError, FlutterErrorDetails;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey, ValueKey;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, debugDefaultTargetPlatformOverride;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/dropdown.dart' show DropdownButtonFormField, DropdownMenuItem;
+import 'package:flutter/src/material/material.dart' show Material;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/text_form_field.dart' show TextFormField;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/rendering/flex.dart' show MainAxisSize;
+import 'package:flutter/src/semantics/semantics_event.dart' show Assertiveness;
+import 'package:flutter/src/services/message_codecs.dart' show StandardMessageCodec;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:flutter/src/services/text_formatter.dart' show MaxLengthEnforcement;
+import 'package:flutter/src/widgets/basic.dart' show Center, Column, Directionality, KeyedSubtree, SizedBox, StatefulBuilder;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/editable_text.dart' show EditableText, EditableTextState, TextEditingController;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/focus_scope.dart' show Focus;
+import 'package:flutter/src/widgets/form.dart' show AutovalidateMode, Form, FormField, FormFieldState, FormState;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, StateSetter, Widget;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/scroll_view.dart' show ListView;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'editable_text_tester.dart';

@@ -6,13 +6,12 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show Canvas, Path, RRect, Rect, TextDirection;
 
-import 'package:flutter/foundation.dart';
-
-import 'basic_types.dart';
-import 'border_radius.dart';
-import 'borders.dart';
-import 'edge_insets.dart';
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius, BorderRadiusGeometry;
+import 'package:flutter/src/painting/borders.dart' show BorderSide, BorderStyle, OutlinedBorder, ShapeBorder;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsGeometry;
 
 /// A rectangular border with smooth continuous transitions between the straight
 /// sides and the rounded corners.

@@ -8,13 +8,15 @@
 /// @docImport 'sliver_list.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:vector_math/vector_math_64.dart';
+import 'dart:ui' show Offset, Rect;
 
-import 'box.dart';
-import 'object.dart';
-import 'sliver.dart';
-import 'sliver_fixed_extent_list.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsNode, DiagnosticsTreeStyle;
+import 'package:flutter/src/painting/basic_types.dart' show Axis, AxisDirection;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, BoxHitTestResult, RenderBox;
+import 'package:flutter/src/rendering/object.dart' show ContainerParentDataMixin, ContainerRenderObjectMixin, PaintingContext, ParentData, PipelineOwner, RenderObject, RenderObjectVisitor;
+import 'package:flutter/src/rendering/sliver.dart' show RenderSliver, RenderSliverHelpers, SliverConstraints, SliverHitTestResult, SliverLogicalParentData, applyGrowthDirectionToAxisDirection;
+import 'package:meta/meta.dart' show protected, visibleForTesting;
+import 'package:vector_math/vector_math_64.dart';
 
 /// A delegate used by [RenderSliverMultiBoxAdaptor] to manage its children.
 ///

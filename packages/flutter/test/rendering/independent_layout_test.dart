@@ -2,7 +2,15 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Size;
+
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/custom_paint.dart' show RenderCustomPaint;
+import 'package:flutter/src/rendering/object.dart' show PipelineOwner;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderConstrainedBox;
+import 'package:flutter/src/rendering/shifted_box.dart' show RenderPositionedBox;
+import 'package:flutter/src/rendering/view.dart' show RenderView, ViewConfiguration;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'rendering_tester.dart';

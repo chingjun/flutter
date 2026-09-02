@@ -2,8 +2,17 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/animation.dart';
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Size;
+
+import 'package:flutter/src/animation/curves.dart' show Curve;
+import 'package:flutter/src/painting/basic_types.dart' show AxisDirection;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/rendering/sliver.dart' show RenderSliver, SliverConstraints;
+import 'package:flutter/src/rendering/sliver_list.dart' show RenderSliverList;
+import 'package:flutter/src/rendering/sliver_multi_box_adaptor.dart' show RenderSliverBoxChildManager, SliverMultiBoxAdaptorParentData;
+import 'package:flutter/src/rendering/viewport.dart' show RenderViewport;
+import 'package:flutter/src/rendering/viewport_offset.dart' show ScrollDirection, ViewportOffset;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'rendering_tester.dart';

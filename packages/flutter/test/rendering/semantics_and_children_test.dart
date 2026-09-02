@@ -2,8 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/animation.dart';
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show TextDirection;
+
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/painting/text_span.dart' show TextSpan;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/rendering/paragraph.dart' show RenderParagraph;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderAnimatedOpacity, RenderOpacity;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'rendering_tester.dart';

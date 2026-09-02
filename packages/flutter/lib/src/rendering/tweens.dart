@@ -2,8 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/animation.dart';
-import 'package:flutter/painting.dart';
+import 'package:flutter/src/animation/tween.dart' show Tween;
+import 'package:flutter/src/painting/alignment.dart' show Alignment, AlignmentGeometry;
+import 'package:flutter/src/painting/fractional_offset.dart' show FractionalOffset;
 
 /// An interpolation between two fractional offsets.
 ///

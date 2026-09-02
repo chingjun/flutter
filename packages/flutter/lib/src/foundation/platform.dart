@@ -6,9 +6,10 @@
 /// @docImport 'package:flutter_test/flutter_test.dart';
 library;
 
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/constants.dart' show kDebugMode;
+
 import '_platform_io.dart' if (dart.library.js_interop) '_platform_web.dart' as platform;
-import 'assertions.dart';
-import 'constants.dart';
 
 /// The [TargetPlatform] that matches the platform on which the framework is
 /// currently executing.

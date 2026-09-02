@@ -8,7 +8,22 @@
 @TestOn('!chrome')
 library;
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color, FontWeight, Paint, PaintingStyle, PlaceholderAlignment, Rect, Shader, TextAlign, TextBaseline, TextDecoration, TextDecorationStyle, TextDirection, TextHeightBehavior;
+
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/gradient.dart' show LinearGradient;
+import 'package:flutter/src/painting/inline_span.dart' show InlineSpan;
+import 'package:flutter/src/painting/strut_style.dart' show StrutStyle;
+import 'package:flutter/src/painting/text_painter.dart' show TextOverflow;
+import 'package:flutter/src/painting/text_span.dart' show TextSpan;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/widgets/basic.dart' show Align, Center, Column, ConstrainedBox, Directionality, RepaintBoundary, SizedBox;
+import 'package:flutter/src/widgets/container.dart' show Container, DecoratedBox;
+import 'package:flutter/src/widgets/framework.dart' show Widget;
+import 'package:flutter/src/widgets/text.dart' show DefaultTextStyle, Text;
+import 'package:flutter/src/widgets/widget_span.dart' show WidgetSpan;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'checkbox_tester.dart';

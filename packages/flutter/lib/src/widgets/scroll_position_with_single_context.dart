@@ -9,19 +9,20 @@
 /// @docImport 'viewport.dart';
 library;
 
+import 'dart:async' show Future;
 import 'dart:math' as math;
+import 'dart:ui' show VoidCallback;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/physics.dart';
-import 'package:flutter/rendering.dart';
-
-import 'basic.dart';
-import 'scroll_activity.dart';
-import 'scroll_context.dart';
-import 'scroll_notification.dart';
-import 'scroll_physics.dart';
-import 'scroll_position.dart';
+import 'package:flutter/src/animation/curves.dart' show Curve;
+import 'package:flutter/src/gestures/drag.dart' show Drag;
+import 'package:flutter/src/gestures/drag_details.dart' show DragStartDetails;
+import 'package:flutter/src/painting/basic_types.dart' show AxisDirection;
+import 'package:flutter/src/physics/simulation.dart' show Simulation;
+import 'package:flutter/src/physics/utils.dart' show nearEqual;
+import 'package:flutter/src/rendering/viewport_offset.dart' show ScrollDirection;
+import 'package:flutter/src/widgets/scroll_activity.dart' show BallisticScrollActivity, DragScrollActivity, DrivenScrollActivity, HoldScrollActivity, IdleScrollActivity, ScrollActivity, ScrollActivityDelegate, ScrollDragController, ScrollHoldController;
+import 'package:flutter/src/widgets/scroll_position.dart' show ScrollPosition;
+import 'package:meta/meta.dart' show protected, visibleForTesting;
 
 /// A scroll position that manages scroll activities for a single
 /// [ScrollContext].

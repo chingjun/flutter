@@ -8,13 +8,15 @@
 /// @docImport 'scroll_view.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/scheduler.dart' show TickerProvider;
-
-import 'framework.dart';
-import 'scroll_position.dart';
-import 'scrollable.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty, IterableProperty;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/rendering/sliver_persistent_header.dart' show FloatingHeaderSnapConfiguration, OverScrollHeaderStretchConfiguration, PersistentHeaderShowOnScreenConfiguration, RenderSliverFloatingPersistentHeader, RenderSliverFloatingPinnedPersistentHeader, RenderSliverPersistentHeader, RenderSliverPinnedPersistentHeader, RenderSliverScrollingPersistentHeader;
+import 'package:flutter/src/scheduler/ticker.dart' show TickerProvider;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, ElementVisitor, RenderObjectElement, RenderObjectWidget, State, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/scroll_position.dart' show ScrollPosition;
+import 'package:flutter/src/widgets/scrollable.dart' show Scrollable;
+import 'package:meta/meta.dart' show protected;
 
 /// Delegate for configuring a [SliverPersistentHeader].
 abstract class SliverPersistentHeaderDelegate {

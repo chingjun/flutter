@@ -2,11 +2,28 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+import 'dart:typed_data' show ByteData;
 import 'dart:ui' as ui;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError, FlutterErrorDetails, FlutterExceptionHandler;
+import 'package:flutter/src/foundation/basic_types.dart' show AsyncCallback;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode, DiagnosticsProperty;
+import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey, PhysicalKeyboardKey;
+import 'package:flutter/src/services/raw_keyboard.dart' show KeyboardSide, ModifierKey, RawKeyEvent, RawKeyboard;
+import 'package:flutter/src/services/raw_keyboard_android.dart' show RawKeyEventDataAndroid;
+import 'package:flutter/src/services/raw_keyboard_fuchsia.dart' show RawKeyEventDataFuchsia;
+import 'package:flutter/src/services/raw_keyboard_ios.dart' show RawKeyEventDataIos;
+import 'package:flutter/src/services/raw_keyboard_linux.dart' show GLFWKeyHelper, GtkKeyHelper, KeyHelper, RawKeyEventDataLinux;
+import 'package:flutter/src/services/raw_keyboard_macos.dart' show RawKeyEventDataMacOs;
+import 'package:flutter/src/services/raw_keyboard_web.dart' show RawKeyEventDataWeb;
+import 'package:flutter/src/services/raw_keyboard_windows.dart' show RawKeyEventDataWindows;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:flutter/src/widgets/basic.dart' show SizedBox;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode, KeyEventResult;
+import 'package:flutter/src/widgets/focus_scope.dart' show Focus;
+import 'package:flutter/src/widgets/raw_keyboard_listener.dart' show RawKeyboardListener;
 import 'package:flutter_test/flutter_test.dart';
 
 class _ModifierCheck {

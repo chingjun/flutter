@@ -2,8 +2,20 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
+import 'dart:ui' show PointerDeviceKind;
+
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsNode;
+import 'package:flutter/src/foundation/print.dart' show DebugPrintCallback, debugPrint;
+import 'package:flutter/src/gestures/binding.dart' show GestureBinding;
+import 'package:flutter/src/gestures/debug.dart' show debugPrintGestureArenaDiagnostics, debugPrintRecognizerCallbacksTrace;
+import 'package:flutter/src/gestures/drag_details.dart' show DragDownDetails, DragEndDetails, DragStartDetails, DragUpdateDetails;
+import 'package:flutter/src/gestures/events.dart' show PointerDownEvent, PointerEvent, PointerUpEvent;
+import 'package:flutter/src/gestures/force_press.dart' show ForcePressDetails;
+import 'package:flutter/src/gestures/long_press.dart' show LongPressDownDetails, LongPressEndDetails, LongPressMoveUpdateDetails, LongPressStartDetails;
+import 'package:flutter/src/gestures/multitap.dart' show SerialTapCancelDetails, SerialTapDownDetails, SerialTapUpDetails;
+import 'package:flutter/src/gestures/scale.dart' show ScaleEndDetails, ScaleStartDetails, ScaleUpdateDetails;
+import 'package:flutter/src/gestures/tap.dart' show TapDownDetails, TapGestureRecognizer, TapUpDetails;
+import 'package:flutter/src/gestures/tap_and_drag.dart' show TapDragDownDetails, TapDragEndDetails, TapDragStartDetails, TapDragUpDetails, TapDragUpdateDetails;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

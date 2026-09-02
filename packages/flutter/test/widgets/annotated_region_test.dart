@@ -2,8 +2,10 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/rendering/layer.dart' show AnnotatedRegionLayer, Layer;
+import 'package:flutter/src/widgets/annotated_region.dart' show AnnotatedRegion;
+import 'package:flutter/src/widgets/basic.dart' show SizedBox, Transform;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

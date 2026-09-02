@@ -2,7 +2,21 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/material.dart';
+import 'dart:ui' show Rect, TextDirection;
+
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/button_bar.dart' show ButtonBar;
+import 'package:flutter/src/material/button_bar_theme.dart' show ButtonBarTheme, ButtonBarThemeData;
+import 'package:flutter/src/material/button_theme.dart' show ButtonBarLayoutBehavior, ButtonTextTheme, ButtonTheme, ButtonThemeData;
+import 'package:flutter/src/painting/basic_types.dart' show VerticalDirection;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/flex.dart' show MainAxisAlignment, MainAxisSize;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Center, Directionality, ListBody, SizedBox;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
+import 'package:flutter/src/widgets/single_child_scroll_view.dart' show SingleChildScrollView;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

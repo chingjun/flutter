@@ -4,7 +4,12 @@
 
 import 'dart:ui' show VoidCallback;
 
-import 'package:flutter/gestures.dart';
+import 'package:flutter/src/gestures/arena.dart' show GestureDisposition;
+import 'package:flutter/src/gestures/binding.dart' show GestureBinding;
+import 'package:flutter/src/gestures/constants.dart' show kTouchSlop;
+import 'package:flutter/src/gestures/events.dart' show PointerDownEvent, PointerEvent, PointerMoveEvent, PointerUpEvent;
+import 'package:flutter/src/gestures/gesture_settings.dart' show DeviceGestureSettings;
+import 'package:flutter/src/gestures/recognizer.dart' show GestureRecognizer, GestureRecognizerState, OffsetPair, PrimaryPointerGestureRecognizer;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:leak_tracker_flutter_testing/leak_tracker_flutter_testing.dart';
 

@@ -2,13 +2,15 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/semantics.dart';
-import 'package:flutter/services.dart';
+import 'dart:async' show Future;
 
-import 'framework.dart';
-import 'gesture_detector.dart';
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/gestures/long_press.dart' show GestureLongPressCallback;
+import 'package:flutter/src/gestures/tap.dart' show GestureTapCallback;
+import 'package:flutter/src/semantics/semantics_event.dart' show LongPressSemanticsEvent, TapSemanticEvent;
+import 'package:flutter/src/services/haptic_feedback.dart' show HapticFeedback;
+import 'package:flutter/src/services/system_sound.dart' show SystemSound, SystemSoundType;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext;
 
 /// Provides platform-specific acoustic and/or haptic feedback for certain
 /// actions.

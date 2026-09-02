@@ -17,15 +17,25 @@ library;
 
 import 'dart:math' as math;
 import 'dart:ui' as ui;
+import 'dart:ui' show Brightness, FlutterView, Offset, Radius, Rect, Size;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-
-import 'basic.dart';
-import 'binding.dart';
-import 'debug.dart';
-import 'framework.dart';
-import 'inherited_model.dart';
+import 'package:flutter/src/foundation/collections.dart' show listEquals;
+import 'package:flutter/src/foundation/constants.dart' show kReleaseMode;
+import 'package:flutter/src/foundation/debug.dart' show debugBrightnessOverride;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty;
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/gestures/constants.dart' show kTouchSlop;
+import 'package:flutter/src/gestures/gesture_settings.dart' show DeviceGestureSettings;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/text_scaler.dart' show TextScaler;
+import 'package:flutter/src/widgets/basic.dart' show Builder;
+import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding, WidgetsBindingObserver;
+import 'package:flutter/src/widgets/debug.dart' show debugCheckHasMediaQuery;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/inherited_model.dart' show InheritedModel;
+import 'package:meta/meta.dart' show immutable;
 
 // Examples can assume:
 // late BuildContext context;

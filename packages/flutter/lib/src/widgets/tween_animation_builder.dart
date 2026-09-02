@@ -9,11 +9,10 @@
 /// @docImport 'transitions.dart';
 library;
 
-import 'package:flutter/animation.dart';
-
-import 'framework.dart';
-import 'implicit_animations.dart';
-import 'value_listenable_builder.dart';
+import 'package:flutter/src/animation/tween.dart' show Tween;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
+import 'package:flutter/src/widgets/implicit_animations.dart' show AnimatedWidgetBaseState, ImplicitlyAnimatedWidget, ImplicitlyAnimatedWidgetState, TweenVisitor;
+import 'package:flutter/src/widgets/value_listenable_builder.dart' show ValueWidgetBuilder;
 
 /// [Widget] builder that animates a property of a [Widget] to a target value
 /// whenever the target value changes.

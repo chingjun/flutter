@@ -2,8 +2,22 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Clip, Size, TextDirection;
+
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey, ValueKey;
+import 'package:flutter/src/painting/alignment.dart' show Alignment, AlignmentDirectional;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/scheduler/ticker.dart' show Ticker;
+import 'package:flutter/src/widgets/animated_cross_fade.dart' show AnimatedCrossFade, CrossFadeState;
+import 'package:flutter/src/widgets/animated_size.dart' show AnimatedSize;
+import 'package:flutter/src/widgets/basic.dart' show Center, ClipRect, Directionality, ExcludeSemantics, SizedBox;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/focus_scope.dart' show Focus;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/ticker_provider.dart' show SingleTickerProviderStateMixin;
+import 'package:flutter/src/widgets/transitions.dart' show FadeTransition;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'button_tester.dart';

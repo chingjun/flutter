@@ -16,15 +16,17 @@
 
 import 'dart:convert';
 import 'dart:ffi' as ffi;
+import 'dart:ffi' show AbiSpecificIntegerPointer, StructPointer, Uint8Pointer;
 import 'dart:io';
-import 'dart:ui' show Display, FlutterView;
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
+import 'dart:typed_data' show Uint8List;
+import 'dart:ui' show Display, FlutterView, Offset, Rect, Size, VoidCallback;
 
-import '../foundation/_features.dart';
-import '_window.dart';
-import '_window_positioner.dart';
-import 'binding.dart';
+import 'package:flutter/src/foundation/_features.dart' show isWindowingEnabled;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/widgets/_window.dart' show BaseWindowController, DialogWindowController, DialogWindowControllerDelegate, PopupWindowController, PopupWindowControllerDelegate, SatelliteWindowController, SatelliteWindowControllerDelegate, TooltipWindowController, TooltipWindowControllerDelegate, WindowController, WindowControllerDelegate, WindowingOwner;
+import 'package:flutter/src/widgets/_window_positioner.dart' show WindowPositioner, WindowPositionerAnchor, WindowPositionerConstraintAdjustment;
+import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding;
+import 'package:meta/meta.dart' show internal, protected;
 
 // Maximum width and height a window can be.
 // In C this would be INT_MAX, but since we can't determine that from Dart let's assume it's 32 bit signed. In any case this is far beyond any reasonable window size.

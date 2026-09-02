@@ -8,8 +8,26 @@ library;
 import 'dart:math' as math;
 import 'dart:typed_data';
 import 'dart:ui' as ui show Image;
+import 'dart:ui' show Color, Radius, TextDirection;
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/painting/alignment.dart' show AlignmentDirectional;
+import 'package:flutter/src/painting/binding.dart' show imageCache;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/borders.dart' show BorderSide;
+import 'package:flutter/src/painting/box_border.dart' show Border, BorderDirectional;
+import 'package:flutter/src/painting/box_shadow.dart' show BoxShadow;
+import 'package:flutter/src/painting/circle_border.dart' show CircleBorder;
+import 'package:flutter/src/painting/decoration_image.dart' show DecorationImage;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsetsDirectional;
+import 'package:flutter/src/painting/gradient.dart' show RadialGradient;
+import 'package:flutter/src/painting/image_decoder.dart' show decodeImageFromList;
+import 'package:flutter/src/painting/image_provider.dart' show ImageProvider;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
+import 'package:flutter/src/painting/shape_decoration.dart' show ShapeDecoration;
+import 'package:flutter/src/widgets/basic.dart' show Center, Directionality, Positioned, Stack;
+import 'package:flutter/src/widgets/container.dart' show Container, DecoratedBox;
+import 'package:flutter/src/widgets/framework.dart' show Widget;
 import 'package:flutter_test/flutter_test.dart';
 
 import '../image_data.dart';

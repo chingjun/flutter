@@ -7,12 +7,56 @@
 @Tags(<String>['reduced-test-set'])
 library;
 
-import 'dart:ui';
+import 'dart:ui' show Clip, Color, DisplayFeature, DisplayFeatureState, DisplayFeatureType, PaintingStyle, PointerDeviceKind, Radius, Rect, SemanticsValidationResult, Size, TextDirection, Tristate;
 
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/date.dart' show DatePickerEntryMode, DatePickerMode, GregorianCalendarDelegate;
+import 'package:flutter/src/material/date_picker.dart' show DatePickerDialog, showDatePicker;
+import 'package:flutter/src/material/dialog.dart' show Dialog, DialogRoute;
+import 'package:flutter/src/material/dialog_theme.dart' show DialogTheme, DialogThemeData;
+import 'package:flutter/src/material/divider.dart' show Divider, VerticalDivider;
+import 'package:flutter/src/material/elevated_button.dart' show ElevatedButton;
+import 'package:flutter/src/material/icon_button.dart' show IconButton;
+import 'package:flutter/src/material/icons.dart' show Icons;
+import 'package:flutter/src/material/ink_decoration.dart' show Ink;
+import 'package:flutter/src/material/input_border.dart' show OutlineInputBorder, UnderlineInputBorder;
+import 'package:flutter/src/material/input_decorator.dart' show InputDecoration;
+import 'package:flutter/src/material/material.dart' show Material, MaterialInkController;
+import 'package:flutter/src/material/material_localizations.dart' show MaterialLocalizations;
+import 'package:flutter/src/material/outlined_button.dart' show OutlinedButton;
+import 'package:flutter/src/material/page.dart' show MaterialPageRoute;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/text_button.dart' show TextButton;
+import 'package:flutter/src/material/text_field.dart' show TextField;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
+import 'package:flutter/src/painting/shape_decoration.dart' show ShapeDecoration;
+import 'package:flutter/src/painting/text_scaler.dart' show TextScaler;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsData, SemanticsNode;
+import 'package:flutter/src/services/clipboard.dart' show Clipboard, ClipboardData;
+import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
+import 'package:flutter/src/services/restoration.dart' show RestorationBucket;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:flutter/src/services/text_input.dart' show TextInputType;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Center, Column, Directionality, SizedBox;
+import 'package:flutter/src/widgets/date.dart' show SelectableDayPredicate;
+import 'package:flutter/src/widgets/editable_text.dart' show EditableText;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusHighlightStrategy, FocusManager;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/implicit_animations.dart' show AnimatedContainer;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/modal_barrier.dart' show ModalBarrier;
+import 'package:flutter/src/widgets/navigator.dart' show Navigator, NavigatorObserver, NavigatorState, RestorableRouteFuture, Route, RouteSettings;
+import 'package:flutter/src/widgets/page_view.dart' show PageView;
+import 'package:flutter/src/widgets/restoration.dart' show RestorationMixin;
+import 'package:flutter/src/widgets/restoration_properties.dart' show RestorableDateTime;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
+
 import '../widgets/clipboard_utils.dart';
 
 void main() {

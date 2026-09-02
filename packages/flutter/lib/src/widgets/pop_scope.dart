@@ -8,11 +8,11 @@
 /// @docImport 'navigator_pop_handler.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-
-import 'framework.dart';
-import 'navigator.dart';
-import 'routes.dart';
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/navigator.dart' show PopInvokedWithResultCallback;
+import 'package:flutter/src/widgets/routes.dart' show ModalRoute, PopEntry;
+import 'package:listen/listen.dart' show ValueNotifier;
+import 'package:meta/meta.dart' show optionalTypeArgs;
 
 /// A callback type for informing that a navigation pop has been invoked,
 /// whether or not it was handled successfully.

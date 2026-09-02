@@ -2,11 +2,31 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Color, PointerDeviceKind;
+
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, DiagnosticsNode;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/bottom_navigation_bar.dart' show BottomNavigationBar, BottomNavigationBarLandscapeLayout, BottomNavigationBarType;
+import 'package:flutter/src/material/bottom_navigation_bar_theme.dart' show BottomNavigationBarTheme, BottomNavigationBarThemeData;
+import 'package:flutter/src/material/icons.dart' show Icons;
+import 'package:flutter/src/material/material.dart' show Material;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/rendering/paragraph.dart' show RenderParagraph;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor, SystemMouseCursors;
+import 'package:flutter/src/widgets/basic.dart' show Opacity, SizedBox, Transform;
+import 'package:flutter/src/widgets/bottom_navigation_bar_item.dart' show BottomNavigationBarItem;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/icon_data.dart' show IconData;
+import 'package:flutter/src/widgets/icon_theme_data.dart' show IconThemeData;
+import 'package:flutter/src/widgets/indexed_stack.dart' show Visibility;
+import 'package:flutter/src/widgets/rich_text.dart' show RichText;
+import 'package:flutter/src/widgets/transitions.dart' show FadeTransition;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateMouseCursor, WidgetStateProperty;
 import 'package:flutter_test/flutter_test.dart';
-import 'package:vector_math/vector_math_64.dart' show Vector3;
+import 'package:vector_math/vector_math_64.dart' show Matrix4, Vector3;
 
 void main() {
   test('BottomNavigationBarThemeData copyWith, ==, hashCode basics', () {

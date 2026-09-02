@@ -7,8 +7,11 @@
 /// @docImport 'scrollable.dart';
 library;
 
-import 'package:flutter/services.dart';
-import 'framework.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/services/autofill.dart' show AutofillClient, AutofillScopeMixin;
+import 'package:flutter/src/services/text_input.dart' show TextInput;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedWidget, State, StatefulWidget, Widget;
+import 'package:meta/meta.dart' show protected;
 
 export 'package:flutter/services.dart' show AutofillHints;
 

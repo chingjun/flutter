@@ -6,16 +6,33 @@
 /// @docImport 'divider_theme.dart';
 library;
 
-import 'dart:ui' show lerpDouble;
+import 'dart:ui' show Canvas, Color, Offset, Path, Radius, Rect, lerpDouble;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
-
-import 'colors.dart';
-import 'divider.dart';
-import 'material.dart';
-import 'theme.dart';
+import 'package:flutter/src/animation/animation.dart' show AnimationStatus;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/animations.dart' show CurvedAnimation;
+import 'package:flutter/src/animation/curves.dart' show Curves;
+import 'package:flutter/src/foundation/debug.dart' show debugMaybeDispatchCreated, debugMaybeDispatchDisposed;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DoubleProperty, EnumProperty;
+import 'package:flutter/src/foundation/key.dart' show LocalKey, UniqueKey;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/divider.dart' show Divider;
+import 'package:flutter/src/material/material.dart' show Material, MaterialType, kMaterialEdges;
+import 'package:flutter/src/material/theme.dart' show Theme, kThemeAnimationDuration;
+import 'package:flutter/src/painting/basic_types.dart' show Axis, AxisDirection;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/borders.dart' show BorderSide;
+import 'package:flutter/src/painting/box_border.dart' show Border;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/list_body.dart' show ListBodyParentData, RenderListBody;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext;
+import 'package:flutter/src/widgets/basic.dart' show ListBody, SizedBox, getAxisDirectionFromAxisReverseAndDirectionality;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/implicit_animations.dart' show AnimatedContainer;
+import 'package:flutter/src/widgets/ticker_provider.dart' show TickerProviderStateMixin;
+import 'package:meta/meta.dart' show immutable, mustCallSuper;
 
 /// The base type for [MaterialSlice] and [MaterialGap].
 ///

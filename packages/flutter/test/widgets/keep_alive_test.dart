@@ -3,9 +3,16 @@
 // found in the LICENSE file.
 
 import 'dart:io' show Platform;
+import 'dart:ui' show Color, TextDirection;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel;
+import 'package:flutter/src/widgets/automatic_keep_alive.dart' show KeepAlive;
+import 'package:flutter/src/widgets/basic.dart' show Directionality, SizedBox;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalObjectKey, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/scroll_view.dart' show GridView, ListView;
 import 'package:flutter_test/flutter_test.dart';
 
 class Leaf extends StatefulWidget {

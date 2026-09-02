@@ -6,12 +6,24 @@
 library;
 
 import 'dart:convert';
+import 'dart:typed_data' show ByteData, Uint8List;
 import 'dart:ui' as ui show Image;
+import 'dart:ui' show BlendMode, Color, Size;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show describeIdentity;
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/foundation/synchronous_future.dart' show SynchronousFuture;
+import 'package:flutter/src/painting/box_fit.dart' show BoxFit;
+import 'package:flutter/src/painting/image_provider.dart' show AssetBundleImageKey, ImageDecoderCallback;
+import 'package:flutter/src/painting/image_resolution.dart' show AssetImage;
+import 'package:flutter/src/painting/image_stream.dart' show ImageInfo, ImageStreamCompleter;
+import 'package:flutter/src/rendering/image.dart' show RenderImage;
+import 'package:flutter/src/services/asset_bundle.dart' show AssetBundle, CachingAssetBundle;
+import 'package:flutter/src/services/message_codecs.dart' show StandardMessageCodec;
+import 'package:flutter/src/widgets/basic.dart' show Center, DefaultAssetBundle, RepaintBoundary, SizedBox;
+import 'package:flutter/src/widgets/framework.dart' show GlobalKey, Widget;
+import 'package:flutter/src/widgets/image.dart' show Image;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
 import 'package:flutter_test/flutter_test.dart';
 
 import '../image_data.dart';

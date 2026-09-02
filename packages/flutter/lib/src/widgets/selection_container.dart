@@ -7,9 +7,14 @@
 /// @docImport 'selectable_region.dart';
 library;
 
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Rect, Size, VoidCallback;
 
-import 'framework.dart';
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/layer.dart' show LayerLink;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/rendering/selection.dart' show Selectable, SelectedContent, SelectedContentRange, SelectionEvent, SelectionGeometry, SelectionHandler, SelectionRegistrant, SelectionRegistrar, SelectionResult, SelectionStatus;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedWidget, State, StatefulWidget, Widget;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 /// A container that handles [SelectionEvent]s for the [Selectable]s in
 /// the subtree.

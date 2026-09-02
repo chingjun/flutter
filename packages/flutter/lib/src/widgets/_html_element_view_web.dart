@@ -2,15 +2,18 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+import 'dart:async' show Future;
 import 'dart:ui_web' as ui_web;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
-
-import 'framework.dart';
-import 'platform_view.dart';
+import 'package:flutter/src/foundation/basic_types.dart' show Factory;
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/gestures/events.dart' show PointerEvent;
+import 'package:flutter/src/gestures/recognizer.dart' show OneSequenceGestureRecognizer;
+import 'package:flutter/src/rendering/platform_view.dart' show PlatformViewHitTestBehavior;
+import 'package:flutter/src/services/platform_views.dart' show PlatformViewController, PlatformViewCreatedCallback;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
+import 'package:flutter/src/widgets/platform_view.dart' show ElementCreatedCallback, HtmlElementView, PlatformViewCreationParams, PlatformViewLink, PlatformViewSurface;
 
 /// The platform-specific implementation of [HtmlElementView].
 extension HtmlElementViewImpl on HtmlElementView {

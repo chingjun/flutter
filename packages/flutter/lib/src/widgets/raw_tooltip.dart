@@ -8,20 +8,33 @@
 library;
 
 import 'dart:async';
+import 'dart:ui' show Offset, PointerDeviceKind, Size, VoidCallback;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
-
-import 'basic.dart';
-import 'debug.dart';
-import 'feedback.dart';
-import 'framework.dart';
-import 'media_query.dart';
-import 'overlay.dart';
-import 'selection_container.dart';
-import 'ticker_provider.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation, AnimationStatus;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/animation_style.dart' show AnimationStyle;
+import 'package:flutter/src/animation/animations.dart' show CurvedAnimation;
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty, FlagProperty, StringProperty, kNoDefaultValue;
+import 'package:flutter/src/gestures/binding.dart' show GestureBinding;
+import 'package:flutter/src/gestures/events.dart' show PointerDownEvent, PointerEnterEvent, PointerEvent, PointerExitEvent;
+import 'package:flutter/src/gestures/long_press.dart' show LongPressGestureRecognizer;
+import 'package:flutter/src/gestures/tap.dart' show TapGestureRecognizer;
+import 'package:flutter/src/painting/geometry.dart' show positionDependentBox;
+import 'package:flutter/src/painting/matrix_utils.dart' show MatrixUtils;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, BoxHitTestEntry, BoxHitTestResult;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior, RenderMouseRegion;
+import 'package:flutter/src/rendering/shifted_box.dart' show SingleChildLayoutDelegate;
+import 'package:flutter/src/semantics/semantics_service.dart' show SemanticsService;
+import 'package:flutter/src/widgets/basic.dart' show CustomSingleChildLayout, IgnorePointer, Listener, MouseRegion, Positioned, Semantics, SizedBox;
+import 'package:flutter/src/widgets/debug.dart' show debugCheckHasOverlay;
+import 'package:flutter/src/widgets/feedback.dart' show Feedback;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/overlay.dart' show OverlayChildLayoutInfo, OverlayPortal, OverlayPortalController;
+import 'package:flutter/src/widgets/selection_container.dart' show SelectionContainer;
+import 'package:flutter/src/widgets/ticker_provider.dart' show SingleTickerProviderStateMixin;
+import 'package:meta/meta.dart' show immutable, protected;
 
 const AnimationStyle _kDefaultAnimationStyle = AnimationStyle(
   curve: Curves.fastOutSlowIn,

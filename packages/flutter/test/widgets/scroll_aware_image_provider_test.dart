@@ -3,8 +3,24 @@
 // found in the LICENSE file.
 
 import 'dart:ui' as ui show Image;
+import 'dart:ui' show TextDirection;
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/animation/curves.dart' show Curves;
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/painting/binding.dart' show PaintingBinding, imageCache;
+import 'package:flutter/src/painting/image_provider.dart' show ImageConfiguration;
+import 'package:flutter/src/painting/image_stream.dart' show ImageStream;
+import 'package:flutter/src/widgets/basic.dart' show Directionality, SizedBox;
+import 'package:flutter/src/widgets/disposable_build_context.dart' show DisposableBuildContext;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/image.dart' show precacheImage;
+import 'package:flutter/src/widgets/scroll_aware_image_provider.dart' show ScrollAwareImageProvider;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_metrics.dart' show ScrollMetrics;
+import 'package:flutter/src/widgets/scroll_physics.dart' show ScrollPhysics;
+import 'package:flutter/src/widgets/scroll_view.dart' show ListView;
+import 'package:flutter/src/widgets/scrollable.dart' show Scrollable;
+import 'package:flutter/src/widgets/single_child_scroll_view.dart' show SingleChildScrollView;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:leak_tracker_flutter_testing/leak_tracker_flutter_testing.dart';
 

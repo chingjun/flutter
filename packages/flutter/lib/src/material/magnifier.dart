@@ -3,9 +3,19 @@
 // found in the LICENSE file.
 
 import 'dart:async';
+import 'dart:ui' show Clip, Color, Offset, Radius, Rect, Size, clampDouble;
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
+import 'package:flutter/src/cupertino/magnifier.dart' show CupertinoTextMagnifier;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/box_shadow.dart' show BoxShadow;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
+import 'package:flutter/src/widgets/basic.dart' show ColoredBox;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/implicit_animations.dart' show AnimatedPositioned;
+import 'package:flutter/src/widgets/magnifier.dart' show MagnifierController, MagnifierDecoration, MagnifierInfo, RawMagnifier, TextMagnifierConfiguration;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:listen/listen.dart' show ValueNotifier;
 
 /// A [Magnifier] positioned by rules dictated by the native Android magnifier.
 ///

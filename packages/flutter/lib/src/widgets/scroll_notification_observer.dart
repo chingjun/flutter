@@ -7,12 +7,13 @@ library;
 
 import 'dart:collection';
 
-import 'package:flutter/foundation.dart';
-
-import 'framework.dart';
-import 'notification_listener.dart';
-import 'scroll_notification.dart';
-import 'scroll_position.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, FlutterError, FlutterErrorDetails;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode, DiagnosticsProperty, DiagnosticsTreeStyle;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedWidget, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/notification_listener.dart' show NotificationListener;
+import 'package:flutter/src/widgets/scroll_notification.dart' show ScrollNotification;
+import 'package:flutter/src/widgets/scroll_position.dart' show ScrollMetricsNotification;
+import 'package:meta/meta.dart' show protected;
 
 // Examples can assume:
 // void _listener(ScrollNotification notification) { }

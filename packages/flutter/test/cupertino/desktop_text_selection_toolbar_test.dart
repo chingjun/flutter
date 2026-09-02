@@ -2,9 +2,16 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:ui';
+import 'dart:ui' show ImageFilter, Size;
 
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/src/cupertino/app.dart' show CupertinoApp;
+import 'package:flutter/src/cupertino/desktop_text_selection_toolbar.dart' show CupertinoDesktopTextSelectionToolbar;
+import 'package:flutter/src/cupertino/desktop_text_selection_toolbar_button.dart' show CupertinoDesktopTextSelectionToolbarButton;
+import 'package:flutter/src/painting/shape_decoration.dart' show ShapeDecoration;
+import 'package:flutter/src/widgets/basic.dart' show BackdropFilter, Center, SizedBox;
+import 'package:flutter/src/widgets/container.dart' show DecoratedBox;
+import 'package:flutter/src/widgets/framework.dart' show Widget;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

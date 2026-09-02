@@ -2,7 +2,20 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Size;
+
+import 'package:flutter/src/painting/basic_types.dart' show AxisDirection;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/sliver.dart' show RenderSliver, RenderSliverSingleBoxAdapter, RenderSliverToBoxAdapter, SliverConstraints;
+import 'package:flutter/src/rendering/sliver_fill.dart' show RenderSliverFillRemaining, RenderSliverFillRemainingAndOverscroll, RenderSliverFillRemainingWithScrollable;
+import 'package:flutter/src/rendering/sliver_fixed_extent_list.dart' show RenderSliverFixedExtentList;
+import 'package:flutter/src/rendering/sliver_grid.dart' show RenderSliverGrid, SliverGridDelegateWithFixedCrossAxisCount;
+import 'package:flutter/src/rendering/sliver_list.dart' show RenderSliverList;
+import 'package:flutter/src/rendering/sliver_multi_box_adaptor.dart' show RenderSliverBoxChildManager, RenderSliverMultiBoxAdaptor, SliverMultiBoxAdaptorParentData;
+import 'package:flutter/src/rendering/sliver_padding.dart' show RenderSliverPadding;
+import 'package:flutter/src/rendering/viewport.dart' show RenderViewport;
+import 'package:flutter/src/rendering/viewport_offset.dart' show ViewportOffset;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'rendering_tester.dart';

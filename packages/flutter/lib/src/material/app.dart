@@ -14,22 +14,48 @@
 library;
 
 import 'dart:ui' as ui;
+import 'dart:ui' show Brightness, Clip, Color, FontWeight, Locale, Rect, TextDecoration, TextDecorationStyle, VoidCallback;
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
-
-import 'arc.dart';
-import 'button_style.dart';
-import 'colors.dart';
-import 'icon_button.dart';
-import 'icons.dart';
-import 'material_localizations.dart';
-import 'page.dart';
-import 'scaffold.dart' show ScaffoldMessenger, ScaffoldMessengerState;
-import 'scrollbar.dart';
-import 'theme.dart';
-import 'tooltip.dart';
+import 'package:flutter/src/animation/animation_style.dart' show AnimationStyle;
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves;
+import 'package:flutter/src/cupertino/localizations.dart' show DefaultCupertinoLocalizations;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/material/arc.dart' show MaterialRectArcTween;
+import 'package:flutter/src/material/button_style.dart' show ButtonStyle;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/icon_button.dart' show IconButton;
+import 'package:flutter/src/material/icons.dart' show Icons;
+import 'package:flutter/src/material/material_localizations.dart' show DefaultMaterialLocalizations;
+import 'package:flutter/src/material/page.dart' show MaterialPageRoute;
+import 'package:flutter/src/material/scaffold.dart' show ScaffoldMessenger, ScaffoldMessengerState;
+import 'package:flutter/src/material/scrollbar.dart' show Scrollbar;
+import 'package:flutter/src/material/theme.dart' show AnimatedTheme, Theme, kThemeAnimationDuration;
+import 'package:flutter/src/material/theme_data.dart' show MaterialTapTargetSize, ThemeData;
+import 'package:flutter/src/painting/basic_types.dart' show Axis, axisDirectionToAxis;
+import 'package:flutter/src/painting/borders.dart' show BorderSide;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/services/system_chrome.dart' show SystemChrome, SystemUiOverlayStyle;
+import 'package:flutter/src/widgets/actions.dart' show Action, Intent;
+import 'package:flutter/src/widgets/app.dart' show GenerateAppTitle, InitialRouteListFactory, WidgetsApp;
+import 'package:flutter/src/widgets/basic.dart' show Builder, SizedBox;
+import 'package:flutter/src/widgets/default_selection_style.dart' show DefaultSelectionStyle;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, GlobalObjectKey, State, StatefulWidget, TransitionBuilder, Widget, WidgetBuilder;
+import 'package:flutter/src/widgets/grid_paper.dart' show GridPaper;
+import 'package:flutter/src/widgets/heroes.dart' show HeroController;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/icon_data.dart' show IconData;
+import 'package:flutter/src/widgets/localizations.dart' show LocaleListResolutionCallback, LocaleResolutionCallback, LocalizationsDelegate;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/navigator.dart' show HeroControllerScope, NavigationNotification, NavigatorObserver, NavigatorState, RouteFactory, RouteSettings;
+import 'package:flutter/src/widgets/notification_listener.dart' show NotificationListenerCallback;
+import 'package:flutter/src/widgets/overscroll_indicator.dart' show GlowingOverscrollIndicator, StretchingOverscrollIndicator;
+import 'package:flutter/src/widgets/router.dart' show BackButtonDispatcher, RouteInformationParser, RouteInformationProvider, RouterConfig, RouterDelegate;
+import 'package:flutter/src/widgets/scroll_configuration.dart' show AndroidOverscrollIndicator, ScrollBehavior, ScrollConfiguration;
+import 'package:flutter/src/widgets/scrollable_helpers.dart' show ScrollableDetails;
+import 'package:flutter/src/widgets/shortcuts.dart' show ShortcutActivator;
+import 'package:flutter/src/widgets/widget_inspector.dart' show InspectorButton, InspectorButtonVariant;
 
 // Examples can assume:
 // typedef GlobalWidgetsLocalizations = DefaultWidgetsLocalizations;

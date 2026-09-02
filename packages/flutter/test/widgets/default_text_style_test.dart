@@ -3,8 +3,13 @@
 // found in the LICENSE file.
 
 import 'dart:ui' as ui show TextHeightBehavior;
+import 'dart:ui' show FontWeight, TextAlign, TextDirection;
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/painting/text_painter.dart' show TextOverflow, TextWidthBasis;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/widgets/implicit_animations.dart' show AnimatedDefaultTextStyle;
+import 'package:flutter/src/widgets/rich_text.dart' show RichText;
+import 'package:flutter/src/widgets/text.dart' show DefaultTextStyle, Text;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

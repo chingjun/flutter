@@ -5,8 +5,8 @@
 /// @docImport 'paginated_data_table.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'data_table.dart';
+import 'package:flutter/src/material/data_table.dart' show DataRow;
+import 'package:listen/listen.dart' show ChangeNotifier;
 
 /// A data source for obtaining row data for [PaginatedDataTable] objects.
 ///

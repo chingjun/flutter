@@ -7,16 +7,37 @@
 /// @docImport 'card.dart';
 library;
 
-import 'dart:ui' show lerpDouble;
+import 'dart:ui' show Clip, lerpDouble;
 
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
-
-import 'debug.dart';
-import 'icons.dart';
-import 'material.dart';
-import 'theme.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/animation/curves.dart' show Curves;
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/gestures/recognizer.dart' show DragStartBehavior;
+import 'package:flutter/src/material/debug.dart' show debugCheckHasMaterialLocalizations;
+import 'package:flutter/src/material/icons.dart' show Icons;
+import 'package:flutter/src/material/material.dart' show Material;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/painting/alignment.dart' show AlignmentDirectional;
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/rendering/sliver.dart' show ItemExtentBuilder;
+import 'package:flutter/src/rendering/viewport.dart' show ScrollCacheExtent;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor, SystemMouseCursors;
+import 'package:flutter/src/widgets/basic.dart' show Align, Directionality, KeyedSubtree, MouseRegion, Positioned, SliverPadding, SliverToBoxAdapter, Stack;
+import 'package:flutter/src/widgets/debug.dart' show debugCheckHasOverlay;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalObjectKey, IndexedWidgetBuilder, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/reorderable_list.dart' show ReorderCallback, ReorderDragBoundaryProvider, ReorderItemProxyDecorator, ReorderableDelayedDragStartListener, ReorderableDragStartListener, SliverReorderableList;
+import 'package:flutter/src/widgets/scroll_configuration.dart' show ScrollViewKeyboardDismissBehavior;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_physics.dart' show ScrollPhysics;
+import 'package:flutter/src/widgets/scroll_view.dart' show CustomScrollView;
+import 'package:flutter/src/widgets/transitions.dart' show AnimatedBuilder, ListenableBuilder;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateMouseCursor, WidgetStateProperty, WidgetStatesConstraint;
+import 'package:listen/listen.dart' show ValueNotifier;
+import 'package:meta/meta.dart' show optionalTypeArgs;
 
 /// A list whose items the user can interactively reorder by dragging.
 ///

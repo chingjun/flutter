@@ -7,10 +7,9 @@ library;
 
 import 'dart:math' as math;
 
-import 'package:flutter/foundation.dart';
-
-import 'simulation.dart';
-import 'utils.dart';
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/physics/simulation.dart' show Simulation;
+import 'package:flutter/src/physics/utils.dart' show nearZero;
 
 export 'tolerance.dart' show Tolerance;
 

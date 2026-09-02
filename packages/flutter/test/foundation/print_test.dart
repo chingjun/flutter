@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:fake_async/fake_async.dart';
-import 'package:flutter/foundation.dart';
+import 'package:flutter/src/foundation/print.dart' show debugPrintSynchronously, debugPrintThrottled;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'capture_output.dart';

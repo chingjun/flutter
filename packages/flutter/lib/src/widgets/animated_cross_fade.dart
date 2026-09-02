@@ -8,14 +8,21 @@
 /// @docImport 'implicit_animations.dart';
 library;
 
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Clip, VoidCallback;
 
-import 'animated_size.dart';
-import 'basic.dart';
-import 'focus_scope.dart';
-import 'framework.dart';
-import 'ticker_provider.dart';
-import 'transitions.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation, AnimationStatus;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves;
+import 'package:flutter/src/animation/tween.dart' show CurveTween, Tween;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty, EnumProperty, IntProperty;
+import 'package:flutter/src/foundation/key.dart' show Key, ValueKey;
+import 'package:flutter/src/painting/alignment.dart' show Alignment, AlignmentGeometry;
+import 'package:flutter/src/widgets/animated_size.dart' show AnimatedSize;
+import 'package:flutter/src/widgets/basic.dart' show ClipRect, ExcludeSemantics, IgnorePointer, Positioned, Stack;
+import 'package:flutter/src/widgets/focus_scope.dart' show ExcludeFocus;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/ticker_provider.dart' show TickerMode, TickerProviderStateMixin;
+import 'package:flutter/src/widgets/transitions.dart' show FadeTransition;
 
 // Examples can assume:
 // bool _first = false;

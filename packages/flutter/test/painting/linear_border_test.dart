@@ -2,7 +2,11 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/painting.dart';
+import 'dart:ui' show Canvas, Color, Rect, TextDirection;
+
+import 'package:flutter/src/painting/borders.dart' show BorderSide, OutlinedBorder;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/linear_border.dart' show LinearBorder, LinearBorderEdge;
 import 'package:flutter_test/flutter_test.dart';
 
 const Rect canvasRect = Rect.fromLTWH(0, 0, 100, 100);

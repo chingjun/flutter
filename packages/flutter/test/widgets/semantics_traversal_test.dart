@@ -4,9 +4,13 @@
 
 import 'dart:collection';
 import 'dart:math' as math;
+import 'dart:ui' show Rect, Size, TextDirection;
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/rendering/custom_layout.dart' show MultiChildLayoutDelegate;
+import 'package:flutter/src/semantics/semantics.dart' show debugResetSemanticsIdCounter;
+import 'package:flutter/src/widgets/basic.dart' show CustomMultiChildLayout, Directionality, LayoutId, Semantics, SizedBox;
+import 'package:flutter/src/widgets/framework.dart' show Widget;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'semantics_tester.dart';

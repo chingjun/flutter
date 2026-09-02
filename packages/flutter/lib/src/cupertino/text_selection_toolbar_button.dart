@@ -3,13 +3,23 @@
 // found in the LICENSE file.
 
 import 'dart:math';
+import 'dart:ui' show Canvas, Color, FontWeight, Offset, Paint, PaintingStyle, Path, Radius, Size, StrokeCap, StrokeJoin, VoidCallback;
 
-import 'package:flutter/widgets.dart';
-
-import 'button.dart';
-import 'colors.dart';
-import 'debug.dart';
-import 'localizations.dart';
+import 'package:flutter/src/cupertino/button.dart' show CupertinoButton;
+import 'package:flutter/src/cupertino/colors.dart' show CupertinoColors, CupertinoDynamicColor;
+import 'package:flutter/src/cupertino/debug.dart' show debugCheckHasCupertinoLocalizations;
+import 'package:flutter/src/cupertino/localizations.dart' show CupertinoLocalizations;
+import 'package:flutter/src/gestures/tap.dart' show TapDownDetails, TapUpDetails;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/text_painter.dart' show TextOverflow;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/custom_paint.dart' show CustomPainter;
+import 'package:flutter/src/widgets/basic.dart' show CustomPaint, SizedBox;
+import 'package:flutter/src/widgets/context_menu_button_item.dart' show ContextMenuButtonItem, ContextMenuButtonType;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 const TextStyle _kToolbarButtonFontStyle = TextStyle(
   inherit: false,

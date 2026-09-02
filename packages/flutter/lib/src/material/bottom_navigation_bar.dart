@@ -9,18 +9,45 @@ library;
 
 import 'dart:collection' show Queue;
 import 'dart:math' as math;
+import 'dart:ui' show Brightness, Canvas, Color, Offset, Paint, Rect, Size, TextDirection, VoidCallback;
 
-import 'package:flutter/widgets.dart';
-import 'package:vector_math/vector_math_64.dart' show Vector3;
-
-import 'bottom_navigation_bar_theme.dart';
-import 'constants.dart';
-import 'debug.dart';
-import 'ink_well.dart';
-import 'material.dart';
-import 'material_localizations.dart';
-import 'theme.dart';
-import 'tooltip.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation, AnimationStatus;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/animations.dart' show CurvedAnimation;
+import 'package:flutter/src/animation/curves.dart' show Curves;
+import 'package:flutter/src/animation/tween.dart' show Animatable, ColorTween, Tween;
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/material/bottom_navigation_bar_theme.dart' show BottomNavigationBarTheme, BottomNavigationBarThemeData;
+import 'package:flutter/src/material/constants.dart' show kBottomNavigationBarHeight;
+import 'package:flutter/src/material/debug.dart' show debugCheckHasMaterialLocalizations;
+import 'package:flutter/src/material/ink_well.dart' show InkResponse;
+import 'package:flutter/src/material/material.dart' show Material, MaterialType;
+import 'package:flutter/src/material/material_localizations.dart' show MaterialLocalizations;
+import 'package:flutter/src/material/theme.dart' show Theme, kThemeAnimationDuration;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/material/tooltip.dart' show Tooltip;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/text_painter.dart' show TextOverflow;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/rendering/custom_paint.dart' show CustomPainter;
+import 'package:flutter/src/rendering/flex.dart' show MainAxisAlignment, MainAxisSize;
+import 'package:flutter/src/scheduler/ticker.dart' show TickerProvider;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor;
+import 'package:flutter/src/widgets/basic.dart' show Align, Column, ConstrainedBox, CustomPaint, Directionality, Expanded, Flexible, IntrinsicWidth, Padding, Row, Semantics, SizedBox, Stack, Transform;
+import 'package:flutter/src/widgets/bottom_navigation_bar_item.dart' show BottomNavigationBarItem;
+import 'package:flutter/src/widgets/debug.dart' show debugCheckHasDirectionality, debugCheckHasMediaQuery, debugCheckHasOverlay;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/icon_theme.dart' show IconTheme;
+import 'package:flutter/src/widgets/icon_theme_data.dart' show IconThemeData;
+import 'package:flutter/src/widgets/indexed_stack.dart' show Visibility;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, Orientation;
+import 'package:flutter/src/widgets/text.dart' show DefaultTextStyle, Text;
+import 'package:flutter/src/widgets/ticker_provider.dart' show TickerProviderStateMixin;
+import 'package:flutter/src/widgets/transitions.dart' show FadeTransition;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateMouseCursor, WidgetStateProperty;
+import 'package:vector_math/vector_math_64.dart' show Matrix4, Vector3;
 
 /// Defines the layout and behavior of a [BottomNavigationBar].
 ///

@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/src/foundation/basic_types.dart' show CachingIterable;
 import 'package:flutter_test/flutter_test.dart';
 
 int yieldCount = 0;

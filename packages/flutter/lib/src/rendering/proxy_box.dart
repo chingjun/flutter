@@ -8,20 +8,44 @@
 /// @docImport 'sliver.dart';
 library;
 
+import 'dart:async' show Future;
 import 'dart:ui' as ui show Color, Gradient, Image, ImageFilter;
+import 'dart:ui' show BlendMode, Canvas, Clip, Color, FilterQuality, Locale, Offset, Paint, PaintingStyle, Path, RRect, RSuperellipse, Rect, SemanticsAction, Shader, Size, TextBaseline, TextDirection, TileMode, VoidCallback;
 
-import 'package:flutter/animation.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/semantics.dart';
-import 'package:flutter/services.dart';
-
-import 'binding.dart';
-import 'box.dart';
-import 'image_filter_config.dart';
-import 'layer.dart';
-import 'layout_helper.dart';
-import 'object.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorSummary, FlutterError;
+import 'package:flutter/src/foundation/collections.dart' show setEquals;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsNode, DiagnosticsProperty, DiagnosticsTreeStyle, DoubleProperty, EnumProperty, FlagProperty, FlagsSummary, IterableProperty, MessageProperty, PercentProperty;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/gestures/drag_details.dart' show DragUpdateDetails, GestureDragUpdateCallback;
+import 'package:flutter/src/gestures/events.dart' show PointerCancelEvent, PointerDownEvent, PointerEvent, PointerHoverEvent, PointerMoveEvent, PointerPanZoomEndEvent, PointerPanZoomStartEvent, PointerPanZoomUpdateEvent, PointerSignalEvent, PointerUpEvent;
+import 'package:flutter/src/gestures/hit_test.dart' show HitTestEntry;
+import 'package:flutter/src/gestures/long_press.dart' show GestureLongPressCallback;
+import 'package:flutter/src/gestures/tap.dart' show GestureTapCallback;
+import 'package:flutter/src/painting/alignment.dart' show Alignment, AlignmentGeometry;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius, BorderRadiusGeometry;
+import 'package:flutter/src/painting/borders.dart' show ShapeBorder;
+import 'package:flutter/src/painting/box_border.dart' show BoxShape;
+import 'package:flutter/src/painting/box_fit.dart' show BoxFit, FittedSizes, applyBoxFit;
+import 'package:flutter/src/painting/colors.dart' show ColorProperty;
+import 'package:flutter/src/painting/debug.dart' show debugDisableShadows;
+import 'package:flutter/src/painting/decoration.dart' show BoxPainter, Decoration;
+import 'package:flutter/src/painting/image_provider.dart' show ImageConfiguration;
+import 'package:flutter/src/painting/matrix_utils.dart' show MatrixUtils, TransformProperty;
+import 'package:flutter/src/painting/text_painter.dart' show TextPainter;
+import 'package:flutter/src/painting/text_span.dart' show TextSpan;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, BoxHitTestEntry, BoxHitTestResult, RenderBox;
+import 'package:flutter/src/rendering/image_filter_config.dart' show ImageFilterConfig, ImageFilterContext;
+import 'package:flutter/src/rendering/layer.dart' show AnnotatedRegionLayer, BackdropFilterLayer, BackdropKey, ClipPathLayer, ClipRRectLayer, ClipRSuperellipseLayer, ClipRectLayer, FollowerLayer, ImageFilterLayer, LayerHandle, LayerLink, LeaderLayer, OffsetLayer, OpacityLayer, ShaderMaskLayer, TransformLayer;
+import 'package:flutter/src/rendering/layout_helper.dart' show ChildLayoutHelper, ChildLayouter;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, ParentData, PipelineOwner, RenderObject, RenderObjectVisitor, RenderObjectWithChildMixin, SemanticsAnnotationsMixin;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsConfiguration, SemanticsProperties;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor;
+import 'package:flutter/src/services/mouse_tracking.dart' show MouseTrackerAnnotation, PointerEnterEventListener, PointerExitEventListener, PointerHoverEventListener;
+import 'package:listen/listen.dart' show Listenable;
+import 'package:meta/meta.dart' show optionalTypeArgs, protected;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 export 'package:flutter/gestures.dart'
     show PointerCancelEvent, PointerDownEvent, PointerEvent, PointerMoveEvent, PointerUpEvent;

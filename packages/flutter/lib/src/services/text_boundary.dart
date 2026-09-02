@@ -3,10 +3,10 @@
 // found in the LICENSE file.
 
 import 'dart:math';
+import 'dart:ui' show TextPosition, TextRange;
 
 import 'package:characters/characters.dart' show CharacterRange;
-
-import 'text_layout_metrics.dart';
+import 'package:flutter/src/services/text_layout_metrics.dart' show TextLayoutMetrics;
 
 // Examples can assume:
 // late TextLayoutMetrics textLayout;

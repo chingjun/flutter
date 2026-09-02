@@ -10,15 +10,28 @@
 /// @docImport 'switch.dart';
 library;
 
-import 'package:flutter/cupertino.dart';
+import 'dart:ui' show Canvas, Color, Offset, Paint, PaintingStyle, Rect, Size;
 
-import 'color_scheme.dart';
-import 'colors.dart';
-import 'constants.dart';
-import 'debug.dart';
-import 'radio_theme.dart';
-import 'theme.dart';
-import 'theme_data.dart';
+import 'package:flutter/src/cupertino/radio.dart' show CupertinoRadio;
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/material/color_scheme.dart' show ColorScheme;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/constants.dart' show kMinInteractiveDimension, kRadialReactionAlpha, kRadialReactionRadius;
+import 'package:flutter/src/material/debug.dart' show debugCheckHasMaterial;
+import 'package:flutter/src/material/radio_theme.dart' show RadioTheme, RadioThemeData;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show MaterialTapTargetSize, ThemeData, VisualDensity;
+import 'package:flutter/src/painting/borders.dart' show BorderSide;
+import 'package:flutter/src/painting/circle_border.dart' show CircleBorder;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor;
+import 'package:flutter/src/widgets/basic.dart' show CustomPaint;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/radio_group.dart' show RadioClient, RadioGroup, RadioGroupRegistry;
+import 'package:flutter/src/widgets/raw_radio.dart' show RawRadio;
+import 'package:flutter/src/widgets/toggleable.dart' show ToggleablePainter, ToggleableStateMixin;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateMouseCursor, WidgetStateProperty;
 
 // Examples can assume:
 // late BuildContext context;

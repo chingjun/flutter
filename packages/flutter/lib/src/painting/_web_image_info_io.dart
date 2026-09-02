@@ -4,7 +4,7 @@
 
 import 'dart:ui' as ui;
 
-import 'image_stream.dart';
+import 'package:flutter/src/painting/image_stream.dart' show ImageInfo;
 
 /// An [ImageInfo] object indicating that the image can only be displayed in
 /// an HTML element, and no [dart:ui.Image] can be created for it.

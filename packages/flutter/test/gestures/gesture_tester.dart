@@ -3,7 +3,8 @@
 // found in the LICENSE file.
 
 import 'package:fake_async/fake_async.dart';
-import 'package:flutter/gestures.dart';
+import 'package:flutter/src/gestures/binding.dart' show GestureBinding;
+import 'package:flutter/src/gestures/events.dart' show PointerEvent;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:leak_tracker_flutter_testing/leak_tracker_flutter_testing.dart';
 import 'package:meta/meta.dart';

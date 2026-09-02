@@ -8,10 +8,10 @@
 /// @docImport 'box_decoration.dart';
 library;
 
-import 'package:flutter/foundation.dart';
+import 'dart:ui' show RRect, RSuperellipse, Radius, Rect, TextDirection;
 
-import 'basic_types.dart';
-import 'debug.dart';
+import 'package:flutter/src/painting/debug.dart' show debugCheckCanResolveTextDirection;
+import 'package:meta/meta.dart' show immutable;
 
 /// Base class for [BorderRadius] that allows for text-direction aware resolution.
 ///

@@ -5,13 +5,13 @@
 /// @docImport 'hardware_keyboard.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-
-import 'keyboard_maps.g.dart';
-import 'raw_keyboard.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty;
+import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey, PhysicalKeyboardKey;
+import 'package:flutter/src/services/keyboard_maps.g.dart' show kWebLocationMap, kWebToLogicalKey, kWebToPhysicalKey;
+import 'package:flutter/src/services/raw_keyboard.dart' show KeyboardSide, ModifierKey, RawKeyEventData;
+import 'package:meta/meta.dart' show immutable;
 
 export 'package:flutter/foundation.dart' show DiagnosticPropertiesBuilder;
-
 export 'keyboard_key.g.dart' show LogicalKeyboardKey, PhysicalKeyboardKey;
 
 String? _unicodeChar(String key) {

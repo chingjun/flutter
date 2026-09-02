@@ -10,14 +10,23 @@
 library;
 
 import 'dart:ui' as ui show Rect, SemanticsAction, SemanticsActionEvent;
+import 'dart:ui' show Offset;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-
-import 'editable_text.dart';
-import 'framework.dart';
-import 'routes.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/constants.dart' show kReleaseMode;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty, FlagProperty;
+import 'package:flutter/src/foundation/print.dart' show debugPrint;
+import 'package:flutter/src/gestures/arena.dart' show GestureArenaMember, GestureDisposition;
+import 'package:flutter/src/gestures/binding.dart' show GestureBinding;
+import 'package:flutter/src/gestures/events.dart' show PointerDownEvent, PointerEvent, PointerUpEvent;
+import 'package:flutter/src/gestures/hit_test.dart' show HitTestEntry, HitTestTarget;
+import 'package:flutter/src/rendering/box.dart' show BoxHitTestEntry, BoxHitTestResult;
+import 'package:flutter/src/rendering/object.dart' show Constraints, PipelineOwner, RenderObject;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior, RenderProxyBoxWithHitTestBehavior;
+import 'package:flutter/src/semantics/binding.dart' show SemanticsBinding;
+import 'package:flutter/src/widgets/editable_text.dart' show EditableText;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, SingleChildRenderObjectWidget, Widget;
+import 'package:flutter/src/widgets/routes.dart' show ModalRoute;
 
 // Enable if you want verbose logging about tap region changes.
 const bool _kDebugTapRegion = false;

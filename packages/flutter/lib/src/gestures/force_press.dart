@@ -2,14 +2,15 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
+import 'dart:ui' show Offset, clampDouble;
 
-import 'events.dart';
-import 'gesture_details.dart';
-import 'recognizer.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsProperty, DoubleProperty;
+import 'package:flutter/src/gestures/arena.dart' show GestureDisposition;
+import 'package:flutter/src/gestures/events.dart' show PointerDownEvent, PointerEvent, PointerMoveEvent, computeHitSlop;
+import 'package:flutter/src/gestures/gesture_details.dart' show PositionedGestureDetails;
+import 'package:flutter/src/gestures/recognizer.dart' show OffsetPair, OneSequenceGestureRecognizer;
 
 export 'dart:ui' show Offset, PointerDeviceKind;
-
 export 'events.dart' show PointerDownEvent, PointerEvent;
 
 enum _ForceState {

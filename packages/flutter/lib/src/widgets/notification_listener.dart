@@ -10,8 +10,8 @@
 /// @docImport 'size_changed_layout_notifier.dart';
 library;
 
-import 'framework.dart';
-import 'notification_core.dart';
+import 'package:flutter/src/widgets/framework.dart' show Element, NotifiableElementMixin, ProxyElement, ProxyWidget;
+import 'package:flutter/src/widgets/notification_core.dart' show Notification;
 
 export 'notification_core.dart';
 

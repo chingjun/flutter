@@ -2,9 +2,11 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
+import 'dart:async' show Future;
 
-import 'system_channels.dart';
+import 'package:flutter/src/services/platform_channel.dart' show MethodChannel;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:meta/meta.dart' show immutable, visibleForTesting;
 
 /// A data structure describing text processing actions.
 @immutable

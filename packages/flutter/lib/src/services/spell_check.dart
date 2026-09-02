@@ -5,10 +5,13 @@
 /// @docImport 'package:flutter/widgets.dart';
 library;
 
-import 'dart:ui';
+import 'dart:async' show Future;
+import 'dart:ui' show Locale, TextRange;
 
-import 'package:flutter/foundation.dart';
-import 'system_channels.dart';
+import 'package:flutter/src/foundation/collections.dart' show listEquals;
+import 'package:flutter/src/services/platform_channel.dart' show MethodChannel;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:meta/meta.dart' show immutable;
 
 /// A data structure representing a range of misspelled text and the suggested
 /// replacements for this range.

@@ -2,7 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/gestures.dart';
+import 'dart:ui' show Offset;
+
+import 'package:flutter/src/gestures/events.dart' show PointerDownEvent, PointerEvent, PointerMoveEvent, PointerUpEvent;
 
 const List<PointerEvent> velocityEventData = <PointerEvent>[
   PointerDownEvent(

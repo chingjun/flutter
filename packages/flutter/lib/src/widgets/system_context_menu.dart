@@ -5,17 +5,20 @@
 /// @docImport 'package:flutter/material.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
+import 'dart:ui' show Rect, VoidCallback;
 
-import 'basic.dart';
-import 'context_menu_button_item.dart';
-import 'editable_text.dart';
-import 'framework.dart';
-import 'localizations.dart';
-import 'media_query.dart';
-import 'text_selection_toolbar_anchors.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsProperty, ObjectFlagProperty, StringProperty;
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/services/text_input.dart' show IOSSystemContextMenuItemData, IOSSystemContextMenuItemDataCopy, IOSSystemContextMenuItemDataCustom, IOSSystemContextMenuItemDataCut, IOSSystemContextMenuItemDataLiveText, IOSSystemContextMenuItemDataLookUp, IOSSystemContextMenuItemDataPaste, IOSSystemContextMenuItemDataSearchWeb, IOSSystemContextMenuItemDataSelectAll, IOSSystemContextMenuItemDataShare, SystemContextMenuController;
+import 'package:flutter/src/widgets/basic.dart' show SizedBox;
+import 'package:flutter/src/widgets/context_menu_button_item.dart' show ContextMenuButtonItem, ContextMenuButtonType;
+import 'package:flutter/src/widgets/editable_text.dart' show EditableTextState;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/localizations.dart' show WidgetsLocalizations;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/text_selection_toolbar_anchors.dart' show TextSelectionToolbarAnchors;
+import 'package:meta/meta.dart' show immutable;
 
 /// Displays the system context menu on top of the Flutter view.
 ///

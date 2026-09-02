@@ -5,7 +5,7 @@
 /// @docImport 'package:flutter/widgets.dart';
 library;
 
-import 'dart:ui';
+import 'dart:ui' show FlutterView, PlatformDispatcher, Scene, SemanticsUpdate, Size;
 
 import 'package:flutter_test/flutter_test.dart';
 

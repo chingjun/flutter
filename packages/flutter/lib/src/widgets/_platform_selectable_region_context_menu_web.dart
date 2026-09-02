@@ -3,15 +3,20 @@
 // found in the LICENSE file.
 
 import 'dart:js_interop';
+import 'dart:ui' show Offset;
 import 'dart:ui_web' as ui_web;
 
-import 'package:flutter/rendering.dart';
+import 'package:flutter/src/painting/matrix_utils.dart' show MatrixUtils;
+import 'package:flutter/src/rendering/selection.dart' show SelectWordSelectionEvent;
+import 'package:flutter/src/rendering/stack.dart' show StackFit;
+import 'package:flutter/src/widgets/basic.dart' show Positioned, Stack;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/platform_view.dart' show HtmlElementView;
+import 'package:flutter/src/widgets/selection_container.dart' show SelectionContainerDelegate;
+import 'package:meta/meta.dart' show visibleForTesting;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 import '../web.dart' as web;
-import 'basic.dart';
-import 'framework.dart';
-import 'platform_view.dart';
-import 'selection_container.dart';
 
 const String _viewType = 'Browser__WebContextMenuViewType__';
 const String _kClassName = 'web-selectable-region-context-menu';

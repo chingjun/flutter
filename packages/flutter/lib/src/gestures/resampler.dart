@@ -3,8 +3,9 @@
 // found in the LICENSE file.
 
 import 'dart:collection';
+import 'dart:ui' show Offset;
 
-import 'events.dart';
+import 'package:flutter/src/gestures/events.dart' show PointerEvent, PointerHoverEvent, PointerMoveEvent, PointerRemovedEvent, PointerUpEvent;
 
 export 'events.dart' show PointerEvent;
 

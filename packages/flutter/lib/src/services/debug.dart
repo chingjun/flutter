@@ -6,9 +6,8 @@
 /// @docImport 'service_extensions.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-
-import 'hardware_keyboard.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/services/hardware_keyboard.dart' show KeyDataTransitMode;
 
 export 'hardware_keyboard.dart' show KeyDataTransitMode;
 

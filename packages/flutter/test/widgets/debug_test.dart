@@ -2,10 +2,30 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:ui';
+import 'dart:ui' show BlendMode, Color, ColorFilter, ImageFilter, Rect, TextDirection, TileMode;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticsProperty, DiagnosticsTreeStyle;
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/painting/box_border.dart' show Border;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/gradient.dart' show RadialGradient;
+import 'package:flutter/src/rendering/layer.dart' show LayerLink;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/widgets/app.dart' show WidgetsApp;
+import 'package:flutter/src/widgets/basic.dart' show BackdropFilter, Builder, Column, CompositedTransformFollower, Directionality, Flex, Opacity, ShaderMask, SizedBox, Stack;
+import 'package:flutter/src/widgets/color_filter.dart' show ColorFiltered;
+import 'package:flutter/src/widgets/container.dart' show Container, DecoratedBox;
+import 'package:flutter/src/widgets/debug.dart' show debugCheckHasMediaQuery, debugCheckHasWidgetsLocalizations;
+import 'package:flutter/src/widgets/debug_flags.dart' show debugAssertAllWidgetVarsUnset, debugHighlightDeprecatedWidgets, debugPaintFocusBoxes;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/focus_scope.dart' show Focus;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, GlobalKey, Widget, debugChildrenHaveDuplicateKeys, debugItemsHaveDuplicateKeys, debugWidgetBuilderValue;
+import 'package:flutter/src/widgets/image_filter.dart' show ImageFiltered;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/table.dart' show debugCheckHasTable;
+import 'package:flutter/src/widgets/view.dart' show View;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

@@ -5,11 +5,12 @@
 /// @docImport 'package:flutter/material.dart';
 library;
 
-import 'package:flutter/foundation.dart';
+import 'dart:ui' show Offset, Rect, Size;
 
-import 'box.dart';
-import 'layer.dart';
-import 'object.dart';
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/layer.dart' show PerformanceOverlayLayer;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext;
+import 'package:meta/meta.dart' show protected;
 
 /// The options that control whether the performance overlay displays certain
 /// aspects of the compositor.

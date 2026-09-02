@@ -7,12 +7,23 @@
 library;
 
 import 'dart:ui' as ui show ParagraphBuilder, PlaceholderAlignment;
+import 'dart:ui' show Offset, Size, TextBaseline, TextPosition;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-
-import 'basic.dart';
-import 'framework.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty;
+import 'package:flutter/src/painting/basic_types.dart' show RenderComparison;
+import 'package:flutter/src/painting/inline_span.dart' show Accumulator, InlineSpan, InlineSpanVisitor;
+import 'package:flutter/src/painting/placeholder_span.dart' show PlaceholderSpan;
+import 'package:flutter/src/painting/text_painter.dart' show PlaceholderDimensions, kDefaultFontSize;
+import 'package:flutter/src/painting/text_scaler.dart' show TextScaler;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, BoxHitTestResult, RenderBox;
+import 'package:flutter/src/rendering/layer.dart' show TransformLayer;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, RenderObject, RenderObjectWithChildMixin;
+import 'package:flutter/src/rendering/paragraph.dart' show PlaceholderSpanIndexSemanticsTag, TextParentData;
+import 'package:flutter/src/widgets/basic.dart' show Semantics;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, ParentDataWidget, SingleChildRenderObjectWidget, Widget;
+import 'package:flutter/src/widgets/rich_text.dart' show RichText;
+import 'package:meta/meta.dart' show immutable;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 // Examples can assume:
 // late WidgetSpan myWidgetSpan;

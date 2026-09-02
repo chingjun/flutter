@@ -7,19 +7,20 @@
 /// @docImport 'multitap.dart';
 library;
 
-import 'package:flutter/foundation.dart';
+import 'dart:ui' show Offset, PointerDeviceKind;
 
-import 'arena.dart';
-import 'constants.dart';
-import 'events.dart';
-import 'gesture_details.dart';
-import 'recognizer.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsProperty, EnumProperty, FlagProperty, IntProperty;
+import 'package:flutter/src/gestures/arena.dart' show GestureDisposition;
+import 'package:flutter/src/gestures/constants.dart' show kPressTimeout;
+import 'package:flutter/src/gestures/events.dart' show PointerCancelEvent, PointerDownEvent, PointerEvent, PointerMoveEvent, PointerUpEvent, kPrimaryButton, kSecondaryButton, kTertiaryButton;
+import 'package:flutter/src/gestures/gesture_details.dart' show PositionedGestureDetails;
+import 'package:flutter/src/gestures/recognizer.dart' show GestureRecognizerState, PrimaryPointerGestureRecognizer;
+import 'package:meta/meta.dart' show protected;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 export 'dart:ui' show Offset, PointerDeviceKind;
-
 export 'package:flutter/foundation.dart' show DiagnosticPropertiesBuilder;
 export 'package:vector_math/vector_math_64.dart' show Matrix4;
-
 export 'arena.dart' show GestureDisposition;
 export 'events.dart' show PointerCancelEvent, PointerDownEvent, PointerEvent, PointerUpEvent;
 

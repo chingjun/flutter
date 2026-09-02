@@ -16,9 +16,8 @@
 /// @docImport 'time_picker_theme.dart';
 library;
 
-import 'package:flutter/widgets.dart';
-
-import 'input_border.dart';
+import 'package:flutter/src/material/input_border.dart' show InputBorder, OutlineInputBorder, UnderlineInputBorder;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetPropertyResolver, WidgetState, WidgetStateBorderSide, WidgetStateColor, WidgetStateMap, WidgetStateMapper, WidgetStateMouseCursor, WidgetStateOutlinedBorder, WidgetStateProperty, WidgetStatePropertyAll, WidgetStateTextStyle, WidgetStatesController;
 
 // Examples can assume:
 // late BuildContext context;

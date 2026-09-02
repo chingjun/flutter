@@ -2,10 +2,22 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/cupertino.dart';
+import 'dart:ui' show Color;
 
-import 'page_transitions_theme.dart';
-import 'theme.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/cupertino/route.dart' show CupertinoPageTransitionsBuilder;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/material/page_transitions_theme.dart' show PageTransitionsTheme, ZoomPageTransitionsBuilder;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/scheduler/ticker.dart' show TickerFuture;
+import 'package:flutter/src/widgets/basic.dart' show Semantics;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget, WidgetBuilder;
+import 'package:flutter/src/widgets/navigator.dart' show Page, Route;
+import 'package:flutter/src/widgets/page_transitions_builder.dart' show PageTransitionsBuilder;
+import 'package:flutter/src/widgets/pages.dart' show PageRoute;
+import 'package:flutter/src/widgets/routes.dart' show ModalRoute, TransitionRoute;
+import 'package:flutter/src/widgets/transitions.dart' show DelegatedTransitionBuilder;
+import 'package:meta/meta.dart' show protected;
 
 /// A modal route that replaces the entire screen with a platform-adaptive
 /// transition.

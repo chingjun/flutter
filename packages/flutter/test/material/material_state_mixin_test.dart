@@ -3,8 +3,18 @@
 // found in the LICENSE file.
 
 import 'dart:async';
+import 'dart:ui' show Color;
 
-import 'package:flutter/material.dart';
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/material_state_mixin.dart' show MaterialStateMixin;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/widgets/basic.dart' show ColoredBox;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState;
 import 'package:flutter_test/flutter_test.dart';
 
 const Key key = Key('testContainer');

@@ -5,13 +5,13 @@
 /// @docImport 'monodrag.dart';
 library;
 
-import 'package:flutter/foundation.dart';
+import 'dart:ui' show Offset, PointerDeviceKind;
 
-import 'gesture_details.dart';
-import 'velocity_tracker.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsProperty, DoubleProperty, EnumProperty;
+import 'package:flutter/src/gestures/gesture_details.dart' show PositionedGestureDetails;
+import 'package:flutter/src/gestures/velocity_tracker.dart' show Velocity;
 
 export 'dart:ui' show Offset, PointerDeviceKind;
-
 export 'velocity_tracker.dart' show Velocity;
 
 /// Details object for callbacks that use [GestureDragDownCallback].

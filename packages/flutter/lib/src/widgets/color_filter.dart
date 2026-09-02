@@ -5,10 +5,14 @@
 /// @docImport 'basic.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show ColorFilter, Offset;
 
-import 'framework.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty;
+import 'package:flutter/src/rendering/layer.dart' show ColorFilterLayer;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, RenderObject;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderProxyBox;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, SingleChildRenderObjectWidget;
+import 'package:meta/meta.dart' show immutable;
 
 /// Applies a [ColorFilter] to its child.
 ///

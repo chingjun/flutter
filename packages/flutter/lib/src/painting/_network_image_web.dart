@@ -4,15 +4,21 @@
 
 import 'dart:async';
 import 'dart:js_interop';
+import 'dart:typed_data' show Uint8List;
 import 'dart:ui' as ui;
 
 import 'package:collection/collection.dart';
-import 'package:flutter/foundation.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, InformationCollector;
+import 'package:flutter/src/foundation/collections.dart' show mapEquals;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode, DiagnosticsProperty;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/foundation/synchronous_future.dart' show SynchronousFuture;
+import 'package:flutter/src/painting/_web_image_info_web.dart' show WebImageInfo;
+import 'package:flutter/src/painting/image_stream.dart' show ImageChunkEvent, ImageInfo, ImageStreamCompleter, ImageStreamListener, MultiFrameImageStreamCompleter, OneFrameImageStreamCompleter;
+import 'package:meta/meta.dart' show immutable, visibleForTesting;
 
 import '../web.dart' as web;
-import '_web_image_info_web.dart';
 import 'image_provider.dart' as image_provider;
-import 'image_stream.dart';
 
 /// The type for an overridable factory function for creating an HTTP request,
 /// used for testing purposes.

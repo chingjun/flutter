@@ -5,9 +5,11 @@
 /// @docImport 'package:flutter/widgets.dart';
 library;
 
-import 'package:flutter/foundation.dart';
+import 'dart:async' show Future;
 
-import 'system_channels.dart';
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/services/platform_channel.dart' show MethodChannel;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
 
 /// The possible values for a widget tree's content sensitivity.
 ///

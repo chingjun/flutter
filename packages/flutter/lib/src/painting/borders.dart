@@ -9,11 +9,13 @@ library;
 
 import 'dart:math' as math;
 import 'dart:ui' as ui show lerpDouble;
+import 'dart:ui' show Canvas, Color, Offset, Paint, PaintingStyle, Path, Rect, TextDirection;
 
-import 'package:flutter/foundation.dart';
-
-import 'basic_types.dart';
-import 'edge_insets.dart';
+import 'package:flutter/src/foundation/collections.dart' show listEquals;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsProperty, DoubleProperty, EnumProperty;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsGeometry;
+import 'package:meta/meta.dart' show immutable, protected;
 
 /// The style of line to draw for a [BorderSide] in a [Border].
 enum BorderStyle {

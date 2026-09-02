@@ -2,9 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show RRect, Radius, Rect, Size;
+
+import 'package:flutter/src/rendering/layer.dart' show AnnotatedRegionLayer, ClipRRectLayer, ClipRectLayer, ContainerLayer, OffsetLayer, TransformLayer;
+import 'package:flutter/src/widgets/annotated_region.dart' show AnnotatedRegion;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 void main() {
   group('$AnnotatedRegion find', () {

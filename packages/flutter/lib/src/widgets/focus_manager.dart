@@ -9,19 +9,34 @@
 library;
 
 import 'dart:async';
-import 'dart:ui';
+import 'dart:collection' show IterableExtensions;
+import 'dart:ui' show AppLifecycleState, Offset, PointerDeviceKind, Rect, SemanticsAction, SemanticsActionEvent, Size;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/semantics.dart';
-import 'package:flutter/services.dart';
-
-import 'binding.dart';
-import 'focus_scope.dart';
-import 'focus_traversal.dart';
-import 'framework.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, FlutterError, FlutterErrorDetails, InformationCollector;
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb, kReleaseMode;
+import 'package:flutter/src/foundation/debug.dart' show debugMaybeDispatchCreated, debugMaybeDispatchDisposed;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticableTreeMixin, DiagnosticsNode, DiagnosticsProperty, DiagnosticsTreeStyle, FlagProperty, IterableProperty, describeIdentity;
+import 'package:flutter/src/foundation/memory_allocations.dart' show kFlutterMemoryAllocationsEnabled;
+import 'package:flutter/src/foundation/observer_list.dart' show HashedObserverList;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/foundation/print.dart' show debugPrint;
+import 'package:flutter/src/gestures/binding.dart' show GestureBinding;
+import 'package:flutter/src/gestures/events.dart' show PointerEvent;
+import 'package:flutter/src/painting/matrix_utils.dart' show MatrixUtils;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding, SchedulerPhase;
+import 'package:flutter/src/semantics/binding.dart' show SemanticsBinding;
+import 'package:flutter/src/services/binding.dart' show ServicesBinding;
+import 'package:flutter/src/services/hardware_keyboard.dart' show KeyEvent, KeyMessage;
+import 'package:flutter/src/services/raw_keyboard.dart' show RawKeyEvent, RawKeyEventData;
+import 'package:flutter/src/services/raw_keyboard_android.dart' show RawKeyEventDataAndroid;
+import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding, WidgetsBindingObserver;
+import 'package:flutter/src/widgets/focus_scope.dart' show Focus;
+import 'package:flutter/src/widgets/focus_traversal.dart' show FocusTraversalGroup, TraversalDirection, TraversalEdgeBehavior;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element;
+import 'package:listen/listen.dart' show ChangeNotifier;
+import 'package:meta/meta.dart' show immutable, mustCallSuper, visibleForTesting;
 
 /// Setting to true will cause extensive logging to occur when focus changes occur.
 ///

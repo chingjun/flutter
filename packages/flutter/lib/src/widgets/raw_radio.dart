@@ -2,16 +2,17 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-
-import 'basic.dart';
-import 'focus_manager.dart';
-import 'framework.dart';
-import 'localizations.dart';
-import 'radio_group.dart';
-import 'ticker_provider.dart';
-import 'toggleable.dart';
-import 'widget_state.dart';
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor;
+import 'package:flutter/src/widgets/basic.dart' show Semantics;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/localizations.dart' show WidgetsLocalizations;
+import 'package:flutter/src/widgets/radio_group.dart' show RadioClient, RadioGroupRegistry;
+import 'package:flutter/src/widgets/ticker_provider.dart' show TickerProviderStateMixin;
+import 'package:flutter/src/widgets/toggleable.dart' show ToggleableStateMixin;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetStateProperty;
 
 /// Signature for [RawRadio.builder].
 ///

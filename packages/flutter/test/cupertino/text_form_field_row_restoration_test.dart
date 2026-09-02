@@ -2,7 +2,18 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/cupertino.dart';
+import 'dart:ui' show TextDirection;
+
+import 'package:flutter/src/cupertino/app.dart' show CupertinoApp;
+import 'package:flutter/src/cupertino/text_form_field_row.dart' show CupertinoTextFormFieldRow;
+import 'package:flutter/src/services/restoration.dart' show RestorationBucket;
+import 'package:flutter/src/widgets/basic.dart' show Align, Center, Directionality, SizedBox, StatefulBuilder;
+import 'package:flutter/src/widgets/form.dart' show AutovalidateMode, FormFieldState;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StateSetter, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/restoration.dart' show RestorationMixin;
+import 'package:flutter/src/widgets/restoration_properties.dart' show RestorableTextEditingController;
+import 'package:flutter/src/widgets/scrollable.dart' show Scrollable, ScrollableState;
 import 'package:flutter_test/flutter_test.dart';
 
 const String text = 'Hello World! How are you? Life is good!';

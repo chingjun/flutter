@@ -9,8 +9,10 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show Offset, Size;
 
-import 'package:flutter/rendering.dart';
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/rendering/shifted_box.dart' show SingleChildLayoutDelegate;
 
 /// A [SingleChildLayoutDelegate] for use with [CustomSingleChildLayout] that
 /// positions its child above [anchorAbove] if it fits, or otherwise below

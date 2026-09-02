@@ -3,10 +3,11 @@
 // found in the LICENSE file.
 
 import 'dart:math' as math;
+import 'dart:ui' show clampDouble;
 
-import 'package:flutter/foundation.dart';
-
-import 'simulation.dart';
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/physics/simulation.dart' show Simulation;
+import 'package:flutter/src/physics/tolerance.dart' show Tolerance;
 
 export 'tolerance.dart' show Tolerance;
 

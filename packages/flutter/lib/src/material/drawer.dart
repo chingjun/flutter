@@ -14,18 +14,37 @@
 /// @docImport 'scaffold.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart' show DragStartBehavior;
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Clip, Color, Radius, TextDirection;
 
-import 'colors.dart';
-import 'debug.dart';
-import 'drawer_theme.dart';
-import 'list_tile.dart';
-import 'list_tile_theme.dart';
-import 'material.dart';
-import 'material_localizations.dart';
-import 'theme.dart';
+import 'package:flutter/src/animation/animation.dart' show AnimationStatus;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/gestures/drag_details.dart' show DragDownDetails, DragEndDetails, DragUpdateDetails;
+import 'package:flutter/src/gestures/recognizer.dart' show DragStartBehavior;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/debug.dart' show debugCheckHasMaterialLocalizations;
+import 'package:flutter/src/material/drawer_theme.dart' show DrawerTheme, DrawerThemeData;
+import 'package:flutter/src/material/list_tile.dart' show ListTileStyle;
+import 'package:flutter/src/material/list_tile_theme.dart' show ListTileTheme;
+import 'package:flutter/src/material/material.dart' show Material;
+import 'package:flutter/src/material/material_localizations.dart' show MaterialLocalizations;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/painting/alignment.dart' show AlignmentDirectional;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadiusDirectional;
+import 'package:flutter/src/painting/borders.dart' show ShapeBorder;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior;
+import 'package:flutter/src/widgets/basic.dart' show Align, BlockSemantics, ColoredBox, ConstrainedBox, Directionality, ExcludeSemantics, LimitedBox, RepaintBoundary, Semantics, SizedBox, Stack;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusScopeNode;
+import 'package:flutter/src/widgets/focus_scope.dart' show FocusScope;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, InheritedWidget, State, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/routes.dart' show LocalHistoryEntry, ModalRoute;
+import 'package:flutter/src/widgets/ticker_provider.dart' show SingleTickerProviderStateMixin;
+import 'package:meta/meta.dart' show protected;
 
 // Examples can assume:
 // late BuildContext context;

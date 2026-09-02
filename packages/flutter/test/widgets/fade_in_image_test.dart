@@ -5,8 +5,17 @@
 import 'dart:async';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
+import 'dart:ui' show BlendMode, Color, FilterQuality, Size, TextDirection;
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/animation/curves.dart' show Curves;
+import 'package:flutter/src/painting/binding.dart' show PaintingBinding;
+import 'package:flutter/src/painting/box_fit.dart' show BoxFit;
+import 'package:flutter/src/painting/image_provider.dart' show DecoderBufferCallback, ImageConfiguration, ImageDecoderCallback, ImageProvider, MemoryImage, ResizeImage;
+import 'package:flutter/src/painting/image_stream.dart' show ImageInfo, ImageStreamCompleter, ImageStreamListener;
+import 'package:flutter/src/widgets/basic.dart' show Center, Directionality, RawImage, Semantics, SizedBox;
+import 'package:flutter/src/widgets/fade_in_image.dart' show FadeInImage;
+import 'package:flutter/src/widgets/framework.dart' show ComponentElement, Element, State, StatefulElement;
+import 'package:flutter/src/widgets/image.dart' show Image;
 import 'package:flutter_test/flutter_test.dart';
 
 import '../image_data.dart';

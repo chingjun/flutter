@@ -13,20 +13,39 @@ library;
 import 'dart:async' show Timer;
 import 'dart:math' as math;
 import 'dart:ui' as ui;
+import 'dart:ui' show Canvas, Clip, Color, FilterQuality, Offset, Paint, PaintingStyle, Rect, Size, TextDirection, VoidCallback, clampDouble;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/physics.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/scheduler.dart';
-
-import 'basic.dart';
-import 'framework.dart';
-import 'image_filter.dart';
-import 'media_query.dart';
-import 'notification_listener.dart';
-import 'scroll_notification.dart';
-import 'ticker_provider.dart';
-import 'transitions.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation, AnimationStatus;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/animations.dart' show CurvedAnimation;
+import 'package:flutter/src/animation/curves.dart' show Curves;
+import 'package:flutter/src/animation/tween.dart' show Tween;
+import 'package:flutter/src/foundation/constants.dart' show precisionErrorTolerance;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, EnumProperty, MessageProperty;
+import 'package:flutter/src/foundation/memory_allocations.dart' show kFlutterMemoryAllocationsEnabled;
+import 'package:flutter/src/painting/alignment.dart' show AlignmentDirectional, AlignmentGeometry;
+import 'package:flutter/src/painting/basic_types.dart' show Axis, AxisDirection, axisDirectionToAxis;
+import 'package:flutter/src/painting/colors.dart' show ColorProperty;
+import 'package:flutter/src/physics/simulation.dart' show Simulation;
+import 'package:flutter/src/physics/spring_simulation.dart' show SpringDescription, SpringSimulation;
+import 'package:flutter/src/physics/tolerance.dart' show Tolerance;
+import 'package:flutter/src/physics/utils.dart' show nearEqual;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/custom_paint.dart' show CustomPainter;
+import 'package:flutter/src/rendering/sliver.dart' show GrowthDirection, applyGrowthDirectionToAxisDirection;
+import 'package:flutter/src/scheduler/ticker.dart' show Ticker, TickerProvider;
+import 'package:flutter/src/widgets/basic.dart' show ClipRect, CustomPaint, Directionality, RepaintBoundary, SizedBox, Transform;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/image_filter.dart' show ImageFiltered;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/notification_core.dart' show Notification;
+import 'package:flutter/src/widgets/notification_listener.dart' show NotificationListener;
+import 'package:flutter/src/widgets/scroll_notification.dart' show OverscrollNotification, ScrollEndNotification, ScrollNotification, ScrollNotificationPredicate, ScrollStartNotification, ScrollUpdateNotification, ViewportNotificationMixin, defaultScrollNotificationPredicate;
+import 'package:flutter/src/widgets/ticker_provider.dart' show TickerProviderStateMixin;
+import 'package:flutter/src/widgets/transitions.dart' show AnimatedBuilder;
+import 'package:listen/listen.dart' show ChangeNotifier, Listenable, ValueNotifier;
+import 'package:meta/meta.dart' show protected, visibleForTesting;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 /// A visual indication that a scroll view has overscrolled.
 ///

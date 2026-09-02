@@ -7,7 +7,8 @@ import 'dart:isolate';
 
 import 'package:file/file.dart';
 import 'package:file/local.dart';
-import 'package:flutter/foundation.dart';
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/isolates.dart' show compute;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:platform/platform.dart';
 

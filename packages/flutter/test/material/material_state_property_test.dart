@@ -2,7 +2,10 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/material.dart';
+import 'dart:ui' show Color;
+
+import 'package:flutter/src/material/material_state.dart' show MaterialState, MaterialStateProperty, MaterialStatePropertyAll;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

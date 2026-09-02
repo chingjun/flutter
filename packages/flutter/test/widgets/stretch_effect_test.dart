@@ -8,8 +8,14 @@
 library;
 
 import 'dart:ui' as ui;
+import 'dart:ui' show Color, TextDirection;
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/widgets/basic.dart' show Directionality, Stack;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show Widget;
+import 'package:flutter/src/widgets/overscroll_indicator.dart' show StretchEffect;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

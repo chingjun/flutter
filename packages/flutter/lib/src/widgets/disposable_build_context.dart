@@ -2,9 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-
-import 'framework.dart';
+import 'package:flutter/src/foundation/debug.dart' show debugMaybeDispatchCreated, debugMaybeDispatchDisposed;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State;
+import 'package:meta/meta.dart' show optionalTypeArgs;
 
 /// Provides non-leaking access to a [BuildContext].
 ///

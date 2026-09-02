@@ -12,9 +12,8 @@
 /// @docImport 'tween_animation_builder.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-
-import 'framework.dart';
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:listen/listen.dart' show ValueListenable;
 
 /// Builds a [Widget] when given a concrete value of a [ValueListenable<T>].
 ///

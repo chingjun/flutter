@@ -14,12 +14,12 @@
 /// @docImport 'viewport.dart';
 library;
 
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-
-import 'framework.dart';
-import 'notification_listener.dart';
-import 'scroll_metrics.dart';
+import 'package:flutter/src/gestures/drag_details.dart' show DragEndDetails, DragStartDetails, DragUpdateDetails;
+import 'package:flutter/src/rendering/viewport_offset.dart' show ScrollDirection;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, NotifiableElementMixin;
+import 'package:flutter/src/widgets/notification_core.dart' show Notification;
+import 'package:flutter/src/widgets/notification_listener.dart' show LayoutChangedNotification;
+import 'package:flutter/src/widgets/scroll_metrics.dart' show ScrollMetrics;
 
 /// Mixin for [Notification]s that track how many [RenderAbstractViewport] they
 /// have bubbled through.

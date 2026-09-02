@@ -8,9 +8,14 @@
 /// @docImport 'text.dart';
 library;
 
-import 'basic.dart';
-import 'framework.dart';
-import 'inherited_theme.dart';
+import 'dart:ui' show Color;
+
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor;
+import 'package:flutter/src/widgets/basic.dart' show Builder;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/inherited_theme.dart' show InheritedTheme;
 
 // Examples can assume:
 // late BuildContext context;

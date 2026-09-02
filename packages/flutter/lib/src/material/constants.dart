@@ -10,7 +10,9 @@
 /// @docImport 'theme_data.dart';
 library;
 
-import 'package:flutter/painting.dart';
+import 'dart:ui' show Color;
+
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
 
 /// The minimum dimension of any interactive region according to Material
 /// guidelines.

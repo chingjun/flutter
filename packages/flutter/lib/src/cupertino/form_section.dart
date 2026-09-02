@@ -6,10 +6,15 @@
 /// @docImport 'text_form_field_row.dart';
 library;
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Clip, Color;
 
-import 'colors.dart';
-import 'list_section.dart';
+import 'package:flutter/src/cupertino/colors.dart' show CupertinoColors;
+import 'package:flutter/src/cupertino/list_section.dart' show CupertinoListSection, CupertinoListSectionType;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsDirectional, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/text.dart' show DefaultTextStyle;
 
 // Used for iOS "Inset Grouped" margin, determined from SwiftUI's Forms in
 // iOS 14.2 SDK.

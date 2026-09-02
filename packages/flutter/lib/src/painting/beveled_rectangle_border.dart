@@ -6,12 +6,11 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show Canvas, Offset, Path, RRect, Rect, TextDirection;
 
-import 'package:flutter/foundation.dart';
-
-import 'basic_types.dart';
-import 'border_radius.dart';
-import 'borders.dart';
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius, BorderRadiusGeometry;
+import 'package:flutter/src/painting/borders.dart' show BorderSide, BorderStyle, OutlinedBorder, ShapeBorder;
 
 /// A rectangular border with flattened or "beveled" corners.
 ///

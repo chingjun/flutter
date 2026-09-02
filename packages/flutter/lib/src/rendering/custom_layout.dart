@@ -7,10 +7,15 @@
 /// @docImport 'stack.dart';
 library;
 
-import 'package:flutter/foundation.dart';
+import 'dart:ui' show Offset, Size;
 
-import 'box.dart';
-import 'object.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorSummary, FlutterError;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsBlock, DiagnosticsNode, DiagnosticsProperty;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, BoxHitTestResult, ContainerBoxParentData, RenderBox, RenderBoxContainerDefaultsMixin;
+import 'package:flutter/src/rendering/object.dart' show ContainerRenderObjectMixin, PaintingContext, PipelineOwner;
+import 'package:listen/listen.dart' show Listenable;
+import 'package:meta/meta.dart' show protected;
 
 // For SingleChildLayoutDelegate and RenderCustomSingleChildLayoutBox, see shifted_box.dart
 

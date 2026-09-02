@@ -8,7 +8,9 @@
 /// @docImport 'text_selection.dart';
 library;
 
-import 'package:flutter/foundation.dart';
+import 'dart:ui' show VoidCallback;
+
+import 'package:meta/meta.dart' show immutable;
 
 /// The buttons that can appear in a context menu by default.
 ///

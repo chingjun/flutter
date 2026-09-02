@@ -6,11 +6,30 @@
 library;
 
 import 'dart:js_interop';
+import 'dart:ui' show Rect, Size, VoidCallback;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/constants.dart' show precisionErrorTolerance;
+import 'package:flutter/src/foundation/key.dart' show UniqueKey;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/rendering/layer.dart' show LayerLink;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderProxyBox;
+import 'package:flutter/src/rendering/selection.dart' show SelectWordSelectionEvent, Selectable, SelectedContent, SelectedContentRange, SelectionEvent, SelectionGeometry, SelectionPoint, SelectionRegistrant, SelectionRegistrar, SelectionResult, SelectionStatus, TextSelectionHandleType;
+import 'package:flutter/src/services/browser_context_menu.dart' show BrowserContextMenu;
+import 'package:flutter/src/services/message_codec.dart' show MethodCall;
+import 'package:flutter/src/services/platform_views.dart' show platformViewsRegistry;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:flutter/src/widgets/_platform_selectable_region_context_menu_io.dart' show PlatformSelectableRegionContextMenu;
+import 'package:flutter/src/widgets/basic.dart' show Column, SizedBox, StatefulBuilder;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, LeafRenderObjectWidget, StateSetter, Widget;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/scroll_view.dart' show ListView;
+import 'package:flutter/src/widgets/selectable_region.dart' show SelectableRegion;
+import 'package:flutter/src/widgets/selection_container.dart' show SelectionContainer, SelectionContainerDelegate;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/text_selection.dart' show EmptyTextSelectionControls, emptyTextSelectionControls;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:web/web.dart' as web;
 

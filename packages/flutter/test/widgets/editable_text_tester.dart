@@ -2,7 +2,17 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color, Offset, Size, VoidCallback;
+
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior;
+import 'package:flutter/src/rendering/selection.dart' show TextSelectionHandleType;
+import 'package:flutter/src/widgets/basic.dart' show Semantics, SizedBox;
+import 'package:flutter/src/widgets/editable_text.dart' show EditableText, EditableTextContextMenuBuilder, EditableTextState, TextEditingController;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/text_selection.dart' show TextSelectionControls, TextSelectionGestureDetectorBuilder, TextSelectionGestureDetectorBuilderDelegate, TextSelectionHandleControls;
 
 /// A minimal wrapper around [EditableText] for use in widget tests.
 ///

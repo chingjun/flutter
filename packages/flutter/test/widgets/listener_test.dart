@@ -3,11 +3,20 @@
 // found in the LICENSE file.
 
 import 'dart:math' as math;
+import 'dart:ui' show Color, TextDirection;
 
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, DiagnosticsNode;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/gestures/events.dart' show PointerCancelEvent, PointerDownEvent, PointerEvent, PointerHoverEvent, PointerMoveEvent, PointerSignalEvent, PointerUpEvent;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/rendering/error.dart' show RenderErrorBox;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior, RenderPointerListener;
+import 'package:flutter/src/widgets/basic.dart' show Align, Center, Listener, SizedBox, Transform;
+import 'package:flutter/src/widgets/container.dart' show Container, DecoratedBox;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 import 'gesture_utils.dart';
 

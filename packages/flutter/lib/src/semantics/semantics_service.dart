@@ -5,11 +5,11 @@
 /// @docImport 'package:flutter/widgets.dart';
 library;
 
+import 'dart:async' show Future;
 import 'dart:ui' show FlutterView, PlatformDispatcher, TextDirection;
 
-import 'package:flutter/services.dart' show SystemChannels;
-
-import 'semantics_event.dart' show AnnounceSemanticsEvent, Assertiveness, TooltipSemanticsEvent;
+import 'package:flutter/src/semantics/semantics_event.dart' show AnnounceSemanticsEvent, Assertiveness, TooltipSemanticsEvent;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
 
 export 'dart:ui' show TextDirection;
 

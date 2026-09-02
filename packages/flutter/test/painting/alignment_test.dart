@@ -3,9 +3,10 @@
 // found in the LICENSE file.
 
 import 'dart:math' as math;
+import 'dart:ui' show TextDirection;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/painting.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/painting/alignment.dart' show Alignment, AlignmentDirectional, AlignmentGeometry;
 import 'package:flutter_test/flutter_test.dart';
 
 void approxExpect(Alignment a, Alignment b) {

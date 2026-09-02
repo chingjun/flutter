@@ -9,12 +9,18 @@
 /// @docImport 'switch.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Brightness, Color;
 
-import 'colors.dart';
-import 'icon_theme_data.dart';
-import 'text_theme.dart';
+import 'package:flutter/src/cupertino/colors.dart' show CupertinoColors, CupertinoDynamicColor, createCupertinoColorProperty;
+import 'package:flutter/src/cupertino/icon_theme_data.dart' show CupertinoIconThemeData;
+import 'package:flutter/src/cupertino/text_theme.dart' show CupertinoTextThemeData;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsProperty, EnumProperty;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/icon_theme.dart' show IconTheme;
+import 'package:flutter/src/widgets/inherited_theme.dart' show InheritedTheme;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:meta/meta.dart' show immutable, protected;
 
 export 'package:flutter/foundation.dart' show Brightness;
 

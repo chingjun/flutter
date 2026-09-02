@@ -13,15 +13,23 @@
 /// @docImport 'overlay.dart';
 library;
 
-import 'package:flutter/foundation.dart';
+import 'dart:ui' show Color;
 
-import 'basic.dart';
-import 'container.dart';
-import 'debug.dart';
-import 'focus_manager.dart';
-import 'framework.dart';
-import 'inherited_notifier.dart';
-import 'transitions.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty, FlagProperty, StringProperty;
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/painting/box_border.dart' show Border;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/rendering/proxy_box.dart' show DecorationPosition;
+import 'package:flutter/src/widgets/basic.dart' show Semantics;
+import 'package:flutter/src/widgets/container.dart' show DecoratedBox;
+import 'package:flutter/src/widgets/debug_flags.dart' show debugPaintFocusBoxes;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusAttachment, FocusNode, FocusOnKeyCallback, FocusOnKeyEventCallback, FocusScopeNode;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/inherited_notifier.dart' show InheritedNotifier;
+import 'package:flutter/src/widgets/transitions.dart' show ListenableBuilder;
 
 /// A widget that manages a [FocusNode] to allow keyboard focus to be given
 /// to this widget and its descendants.

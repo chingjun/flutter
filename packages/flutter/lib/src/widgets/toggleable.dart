@@ -6,16 +6,28 @@
 /// @docImport 'package:flutter/material.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Canvas, Color, Offset, Paint, Size;
 
-import 'actions.dart';
-import 'basic.dart';
-import 'focus_manager.dart';
-import 'framework.dart';
-import 'gesture_detector.dart';
-import 'ticker_provider.dart';
-import 'widget_state.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/animations.dart' show CurvedAnimation;
+import 'package:flutter/src/animation/curves.dart' show Curves;
+import 'package:flutter/src/animation/tween.dart' show Animatable, Tween;
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/foundation/diagnostics.dart' show describeIdentity;
+import 'package:flutter/src/gestures/tap.dart' show TapDownDetails, TapUpDetails;
+import 'package:flutter/src/rendering/custom_paint.dart' show CustomPainter, SemanticsBuilderCallback;
+import 'package:flutter/src/semantics/semantics_event.dart' show TapSemanticEvent;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor, SystemMouseCursors;
+import 'package:flutter/src/widgets/actions.dart' show Action, ActivateIntent, CallbackAction, FocusableActionDetector, Intent;
+import 'package:flutter/src/widgets/basic.dart' show CustomPaint, Semantics;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/framework.dart' show StatefulWidget, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/ticker_provider.dart' show TickerProviderStateMixin;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateProperty;
+import 'package:listen/listen.dart' show ChangeNotifier;
+import 'package:meta/meta.dart' show optionalTypeArgs;
 
 // Duration of the animation that moves the toggle from one state to another.
 const Duration _kToggleDuration = Duration(milliseconds: 200);

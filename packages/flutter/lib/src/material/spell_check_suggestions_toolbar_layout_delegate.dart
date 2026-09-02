@@ -5,8 +5,11 @@
 /// @docImport 'spell_check_suggestions_toolbar.dart';
 library;
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart' show TextSelectionToolbarLayoutDelegate;
+import 'dart:ui' show Offset, Size;
+
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/rendering/shifted_box.dart' show SingleChildLayoutDelegate;
+import 'package:flutter/src/widgets/text_selection_toolbar_layout_delegate.dart' show TextSelectionToolbarLayoutDelegate;
 
 /// Positions the toolbar below [anchor] or adjusts it higher to fit above
 /// the bottom view insets, if applicable.

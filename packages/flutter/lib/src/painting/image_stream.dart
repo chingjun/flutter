@@ -12,9 +12,13 @@ library;
 
 import 'dart:async';
 import 'dart:ui' as ui show Codec, FrameInfo, Image;
+import 'dart:ui' show VoidCallback;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/scheduler.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, FlutterError, FlutterErrorDetails, InformationCollector;
+import 'package:flutter/src/foundation/debug.dart' show debugFormatDouble, debugMaybeDispatchCreated, debugMaybeDispatchDisposed;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsNode, DiagnosticsProperty, FlagProperty, IntProperty, ObjectFlagProperty;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding, timeDilation;
+import 'package:meta/meta.dart' show immutable, mustCallSuper, nonVirtual, protected, visibleForTesting;
 
 /// A [dart:ui.Image] object with its corresponding scale.
 ///

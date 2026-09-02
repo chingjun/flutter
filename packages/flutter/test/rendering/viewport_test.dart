@@ -10,10 +10,38 @@
 @Tags(<String>['reduced-test-set'])
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:collection' show NullableIterableExtensions;
+import 'dart:ui' show Canvas, Clip, Color, Rect, Size, TextDirection;
+
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError, FlutterErrorDetails, FlutterExceptionHandler;
+import 'package:flutter/src/foundation/key.dart' show Key, ValueKey;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/gestures/hit_test.dart' show HitTestEntry, HitTestResult, HitTestTarget;
+import 'package:flutter/src/painting/basic_types.dart' show Axis, AxisDirection;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/custom_paint.dart' show CustomPainter;
+import 'package:flutter/src/rendering/flex.dart' show CrossAxisAlignment, MainAxisAlignment;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/rendering/sliver.dart' show RenderSliver, SliverGeometry, SliverHitTestEntry, SliverHitTestResult;
+import 'package:flutter/src/rendering/sliver_grid.dart' show SliverGridDelegateWithFixedCrossAxisCount;
+import 'package:flutter/src/rendering/sliver_persistent_header.dart' show PersistentHeaderShowOnScreenConfiguration;
+import 'package:flutter/src/rendering/viewport.dart' show RenderAbstractViewport, RenderShrinkWrappingViewport, RenderViewport, RevealedOffset, SliverPaintOrder;
+import 'package:flutter/src/rendering/viewport_offset.dart' show ViewportOffset;
+import 'package:flutter/src/scheduler/ticker.dart' show TickerProvider;
+import 'package:flutter/src/widgets/basic.dart' show Center, ColoredBox, Column, CustomPaint, Directionality, Opacity, SizedBox, SliverPadding, SliverToBoxAdapter;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, LeafRenderObjectWidget, SingleChildRenderObjectWidget, Widget;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/page_view.dart' show PageScrollPhysics;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_delegate.dart' show SliverChildBuilderDelegate;
+import 'package:flutter/src/widgets/scroll_physics.dart' show AlwaysScrollableScrollPhysics, BouncingScrollPhysics, ScrollPhysics;
+import 'package:flutter/src/widgets/scroll_view.dart' show CustomScrollView, GridView, ListView;
+import 'package:flutter/src/widgets/single_child_scroll_view.dart' show SingleChildScrollView;
+import 'package:flutter/src/widgets/sliver.dart' show SliverList;
+import 'package:flutter/src/widgets/sliver_persistent_header.dart' show SliverPersistentHeader, SliverPersistentHeaderDelegate;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 class _TestSliverPersistentHeaderDelegate extends SliverPersistentHeaderDelegate {

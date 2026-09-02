@@ -3,16 +3,28 @@
 // found in the LICENSE file.
 
 import 'dart:math' as math;
+import 'dart:ui' show Canvas, Color, Offset, Paint, Path, Rect, Size, VoidCallback;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
-
-import 'debug.dart';
-import 'material_localizations.dart';
-import 'text_selection_theme.dart';
-import 'text_selection_toolbar.dart';
-import 'text_selection_toolbar_text_button.dart';
-import 'theme.dart';
+import 'package:flutter/src/material/debug.dart' show debugCheckHasMaterialLocalizations;
+import 'package:flutter/src/material/material_localizations.dart' show MaterialLocalizations;
+import 'package:flutter/src/material/text_selection_theme.dart' show TextSelectionTheme;
+import 'package:flutter/src/material/text_selection_toolbar.dart' show TextSelectionToolbar;
+import 'package:flutter/src/material/text_selection_toolbar_text_button.dart' show TextSelectionToolbarTextButton;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/alignment.dart' show AlignmentDirectional;
+import 'package:flutter/src/rendering/custom_paint.dart' show CustomPainter;
+import 'package:flutter/src/rendering/editable.dart' show TextSelectionPoint;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior;
+import 'package:flutter/src/rendering/selection.dart' show TextSelectionHandleType;
+import 'package:flutter/src/services/text_input.dart' show TextEditingValue, TextSelectionDelegate;
+import 'package:flutter/src/widgets/basic.dart' show CustomPaint, SizedBox, Transform;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/text_selection.dart' show ClipboardStatus, TextSelectionControls, TextSelectionHandleControls;
+import 'package:flutter/src/widgets/ticker_provider.dart' show TickerProviderStateMixin;
+import 'package:listen/listen.dart' show ValueListenable;
 
 const double _kHandleSize = 22.0;
 

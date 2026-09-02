@@ -3,7 +3,9 @@
 // found in the LICENSE file.
 
 import 'package:flutter/src/services/sensitive_content.dart' show ContentSensitivity;
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/sensitive_content.dart' show SensitiveContent;
 
 /// Widget to test disposing a [SensitiveContent] widget.
 class DisposeTester extends StatefulWidget {

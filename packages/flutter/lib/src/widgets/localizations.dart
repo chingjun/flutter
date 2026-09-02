@@ -9,15 +9,21 @@
 /// @docImport 'reorderable_list.dart';
 library;
 
+import 'dart:async' show Future;
 import 'dart:collection' show HashMap;
+import 'dart:ui' show Locale, TextDirection;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-
-import 'basic.dart';
-import 'binding.dart';
-import 'debug.dart';
-import 'framework.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorHint, ErrorSpacer, FlutterError, FlutterErrorDetails;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsNode, DiagnosticsProperty, IterableProperty;
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/foundation/synchronous_future.dart' show SynchronousFuture;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/widgets/basic.dart' show Directionality, Semantics, SizedBox;
+import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding, WidgetsBindingObserver;
+import 'package:flutter/src/widgets/debug.dart' show debugCheckHasWidgetsLocalizations;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, InheritedWidget, State, StatefulWidget, Widget;
+import 'package:listen/listen.dart' show ChangeNotifier;
 
 // Examples can assume:
 // class Intl { Intl._(); static String message(String s, { String? name, String? locale }) => ''; }

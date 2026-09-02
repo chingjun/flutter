@@ -2,7 +2,27 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/material.dart';
+import 'dart:ui' show Color, Rect, Size;
+
+import 'package:flutter/src/foundation/key.dart' show UniqueKey;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/material.dart' show Material;
+import 'package:flutter/src/material/material_state.dart' show MaterialStatePropertyAll;
+import 'package:flutter/src/material/menu_anchor.dart' show MenuBar, MenuItemButton, SubmenuButton;
+import 'package:flutter/src/material/menu_bar_theme.dart' show MenuBarTheme, MenuBarThemeData;
+import 'package:flutter/src/material/menu_style.dart' show MenuStyle;
+import 'package:flutter/src/material/menu_theme.dart' show MenuTheme, MenuThemeData;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData, VisualDensity;
+import 'package:flutter/src/painting/borders.dart' show BorderSide, OutlinedBorder;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/stadium_border.dart' show StadiumBorder;
+import 'package:flutter/src/painting/star_border.dart' show StarBorder;
+import 'package:flutter/src/widgets/basic.dart' show Column, Expanded, Padding;
+import 'package:flutter/src/widgets/framework.dart' show Widget;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/platform_menu_bar.dart' show MenuSerializableShortcut;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

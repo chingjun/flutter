@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'tween.dart';
+import 'package:flutter/src/animation/tween.dart' show Animatable;
 
 export 'tween.dart' show Animatable;
 

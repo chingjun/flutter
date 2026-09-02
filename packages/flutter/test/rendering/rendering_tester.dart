@@ -3,17 +3,28 @@
 // found in the LICENSE file.
 
 import 'dart:async';
-import 'dart:ui' show SemanticsUpdate;
+import 'dart:ui' show Canvas, Clip, FlutterView, Offset, Rect, SemanticsUpdate, Size, VoidCallback;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError, FlutterErrorDetails, FlutterExceptionHandler;
+import 'package:flutter/src/foundation/binding.dart' show BindingBase;
+import 'package:flutter/src/gestures/binding.dart' show GestureBinding;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/binding.dart' show PaintingBinding;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/custom_paint.dart' show CustomPainter;
+import 'package:flutter/src/rendering/layer.dart' show ClipRectLayer, ContainerLayer;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, PaintingContextCallback, PipelineOwner;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderConstrainedBox;
+import 'package:flutter/src/rendering/shifted_box.dart' show RenderPositionedBox;
+import 'package:flutter/src/rendering/view.dart' show RenderView;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
+import 'package:flutter/src/semantics/binding.dart' show SemanticsBinding;
+import 'package:flutter/src/services/binding.dart' show ServicesBinding;
 import 'package:flutter_test/flutter_test.dart'
     show EnginePhase, TestDefaultBinaryMessengerBinding, fail;
+import 'package:meta/meta.dart' show mustCallSuper;
 
-export 'package:flutter/foundation.dart' show FlutterError, FlutterErrorDetails;
 export 'package:flutter_test/flutter_test.dart' show EnginePhase, TestDefaultBinaryMessengerBinding;
 
 class TestRenderingFlutterBinding extends BindingBase

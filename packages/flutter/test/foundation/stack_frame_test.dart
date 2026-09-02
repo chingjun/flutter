@@ -4,7 +4,9 @@
 
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/src/foundation/assertions.dart' show debugPrintStack;
+import 'package:flutter/src/foundation/constants.dart' show kIsWasm;
+import 'package:flutter/src/foundation/stack_frame.dart' show StackFrame;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'capture_output.dart';

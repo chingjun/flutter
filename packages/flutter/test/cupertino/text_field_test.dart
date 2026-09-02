@@ -8,20 +8,75 @@
 @Tags(<String>['reduced-test-set'])
 library;
 
+import 'dart:typed_data' show ByteData;
 import 'dart:ui' as ui show BoxHeightStyle, BoxWidthStyle, Color, SemanticsInputType;
+import 'dart:ui' show Brightness, Clip, Color, FontWeight, Path, PointerDeviceKind, Radius, Rect, SemanticsAction, SemanticsFlag, Size, TextAffinity, TextAlign, TextDirection, TextRange, VoidCallback;
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart'
-    show
-        DragStartBehavior,
-        PointerDeviceKind,
-        kDoubleTapTimeout,
-        kLongPressTimeout,
-        kSecondaryMouseButton;
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/src/cupertino/adaptive_text_selection_toolbar.dart' show CupertinoAdaptiveTextSelectionToolbar;
+import 'package:flutter/src/cupertino/app.dart' show CupertinoApp;
+import 'package:flutter/src/cupertino/button.dart' show CupertinoButton;
+import 'package:flutter/src/cupertino/colors.dart' show CupertinoColors, CupertinoDynamicColor;
+import 'package:flutter/src/cupertino/icons.dart' show CupertinoIcons;
+import 'package:flutter/src/cupertino/magnifier.dart' show CupertinoTextMagnifier;
+import 'package:flutter/src/cupertino/page_scaffold.dart' show CupertinoPageScaffold;
+import 'package:flutter/src/cupertino/route.dart' show CupertinoPageRoute;
+import 'package:flutter/src/cupertino/text_field.dart' show CupertinoTextField, OverlayVisibilityMode;
+import 'package:flutter/src/cupertino/text_selection.dart' show CupertinoTextSelectionHandleControls;
+import 'package:flutter/src/cupertino/text_selection_toolbar.dart' show CupertinoTextSelectionToolbar;
+import 'package:flutter/src/cupertino/text_theme.dart' show CupertinoTextThemeData;
+import 'package:flutter/src/cupertino/theme.dart' show CupertinoTheme, CupertinoThemeData;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey, ValueKey;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, debugDefaultTargetPlatformOverride, defaultTargetPlatform;
+import 'package:flutter/src/gestures/constants.dart' show kDoubleTapTimeout, kLongPressTimeout;
+import 'package:flutter/src/gestures/events.dart' show PointerDownEvent, kSecondaryMouseButton;
+import 'package:flutter/src/gestures/recognizer.dart' show DragStartBehavior;
+import 'package:flutter/src/painting/alignment.dart' show Alignment, TextAlignVertical;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/strut_style.dart' show StrutStyle;
+import 'package:flutter/src/painting/text_painter.dart' show TextOverflow;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/editable.dart' show RenderEditable, TextSelectionPoint;
+import 'package:flutter/src/rendering/flex.dart' show CrossAxisAlignment, MainAxisAlignment, MainAxisSize;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/rendering/selection.dart' show TextSelectionHandleType;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsOwner;
+import 'package:flutter/src/services/clipboard.dart' show Clipboard, ClipboardData;
+import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
+import 'package:flutter/src/services/message_codec.dart' show MethodCall;
+import 'package:flutter/src/services/message_codecs.dart' show JSONMessageCodec;
+import 'package:flutter/src/services/spell_check.dart' show SpellCheckResults, SuggestionSpan;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:flutter/src/services/text_editing.dart' show TextSelection;
+import 'package:flutter/src/services/text_formatter.dart' show MaxLengthEnforcement, TextInputFormatter;
+import 'package:flutter/src/services/text_input.dart' show SelectionChangedCause, TextSelectionDelegate;
+import 'package:flutter/src/widgets/actions.dart' show Action, Actions, CallbackAction, Intent;
+import 'package:flutter/src/widgets/basic.dart' show Align, Builder, Center, ColoredBox, Column, ConstrainedBox, CustomPaint, Directionality, Expanded, IntrinsicHeight, IntrinsicWidth, Padding, RepaintBoundary, Row, Semantics, SizedBox, StatefulBuilder;
+import 'package:flutter/src/widgets/container.dart' show Container, DecoratedBox;
+import 'package:flutter/src/widgets/default_selection_style.dart' show DefaultSelectionStyle;
+import 'package:flutter/src/widgets/editable_text.dart' show EditableText, EditableTextState, TextEditingController, ToolbarOptions;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/focus_scope.dart' show Focus;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, GlobalKey, StateSetter, Widget;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/indexed_stack.dart' show Visibility;
+import 'package:flutter/src/widgets/magnifier.dart' show MagnifierController, MagnifierInfo, TextMagnifierConfiguration;
+import 'package:flutter/src/widgets/navigator.dart' show Navigator;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_view.dart' show ListView;
+import 'package:flutter/src/widgets/scrollable_helpers.dart' show ScrollIntent;
+import 'package:flutter/src/widgets/spell_check.dart' show SpellCheckConfiguration;
+import 'package:flutter/src/widgets/system_context_menu.dart' show SystemContextMenu;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/text_selection.dart' show ClipboardStatus, SelectionOverlay, TextSelectionControls;
+import 'package:flutter/src/widgets/transitions.dart' show FadeTransition;
+import 'package:flutter/src/widgets/view.dart' show View;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:listen/listen.dart' show ValueListenable, ValueNotifier;
 
 import '../widgets/clipboard_utils.dart';
 import '../widgets/semantics_tester.dart';

@@ -7,9 +7,46 @@
 @Tags(<String>['reduced-test-set'])
 library;
 
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Locale, PointerDeviceKind, Rect, Size, TextDirection, VoidCallback;
+
+import 'package:flutter/src/animation/curves.dart' show Curves;
+import 'package:flutter/src/foundation/key.dart' show Key, ValueKey;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/gestures/constants.dart' show kLongPressTimeout, kPressTimeout;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/checkbox.dart' show Checkbox;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/icons.dart' show Icons;
+import 'package:flutter/src/material/list_tile.dart' show ListTile;
+import 'package:flutter/src/material/material.dart' show Material;
+import 'package:flutter/src/material/material_localizations.dart' show DefaultMaterialLocalizations;
+import 'package:flutter/src/material/reorderable_list.dart' show ReorderableListView;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/switch_list_tile.dart' show SwitchListTile;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/painting/debug.dart' show debugDisableShadows;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/flex.dart' show CrossAxisAlignment;
+import 'package:flutter/src/rendering/sliver_list.dart' show RenderSliverList;
+import 'package:flutter/src/semantics/semantics.dart' show CustomSemanticsAction, SemanticsNode;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor, SystemMouseCursors;
+import 'package:flutter/src/widgets/basic.dart' show Center, Column, Directionality, Flexible, Padding, Row, Semantics, SizedBox, StatefulBuilder;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/drag_boundary.dart' show DragBoundary;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, State, StateSetter, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/localizations.dart' show DefaultWidgetsLocalizations, Localizations, LocalizationsDelegate;
+import 'package:flutter/src/widgets/overlay.dart' show Overlay, OverlayEntry;
+import 'package:flutter/src/widgets/primary_scroll_controller.dart' show PrimaryScrollController;
+import 'package:flutter/src/widgets/reorderable_list.dart' show ReorderableDelayedDragStartListener, ReorderableDragStartListener;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scrollable.dart' show Scrollable;
+import 'package:flutter/src/widgets/sliver.dart' show SliverList;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateMouseCursor, WidgetStatesConstraint;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

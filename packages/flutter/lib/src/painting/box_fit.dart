@@ -8,10 +8,9 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show Size;
 
-import 'package:flutter/foundation.dart';
-
-import 'basic_types.dart';
+import 'package:meta/meta.dart' show immutable;
 
 /// How a box should be inscribed into another box.
 ///

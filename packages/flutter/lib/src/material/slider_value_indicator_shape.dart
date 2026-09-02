@@ -3,13 +3,15 @@
 // found in the LICENSE file.
 
 import 'dart:math' as math;
+import 'dart:ui' show Canvas, Color, Offset, Paint, PaintingStyle, Path, RRect, Radius, Rect, Size, TextDirection, clampDouble;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
-
-import 'range_slider_parts.dart';
-import 'slider.dart';
-import 'slider_theme.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/animation/tween.dart' show ColorTween, Tween;
+import 'package:flutter/src/material/range_slider_parts.dart' show RangeSliderValueIndicatorShape;
+import 'package:flutter/src/material/slider_theme.dart' show SliderThemeData, Thumb;
+import 'package:flutter/src/painting/text_painter.dart' show TextPainter;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext;
 
 /// Base class for slider thumb, thumb overlay, and value indicator shapes.
 ///

@@ -2,8 +2,17 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/gestures.dart';
-import 'package:flutter/scheduler.dart';
+import 'dart:ui' show PointerDeviceKind;
+
+import 'package:flutter/src/gestures/binding.dart' show GestureBinding;
+import 'package:flutter/src/gestures/constants.dart' show kMaxFlingVelocity;
+import 'package:flutter/src/gestures/drag_details.dart' show DragDownDetails, DragEndDetails, DragStartDetails, DragUpdateDetails;
+import 'package:flutter/src/gestures/events.dart' show PointerDownEvent, PointerMoveEvent, PointerPanZoomStartEvent, kPrimaryButton, kSecondaryButton;
+import 'package:flutter/src/gestures/monodrag.dart' show DragGestureRecognizer, HorizontalDragGestureRecognizer, PanGestureRecognizer, VerticalDragGestureRecognizer;
+import 'package:flutter/src/gestures/recognizer.dart' show DragStartBehavior, MultitouchDragStrategy;
+import 'package:flutter/src/gestures/tap.dart' show TapDownDetails, TapGestureRecognizer, TapUpDetails;
+import 'package:flutter/src/gestures/velocity_tracker.dart' show Velocity;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'gesture_tester.dart';

@@ -5,18 +5,30 @@
 /// @docImport 'package:flutter/material.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'basic.dart';
-import 'binding.dart';
-import 'framework.dart';
-import 'implicit_animations.dart';
-import 'media_query.dart';
-import 'navigator.dart';
-import 'overlay.dart';
-import 'pages.dart';
-import 'routes.dart';
-import 'ticker_provider.dart' show TickerMode;
-import 'transitions.dart';
+import 'dart:ui' show Offset, Rect, Size;
+
+import 'package:flutter/src/animation/animation.dart' show Animation, AnimationStatus;
+import 'package:flutter/src/animation/animations.dart' show CurvedAnimation, ProxyAnimation, ReverseAnimation, kAlwaysCompleteAnimation;
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves, Interval;
+import 'package:flutter/src/animation/tween.dart' show Animatable, CurveTween, RectTween, ReverseTween, Tween;
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorSummary, FlutterError;
+import 'package:flutter/src/foundation/debug.dart' show debugMaybeDispatchCreated, debugMaybeDispatchDisposed;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsNode, DiagnosticsProperty, DiagnosticsTreeStyle, FlagProperty;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/matrix_utils.dart' show MatrixUtils;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/widgets/basic.dart' show IgnorePointer, KeyedSubtree, Offstage, Positioned, SizedBox;
+import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, GlobalKey, State, StatefulElement, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/implicit_animations.dart' show EdgeInsetsTween;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/navigator.dart' show Navigator, NavigatorObserver, NavigatorState, Route, RouteSettings;
+import 'package:flutter/src/widgets/overlay.dart' show OverlayEntry, OverlayState;
+import 'package:flutter/src/widgets/pages.dart' show PageRoute;
+import 'package:flutter/src/widgets/routes.dart' show ModalRoute;
+import 'package:flutter/src/widgets/ticker_provider.dart' show TickerMode;
+import 'package:flutter/src/widgets/transitions.dart' show AnimatedBuilder, FadeTransition;
+import 'package:meta/meta.dart' show mustCallSuper;
 
 /// Signature for a function that takes two [Rect] instances and returns a
 /// [RectTween] that transitions between them.

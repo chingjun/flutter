@@ -5,9 +5,8 @@
 /// @docImport 'package:flutter/widgets.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-
-import 'simulation.dart';
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/physics/simulation.dart' show Simulation;
 
 // Examples can assume:
 // late AnimationController _controller;

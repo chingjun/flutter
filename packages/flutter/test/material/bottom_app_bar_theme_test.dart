@@ -7,8 +7,28 @@
 @Tags(<String>['reduced-test-set'])
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+import 'dart:ui' show Color;
+
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, DiagnosticsNode;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/bottom_app_bar.dart' show BottomAppBar;
+import 'package:flutter/src/material/bottom_app_bar_theme.dart' show BottomAppBarTheme, BottomAppBarThemeData;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/elevation_overlay.dart' show ElevationOverlay;
+import 'package:flutter/src/material/floating_action_button.dart' show FloatingActionButton;
+import 'package:flutter/src/material/floating_action_button_location.dart' show FloatingActionButtonLocation;
+import 'package:flutter/src/material/icons.dart' show Icons;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/notched_shapes.dart' show CircularNotchedRectangle, NotchedShape;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/proxy_box.dart' show ShapeBorderClipper;
+import 'package:flutter/src/widgets/basic.dart' show Expanded, Padding, PhysicalShape, RepaintBoundary, Row, SizedBox;
+import 'package:flutter/src/widgets/framework.dart' show Widget;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

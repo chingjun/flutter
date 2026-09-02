@@ -19,17 +19,22 @@ import 'dart:ui'
         ParagraphStyle,
         PlaceholderAlignment,
         TextStyle;
+import 'dart:ui' show Canvas, Color, Locale, Offset, Paint, PaintingStyle, Rect, Size, TextAffinity, TextAlign, TextBaseline, TextBox, TextDirection, TextHeightBehavior, TextPosition, TextRange, clampDouble;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
-
-import 'basic_types.dart';
-import 'inline_span.dart';
-import 'placeholder_span.dart';
-import 'strut_style.dart';
-import 'text_scaler.dart';
-import 'text_span.dart';
-import 'text_style.dart';
+import 'package:flutter/src/foundation/assertions.dart' show DiagnosticsStackTrace, ErrorDescription, ErrorSummary, FlutterError;
+import 'package:flutter/src/foundation/collections.dart' show listEquals;
+import 'package:flutter/src/foundation/constants.dart' show precisionErrorTolerance;
+import 'package:flutter/src/foundation/debug.dart' show debugMaybeDispatchCreated, debugMaybeDispatchDisposed;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode;
+import 'package:flutter/src/painting/basic_types.dart' show RenderComparison;
+import 'package:flutter/src/painting/inline_span.dart' show InlineSpan;
+import 'package:flutter/src/painting/placeholder_span.dart' show PlaceholderSpan;
+import 'package:flutter/src/painting/strut_style.dart' show StrutStyle;
+import 'package:flutter/src/painting/text_scaler.dart' show TextScaler;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/services/text_boundary.dart' show TextBoundary, UntilPredicate;
+import 'package:flutter/src/services/text_editing.dart' show TextSelection;
+import 'package:meta/meta.dart' show immutable;
 
 export 'dart:ui' show LineMetrics;
 export 'package:flutter/services.dart' show TextRange, TextSelection;

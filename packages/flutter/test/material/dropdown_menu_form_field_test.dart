@@ -2,8 +2,31 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/material.dart';
-import 'package:flutter/src/services/text_formatter.dart';
+import 'dart:ui' show FontWeight, Size, TextAlign;
+
+import 'package:flutter/src/foundation/key.dart' show UniqueKey;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/dropdown_menu.dart' show DropdownMenu, DropdownMenuCloseBehavior, DropdownMenuEntry;
+import 'package:flutter/src/material/dropdown_menu_form_field.dart' show DropdownMenuFormField;
+import 'package:flutter/src/material/icons.dart' show Icons;
+import 'package:flutter/src/material/input_decorator.dart' show InputDecoration, InputDecorationThemeData;
+import 'package:flutter/src/material/menu_anchor.dart' show MenuItemButton;
+import 'package:flutter/src/material/menu_style.dart' show MenuStyle;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/text_field.dart' show TextField;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/services/text_editing.dart' show TextSelection;
+import 'package:flutter/src/services/text_formatter.dart' show TextInputFormatter;
+import 'package:flutter/src/services/text_input.dart' show TextInputType;
+import 'package:flutter/src/widgets/basic.dart' show Center, SizedBox, StatefulBuilder;
+import 'package:flutter/src/widgets/editable_text.dart' show TextEditingController;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/form.dart' show AutovalidateMode, Form, FormFieldState, FormState;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, StateSetter, Widget;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/raw_menu_anchor.dart' show MenuController;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 enum MenuItem {

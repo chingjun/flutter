@@ -9,13 +9,28 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show Clip, Color, Offset, Size, TextBaseline, TextDirection;
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
-
-import 'badge_theme.dart';
-import 'color_scheme.dart';
-import 'theme.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty;
+import 'package:flutter/src/material/badge_theme.dart' show BadgeTheme, BadgeThemeData;
+import 'package:flutter/src/material/color_scheme.dart' show ColorScheme;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/alignment.dart' show Alignment, AlignmentDirectional, AlignmentGeometry;
+import 'package:flutter/src/painting/decoration.dart' show Decoration;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/shape_decoration.dart' show ShapeDecoration;
+import 'package:flutter/src/painting/stadium_border.dart' show StadiumBorder;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, BoxParentData, RenderBox;
+import 'package:flutter/src/rendering/layout_helper.dart' show ChildLayoutHelper, ChildLayouter;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderProxyBox;
+import 'package:flutter/src/rendering/shifted_box.dart' show RenderAligningShiftedBox;
+import 'package:flutter/src/widgets/basic.dart' show Directionality, Positioned, SizedBox, Stack;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, SingleChildRenderObjectWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/text.dart' show DefaultTextStyle, Text;
+import 'package:meta/meta.dart' show protected;
 
 /// A Material Design "badge".
 ///

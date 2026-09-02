@@ -4,12 +4,12 @@
 
 import 'dart:math' as math;
 
-import 'package:flutter/foundation.dart';
-
-import 'basic.dart';
-import 'debug.dart';
-import 'framework.dart';
-import 'media_query.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, FlagProperty;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/widgets/basic.dart' show Padding, SliverPadding;
+import 'package:flutter/src/widgets/debug.dart' show debugCheckHasMediaQuery;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
 
 /// A widget that insets its child with sufficient padding to avoid intrusions
 /// by the operating system.

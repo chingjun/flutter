@@ -2,7 +2,11 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/widgets/basic.dart' show Center, StatefulBuilder;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, StateSetter, Widget;
+import 'package:flutter/src/widgets/page_storage.dart' show PageStorage, PageStorageKey;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

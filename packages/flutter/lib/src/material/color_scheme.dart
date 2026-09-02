@@ -7,14 +7,21 @@
 library;
 
 import 'dart:async';
+import 'dart:typed_data' show ByteData;
 import 'dart:ui' as ui;
+import 'dart:ui' show Brightness, Canvas, Color, FilterQuality, Rect, Size;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsProperty;
+import 'package:flutter/src/material/colors.dart' show Colors, MaterialColor;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/colors.dart' show ColorProperty;
+import 'package:flutter/src/painting/decoration_image.dart' show paintImage;
+import 'package:flutter/src/painting/image_provider.dart' show ImageConfiguration, ImageProvider;
+import 'package:flutter/src/painting/image_stream.dart' show ImageInfo, ImageStream, ImageStreamListener;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext;
 import 'package:material_color_utilities/material_color_utilities.dart';
-
-import 'colors.dart';
-import 'theme.dart';
+import 'package:meta/meta.dart' show immutable;
 
 /// The algorithm used to construct a [ColorScheme] in [ColorScheme.fromSeed].
 ///

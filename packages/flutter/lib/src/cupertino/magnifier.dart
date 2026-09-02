@@ -6,10 +6,25 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show BlurStyle, Clip, Color, Offset, Radius, Rect, Size;
 
-import 'package:flutter/widgets.dart';
-
-import 'theme.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/animations.dart' show CurvedAnimation;
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves;
+import 'package:flutter/src/animation/tween.dart' show Tween;
+import 'package:flutter/src/cupertino/theme.dart' show CupertinoTheme, CupertinoThemeData;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/borders.dart' show BorderSide;
+import 'package:flutter/src/painting/box_shadow.dart' show BoxShadow;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
+import 'package:flutter/src/widgets/basic.dart' show Transform;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/implicit_animations.dart' show AnimatedPositioned;
+import 'package:flutter/src/widgets/magnifier.dart' show MagnifierController, MagnifierDecoration, MagnifierInfo, RawMagnifier;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/ticker_provider.dart' show SingleTickerProviderStateMixin;
+import 'package:listen/listen.dart' show ValueNotifier;
 
 /// A [CupertinoMagnifier] used for magnifying text in cases where a user's
 /// finger may be blocking the point of interest, like a selection handle.

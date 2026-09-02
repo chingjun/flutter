@@ -2,13 +2,26 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show VoidCallback;
 
-import 'ink_well.dart';
-import 'material.dart';
-import 'text_form_field.dart';
-import 'theme.dart';
+import 'package:flutter/src/material/ink_well.dart' show InkWell;
+import 'package:flutter/src/material/material.dart' show Material;
+import 'package:flutter/src/material/text_form_field.dart' show TextFormField;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
+import 'package:flutter/src/services/text_input.dart' show TextEditingValue;
+import 'package:flutter/src/widgets/autocomplete.dart' show AutocompleteFieldViewBuilder, AutocompleteHighlightedOption, AutocompleteOnSelected, AutocompleteOptionToString, AutocompleteOptionsBuilder, AutocompleteOptionsViewBuilder, OptionsViewOpenDirection, RawAutocomplete;
+import 'package:flutter/src/widgets/basic.dart' show Builder, ConstrainedBox, Semantics;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/editable_text.dart' show TextEditingController;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalObjectKey, State, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_view.dart' show ListView;
+import 'package:flutter/src/widgets/scrollable.dart' show Scrollable;
+import 'package:flutter/src/widgets/text.dart' show Text;
 
 /// {@macro flutter.widgets.RawAutocomplete.RawAutocomplete}
 ///

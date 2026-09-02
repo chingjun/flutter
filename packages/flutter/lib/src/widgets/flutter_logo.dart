@@ -6,11 +6,14 @@
 /// @docImport 'image_icon.dart';
 library;
 
-import 'basic.dart';
-import 'framework.dart';
-import 'icon_theme.dart';
-import 'icon_theme_data.dart';
-import 'implicit_animations.dart';
+import 'dart:ui' show Color;
+
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves;
+import 'package:flutter/src/painting/flutter_logo.dart' show FlutterLogoDecoration, FlutterLogoStyle;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/icon_theme.dart' show IconTheme;
+import 'package:flutter/src/widgets/icon_theme_data.dart' show IconThemeData;
+import 'package:flutter/src/widgets/implicit_animations.dart' show AnimatedContainer;
 
 /// The Flutter logo, in widget form. This widget respects the [IconTheme].
 /// For guidelines on using the Flutter logo, visit https://flutter.dev/brand.

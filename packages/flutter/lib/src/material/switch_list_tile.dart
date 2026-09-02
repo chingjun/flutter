@@ -13,15 +13,27 @@
 /// @docImport 'scaffold.dart';
 library;
 
-import 'package:flutter/gestures.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color;
 
-import 'list_tile.dart';
-import 'list_tile_theme.dart';
-import 'switch.dart';
-import 'switch_theme.dart';
-import 'theme.dart';
-import 'theme_data.dart';
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/gestures/recognizer.dart' show DragStartBehavior;
+import 'package:flutter/src/material/list_tile.dart' show ListTile, ListTileControlAffinity;
+import 'package:flutter/src/material/list_tile_theme.dart' show ListTileTheme, ListTileThemeData;
+import 'package:flutter/src/material/switch.dart' show Switch;
+import 'package:flutter/src/material/switch_theme.dart' show SwitchTheme, SwitchThemeData;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show MaterialTapTargetSize, ThemeData, VisualDensity;
+import 'package:flutter/src/painting/borders.dart' show ShapeBorder;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsetsGeometry;
+import 'package:flutter/src/painting/image_provider.dart' show ImageProvider;
+import 'package:flutter/src/painting/image_stream.dart' show ImageErrorListener;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor;
+import 'package:flutter/src/widgets/basic.dart' show MergeSemantics;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/focus_scope.dart' show ExcludeFocus;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateProperty, WidgetStatesController;
 
 // Examples can assume:
 // void setState(VoidCallback fn) { }

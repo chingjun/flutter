@@ -2,8 +2,10 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/gestures.dart';
+import 'package:flutter/src/gestures/events.dart' show PointerEvent;
+import 'package:flutter/src/gestures/hit_test.dart' show HitTestEntry, HitTestResult, HitTestTarget;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 void main() {
   test('wrapped HitTestResult gets HitTestEntry added to wrapping HitTestResult', () async {

@@ -14,17 +14,34 @@
 library;
 
 import 'dart:ui' as ui show PictureRecorder;
+import 'dart:ui' show Canvas, Clip, Color, ColorFilter, Locale, Offset, Paint, PaintingStyle, Path, RRect, RSuperellipse, Rect, TextDirection, VoidCallback;
 
-import 'package:flutter/animation.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/semantics.dart';
-
-import 'binding.dart';
-import 'debug.dart';
-import 'layer.dart';
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves;
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorHint, ErrorSpacer, ErrorSummary, FlutterError, FlutterErrorDetails, InformationCollector, debugPrintStack;
+import 'package:flutter/src/foundation/basic_types.dart' show ValueSetter;
+import 'package:flutter/src/foundation/collections.dart' show setEquals;
+import 'package:flutter/src/foundation/constants.dart' show kDebugMode, kReleaseMode;
+import 'package:flutter/src/foundation/debug.dart' show debugMaybeDispatchCreated, debugMaybeDispatchDisposed;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, DiagnosticableTreeMixin, DiagnosticsNode, DiagnosticsProperty, DiagnosticsTreeStyle, FlagProperty, StringProperty, describeIdentity;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/foundation/print.dart' show debugPrint;
+import 'package:flutter/src/foundation/timeline.dart' show FlutterTimeline;
+import 'package:flutter/src/gestures/events.dart' show PointerEvent;
+import 'package:flutter/src/gestures/hit_test.dart' show HitTestEntry, HitTestTarget;
+import 'package:flutter/src/painting/binding.dart' show PaintingBinding;
+import 'package:flutter/src/painting/clip.dart' show ClipContext;
+import 'package:flutter/src/painting/matrix_utils.dart' show MatrixUtils;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/rendering/debug.dart' show debugCurrentRepaintColor, debugEnhanceLayoutTimelineArguments, debugEnhancePaintTimelineArguments, debugOnProfilePaint, debugPaintLayerBordersEnabled, debugPrintLayouts, debugPrintMarkNeedsLayoutStacks, debugPrintMarkNeedsPaintStacks, debugProfileLayoutsEnabled, debugProfilePaintsEnabled, debugRepaintRainbowEnabled;
+import 'package:flutter/src/rendering/layer.dart' show ClipPathLayer, ClipRRectLayer, ClipRSuperellipseLayer, ClipRectLayer, ColorFilterLayer, CompositionCallback, ContainerLayer, Layer, LayerHandle, OffsetLayer, OpacityLayer, PictureLayer, TransformLayer;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
+import 'package:flutter/src/semantics/binding.dart' show SemanticsHandle;
+import 'package:flutter/src/semantics/semantics.dart' show AccessibilityFocusBlockType, AttributedString, ChildSemanticsConfigurationsDelegate, ChildSemanticsConfigurationsResult, SemanticsConfiguration, SemanticsNode, SemanticsOwner, SemanticsProperties, SemanticsTag, SemanticsUpdateCallback;
+import 'package:flutter/src/semantics/semantics_event.dart' show SemanticsEvent;
+import 'package:flutter/src/services/text_editing.dart' show TextSelection;
+import 'package:listen/listen.dart' show Listenable;
+import 'package:meta/meta.dart' show immutable, mustCallSuper, nonVirtual, protected, visibleForOverriding;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 export 'package:flutter/foundation.dart'
     show

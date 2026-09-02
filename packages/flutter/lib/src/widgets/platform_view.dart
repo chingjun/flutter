@@ -5,18 +5,29 @@
 /// @docImport 'gesture_detector.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
+import 'dart:async' show Future;
+import 'dart:ui' show Clip, Offset, Size, TextDirection;
+
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, FlutterError, FlutterErrorDetails;
+import 'package:flutter/src/foundation/basic_types.dart' show Factory, ValueChanged;
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/gestures/recognizer.dart' show OneSequenceGestureRecognizer;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/rendering/platform_view.dart' show PlatformViewHitTestBehavior, PlatformViewRenderBox, RenderAndroidView, RenderAppKitView, RenderDarwinPlatformView, RenderUiKitView;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderConstrainedBox;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
+import 'package:flutter/src/services/message_codec.dart' show MessageCodec, MissingPluginException;
+import 'package:flutter/src/services/platform_views.dart' show AndroidViewController, AppKitViewController, DarwinPlatformViewController, PlatformViewController, PlatformViewCreatedCallback, PlatformViewsService, UiKitViewController, UiKitViewGestureBlockingPolicy, platformViewsRegistry;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:flutter/src/widgets/basic.dart' show Directionality, SizedBox;
+import 'package:flutter/src/widgets/debug.dart' show debugCheckHasDirectionality;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/focus_scope.dart' show Focus;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, LeafRenderObjectWidget, SingleChildRenderObjectWidget, State, StatefulWidget, StatelessWidget, Widget;
+import 'package:meta/meta.dart' show mustCallSuper, visibleForTesting;
 
 import '_html_element_view_io.dart' if (dart.library.js_interop) '_html_element_view_web.dart';
-import 'basic.dart';
-import 'debug.dart';
-import 'focus_manager.dart';
-import 'focus_scope.dart';
-import 'framework.dart';
 
 // Examples can assume:
 // PlatformViewController createFooWebView(PlatformViewCreationParams params) { return (null as dynamic) as PlatformViewController; }

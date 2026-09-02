@@ -2,8 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Rect;
+
+import 'package:flutter/src/foundation/memory_allocations.dart' show FlutterMemoryAllocations, ObjectCreated, ObjectDisposed, ObjectEvent;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/widgets/basic.dart' show SizedBox;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusManager;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, BuildOwner, LeafRenderObjectWidget, RenderObjectElement, RootElementMixin, State, StatefulWidget, Widget;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:leak_tracker_flutter_testing/leak_tracker_flutter_testing.dart';
 

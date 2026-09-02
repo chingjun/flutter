@@ -3,9 +3,17 @@
 // found in the LICENSE file.
 
 import 'dart:convert' show jsonDecode;
+import 'dart:typed_data' show ByteData;
+import 'dart:ui' show Size;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError, FlutterErrorDetails;
+import 'package:flutter/src/services/autofill.dart' show AutofillScope;
+import 'package:flutter/src/services/keyboard_inserted_content.dart' show KeyboardInsertedContent;
+import 'package:flutter/src/services/message_codec.dart' show MethodCall;
+import 'package:flutter/src/services/message_codecs.dart' show JSONMessageCodec;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:flutter/src/services/text_editing_delta.dart' show TextEditingDelta;
+import 'package:flutter/src/services/text_input.dart' show DeltaTextInputClient, RawFloatingCursorPoint, TextInput, TextInputConfiguration, TextInputConnection, TextInputControl;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'text_input_utils.dart';

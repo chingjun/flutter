@@ -2,8 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color, Rect;
+
+import 'package:flutter/src/foundation/key.dart' show UniqueKey;
+import 'package:flutter/src/rendering/error.dart' show RenderErrorBox;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Center, SizedBox;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, ErrorWidget, Widget;
 import 'package:flutter_test/flutter_test.dart';
 
 /// Unit tests error.dart's usage via ErrorWidget.

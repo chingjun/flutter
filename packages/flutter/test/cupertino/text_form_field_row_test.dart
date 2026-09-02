@@ -2,11 +2,33 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/src/services/spell_check.dart';
+import 'dart:ui' show Color, Radius, Size, TextAlign, TextDirection;
+
+import 'package:flutter/src/cupertino/adaptive_text_selection_toolbar.dart' show CupertinoAdaptiveTextSelectionToolbar;
+import 'package:flutter/src/cupertino/app.dart' show CupertinoApp;
+import 'package:flutter/src/cupertino/colors.dart' show CupertinoColors;
+import 'package:flutter/src/cupertino/page_scaffold.dart' show CupertinoPageScaffold;
+import 'package:flutter/src/cupertino/text_field.dart' show CupertinoTextField;
+import 'package:flutter/src/cupertino/text_form_field_row.dart' show CupertinoTextFormFieldRow;
+import 'package:flutter/src/cupertino/text_selection_toolbar.dart' show CupertinoTextSelectionToolbar;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/gestures/constants.dart' show kDoubleTapTimeout;
+import 'package:flutter/src/painting/alignment.dart' show TextAlignVertical;
+import 'package:flutter/src/rendering/editable.dart' show RenderEditable;
+import 'package:flutter/src/services/autofill.dart' show AutofillHints;
+import 'package:flutter/src/services/spell_check.dart' show DefaultSpellCheckService;
+import 'package:flutter/src/services/text_editing.dart' show TextSelection;
+import 'package:flutter/src/widgets/basic.dart' show Center, StatefulBuilder;
+import 'package:flutter/src/widgets/editable_text.dart' show EditableText, EditableTextState, TextEditingController;
+import 'package:flutter/src/widgets/form.dart' show AutovalidateMode, Form, FormFieldState, FormState;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, StateSetter;
+import 'package:flutter/src/widgets/scroll_physics.dart' show ScrollPhysics;
+import 'package:flutter/src/widgets/spell_check.dart' show SpellCheckConfiguration;
+import 'package:flutter/src/widgets/system_context_menu.dart' show SystemContextMenu;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/text_selection.dart' show SelectionOverlay;
+import 'package:flutter/src/widgets/view.dart' show View;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'editable_text_utils.dart';

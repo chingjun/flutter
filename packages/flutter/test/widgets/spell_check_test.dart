@@ -2,8 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color, TextDecoration, TextDecorationStyle, TextRange;
+
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/painting/text_span.dart' show TextSpan;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/services/spell_check.dart' show SpellCheckResults, SuggestionSpan;
+import 'package:flutter/src/services/text_editing.dart' show TextSelection;
+import 'package:flutter/src/widgets/spell_check.dart' show buildTextSpanWithSpellCheckSuggestions;
 import 'package:flutter_test/flutter_test.dart';
 
 late TextStyle composingStyle;

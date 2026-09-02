@@ -2,9 +2,11 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:ui';
+import 'dart:async' show Future;
+import 'dart:typed_data' show ByteData, Uint8List;
+import 'dart:ui' show loadFontFromList;
 
-import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart' show protected, visibleForTesting;
 
 export 'dart:typed_data' show ByteData;
 

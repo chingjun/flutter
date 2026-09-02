@@ -5,10 +5,9 @@
 /// @docImport 'binding.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-
-import 'framework.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, FlutterError, FlutterErrorDetails;
+import 'package:flutter/src/rendering/object.dart' show RenderObject, RenderObjectWithChildMixin;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, BuildOwner, Element, ElementVisitor, ErrorWidget, GlobalObjectKey, RenderObjectWidget, RenderTreeRootElement, RootElementMixin, Widget;
 
 /// A bridge from a [RenderObject] to an [Element] tree.
 ///

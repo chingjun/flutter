@@ -2,9 +2,29 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+import 'dart:ui' show Brightness, Color, Rect, TextDirection;
+
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/key.dart' show ValueKey;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/color_scheme.dart' show ColorScheme;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/material.dart' show Material;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/selectable_text.dart' show SelectableText;
+import 'package:flutter/src/material/text_selection.dart' show MaterialTextSelectionControls;
+import 'package:flutter/src/material/text_selection_toolbar.dart' show TextSelectionToolbar;
+import 'package:flutter/src/material/text_selection_toolbar_text_button.dart' show TextSelectionToolbarTextButton;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/rendering/editable.dart' show TextSelectionPoint;
+import 'package:flutter/src/services/text_input.dart' show TextSelectionDelegate;
+import 'package:flutter/src/widgets/basic.dart' show Center, Directionality, SizedBox, StatefulBuilder;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StateSetter, Widget;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/text_selection.dart' show ClipboardStatus;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:listen/listen.dart' show ValueListenable;
 
 import 'editable_text_utils.dart' show textOffsetToPosition;
 

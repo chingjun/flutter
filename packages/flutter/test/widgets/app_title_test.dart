@@ -2,7 +2,16 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color, Locale;
+
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/widgets/app.dart' show GenerateAppTitle, WidgetsApp;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext;
+import 'package:flutter/src/widgets/localizations.dart' show Localizations;
+import 'package:flutter/src/widgets/navigator.dart' show RouteSettings;
+import 'package:flutter/src/widgets/pages.dart' show PageRouteBuilder;
+import 'package:flutter/src/widgets/title.dart' show Title;
 import 'package:flutter_test/flutter_test.dart';
 
 const Color kTitleColor = Color(0xFF333333);

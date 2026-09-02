@@ -2,9 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:ui';
+import 'dart:ui' show Size, ViewConstraints;
 
-import 'package:flutter/rendering.dart';
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

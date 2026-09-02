@@ -3,9 +3,24 @@
 // found in the LICENSE file.
 
 import 'dart:math';
+import 'dart:ui' show SemanticsAction, SemanticsFlag, SemanticsValidationResult, TextDirection, VoidCallback;
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey, ValueKey;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/rendering/proxy_sliver.dart' show RenderSliverSemanticsAnnotations;
+import 'package:flutter/src/rendering/viewport.dart' show RenderViewport;
+import 'package:flutter/src/semantics/semantics.dart' show CustomSemanticsAction, OrdinalSortKey, SemanticsConfiguration, SemanticsNode, SemanticsOwner, SemanticsTag, debugResetSemanticsIdCounter;
+import 'package:flutter/src/services/text_editing.dart' show TextSelection;
+import 'package:flutter/src/widgets/basic.dart' show Column, Directionality, FittedBox, Padding, Row, Semantics, SizedBox, SliverSemantics, SliverToBoxAdapter, Transform;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, Widget;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/scroll_delegate.dart' show SliverChildBuilderDelegate;
+import 'package:flutter/src/widgets/scroll_view.dart' show CustomScrollView;
+import 'package:flutter/src/widgets/single_child_scroll_view.dart' show SingleChildScrollView;
+import 'package:flutter/src/widgets/sliver.dart' show SliverCrossAxisGroup, SliverList, SliverMainAxisGroup;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'semantics_tester.dart';

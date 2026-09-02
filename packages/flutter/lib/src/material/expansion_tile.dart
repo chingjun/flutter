@@ -7,21 +7,43 @@
 library;
 
 import 'dart:async';
+import 'dart:ui' show Clip, Color, TextDirection;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
-
-import 'color_scheme.dart';
-import 'colors.dart';
-import 'expansion_tile_theme.dart';
-import 'icons.dart';
-import 'list_tile.dart';
-import 'list_tile_theme.dart';
-import 'material.dart';
-import 'material_localizations.dart';
-import 'theme.dart';
-import 'theme_data.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/animation/animation_style.dart' show AnimationStyle;
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves;
+import 'package:flutter/src/animation/tween.dart' show Animatable, ColorTween, CurveTween, Tween;
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, FlutterError, FlutterErrorDetails;
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/material/color_scheme.dart' show ColorScheme;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/expansion_tile_theme.dart' show ExpansionTileTheme, ExpansionTileThemeData;
+import 'package:flutter/src/material/icons.dart' show Icons;
+import 'package:flutter/src/material/list_tile.dart' show ListTile, ListTileControlAffinity;
+import 'package:flutter/src/material/list_tile_theme.dart' show ListTileTheme, ListTileThemeData;
+import 'package:flutter/src/material/material.dart' show Material, MaterialType, ShapeBorderTween;
+import 'package:flutter/src/material/material_localizations.dart' show MaterialLocalizations;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData, VisualDensity;
+import 'package:flutter/src/painting/alignment.dart' show Alignment, AlignmentGeometry;
+import 'package:flutter/src/painting/borders.dart' show BorderSide, ShapeBorder;
+import 'package:flutter/src/painting/box_border.dart' show Border;
+import 'package:flutter/src/painting/decoration.dart' show Decoration;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/shape_decoration.dart' show ShapeDecoration;
+import 'package:flutter/src/rendering/flex.dart' show CrossAxisAlignment, MainAxisSize;
+import 'package:flutter/src/semantics/semantics.dart' show AccessibilityFocusBlockType;
+import 'package:flutter/src/semantics/semantics_service.dart' show SemanticsService;
+import 'package:flutter/src/widgets/basic.dart' show Align, Column, Padding, Semantics;
+import 'package:flutter/src/widgets/container.dart' show DecoratedBox;
+import 'package:flutter/src/widgets/expansible.dart' show Expansible, ExpansibleController;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/localizations.dart' show WidgetsLocalizations;
+import 'package:flutter/src/widgets/transitions.dart' show RotationTransition;
+import 'package:flutter/src/widgets/view.dart' show View;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetStatesController;
 
 const Duration _kExpand = Duration(milliseconds: 200);
 

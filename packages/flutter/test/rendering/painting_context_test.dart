@@ -2,7 +2,10 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Rect;
+
+import 'package:flutter/src/rendering/layer.dart' show ContainerLayer, PictureLayer;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'rendering_tester.dart';

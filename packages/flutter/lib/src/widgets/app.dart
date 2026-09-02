@@ -10,45 +10,47 @@
 /// @docImport 'view.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
+import 'dart:async' show Future;
+import 'dart:ui' show AppLifecycleState, Clip, Color, Locale;
 
-import 'actions.dart';
-import 'banner.dart';
-import 'basic.dart';
-import 'binding.dart';
-import 'debug_flags.dart';
-import 'default_text_editing_shortcuts.dart';
-import 'focus_manager.dart';
-import 'focus_scope.dart';
-import 'focus_traversal.dart';
-import 'framework.dart';
-import 'localizations.dart';
-import 'media_query.dart';
-import 'navigator.dart';
-import 'notification_listener.dart';
-import 'pages.dart';
-import 'performance_overlay.dart';
-import 'raw_tooltip.dart';
-import 'restoration.dart';
-import 'router.dart';
-import 'scrollable_helpers.dart';
-import 'semantics_debugger.dart';
-import 'shared_app_data.dart';
-import 'shortcuts.dart';
-import 'tap_region.dart';
-import 'text.dart';
-import 'title.dart';
-import 'transitions.dart';
-import 'value_listenable_builder.dart';
-import 'widget_inspector.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/painting/basic_types.dart' show AxisDirection;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/services/hardware_keyboard.dart' show KeyDownEvent, KeyEvent, KeyRepeatEvent;
+import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
+import 'package:flutter/src/services/system_navigator.dart' show SystemNavigator;
+import 'package:flutter/src/widgets/actions.dart' show Action, Actions, ActivateIntent, ButtonActivateIntent, DismissIntent, DoNothingAction, DoNothingAndStopPropagationIntent, DoNothingIntent, Intent, PrioritizedAction, PrioritizedIntents, VoidCallbackAction, VoidCallbackIntent;
+import 'package:flutter/src/widgets/banner.dart' show CheckedModeBanner;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Positioned, Stack;
+import 'package:flutter/src/widgets/binding.dart' show RouteInformation, WidgetsBinding, WidgetsBindingObserver;
+import 'package:flutter/src/widgets/debug_flags.dart' show debugAllowBannerOverrideFlag, debugShowPerformanceOverlayOverride;
+import 'package:flutter/src/widgets/default_text_editing_shortcuts.dart' show DefaultTextEditingShortcuts;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode, KeyEventResult;
+import 'package:flutter/src/widgets/focus_scope.dart' show Focus, FocusScope;
+import 'package:flutter/src/widgets/focus_traversal.dart' show DirectionalFocusAction, DirectionalFocusIntent, FocusTraversalGroup, NextFocusAction, NextFocusIntent, PreviousFocusAction, PreviousFocusIntent, ReadingOrderTraversalPolicy, RequestFocusAction, RequestFocusIntent, TraversalDirection, TraversalEdgeBehavior;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, GlobalObjectKey, State, StatefulWidget, TransitionBuilder, Widget, WidgetBuilder;
+import 'package:flutter/src/widgets/localizations.dart' show LocaleListResolutionCallback, LocaleResolutionCallback, Localizations, LocalizationsDelegate, LocalizationsResolver;
+import 'package:flutter/src/widgets/navigator.dart' show NavigationNotification, Navigator, NavigatorObserver, NavigatorState, Route, RouteFactory, RouteSettings;
+import 'package:flutter/src/widgets/notification_listener.dart' show NotificationListener, NotificationListenerCallback;
+import 'package:flutter/src/widgets/pages.dart' show PageRoute;
+import 'package:flutter/src/widgets/performance_overlay.dart' show PerformanceOverlay;
+import 'package:flutter/src/widgets/raw_tooltip.dart' show RawTooltip;
+import 'package:flutter/src/widgets/restoration.dart' show RootRestorationScope;
+import 'package:flutter/src/widgets/router.dart' show BackButtonDispatcher, PlatformRouteInformationProvider, RootBackButtonDispatcher, RouteInformationParser, RouteInformationProvider, Router, RouterConfig, RouterDelegate;
+import 'package:flutter/src/widgets/scrollable_helpers.dart' show ScrollAction, ScrollIncrementType, ScrollIntent;
+import 'package:flutter/src/widgets/semantics_debugger.dart' show SemanticsDebugger;
+import 'package:flutter/src/widgets/shared_app_data.dart' show SharedAppData;
+import 'package:flutter/src/widgets/shortcuts.dart' show ShortcutActivator, ShortcutRegistrar, Shortcuts, SingleActivator;
+import 'package:flutter/src/widgets/tap_region.dart' show TapRegionSurface;
+import 'package:flutter/src/widgets/text.dart' show DefaultTextStyle;
+import 'package:flutter/src/widgets/title.dart' show Title;
+import 'package:flutter/src/widgets/transitions.dart' show ListenableBuilder;
+import 'package:flutter/src/widgets/value_listenable_builder.dart' show ValueListenableBuilder;
+import 'package:flutter/src/widgets/widget_inspector.dart' show ExitWidgetSelectionButtonBuilder, MoveExitWidgetSelectionButtonBuilder, TapBehaviorButtonBuilder, WidgetInspector;
 
 export 'dart:ui' show Locale;
-
-// LocaleListResolutionCallback, LocaleResolutionCallback, and
-// basicLocaleListResolution are defined in localizations.dart (to avoid a
-// cyclic import) and re-exported here for backward compatibility.
 export 'localizations.dart'
     show LocaleListResolutionCallback, LocaleResolutionCallback, basicLocaleListResolution;
 

@@ -6,10 +6,10 @@
 library;
 
 import 'dart:math' as math;
-import 'dart:ui' show lerpDouble;
+import 'dart:ui' show Offset, Rect, lerpDouble;
 
-import 'package:flutter/animation.dart';
-import 'package:flutter/foundation.dart';
+import 'package:flutter/src/animation/tween.dart' show RectTween, Tween;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
 
 // How close the begin and end points must be to an axis to be considered
 // vertical or horizontal.

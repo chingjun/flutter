@@ -2,28 +2,17 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:ui' show Display;
+import 'dart:ui' show Display, Rect, Size;
+
 import 'package:flutter/src/foundation/_features.dart' show isWindowingEnabled;
-import 'package:flutter/src/widgets/_window.dart'
-    show
-        BaseWindowController,
-        DialogWindow,
-        DialogWindowController,
-        DialogWindowControllerDelegate,
-        PopupWindow,
-        PopupWindowController,
-        SatelliteWindow,
-        SatelliteWindowController,
-        TooltipWindow,
-        TooltipWindowController,
-        Window,
-        WindowController,
-        WindowControllerDelegate,
-        WindowScope,
-        WindowingOwner,
-        createDefaultWindowingOwner;
-import 'package:flutter/src/widgets/_window_positioner.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/widgets/_window.dart' show BaseWindowController, DialogWindow, DialogWindowController, DialogWindowControllerDelegate, PopupWindow, PopupWindowController, SatelliteWindow, SatelliteWindowController, TooltipWindow, TooltipWindowController, Window, WindowController, WindowControllerDelegate, WindowScope, WindowingOwner, createDefaultWindowingOwner;
+import 'package:flutter/src/widgets/_window_positioner.dart' show WindowPositioner;
+import 'package:flutter/src/widgets/basic.dart' show Builder, SizedBox;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext;
+import 'package:flutter/src/widgets/lookup_boundary.dart' show LookupBoundary;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'multi_view_testing.dart';

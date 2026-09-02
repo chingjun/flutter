@@ -5,7 +5,7 @@
 @TestOn('!chrome')
 library;
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

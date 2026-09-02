@@ -12,13 +12,47 @@ library;
 import 'dart:convert';
 import 'dart:math';
 import 'dart:ui' as ui;
+import 'dart:ui' show Canvas, Color, Paint, PaintingStyle, Radius, Size, TextDirection, VoidCallback;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart' show DragStartBehavior;
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/foundation/assertions.dart' show DiagnosticsStackTrace, ErrorDescription, ErrorSpacer, ErrorSummary, FlutterError, FlutterErrorDetails, FlutterExceptionHandler;
+import 'package:flutter/src/foundation/debug.dart' show activeDevToolsServerAddress, connectedVmServiceUri;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticableTree, DiagnosticsBlock, DiagnosticsNode, DiagnosticsProperty, DiagnosticsSerializationDelegate, StringProperty;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey, ValueKey;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/gestures/recognizer.dart' show DragStartBehavior;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/text_span.dart' show TextSpan;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/flex.dart' show MainAxisAlignment;
+import 'package:flutter/src/rendering/layer.dart' show Layer, LayerLink, OffsetLayer, PictureLayer;
+import 'package:flutter/src/rendering/object.dart' show DiagnosticsDebugCreator, PaintingContext, RenderObject;
+import 'package:flutter/src/rendering/paragraph.dart' show RenderParagraph;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior, RenderRepaintBoundary;
+import 'package:flutter/src/widgets/app.dart' show WidgetsApp;
+import 'package:flutter/src/widgets/basic.dart' show Align, Center, ClipRRect, ColoredBox, Column, CompositedTransformFollower, CompositedTransformTarget, Directionality, Flexible, Padding, Positioned, RepaintBoundary, Row, SizedBox, Stack, Transform;
+import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, DebugCreator, Element, GlobalKey, State, StatefulElement, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/icon_data.dart' show IconData;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/navigator.dart' show Navigator, RouteSettings;
+import 'package:flutter/src/widgets/overlay.dart' show Overlay, OverlayEntry;
+import 'package:flutter/src/widgets/pages.dart' show PageRouteBuilder;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/rich_text.dart' show RichText;
+import 'package:flutter/src/widgets/scroll_view.dart' show ListView;
+import 'package:flutter/src/widgets/service_extensions.dart' show WidgetInspectorServiceExtensions;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/value_listenable_builder.dart' show ValueListenableBuilder;
+import 'package:flutter/src/widgets/widget_inspector.dart' show DevToolsDeepLinkProperty, DisableWidgetInspectorScope, EnableWidgetInspectorScope, ExitWidgetSelectionButtonBuilder, InspectorReferenceData, InspectorSelection, InspectorSerializationDelegate, WeakMap, WidgetInspector, WidgetInspectorService, debugIsLocalCreationLocation, debugIsWidgetLocalCreation, debugTransformDebugCreator, widgetFactory;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:leak_tracker/leak_tracker.dart';
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 import '../impeller_test_helpers.dart';
 import 'button_tester.dart';
@@ -4608,7 +4642,7 @@ class _TestWidgetInspectorService extends TestWidgetInspectorService {
         _CreationLocation location = knownLocations[id]!;
         expect(location.file, equals(file));
         // ClockText widget.
-        expect(location.line, equals(57));
+        expect(location.line, equals(91));
         expect(location.column, equals(9));
         expect(location.name, equals('ClockText'));
         expect(count, equals(1));
@@ -4618,7 +4652,7 @@ class _TestWidgetInspectorService extends TestWidgetInspectorService {
         location = knownLocations[id]!;
         expect(location.file, equals(file));
         // Text widget in _ClockTextState build method.
-        expect(location.line, equals(92));
+        expect(location.line, equals(126));
         expect(location.column, equals(12));
         expect(location.name, equals('Text'));
         expect(count, equals(1));
@@ -4645,7 +4679,7 @@ class _TestWidgetInspectorService extends TestWidgetInspectorService {
         location = knownLocations[id]!;
         expect(location.file, equals(file));
         // ClockText widget.
-        expect(location.line, equals(57));
+        expect(location.line, equals(91));
         expect(location.column, equals(9));
         expect(location.name, equals('ClockText'));
         expect(count, equals(3)); // 3 clock widget instances rebuilt.
@@ -4655,7 +4689,7 @@ class _TestWidgetInspectorService extends TestWidgetInspectorService {
         location = knownLocations[id]!;
         expect(location.file, equals(file));
         // Text widget in _ClockTextState build method.
-        expect(location.line, equals(92));
+        expect(location.line, equals(126));
         expect(location.column, equals(12));
         expect(location.name, equals('Text'));
         expect(count, equals(3)); // 3 clock widget instances rebuilt.

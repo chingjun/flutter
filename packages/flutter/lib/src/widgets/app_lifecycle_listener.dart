@@ -5,10 +5,15 @@
 /// @docImport 'package:flutter/services.dart';
 library;
 
-import 'dart:ui';
-import 'package:flutter/foundation.dart';
+import 'dart:async' show Future;
+import 'dart:ui' show AppExitResponse, AppLifecycleState, VoidCallback;
 
-import 'binding.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/foundation/debug.dart' show debugMaybeDispatchCreated, debugMaybeDispatchDisposed;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsProperty, FlagProperty;
+import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding, WidgetsBindingObserver;
+import 'package:meta/meta.dart' show mustCallSuper;
 
 /// A callback type that is used by [AppLifecycleListener.onExitRequested] to
 /// ask the application if it wants to cancel application termination or not.

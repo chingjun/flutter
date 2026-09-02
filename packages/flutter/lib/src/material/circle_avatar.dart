@@ -7,10 +7,26 @@
 /// @docImport 'list_tile.dart';
 library;
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Brightness, Color;
 
-import 'constants.dart';
-import 'theme.dart';
+import 'package:flutter/src/material/constants.dart' show kThemeChangeDuration;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/box_border.dart' show BoxShape;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/box_fit.dart' show BoxFit;
+import 'package:flutter/src/painting/decoration_image.dart' show DecorationImage;
+import 'package:flutter/src/painting/image_provider.dart' show ImageProvider;
+import 'package:flutter/src/painting/image_stream.dart' show ImageErrorListener;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/widgets/basic.dart' show Center;
+import 'package:flutter/src/widgets/debug.dart' show debugCheckHasMediaQuery;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/icon_theme.dart' show IconTheme;
+import 'package:flutter/src/widgets/implicit_animations.dart' show AnimatedContainer;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/text.dart' show DefaultTextStyle;
 
 // Examples can assume:
 // late String userAvatarUrl;

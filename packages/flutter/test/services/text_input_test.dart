@@ -3,10 +3,21 @@
 // found in the LICENSE file.
 
 import 'dart:convert' show jsonDecode;
+import 'dart:typed_data' show ByteData;
+import 'dart:ui' show Brightness, FontWeight, Rect, Size, TextAffinity, TextAlign, TextDirection, TextRange;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError, FlutterErrorDetails, FlutterExceptionHandler;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode;
+import 'package:flutter/src/services/autofill.dart' show AutofillScope;
+import 'package:flutter/src/services/keyboard_inserted_content.dart' show KeyboardInsertedContent;
+import 'package:flutter/src/services/message_codec.dart' show MethodCall, PlatformException;
+import 'package:flutter/src/services/message_codecs.dart' show JSONMessageCodec;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:flutter/src/services/text_editing.dart' show TextSelection;
+import 'package:flutter/src/services/text_input.dart' show IOSSystemContextMenuItemDataLookUp, IOSSystemContextMenuItemDataSearchWeb, IOSSystemContextMenuItemDataShare, RawFloatingCursorPoint, SelectionRect, SmartDashesType, SmartQuotesType, SystemContextMenuController, TextCapitalization, TextInput, TextInputClient, TextInputConfiguration, TextInputConnection, TextInputControl, TextInputStyle, TextInputType;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 import 'text_input_utils.dart';
 

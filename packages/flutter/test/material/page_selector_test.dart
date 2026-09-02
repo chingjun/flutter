@@ -2,7 +2,20 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/material.dart';
+import 'dart:ui' show Color, Locale, Size, TextDirection;
+
+import 'package:flutter/src/material/color_scheme.dart' show ColorScheme;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/material_localizations.dart' show DefaultMaterialLocalizations;
+import 'package:flutter/src/material/tab_controller.dart' show DefaultTabController, TabController;
+import 'package:flutter/src/material/tabs.dart' show TabBarView, TabPageSelector, TabPageSelectorIndicator;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/borders.dart' show BorderStyle;
+import 'package:flutter/src/widgets/basic.dart' show Center, Column, Directionality, Flexible, SizedBox;
+import 'package:flutter/src/widgets/framework.dart' show Element, Widget;
+import 'package:flutter/src/widgets/localizations.dart' show DefaultWidgetsLocalizations, Localizations, LocalizationsDelegate;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 const Color kSelectedColor = Color(0xFF00FF00);

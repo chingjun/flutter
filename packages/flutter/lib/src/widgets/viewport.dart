@@ -9,12 +9,19 @@
 /// @docImport 'sliver.dart';
 library;
 
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Clip;
 
-import 'basic.dart';
-import 'debug.dart';
-import 'framework.dart';
-import 'scroll_notification.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty, DoubleProperty, EnumProperty;
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/painting/basic_types.dart' show AxisDirection, textDirectionToAxisDirection;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/rendering/sliver.dart' show RenderSliver;
+import 'package:flutter/src/rendering/viewport.dart' show CacheExtentStyle, RenderShrinkWrappingViewport, RenderViewport, ScrollCacheExtent, SliverPaintOrder;
+import 'package:flutter/src/rendering/viewport_offset.dart' show ViewportOffset;
+import 'package:flutter/src/widgets/basic.dart' show Directionality;
+import 'package:flutter/src/widgets/debug.dart' show debugCheckHasDirectionality;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, ElementVisitor, IndexedSlot, MultiChildRenderObjectElement, MultiChildRenderObjectWidget, NotifiableElementMixin, Widget;
+import 'package:flutter/src/widgets/scroll_notification.dart' show ViewportElementMixin;
 
 export 'package:flutter/rendering.dart'
     show AxisDirection, GrowthDirection, ScrollCacheExtent, SliverPaintOrder;

@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/scheduler.dart';
+import 'package:flutter/src/scheduler/binding.dart' show timeDilation;
 import 'package:flutter_test/flutter_test.dart' show expect, test;
 
 // This file should not use testWidgets, and should not instantiate the binding.

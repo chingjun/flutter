@@ -2,9 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'object.dart';
-import 'proxy_box.dart';
-import 'proxy_sliver.dart';
+import 'dart:ui' show Offset, Rect;
+
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty;
+import 'package:flutter/src/painting/decoration.dart' show BoxPainter, Decoration;
+import 'package:flutter/src/painting/image_provider.dart' show ImageConfiguration;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, PipelineOwner;
+import 'package:flutter/src/rendering/proxy_box.dart' show DecorationPosition;
+import 'package:flutter/src/rendering/proxy_sliver.dart' show RenderProxySliver;
 
 /// Paints a [Decoration] either before or after its child paints.
 ///

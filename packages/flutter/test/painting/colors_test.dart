@@ -2,10 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:ui' show ColorSpace;
+import 'dart:ui' show Color, ColorSpace;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/src/foundation/collections.dart' show listEquals;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsSerializationDelegate;
+import 'package:flutter/src/material/colors.dart' show Colors, MaterialColor;
+import 'package:flutter/src/painting/colors.dart' show ColorProperty, ColorSwatch, HSLColor, HSVColor;
 import 'package:flutter_test/flutter_test.dart';
 
 const double _doubleColorPrecision = 0.01;

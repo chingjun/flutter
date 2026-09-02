@@ -5,9 +5,19 @@
 @Tags(<String>['reduced-test-set'])
 library;
 
-import 'dart:ui';
+import 'dart:ui' show BlendMode, ImageFilter;
 
-import 'package:flutter/material.dart';
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/rendering/flex.dart' show MainAxisAlignment;
+import 'package:flutter/src/rendering/stack.dart' show StackFit;
+import 'package:flutter/src/widgets/basic.dart' show BackdropFilter, Center, ClipRect, Column, Opacity, RepaintBoundary, Stack;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show Widget;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

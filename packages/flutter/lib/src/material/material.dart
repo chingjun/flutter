@@ -14,13 +14,37 @@
 /// @docImport 'mergeable_material.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Canvas, Clip, Color, Offset, Radius, Rect, Size, TextDirection, VoidCallback;
 
-import 'constants.dart';
-import 'elevation_overlay.dart';
-import 'theme.dart';
+import 'package:flutter/src/animation/curves.dart' show Curves;
+import 'package:flutter/src/animation/tween.dart' show ColorTween, Tween;
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/constants.dart' show kDebugMode;
+import 'package:flutter/src/foundation/debug.dart' show debugMaybeDispatchCreated, debugMaybeDispatchDisposed;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty, DoubleProperty, EnumProperty, describeIdentity;
+import 'package:flutter/src/material/constants.dart' show kThemeChangeDuration;
+import 'package:flutter/src/material/elevation_overlay.dart' show ElevationOverlay;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius, BorderRadiusGeometry;
+import 'package:flutter/src/painting/borders.dart' show ShapeBorder;
+import 'package:flutter/src/painting/circle_border.dart' show CircleBorder;
+import 'package:flutter/src/painting/colors.dart' show ColorProperty;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/custom_paint.dart' show CustomPainter;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, RenderObject;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderProxyBox, ShapeBorderClipper;
+import 'package:flutter/src/scheduler/ticker.dart' show TickerProvider;
+import 'package:flutter/src/widgets/basic.dart' show ClipPath, CustomPaint, Directionality, PhysicalShape;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, SingleChildRenderObjectWidget, State, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/implicit_animations.dart' show AnimatedDefaultTextStyle, AnimatedPhysicalModel, AnimatedWidgetBaseState, ImplicitlyAnimatedWidget, TweenVisitor;
+import 'package:flutter/src/widgets/lookup_boundary.dart' show LookupBoundary;
+import 'package:flutter/src/widgets/notification_listener.dart' show LayoutChangedNotification, NotificationListener;
+import 'package:flutter/src/widgets/ticker_provider.dart' show TickerProviderStateMixin;
+import 'package:meta/meta.dart' show mustCallSuper, protected, visibleForTesting;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 // Examples can assume:
 // late BuildContext context;

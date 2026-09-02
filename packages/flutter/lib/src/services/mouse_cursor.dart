@@ -6,10 +6,13 @@
 /// @docImport 'package:flutter/rendering.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
+import 'dart:async' show Future;
 
-import 'system_channels.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsProperty;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/gestures/events.dart' show PointerEvent, PointerRemovedEvent;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:meta/meta.dart' show factory, immutable, protected;
 
 export 'package:flutter/foundation.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder;
 export 'package:flutter/gestures.dart' show PointerEvent;

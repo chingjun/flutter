@@ -13,20 +13,23 @@ library;
 
 import 'dart:async';
 import 'dart:io' show Platform;
-import 'dart:ui' show FlutterView, FontWeight, Locale, Offset, Rect, Size, TextAlign, TextDirection;
+import 'dart:ui' show Brightness, FontWeight, Locale, Offset, Rect, Size, TextAffinity, TextAlign, TextDirection, TextPosition, TextRange, VoidCallback;
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorSummary, FlutterError, FlutterErrorDetails, InformationCollector;
+import 'package:flutter/src/foundation/collections.dart' show listEquals;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsNode, DiagnosticsProperty, DiagnosticsTreeStyle, DoubleProperty, EnumProperty, FlagProperty, StringProperty;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/services/autofill.dart' show AutofillClient, AutofillConfiguration, AutofillScope;
+import 'package:flutter/src/services/binding.dart' show ServicesBinding, SystemContextMenuClient;
+import 'package:flutter/src/services/keyboard_inserted_content.dart' show KeyboardInsertedContent;
+import 'package:flutter/src/services/message_codec.dart' show MethodCall, MissingPluginException;
+import 'package:flutter/src/services/platform_channel.dart' show MethodChannel;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:flutter/src/services/text_editing.dart' show TextSelection;
+import 'package:flutter/src/services/text_editing_delta.dart' show TextEditingDelta;
+import 'package:meta/meta.dart' show immutable, visibleForTesting;
 import 'package:vector_math/vector_math_64.dart' show Matrix4;
-
-import 'autofill.dart';
-import 'binding.dart';
-import 'clipboard.dart' show Clipboard;
-import 'keyboard_inserted_content.dart';
-import 'message_codec.dart';
-import 'platform_channel.dart';
-import 'system_channels.dart';
-import 'text_editing.dart';
-import 'text_editing_delta.dart';
 
 export 'dart:ui'
     show
@@ -39,9 +42,7 @@ export 'dart:ui'
         TextDirection,
         TextPosition,
         TextRange;
-
 export 'package:vector_math/vector_math_64.dart' show Matrix4;
-
 export 'autofill.dart' show AutofillConfiguration, AutofillScope;
 export 'text_editing.dart' show TextSelection;
 

@@ -2,11 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'basic.dart';
-import 'debug.dart';
-import 'framework.dart';
-import 'navigator.dart';
-import 'routes.dart';
+import 'dart:async' show Future;
+
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/widgets/debug.dart' show debugCheckHasWidgetsLocalizations;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, WidgetBuilder;
+import 'package:flutter/src/widgets/navigator.dart' show Navigator, NavigatorState, Route, RouteSettings;
+import 'package:flutter/src/widgets/routes.dart' show RawDialogRoute;
 
 /// A builder for a route that takes the build context and the widget intended
 /// to go inside the route as a parameter.

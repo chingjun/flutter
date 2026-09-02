@@ -3,11 +3,26 @@
 // found in the LICENSE file.
 
 import 'dart:math';
-import 'dart:ui';
+import 'dart:ui' show CheckedState, Locale, SemanticsAction, SemanticsFlag, SemanticsFlags, SemanticsValidationResult, TextDirection, Tristate, VoidCallback;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey, ValueKey;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderSemanticsAnnotations;
+import 'package:flutter/src/rendering/viewport.dart' show RenderViewport;
+import 'package:flutter/src/semantics/semantics.dart' show AccessibilityFocusBlockType, CustomSemanticsAction, DebugSemanticsDumpOrder, OrdinalSortKey, SemanticsConfiguration, SemanticsNode, SemanticsOwner, SemanticsTag, debugResetSemanticsIdCounter;
+import 'package:flutter/src/services/text_editing.dart' show TextSelection;
+import 'package:flutter/src/widgets/basic.dart' show Column, Directionality, FittedBox, MergeSemantics, Positioned, Row, Semantics, SizedBox, Stack, Transform;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show GlobalKey, Widget;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_view.dart' show ListView;
+import 'package:flutter/src/widgets/single_child_scroll_view.dart' show SingleChildScrollView;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'button_tester.dart';

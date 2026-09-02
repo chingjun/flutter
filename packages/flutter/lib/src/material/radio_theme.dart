@@ -6,14 +6,16 @@
 /// @docImport 'radio.dart';
 library;
 
-import 'dart:ui' show lerpDouble;
+import 'dart:ui' show Color, lerpDouble;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
-
-import 'theme.dart';
-import 'theme_data.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsProperty, DoubleProperty;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show MaterialTapTargetSize, VisualDensity;
+import 'package:flutter/src/painting/borders.dart' show BorderSide;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedWidget;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateBorderSide, WidgetStateProperty;
+import 'package:meta/meta.dart' show immutable;
 
 // Examples can assume:
 // late BuildContext context;

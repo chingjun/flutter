@@ -3,11 +3,14 @@
 // found in the LICENSE file.
 
 import 'dart:convert';
+import 'dart:typed_data' show ByteData;
 import 'dart:ui' as ui;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/painting/image_provider.dart' show AssetBundleImageKey, ImageConfiguration;
+import 'package:flutter/src/painting/image_resolution.dart' show AssetImage;
+import 'package:flutter/src/services/asset_bundle.dart' show CachingAssetBundle;
+import 'package:flutter/src/services/message_codecs.dart' show StandardMessageCodec;
 import 'package:flutter_test/flutter_test.dart';
 
 class TestAssetBundle extends CachingAssetBundle {

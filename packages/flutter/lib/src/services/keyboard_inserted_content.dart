@@ -2,7 +2,10 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
+import 'dart:typed_data' show Uint8List;
+
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:meta/meta.dart' show immutable;
 
 /// A class representing rich content (such as a PNG image) inserted via the
 /// system input method.

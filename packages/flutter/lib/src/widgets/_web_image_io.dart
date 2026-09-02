@@ -2,9 +2,10 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import '../painting/_web_image_info_io.dart';
-import 'basic.dart';
-import 'framework.dart';
+import 'package:flutter/src/painting/_web_image_info_io.dart' show WebImageInfo;
+import 'package:flutter/src/painting/alignment.dart' show Alignment, AlignmentGeometry;
+import 'package:flutter/src/painting/box_fit.dart' show BoxFit;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
 
 /// A [Widget] that displays an image that is backed by an HTML element.
 class RawWebImage extends StatelessWidget {

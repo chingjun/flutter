@@ -2,9 +2,24 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:typed_data' show ByteData;
+
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/services/browser_context_menu.dart' show BrowserContextMenu;
+import 'package:flutter/src/services/message_codec.dart' show MethodCall;
+import 'package:flutter/src/services/message_codecs.dart' show JSONMessageCodec, JSONMethodCodec;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:flutter/src/services/text_editing.dart' show TextSelection;
+import 'package:flutter/src/services/text_input.dart' show IOSSystemContextMenuItemData, IOSSystemContextMenuItemDataCopy, IOSSystemContextMenuItemDataCustom, IOSSystemContextMenuItemDataCut, IOSSystemContextMenuItemDataLiveText, IOSSystemContextMenuItemDataLookUp, IOSSystemContextMenuItemDataPaste, IOSSystemContextMenuItemDataSearchWeb, IOSSystemContextMenuItemDataSelectAll, IOSSystemContextMenuItemDataShare;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Center, Column, SizedBox, StatefulBuilder;
+import 'package:flutter/src/widgets/editable_text.dart' show EditableText, EditableTextState, TextEditingController;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, StateSetter, Widget;
+import 'package:flutter/src/widgets/localizations.dart' show DefaultWidgetsLocalizations, WidgetsLocalizations;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/system_context_menu.dart' show IOSSystemContextMenuItem, IOSSystemContextMenuItemCopy, IOSSystemContextMenuItemCustom, IOSSystemContextMenuItemCut, IOSSystemContextMenuItemLiveText, IOSSystemContextMenuItemLookUp, IOSSystemContextMenuItemPaste, IOSSystemContextMenuItemSearchWeb, IOSSystemContextMenuItemSelectAll, IOSSystemContextMenuItemShare, SystemContextMenu;
+import 'package:flutter/src/widgets/view.dart' show View;
 import 'package:flutter_test/flutter_test.dart';
 
 import '../system_context_menu_utils.dart';

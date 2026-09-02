@@ -11,18 +11,34 @@ library;
 
 import 'dart:async';
 import 'dart:ui' as ui show PictureRecorder, Rect, SceneBuilder, SemanticsUpdate;
+import 'dart:ui' show Canvas, Offset, SemanticsActionEvent;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/semantics.dart';
-import 'package:flutter/services.dart';
-
-import 'debug.dart';
-import 'mouse_tracker.dart';
-import 'object.dart';
-import 'service_extensions.dart';
-import 'view.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorHint, ErrorSummary, FlutterError, FlutterErrorDetails;
+import 'package:flutter/src/foundation/binding.dart' show BindingBase;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb, kReleaseMode;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode;
+import 'package:flutter/src/foundation/memory_allocations.dart' show kFlutterMemoryAllocationsEnabled;
+import 'package:flutter/src/foundation/print.dart' show debugPrint;
+import 'package:flutter/src/foundation/timeline.dart' show FlutterTimeline;
+import 'package:flutter/src/gestures/binding.dart' show GestureBinding;
+import 'package:flutter/src/gestures/events.dart' show PointerEvent, PointerMoveEvent;
+import 'package:flutter/src/gestures/hit_test.dart' show HitTestResult, HitTestable;
+import 'package:flutter/src/painting/binding.dart' show PaintingBinding;
+import 'package:flutter/src/painting/debug.dart' show debugInvertOversizedImages;
+import 'package:flutter/src/painting/matrix_utils.dart' show MatrixUtils;
+import 'package:flutter/src/rendering/debug.dart' show debugDisableClipLayers, debugDisableOpacityLayers, debugDisablePhysicalShapeLayers, debugPaintBaselinesEnabled, debugPaintSizeEnabled, debugProfileLayoutsEnabled, debugProfilePaintsEnabled, debugRepaintRainbowEnabled;
+import 'package:flutter/src/rendering/mouse_tracker.dart' show MouseTracker;
+import 'package:flutter/src/rendering/object.dart' show PipelineManifold, PipelineOwner, RenderObject, RenderObjectVisitor;
+import 'package:flutter/src/rendering/service_extensions.dart' show RenderingServiceExtensions;
+import 'package:flutter/src/rendering/view.dart' show RenderView, ViewConfiguration;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
+import 'package:flutter/src/semantics/binding.dart' show SemanticsBinding;
+import 'package:flutter/src/semantics/semantics.dart' show DebugSemanticsDumpOrder, SemanticsNode, SemanticsOwner;
+import 'package:flutter/src/services/binding.dart' show ServicesBinding;
+import 'package:flutter/src/services/platform_channel.dart' show MethodChannel;
+import 'package:listen/listen.dart' show ChangeNotifier;
+import 'package:meta/meta.dart' show protected, visibleForTesting;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 export 'package:flutter/gestures.dart' show HitTestResult;
 

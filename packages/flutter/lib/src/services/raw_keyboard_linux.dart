@@ -5,13 +5,13 @@
 /// @docImport 'hardware_keyboard.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-
-import 'keyboard_maps.g.dart';
-import 'raw_keyboard.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty;
+import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey, PhysicalKeyboardKey;
+import 'package:flutter/src/services/keyboard_maps.g.dart' show kGlfwNumpadMap, kGlfwToLogicalKey, kGtkNumpadMap, kGtkToLogicalKey, kLinuxToPhysicalKey;
+import 'package:flutter/src/services/raw_keyboard.dart' show KeyboardSide, ModifierKey, RawKeyEventData;
 
 export 'package:flutter/foundation.dart' show DiagnosticPropertiesBuilder;
-
 export 'keyboard_key.g.dart' show LogicalKeyboardKey, PhysicalKeyboardKey;
 
 /// Platform-specific key event data for Linux.

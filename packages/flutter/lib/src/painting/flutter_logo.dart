@@ -6,20 +6,22 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:typed_data' show Float64List;
 import 'dart:ui' as ui show Gradient, TextBox, lerpDouble;
+import 'dart:ui' show BlendMode, Canvas, Color, ColorFilter, FontWeight, Offset, Paint, Path, Rect, Size, TextBaseline, TextDirection, VoidCallback, clampDouble;
 
-import 'package:flutter/foundation.dart';
-
-import 'alignment.dart';
-import 'basic_types.dart';
-import 'box_fit.dart';
-import 'colors.dart';
-import 'decoration.dart';
-import 'edge_insets.dart';
-import 'image_provider.dart';
-import 'text_painter.dart';
-import 'text_span.dart';
-import 'text_style.dart';
+import 'package:flutter/src/foundation/debug.dart' show debugFormatDouble;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsNode, EnumProperty;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/box_fit.dart' show BoxFit, FittedSizes, applyBoxFit;
+import 'package:flutter/src/painting/colors.dart' show ColorProperty;
+import 'package:flutter/src/painting/decoration.dart' show BoxPainter, Decoration;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/image_provider.dart' show ImageConfiguration;
+import 'package:flutter/src/painting/text_painter.dart' show TextPainter;
+import 'package:flutter/src/painting/text_span.dart' show TextSpan;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/services/text_editing.dart' show TextSelection;
 
 /// Possible ways to draw Flutter's logo.
 enum FlutterLogoStyle {

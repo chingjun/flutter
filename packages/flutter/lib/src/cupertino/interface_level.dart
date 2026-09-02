@@ -2,9 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-
-import '../widgets/framework.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, EnumProperty;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedWidget;
 
 /// Indicates the visual level for a piece of content. Equivalent to `UIUserInterfaceLevel`
 /// from `UIKit`.

@@ -17,17 +17,32 @@
 library;
 
 import 'dart:collection';
+import 'dart:ui' show Clip, Offset, Rect, Size, TextBaseline, TextDirection, VoidCallback;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/scheduler.dart';
-
-import 'basic.dart';
-import 'framework.dart';
-import 'layout_builder.dart';
-import 'lookup_boundary.dart';
-import 'media_query.dart';
-import 'ticker_provider.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorHint, ErrorSummary, FlutterError;
+import 'package:flutter/src/foundation/collections.dart' show listEquals;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/debug.dart' show debugMaybeDispatchCreated, debugMaybeDispatchDisposed;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsNode, DiagnosticsProperty, DiagnosticsTreeStyle, EnumProperty, IntProperty, describeIdentity, shortHash;
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/painting/alignment.dart' show Alignment, AlignmentDirectional;
+import 'package:flutter/src/rendering/box.dart' show BaselineOffset, BoxConstraints, BoxHitTestResult, BoxParentData, RenderBox;
+import 'package:flutter/src/rendering/layer.dart' show ClipRectLayer, LayerHandle;
+import 'package:flutter/src/rendering/object.dart' show Constraints, ContainerRenderObjectMixin, PaintingContext, PipelineOwner, RenderObject, RenderObjectVisitor, RenderObjectWithLayoutCallbackMixin;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderFollowerLayer, RenderProxyBox;
+import 'package:flutter/src/rendering/stack.dart' show RenderStack, StackParentData;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding, SchedulerPhase;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsConfiguration;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Directionality, Semantics;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, ElementVisitor, GlobalKey, IndexedSlot, InheritedElement, InheritedWidget, MultiChildRenderObjectElement, MultiChildRenderObjectWidget, RenderObjectElement, RenderObjectWidget, SingleChildRenderObjectWidget, State, StatefulElement, StatefulWidget, Widget, WidgetBuilder;
+import 'package:flutter/src/widgets/layout_builder.dart' show AbstractLayoutBuilder, RenderAbstractLayoutBuilderMixin;
+import 'package:flutter/src/widgets/lookup_boundary.dart' show LookupBoundary;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/ticker_provider.dart' show TickerMode, TickerProviderStateMixin;
+import 'package:listen/listen.dart' show Listenable, ValueNotifier;
+import 'package:meta/meta.dart' show mustCallSuper, protected, visibleForOverriding;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 /// The signature of the widget builder callback used in
 /// [OverlayPortal.overlayChildLayoutBuilder].

@@ -7,10 +7,17 @@
 /// @docImport 'ink_well.dart';
 library;
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Canvas, Offset, Paint, RRect, Rect, TextDirection;
 
-import 'ink_well.dart' show InteractiveInkFeature;
-import 'material.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation, AnimationStatus;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/tween.dart' show IntTween;
+import 'package:flutter/src/material/ink_well.dart' show InteractiveInkFeature;
+import 'package:flutter/src/material/material.dart' show Material, RectCallback;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/box_border.dart' show BoxShape;
+import 'package:flutter/src/painting/matrix_utils.dart' show MatrixUtils;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 const Duration _kDefaultHighlightFadeDuration = Duration(milliseconds: 200);
 

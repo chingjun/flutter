@@ -3,17 +3,30 @@
 // found in the LICENSE file.
 
 import 'dart:math' as math;
-import 'dart:ui' show CheckedState;
+import 'dart:ui' show Canvas, CheckedState, Color, Offset, Paint, PaintingStyle, Rect, SemanticsAction, Size, TextAlign, TextDirection;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/scheduler.dart';
-
-import 'basic.dart';
-import 'binding.dart';
-import 'framework.dart';
-import 'gesture_detector.dart';
-import 'view.dart';
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/foundation/unicode.dart' show Unicode;
+import 'package:flutter/src/gestures/drag_details.dart' show DragEndDetails;
+import 'package:flutter/src/gestures/events.dart' show PointerDownEvent;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/colors.dart' show HSLColor;
+import 'package:flutter/src/painting/text_painter.dart' show TextPainter;
+import 'package:flutter/src/painting/text_span.dart' show TextSpan;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show BoxHitTestResult;
+import 'package:flutter/src/rendering/custom_paint.dart' show CustomPainter;
+import 'package:flutter/src/rendering/object.dart' show PipelineOwner;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior, RenderProxyBox;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
+import 'package:flutter/src/semantics/binding.dart' show SemanticsBinding, SemanticsHandle;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsData, SemanticsNode;
+import 'package:flutter/src/widgets/basic.dart' show CustomPaint, Listener;
+import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding, WidgetsBindingObserver;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, SingleChildRenderObjectWidget, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/view.dart' show View;
+import 'package:meta/meta.dart' show visibleForTesting;
 
 /// A widget that visualizes the semantics for the child.
 ///

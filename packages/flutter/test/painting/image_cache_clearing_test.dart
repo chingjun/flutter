@@ -5,7 +5,10 @@
 import 'dart:async';
 import 'dart:typed_data';
 
-import 'package:flutter/painting.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError, FlutterErrorDetails;
+import 'package:flutter/src/painting/binding.dart' show imageCache;
+import 'package:flutter/src/painting/image_provider.dart' show ImageConfiguration, MemoryImage;
+import 'package:flutter/src/painting/image_stream.dart' show ImageInfo, ImageStream, ImageStreamListener;
 import 'package:flutter_test/flutter_test.dart';
 
 import '../image_data.dart';

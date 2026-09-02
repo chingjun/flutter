@@ -2,8 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/semantics.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show SemanticsAction, SemanticsActionEvent, TextDirection, VoidCallback;
+
+import 'package:flutter/src/semantics/semantics.dart' show CustomSemanticsAction, SemanticsOwner;
+import 'package:flutter/src/widgets/basic.dart' show Center, Column, Directionality, MergeSemantics, Semantics, SizedBox;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show Widget;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 import '../widgets/semantics_tester.dart';

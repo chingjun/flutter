@@ -2,11 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
+import 'dart:ui' show Offset, PointerDeviceKind;
 
-import 'binding.dart';
-import 'events.dart';
-import 'lsq_solver.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/gestures/binding.dart' show GestureBinding;
+import 'package:flutter/src/gestures/lsq_solver.dart' show LeastSquaresSolver, PolynomialFit;
+import 'package:meta/meta.dart' show immutable;
 
 export 'dart:ui' show Offset, PointerDeviceKind;
 

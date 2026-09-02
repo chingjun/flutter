@@ -3,10 +3,14 @@
 // found in the LICENSE file.
 
 import 'dart:async';
+import 'dart:typed_data' show Uint8List;
 import 'dart:ui' as ui;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/painting.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError, FlutterErrorDetails, FlutterExceptionHandler;
+import 'package:flutter/src/painting/binding.dart' show PaintingBinding, imageCache;
+import 'package:flutter/src/painting/image_cache.dart' show ImageCache;
+import 'package:flutter/src/painting/image_provider.dart' show ExactAssetImage, ImageConfiguration, ImageProvider, MemoryImage;
+import 'package:flutter/src/painting/image_stream.dart' show ImageInfo, ImageStream, ImageStreamCompleter, ImageStreamListener;
 import 'package:flutter_test/flutter_test.dart';
 
 import '../image_data.dart';

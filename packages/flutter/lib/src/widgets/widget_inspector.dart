@@ -10,6 +10,7 @@ import 'dart:collection' show HashMap;
 import 'dart:convert';
 import 'dart:developer' as developer;
 import 'dart:math' as math;
+import 'dart:typed_data' show ByteData, Float32List, Float64List, Int32List, Uint8List;
 import 'dart:ui'
     as ui
     show
@@ -23,22 +24,51 @@ import 'dart:ui'
         PointMode,
         SceneBuilder,
         Vertices;
+import 'dart:ui' show BlendMode, Canvas, Color, Offset, Paint, PaintingStyle, Path, PlatformDispatcher, RRect, RSTransform, Rect, Size, TextDirection, VoidCallback;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/scheduler.dart';
+import 'package:flutter/src/foundation/assertions.dart' show DiagnosticsStackTrace, ErrorDescription, ErrorSpacer, ErrorSummary, FlutterError, FlutterErrorDetails, FlutterExceptionHandler;
+import 'package:flutter/src/foundation/basic_types.dart' show AsyncValueGetter, AsyncValueSetter;
+import 'package:flutter/src/foundation/binding.dart' show ServiceExtensionCallback;
+import 'package:flutter/src/foundation/collections.dart' show listEquals;
+import 'package:flutter/src/foundation/constants.dart' show kDebugMode, kIsWeb;
+import 'package:flutter/src/foundation/debug.dart' show activeDevToolsServerAddress, connectedVmServiceUri, debugMaybeDispatchCreated, debugMaybeDispatchDisposed;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, Diagnosticable, DiagnosticsBlock, DiagnosticsNode, DiagnosticsProperty, DiagnosticsSerializationDelegate, DiagnosticsTreeStyle, TextTreeRenderer;
+import 'package:flutter/src/foundation/memory_allocations.dart' show kFlutterMemoryAllocationsEnabled;
+import 'package:flutter/src/foundation/print.dart' show debugPrint;
+import 'package:flutter/src/gestures/drag_details.dart' show DragDownDetails, DragEndDetails, DragUpdateDetails;
+import 'package:flutter/src/painting/alignment.dart' show AlignmentDirectional;
+import 'package:flutter/src/painting/geometry.dart' show positionDependentBox;
+import 'package:flutter/src/painting/matrix_utils.dart' show MatrixUtils;
+import 'package:flutter/src/painting/text_painter.dart' show TextPainter;
+import 'package:flutter/src/painting/text_span.dart' show TextSpan;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, BoxParentData, RenderBox;
+import 'package:flutter/src/rendering/custom_paint.dart' show CustomPainter;
+import 'package:flutter/src/rendering/debug.dart' show debugOnProfilePaint, debugPaintSizeEnabled;
+import 'package:flutter/src/rendering/flex.dart' show CrossAxisAlignment, FlexFit, FlexParentData, MainAxisAlignment, RenderFlex;
+import 'package:flutter/src/rendering/layer.dart' show AnnotationResult, ContainerLayer, Layer, OffsetLayer, PictureLayer;
+import 'package:flutter/src/rendering/object.dart' show Constraints, DiagnosticsDebugCreator, PaintingContext, ParentData, PipelineOwner, RenderObject;
+import 'package:flutter/src/rendering/paragraph.dart' show RenderParagraph;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior, RenderIgnorePointer;
+import 'package:flutter/src/rendering/stack.dart' show RenderStack;
+import 'package:flutter/src/rendering/view.dart' show RenderView;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
+import 'package:flutter/src/widgets/basic.dart' show Column, CustomPaint, Directionality, IgnorePointer, MouseRegion, Positioned, Row, Stack;
+import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding, WidgetsBindingObserver;
+import 'package:flutter/src/widgets/debug_flags.dart' show debugOnRebuildDirtyWidget;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, DebugCreator, Element, GlobalKey, LeafRenderObjectWidget, ProxyElement, ProxyWidget, RenderObjectElement, State, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/icon_data.dart' show IconData;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/routes.dart' show ModalRoute;
+import 'package:flutter/src/widgets/service_extensions.dart' show WidgetInspectorServiceExtensions;
+import 'package:flutter/src/widgets/view.dart' show View;
+import 'package:listen/listen.dart' show ChangeNotifier, ValueNotifier;
+import 'package:meta/meta.dart' show immutable, mustCallSuper, protected, visibleForTesting;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
-import 'basic.dart';
-import 'binding.dart';
-import 'debug.dart';
 import 'debug_flags.dart' as debug_flags;
-import 'framework.dart';
-import 'gesture_detector.dart';
-import 'icon_data.dart';
-import 'media_query.dart';
-import 'routes.dart';
-import 'service_extensions.dart';
-import 'view.dart';
 
 /// Signature for the builder callback used by
 /// [WidgetInspector.exitWidgetSelectionButtonBuilder].

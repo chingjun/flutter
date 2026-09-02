@@ -12,24 +12,39 @@ library;
 
 import 'dart:async';
 import 'dart:io' show File;
+import 'dart:typed_data' show Uint8List;
+import 'dart:ui' show BlendMode, Color, FilterQuality, Rect, Shadow, Size, TextAlign, TextDirection;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/semantics.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, FlutterError, FlutterErrorDetails;
+import 'package:flutter/src/foundation/constants.dart' show kDebugMode, kIsWeb;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty, DoubleProperty, EnumProperty, FlagProperty, StringProperty;
+import 'package:flutter/src/painting/alignment.dart' show Alignment, AlignmentGeometry;
+import 'package:flutter/src/painting/box_fit.dart' show BoxFit;
+import 'package:flutter/src/painting/colors.dart' show ColorProperty;
+import 'package:flutter/src/painting/decoration_image.dart' show ImageRepeat;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/image_provider.dart' show ExactAssetImage, FileImage, ImageConfiguration, ImageProvider, MemoryImage, NetworkImage, ResizeImage, WebHtmlElementStrategy;
+import 'package:flutter/src/painting/image_resolution.dart' show AssetImage;
+import 'package:flutter/src/painting/image_stream.dart' show ImageChunkEvent, ImageErrorListener, ImageInfo, ImageStream, ImageStreamCompleterHandle, ImageStreamListener;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
+import 'package:flutter/src/semantics/binding.dart' show SemanticsBinding;
+import 'package:flutter/src/services/asset_bundle.dart' show AssetBundle;
+import 'package:flutter/src/widgets/basic.dart' show FittedBox, Padding, Positioned, RawImage, Semantics, Stack;
+import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding, WidgetsBindingObserver;
+import 'package:flutter/src/widgets/container.dart' show createLocalImageConfiguration;
+import 'package:flutter/src/widgets/disposable_build_context.dart' show DisposableBuildContext;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/scroll_aware_image_provider.dart' show ScrollAwareImageProvider;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/ticker_provider.dart' show TickerMode;
 
 import '../painting/_web_image_info_io.dart'
     if (dart.library.js_interop) '../painting/_web_image_info_web.dart';
 import '_web_image_io.dart' if (dart.library.js_interop) '_web_image_web.dart';
-import 'basic.dart';
-import 'binding.dart';
-import 'container.dart';
-import 'disposable_build_context.dart';
-import 'framework.dart';
-import 'media_query.dart';
-import 'placeholder.dart';
-import 'scroll_aware_image_provider.dart';
-import 'text.dart';
-import 'ticker_provider.dart';
 
 export 'package:flutter/painting.dart'
     show
@@ -43,15 +58,6 @@ export 'package:flutter/painting.dart'
         ImageStream,
         MemoryImage,
         NetworkImage;
-
-// Examples can assume:
-// late Widget image;
-// late ImageProvider _image;
-// late bool isPaused;
-// late AssetImage myAnimatedGif;
-
-// createLocalImageConfiguration is defined in container.dart (to avoid a
-// cyclic import) and re-exported here for backward compatibility.
 export 'container.dart' show createLocalImageConfiguration;
 
 

@@ -2,10 +2,15 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:ui';
+import 'dart:ui' show Canvas, Rect, SemanticsAction, SemanticsFlag, SemanticsInputType, SemanticsRole, SemanticsValidationResult, Size, TextDirection;
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/key.dart' show Key, ValueKey;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/rendering/custom_paint.dart' show CustomPainter, CustomPainterSemantics, SemanticsBuilderCallback;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsHintOverrides, SemanticsNode, SemanticsOwner, SemanticsProperties, SemanticsTag, debugResetSemanticsIdCounter;
+import 'package:flutter/src/services/text_editing.dart' show TextSelection;
+import 'package:flutter/src/widgets/basic.dart' show CustomPaint, Semantics, SizedBox;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'semantics_tester.dart';

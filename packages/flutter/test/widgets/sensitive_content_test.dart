@@ -3,9 +3,16 @@
 // found in the LICENSE file.
 
 import 'dart:async' show Completer;
+import 'dart:ui' show Size;
 
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/services/message_codec.dart' show MethodCall;
+import 'package:flutter/src/services/sensitive_content.dart' show ContentSensitivity;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:flutter/src/widgets/basic.dart' show Center, SizedBox;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/sensitive_content.dart' show SensitiveContent;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'sensitive_content_utils.dart';

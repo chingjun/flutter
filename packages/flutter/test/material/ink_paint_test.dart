@@ -7,9 +7,30 @@
 @Tags(<String>['reduced-test-set'])
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'dart:ui' show Color, Paint, RRect, Radius, Rect, Size, TextDirection, VoidCallback;
+
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/ink_decoration.dart' show Ink;
+import 'package:flutter/src/material/ink_ripple.dart' show InkRipple;
+import 'package:flutter/src/material/ink_well.dart' show InkResponse, InkWell, InteractiveInkFeature, InteractiveInkFeatureFactory;
+import 'package:flutter/src/material/material.dart' show Material, MaterialInkController, RectCallback;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/borders.dart' show ShapeBorder;
+import 'package:flutter/src/painting/box_border.dart' show BoxShape;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
+import 'package:flutter/src/widgets/actions.dart' show ActivateIntent, Intent;
+import 'package:flutter/src/widgets/basic.dart' show Center, Directionality, Positioned, RepaintBoundary, SizedBox;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
+import 'package:flutter/src/widgets/indexed_stack.dart' show Visibility;
+import 'package:flutter/src/widgets/overlay.dart' show Overlay, OverlayEntry, OverlayPortal, OverlayPortalController;
+import 'package:flutter/src/widgets/shortcuts.dart' show ShortcutActivator, Shortcuts, SingleActivator;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

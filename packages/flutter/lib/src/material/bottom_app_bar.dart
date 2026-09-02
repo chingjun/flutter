@@ -9,16 +9,25 @@
 /// @docImport 'icons.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Brightness, Clip, Color, Offset, Path, Rect, Size;
 
-import 'bottom_app_bar_theme.dart';
-import 'color_scheme.dart';
-import 'colors.dart';
-import 'elevation_overlay.dart';
-import 'material.dart';
-import 'scaffold.dart';
-import 'theme.dart';
+import 'package:flutter/src/material/bottom_app_bar_theme.dart' show BottomAppBarTheme, BottomAppBarThemeData;
+import 'package:flutter/src/material/color_scheme.dart' show ColorScheme;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/elevation_overlay.dart' show ElevationOverlay;
+import 'package:flutter/src/material/material.dart' show Material, MaterialType;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold, ScaffoldGeometry;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/notched_shapes.dart' show AutomaticNotchedShape, NotchedShape;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/proxy_box.dart' show CustomClipper, ShapeBorderClipper;
+import 'package:flutter/src/widgets/basic.dart' show Padding, PhysicalShape, SizedBox;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/safe_area.dart' show SafeArea;
+import 'package:listen/listen.dart' show ValueListenable;
 
 // Examples can assume:
 // late Widget bottomAppBarContents;

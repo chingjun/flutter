@@ -7,16 +7,38 @@
 /// @docImport 'text_button.dart';
 library;
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color, Offset, VoidCallback;
 
-import 'banner_theme.dart';
-import 'color_scheme.dart';
-import 'colors.dart';
-import 'divider.dart';
-import 'material.dart';
-import 'scaffold.dart';
-import 'text_theme.dart';
-import 'theme.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation, AnimationStatus;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/animations.dart' show CurvedAnimation;
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves, Threshold;
+import 'package:flutter/src/animation/tween.dart' show Tween;
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/material/banner_theme.dart' show MaterialBannerTheme, MaterialBannerThemeData;
+import 'package:flutter/src/material/color_scheme.dart' show ColorScheme;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/divider.dart' show Divider;
+import 'package:flutter/src/material/material.dart' show Material;
+import 'package:flutter/src/material/scaffold.dart' show ScaffoldMessenger;
+import 'package:flutter/src/material/text_theme.dart' show TextTheme;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/alignment.dart' show AlignmentDirectional;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsDirectional, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/rendering/flex.dart' show MainAxisSize;
+import 'package:flutter/src/scheduler/ticker.dart' show TickerProvider;
+import 'package:flutter/src/widgets/basic.dart' show Align, ClipRect, Column, ConstrainedBox, Expanded, Padding, Row, Semantics;
+import 'package:flutter/src/widgets/debug.dart' show debugCheckHasMediaQuery;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/heroes.dart' show Hero;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/overflow_bar.dart' show OverflowBar, OverflowBarAlignment;
+import 'package:flutter/src/widgets/safe_area.dart' show SafeArea;
+import 'package:flutter/src/widgets/text.dart' show DefaultTextStyle;
+import 'package:flutter/src/widgets/transitions.dart' show AnimatedBuilder, SlideTransition;
 
 // Examples can assume:
 // late BuildContext context;

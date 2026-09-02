@@ -3,8 +3,10 @@
 // found in the LICENSE file.
 
 import 'dart:io';
-import 'assertions.dart';
-import 'constants.dart';
+
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/constants.dart' show kDebugMode;
+
 import 'platform.dart' as platform;
 
 export 'platform.dart' show TargetPlatform;

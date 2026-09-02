@@ -4,8 +4,9 @@
 
 import 'dart:ui' as ui show lerpDouble;
 
-import 'package:flutter/animation.dart';
-import 'package:flutter/rendering.dart';
+import 'package:flutter/src/animation/animation_style.dart' show AnimationStyle;
+import 'package:flutter/src/animation/curves.dart' show Curves;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, DiagnosticsNode;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

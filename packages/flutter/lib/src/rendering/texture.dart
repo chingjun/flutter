@@ -2,11 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
+import 'dart:ui' show FilterQuality, Offset, Rect, Size;
 
-import 'box.dart';
-import 'layer.dart';
-import 'object.dart';
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/layer.dart' show TextureLayer;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext;
+import 'package:meta/meta.dart' show protected;
 
 /// A rectangle upon which a backend texture is mapped.
 ///

@@ -7,9 +7,22 @@
 @Tags(<String>['reduced-test-set'])
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/semantics.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Canvas, Size, TextDirection;
+
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/rendering/custom_paint.dart' show CustomPainter;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsNode;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor, SystemMouseCursors;
+import 'package:flutter/src/widgets/basic.dart' show Center, CustomPaint, Directionality, SizedBox;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/localizations.dart' show DefaultWidgetsLocalizations, WidgetsLocalizations;
+import 'package:flutter/src/widgets/radio_group.dart' show RadioClient, RadioGroupRegistry;
+import 'package:flutter/src/widgets/raw_radio.dart' show RawRadio;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/toggleable.dart' show ToggleableStateMixin;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetStateProperty;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

@@ -3,9 +3,11 @@
 // found in the LICENSE file.
 
 import 'dart:convert';
-import 'dart:ui';
+import 'dart:ui' show Color, Rect;
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/src/foundation/assertions.dart' show DiagnosticsStackTrace, ErrorSummary, FlutterError;
+import 'package:flutter/src/foundation/collections.dart' show listEquals;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticableTreeMixin, DiagnosticsNode, DiagnosticsProperty, DiagnosticsSerializationDelegate, DiagnosticsTreeStyle, DoubleProperty, EnumProperty, FlagProperty, FlagsSummary, IntProperty, IterableProperty, MessageProperty, ObjectFlagProperty, PercentProperty, StringProperty, TextTreeRenderer, describeEnum, kNoDefaultValue;
 import 'package:flutter_test/flutter_test.dart';
 
 class TestTree extends Object with DiagnosticableTreeMixin {

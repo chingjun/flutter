@@ -9,14 +9,20 @@
 /// @docImport 'viewport.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show VoidCallback;
 
-import 'automatic_keep_alive.dart';
-import 'basic.dart';
-import 'framework.dart';
-import 'selection_container.dart';
-import 'two_dimensional_viewport.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, FlutterError, FlutterErrorDetails;
+import 'package:flutter/src/foundation/diagnostics.dart' show describeIdentity;
+import 'package:flutter/src/foundation/key.dart' show Key, ValueKey;
+import 'package:flutter/src/foundation/memory_allocations.dart' show kFlutterMemoryAllocationsEnabled;
+import 'package:flutter/src/rendering/selection.dart' show Selectable, SelectionRegistrar;
+import 'package:flutter/src/widgets/automatic_keep_alive.dart' show AutomaticKeepAlive, AutomaticKeepAliveClientMixin;
+import 'package:flutter/src/widgets/basic.dart' show IndexedSemantics, KeyedSubtree, RepaintBoundary;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, ErrorWidget, NullableIndexedWidgetBuilder, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/selection_container.dart' show SelectionContainer, SelectionRegistrarScope;
+import 'package:flutter/src/widgets/two_dimensional_viewport.dart' show ChildVicinity, TwoDimensionalIndexedWidgetBuilder;
+import 'package:listen/listen.dart' show ChangeNotifier;
+import 'package:meta/meta.dart' show mustCallSuper, protected;
 
 export 'package:flutter/rendering.dart'
     show

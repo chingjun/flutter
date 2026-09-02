@@ -9,10 +9,30 @@
 library;
 
 import 'dart:math' as math;
-import 'dart:ui';
+import 'dart:ui' show Brightness, Color, FontWeight, SemanticsAction, Size, TextDirection;
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/rendering.dart';
+import 'package:flutter/src/cupertino/app.dart' show CupertinoApp;
+import 'package:flutter/src/cupertino/colors.dart' show CupertinoColors, CupertinoDynamicColor;
+import 'package:flutter/src/cupertino/date_picker.dart' show CupertinoDatePicker, CupertinoDatePickerMode, CupertinoTimerPicker, CupertinoTimerPickerMode;
+import 'package:flutter/src/cupertino/localizations.dart' show DatePickerDateOrder;
+import 'package:flutter/src/cupertino/page_scaffold.dart' show CupertinoPageScaffold;
+import 'package:flutter/src/cupertino/picker.dart' show CupertinoPicker, CupertinoPickerDefaultSelectionOverlay;
+import 'package:flutter/src/cupertino/text_theme.dart' show CupertinoTextThemeData;
+import 'package:flutter/src/cupertino/theme.dart' show CupertinoThemeData;
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/foundation/key.dart' show Key, ValueKey;
+import 'package:flutter/src/painting/text_painter.dart' show TextPainter;
+import 'package:flutter/src/painting/text_span.dart' show TextSpan;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/paragraph.dart' show RenderParagraph;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsData, SemanticsNode, debugResetSemanticsIdCounter;
+import 'package:flutter/src/widgets/basic.dart' show Center, Directionality, RepaintBoundary, Row, SizedBox, StatefulBuilder;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StateSetter, Widget;
+import 'package:flutter/src/widgets/list_wheel_scroll_view.dart' show ChangeReportingBehavior, FixedExtentScrollController;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 // A number of the hit tests below say "warnIfMissed: false". This is because

@@ -5,9 +5,11 @@
 /// @docImport 'navigator.dart';
 library;
 
-import 'basic.dart';
-import 'framework.dart';
-import 'routes.dart';
+import 'dart:ui' show Color;
+
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
+import 'package:flutter/src/widgets/routes.dart' show ModalRoute, RoutePageBuilder, RouteTransitionsBuilder, TransitionRoute;
 
 /// A modal route that replaces the entire screen.
 ///

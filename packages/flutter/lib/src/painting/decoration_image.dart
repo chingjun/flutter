@@ -12,18 +12,21 @@ library;
 import 'dart:developer' as developer;
 import 'dart:math' as math;
 import 'dart:ui' as ui show FlutterView, Image;
+import 'dart:ui' show BlendMode, Canvas, Color, ColorFilter, FilterQuality, Offset, Paint, Path, Rect, Size, TextDirection, VoidCallback, clampDouble;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/scheduler.dart';
-
-import 'alignment.dart';
-import 'basic_types.dart';
-import 'binding.dart';
-import 'borders.dart';
-import 'box_fit.dart';
-import 'debug.dart';
-import 'image_provider.dart';
-import 'image_stream.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorSummary, FlutterError, FlutterErrorDetails;
+import 'package:flutter/src/foundation/constants.dart' show kReleaseMode, precisionErrorTolerance;
+import 'package:flutter/src/foundation/debug.dart' show debugMaybeDispatchCreated, debugMaybeDispatchDisposed;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode, DiagnosticsProperty, DiagnosticsTreeStyle;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/painting/alignment.dart' show Alignment, AlignmentGeometry;
+import 'package:flutter/src/painting/binding.dart' show PaintingBinding;
+import 'package:flutter/src/painting/box_fit.dart' show BoxFit, FittedSizes, applyBoxFit;
+import 'package:flutter/src/painting/debug.dart' show ImageSizeInfo, debugImageOverheadAllowance, debugInvertOversizedImages, debugOnPaintImage;
+import 'package:flutter/src/painting/image_provider.dart' show ImageConfiguration, ImageProvider;
+import 'package:flutter/src/painting/image_stream.dart' show ImageErrorListener, ImageInfo, ImageStream, ImageStreamListener;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
+import 'package:meta/meta.dart' show immutable, visibleForTesting;
 
 /// How to paint any portions of a box not covered by an image.
 enum ImageRepeat {

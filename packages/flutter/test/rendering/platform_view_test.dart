@@ -4,12 +4,24 @@
 
 import 'dart:async';
 import 'dart:ui' as ui;
+import 'dart:ui' show Canvas, Color, Paint, PointerDeviceKind, Size, TextDirection;
 
 import 'package:fake_async/fake_async.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/src/foundation/basic_types.dart' show Factory;
+import 'package:flutter/src/gestures/binding.dart' show GestureBinding;
+import 'package:flutter/src/gestures/events.dart' show PointerDownEvent;
+import 'package:flutter/src/gestures/monodrag.dart' show VerticalDragGestureRecognizer;
+import 'package:flutter/src/gestures/recognizer.dart' show OneSequenceGestureRecognizer;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/custom_paint.dart' show CustomPainter, RenderCustomPaint;
+import 'package:flutter/src/rendering/layer.dart' show TextureLayer;
+import 'package:flutter/src/rendering/platform_view.dart' show PlatformViewHitTestBehavior, PlatformViewRenderBox, RenderAndroidView, RenderAppKitView, RenderUiKitView;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderConstrainedBox;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsConfiguration;
+import 'package:flutter/src/services/message_codec.dart' show MethodCall;
+import 'package:flutter/src/services/platform_channel.dart' show MethodChannel;
+import 'package:flutter/src/services/platform_views.dart' show AndroidViewController, AppKitViewController, PlatformViewsService, UiKitViewController;
 import 'package:flutter_test/flutter_test.dart';
 
 import '../services/fake_platform_views.dart';

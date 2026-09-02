@@ -2,8 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
+import 'dart:ui' show PointerDeviceKind;
+
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError, FlutterErrorDetails, FlutterExceptionHandler;
+import 'package:flutter/src/gestures/arena.dart' show GestureArenaEntry, GestureArenaMember, GestureDisposition;
+import 'package:flutter/src/gestures/binding.dart' show GestureBinding;
+import 'package:flutter/src/gestures/events.dart' show PointerCancelEvent, PointerDownEvent, PointerMoveEvent, PointerUpEvent, kPrimaryMouseButton, kSecondaryButton, kSecondaryMouseButton, kTertiaryButton;
+import 'package:flutter/src/gestures/monodrag.dart' show HorizontalDragGestureRecognizer;
+import 'package:flutter/src/gestures/tap.dart' show TapDownDetails, TapGestureRecognizer, TapMoveDetails, TapUpDetails;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'gesture_tester.dart';

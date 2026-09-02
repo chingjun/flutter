@@ -3,9 +3,11 @@
 // found in the LICENSE file.
 
 // THIS TEST IS SENSITIVE TO LINE NUMBERS AT THE TOP OF THIS FILE
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/shifted_box.dart' show RenderShiftedBox;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, SingleChildRenderObjectWidget;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
 import 'package:flutter_test/flutter_test.dart';
 
 class RenderFoo extends RenderShiftedBox {

@@ -13,17 +13,41 @@ library;
 
 import 'dart:async';
 import 'dart:collection';
+import 'dart:ui' show Canvas, Color, Offset, Paint, RRect, Rect, TextDirection, VoidCallback;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
-
-import 'debug.dart';
-import 'ink_highlight.dart';
-import 'material.dart';
-import 'material_state.dart';
-import 'theme.dart';
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, DiagnosticsProperty, IterableProperty;
+import 'package:flutter/src/foundation/observer_list.dart' show ObserverList;
+import 'package:flutter/src/gestures/events.dart' show PointerEnterEvent, PointerExitEvent;
+import 'package:flutter/src/gestures/long_press.dart' show GestureLongPressCallback, GestureLongPressUpCallback;
+import 'package:flutter/src/gestures/tap.dart' show GestureTapCallback, GestureTapDownCallback, GestureTapUpCallback, TapDownDetails, TapUpDetails;
+import 'package:flutter/src/material/debug.dart' show debugCheckHasMaterial;
+import 'package:flutter/src/material/ink_highlight.dart' show InkHighlight;
+import 'package:flutter/src/material/material.dart' show InkFeature, Material, MaterialInkController, RectCallback;
+import 'package:flutter/src/material/material_state.dart' show MaterialStatesController;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/borders.dart' show ShapeBorder;
+import 'package:flutter/src/painting/box_border.dart' show BoxShape;
+import 'package:flutter/src/painting/matrix_utils.dart' show MatrixUtils;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor;
+import 'package:flutter/src/widgets/actions.dart' show Action, Actions, ActivateIntent, ButtonActivateIntent, CallbackAction, Intent;
+import 'package:flutter/src/widgets/automatic_keep_alive.dart' show AutomaticKeepAliveClientMixin;
+import 'package:flutter/src/widgets/basic.dart' show Directionality, MouseRegion, Semantics;
+import 'package:flutter/src/widgets/debug.dart' show debugCheckHasDirectionality;
+import 'package:flutter/src/widgets/default_selection_style.dart' show DefaultSelectionStyle;
+import 'package:flutter/src/widgets/feedback.dart' show Feedback;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusHighlightMode, FocusManager, FocusNode;
+import 'package:flutter/src/widgets/focus_scope.dart' show Focus;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedWidget, State, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, NavigationMode;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateMouseCursor, WidgetStateProperty;
+import 'package:meta/meta.dart' show factory, mustCallSuper, protected;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 // Examples can assume:
 // late BuildContext context;

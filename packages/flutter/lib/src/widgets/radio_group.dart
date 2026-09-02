@@ -5,15 +5,17 @@
 import 'dart:ui' show SemanticsRole;
 
 import 'package:collection/collection.dart';
-import 'package:flutter/services.dart';
-
-import 'actions.dart';
-import 'basic.dart';
-import 'binding.dart';
-import 'focus_manager.dart';
-import 'focus_traversal.dart';
-import 'framework.dart';
-import 'shortcuts.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/services/hardware_keyboard.dart' show KeyEvent;
+import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
+import 'package:flutter/src/widgets/actions.dart' show Intent, VoidCallbackIntent;
+import 'package:flutter/src/widgets/basic.dart' show Semantics;
+import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode, KeyEventResult;
+import 'package:flutter/src/widgets/focus_traversal.dart' show FocusTraversalGroup, ReadingOrderTraversalPolicy;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedWidget, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/shortcuts.dart' show ShortcutActivator, ShortcutManager, Shortcuts, SingleActivator;
 
 /// A group for radios.
 ///

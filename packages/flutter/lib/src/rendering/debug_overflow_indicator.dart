@@ -8,11 +8,16 @@ library;
 
 import 'dart:math' as math;
 import 'dart:ui' as ui;
+import 'dart:ui' show Color, FontWeight, Offset, Paint, Rect, TextDirection, TileMode;
 
-import 'package:flutter/foundation.dart';
-
-import 'object.dart';
-import 'stack.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorHint, FlutterError, FlutterErrorDetails;
+import 'package:flutter/src/foundation/constants.dart' show kDebugMode;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode;
+import 'package:flutter/src/painting/text_painter.dart' show TextPainter;
+import 'package:flutter/src/painting/text_span.dart' show TextSpan;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/object.dart' show DiagnosticsDebugCreator, PaintingContext, RenderObject;
+import 'package:flutter/src/rendering/stack.dart' show RelativeRect;
 
 // Describes which side the region data overflows on.
 enum _OverflowSide { left, top, bottom, right }

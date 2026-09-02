@@ -9,14 +9,18 @@ import 'dart:collection';
 import 'dart:ui'
     as ui
     show ParagraphStyle, Shadow, StrutStyle, TextStyle, kTextHeightNone, lerpDouble;
+import 'dart:ui' show Color, FontFeature, FontStyle, FontVariation, FontWeight, Locale, Paint, Shadow, TextAlign, TextBaseline, TextDecoration, TextDecorationStyle, TextDirection, TextHeightBehavior, TextLeadingDistribution;
 
-import 'package:flutter/foundation.dart';
-
-import 'basic_types.dart';
-import 'colors.dart';
-import 'strut_style.dart';
-import 'text_painter.dart';
-import 'text_scaler.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorHint, ErrorSpacer, ErrorSummary, FlutterError;
+import 'package:flutter/src/foundation/collections.dart' show listEquals;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsNode, DiagnosticsProperty, DiagnosticsTreeStyle, DoubleProperty, EnumProperty, FlagProperty, IterableProperty, MessageProperty, StringProperty;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/painting/basic_types.dart' show RenderComparison;
+import 'package:flutter/src/painting/colors.dart' show ColorProperty;
+import 'package:flutter/src/painting/strut_style.dart' show StrutStyle;
+import 'package:flutter/src/painting/text_painter.dart' show TextOverflow, kDefaultFontSize;
+import 'package:flutter/src/painting/text_scaler.dart' show TextScaler;
+import 'package:meta/meta.dart' show immutable;
 
 const String _kDefaultDebugLabel = 'unknown';
 

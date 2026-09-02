@@ -8,11 +8,43 @@
 @TestOn('!chrome')
 library;
 
-import 'dart:ui';
+import 'dart:ui' show Brightness, Clip, Color, DartPerformanceMode, FontWeight, Size, TextDirection;
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/scheduler.dart';
+import 'package:flutter/src/cupertino/app.dart' show CupertinoApp;
+import 'package:flutter/src/cupertino/bottom_tab_bar.dart' show CupertinoTabBar;
+import 'package:flutter/src/cupertino/button.dart' show CupertinoButton;
+import 'package:flutter/src/cupertino/icons.dart' show CupertinoIcons;
+import 'package:flutter/src/cupertino/nav_bar.dart' show CupertinoNavigationBar, CupertinoSliverNavigationBar;
+import 'package:flutter/src/cupertino/page_scaffold.dart' show CupertinoPageScaffold;
+import 'package:flutter/src/cupertino/route.dart' show CupertinoPageRoute;
+import 'package:flutter/src/cupertino/search_field.dart' show CupertinoSearchTextField;
+import 'package:flutter/src/cupertino/sheet.dart' show CupertinoSheetRoute;
+import 'package:flutter/src/cupertino/tab_scaffold.dart' show CupertinoTabScaffold;
+import 'package:flutter/src/cupertino/tab_view.dart' show CupertinoTabView;
+import 'package:flutter/src/cupertino/text_field.dart' show OverlayVisibilityMode;
+import 'package:flutter/src/cupertino/theme.dart' show CupertinoThemeData;
+import 'package:flutter/src/painting/text_scaler.dart' show TextScaler;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/object.dart' show ContainerRenderObjectMixin, RenderObject;
+import 'package:flutter/src/rendering/paragraph.dart' show RenderParagraph;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderAnimatedOpacity;
+import 'package:flutter/src/rendering/stack.dart' show StackParentData;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Center, ClipRect, Directionality, SizedBox, SliverToBoxAdapter, Stack;
+import 'package:flutter/src/widgets/bottom_navigation_bar_item.dart' show BottomNavigationBarItem;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, GlobalKey, RenderObjectElement, Widget;
+import 'package:flutter/src/widgets/heroes.dart' show Hero;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/navigator.dart' show Navigator, NavigatorState;
+import 'package:flutter/src/widgets/overlay.dart' show Overlay;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/preferred_size.dart' show PreferredSize;
+import 'package:flutter/src/widgets/rich_text.dart' show RichText;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_view.dart' show CustomScrollView;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/transitions.dart' show FadeTransition;
 import 'package:flutter_test/flutter_test.dart';
 
 Future<void> startTransitionBetween(

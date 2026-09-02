@@ -7,15 +7,21 @@
 /// @docImport 'semantics.dart';
 library;
 
+import 'dart:typed_data' show ByteData;
 import 'dart:ui'
     as ui
     show AccessibilityFeatures, Rect, SemanticsActionEvent, SemanticsUpdateBuilder;
+import 'dart:ui' show VoidCallback;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
-
-import 'debug.dart';
+import 'package:flutter/src/foundation/basic_types.dart' show ValueSetter;
+import 'package:flutter/src/foundation/binding.dart' show BindingBase;
+import 'package:flutter/src/foundation/debug.dart' show debugMaybeDispatchCreated, debugMaybeDispatchDisposed;
+import 'package:flutter/src/foundation/observer_list.dart' show ObserverList;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding, SchedulerPhase;
+import 'package:flutter/src/semantics/debug.dart' show debugSemanticsDisableAnimations;
+import 'package:flutter/src/services/message_codecs.dart' show StandardMessageCodec;
+import 'package:listen/listen.dart' show ValueNotifier;
+import 'package:meta/meta.dart' show mustCallSuper, protected;
 
 export 'dart:ui' show AccessibilityFeatures, SemanticsActionEvent, SemanticsUpdateBuilder;
 

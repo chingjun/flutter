@@ -6,8 +6,9 @@
 /// @docImport 'package:flutter/widgets.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/painting.dart';
+import 'dart:ui' show TextDirection;
+
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
 
 export 'dart:ui' show TextDirection;
 

@@ -2,7 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/src/foundation/debug.dart' show debugInstrumentAction, debugInstrumentationEnabled, debugMaybeDispatchCreated, debugMaybeDispatchDisposed;
+import 'package:flutter/src/foundation/memory_allocations.dart' show FlutterMemoryAllocations, ObjectCreated, ObjectDisposed, ObjectEvent, kFlutterMemoryAllocationsEnabled;
+import 'package:flutter/src/foundation/print.dart' show DebugPrintCallback, debugPrint;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

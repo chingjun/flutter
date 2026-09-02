@@ -2,9 +2,19 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show SemanticsAction, Size, VoidCallback;
+
+import 'package:flutter/src/gestures/drag_details.dart' show DragStartDetails, GestureDragUpdateCallback;
+import 'package:flutter/src/gestures/long_press.dart' show GestureLongPressCallback, LongPressGestureRecognizer;
+import 'package:flutter/src/gestures/monodrag.dart' show HorizontalDragGestureRecognizer, PanGestureRecognizer, VerticalDragGestureRecognizer;
+import 'package:flutter/src/gestures/recognizer.dart' show GestureRecognizer;
+import 'package:flutter/src/gestures/tap.dart' show GestureTapCallback, TapGestureRecognizer;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderSemanticsGestureHandler;
+import 'package:flutter/src/widgets/basic.dart' show Center, StatefulBuilder;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, SingleChildRenderObjectWidget, StateSetter;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector, GestureRecognizerFactory, GestureRecognizerFactoryConstructor, GestureRecognizerFactoryInitializer, GestureRecognizerFactoryWithHandlers, RawGestureDetector, RawGestureDetectorState, SemanticsGestureDelegate;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'semantics_tester.dart';

@@ -5,8 +5,10 @@
 import 'dart:ui'
     as ui
     show FontFeature, FontVariation, ParagraphStyle, Shadow, TextStyle, lerpDouble;
+import 'dart:ui' show Color, FontStyle, FontVariation, FontWeight, Locale, Paint, TextAlign, TextBaseline, TextDirection, TextHeightBehavior, TextLeadingDistribution, kTextHeightNone;
 
-import 'package:flutter/painting.dart';
+import 'package:flutter/src/painting/text_scaler.dart' show TextScaler;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle, lerpFontVariations;
 import 'package:flutter_test/flutter_test.dart';
 
 // This matcher verifies ui.TextStyle.toString (from dart:ui) reports a superset

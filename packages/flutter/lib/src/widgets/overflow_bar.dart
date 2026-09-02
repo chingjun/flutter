@@ -6,11 +6,15 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show Offset, Size, TextBaseline, TextDirection;
 
-import 'package:flutter/rendering.dart';
-
-import 'basic.dart';
-import 'framework.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DoubleProperty, EnumProperty;
+import 'package:flutter/src/painting/basic_types.dart' show VerticalDirection;
+import 'package:flutter/src/rendering/box.dart' show BaselineOffset, BoxConstraints, BoxHitTestResult, ContainerBoxParentData, RenderBox, RenderBoxContainerDefaultsMixin;
+import 'package:flutter/src/rendering/flex.dart' show MainAxisAlignment;
+import 'package:flutter/src/rendering/object.dart' show ContainerRenderObjectMixin, PaintingContext, RenderObject;
+import 'package:flutter/src/widgets/basic.dart' show Directionality;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, MultiChildRenderObjectWidget;
 
 /// Defines the horizontal alignment of [OverflowBar] children
 /// when they're laid out in an overflow column.

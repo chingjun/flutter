@@ -2,8 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Rect;
+
+import 'package:flutter/src/foundation/binding.dart' show BindingBase;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/rendering/object.dart' show PipelineOwner, RenderObject;
+import 'package:flutter/src/semantics/binding.dart' show SemanticsBinding;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'rendering_tester.dart';

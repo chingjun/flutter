@@ -3,11 +3,18 @@
 // found in the LICENSE file.
 
 import 'dart:ui' as ui;
+import 'dart:ui' show FlutterView, PointerDeviceKind;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError, FlutterErrorDetails;
+import 'package:flutter/src/foundation/binding.dart' show BindingBase;
+import 'package:flutter/src/gestures/binding.dart' show GestureBinding;
+import 'package:flutter/src/gestures/converter.dart' show PointerEventConverter;
+import 'package:flutter/src/gestures/events.dart' show PointerAddedEvent, PointerCancelEvent, PointerDownEvent, PointerEvent, PointerHoverEvent, PointerMoveEvent, PointerPanZoomEndEvent, PointerPanZoomStartEvent, PointerPanZoomUpdateEvent, PointerRemovedEvent, PointerScrollEvent, PointerUpEvent, kMiddleMouseButton, kPrimaryButton, kSecondaryButton, kSecondaryMouseButton, kSecondaryStylusButton;
+import 'package:flutter/src/gestures/hit_test.dart' show HitTestEntry, HitTestResult, HitTestTarget, NativeHitTestTarget;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
+import 'package:flutter/src/services/binding.dart' show ServicesBinding;
+import 'package:flutter/src/services/message_codec.dart' show MethodCall;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
 import 'package:flutter_test/flutter_test.dart';
 
 typedef HandleEventCallback = void Function(PointerEvent event);

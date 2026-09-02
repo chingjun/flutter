@@ -11,11 +11,14 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show Offset, TextDirection;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
-
-import 'scaffold.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/animation/animations.dart' show AlwaysStoppedAnimation, CompoundAnimation, ReverseAnimation;
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves, Interval, Threshold;
+import 'package:flutter/src/animation/tween.dart' show Animatable, CurveTween, Tween;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/material/scaffold.dart' show ScaffoldPrelayoutGeometry;
 
 /// The margin that a [FloatingActionButton] should leave between it and the
 /// edge of the screen.

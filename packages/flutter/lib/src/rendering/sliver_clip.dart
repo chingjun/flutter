@@ -3,14 +3,17 @@
 // found in the LICENSE file.
 
 import 'dart:math' as math;
+import 'dart:ui' show Clip, Offset, RRect, Rect, TextDirection, clampDouble;
 
-import 'package:flutter/foundation.dart';
-
-import 'layer.dart';
-import 'object.dart';
-import 'proxy_box.dart';
-import 'proxy_sliver.dart';
-import 'sliver.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty, EnumProperty;
+import 'package:flutter/src/painting/basic_types.dart' show Axis, AxisDirection;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadiusGeometry;
+import 'package:flutter/src/rendering/layer.dart' show ClipRRectLayer, ClipRectLayer;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, PipelineOwner, RenderObject;
+import 'package:flutter/src/rendering/proxy_box.dart' show CustomClipper;
+import 'package:flutter/src/rendering/proxy_sliver.dart' show RenderProxySliver;
+import 'package:flutter/src/rendering/sliver.dart' show SliverHitTestResult, applyGrowthDirectionToAxisDirection;
+import 'package:meta/meta.dart' show protected;
 
 /// Describes how a sliver's clip reacts to the area overlapped by other slivers.
 ///

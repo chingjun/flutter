@@ -12,22 +12,26 @@ library;
 
 import 'dart:async';
 import 'dart:collection';
+import 'dart:ui' show Offset, PointerDeviceKind;
 
-import 'package:flutter/foundation.dart';
-
-import 'arena.dart';
-import 'binding.dart';
-import 'constants.dart';
-import 'debug.dart';
-import 'events.dart';
-import 'pointer_router.dart';
-import 'team.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, FlutterError, FlutterErrorDetails, InformationCollector;
+import 'package:flutter/src/foundation/debug.dart' show debugMaybeDispatchCreated, debugMaybeDispatchDisposed;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticableTreeMixin, DiagnosticsNode, DiagnosticsProperty, DiagnosticsTreeStyle, EnumProperty, StringProperty;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/foundation/print.dart' show debugPrint;
+import 'package:flutter/src/gestures/arena.dart' show GestureArenaEntry, GestureArenaMember, GestureDisposition;
+import 'package:flutter/src/gestures/binding.dart' show GestureBinding;
+import 'package:flutter/src/gestures/constants.dart' show kTouchSlop;
+import 'package:flutter/src/gestures/debug.dart' show debugPrintGestureArenaDiagnostics, debugPrintRecognizerCallbacksTrace;
+import 'package:flutter/src/gestures/events.dart' show PointerCancelEvent, PointerDownEvent, PointerEvent, PointerMoveEvent, PointerPanZoomEndEvent, PointerPanZoomStartEvent, PointerUpEvent;
+import 'package:flutter/src/gestures/gesture_settings.dart' show DeviceGestureSettings;
+import 'package:flutter/src/gestures/team.dart' show GestureArenaTeam;
+import 'package:meta/meta.dart' show immutable, mustCallSuper, protected;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 export 'dart:ui' show Offset, PointerDeviceKind;
-
 export 'package:flutter/foundation.dart' show DiagnosticPropertiesBuilder;
 export 'package:vector_math/vector_math_64.dart' show Matrix4;
-
 export 'arena.dart' show GestureDisposition;
 export 'events.dart' show PointerDownEvent, PointerEvent, PointerPanZoomStartEvent;
 export 'gesture_settings.dart' show DeviceGestureSettings;

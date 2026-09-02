@@ -2,12 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-
-import 'events.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, FlutterError, FlutterErrorDetails, InformationCollector;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticsNode, DiagnosticsProperty;
+import 'package:flutter/src/gestures/events.dart' show PointerEvent;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 export 'package:vector_math/vector_math_64.dart' show Matrix4;
-
 export 'events.dart' show PointerEvent;
 
 /// A callback that receives a [PointerEvent]

@@ -3,10 +3,36 @@
 // found in the LICENSE file.
 
 import 'dart:math';
+import 'dart:ui' show Canvas, Locale, Rect, Size, TextDirection;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/animation/animations.dart' show AlwaysStoppedAnimation;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/app_bar.dart' show AppBar;
+import 'package:flutter/src/material/bottom_navigation_bar.dart' show BottomNavigationBar;
+import 'package:flutter/src/material/circle_avatar.dart' show CircleAvatar;
+import 'package:flutter/src/material/constants.dart' show kToolbarHeight;
+import 'package:flutter/src/material/floating_action_button.dart' show FloatingActionButton;
+import 'package:flutter/src/material/floating_action_button_location.dart' show FabEndOffsetX, FabFloatOffsetY, FabTopOffsetY, FloatingActionButtonAnimator, FloatingActionButtonLocation, StandardFabLocation, kFloatingActionButtonMargin, kFloatingActionButtonSegue, kMiniButtonOffsetAdjustment;
+import 'package:flutter/src/material/icons.dart' show Icons;
+import 'package:flutter/src/material/list_tile.dart' show ListTile;
+import 'package:flutter/src/material/material_localizations.dart' show DefaultMaterialLocalizations;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold, ScaffoldGeometry, ScaffoldMessenger, ScaffoldPrelayoutGeometry;
+import 'package:flutter/src/material/snack_bar.dart' show SnackBar;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/rendering/custom_paint.dart' show CustomPainter;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Center, Column, CustomPaint, Directionality, SizedBox;
+import 'package:flutter/src/widgets/bottom_navigation_bar_item.dart' show BottomNavigationBarItem;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/localizations.dart' show DefaultWidgetsLocalizations, Localizations, LocalizationsDelegate;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/transitions.dart' show RotationTransition;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:listen/listen.dart' show ValueListenable;
 
 void main() {
   group('Basic floating action button locations', () {

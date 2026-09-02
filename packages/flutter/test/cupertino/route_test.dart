@@ -5,11 +5,42 @@
 @TestOn('!chrome')
 library;
 
-import 'dart:ui';
+import 'dart:ui' show Brightness, Color, DisplayFeature, DisplayFeatureState, DisplayFeatureType, FlutterView, Locale, Paint, Rect, SemanticsAction, Size, TextDirection;
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/cupertino/app.dart' show CupertinoApp;
+import 'package:flutter/src/cupertino/button.dart' show CupertinoButton;
+import 'package:flutter/src/cupertino/colors.dart' show CupertinoColors, CupertinoDynamicColor;
+import 'package:flutter/src/cupertino/dialog.dart' show CupertinoActionSheet, CupertinoActionSheetAction;
+import 'package:flutter/src/cupertino/localizations.dart' show DefaultCupertinoLocalizations;
+import 'package:flutter/src/cupertino/nav_bar.dart' show CupertinoNavigationBar, CupertinoSliverNavigationBar;
+import 'package:flutter/src/cupertino/page_scaffold.dart' show CupertinoPageScaffold;
+import 'package:flutter/src/cupertino/route.dart' show CupertinoDialogRoute, CupertinoModalPopupRoute, CupertinoPage, CupertinoPageRoute, CupertinoPageTransition, CupertinoPageTransitionsBuilder, showCupertinoDialog, showCupertinoModalPopup;
+import 'package:flutter/src/cupertino/text_field.dart' show CupertinoTextField;
+import 'package:flutter/src/cupertino/theme.dart' show CupertinoThemeData;
+import 'package:flutter/src/foundation/key.dart' show LocalKey, UniqueKey;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, debugDefaultTargetPlatformOverride;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/flex.dart' show MainAxisAlignment;
+import 'package:flutter/src/rendering/paragraph.dart' show RenderParagraph;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderAnimatedOpacity;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Center, Column, CustomPaint, Directionality, Listener, Padding, SizedBox, StatefulBuilder;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode, FocusScopeNode;
+import 'package:flutter/src/widgets/focus_scope.dart' show Focus, FocusScope;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, GlobalKey, State, StateSetter, StatefulWidget, StatelessWidget, Widget, WidgetBuilder;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/heroes.dart' show Hero;
+import 'package:flutter/src/widgets/localizations.dart' show DefaultWidgetsLocalizations, Localizations, LocalizationsDelegate;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/modal_barrier.dart' show ModalBarrier;
+import 'package:flutter/src/widgets/navigator.dart' show DefaultTransitionDelegate, Navigator, NavigatorObserver, NavigatorState, Page, PopPageCallback, Route, RouteSettings, RouteTransitionRecord, TransitionDelegate;
+import 'package:flutter/src/widgets/pages.dart' show PageRouteBuilder;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/scroll_view.dart' show CustomScrollView;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 import '../widgets/semantics_tester.dart';

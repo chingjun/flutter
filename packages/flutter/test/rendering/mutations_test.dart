@@ -2,7 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show TextDirection, VoidCallback;
+
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/flex.dart' show RenderFlex;
+import 'package:flutter/src/rendering/object.dart' show Constraints;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderProxyBox;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'rendering_tester.dart';

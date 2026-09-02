@@ -9,14 +9,20 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show Offset, Size, clampDouble;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-
-import 'basic.dart';
-import 'focus_scope.dart';
-import 'framework.dart';
-import 'slotted_render_object_widget.dart';
+import 'package:flutter/src/painting/basic_types.dart' show Axis, AxisDirection;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, BoxHitTestResult, RenderBox;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, RenderObject;
+import 'package:flutter/src/rendering/sliver.dart' show RenderSliver, RenderSliverHelpers, SliverConstraints, SliverGeometry, SliverHitTestResult, SliverPhysicalParentData, applyGrowthDirectionToAxisDirection;
+import 'package:flutter/src/rendering/viewport.dart' show RenderViewport;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsConfiguration;
+import 'package:flutter/src/widgets/basic.dart' show Semantics, SizedBox;
+import 'package:flutter/src/widgets/focus_scope.dart' show ExcludeFocus;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/slotted_render_object_widget.dart' show SlottedContainerRenderObjectMixin, SlottedMultiChildRenderObjectWidget;
+import 'package:meta/meta.dart' show protected;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 /// A sliver that is pinned to the start of its [CustomScrollView] and
 /// reacts to scrolling by resizing between the intrinsic sizes of its

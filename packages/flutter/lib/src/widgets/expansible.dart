@@ -5,11 +5,21 @@
 /// @docImport 'package:flutter/material.dart';
 library;
 
-import 'basic.dart';
-import 'framework.dart';
-import 'page_storage.dart';
-import 'ticker_provider.dart';
-import 'transitions.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/animation_style.dart' show AnimationStyle;
+import 'package:flutter/src/animation/animations.dart' show CurvedAnimation;
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves;
+import 'package:flutter/src/animation/tween.dart' show Tween;
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorHint, ErrorSummary, FlutterError;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode;
+import 'package:flutter/src/rendering/flex.dart' show MainAxisSize;
+import 'package:flutter/src/widgets/basic.dart' show Align, ClipRect, Column, Offstage;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/page_storage.dart' show PageStorage;
+import 'package:flutter/src/widgets/ticker_provider.dart' show SingleTickerProviderStateMixin, TickerMode;
+import 'package:flutter/src/widgets/transitions.dart' show AnimatedBuilder;
+import 'package:listen/listen.dart' show ChangeNotifier;
 
 /// The type of the callback that returns the header or body of an [Expansible].
 ///

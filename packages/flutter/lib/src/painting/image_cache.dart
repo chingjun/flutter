@@ -9,11 +9,15 @@
 library;
 
 import 'dart:developer';
+import 'dart:ui' show VoidCallback;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/scheduler.dart';
-
-import 'image_stream.dart';
+import 'package:flutter/src/foundation/constants.dart' show kReleaseMode;
+import 'package:flutter/src/foundation/debug.dart' show debugMaybeDispatchCreated, debugMaybeDispatchDisposed;
+import 'package:flutter/src/foundation/diagnostics.dart' show describeIdentity;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/painting/image_stream.dart' show ImageErrorListener, ImageInfo, ImageStreamCompleter, ImageStreamCompleterHandle, ImageStreamListener;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
+import 'package:meta/meta.dart' show immutable, mustCallSuper;
 
 const int _kDefaultSize = 1000;
 const int _kDefaultSizeBytes = 100 << 20; // 100 MiB

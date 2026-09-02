@@ -8,18 +8,29 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show Clip, Offset, PointerDeviceKind, Rect, Size, clampDouble;
 
-import 'package:flutter/foundation.dart' show clampDouble;
-import 'package:flutter/gestures.dart';
-import 'package:flutter/physics.dart';
-import 'package:flutter/rendering.dart';
-import 'package:vector_math/vector_math_64.dart' show Quad, Vector3;
-
-import 'basic.dart';
-import 'framework.dart';
-import 'gesture_detector.dart';
-import 'layout_builder.dart';
-import 'ticker_provider.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/curves.dart' show Curves;
+import 'package:flutter/src/animation/tween.dart' show CurveTween, Tween;
+import 'package:flutter/src/gestures/constants.dart' show kMinFlingVelocity;
+import 'package:flutter/src/gestures/events.dart' show PointerEvent, PointerScaleEvent, PointerScrollEvent, PointerSignalEvent;
+import 'package:flutter/src/gestures/scale.dart' show GestureScaleEndCallback, GestureScaleStartCallback, GestureScaleUpdateCallback, ScaleEndDetails, ScaleStartDetails, ScaleUpdateDetails, kDefaultMouseScrollToScaleFactor;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/physics/friction_simulation.dart' show FrictionSimulation;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior;
+import 'package:flutter/src/widgets/basic.dart' show ClipRect, KeyedSubtree, Listener, OverflowBox, Transform;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/layout_builder.dart' show LayoutBuilder;
+import 'package:flutter/src/widgets/ticker_provider.dart' show TickerProviderStateMixin;
+import 'package:listen/listen.dart' show ValueNotifier;
+import 'package:meta/meta.dart' show immutable, visibleForTesting;
+import 'package:vector_math/vector_math_64.dart' show Matrix4, Quad, Vector3;
 
 // Examples can assume:
 // late BuildContext context;

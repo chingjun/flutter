@@ -3,8 +3,16 @@
 // found in the LICENSE file.
 
 import 'dart:convert' show utf8;
+import 'dart:typed_data' show ByteData;
+import 'dart:ui' show Rect, Size;
 
-import 'package:flutter/services.dart';
+import 'package:flutter/src/services/autofill.dart' show AutofillScope;
+import 'package:flutter/src/services/binary_messenger.dart' show BinaryMessenger;
+import 'package:flutter/src/services/keyboard_inserted_content.dart' show KeyboardInsertedContent;
+import 'package:flutter/src/services/message_codec.dart' show MethodCall, MethodCodec;
+import 'package:flutter/src/services/message_codecs.dart' show JSONMethodCodec;
+import 'package:flutter/src/services/platform_channel.dart' show MethodChannel;
+import 'package:flutter/src/services/text_input.dart' show RawFloatingCursorPoint, ScribbleClient, TextInputClient, TextInputConfiguration, TextInputControl;
 import 'package:flutter_test/flutter_test.dart';
 
 class FakeTextChannel implements MethodChannel {

@@ -12,12 +12,20 @@ library;
 
 import 'dart:math' as math;
 import 'dart:ui' as ui;
+import 'dart:ui' show Canvas, Color, Offset, Paint, RRect, Rect, Size, TextDirection;
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation, AnimationStatus;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/curves.dart' show Curves;
+import 'package:flutter/src/animation/tween.dart' show ConstantTween, CurveTween, Tween;
+import 'package:flutter/src/animation/tween_sequence.dart' show TweenSequence, TweenSequenceItem;
+import 'package:flutter/src/material/ink_well.dart' show InteractiveInkFeature, InteractiveInkFeatureFactory;
+import 'package:flutter/src/material/material.dart' show MaterialInkController, RectCallback;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/borders.dart' show ShapeBorder;
+import 'package:flutter/src/painting/matrix_utils.dart' show MatrixUtils;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
 import 'package:vector_math/vector_math_64.dart';
-
-import 'ink_well.dart';
-import 'material.dart';
 
 /// Begin a Material 3 ink sparkle ripple, centered at the tap or click position
 /// relative to the [referenceBox].

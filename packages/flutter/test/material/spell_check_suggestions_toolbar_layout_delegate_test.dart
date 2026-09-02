@@ -2,7 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/material.dart';
+import 'dart:ui' show Color, TextDirection;
+
+import 'package:flutter/src/material/spell_check_suggestions_toolbar_layout_delegate.dart' show SpellCheckSuggestionsToolbarLayoutDelegate;
+import 'package:flutter/src/widgets/basic.dart' show CustomSingleChildLayout, Directionality, StatefulBuilder;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StateSetter;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

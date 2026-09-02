@@ -2,7 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/cupertino.dart';
+import 'dart:ui' show FontWeight;
+
+import 'package:flutter/src/cupertino/text_theme.dart' show CupertinoTextThemeData;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

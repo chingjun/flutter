@@ -10,11 +10,17 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show Canvas, Color, Offset, Paint, Size, TextDirection, VoidCallback;
 
-import 'package:flutter/widgets.dart';
-
-import 'ink_well.dart';
-import 'material.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation, AnimationStatus;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/tween.dart' show IntTween, Tween;
+import 'package:flutter/src/material/ink_well.dart' show InteractiveInkFeature, InteractiveInkFeatureFactory;
+import 'package:flutter/src/material/material.dart' show Material, MaterialInkController, RectCallback;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/borders.dart' show ShapeBorder;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 const Duration _kUnconfirmedSplashDuration = Duration(seconds: 1);
 const Duration _kSplashFadeDuration = Duration(milliseconds: 200);

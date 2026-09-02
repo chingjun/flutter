@@ -6,13 +6,16 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show Clip, Offset, Size, TextBaseline, TextDirection;
 
-import 'package:flutter/foundation.dart';
-
-import 'box.dart';
-import 'layer.dart';
-import 'layout_helper.dart';
-import 'object.dart';
+import 'package:flutter/src/foundation/constants.dart' show precisionErrorTolerance;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DoubleProperty, EnumProperty;
+import 'package:flutter/src/painting/basic_types.dart' show Axis, VerticalDirection;
+import 'package:flutter/src/rendering/box.dart' show BaselineOffset, BoxConstraints, BoxHitTestResult, ContainerBoxParentData, RenderBox, RenderBoxContainerDefaultsMixin;
+import 'package:flutter/src/rendering/layer.dart' show ClipRectLayer, LayerHandle;
+import 'package:flutter/src/rendering/layout_helper.dart' show ChildLayoutHelper, ChildLayouter;
+import 'package:flutter/src/rendering/object.dart' show ContainerRenderObjectMixin, PaintingContext;
+import 'package:meta/meta.dart' show protected;
 
 typedef _NextChild = RenderBox? Function(RenderBox child);
 typedef _PositionChild = void Function(Offset offset, RenderBox child);

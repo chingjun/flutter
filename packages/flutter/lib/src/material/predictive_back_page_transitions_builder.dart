@@ -7,12 +7,26 @@
 /// @docImport 'page.dart';
 library;
 
-import 'dart:ui' show clampDouble;
+import 'dart:ui' show Color, Offset, Radius, Size, clampDouble;
 
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
-
-import 'page_transitions_theme.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/animation/animations.dart' show CurvedAnimation, ProxyAnimation, ReverseAnimation, kAlwaysDismissedAnimation;
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves, Interval;
+import 'package:flutter/src/animation/tween.dart' show Animatable, ConstantTween, Tween;
+import 'package:flutter/src/animation/tween_sequence.dart' show TweenSequence, TweenSequenceItem;
+import 'package:flutter/src/foundation/basic_types.dart' show ValueGetter;
+import 'package:flutter/src/material/page_transitions_theme.dart' show FadeForwardsPageTransitionsBuilder, ZoomPageTransitionsBuilder;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/services/predictive_back_event.dart' show PredictiveBackEvent, SwipeEdge;
+import 'package:flutter/src/widgets/basic.dart' show ClipRRect, Opacity, Transform;
+import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding, WidgetsBindingObserver;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/implicit_animations.dart' show AnimatedOpacity;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/page_transitions_builder.dart' show PageTransitionsBuilder;
+import 'package:flutter/src/widgets/pages.dart' show PageRoute;
+import 'package:flutter/src/widgets/ticker_provider.dart' show SingleTickerProviderStateMixin;
+import 'package:flutter/src/widgets/transitions.dart' show AnimatedBuilder;
 
 /// Used by [PageTransitionsTheme] to define a [MaterialPageRoute] page
 /// transition animation that looks like the default page transition used on

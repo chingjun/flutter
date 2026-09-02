@@ -4,7 +4,8 @@
 
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError, FlutterErrorDetails, FlutterExceptionHandler;
+import 'package:flutter/src/foundation/binding.dart' show BindingBase;
 import 'package:flutter_test/flutter_test.dart';
 
 class TestBinding extends BindingBase {}

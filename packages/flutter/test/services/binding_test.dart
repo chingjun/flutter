@@ -4,12 +4,20 @@
 
 import 'dart:convert';
 import 'dart:io';
-import 'dart:ui';
+import 'dart:typed_data' show ByteData, Uint8List;
+import 'dart:ui' show AppExitResponse, AppExitType, PlatformDispatcher, ViewFocusDirection, ViewFocusEvent, ViewFocusState;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
-
+import 'package:flutter/src/foundation/binding.dart' show BindingBase;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/licenses.dart' show LicenseEntry, LicenseParagraph, LicenseRegistry;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
+import 'package:flutter/src/services/asset_bundle.dart' show rootBundle;
+import 'package:flutter/src/services/binary_messenger.dart' show MessageHandler;
+import 'package:flutter/src/services/binding.dart' show ServicesBinding;
+import 'package:flutter/src/services/hardware_keyboard.dart' show HardwareKeyboard;
+import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey, PhysicalKeyboardKey;
+import 'package:flutter/src/services/message_codec.dart' show MethodCall;
+import 'package:flutter/src/services/message_codecs.dart' show JSONMessageCodec, JSONMethodCodec, StandardMethodCodec, StringCodec;
 import 'package:flutter_test/flutter_test.dart';
 
 const String license1 = '''

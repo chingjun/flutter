@@ -2,7 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/painting/text_scaler.dart' show TextScaler;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQueryData;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

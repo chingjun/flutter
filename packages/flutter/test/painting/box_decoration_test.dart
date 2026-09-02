@@ -2,9 +2,17 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:ui' show lerpDouble;
+import 'dart:ui' show BlendMode, Canvas, Color, Path, RRect, Radius, Rect, Size, TextDirection, lerpDouble;
 
-import 'package:flutter/painting.dart';
+import 'package:flutter/src/painting/alignment.dart' show AlignmentDirectional;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius, BorderRadiusDirectional;
+import 'package:flutter/src/painting/borders.dart' show BorderSide, ShapeBorder;
+import 'package:flutter/src/painting/box_border.dart' show BoxBorder, BoxShape;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/decoration.dart' show BoxPainter;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/gradient.dart' show LinearGradient;
+import 'package:flutter/src/painting/image_provider.dart' show ImageConfiguration;
 import 'package:flutter_test/flutter_test.dart';
 
 class _TestBoxBorder extends BoxBorder {

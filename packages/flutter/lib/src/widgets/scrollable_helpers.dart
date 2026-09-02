@@ -10,19 +10,24 @@ library;
 
 import 'dart:async';
 import 'dart:math' as math;
+import 'dart:ui' show Clip, Offset, Rect, Size, VoidCallback;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-
-import 'actions.dart';
-import 'basic.dart';
-import 'framework.dart';
-import 'primary_scroll_controller.dart';
-import 'scroll_configuration.dart';
-import 'scroll_controller.dart';
-import 'scroll_metrics.dart';
-import 'scroll_physics.dart';
-import 'scrollable.dart';
+import 'package:flutter/src/animation/curves.dart' show Curves;
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorHint, ErrorSummary, FlutterError;
+import 'package:flutter/src/foundation/constants.dart' show precisionErrorTolerance;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode, describeIdentity;
+import 'package:flutter/src/painting/basic_types.dart' show Axis, AxisDirection, axisDirectionToAxis;
+import 'package:flutter/src/painting/matrix_utils.dart' show MatrixUtils;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/widgets/actions.dart' show ContextAction, Intent;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext;
+import 'package:flutter/src/widgets/primary_scroll_controller.dart' show PrimaryScrollController;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_metrics.dart' show ScrollMetrics;
+import 'package:flutter/src/widgets/scroll_physics.dart' show ScrollPhysics;
+import 'package:flutter/src/widgets/scrollable.dart' show Scrollable, ScrollableState;
+import 'package:meta/meta.dart' show immutable;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 export 'package:flutter/physics.dart' show Tolerance;
 

@@ -6,13 +6,15 @@
 library;
 
 import 'dart:math' as math;
-import 'dart:ui';
+import 'dart:ui' show Offset, clampDouble;
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorHint, ErrorSummary, FlutterError;
+import 'package:flutter/src/foundation/constants.dart' show precisionErrorTolerance;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode;
+import 'package:flutter/src/painting/basic_types.dart' show Axis, AxisDirection;
+import 'package:flutter/src/rendering/object.dart' show ContainerRenderObjectMixin, PaintingContext, RenderObject, RenderObjectVisitor;
+import 'package:flutter/src/rendering/sliver.dart' show GrowthDirection, RenderSliver, SliverGeometry, SliverHitTestResult, SliverPhysicalContainerParentData, SliverPhysicalParentData, applyGrowthDirectionToAxisDirection;
 import 'package:vector_math/vector_math_64.dart';
-
-import 'object.dart';
-import 'sliver.dart';
 
 /// A sliver that places multiple sliver children in a linear array along the cross
 /// axis.

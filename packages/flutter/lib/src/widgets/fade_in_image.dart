@@ -2,12 +2,26 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
+import 'dart:typed_data' show Uint8List;
+import 'dart:ui' show BlendMode, Color, FilterQuality, TextDirection;
 
-import 'basic.dart';
-import 'framework.dart';
-import 'image.dart';
-import 'implicit_animations.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation, AnimationStatus;
+import 'package:flutter/src/animation/animations.dart' show AlwaysStoppedAnimation, ProxyAnimation;
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves;
+import 'package:flutter/src/animation/tween.dart' show ConstantTween, CurveTween, Tween;
+import 'package:flutter/src/animation/tween_sequence.dart' show TweenSequence, TweenSequenceItem;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty;
+import 'package:flutter/src/painting/alignment.dart' show Alignment, AlignmentDirectional, AlignmentGeometry;
+import 'package:flutter/src/painting/box_fit.dart' show BoxFit;
+import 'package:flutter/src/painting/decoration_image.dart' show ImageRepeat;
+import 'package:flutter/src/painting/image_provider.dart' show ExactAssetImage, ImageProvider, MemoryImage, NetworkImage, ResizeImage;
+import 'package:flutter/src/painting/image_resolution.dart' show AssetImage;
+import 'package:flutter/src/rendering/stack.dart' show StackFit;
+import 'package:flutter/src/services/asset_bundle.dart' show AssetBundle;
+import 'package:flutter/src/widgets/basic.dart' show Semantics, Stack;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/image.dart' show Image, ImageErrorWidgetBuilder, ImageFrameBuilder;
+import 'package:flutter/src/widgets/implicit_animations.dart' show ImplicitlyAnimatedWidget, ImplicitlyAnimatedWidgetState, TweenVisitor;
 
 // Examples can assume:
 // late Uint8List bytes;

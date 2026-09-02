@@ -3,14 +3,24 @@
 // found in the LICENSE file.
 
 import 'dart:math' as math;
+import 'dart:ui' show Canvas, Color, Offset, Paint, Path, Rect, Size, VoidCallback, clampDouble;
 
-import 'package:flutter/foundation.dart' show ValueListenable, clampDouble;
-import 'package:flutter/widgets.dart';
-
-import 'localizations.dart';
-import 'text_selection_toolbar.dart';
-import 'text_selection_toolbar_button.dart';
-import 'theme.dart';
+import 'package:flutter/src/cupertino/localizations.dart' show CupertinoLocalizations;
+import 'package:flutter/src/cupertino/text_selection_toolbar.dart' show CupertinoTextSelectionToolbar;
+import 'package:flutter/src/cupertino/text_selection_toolbar_button.dart' show CupertinoTextSelectionToolbarButton;
+import 'package:flutter/src/cupertino/theme.dart' show CupertinoTheme;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/rendering/custom_paint.dart' show CustomPainter;
+import 'package:flutter/src/rendering/editable.dart' show TextSelectionPoint;
+import 'package:flutter/src/rendering/selection.dart' show TextSelectionHandleType;
+import 'package:flutter/src/services/text_input.dart' show TextSelectionDelegate;
+import 'package:flutter/src/widgets/basic.dart' show CustomPaint, SizedBox, Transform;
+import 'package:flutter/src/widgets/debug.dart' show debugCheckHasMediaQuery;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/text_selection.dart' show ClipboardStatus, TextSelectionControls, TextSelectionHandleControls;
+import 'package:listen/listen.dart' show ValueListenable;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 // Read off from the output on iOS 12. This color does not vary with the
 // application's theme color.

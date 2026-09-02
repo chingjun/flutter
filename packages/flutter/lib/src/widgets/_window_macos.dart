@@ -5,15 +5,15 @@
 import 'dart:convert' show utf8;
 import 'dart:ffi' hide Size;
 import 'dart:io';
-import 'dart:ui' show Display, FlutterView;
+import 'dart:typed_data' show Uint8List;
+import 'dart:ui' show Display, FlutterView, Offset, PlatformDispatcher, Rect, Size;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-
-import '../foundation/_features.dart';
-import '_window.dart';
-import '_window_positioner.dart';
-import 'binding.dart';
+import 'package:flutter/src/foundation/_features.dart' show isWindowingEnabled;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/widgets/_window.dart' show BaseWindowController, DialogWindowController, DialogWindowControllerDelegate, PopupWindowController, PopupWindowControllerDelegate, SatelliteWindowController, SatelliteWindowControllerDelegate, TooltipWindowController, TooltipWindowControllerDelegate, WindowController, WindowControllerDelegate, WindowingOwner;
+import 'package:flutter/src/widgets/_window_positioner.dart' show WindowPositioner;
+import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding;
+import 'package:meta/meta.dart' show internal, mustCallSuper;
 
 // Do not import this file in production applications or packages published
 // to pub.dev. Flutter will make breaking changes to this file, even in patch

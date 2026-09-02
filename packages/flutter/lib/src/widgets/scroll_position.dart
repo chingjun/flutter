@@ -14,22 +14,32 @@
 library;
 
 import 'dart:async';
+import 'dart:ui' show Rect, SemanticsAction, VoidCallback, clampDouble;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/physics.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/scheduler.dart';
-
-import 'basic.dart';
-import 'framework.dart';
-import 'notification_listener.dart';
-import 'page_storage.dart';
-import 'scroll_activity.dart';
-import 'scroll_context.dart';
-import 'scroll_metrics.dart';
-import 'scroll_notification.dart';
-import 'scroll_physics.dart';
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves;
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/collections.dart' show setEquals;
+import 'package:flutter/src/foundation/constants.dart' show precisionErrorTolerance;
+import 'package:flutter/src/gestures/drag.dart' show Drag;
+import 'package:flutter/src/gestures/drag_details.dart' show DragStartDetails;
+import 'package:flutter/src/painting/basic_types.dart' show Axis, AxisDirection;
+import 'package:flutter/src/painting/matrix_utils.dart' show MatrixUtils;
+import 'package:flutter/src/physics/tolerance.dart' show Tolerance;
+import 'package:flutter/src/physics/utils.dart' show nearEqual;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/rendering/viewport.dart' show RenderAbstractViewport;
+import 'package:flutter/src/rendering/viewport_offset.dart' show ScrollDirection, ViewportOffset;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding, SchedulerPhase;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext;
+import 'package:flutter/src/widgets/notification_core.dart' show Notification;
+import 'package:flutter/src/widgets/page_storage.dart' show PageStorage;
+import 'package:flutter/src/widgets/scroll_activity.dart' show ScrollActivity, ScrollHoldController;
+import 'package:flutter/src/widgets/scroll_context.dart' show ScrollContext;
+import 'package:flutter/src/widgets/scroll_metrics.dart' show ScrollMetrics;
+import 'package:flutter/src/widgets/scroll_notification.dart' show ScrollUpdateNotification, UserScrollNotification, ViewportNotificationMixin;
+import 'package:flutter/src/widgets/scroll_physics.dart' show ScrollPhysics;
+import 'package:listen/listen.dart' show ValueNotifier;
+import 'package:meta/meta.dart' show awaitNotRequired, mustCallSuper, protected, visibleForTesting;
 
 export 'scroll_activity.dart' show ScrollHoldController;
 

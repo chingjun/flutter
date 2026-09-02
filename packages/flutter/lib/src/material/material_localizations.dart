@@ -29,12 +29,15 @@
 /// @docImport 'user_accounts_drawer_header.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:async' show Future;
+import 'dart:ui' show Locale;
 
-import 'debug.dart';
-import 'time.dart';
-import 'typography.dart';
+import 'package:flutter/src/foundation/synchronous_future.dart' show SynchronousFuture;
+import 'package:flutter/src/material/debug.dart' show debugCheckHasMaterialLocalizations;
+import 'package:flutter/src/material/time.dart' show DayPeriod, TimeOfDay, TimeOfDayFormat;
+import 'package:flutter/src/material/typography.dart' show ScriptCategory;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext;
+import 'package:flutter/src/widgets/localizations.dart' show Localizations, LocalizationsDelegate;
 
 // Examples can assume:
 // late BuildContext context;

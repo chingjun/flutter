@@ -6,14 +6,35 @@
 /// @docImport 'text_theme.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:async' show Future;
+import 'dart:ui' show Color, Radius, TextDirection;
 
-import 'colors.dart';
-import 'theme.dart';
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves;
+import 'package:flutter/src/cupertino/colors.dart' show CupertinoColors, CupertinoDynamicColor;
+import 'package:flutter/src/cupertino/theme.dart' show CupertinoTheme;
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/gestures/recognizer.dart' show DragStartBehavior;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadiusDirectional;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsetsDirectional;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedSuperellipseBorder;
+import 'package:flutter/src/painting/shape_decoration.dart' show ShapeDecoration;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/rendering/list_wheel_viewport.dart' show RenderListWheelViewport;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior, RenderProxyBox;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsConfiguration, SemanticsNode;
+import 'package:flutter/src/services/haptic_feedback.dart' show HapticFeedback;
+import 'package:flutter/src/services/system_sound.dart' show SystemSound, SystemSoundType;
+import 'package:flutter/src/widgets/basic.dart' show Center, ConstrainedBox, Directionality, IgnorePointer, Positioned, Stack;
+import 'package:flutter/src/widgets/container.dart' show Container, DecoratedBox;
+import 'package:flutter/src/widgets/debug.dart' show debugCheckHasDirectionality;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, NullableIndexedWidgetBuilder, SingleChildRenderObjectWidget, State, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/list_wheel_scroll_view.dart' show ChangeReportingBehavior, FixedExtentScrollController, FixedExtentScrollPhysics, ListWheelChildBuilderDelegate, ListWheelChildDelegate, ListWheelChildListDelegate, ListWheelChildLoopingListDelegate, ListWheelScrollView;
+import 'package:flutter/src/widgets/text.dart' show DefaultTextStyle;
 
 // Eyeballed values comparing with a native picker to produce the right
 // curvatures and densities.

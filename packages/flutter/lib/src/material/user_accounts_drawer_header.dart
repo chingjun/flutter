@@ -8,16 +8,33 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show Color, Offset, Size, TextDirection, VoidCallback;
 
-import 'package:flutter/widgets.dart';
-
-import 'colors.dart';
-import 'debug.dart';
-import 'drawer_header.dart';
-import 'icons.dart';
-import 'ink_well.dart';
-import 'material_localizations.dart';
-import 'theme.dart';
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/animations.dart' show CurvedAnimation;
+import 'package:flutter/src/animation/curves.dart' show Curves;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/debug.dart' show debugCheckHasMaterial, debugCheckHasMaterialLocalizations;
+import 'package:flutter/src/material/drawer_header.dart' show DrawerHeader;
+import 'package:flutter/src/material/icons.dart' show Icons;
+import 'package:flutter/src/material/ink_well.dart' show InkWell;
+import 'package:flutter/src/material/material_localizations.dart' show MaterialLocalizations;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/decoration.dart' show Decoration;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsDirectional, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/text_painter.dart' show TextOverflow;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/rendering/custom_layout.dart' show MultiChildLayoutDelegate;
+import 'package:flutter/src/rendering/flex.dart' show CrossAxisAlignment;
+import 'package:flutter/src/widgets/basic.dart' show Center, Column, CustomMultiChildLayout, Directionality, Expanded, LayoutId, Padding, Positioned, PositionedDirectional, Row, Semantics, SizedBox, Stack, Transform;
+import 'package:flutter/src/widgets/debug.dart' show debugCheckHasDirectionality;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/safe_area.dart' show SafeArea;
+import 'package:flutter/src/widgets/text.dart' show DefaultTextStyle;
+import 'package:flutter/src/widgets/ticker_provider.dart' show SingleTickerProviderStateMixin;
 
 class _AccountPictures extends StatelessWidget {
   const _AccountPictures({

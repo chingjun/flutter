@@ -9,20 +9,21 @@
 library;
 
 import 'dart:async';
+import 'dart:ui' show Offset, PointerDeviceKind;
 
-import 'package:flutter/foundation.dart';
-
-import 'arena.dart';
-import 'binding.dart';
-import 'constants.dart';
-import 'drag.dart';
-import 'drag_details.dart';
-import 'events.dart';
-import 'recognizer.dart';
-import 'velocity_tracker.dart';
+import 'package:flutter/src/foundation/debug.dart' show debugMaybeDispatchCreated, debugMaybeDispatchDisposed;
+import 'package:flutter/src/gestures/arena.dart' show GestureArenaEntry, GestureDisposition;
+import 'package:flutter/src/gestures/binding.dart' show GestureBinding;
+import 'package:flutter/src/gestures/constants.dart' show kLongPressTimeout;
+import 'package:flutter/src/gestures/drag.dart' show Drag;
+import 'package:flutter/src/gestures/drag_details.dart' show DragEndDetails, DragUpdateDetails;
+import 'package:flutter/src/gestures/events.dart' show PointerCancelEvent, PointerDownEvent, PointerEvent, PointerMoveEvent, PointerUpEvent, computeHitSlop, kPrimaryButton;
+import 'package:flutter/src/gestures/gesture_settings.dart' show DeviceGestureSettings;
+import 'package:flutter/src/gestures/recognizer.dart' show AllowedButtonsFilter, GestureRecognizer;
+import 'package:flutter/src/gestures/velocity_tracker.dart' show VelocityTracker;
+import 'package:meta/meta.dart' show factory, mustCallSuper, protected;
 
 export 'dart:ui' show Offset, PointerDeviceKind;
-
 export 'arena.dart' show GestureDisposition;
 export 'drag.dart' show Drag;
 export 'events.dart' show PointerDownEvent;

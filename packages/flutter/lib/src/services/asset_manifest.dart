@@ -2,12 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+import 'dart:async' show Future;
 import 'dart:convert';
+import 'dart:typed_data' show ByteData;
 
-import 'package:flutter/foundation.dart';
-
-import 'asset_bundle.dart';
-import 'message_codecs.dart';
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/services/asset_bundle.dart' show AssetBundle;
+import 'package:flutter/src/services/message_codecs.dart' show StandardMessageCodec;
+import 'package:meta/meta.dart' show immutable;
 
 // We use .bin as the extension since it is well-known to represent
 // data in some arbitrary binary format.

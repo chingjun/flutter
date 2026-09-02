@@ -8,10 +8,20 @@
 library;
 
 import 'dart:ui' as ui;
+import 'dart:ui' show Color, Size, TextDirection;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey, ValueKey;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/rendering/layer.dart' show PictureLayer, PlatformViewLayer;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, PaintingContextCallback, RenderObject;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderProxyBox, RenderRepaintBoundary;
+import 'package:flutter/src/widgets/basic.dart' show Center, Directionality, RepaintBoundary, SizedBox, StatefulBuilder;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, SingleChildRenderObjectWidget, StateSetter, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/snapshot_widget.dart' show SnapshotController, SnapshotMode, SnapshotPainter, SnapshotWidget;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:leak_tracker_flutter_testing/leak_tracker_flutter_testing.dart';
 

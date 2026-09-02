@@ -2,7 +2,15 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show RRect, Radius, Size, TextBaseline, TextDirection;
+
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderConstrainedBox;
+import 'package:flutter/src/rendering/shifted_box.dart' show RenderPositionedBox;
+import 'package:flutter/src/rendering/table.dart' show FixedColumnWidth, FlexColumnWidth, IntrinsicColumnWidth, MaxColumnWidth, MinColumnWidth, RenderTable, TableCellVerticalAlignment, TableColumnWidth;
+import 'package:flutter/src/rendering/table_border.dart' show TableBorder;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'rendering_tester.dart';

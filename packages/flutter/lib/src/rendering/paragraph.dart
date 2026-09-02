@@ -19,18 +19,38 @@ import 'dart:ui'
         Shader,
         TextBox,
         TextHeightBehavior;
+import 'dart:ui' show BlendMode, Color, GlyphInfo, Locale, Offset, Paint, PaintingStyle, Rect, Size, StringAttribute, TextAffinity, TextAlign, TextBaseline, TextBox, TextDirection, TextPosition, TextRange, VoidCallback;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/semantics.dart';
-import 'package:flutter/services.dart';
-
-import 'box.dart';
-import 'debug.dart';
-import 'layer.dart';
-import 'layout_helper.dart';
-import 'object.dart';
-import 'selection.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorHint, ErrorSummary, FlutterError;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsNode, DiagnosticsProperty, DiagnosticsTreeStyle, DoubleProperty, EnumProperty, FlagProperty, IntProperty;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/foundation/memory_allocations.dart' show kFlutterMemoryAllocationsEnabled;
+import 'package:flutter/src/gestures/hit_test.dart' show HitTestEntry, HitTestTarget;
+import 'package:flutter/src/gestures/long_press.dart' show GestureLongPressCallback, LongPressGestureRecognizer;
+import 'package:flutter/src/gestures/multitap.dart' show DoubleTapGestureRecognizer;
+import 'package:flutter/src/gestures/tap.dart' show TapGestureRecognizer;
+import 'package:flutter/src/painting/basic_types.dart' show RenderComparison;
+import 'package:flutter/src/painting/inline_span.dart' show InlineSpan, InlineSpanSemanticsInformation, combineSemanticsInfo;
+import 'package:flutter/src/painting/matrix_utils.dart' show MatrixUtils;
+import 'package:flutter/src/painting/placeholder_span.dart' show PlaceholderSpan;
+import 'package:flutter/src/painting/strut_style.dart' show StrutStyle;
+import 'package:flutter/src/painting/text_painter.dart' show PlaceholderDimensions, TextOverflow, TextPainter, TextWidthBasis;
+import 'package:flutter/src/painting/text_scaler.dart' show TextScaler;
+import 'package:flutter/src/painting/text_span.dart' show TextSpan;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, BoxHitTestResult, RenderBox;
+import 'package:flutter/src/rendering/debug.dart' show debugCurrentRepaintColor, debugPaintTextLayoutBoxes, debugRepaintTextRainbowEnabled;
+import 'package:flutter/src/rendering/layer.dart' show LayerLink, LeaderLayer;
+import 'package:flutter/src/rendering/layout_helper.dart' show ChildBaselineGetter, ChildLayoutHelper, ChildLayouter;
+import 'package:flutter/src/rendering/object.dart' show ContainerParentDataMixin, ContainerRenderObjectMixin, PaintingContext, ParentData, RelayoutWhenSystemFontsChangeMixin, RenderObject;
+import 'package:flutter/src/rendering/selection.dart' show DirectionallyExtendSelectionEvent, GranularlyExtendSelectionEvent, SelectParagraphSelectionEvent, SelectWordSelectionEvent, Selectable, SelectedContent, SelectedContentRange, SelectionEdgeUpdateEvent, SelectionEvent, SelectionEventType, SelectionExtendDirection, SelectionGeometry, SelectionPoint, SelectionRegistrar, SelectionResult, SelectionStatus, SelectionUtils, TextGranularity, TextSelectionHandleType;
+import 'package:flutter/src/semantics/semantics.dart' show AttributedString, ChildSemanticsConfigurationsResult, ChildSemanticsConfigurationsResultBuilder, OrdinalSortKey, SemanticsConfiguration, SemanticsNode, SemanticsTag;
+import 'package:flutter/src/services/text_boundary.dart' show CharacterBoundary, DocumentBoundary, LineBoundary, ParagraphBoundary, TextBoundary;
+import 'package:flutter/src/services/text_editing.dart' show TextSelection;
+import 'package:flutter/src/services/text_layout_metrics.dart' show TextLayoutMetrics;
+import 'package:listen/listen.dart' show ChangeNotifier;
+import 'package:meta/meta.dart' show immutable, protected, visibleForTesting;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 /// The start and end positions for a text boundary.
 typedef _TextBoundaryRecord = ({TextPosition boundaryStart, TextPosition boundaryEnd});

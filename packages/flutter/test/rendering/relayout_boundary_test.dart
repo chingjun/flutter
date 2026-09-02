@@ -2,7 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/widgets/basic.dart' show Center, SizedBox, WidgetToRenderBoxAdapter;
+import 'package:flutter/src/widgets/framework.dart' show GlobalKey, Widget;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

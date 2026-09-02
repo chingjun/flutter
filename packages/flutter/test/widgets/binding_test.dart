@@ -2,11 +2,21 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:ui';
+import 'dart:typed_data' show ByteData;
+import 'dart:ui' show AppExitResponse, AppLifecycleState, Locale, PlatformDispatcher, TextDirection, ViewFocusDirection, ViewFocusEvent, ViewFocusState;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError, FlutterErrorDetails, FlutterExceptionHandler;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel;
+import 'package:flutter/src/services/binding.dart' show ServicesBinding;
+import 'package:flutter/src/services/message_codec.dart' show MethodCall;
+import 'package:flutter/src/services/message_codecs.dart' show JSONMessageCodec, JSONMethodCodec, StandardMethodCodec, StringCodec;
+import 'package:flutter/src/services/predictive_back_event.dart' show PredictiveBackEvent;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Directionality, Opacity;
+import 'package:flutter/src/widgets/binding.dart' show RouteInformation, WidgetsBinding, WidgetsBindingObserver;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 class MemoryPressureObserver with WidgetsBindingObserver {

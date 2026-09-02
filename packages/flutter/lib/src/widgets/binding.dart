@@ -20,34 +20,36 @@ library;
 
 import 'dart:async';
 import 'dart:developer' as developer;
-import 'dart:ui'
-    show
-        AccessibilityFeatures,
-        AppExitResponse,
-        AppLifecycleState,
-        FrameTiming,
-        Locale,
-        PlatformDispatcher,
-        TimingsCallback,
-        ViewFocusEvent;
+import 'dart:ui' show AppExitResponse, AppLifecycleState, FrameTiming, Locale, Size, TimingsCallback, ViewFocusEvent;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
-
-import '../foundation/_features.dart';
-import '_accessibility_evaluations.dart';
-import '_window.dart';
-import 'accessibility_inspector.dart';
-import 'debug.dart';
-import 'focus_manager.dart';
-import 'framework.dart';
-import 'platform_menu_bar.dart';
-import 'service_extensions.dart';
-import 'view.dart';
-import 'widget_inspector.dart';
+import 'package:flutter/src/foundation/_features.dart' show isWindowingEnabled;
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorHint, ErrorSummary, FlutterError, FlutterErrorDetails, PartialStackFrame, RepetitiveStackFrameFilter;
+import 'package:flutter/src/foundation/binding.dart' show BindingBase;
+import 'package:flutter/src/foundation/constants.dart' show kDebugMode, kIsWeb, kReleaseMode;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode;
+import 'package:flutter/src/foundation/print.dart' show debugPrint;
+import 'package:flutter/src/gestures/binding.dart' show GestureBinding;
+import 'package:flutter/src/painting/binding.dart' show PaintingBinding;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
+import 'package:flutter/src/semantics/binding.dart' show SemanticsBinding;
+import 'package:flutter/src/services/binding.dart' show ServicesBinding;
+import 'package:flutter/src/services/message_codec.dart' show MethodCall, MissingPluginException;
+import 'package:flutter/src/services/predictive_back_event.dart' show PredictiveBackEvent;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:flutter/src/services/system_navigator.dart' show SystemNavigator;
+import 'package:flutter/src/widgets/_accessibility_evaluations.dart' show EvaluationResult, LabeledTapTargetEvaluation, MinimumTapTargetEvaluation, MinimumTextContrastEvaluation, Violation;
+import 'package:flutter/src/widgets/_window.dart' show WindowingOwner, createDefaultWindowingOwner;
+import 'package:flutter/src/widgets/accessibility_inspector.dart' show AccessibilityInspector;
+import 'package:flutter/src/widgets/debug_flags.dart' show debugAllowBannerOverrideFlag, debugProfileBuildsEnabled, debugProfileBuildsEnabledUserWidgets, debugShowPerformanceOverlayOverride;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusManager;
+import 'package:flutter/src/widgets/framework.dart' show BuildOwner, Element, ElementVisitor, RootElementMixin, Widget;
+import 'package:flutter/src/widgets/platform_menu_bar.dart' show DefaultPlatformMenuDelegate, PlatformMenuDelegate;
+import 'package:flutter/src/widgets/service_extensions.dart' show WidgetsServiceExtensions;
+import 'package:flutter/src/widgets/view.dart' show View;
+import 'package:flutter/src/widgets/widget_inspector.dart' show WidgetInspectorService, debugTransformDebugCreator;
+import 'package:listen/listen.dart' show ValueNotifier;
+import 'package:meta/meta.dart' show internal, mustCallSuper, protected, visibleForTesting;
 
 export 'dart:ui' show AppLifecycleState, Locale;
 

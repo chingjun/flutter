@@ -5,16 +5,17 @@
 /// @docImport 'package:flutter/widgets.dart';
 library;
 
-import 'package:flutter/foundation.dart';
+import 'dart:ui' show Offset, PointerDeviceKind;
 
-import 'constants.dart';
-import 'events.dart';
-import 'gesture_details.dart';
-import 'recognizer.dart';
-import 'velocity_tracker.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsProperty, EnumProperty;
+import 'package:flutter/src/gestures/arena.dart' show GestureDisposition;
+import 'package:flutter/src/gestures/constants.dart' show kLongPressTimeout;
+import 'package:flutter/src/gestures/events.dart' show PointerCancelEvent, PointerDownEvent, PointerEvent, PointerMoveEvent, PointerUpEvent, kPrimaryButton, kSecondaryButton, kTertiaryButton;
+import 'package:flutter/src/gestures/gesture_details.dart' show PositionedGestureDetails;
+import 'package:flutter/src/gestures/recognizer.dart' show AllowedButtonsFilter, GestureRecognizerState, OffsetPair, PrimaryPointerGestureRecognizer;
+import 'package:flutter/src/gestures/velocity_tracker.dart' show Velocity, VelocityEstimate, VelocityTracker;
 
 export 'dart:ui' show Offset, PointerDeviceKind;
-
 export 'arena.dart' show GestureDisposition;
 export 'events.dart' show PointerDownEvent, PointerEvent;
 export 'velocity_tracker.dart' show Velocity;

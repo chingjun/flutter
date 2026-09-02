@@ -2,8 +2,24 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show TextDirection;
+
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/rendering/sliver.dart' show RenderSliver;
+import 'package:flutter/src/rendering/sliver_grid.dart' show SliverGridDelegateWithFixedCrossAxisCount;
+import 'package:flutter/src/widgets/basic.dart' show Align, Column, Directionality, SizedBox;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/list_wheel_scroll_view.dart' show ListWheelChildListDelegate, ListWheelScrollView;
+import 'package:flutter/src/widgets/nested_scroll_view.dart' show NestedScrollView, SliverOverlapAbsorber;
+import 'package:flutter/src/widgets/page_view.dart' show PageView;
+import 'package:flutter/src/widgets/restoration.dart' show RootRestorationScope;
+import 'package:flutter/src/widgets/scroll_delegate.dart' show SliverChildListDelegate;
+import 'package:flutter/src/widgets/scroll_view.dart' show CustomScrollView, GridView, ListView;
+import 'package:flutter/src/widgets/scrollable.dart' show Scrollable, ScrollableState;
+import 'package:flutter/src/widgets/single_child_scroll_view.dart' show SingleChildScrollView;
+import 'package:flutter/src/widgets/sliver.dart' show SliverList;
+import 'package:flutter/src/widgets/sliver_persistent_header.dart' show SliverPersistentHeader, SliverPersistentHeaderDelegate;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

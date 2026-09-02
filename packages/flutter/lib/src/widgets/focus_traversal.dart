@@ -8,15 +8,24 @@
 /// @docImport 'app.dart';
 library;
 
-import 'package:flutter/foundation.dart';
+import 'dart:collection' show IterableExtensions;
+import 'dart:ui' show Offset, Rect, TextDirection;
 
-import 'actions.dart';
-import 'basic.dart';
-import 'focus_manager.dart';
-import 'focus_scope.dart';
-import 'framework.dart';
-import 'scroll_position.dart';
-import 'scrollable.dart';
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves;
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/collections.dart' show mergeSort;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsProperty, DoubleProperty, EnumProperty, IterableProperty, StringProperty;
+import 'package:flutter/src/foundation/memory_allocations.dart' show kFlutterMemoryAllocationsEnabled;
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/widgets/actions.dart' show Action, Intent;
+import 'package:flutter/src/widgets/basic.dart' show Directionality;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusManager, FocusNode, FocusScopeNode, KeyEventResult, primaryFocus;
+import 'package:flutter/src/widgets/focus_scope.dart' show Focus;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, InheritedElement, InheritedWidget, State, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/scroll_position.dart' show ScrollPositionAlignmentPolicy;
+import 'package:flutter/src/widgets/scrollable.dart' show Scrollable, ScrollableState;
+import 'package:listen/listen.dart' show ChangeNotifier;
+import 'package:meta/meta.dart' show immutable, mustCallSuper, nonVirtual, protected;
 
 // Examples can assume:
 // late BuildContext context;

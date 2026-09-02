@@ -2,8 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderDecoratedBox;
+import 'package:flutter/src/rendering/view.dart' show RenderView;
+import 'package:flutter/src/widgets/container.dart' show DecoratedBox;
+import 'package:flutter/src/widgets/framework.dart' show Element, SingleChildRenderObjectElement;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'test_widgets.dart';

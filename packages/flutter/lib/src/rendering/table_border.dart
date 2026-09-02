@@ -5,8 +5,12 @@
 /// @docImport 'package:flutter/material.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/painting.dart' hide Border;
+import 'dart:ui' show Canvas, Color, Paint, PaintingStyle, Path, RRect, Rect;
+
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/borders.dart' show BorderSide, BorderStyle, paintBorder;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:meta/meta.dart' show immutable;
 
 /// Border specification for [Table] widgets.
 ///

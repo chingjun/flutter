@@ -2,7 +2,20 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color;
+
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/painting/box_border.dart' show BoxShape;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor, SystemMouseCursors;
+import 'package:flutter/src/widgets/basic.dart' show Center, SizedBox;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/radio_group.dart' show RadioClient, RadioGroup, RadioGroupRegistry;
+import 'package:flutter/src/widgets/raw_radio.dart' show RawRadio;
+import 'package:flutter/src/widgets/toggleable.dart' show ToggleableStateMixin;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetStateProperty;
 
 /// A minimal radio button for widget tests that registers with a [RadioGroup]
 /// ancestor, avoiding a dependency on the Material library.

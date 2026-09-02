@@ -6,10 +6,17 @@
 /// @docImport 'desktop_text_selection_toolbar_button.dart';
 library;
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Clip, Offset, Radius;
 
-import 'material.dart';
-import 'text_selection_toolbar.dart';
+import 'package:flutter/src/material/material.dart' show Material, MaterialType;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/rendering/flex.dart' show MainAxisSize;
+import 'package:flutter/src/widgets/basic.dart' show Column, CustomSingleChildLayout, Padding, SizedBox;
+import 'package:flutter/src/widgets/debug.dart' show debugCheckHasMediaQuery;
+import 'package:flutter/src/widgets/desktop_text_selection_toolbar_layout_delegate.dart' show DesktopTextSelectionToolbarLayoutDelegate;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
 
 // These values were measured from a screenshot of TextEdit on macOS 10.15.7 on
 // a Macbook Pro.

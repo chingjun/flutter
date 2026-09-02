@@ -13,27 +13,38 @@
 /// @docImport 'viewport.dart';
 library;
 
+import 'dart:async' show Future;
 import 'dart:math' as math;
+import 'dart:ui' show VoidCallback, clampDouble;
 
 import 'package:collection/collection.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-
-import 'basic.dart';
-import 'binding.dart';
-import 'framework.dart';
-import 'inherited_notifier.dart';
-import 'layout_builder.dart';
-import 'notification_listener.dart';
-import 'scroll_activity.dart';
-import 'scroll_context.dart';
-import 'scroll_controller.dart';
-import 'scroll_notification.dart';
-import 'scroll_physics.dart';
-import 'scroll_position.dart';
-import 'scroll_position_with_single_context.dart';
-import 'scroll_simulation.dart';
-import 'value_listenable_builder.dart';
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves;
+import 'package:flutter/src/foundation/debug.dart' show debugMaybeDispatchCreated, debugMaybeDispatchDisposed;
+import 'package:flutter/src/foundation/memory_allocations.dart' show kFlutterMemoryAllocationsEnabled;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/gestures/drag.dart' show Drag;
+import 'package:flutter/src/gestures/drag_details.dart' show DragStartDetails;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/physics/simulation.dart' show Simulation;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/widgets/basic.dart' show FractionallySizedBox, SizedBox;
+import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedWidget, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/inherited_notifier.dart' show InheritedNotifier;
+import 'package:flutter/src/widgets/layout_builder.dart' show LayoutBuilder;
+import 'package:flutter/src/widgets/notification_core.dart' show Notification;
+import 'package:flutter/src/widgets/scroll_activity.dart' show ScrollActivity;
+import 'package:flutter/src/widgets/scroll_context.dart' show ScrollContext;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_notification.dart' show ViewportNotificationMixin;
+import 'package:flutter/src/widgets/scroll_physics.dart' show AlwaysScrollableScrollPhysics, ScrollPhysics;
+import 'package:flutter/src/widgets/scroll_position.dart' show ScrollPosition;
+import 'package:flutter/src/widgets/scroll_position_with_single_context.dart' show ScrollPositionWithSingleContext;
+import 'package:flutter/src/widgets/scroll_simulation.dart' show ClampingScrollSimulation;
+import 'package:flutter/src/widgets/value_listenable_builder.dart' show ValueListenableBuilder;
+import 'package:listen/listen.dart' show ChangeNotifier, ValueNotifier;
+import 'package:meta/meta.dart' show awaitNotRequired;
 
 /// The signature of a method that provides a [BuildContext] and
 /// [ScrollController] for building a widget that may overflow the draggable

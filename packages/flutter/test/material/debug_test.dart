@@ -2,8 +2,24 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+import 'dart:ui' show TextDirection;
+
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError, FlutterErrorDetails, FlutterExceptionHandler;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticsBlock, DiagnosticsProperty;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/material/action_buttons.dart' show BackButton;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/bottom_sheet.dart' show showBottomSheet;
+import 'package:flutter/src/material/chip.dart' show Chip;
+import 'package:flutter/src/material/page_transitions_theme.dart' show PageTransitionsTheme;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold, ScaffoldMessenger, ScaffoldMessengerState, ScaffoldState;
+import 'package:flutter/src/material/snack_bar.dart' show SnackBar, SnackBarAction;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Center, Directionality;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, GlobalKey;
+import 'package:flutter/src/widgets/page_transitions_builder.dart' show FadeUpwardsPageTransitionsBuilder, PageTransitionsBuilder;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

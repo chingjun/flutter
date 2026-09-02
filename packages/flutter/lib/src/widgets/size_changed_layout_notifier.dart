@@ -5,10 +5,13 @@
 /// @docImport 'package:flutter/material.dart';
 library;
 
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Size, VoidCallback;
 
-import 'framework.dart';
-import 'notification_listener.dart';
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderProxyBox;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, SingleChildRenderObjectWidget;
+import 'package:flutter/src/widgets/notification_listener.dart' show LayoutChangedNotification;
 
 /// Indicates that the size of one of the descendants of the object receiving
 /// this notification has changed, and that therefore any assumptions about that

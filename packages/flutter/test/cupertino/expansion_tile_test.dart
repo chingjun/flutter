@@ -8,8 +8,19 @@
 @Tags(<String>['reduced-test-set'])
 library;
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/semantics.dart';
+import 'dart:ui' show Color, Size, TextDirection;
+
+import 'package:flutter/src/cupertino/app.dart' show CupertinoApp;
+import 'package:flutter/src/cupertino/expansion_tile.dart' show CupertinoExpansionTile, ExpansionTileTransitionMode;
+import 'package:flutter/src/cupertino/list_tile.dart' show CupertinoListTile;
+import 'package:flutter/src/cupertino/localizations.dart' show DefaultCupertinoLocalizations;
+import 'package:flutter/src/cupertino/page_scaffold.dart' show CupertinoPageScaffold;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsNode;
+import 'package:flutter/src/widgets/basic.dart' show Center, ColoredBox, Column, RepaintBoundary, Semantics, SizedBox;
+import 'package:flutter/src/widgets/expansible.dart' show ExpansibleController;
+import 'package:flutter/src/widgets/framework.dart' show Widget;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

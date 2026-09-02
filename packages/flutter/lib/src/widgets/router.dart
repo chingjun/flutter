@@ -11,21 +11,28 @@ library;
 
 import 'dart:async';
 import 'dart:collection';
+import 'dart:ui' show VoidCallback;
 
 import 'package:collection/collection.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, FlutterError, FlutterErrorDetails;
+import 'package:flutter/src/foundation/basic_types.dart' show ValueGetter;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode, DiagnosticsProperty, DiagnosticsTreeStyle;
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/foundation/memory_allocations.dart' show kFlutterMemoryAllocationsEnabled;
+import 'package:flutter/src/foundation/observer_list.dart' show ObserverList;
+import 'package:flutter/src/foundation/synchronous_future.dart' show SynchronousFuture;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
+import 'package:flutter/src/services/restoration.dart' show RestorationBucket;
+import 'package:flutter/src/services/system_navigator.dart' show SystemNavigator;
+import 'package:flutter/src/widgets/basic.dart' show Builder;
+import 'package:flutter/src/widgets/binding.dart' show RouteInformation, WidgetsBinding, WidgetsBindingObserver;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, InheritedWidget, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/navigator.dart' show NavigatorState;
+import 'package:flutter/src/widgets/restoration.dart' show RestorationMixin, UnmanagedRestorationScope;
+import 'package:flutter/src/widgets/restoration_properties.dart' show RestorableValue;
+import 'package:listen/listen.dart' show ChangeNotifier, Listenable, ValueListenable;
+import 'package:meta/meta.dart' show protected;
 
-import 'basic.dart';
-import 'binding.dart';
-import 'framework.dart';
-import 'navigator.dart';
-import 'restoration.dart';
-import 'restoration_properties.dart';
-
-// RouteInformation is defined in binding.dart (to avoid a cyclic import)
-// and re-exported here for backward compatibility.
 export 'binding.dart' show RouteInformation;
 
 

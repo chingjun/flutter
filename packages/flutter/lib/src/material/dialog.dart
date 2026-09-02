@@ -10,20 +10,58 @@
 /// @docImport 'text_button.dart';
 library;
 
-import 'dart:ui' show SemanticsHitTestBehavior, SemanticsRole, clampDouble, lerpDouble;
+import 'dart:async' show Future;
+import 'dart:ui' show Brightness, Clip, Color, Offset, Radius, SemanticsHitTestBehavior, SemanticsRole, TextAlign, TextDirection, VoidCallback, clampDouble, lerpDouble;
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
-
-import 'color_scheme.dart';
-import 'colors.dart';
-import 'debug.dart';
-import 'dialog_theme.dart';
-import 'ink_well.dart';
-import 'material.dart';
-import 'material_localizations.dart';
-import 'text_theme.dart';
-import 'theme.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/animation/animation_style.dart' show AnimationStyle;
+import 'package:flutter/src/animation/animations.dart' show CurvedAnimation;
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves;
+import 'package:flutter/src/cupertino/dialog.dart' show CupertinoAlertDialog;
+import 'package:flutter/src/cupertino/route.dart' show showCupertinoDialog;
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorHint, ErrorSummary, FlutterError;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode;
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/material/color_scheme.dart' show ColorScheme;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/debug.dart' show debugCheckHasMaterialLocalizations;
+import 'package:flutter/src/material/dialog_theme.dart' show DialogTheme, DialogThemeData;
+import 'package:flutter/src/material/ink_well.dart' show InkWell;
+import 'package:flutter/src/material/material.dart' show Material, MaterialType;
+import 'package:flutter/src/material/material_localizations.dart' show MaterialLocalizations;
+import 'package:flutter/src/material/text_theme.dart' show TextTheme;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/alignment.dart' show Alignment, AlignmentGeometry;
+import 'package:flutter/src/painting/basic_types.dart' show VerticalDirection;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/borders.dart' show ShapeBorder;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
+import 'package:flutter/src/painting/text_painter.dart' show kDefaultFontSize;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/rendering/flex.dart' show CrossAxisAlignment, MainAxisAlignment, MainAxisSize;
+import 'package:flutter/src/widgets/basic.dart' show Align, Builder, Column, ConstrainedBox, Directionality, Flexible, IntrinsicWidth, ListBody, Padding, Semantics;
+import 'package:flutter/src/widgets/dialog.dart' show showRawDialog;
+import 'package:flutter/src/widgets/focus_traversal.dart' show TraversalEdgeBehavior;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, StatelessWidget, Widget, WidgetBuilder;
+import 'package:flutter/src/widgets/icon_theme.dart' show IconTheme;
+import 'package:flutter/src/widgets/icon_theme_data.dart' show IconThemeData;
+import 'package:flutter/src/widgets/implicit_animations.dart' show AnimatedPadding;
+import 'package:flutter/src/widgets/inherited_theme.dart' show CapturedThemes, InheritedTheme;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
+import 'package:flutter/src/widgets/navigator.dart' show HeroControllerScope, Navigator, NavigatorState, Page, Route, RouteSettings;
+import 'package:flutter/src/widgets/overflow_bar.dart' show OverflowBar, OverflowBarAlignment;
+import 'package:flutter/src/widgets/pages.dart' show PageRouteBuilder;
+import 'package:flutter/src/widgets/pop_scope.dart' show PopScope;
+import 'package:flutter/src/widgets/routes.dart' show RawDialogRoute;
+import 'package:flutter/src/widgets/safe_area.dart' show SafeArea;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/single_child_scroll_view.dart' show SingleChildScrollView;
+import 'package:flutter/src/widgets/text.dart' show DefaultTextStyle;
+import 'package:flutter/src/widgets/transitions.dart' show FadeTransition;
 
 // Examples can assume:
 // enum Department { treasury, state }

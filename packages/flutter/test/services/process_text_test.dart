@@ -2,7 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/services.dart';
+import 'package:flutter/src/services/binary_messenger.dart' show BinaryMessenger;
+import 'package:flutter/src/services/message_codec.dart' show MethodCall, MethodCodec;
+import 'package:flutter/src/services/message_codecs.dart' show StandardMethodCodec;
+import 'package:flutter/src/services/platform_channel.dart' show MethodChannel;
+import 'package:flutter/src/services/process_text.dart' show DefaultProcessTextService, ProcessTextAction, ProcessTextService;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

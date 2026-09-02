@@ -8,17 +8,29 @@
 library;
 
 import 'dart:async';
-import 'dart:ui';
+import 'dart:ui' show Clip, FilterQuality, ImageFilter, Offset, Path, PathFillType, Rect, Size;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-
-import 'basic.dart';
-import 'container.dart';
-import 'framework.dart';
-import 'inherited_theme.dart';
-import 'navigator.dart';
-import 'overlay.dart';
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/foundation/collections.dart' show listEquals;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/borders.dart' show ShapeBorder;
+import 'package:flutter/src/painting/box_shadow.dart' show BoxShadow;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
+import 'package:flutter/src/painting/shape_decoration.dart' show ShapeDecoration;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/layer.dart' show BackdropFilterLayer;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, RenderObject;
+import 'package:flutter/src/rendering/proxy_box.dart' show CustomClipper, RenderProxyBox;
+import 'package:flutter/src/widgets/basic.dart' show ClipPath, IgnorePointer, Opacity, SizedBox, Stack;
+import 'package:flutter/src/widgets/container.dart' show DecoratedBox;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, SingleChildRenderObjectWidget, StatelessWidget, Widget, WidgetBuilder;
+import 'package:flutter/src/widgets/inherited_theme.dart' show CapturedThemes, InheritedTheme;
+import 'package:flutter/src/widgets/navigator.dart' show Navigator;
+import 'package:flutter/src/widgets/overlay.dart' show Overlay, OverlayEntry, OverlayState;
+import 'package:listen/listen.dart' show ValueNotifier;
+import 'package:meta/meta.dart' show awaitNotRequired, immutable, visibleForTesting;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 /// Signature for a builder that builds a [Widget] with a [MagnifierController].
 ///

@@ -8,19 +8,52 @@
 /// @docImport 'package:flutter/widgets.dart';
 library;
 
+import 'dart:collection' show IterableExtensions;
 import 'dart:math' as math;
 import 'dart:ui'
     as ui
     show Image, ImageFilter, SemanticsHitTestBehavior, SemanticsInputType;
+import 'dart:ui' show BlendMode, Clip, Color, FilterQuality, Locale, Offset, Paint, Path, RRect, RSuperellipse, Rect, SemanticsRole, SemanticsValidationResult, Size, TextBaseline, TextDirection, VoidCallback;
 
-import 'package:flutter/animation.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
-
-import 'debug.dart';
-import 'framework.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, DiagnosticsProperty, DoubleProperty, EnumProperty, FlagProperty, IntProperty, IterableProperty;
+import 'package:flutter/src/foundation/key.dart' show Key, ValueKey;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/painting/alignment.dart' show Alignment, AlignmentDirectional, AlignmentGeometry;
+import 'package:flutter/src/painting/basic_types.dart' show Axis, AxisDirection, VerticalDirection, flipAxisDirection, textDirectionToAxisDirection;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius, BorderRadiusGeometry;
+import 'package:flutter/src/painting/borders.dart' show ShapeBorder;
+import 'package:flutter/src/painting/box_border.dart' show BoxShape;
+import 'package:flutter/src/painting/box_fit.dart' show BoxFit;
+import 'package:flutter/src/painting/colors.dart' show ColorProperty;
+import 'package:flutter/src/painting/decoration_image.dart' show ImageRepeat;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsetsGeometry;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/custom_layout.dart' show MultiChildLayoutDelegate, MultiChildLayoutParentData, RenderCustomMultiChildLayoutBox;
+import 'package:flutter/src/rendering/custom_paint.dart' show CustomPainter, RenderCustomPaint;
+import 'package:flutter/src/rendering/flex.dart' show CrossAxisAlignment, FlexFit, FlexParentData, MainAxisAlignment, MainAxisSize, RenderFlex;
+import 'package:flutter/src/rendering/flow.dart' show FlowDelegate, RenderFlow;
+import 'package:flutter/src/rendering/image.dart' show RenderImage;
+import 'package:flutter/src/rendering/image_filter_config.dart' show ImageFilterConfig;
+import 'package:flutter/src/rendering/layer.dart' show BackdropKey, LayerLink;
+import 'package:flutter/src/rendering/list_body.dart' show RenderListBody;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, RenderObject;
+import 'package:flutter/src/rendering/proxy_box.dart' show CustomClipper, HitTestBehavior, PointerCancelEventListener, PointerDownEventListener, PointerMoveEventListener, PointerPanZoomEndEventListener, PointerPanZoomStartEventListener, PointerPanZoomUpdateEventListener, PointerSignalEventListener, PointerUpEventListener, RenderAbsorbPointer, RenderAspectRatio, RenderBackdropFilter, RenderBlockSemantics, RenderClipOval, RenderClipPath, RenderClipRRect, RenderClipRSuperellipse, RenderClipRect, RenderConstrainedBox, RenderExcludeSemantics, RenderFittedBox, RenderFollowerLayer, RenderFractionalTranslation, RenderIgnoreBaseline, RenderIgnorePointer, RenderIndexedSemantics, RenderIntrinsicHeight, RenderIntrinsicWidth, RenderLeaderLayer, RenderLimitedBox, RenderMergeSemantics, RenderMetaData, RenderMouseRegion, RenderOffstage, RenderOpacity, RenderPhysicalModel, RenderPhysicalShape, RenderPointerListener, RenderProxyBoxWithHitTestBehavior, RenderRepaintBoundary, RenderSemanticsAnnotations, RenderShaderMask, RenderTransform, ShaderCallback, ShapeBorderClipper;
+import 'package:flutter/src/rendering/proxy_sliver.dart' show RenderSliverSemanticsAnnotations;
+import 'package:flutter/src/rendering/rotated_box.dart' show RenderRotatedBox;
+import 'package:flutter/src/rendering/shifted_box.dart' show BoxConstraintsTransform, OverflowBoxFit, RenderBaseline, RenderConstrainedOverflowBox, RenderConstraintsTransformBox, RenderCustomSingleChildLayoutBox, RenderFractionallySizedOverflowBox, RenderPadding, RenderPositionedBox, RenderSizedOverflowBox, SingleChildLayoutDelegate;
+import 'package:flutter/src/rendering/sliver.dart' show RenderSliverToBoxAdapter;
+import 'package:flutter/src/rendering/sliver_padding.dart' show RenderSliverPadding;
+import 'package:flutter/src/rendering/stack.dart' show RelativeRect, RenderStack, StackFit, StackParentData;
+import 'package:flutter/src/rendering/wrap.dart' show RenderWrap, WrapAlignment, WrapCrossAlignment;
+import 'package:flutter/src/semantics/semantics.dart' show AccessibilityFocusBlockType, AttributedString, CustomSemanticsAction, MoveCursorHandler, SemanticsHintOverrides, SemanticsProperties, SemanticsSortKey, SemanticsTag, SetSelectionHandler, SetTextHandler;
+import 'package:flutter/src/services/asset_bundle.dart' show AssetBundle, rootBundle;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor;
+import 'package:flutter/src/services/mouse_tracking.dart' show PointerEnterEventListener, PointerExitEventListener, PointerHoverEventListener;
+import 'package:flutter/src/widgets/debug.dart' show debugCheckHasDirectionality;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, ElementVisitor, GlobalObjectKey, InheritedElement, InheritedWidget, LeafRenderObjectWidget, MultiChildRenderObjectWidget, ParentDataWidget, SingleChildRenderObjectElement, SingleChildRenderObjectWidget, State, StateSetter, StatefulWidget, StatelessWidget, Widget, WidgetBuilder, debugItemsHaveDuplicateKeys;
+import 'package:meta/meta.dart' show immutable, protected;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 export 'package:flutter/animation.dart';
 export 'package:flutter/foundation.dart'

@@ -4,7 +4,8 @@
 
 import 'dart:ui' as ui;
 
-import 'package:flutter/painting.dart';
+import 'package:flutter/src/painting/binding.dart' show imageCache;
+import 'package:flutter/src/painting/image_provider.dart' show ImageConfiguration;
 import 'package:flutter_test/flutter_test.dart';
 
 import '../rendering/rendering_tester.dart';

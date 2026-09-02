@@ -14,8 +14,14 @@
 /// @docImport 'view.dart';
 library;
 
-import 'box.dart';
-import 'object.dart';
+import 'dart:ui' show Canvas, Color, Paint, Path, PathFillType, Rect;
+
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorHint, ErrorSummary, FlutterError;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode;
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/painting/colors.dart' show HSVColor;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
 
 export 'package:flutter/foundation.dart' show debugPrint;
 

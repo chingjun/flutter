@@ -2,7 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/services.dart';
+import 'dart:ui' show Size;
+
+import 'package:flutter/src/services/autofill.dart' show AutofillClient, AutofillConfiguration, AutofillScope, AutofillScopeMixin;
+import 'package:flutter/src/services/keyboard_inserted_content.dart' show KeyboardInsertedContent;
+import 'package:flutter/src/services/message_codec.dart' show MethodCall;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:flutter/src/services/text_input.dart' show RawFloatingCursorPoint, TextInput, TextInputClient, TextInputConfiguration, TextInputConnection, TextInputControl;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'text_input_utils.dart';

@@ -5,10 +5,13 @@
 /// @docImport 'package:flutter/material.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-
-import 'framework.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorSummary, FlutterError;
+import 'package:flutter/src/foundation/collections.dart' show listEquals;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode;
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/rendering/object.dart' show PipelineOwner, RenderObject, RenderObjectVisitor;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, ElementVisitor, RenderObjectElement, RenderObjectWidget, Widget;
+import 'package:meta/meta.dart' show protected;
 
 /// A superclass for [RenderObjectWidget]s that configure [RenderObject]
 /// subclasses that organize their children in different slots.

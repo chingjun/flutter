@@ -5,7 +5,9 @@
 /// @docImport 'text_input.dart';
 library;
 
-import 'system_channels.dart';
+import 'dart:async' show Future;
+
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
 
 /// Utility methods for interacting with the system's Live Text.
 ///

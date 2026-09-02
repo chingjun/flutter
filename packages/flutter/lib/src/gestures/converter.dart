@@ -6,11 +6,11 @@
 library;
 
 import 'dart:ui' as ui show PointerChange, PointerData, PointerSignalKind;
+import 'dart:ui' show Offset, PointerDeviceKind;
 
-import 'events.dart';
+import 'package:flutter/src/gestures/events.dart' show PointerAddedEvent, PointerCancelEvent, PointerDownEvent, PointerEvent, PointerHoverEvent, PointerMoveEvent, PointerPanZoomEndEvent, PointerPanZoomStartEvent, PointerPanZoomUpdateEvent, PointerRemovedEvent, PointerScaleEvent, PointerScrollEvent, PointerScrollInertiaCancelEvent, PointerUpEvent, kPrimaryButton;
 
 export 'dart:ui' show PointerData;
-
 export 'events.dart' show PointerEvent;
 
 // Add `kPrimaryButton` to [buttons] when a pointer of certain devices is down.

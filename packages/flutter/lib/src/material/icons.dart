@@ -6,8 +6,8 @@
 /// @docImport 'icon_button.dart';
 library;
 
-import 'package:flutter/foundation.dart' show defaultTargetPlatform;
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/widgets/icon_data.dart' show IconData, staticIconProvider;
 
 // ignore_for_file: non_constant_identifier_names
 

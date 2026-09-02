@@ -8,11 +8,22 @@
 /// @docImport 'desktop_text_selection_toolbar_button.dart';
 library;
 
-import 'dart:ui';
+import 'dart:ui' show Clip, Color, ColorFilter, ImageFilter, Offset, Radius;
 
-import 'package:flutter/widgets.dart';
-
-import 'colors.dart';
+import 'package:flutter/src/cupertino/colors.dart' show CupertinoDynamicColor;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/borders.dart' show BorderSide;
+import 'package:flutter/src/painting/box_shadow.dart' show BoxShadow;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedSuperellipseBorder;
+import 'package:flutter/src/painting/shape_decoration.dart' show ShapeDecoration;
+import 'package:flutter/src/rendering/flex.dart' show MainAxisSize;
+import 'package:flutter/src/widgets/basic.dart' show BackdropFilter, Column, CustomSingleChildLayout, Padding;
+import 'package:flutter/src/widgets/container.dart' show Container, DecoratedBox;
+import 'package:flutter/src/widgets/debug.dart' show debugCheckHasMediaQuery;
+import 'package:flutter/src/widgets/desktop_text_selection_toolbar_layout_delegate.dart' show DesktopTextSelectionToolbarLayoutDelegate;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
 
 // The minimum padding from all edges of the selection toolbar to all edges of
 // the screen.

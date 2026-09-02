@@ -8,18 +8,34 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show Brightness, Clip, Color, Offset, Radius, Size, TextDirection, VoidCallback;
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart' show listEquals;
-import 'package:flutter/rendering.dart';
-
-import 'color_scheme.dart';
-import 'debug.dart';
-import 'icon_button.dart';
-import 'icons.dart';
-import 'material.dart';
-import 'material_localizations.dart';
-import 'theme.dart';
+import 'package:flutter/src/cupertino/text_selection_toolbar.dart' show CupertinoTextSelectionToolbar;
+import 'package:flutter/src/foundation/collections.dart' show listEquals;
+import 'package:flutter/src/foundation/key.dart' show UniqueKey;
+import 'package:flutter/src/material/color_scheme.dart' show ColorScheme;
+import 'package:flutter/src/material/debug.dart' show debugCheckHasMaterialLocalizations;
+import 'package:flutter/src/material/icon_button.dart' show IconButton;
+import 'package:flutter/src/material/icons.dart' show Icons;
+import 'package:flutter/src/material/material.dart' show Material, MaterialType;
+import 'package:flutter/src/material/material_localizations.dart' show MaterialLocalizations;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, BoxHitTestResult, RenderBox;
+import 'package:flutter/src/rendering/object.dart' show ContainerRenderObjectMixin, PaintingContext, RenderObject, RenderObjectVisitor;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderProxyBox;
+import 'package:flutter/src/widgets/animated_size.dart' show AnimatedSize;
+import 'package:flutter/src/widgets/basic.dart' show CustomSingleChildLayout, Directionality, Padding;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, ElementVisitor, MultiChildRenderObjectElement, MultiChildRenderObjectWidget, SingleChildRenderObjectWidget, State, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/standard_component_type.dart' show StandardComponentType;
+import 'package:flutter/src/widgets/text_selection.dart' show ToolbarBuilder, ToolbarItemsParentData;
+import 'package:flutter/src/widgets/text_selection_toolbar_layout_delegate.dart' show TextSelectionToolbarLayoutDelegate;
+import 'package:flutter/src/widgets/ticker_provider.dart' show TickerProviderStateMixin;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 const double _kToolbarHeight = 44.0;
 const double _kToolbarContentDistance = 8.0;

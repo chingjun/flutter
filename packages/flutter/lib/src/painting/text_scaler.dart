@@ -3,8 +3,9 @@
 // found in the LICENSE file.
 
 import 'dart:math' show max, min;
+import 'dart:ui' show clampDouble;
 
-import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart' show immutable;
 
 /// A class that describes how textual contents should be scaled for better
 /// readability.

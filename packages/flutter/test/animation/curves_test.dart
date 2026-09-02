@@ -4,7 +4,7 @@
 
 import 'dart:math' as math;
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/animation/curves.dart' show CatmullRomCurve, CatmullRomSpline, Cubic, Curve, Curves, ElasticInCurve, ElasticInOutCurve, ElasticOutCurve, FlippedCurve, Interval, SawTooth, Split, ThreePointCubic, Threshold;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

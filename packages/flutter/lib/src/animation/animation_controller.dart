@@ -7,19 +7,23 @@
 library;
 
 import 'dart:ui' as ui show lerpDouble;
+import 'dart:ui' show clampDouble;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/physics.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/semantics.dart';
-
-import 'animation.dart';
-import 'curves.dart';
-import 'listener_helpers.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation, AnimationStatus;
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves;
+import 'package:flutter/src/animation/listener_helpers.dart' show AnimationEagerListenerMixin, AnimationLocalListenersMixin, AnimationLocalStatusListenersMixin;
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorSummary, FlutterError;
+import 'package:flutter/src/foundation/debug.dart' show debugMaybeDispatchCreated, debugMaybeDispatchDisposed;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode, DiagnosticsProperty, DiagnosticsTreeStyle;
+import 'package:flutter/src/physics/simulation.dart' show Simulation;
+import 'package:flutter/src/physics/spring_simulation.dart' show SpringDescription, SpringSimulation, SpringType;
+import 'package:flutter/src/physics/tolerance.dart' show Tolerance;
+import 'package:flutter/src/scheduler/ticker.dart' show Ticker, TickerFuture, TickerProvider;
+import 'package:flutter/src/semantics/binding.dart' show SemanticsBinding;
+import 'package:meta/meta.dart' show awaitNotRequired;
 
 export 'package:flutter/physics.dart' show Simulation, SpringDescription;
 export 'package:flutter/scheduler.dart' show TickerFuture, TickerProvider;
-
 export 'animation.dart' show Animation, AnimationStatus;
 export 'curves.dart' show Curve;
 

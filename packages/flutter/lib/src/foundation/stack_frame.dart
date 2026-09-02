@@ -2,10 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+import 'package:flutter/src/foundation/constants.dart' show kDebugMode, kIsWasm;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
 import 'package:meta/meta.dart';
-
-import 'constants.dart';
-import 'object.dart';
 
 /// A object representation of a frame from a stack trace.
 ///

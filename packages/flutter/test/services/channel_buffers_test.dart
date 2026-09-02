@@ -3,10 +3,12 @@
 // found in the LICENSE file.
 
 import 'dart:convert';
+import 'dart:typed_data' show ByteData, Uint8List;
 import 'dart:ui' as ui;
-import 'package:flutter/foundation.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
+
+import 'package:flutter/src/foundation/binding.dart' show BindingBase;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
+import 'package:flutter/src/services/binding.dart' show ServicesBinding;
 import 'package:flutter_test/flutter_test.dart';
 
 class TestChannelBuffersFlutterBinding extends BindingBase with SchedulerBinding, ServicesBinding {}

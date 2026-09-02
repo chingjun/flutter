@@ -15,15 +15,21 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show BlurStyle, Canvas, Color, MaskFilter, Offset, Paint, PaintingStyle, Path, Rect, Size, clampDouble;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-
-import 'box.dart';
-import 'debug.dart';
-import 'object.dart';
-import 'viewport.dart';
-import 'viewport_offset.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorHint, ErrorSummary, FlutterError, InformationCollector;
+import 'package:flutter/src/foundation/constants.dart' show precisionErrorTolerance;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsNode, DiagnosticsProperty, DiagnosticsTreeStyle, DoubleProperty, FlagProperty;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/gestures/events.dart' show PointerEvent;
+import 'package:flutter/src/gestures/hit_test.dart' show HitTestEntry, HitTestResult;
+import 'package:flutter/src/painting/basic_types.dart' show Axis, AxisDirection, axisDirectionIsReversed, axisDirectionToAxis, flipAxisDirection;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, BoxHitTestResult, RenderBox;
+import 'package:flutter/src/rendering/debug.dart' show debugPaintSizeEnabled;
+import 'package:flutter/src/rendering/object.dart' show Constraints, ContainerParentDataMixin, PaintingContext, ParentData, RenderObject, RenderObjectWithChildMixin;
+import 'package:flutter/src/rendering/viewport_offset.dart' show ScrollDirection, flipScrollDirection;
+import 'package:meta/meta.dart' show immutable, protected;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 // CORE TYPES FOR SLIVERS
 // The RenderSliver base class and its helper types.

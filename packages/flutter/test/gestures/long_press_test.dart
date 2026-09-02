@@ -2,7 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/gestures.dart';
+import 'dart:ui' show PointerDeviceKind;
+
+import 'package:flutter/src/gestures/drag_details.dart' show DragStartDetails;
+import 'package:flutter/src/gestures/events.dart' show PointerDownEvent, PointerMoveEvent, PointerUpEvent, kPrimaryButton, kSecondaryButton, kSecondaryMouseButton, kTertiaryButton;
+import 'package:flutter/src/gestures/long_press.dart' show LongPressDownDetails, LongPressEndDetails, LongPressGestureRecognizer, LongPressMoveUpdateDetails, LongPressStartDetails;
+import 'package:flutter/src/gestures/monodrag.dart' show HorizontalDragGestureRecognizer;
+import 'package:flutter/src/gestures/tap.dart' show TapDownDetails, TapGestureRecognizer;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'gesture_tester.dart';

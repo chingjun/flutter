@@ -7,7 +7,16 @@
 @Tags(<String>['reduced-test-set'])
 library;
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color, Radius, Rect, TextDirection;
+
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius, BorderRadiusDirectional, BorderRadiusGeometry;
+import 'package:flutter/src/painting/borders.dart' show BorderSide, ShapeBorder;
+import 'package:flutter/src/painting/continuous_rectangle_border.dart' show ContinuousRectangleBorder;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/shape_decoration.dart' show ShapeDecoration;
+import 'package:flutter/src/widgets/basic.dart' show RepaintBoundary;
+import 'package:flutter/src/widgets/container.dart' show DecoratedBox;
+import 'package:flutter/src/widgets/framework.dart' show Widget;
 import 'package:flutter_test/flutter_test.dart';
 
 const Color _blueAccent400 = Color(0xFF2979FF);

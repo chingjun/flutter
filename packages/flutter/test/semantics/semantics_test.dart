@@ -2,9 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:ui';
+import 'dart:ui' show Locale, LocaleStringAttribute, Rect, SemanticsAction, SemanticsHitTestBehavior, SemanticsRole, SemanticsUpdate, SemanticsValidationResult, SpellOutStringAttribute, StringAttribute, TextDirection, TextRange, VoidCallback;
 
-import 'package:flutter/rendering.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticsNode;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderProxyBox;
+import 'package:flutter/src/rendering/viewport.dart' show RenderViewport;
+import 'package:flutter/src/semantics/semantics.dart' show AccessibilityFocusBlockType, AttributedString, CustomSemanticsAction, DebugSemanticsDumpOrder, OrdinalSortKey, SemanticsConfiguration, SemanticsData, SemanticsLabelBuilder, SemanticsNode, SemanticsOwner, SemanticsSortKey, SemanticsTag, debugResetSemanticsIdCounter;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:leak_tracker_flutter_testing/leak_tracker_flutter_testing.dart';
 import 'package:vector_math/vector_math_64.dart';

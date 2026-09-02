@@ -3,9 +3,14 @@
 // found in the LICENSE file.
 
 import 'dart:math' as math;
+import 'dart:ui' show Color;
 
-import 'package:flutter/gestures.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey;
+import 'package:flutter/src/gestures/constants.dart' show kTouchSlop;
+import 'package:flutter/src/gestures/drag_details.dart' show DragDownDetails, DragEndDetails, DragStartDetails, DragUpdateDetails;
+import 'package:flutter/src/widgets/basic.dart' show Center, Transform;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

@@ -3,9 +3,11 @@
 // found in the LICENSE file.
 
 import 'dart:convert' show jsonDecode;
+import 'dart:ui' show TextRange;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel, DiagnosticPropertiesBuilder, DiagnosticsNode;
+import 'package:flutter/src/services/text_editing.dart' show TextSelection;
+import 'package:flutter/src/services/text_editing_delta.dart' show TextEditingDelta, TextEditingDeltaDeletion, TextEditingDeltaInsertion, TextEditingDeltaNonTextUpdate, TextEditingDeltaReplacement;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

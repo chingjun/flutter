@@ -10,11 +10,15 @@
 /// @docImport 'theme_data.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color, TextDecoration, TextDecorationStyle;
 
-import 'theme.dart';
-import 'typography.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsProperty;
+import 'package:flutter/src/foundation/platform.dart' show defaultTargetPlatform;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/typography.dart' show Typography;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext;
+import 'package:meta/meta.dart' show immutable;
 
 /// Material design text theme.
 ///

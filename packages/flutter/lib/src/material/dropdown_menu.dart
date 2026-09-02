@@ -6,26 +6,49 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show Color, Offset, Size, TextAlign, TextDirection;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
-
-import 'button_style.dart';
-import 'dropdown_menu_theme.dart';
-import 'icon_button.dart';
-import 'icons.dart';
-import 'input_border.dart';
-import 'input_decorator.dart';
-import 'material_localizations.dart';
-import 'material_state.dart';
-import 'menu_anchor.dart';
-import 'menu_button_theme.dart';
-import 'menu_style.dart';
-import 'text_field.dart';
-import 'theme.dart';
-import 'theme_data.dart';
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/material/button_style.dart' show ButtonStyle;
+import 'package:flutter/src/material/dropdown_menu_theme.dart' show DropdownMenuTheme, DropdownMenuThemeData;
+import 'package:flutter/src/material/icon_button.dart' show IconButton;
+import 'package:flutter/src/material/icons.dart' show Icons;
+import 'package:flutter/src/material/input_border.dart' show OutlineInputBorder;
+import 'package:flutter/src/material/input_decorator.dart' show InputDecoration, InputDecorationTheme, InputDecorationThemeData;
+import 'package:flutter/src/material/material_localizations.dart' show MaterialLocalizations;
+import 'package:flutter/src/material/material_state.dart' show MaterialStatePropertyAll;
+import 'package:flutter/src/material/menu_anchor.dart' show MenuAnchor, MenuItemButton;
+import 'package:flutter/src/material/menu_button_theme.dart' show MenuButtonTheme;
+import 'package:flutter/src/material/menu_style.dart' show MenuStyle;
+import 'package:flutter/src/material/text_field.dart' show TextField;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData, VisualDensity;
+import 'package:flutter/src/painting/alignment.dart' show AlignmentDirectional, TextAlignVertical;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsDirectional, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, BoxHitTestResult, ContainerBoxParentData, RenderBox, RenderBoxContainerDefaultsMixin;
+import 'package:flutter/src/rendering/object.dart' show ContainerRenderObjectMixin, PaintingContext, RenderObject, RenderObjectVisitor;
+import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor, SystemMouseCursors;
+import 'package:flutter/src/services/text_editing.dart' show TextSelection;
+import 'package:flutter/src/services/text_formatter.dart' show TextInputFormatter;
+import 'package:flutter/src/services/text_input.dart' show TextEditingValue, TextInputAction, TextInputType;
+import 'package:flutter/src/widgets/actions.dart' show Action, Actions, CallbackAction, DismissIntent, Intent;
+import 'package:flutter/src/widgets/basic.dart' show Align, ConstrainedBox, Directionality, ExcludeSemantics, Padding, Semantics, SizedBox, Stack;
+import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding;
+import 'package:flutter/src/widgets/editable_text.dart' show TextEditingController;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/focus_scope.dart' show ExcludeFocus, Focus;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, MultiChildRenderObjectWidget, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/raw_menu_anchor.dart' show DismissMenuAction, MenuController;
+import 'package:flutter/src/widgets/scrollable.dart' show Scrollable;
+import 'package:flutter/src/widgets/shortcuts.dart' show ShortcutActivator, Shortcuts, SingleActivator;
+import 'package:flutter/src/widgets/text.dart' show DefaultTextStyle, Text;
+import 'package:flutter/src/widgets/text_editing_intents.dart' show ExtendSelectionByCharacterIntent;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateProperty, WidgetStatesController;
 
 // Examples can assume:
 // late BuildContext context;

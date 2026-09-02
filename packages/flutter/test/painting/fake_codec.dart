@@ -2,9 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+import 'dart:async' show Future;
+import 'dart:typed_data' show Uint8List;
 import 'dart:ui' as ui show Codec, FrameInfo, instantiateImageCodec;
-
-import 'package:flutter/foundation.dart';
 
 /// A [ui.Codec] implementation for testing that pre-fetches all the image
 /// frames, and provides synchronous [getNextFrame] implementation.

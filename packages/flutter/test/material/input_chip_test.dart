@@ -7,11 +7,36 @@
 @Tags(<String>['reduced-test-set'])
 library;
 
-import 'package:flutter/foundation.dart' show kIsWeb;
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
+import 'dart:ui' show Clip, Color, PointerDeviceKind, Size, TextDirection;
+
+import 'package:flutter/src/animation/animation_style.dart' show AnimationStyle;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/material/app.dart' show MaterialApp;
+import 'package:flutter/src/material/chip.dart' show ChipAnimationStyle, RawChip;
+import 'package:flutter/src/material/chip_theme.dart' show ChipTheme, ChipThemeData;
+import 'package:flutter/src/material/circle_avatar.dart' show CircleAvatar;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/icons.dart' show Icons;
+import 'package:flutter/src/material/input_chip.dart' show InputChip;
+import 'package:flutter/src/material/material.dart' show Material;
+import 'package:flutter/src/material/motion.dart' show Durations;
+import 'package:flutter/src/material/scaffold.dart' show Scaffold;
+import 'package:flutter/src/material/theme_data.dart' show ThemeData;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor, SystemMouseCursor, SystemMouseCursors;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Center, Column, CustomPaint, Directionality, SizedBox;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusHighlightStrategy, FocusNode;
+import 'package:flutter/src/widgets/focus_scope.dart' show FocusScope;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/icon_theme.dart' show IconTheme;
+import 'package:flutter/src/widgets/icon_theme_data.dart' show IconThemeData;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateMouseCursor, WidgetStateProperty, WidgetStatesConstraint;
 import 'package:flutter_test/flutter_test.dart';
 
 /// Adds the basic requirements for a Chip.

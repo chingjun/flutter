@@ -7,9 +7,9 @@
 /// @docImport 'package:flutter_test/flutter_test.dart';
 library;
 
+import 'dart:async' show Future;
+import 'dart:typed_data' show ByteData;
 import 'dart:ui' as ui;
-
-import 'package:flutter/foundation.dart';
 
 export 'dart:typed_data' show ByteData;
 export 'dart:ui' show PlatformMessageResponseCallback;

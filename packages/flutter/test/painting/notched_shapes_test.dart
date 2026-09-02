@@ -3,8 +3,10 @@
 // found in the LICENSE file.
 
 import 'dart:math' as math;
+import 'dart:ui' show Path, Rect;
 
-import 'package:flutter/painting.dart';
+import 'package:flutter/src/painting/notched_shapes.dart' show AutomaticNotchedShape, CircularNotchedRectangle;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

@@ -6,15 +6,36 @@
 /// @docImport 'text_theme.dart';
 library;
 
+import 'dart:collection' show IterableExtensions;
 import 'dart:math' as math;
+import 'dart:ui' show Color, FontWeight, Offset, Size, TextBaseline, TextDirection;
 
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/widgets.dart';
-
-import 'colors.dart';
-import 'localizations.dart';
-import 'picker.dart';
-import 'theme.dart';
+import 'package:flutter/src/animation/curves.dart' show Curves;
+import 'package:flutter/src/cupertino/colors.dart' show CupertinoColors, CupertinoDynamicColor;
+import 'package:flutter/src/cupertino/localizations.dart' show CupertinoLocalizations, DatePickerDateOrder, DatePickerDateTimeOrder;
+import 'package:flutter/src/cupertino/picker.dart' show CupertinoPicker, CupertinoPickerDefaultSelectionOverlay;
+import 'package:flutter/src/cupertino/theme.dart' show CupertinoTheme, CupertinoThemeData;
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError, FlutterErrorDetails;
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/painting/alignment.dart' show Alignment, AlignmentDirectional, AlignmentGeometry;
+import 'package:flutter/src/painting/binding.dart' show PaintingBinding;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsDirectional;
+import 'package:flutter/src/painting/text_painter.dart' show TextOverflow, TextPainter;
+import 'package:flutter/src/painting/text_span.dart' show TextSpan;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/rendering/custom_layout.dart' show MultiChildLayoutDelegate;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
+import 'package:flutter/src/widgets/basic.dart' show Align, Baseline, ColoredBox, ConstrainedBox, CustomMultiChildLayout, Directionality, ExcludeSemantics, Expanded, IgnorePointer, LayoutId, Padding, Row, Semantics, SizedBox, Stack;
+import 'package:flutter/src/widgets/date.dart' show SelectableDayPredicate;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, TransitionBuilder, Widget;
+import 'package:flutter/src/widgets/layout_builder.dart' show LayoutBuilder;
+import 'package:flutter/src/widgets/list_wheel_scroll_view.dart' show ChangeReportingBehavior, FixedExtentScrollController;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/notification_listener.dart' show NotificationListener;
+import 'package:flutter/src/widgets/scroll_notification.dart' show ScrollEndNotification, ScrollNotification, ScrollStartNotification;
+import 'package:flutter/src/widgets/text.dart' show DefaultTextStyle, Text;
+import 'package:meta/meta.dart' show visibleForTesting;
 
 // Values derived from https://developer.apple.com/design/resources/ and on iOS
 // simulators with "Debug View Hierarchy".

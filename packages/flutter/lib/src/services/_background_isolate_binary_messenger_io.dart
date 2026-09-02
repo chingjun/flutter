@@ -2,13 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:async' show Completer;
+import 'dart:async' show Completer, Future;
 import 'dart:isolate' show ReceivePort;
+import 'dart:typed_data' show ByteData, Uint8List;
 import 'dart:ui' as ui;
 
-import 'package:flutter/foundation.dart';
-import 'binary_messenger.dart';
-import 'binding.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, FlutterError, FlutterErrorDetails;
+import 'package:flutter/src/services/binary_messenger.dart' show BinaryMessenger, MessageHandler;
 
 /// A [BinaryMessenger] for use on background (non-root) isolates.
 class BackgroundIsolateBinaryMessenger extends BinaryMessenger {

@@ -2,10 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Clip, RRect, Rect;
 
-import 'basic.dart';
-import 'framework.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty, EnumProperty;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius, BorderRadiusGeometry;
+import 'package:flutter/src/rendering/proxy_box.dart' show CustomClipper;
+import 'package:flutter/src/rendering/sliver_clip.dart' show ClipOverlapBehavior, RenderSliverClipRRect, RenderSliverClipRect;
+import 'package:flutter/src/widgets/basic.dart' show Directionality;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, SingleChildRenderObjectWidget, Widget;
 
 export 'package:flutter/rendering.dart' show ClipOverlapBehavior;
 

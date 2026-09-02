@@ -2,11 +2,22 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:ui' show Tristate;
+import 'dart:ui' show SemanticsAction, SemanticsFlag, Size, TextDirection, Tristate;
 
-import 'package:flutter/semantics.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticLevel;
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsNode, SemanticsOwner;
+import 'package:flutter/src/services/hardware_keyboard.dart' show KeyEvent;
+import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
+import 'package:flutter/src/services/raw_keyboard.dart' show RawKeyEvent;
+import 'package:flutter/src/widgets/basic.dart' show Center, Column, Directionality, SizedBox;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusAttachment, FocusManager, FocusNode, FocusOnKeyEventCallback, FocusScopeNode, KeyEventResult;
+import 'package:flutter/src/widgets/focus_scope.dart' show ExcludeFocus, Focus, FocusScope;
+import 'package:flutter/src/widgets/focus_traversal.dart' show FocusTraversalGroup;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, GlobalKey, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'semantics_tester.dart';

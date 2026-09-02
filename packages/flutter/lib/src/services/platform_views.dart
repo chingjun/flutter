@@ -8,18 +8,17 @@
 library;
 
 import 'dart:async';
-import 'dart:ui';
+import 'dart:typed_data' show ByteData, Uint8List;
+import 'dart:ui' show Offset, PointerDeviceKind, Size, TextDirection, VoidCallback;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-
-import 'message_codec.dart';
-import 'system_channels.dart';
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/gestures/events.dart' show PointerCancelEvent, PointerDownEvent, PointerEvent, PointerHoverEvent, PointerMoveEvent, PointerUpEvent;
+import 'package:flutter/src/services/message_codec.dart' show MessageCodec, MethodCall;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:meta/meta.dart' show visibleForTesting;
 
 export 'dart:ui' show Offset, Size, TextDirection, VoidCallback;
-
 export 'package:flutter/gestures.dart' show PointerEvent;
-
 export 'message_codec.dart' show MessageCodec;
 
 /// Converts a given point from the global coordinate system in logical pixels

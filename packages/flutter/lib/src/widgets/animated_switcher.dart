@@ -6,12 +6,17 @@
 /// @docImport 'implicit_animations.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-
-import 'basic.dart';
-import 'framework.dart';
-import 'ticker_provider.dart';
-import 'transitions.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation, AnimationStatus;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/animations.dart' show CurvedAnimation;
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, IntProperty, shortHash;
+import 'package:flutter/src/foundation/key.dart' show Key, ValueKey;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/widgets/basic.dart' show KeyedSubtree, Stack;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/ticker_provider.dart' show TickerProviderStateMixin;
+import 'package:flutter/src/widgets/transitions.dart' show FadeTransition;
 
 // Internal representation of a child that, now or in the past, was set on the
 // AnimatedSwitcher.child field, but is now in the process of

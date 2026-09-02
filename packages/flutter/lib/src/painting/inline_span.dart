@@ -10,15 +10,17 @@
 library;
 
 import 'dart:ui' as ui show ParagraphBuilder, StringAttribute;
+import 'dart:ui' show TextPosition, TextRange;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-
-import 'basic_types.dart';
-import 'text_painter.dart';
-import 'text_scaler.dart';
-import 'text_span.dart';
-import 'text_style.dart';
+import 'package:flutter/src/foundation/collections.dart' show listEquals;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticableTree, DiagnosticsTreeStyle;
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/gestures/recognizer.dart' show GestureRecognizer;
+import 'package:flutter/src/painting/basic_types.dart' show RenderComparison;
+import 'package:flutter/src/painting/text_painter.dart' show PlaceholderDimensions;
+import 'package:flutter/src/painting/text_scaler.dart' show TextScaler;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:meta/meta.dart' show immutable, protected;
 
 // Examples can assume:
 // late InlineSpan myInlineSpan;

@@ -6,14 +6,15 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show Offset, Rect;
 
-import 'package:flutter/foundation.dart';
-
-import 'box.dart';
-import 'layer.dart';
-import 'object.dart';
-import 'sliver_fixed_extent_list.dart';
-import 'sliver_multi_box_adaptor.dart';
+import 'package:flutter/src/foundation/key.dart' show UniqueKey;
+import 'package:flutter/src/painting/basic_types.dart' show AxisDirection;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/layer.dart' show ClipRectLayer, LayerHandle;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, RenderObject;
+import 'package:flutter/src/rendering/sliver_fixed_extent_list.dart' show RenderSliverVariedExtentList;
+import 'package:flutter/src/rendering/sliver_multi_box_adaptor.dart' show SliverMultiBoxAdaptorParentData;
 
 /// Represents the animation of the children of a parent [TreeSliverNode] that
 /// are animating into or out of view.

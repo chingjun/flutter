@@ -3,12 +3,17 @@
 // found in the LICENSE file.
 
 import 'dart:ui' as ui;
+import 'dart:ui' show BlendMode, Color, ColorFilter, Path, RRect, RSuperellipse, Radius, Rect;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError, FlutterErrorDetails, FlutterExceptionHandler;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/layer.dart' show ClipPathLayer, ClipRRectLayer, ClipRSuperellipseLayer, ClipRectLayer, ColorFilterLayer, CompositionCallback, ContainerLayer, Layer, LayerLink, LeaderLayer, OffsetLayer, OpacityLayer, TransformLayer;
+import 'package:flutter/src/rendering/object.dart' show ContainerParentDataMixin, ContainerRenderObjectMixin, PaintingContext, PaintingContextCallback, ParentData, PipelineOwner, RenderObject;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderOpacity;
+import 'package:flutter/src/semantics/semantics.dart' show SemanticsConfiguration, SemanticsNode, SemanticsOwner;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:leak_tracker_flutter_testing/leak_tracker_flutter_testing.dart';
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 import 'rendering_tester.dart';
 

@@ -5,9 +5,14 @@
 /// @docImport 'tabs.dart';
 library;
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Canvas, Offset, Paint, Path, RRect, Rect, StrokeCap, TextDirection, VoidCallback;
 
-import 'colors.dart';
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/borders.dart' show BorderSide;
+import 'package:flutter/src/painting/decoration.dart' show BoxPainter, Decoration;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/image_provider.dart' show ImageConfiguration;
 
 /// Used with [TabBar.indicator] to draw a horizontal line below the
 /// selected tab.

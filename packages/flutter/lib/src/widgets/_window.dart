@@ -14,19 +14,22 @@
 //
 // See: https://github.com/flutter/flutter/issues/30701.
 
-import 'dart:ui' show Display, FlutterView;
+import 'dart:ui' show Display, FlutterView, Offset, Rect, Size;
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/src/foundation/_features.dart' show isWindowingEnabled;
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorHint, ErrorSummary, FlutterError;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/widgets/_window_positioner.dart' show WindowPositioner;
+import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding, WidgetsFlutterBinding;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedWidget, State, StatefulWidget, StatelessWidget, Widget, WidgetBuilder;
+import 'package:flutter/src/widgets/inherited_model.dart' show InheritedModel;
+import 'package:flutter/src/widgets/transitions.dart' show ListenableBuilder;
+import 'package:flutter/src/widgets/view.dart' show View, ViewCollection;
+import 'package:listen/listen.dart' show ChangeNotifier;
+import 'package:meta/meta.dart' show internal, protected;
 
-import '../foundation/_features.dart';
 import '_window_io.dart' if (dart.library.js_interop) '_window_web.dart' as window_impl;
-import '_window_positioner.dart';
-import 'basic.dart';
-import 'binding.dart';
-import 'framework.dart';
-import 'inherited_model.dart';
-import 'transitions.dart';
-import 'view.dart';
 
 const String _kWindowingDisabledErrorMessage = '''
 Windowing APIs are not enabled.

@@ -2,10 +2,10 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
-
-import 'framework.dart';
-import 'platform_view.dart';
+import 'package:flutter/src/foundation/key.dart' show Key;
+import 'package:flutter/src/rendering/platform_view.dart' show PlatformViewHitTestBehavior;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
+import 'package:flutter/src/widgets/platform_view.dart' show ElementCreatedCallback, HtmlElementView;
 
 /// The platform-specific implementation of [HtmlElementView].
 extension HtmlElementViewImpl on HtmlElementView {

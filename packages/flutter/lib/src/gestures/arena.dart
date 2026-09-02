@@ -7,9 +7,8 @@ library;
 
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
-
-import 'debug.dart';
+import 'package:flutter/src/foundation/print.dart' show debugPrint;
+import 'package:flutter/src/gestures/debug.dart' show debugPrintGestureArenaDiagnostics;
 
 /// Whether the gesture was accepted or rejected.
 enum GestureDisposition {

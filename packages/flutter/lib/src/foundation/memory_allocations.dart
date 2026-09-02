@@ -4,11 +4,10 @@
 
 import 'dart:ui' as ui;
 
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, FlutterError, FlutterErrorDetails;
+import 'package:flutter/src/foundation/constants.dart' show kDebugMode;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode, DiagnosticsProperty, DiagnosticsTreeStyle;
 import 'package:listen/listen.dart';
-
-import 'assertions.dart';
-import 'constants.dart';
-import 'diagnostics.dart';
 
 const bool _kMemoryAllocations = bool.fromEnvironment('flutter.memory_allocations');
 

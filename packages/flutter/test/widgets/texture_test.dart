@@ -2,8 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show FilterQuality, Rect;
+
+import 'package:flutter/src/rendering/layer.dart' show ContainerLayer, Layer, TextureLayer;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, RenderObject;
+import 'package:flutter/src/rendering/texture.dart' show TextureBox;
+import 'package:flutter/src/widgets/basic.dart' show Center;
+import 'package:flutter/src/widgets/texture.dart' show Texture;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

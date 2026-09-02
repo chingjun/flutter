@@ -6,9 +6,8 @@
 /// @docImport 'package:flutter/widgets.dart';
 library;
 
+import 'package:flutter/src/foundation/diagnostics.dart' show shortHash;
 import 'package:meta/meta.dart';
-
-import 'diagnostics.dart';
 
 /// A [Key] is an identifier for [Widget]s, [Element]s and [SemanticsNode]s.
 ///

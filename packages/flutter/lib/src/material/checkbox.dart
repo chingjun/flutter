@@ -10,15 +10,29 @@
 /// @docImport 'switch.dart';
 library;
 
-import 'package:flutter/cupertino.dart';
+import 'dart:ui' show Canvas, Color, Offset, Paint, PaintingStyle, Path, Radius, Rect, Size;
 
-import 'checkbox_theme.dart';
-import 'color_scheme.dart';
-import 'colors.dart';
-import 'constants.dart';
-import 'debug.dart';
-import 'theme.dart';
-import 'theme_data.dart';
+import 'package:flutter/src/animation/animation.dart' show AnimationStatus;
+import 'package:flutter/src/cupertino/checkbox.dart' show CupertinoCheckbox;
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/material/checkbox_theme.dart' show CheckboxTheme, CheckboxThemeData;
+import 'package:flutter/src/material/color_scheme.dart' show ColorScheme;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/constants.dart' show kMinInteractiveDimension, kRadialReactionAlpha, kRadialReactionDuration, kRadialReactionRadius;
+import 'package:flutter/src/material/debug.dart' show debugCheckHasMaterial;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show MaterialTapTargetSize, ThemeData, VisualDensity;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/borders.dart' show BorderSide, OutlinedBorder;
+import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor;
+import 'package:flutter/src/widgets/basic.dart' show Semantics;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/ticker_provider.dart' show TickerProviderStateMixin;
+import 'package:flutter/src/widgets/toggleable.dart' show ToggleablePainter, ToggleableStateMixin;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateBorderSide, WidgetStateMouseCursor, WidgetStateProperty;
 
 // Examples can assume:
 // bool _throwShotAway = false;

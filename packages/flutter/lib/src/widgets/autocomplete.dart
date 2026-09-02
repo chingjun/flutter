@@ -7,25 +7,34 @@ library;
 
 import 'dart:async';
 import 'dart:math' as math show max;
+import 'dart:ui' show Offset, Rect, Size, VoidCallback;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
-
-import 'actions.dart';
-import 'basic.dart';
-import 'constants.dart';
-import 'editable_text.dart';
-import 'focus_manager.dart';
-import 'focus_scope.dart';
-import 'framework.dart';
-import 'inherited_notifier.dart';
-import 'localizations.dart';
-import 'media_query.dart';
-import 'overlay.dart';
-import 'shortcuts.dart';
-import 'tap_region.dart';
-import 'view.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, FlutterError, FlutterErrorDetails;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/painting/alignment.dart' show Alignment, AlignmentDirectional;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/painting/matrix_utils.dart' show MatrixUtils;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/semantics/semantics_service.dart' show SemanticsService;
+import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
+import 'package:flutter/src/services/text_editing.dart' show TextSelection;
+import 'package:flutter/src/services/text_input.dart' show TextEditingValue;
+import 'package:flutter/src/widgets/actions.dart' show Actions, CallbackAction, DismissIntent, Intent;
+import 'package:flutter/src/widgets/basic.dart' show Align, Builder, ConstrainedBox, SizedBox, Transform;
+import 'package:flutter/src/widgets/constants.dart' show kMinInteractiveDimension;
+import 'package:flutter/src/widgets/editable_text.dart' show TextEditingController;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/focus_scope.dart' show ExcludeFocus;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/inherited_notifier.dart' show InheritedNotifier;
+import 'package:flutter/src/widgets/localizations.dart' show WidgetsLocalizations;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/overlay.dart' show OverlayChildLayoutInfo, OverlayPortal, OverlayPortalController;
+import 'package:flutter/src/widgets/shortcuts.dart' show ShortcutActivator, Shortcuts, SingleActivator;
+import 'package:flutter/src/widgets/tap_region.dart' show TextFieldTapRegion;
+import 'package:flutter/src/widgets/view.dart' show View;
+import 'package:listen/listen.dart' show ValueNotifier;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 // Examples can assume:
 // late BuildContext context;

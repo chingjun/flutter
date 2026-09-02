@@ -5,7 +5,8 @@
 @TestOn('!chrome')
 library;
 
-import 'package:flutter/services.dart';
+import 'dart:typed_data' show ByteData;
+
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

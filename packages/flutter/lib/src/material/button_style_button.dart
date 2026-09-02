@@ -10,24 +10,39 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show Clip, Color, Offset, Size, TextBaseline, VoidCallback;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
-
-import 'button_style.dart';
-import 'colors.dart';
-import 'constants.dart';
-import 'elevated_button.dart';
-import 'filled_button.dart';
-import 'ink_well.dart';
-import 'material.dart';
-import 'material_state.dart';
-import 'outlined_button.dart';
-import 'text_button.dart';
-import 'theme.dart';
-import 'theme_data.dart';
-import 'tooltip.dart';
+import 'package:flutter/src/animation/animation.dart' show AnimationStatus;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty, FlagProperty;
+import 'package:flutter/src/material/button_style.dart' show ButtonLayerBuilder, ButtonStyle;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/constants.dart' show kMinInteractiveDimension;
+import 'package:flutter/src/material/ink_well.dart' show InkWell, InteractiveInkFeatureFactory;
+import 'package:flutter/src/material/material.dart' show Material, MaterialType;
+import 'package:flutter/src/material/material_state.dart' show MaterialStatePropertyAll, MaterialStatesController;
+import 'package:flutter/src/material/theme.dart' show AnimatedTheme, Theme;
+import 'package:flutter/src/material/theme_data.dart' show MaterialTapTargetSize, ThemeData, VisualDensity;
+import 'package:flutter/src/material/tooltip.dart' show Tooltip;
+import 'package:flutter/src/painting/alignment.dart' show Alignment, AlignmentGeometry;
+import 'package:flutter/src/painting/borders.dart' show BorderSide, OutlinedBorder;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/matrix_utils.dart' show MatrixUtils;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, BoxHitTestResult, BoxParentData, RenderBox;
+import 'package:flutter/src/rendering/layout_helper.dart' show ChildLayoutHelper, ChildLayouter;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/rendering/shifted_box.dart' show RenderShiftedBox;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor;
+import 'package:flutter/src/widgets/basic.dart' show Align, ConstrainedBox, Padding, Semantics;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, SingleChildRenderObjectWidget, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/icon_theme.dart' show IconTheme;
+import 'package:flutter/src/widgets/icon_theme_data.dart' show IconThemeData;
+import 'package:flutter/src/widgets/ticker_provider.dart' show TickerProviderStateMixin;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetPropertyResolver, WidgetState, WidgetStateMouseCursor, WidgetStateProperty, WidgetStatesConstraint;
+import 'package:meta/meta.dart' show protected;
 
 /// {@template flutter.material.ButtonStyle.iconAlignment}
 /// Determines the alignment of the icon within the widgets such as:

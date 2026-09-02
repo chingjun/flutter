@@ -6,12 +6,14 @@
 /// @docImport 'package:flutter/widgets.dart';
 library;
 
-import 'package:flutter/foundation.dart';
+import 'dart:ui' show VoidCallback;
 
-import 'tween.dart';
+import 'package:flutter/src/animation/tween.dart' show Animatable;
+import 'package:flutter/src/foundation/diagnostics.dart' show describeIdentity;
+import 'package:listen/listen.dart' show Listenable, ValueListenable;
+import 'package:meta/meta.dart' show optionalTypeArgs;
 
 export 'dart:ui' show VoidCallback;
-
 export 'tween.dart' show Animatable;
 
 // Examples can assume:

@@ -3,11 +3,14 @@
 // found in the LICENSE file.
 
 import 'dart:async';
-import 'dart:ui';
+import 'dart:typed_data' show Uint8List;
+import 'dart:ui' show Codec, FrameInfo, Image;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/scheduler.dart' show SchedulerBinding, timeDilation;
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, FlutterError, FlutterErrorDetails, FlutterExceptionHandler;
+import 'package:flutter/src/foundation/synchronous_future.dart' show SynchronousFuture;
+import 'package:flutter/src/painting/binding.dart' show imageCache;
+import 'package:flutter/src/painting/image_stream.dart' show ImageChunkEvent, ImageChunkListener, ImageErrorListener, ImageInfo, ImageListener, ImageStream, ImageStreamCompleter, ImageStreamCompleterHandle, ImageStreamListener, MultiFrameImageStreamCompleter, OneFrameImageStreamCompleter;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding, timeDilation;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:leak_tracker_flutter_testing/leak_tracker_flutter_testing.dart';
 

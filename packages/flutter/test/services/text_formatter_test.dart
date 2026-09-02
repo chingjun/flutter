@@ -2,8 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
+import 'dart:ui' show TextRange;
+
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
+import 'package:flutter/src/services/text_editing.dart' show TextSelection;
+import 'package:flutter/src/services/text_formatter.dart' show FilteringTextInputFormatter, LengthLimitingTextInputFormatter, MaxLengthEnforcement, TextInputFormatter;
 import 'package:flutter_test/flutter_test.dart';
 
 class TestTextInputFormatter extends TextInputFormatter {

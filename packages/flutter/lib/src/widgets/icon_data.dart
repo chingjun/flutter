@@ -9,7 +9,9 @@
 /// @docImport 'icon.dart';
 library;
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/src/foundation/collections.dart' show listEquals;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsProperty, DiagnosticsSerializationDelegate;
+import 'package:meta/meta.dart' show RecordUse, immutable, mustBeConst;
 
 /// A description of an icon fulfilled by a font glyph.
 ///

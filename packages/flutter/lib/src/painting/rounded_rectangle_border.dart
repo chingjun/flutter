@@ -8,13 +8,12 @@
 library;
 
 import 'dart:ui' as ui show lerpDouble;
+import 'dart:ui' show Canvas, Offset, Paint, Path, RRect, RSuperellipse, Radius, Rect, TextDirection;
 
-import 'package:flutter/foundation.dart';
-
-import 'basic_types.dart';
-import 'border_radius.dart';
-import 'borders.dart';
-import 'circle_border.dart';
+import 'package:flutter/src/foundation/object.dart' show objectRuntimeType;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius, BorderRadiusGeometry;
+import 'package:flutter/src/painting/borders.dart' show BorderSide, BorderStyle, OutlinedBorder, ShapeBorder;
+import 'package:flutter/src/painting/circle_border.dart' show CircleBorder;
 
 // A common interface for [RoundedRectangleBorder] and [RoundedSuperellipseBorder].
 mixin _RRectLikeBorder on OutlinedBorder {

@@ -5,15 +5,14 @@
 /// @docImport 'text_input.dart';
 library;
 
-import 'dart:ui' show TextRange;
+import 'dart:ui' show TextAffinity, TextRange;
 
-import 'package:flutter/foundation.dart';
-
-import 'text_editing.dart';
-import 'text_input.dart' show TextEditingValue;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsProperty;
+import 'package:flutter/src/services/text_editing.dart' show TextSelection;
+import 'package:flutter/src/services/text_input.dart' show TextEditingValue;
+import 'package:meta/meta.dart' show immutable;
 
 export 'dart:ui' show TextRange;
-
 export 'text_editing.dart' show TextSelection;
 export 'text_input.dart' show TextEditingValue;
 

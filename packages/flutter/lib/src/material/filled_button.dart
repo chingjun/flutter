@@ -9,21 +9,29 @@
 /// @docImport 'text_button.dart';
 library;
 
-import 'dart:ui' show lerpDouble;
+import 'dart:ui' show Clip, Color, Size, clampDouble, lerpDouble;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
-
-import 'button_style.dart';
-import 'button_style_button.dart';
-import 'color_scheme.dart';
-import 'colors.dart';
-import 'constants.dart';
-import 'filled_button_theme.dart';
-import 'ink_well.dart';
-import 'material_state.dart';
-import 'theme.dart';
-import 'theme_data.dart';
+import 'package:flutter/src/material/button_style.dart' show ButtonLayerBuilder, ButtonStyle;
+import 'package:flutter/src/material/button_style_button.dart' show ButtonStyleButton, IconAlignment;
+import 'package:flutter/src/material/color_scheme.dart' show ColorScheme;
+import 'package:flutter/src/material/colors.dart' show Colors;
+import 'package:flutter/src/material/constants.dart' show kThemeChangeDuration;
+import 'package:flutter/src/material/filled_button_theme.dart' show FilledButtonTheme, FilledButtonThemeData;
+import 'package:flutter/src/material/ink_well.dart' show InteractiveInkFeatureFactory;
+import 'package:flutter/src/material/material_state.dart' show MaterialStatePropertyAll;
+import 'package:flutter/src/material/theme.dart' show Theme;
+import 'package:flutter/src/material/theme_data.dart' show MaterialTapTargetSize, ThemeData, VisualDensity;
+import 'package:flutter/src/painting/alignment.dart' show Alignment, AlignmentGeometry;
+import 'package:flutter/src/painting/borders.dart' show BorderSide, OutlinedBorder;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsDirectional, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/stadium_border.dart' show StadiumBorder;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/flex.dart' show MainAxisSize;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor;
+import 'package:flutter/src/widgets/basic.dart' show Flexible, Row;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateMouseCursor, WidgetStateProperty, WidgetStatePropertyAll, WidgetStatesConstraint;
 
 enum _FilledButtonVariant { filled, tonal }
 

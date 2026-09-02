@@ -9,15 +9,23 @@ library;
 
 import 'dart:io' show Platform;
 import 'dart:ui' as ui show FlutterView, Scene, SceneBuilder, SemanticsUpdate;
+import 'dart:ui' show Offset, Rect, Size;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
-
-import 'binding.dart';
-import 'box.dart';
-import 'debug.dart';
-import 'layer.dart';
-import 'object.dart';
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb, kReleaseMode;
+import 'package:flutter/src/foundation/debug.dart' show debugFormatDouble;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsNode, DiagnosticsProperty, DoubleProperty;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/foundation/timeline.dart' show FlutterTimeline;
+import 'package:flutter/src/gestures/hit_test.dart' show HitTestEntry, HitTestResult;
+import 'package:flutter/src/painting/matrix_utils.dart' show MatrixUtils;
+import 'package:flutter/src/rendering/binding.dart' show RendererBinding;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, BoxHitTestResult, RenderBox;
+import 'package:flutter/src/rendering/debug.dart' show debugCurrentRepaintColor, debugRepaintRainbowEnabled, debugRepaintTextRainbowEnabled;
+import 'package:flutter/src/rendering/layer.dart' show TransformLayer;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext, RenderObject, RenderObjectWithChildMixin;
+import 'package:flutter/src/services/system_chrome.dart' show SystemChrome, SystemUiOverlayStyle;
+import 'package:meta/meta.dart' show immutable;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 /// The layout constraints for the root render object.
 @immutable

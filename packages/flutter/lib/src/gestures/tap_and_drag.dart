@@ -8,16 +8,16 @@
 library;
 
 import 'dart:async';
+import 'dart:ui' show Offset, PointerDeviceKind, VoidCallback;
 
-import 'package:flutter/foundation.dart';
-
-import 'constants.dart';
-import 'events.dart';
-import 'gesture_details.dart';
-import 'monodrag.dart';
-import 'recognizer.dart';
-import 'scale.dart';
-import 'tap.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsProperty, DoubleProperty, EnumProperty, IntProperty;
+import 'package:flutter/src/gestures/arena.dart' show GestureDisposition;
+import 'package:flutter/src/gestures/constants.dart' show kDoubleTapSlop, kDoubleTapTimeout, kPressTimeout;
+import 'package:flutter/src/gestures/events.dart' show PointerCancelEvent, PointerDownEvent, PointerEvent, PointerMoveEvent, PointerUpEvent, computeHitSlop, computePanSlop, kPrimaryButton;
+import 'package:flutter/src/gestures/gesture_details.dart' show PositionedGestureDetails;
+import 'package:flutter/src/gestures/recognizer.dart' show DragStartBehavior, OffsetPair, OneSequenceGestureRecognizer;
+import 'package:flutter/src/gestures/velocity_tracker.dart' show Velocity;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 // Examples can assume:
 // void setState(VoidCallback fn) { }

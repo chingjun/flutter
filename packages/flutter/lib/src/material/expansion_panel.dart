@@ -5,16 +5,23 @@
 /// @docImport 'divider_theme.dart';
 library;
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color;
 
-import 'constants.dart';
-import 'expand_icon.dart';
-import 'icon_button.dart';
-import 'ink_well.dart';
-import 'material_localizations.dart';
-import 'mergeable_material.dart';
-import 'shadows.dart';
-import 'theme.dart';
+import 'package:flutter/src/animation/curves.dart' show Curves, Interval;
+import 'package:flutter/src/foundation/key.dart' show LocalKey;
+import 'package:flutter/src/material/constants.dart' show kMinInteractiveDimension;
+import 'package:flutter/src/material/expand_icon.dart' show ExpandIcon;
+import 'package:flutter/src/material/ink_well.dart' show InkWell;
+import 'package:flutter/src/material/material_localizations.dart' show MaterialLocalizations;
+import 'package:flutter/src/material/mergeable_material.dart' show MaterialGap, MaterialSlice, MergeableMaterial, MergeableMaterialItem;
+import 'package:flutter/src/material/shadows.dart' show kElevationToShadow;
+import 'package:flutter/src/material/theme.dart' show kThemeAnimationDuration;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsDirectional;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/widgets/animated_cross_fade.dart' show AnimatedCrossFade, CrossFadeState;
+import 'package:flutter/src/widgets/basic.dart' show Column, ConstrainedBox, Expanded, IgnorePointer, LimitedBox, MergeSemantics, Padding, Row, Semantics, SizedBox;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/implicit_animations.dart' show AnimatedContainer;
 
 const double _kPanelHeaderCollapsedHeight = kMinInteractiveDimension;
 const EdgeInsets _kPanelHeaderExpandedDefaultPadding = EdgeInsets.symmetric(

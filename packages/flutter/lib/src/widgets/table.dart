@@ -7,14 +7,21 @@
 library;
 
 import 'dart:collection';
+import 'dart:ui' show SemanticsRole, TextBaseline, TextDirection;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-
-import 'basic.dart';
-import 'debug.dart';
-import 'framework.dart';
-import 'image.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorSummary, FlutterError;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsNode, EnumProperty, IntProperty;
+import 'package:flutter/src/foundation/key.dart' show LocalKey;
+import 'package:flutter/src/painting/decoration.dart' show Decoration;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/rendering/table.dart' show FlexColumnWidth, RenderTable, TableCellParentData, TableCellVerticalAlignment, TableColumnWidth;
+import 'package:flutter/src/rendering/table_border.dart' show TableBorder;
+import 'package:flutter/src/widgets/basic.dart' show Directionality, Semantics;
+import 'package:flutter/src/widgets/container.dart' show createLocalImageConfiguration;
+import 'package:flutter/src/widgets/debug.dart' show debugCheckHasDirectionality;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, ElementVisitor, ParentDataWidget, RenderObjectElement, RenderObjectWidget, StatelessWidget, Widget, debugChildrenHaveDuplicateKeys;
+import 'package:meta/meta.dart' show immutable;
 
 export 'package:flutter/rendering.dart'
     show

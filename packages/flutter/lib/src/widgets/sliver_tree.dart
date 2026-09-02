@@ -5,19 +5,28 @@
 /// @docImport 'viewport.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-
-import 'basic.dart';
-import 'framework.dart';
-import 'gesture_detector.dart';
-import 'icon.dart';
-import 'icon_data.dart';
-import 'implicit_animations.dart';
-import 'scroll_delegate.dart';
-import 'sliver.dart';
-import 'text.dart';
-import 'ticker_provider.dart';
+import 'package:flutter/src/animation/animation.dart' show AnimationStatus;
+import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
+import 'package:flutter/src/animation/animation_style.dart' show AnimationStyle;
+import 'package:flutter/src/animation/animations.dart' show CurvedAnimation;
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves;
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorHint, ErrorSummary, FlutterError;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsNode, IntProperty;
+import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey, ValueKey;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/rendering/sliver.dart' show SliverLayoutDimensions;
+import 'package:flutter/src/rendering/sliver_tree.dart' show RenderTreeSliver, TreeSliverIndentationType, TreeSliverNodeParentData, TreeSliverNodesAnimation;
+import 'package:flutter/src/widgets/basic.dart' show Builder, IndexedSemantics, Padding, RepaintBoundary, Row, SizedBox;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, NullableIndexedWidgetBuilder, ParentDataWidget, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/icon_data.dart' show IconData;
+import 'package:flutter/src/widgets/implicit_animations.dart' show AnimatedRotation;
+import 'package:flutter/src/widgets/scroll_delegate.dart' show ChildIndexGetter, SemanticIndexCallback, SliverChildBuilderDelegate;
+import 'package:flutter/src/widgets/sliver.dart' show SliverMultiBoxAdaptorElement, SliverVariedExtentList;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/ticker_provider.dart' show TickerProviderStateMixin;
 
 const double _kDefaultRowExtent = 40.0;
 

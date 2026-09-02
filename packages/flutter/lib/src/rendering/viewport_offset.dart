@@ -9,8 +9,13 @@
 /// @docImport 'viewport.dart';
 library;
 
-import 'package:flutter/animation.dart';
-import 'package:flutter/foundation.dart';
+import 'dart:async' show Future;
+
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves;
+import 'package:flutter/src/foundation/diagnostics.dart' show describeIdentity;
+import 'package:flutter/src/foundation/memory_allocations.dart' show kFlutterMemoryAllocationsEnabled;
+import 'package:listen/listen.dart' show ChangeNotifier;
+import 'package:meta/meta.dart' show awaitNotRequired, mustCallSuper;
 
 /// The direction of a scroll, relative to the positive scroll offset axis given
 /// by an [AxisDirection] and a [GrowthDirection].

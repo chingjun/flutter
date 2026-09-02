@@ -56,7 +56,6 @@ export 'dart:ui'
         TextPosition,
         TileMode,
         VertexMode;
-
 export 'package:flutter/foundation.dart' show VoidCallback;
 
 // Intentionally not exported:

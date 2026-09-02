@@ -5,10 +5,11 @@
 /// @docImport 'dart:ui';
 library;
 
+import 'dart:async' show Future;
 import 'dart:typed_data';
 import 'dart:ui' as ui show Codec, FrameInfo, Image, ImmutableBuffer;
 
-import 'binding.dart';
+import 'package:flutter/src/painting/binding.dart' show PaintingBinding;
 
 /// Creates an image from a list of bytes.
 ///

@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart' show FlutterError;
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/services/text_input.dart' show IOSSystemContextMenuItemData, IOSSystemContextMenuItemDataCopy, IOSSystemContextMenuItemDataCustom, IOSSystemContextMenuItemDataCut, IOSSystemContextMenuItemDataLiveText, IOSSystemContextMenuItemDataLookUp, IOSSystemContextMenuItemDataPaste, IOSSystemContextMenuItemDataSearchWeb, IOSSystemContextMenuItemDataSelectAll, IOSSystemContextMenuItemDataShare;
 
 /// Returns a [IOSSystemContextMenuItem] of the correct subclass given its
 /// json data.

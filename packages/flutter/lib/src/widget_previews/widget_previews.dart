@@ -2,7 +2,11 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Brightness, Locale, Size;
+
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
+import 'package:flutter/src/widgets/localizations.dart' show LocaleListResolutionCallback, LocaleResolutionCallback, LocalizationsDelegate;
+import 'package:meta/meta.dart' show mustCallSuper;
 
 /// Signature for callbacks that build theming data used when creating a [Preview].
 typedef PreviewTheme = PreviewThemeData Function();

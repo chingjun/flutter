@@ -7,10 +7,14 @@
 library;
 
 import 'dart:convert';
+import 'dart:ui' show TextDirection;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/src/widgets/accessibility_inspector.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/binding.dart' show ServiceExtensionCallback;
+import 'package:flutter/src/widgets/accessibility_inspector.dart' show AccessibilityInspector;
+import 'package:flutter/src/widgets/basic.dart' show Column, Directionality, Semantics, Transform;
+import 'package:flutter/src/widgets/framework.dart' show Widget;
+import 'package:flutter/src/widgets/service_extensions.dart' show AccessibilityServiceExtensions;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

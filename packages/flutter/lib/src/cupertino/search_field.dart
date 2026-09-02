@@ -3,15 +3,32 @@
 // found in the LICENSE file.
 
 import 'dart:math' as math;
+import 'dart:ui' show Color, Radius, VoidCallback;
 
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
-
-import 'button.dart';
-import 'colors.dart';
-import 'icons.dart';
-import 'localizations.dart';
-import 'text_field.dart';
+import 'package:flutter/src/cupertino/button.dart' show CupertinoButton;
+import 'package:flutter/src/cupertino/colors.dart' show CupertinoColors, CupertinoDynamicColor;
+import 'package:flutter/src/cupertino/icons.dart' show CupertinoIcons;
+import 'package:flutter/src/cupertino/localizations.dart' show CupertinoLocalizations;
+import 'package:flutter/src/cupertino/text_field.dart' show CupertinoTextField, OverlayVisibilityMode;
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsDirectional, EdgeInsetsGeometry;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/services/restoration.dart' show RestorationBucket;
+import 'package:flutter/src/services/text_input.dart' show SmartDashesType, SmartQuotesType, TextEditingValue, TextInputAction, TextInputType;
+import 'package:flutter/src/widgets/basic.dart' show Directionality, Opacity, Padding;
+import 'package:flutter/src/widgets/editable_text.dart' show TextEditingController;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/icon_theme.dart' show IconTheme;
+import 'package:flutter/src/widgets/icon_theme_data.dart' show IconThemeData;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/restoration.dart' show RestorationMixin;
+import 'package:flutter/src/widgets/restoration_properties.dart' show RestorableTextEditingController;
+import 'package:flutter/src/widgets/scroll_notification.dart' show ScrollNotification, ScrollUpdateNotification;
+import 'package:flutter/src/widgets/scroll_notification_observer.dart' show ScrollNotificationObserver, ScrollNotificationObserverState;
 
 export 'package:flutter/services.dart' show SmartDashesType, SmartQuotesType;
 

@@ -2,8 +2,10 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
+import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding, timeDilation;
+import 'package:flutter/src/scheduler/ticker.dart' show Ticker, TickerFuture;
+import 'package:flutter/src/widgets/binding.dart' show WidgetsFlutterBinding;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

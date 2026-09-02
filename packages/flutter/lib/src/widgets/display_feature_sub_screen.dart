@@ -9,12 +9,13 @@
 library;
 
 import 'dart:math' as math;
-import 'dart:ui' show DisplayFeature, DisplayFeatureState;
+import 'dart:ui' show DisplayFeature, DisplayFeatureState, Offset, Rect, Size, TextDirection;
 
-import 'basic.dart';
-import 'debug.dart';
-import 'framework.dart';
-import 'media_query.dart';
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/widgets/basic.dart' show Directionality, Padding;
+import 'package:flutter/src/widgets/debug.dart' show debugCheckHasDirectionality;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
 
 /// Positions [child] such that it avoids overlapping any [DisplayFeature] that
 /// splits the screen into sub-screens.

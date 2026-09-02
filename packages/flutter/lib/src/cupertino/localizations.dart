@@ -9,10 +9,13 @@
 /// @docImport 'search_field.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:async' show Future;
+import 'dart:ui' show Locale;
 
-import 'debug.dart';
+import 'package:flutter/src/cupertino/debug.dart' show debugCheckHasCupertinoLocalizations;
+import 'package:flutter/src/foundation/synchronous_future.dart' show SynchronousFuture;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext;
+import 'package:flutter/src/widgets/localizations.dart' show Localizations, LocalizationsDelegate;
 
 // Examples can assume:
 // late BuildContext context;

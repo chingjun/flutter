@@ -2,8 +2,25 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:typed_data' show ByteData;
+import 'dart:ui' show Color, Rect, TextAlign;
+
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/services/binding.dart' show ServicesBinding;
+import 'package:flutter/src/services/clipboard.dart' show Clipboard, ClipboardData;
+import 'package:flutter/src/services/message_codec.dart' show MethodCall;
+import 'package:flutter/src/services/message_codecs.dart' show JSONMessageCodec, JSONMethodCodec;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:flutter/src/services/text_input.dart' show IOSSystemContextMenuItemData, IOSSystemContextMenuItemDataCopy, IOSSystemContextMenuItemDataCustom, IOSSystemContextMenuItemDataCut, IOSSystemContextMenuItemDataPaste, IOSSystemContextMenuItemDataSearchWeb, IOSSystemContextMenuItemDataSelectAll, SystemContextMenuController, TextInput, TextInputConnection, TextInputType;
+import 'package:flutter/src/widgets/basic.dart' show Align, Builder, SizedBox;
+import 'package:flutter/src/widgets/editable_text.dart' show EditableText, EditableTextState, TextEditingController;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey;
+import 'package:flutter/src/widgets/localizations.dart' show WidgetsLocalizations;
+import 'package:flutter/src/widgets/system_context_menu.dart' show IOSSystemContextMenuItem, IOSSystemContextMenuItemCopy, IOSSystemContextMenuItemCut, IOSSystemContextMenuItemPaste, IOSSystemContextMenuItemSelectAll, SystemContextMenu;
+import 'package:flutter/src/widgets/text_selection.dart' show emptyTextSelectionControls;
+import 'package:flutter/src/widgets/text_selection_toolbar_anchors.dart' show TextSelectionToolbarAnchors;
 import 'package:flutter_test/flutter_test.dart';
 
 import '../system_context_menu_utils.dart';

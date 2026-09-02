@@ -3,11 +3,29 @@
 // found in the LICENSE file.
 
 import 'dart:math' as math;
+import 'dart:ui' show Canvas, Clip, Color, Size, clampDouble;
 
-import 'package:flutter/foundation.dart' show clampDouble;
-import 'package:flutter/gestures.dart' show DragStartBehavior;
-import 'package:flutter/rendering.dart' show CacheExtentStyle, ViewportOffset;
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/foundation/key.dart' show ValueKey;
+import 'package:flutter/src/gestures/recognizer.dart' show DragStartBehavior;
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/rendering/viewport.dart' show CacheExtentStyle;
+import 'package:flutter/src/rendering/viewport_offset.dart' show ViewportOffset;
+import 'package:flutter/src/widgets/automatic_keep_alive.dart' show AutomaticKeepAliveClientMixin;
+import 'package:flutter/src/widgets/basic.dart' show Align, Center, MouseRegion;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, ParentDataWidget, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/scroll_configuration.dart' show ScrollViewKeyboardDismissBehavior;
+import 'package:flutter/src/widgets/scroll_delegate.dart' show TwoDimensionalChildBuilderDelegate, TwoDimensionalChildListDelegate;
+import 'package:flutter/src/widgets/scrollable.dart' show DiagonalDragBehavior;
+import 'package:flutter/src/widgets/scrollable_helpers.dart' show ScrollableDetails;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/ticker_provider.dart' show TickerProviderStateMixin;
+import 'package:flutter/src/widgets/toggleable.dart' show ToggleablePainter, ToggleableStateMixin;
+import 'package:flutter/src/widgets/two_dimensional_scroll_view.dart' show TwoDimensionalScrollView;
+import 'package:flutter/src/widgets/two_dimensional_viewport.dart' show ChildVicinity, RenderTwoDimensionalViewport, TwoDimensionalChildManager, TwoDimensionalViewport, TwoDimensionalViewportParentData;
 import 'package:flutter_test/flutter_test.dart';
 
 const Color _kAmber100 = Color(0xFFFFF8E1);

@@ -2,13 +2,22 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart' show ValueListenable, clampDouble;
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Offset, Rect, Size, VoidCallback, clampDouble;
 
-import 'debug.dart';
-import 'desktop_text_selection_toolbar.dart';
-import 'desktop_text_selection_toolbar_button.dart';
-import 'material_localizations.dart';
+import 'package:flutter/src/material/debug.dart' show debugCheckHasMaterialLocalizations;
+import 'package:flutter/src/material/desktop_text_selection_toolbar.dart' show DesktopTextSelectionToolbar;
+import 'package:flutter/src/material/desktop_text_selection_toolbar_button.dart' show DesktopTextSelectionToolbarButton;
+import 'package:flutter/src/material/material_localizations.dart' show MaterialLocalizations;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/rendering/editable.dart' show TextSelectionPoint;
+import 'package:flutter/src/rendering/selection.dart' show TextSelectionHandleType;
+import 'package:flutter/src/services/text_input.dart' show TextEditingValue, TextSelectionDelegate;
+import 'package:flutter/src/widgets/basic.dart' show SizedBox;
+import 'package:flutter/src/widgets/debug.dart' show debugCheckHasMediaQuery;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/text_selection.dart' show ClipboardStatus, TextSelectionControls, TextSelectionHandleControls;
+import 'package:listen/listen.dart' show ValueListenable;
 
 /// Desktop Material styled text selection handle controls.
 ///

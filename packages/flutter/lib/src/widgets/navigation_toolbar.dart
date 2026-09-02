@@ -7,10 +7,13 @@
 library;
 
 import 'dart:math' as math;
+import 'dart:ui' show Offset, Size, TextDirection;
 
-import 'basic.dart';
-import 'debug.dart';
-import 'framework.dart';
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/rendering/custom_layout.dart' show MultiChildLayoutDelegate;
+import 'package:flutter/src/widgets/basic.dart' show CustomMultiChildLayout, Directionality, LayoutId;
+import 'package:flutter/src/widgets/debug.dart' show debugCheckHasDirectionality;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
 
 /// [NavigationToolbar] is a layout helper to position 3 widgets or groups of
 /// widgets along a horizontal axis that's sensible for an application's

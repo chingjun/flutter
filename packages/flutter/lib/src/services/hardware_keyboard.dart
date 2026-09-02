@@ -7,20 +7,24 @@
 /// @docImport 'package:flutter_test/flutter_test.dart';
 library;
 
+import 'dart:async' show Future;
 import 'dart:ui' as ui;
 
-import 'package:flutter/foundation.dart';
-
-import 'binding.dart';
-import 'debug.dart';
-import 'raw_keyboard.dart';
-import 'raw_keyboard_android.dart';
-import 'system_channels.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, FlutterError, FlutterErrorDetails, InformationCollector;
+import 'package:flutter/src/foundation/collections.dart' show setEquals;
+import 'package:flutter/src/foundation/constants.dart' show kReleaseMode;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsNode, DiagnosticsProperty, FlagProperty, StringProperty;
+import 'package:flutter/src/foundation/print.dart' show debugPrint;
+import 'package:flutter/src/services/binding.dart' show ServicesBinding;
+import 'package:flutter/src/services/debug.dart' show debugPrintKeyboardEvents;
+import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey, PhysicalKeyboardKey;
+import 'package:flutter/src/services/raw_keyboard.dart' show RawKeyDownEvent, RawKeyEvent, RawKeyEventData, RawKeyUpEvent, RawKeyboard;
+import 'package:flutter/src/services/raw_keyboard_android.dart' show RawKeyEventDataAndroid;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:meta/meta.dart' show immutable, visibleForTesting;
 
 export 'dart:ui' show KeyData;
-
 export 'package:flutter/foundation.dart' show DiagnosticPropertiesBuilder;
-
 export 'keyboard_key.g.dart' show LogicalKeyboardKey, PhysicalKeyboardKey;
 
 // When using _keyboardDebug, always call it like so:

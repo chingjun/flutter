@@ -16,12 +16,11 @@
 
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
-
-import '_window.dart';
-import '_window_linux.dart';
-import '_window_macos.dart';
-import '_window_win32.dart';
+import 'package:flutter/src/widgets/_window.dart' show WindowingOwner;
+import 'package:flutter/src/widgets/_window_linux.dart' show WindowingOwnerLinux;
+import 'package:flutter/src/widgets/_window_macos.dart' show WindowingOwnerMacOS;
+import 'package:flutter/src/widgets/_window_win32.dart' show WindowingOwnerWin32;
+import 'package:meta/meta.dart' show internal;
 
 /// Creates a default [WindowingOwner] for the current platform.
 ///

@@ -2,8 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/gestures.dart';
-import 'package:flutter/services.dart';
+import 'dart:typed_data' show ByteData;
+import 'dart:ui' show Size, TextDirection;
+
+import 'package:flutter/src/gestures/events.dart' show PointerDownEvent, PointerEvent, PointerMoveEvent;
+import 'package:flutter/src/services/message_codec.dart' show MethodCall, PlatformException;
+import 'package:flutter/src/services/platform_views.dart' show AndroidMotionEvent, AndroidPointerCoords, AndroidPointerProperties, AndroidViewController, PlatformViewsService, UiKitViewController;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'fake_platform_views.dart';

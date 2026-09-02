@@ -2,7 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
+import 'package:flutter/src/foundation/assertions.dart' show FlutterErrorDetails;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/rendering/box.dart' show RenderBox;
+import 'package:flutter/src/rendering/layer.dart' show OffsetLayer, OpacityLayer;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderOpacity, RenderRepaintBoundary;
+import 'package:flutter/src/rendering/shifted_box.dart' show RenderPadding;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'rendering_tester.dart';

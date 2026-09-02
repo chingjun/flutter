@@ -7,7 +7,12 @@
 // initialize a binding, which rendering_tester will attempt to re-initialize
 // (or vice versa).
 
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Rect, Size;
+
+import 'package:flutter/src/painting/basic_types.dart' show AxisDirection;
+import 'package:flutter/src/rendering/sliver.dart' show GrowthDirection, RenderSliver, RenderSliverToBoxAdapter, SliverConstraints, SliverGeometry;
+import 'package:flutter/src/rendering/viewport.dart' show CacheExtentStyle, RenderAbstractViewport, RenderShrinkWrappingViewport, RenderViewport;
+import 'package:flutter/src/rendering/viewport_offset.dart' show ScrollDirection, ViewportOffset;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'rendering_tester.dart';

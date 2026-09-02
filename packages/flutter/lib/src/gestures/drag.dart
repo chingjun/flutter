@@ -7,7 +7,7 @@
 /// @docImport 'multidrag.dart';
 library;
 
-import 'drag_details.dart';
+import 'package:flutter/src/gestures/drag_details.dart' show DragEndDetails, DragUpdateDetails;
 
 export 'drag_details.dart' show DragEndDetails, DragUpdateDetails;
 

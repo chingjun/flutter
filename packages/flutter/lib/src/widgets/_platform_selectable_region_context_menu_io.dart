@@ -6,8 +6,9 @@
 // `_platform_selectable_region_context_menu_web.dart` for the web
 // implementation.
 
-import 'framework.dart';
-import 'selection_container.dart';
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/selection_container.dart' show SelectionContainerDelegate;
+import 'package:meta/meta.dart' show visibleForTesting;
 
 /// Function signature for `ui_web.platformViewRegistry.registerViewFactory`.
 @visibleForTesting

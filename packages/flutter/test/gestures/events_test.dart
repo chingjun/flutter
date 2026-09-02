@@ -2,7 +2,11 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/gestures.dart';
+import 'dart:ui' show PointerDeviceKind;
+
+import 'package:flutter/src/gestures/constants.dart' show kPanSlop, kPrecisePointerHitSlop, kPrecisePointerPanSlop, kPrecisePointerScaleSlop, kScaleSlop, kTouchSlop;
+import 'package:flutter/src/gestures/events.dart' show PointerAddedEvent, PointerCancelEvent, PointerDownEvent, PointerEnterEvent, PointerEvent, PointerExitEvent, PointerHoverEvent, PointerMoveEvent, PointerPanZoomEndEvent, PointerPanZoomStartEvent, PointerPanZoomUpdateEvent, PointerRemovedEvent, PointerScrollEvent, PointerScrollInertiaCancelEvent, PointerUpEvent, computeHitSlop, computePanSlop, computeScaleSlop, isSingleButton, kPrimaryButton, kSecondaryMouseButton, kSecondaryStylusButton, nthMouseButton, nthStylusButton, smallestButton;
+import 'package:flutter/src/gestures/gesture_settings.dart' show DeviceGestureSettings;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:vector_math/vector_math_64.dart';
 

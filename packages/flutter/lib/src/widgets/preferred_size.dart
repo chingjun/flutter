@@ -5,10 +5,9 @@
 /// @docImport 'package:flutter/material.dart';
 library;
 
-import 'package:flutter/rendering.dart';
+import 'dart:ui' show Size;
 
-import 'basic.dart';
-import 'framework.dart';
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
 
 /// An interface for widgets that can return the size this widget would prefer
 /// if it were otherwise unconstrained.

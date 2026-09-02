@@ -2,10 +2,20 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:ui';
+import 'dart:ui' show PointerDeviceKind, clampDouble;
 
-import 'package:flutter/gestures.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/gestures/binding.dart' show GestureBinding;
+import 'package:flutter/src/gestures/constants.dart' show kMaxFlingVelocity, kMinFlingVelocity, kTouchSlop;
+import 'package:flutter/src/gestures/drag_details.dart' show DragEndDetails, DragStartDetails, DragUpdateDetails;
+import 'package:flutter/src/gestures/events.dart' show PointerDownEvent, PointerEvent, PointerUpEvent, computeHitSlop, kPrimaryButton, kSecondaryButton, kSecondaryMouseButton;
+import 'package:flutter/src/gestures/hit_test.dart' show HitTestEntry, HitTestTarget;
+import 'package:flutter/src/gestures/monodrag.dart' show DragGestureRecognizer, HorizontalDragGestureRecognizer, PanGestureRecognizer, VerticalDragGestureRecognizer;
+import 'package:flutter/src/gestures/velocity_tracker.dart' show Velocity, VelocityEstimate;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior;
+import 'package:flutter/src/widgets/basic.dart' show SizedBox, SliverToBoxAdapter;
+import 'package:flutter/src/widgets/framework.dart' show GlobalKey, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureRecognizerFactory, GestureRecognizerFactoryWithHandlers, RawGestureDetector;
+import 'package:flutter/src/widgets/scroll_view.dart' show CustomScrollView;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'gesture_tester.dart';

@@ -2,12 +2,20 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+import 'dart:typed_data' show Float64List, Int32List;
 import 'dart:ui' as ui;
+import 'dart:ui' show Locale, LocaleStringAttribute, Rect, SemanticsFlags, SemanticsRole, SemanticsUpdateBuilder, SemanticsValidationResult, SpellOutStringAttribute, StringAttribute, TextDirection, TextRange;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/semantics.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/foundation/collections.dart' show listEquals;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/semantics/semantics.dart' show AttributedString;
+import 'package:flutter/src/widgets/basic.dart' show Column, Directionality, MergeSemantics, Positioned, Semantics, SizedBox;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
+import 'package:flutter/src/widgets/overlay.dart' show Overlay, OverlayEntry, OverlayPortal, OverlayPortalController;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 import '../widgets/button_tester.dart';
 

@@ -7,8 +7,12 @@
 @Tags(<String>['reduced-test-set'])
 library;
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show BlendMode, Color, ColorFilter, Paint, PaintingStyle;
+
+import 'package:flutter/src/rendering/object.dart' show PaintingContext;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderProxyBox;
+import 'package:flutter/src/widgets/basic.dart' show RepaintBoundary, SizedBox;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, LeafRenderObjectWidget;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

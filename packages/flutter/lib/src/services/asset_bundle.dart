@@ -8,11 +8,16 @@ library;
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+import 'dart:typed_data' show ByteData, Uint8List;
 import 'dart:ui' as ui;
 
-import 'package:flutter/foundation.dart';
-
-import 'binding.dart';
+import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorSummary, FlutterError;
+import 'package:flutter/src/foundation/consolidate_response.dart' show consolidateHttpClientResponseBytes;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode, IntProperty, describeIdentity;
+import 'package:flutter/src/foundation/isolates.dart' show compute;
+import 'package:flutter/src/foundation/synchronous_future.dart' show SynchronousFuture;
+import 'package:flutter/src/services/binding.dart' show ServicesBinding;
 
 export 'dart:typed_data' show ByteData;
 export 'dart:ui' show ImmutableBuffer;

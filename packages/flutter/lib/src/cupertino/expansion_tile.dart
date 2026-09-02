@@ -7,14 +7,27 @@
 /// @docImport 'list_section.dart';
 library;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show FontWeight, Offset;
 
-import 'colors.dart';
-import 'icons.dart';
-import 'list_tile.dart';
-import 'localizations.dart';
-import 'theme.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/animation/curves.dart' show Curve, Curves;
+import 'package:flutter/src/animation/tween.dart' show Animatable, CurveTween, Tween;
+import 'package:flutter/src/cupertino/colors.dart' show CupertinoColors;
+import 'package:flutter/src/cupertino/icons.dart' show CupertinoIcons;
+import 'package:flutter/src/cupertino/list_tile.dart' show CupertinoListTile;
+import 'package:flutter/src/cupertino/localizations.dart' show CupertinoLocalizations;
+import 'package:flutter/src/cupertino/theme.dart' show CupertinoTheme;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/flex.dart' show MainAxisSize;
+import 'package:flutter/src/widgets/basic.dart' show Center, Column, ConstrainedBox, Opacity, Positioned, Semantics, SizedBox;
+import 'package:flutter/src/widgets/expansible.dart' show Expansible, ExpansibleController;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/icon.dart' show Icon;
+import 'package:flutter/src/widgets/indexed_stack.dart' show Visibility;
+import 'package:flutter/src/widgets/layout_builder.dart' show LayoutBuilder;
+import 'package:flutter/src/widgets/overlay.dart' show Overlay, OverlayPortal, OverlayPortalController;
+import 'package:flutter/src/widgets/transitions.dart' show FadeTransition, RotationTransition;
 
 /// The curve of the animation used to expand or collapse the
 /// [CupertinoExpansionTile].

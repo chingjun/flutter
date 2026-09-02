@@ -2,9 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:ui';
+import 'dart:ui' show Size, TextBaseline;
 
-import 'box.dart';
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
 
 /// Signature for a function that takes a [RenderBox] and returns the [Size]
 /// that the [RenderBox] would have if it were laid out with the given

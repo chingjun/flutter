@@ -5,11 +5,12 @@
 import 'dart:ui'
     as ui
     show Paragraph, ParagraphBuilder, ParagraphConstraints, ParagraphStyle, TextStyle;
+import 'dart:ui' show Color, FontWeight, Offset, Paint, Size, TextAlign, TextDirection;
 
-import 'package:flutter/foundation.dart';
-
-import 'box.dart';
-import 'object.dart';
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints, RenderBox;
+import 'package:flutter/src/rendering/object.dart' show PaintingContext;
+import 'package:meta/meta.dart' show protected;
 
 const double _kMaxWidth = 100000.0;
 const double _kMaxHeight = 100000.0;

@@ -6,12 +6,14 @@
 /// @docImport 'color_filter.dart';
 library;
 
-import 'dart:ui';
+import 'dart:ui' show ImageFilter;
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
-
-import 'framework.dart';
+import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty;
+import 'package:flutter/src/rendering/layer.dart' show ImageFilterLayer, OffsetLayer;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderProxyBox;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, SingleChildRenderObjectWidget;
+import 'package:meta/meta.dart' show immutable;
 
 /// Applies an [ImageFilter] to its child.
 ///

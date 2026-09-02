@@ -2,13 +2,53 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Color, Locale, PointerDeviceKind, Rect, Size, TextAlign, TextDirection, TextPosition, TextRange, VoidCallback;
+
+import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/foundation/key.dart' show UniqueKey;
+import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/src/gestures/drag_details.dart' show DragEndDetails, DragStartDetails, DragUpdateDetails;
+import 'package:flutter/src/gestures/events.dart' show PointerDownEvent, PointerMoveEvent, PointerUpEvent, kSecondaryButton, kSecondaryMouseButton;
+import 'package:flutter/src/gestures/force_press.dart' show ForcePressDetails;
+import 'package:flutter/src/gestures/long_press.dart' show LongPressStartDetails;
+import 'package:flutter/src/gestures/tap_and_drag.dart' show TapDragDownDetails, TapDragEndDetails, TapDragStartDetails, TapDragUpDetails, TapDragUpdateDetails;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/text_scaler.dart' show TextScaler;
+import 'package:flutter/src/painting/text_span.dart' show TextSpan;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
+import 'package:flutter/src/rendering/editable.dart' show RenderEditable, TextSelectionPoint;
+import 'package:flutter/src/rendering/layer.dart' show LayerLink;
+import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior;
+import 'package:flutter/src/rendering/selection.dart' show TextSelectionHandleType;
+import 'package:flutter/src/rendering/viewport_offset.dart' show ViewportOffset;
+import 'package:flutter/src/services/message_codec.dart' show MethodCall;
+import 'package:flutter/src/services/spell_check.dart' show SuggestionSpan;
+import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
+import 'package:flutter/src/services/text_editing.dart' show TextSelection;
+import 'package:flutter/src/services/text_input.dart' show SelectionChangedCause, TextSelectionDelegate;
+import 'package:flutter/src/widgets/basic.dart' show Center, ColoredBox, Column, CompositedTransformFollower, CompositedTransformTarget, Directionality, Listener, SizedBox, StatefulBuilder, Transform;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/editable_text.dart' show EditableText, EditableTextState, TextEditingController;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, LeafRenderObjectWidget, StateSetter, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector, RawGestureDetector;
+import 'package:flutter/src/widgets/magnifier.dart' show MagnifierController, MagnifierInfo, TextMagnifierConfiguration;
+import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_delegate.dart' show SliverChildBuilderDelegate;
+import 'package:flutter/src/widgets/scroll_view.dart' show CustomScrollView;
+import 'package:flutter/src/widgets/single_child_scroll_view.dart' show SingleChildScrollView;
+import 'package:flutter/src/widgets/sliver.dart' show SliverList;
+import 'package:flutter/src/widgets/text.dart' show Text;
+import 'package:flutter/src/widgets/text_selection.dart' show ClipboardStatus, ClipboardStatusNotifier, SelectionOverlay, TextSelectionControls, TextSelectionGestureDetector, TextSelectionGestureDetectorBuilder, TextSelectionGestureDetectorBuilderDelegate, TextSelectionHandleControls, TextSelectionOverlay;
+import 'package:flutter/src/widgets/transitions.dart' show FadeTransition;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:leak_tracker_flutter_testing/leak_tracker_flutter_testing.dart';
+import 'package:listen/listen.dart' show ValueListenable, ValueNotifier;
+import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
 import 'clipboard_utils.dart';
 import 'editable_text_tester.dart';

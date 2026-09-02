@@ -8,11 +8,11 @@
 library;
 
 import 'dart:ui' as ui show ViewPadding, lerpDouble;
+import 'dart:ui' show Offset, RRect, Radius, Rect, Size, TextDirection, clampDouble;
 
-import 'package:flutter/foundation.dart';
-
-import 'basic_types.dart';
-import 'debug.dart';
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/painting/debug.dart' show debugCheckCanResolveTextDirection;
+import 'package:meta/meta.dart' show immutable;
 
 /// Base class for [EdgeInsets] that allows for text-direction aware
 /// resolution.

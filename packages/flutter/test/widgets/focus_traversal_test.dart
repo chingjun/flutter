@@ -2,12 +2,39 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:ui';
+import 'dart:ui' show Color, SemanticsAction, SemanticsFlag, TextDirection;
 
 import 'package:collection/collection.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/src/animation/animation.dart' show Animation;
+import 'package:flutter/src/animation/curves.dart' show Curve;
+import 'package:flutter/src/foundation/constants.dart' show kIsWeb;
+import 'package:flutter/src/painting/alignment.dart' show Alignment;
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/painting/box_border.dart' show Border;
+import 'package:flutter/src/painting/box_decoration.dart' show BoxDecoration;
+import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets, EdgeInsetsDirectional;
+import 'package:flutter/src/painting/text_style.dart' show TextStyle;
+import 'package:flutter/src/rendering/flex.dart' show CrossAxisAlignment, MainAxisAlignment, MainAxisSize;
+import 'package:flutter/src/services/hardware_keyboard.dart' show HardwareKeyboard, KeyEvent;
+import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
+import 'package:flutter/src/widgets/actions.dart' show Actions, Intent;
+import 'package:flutter/src/widgets/basic.dart' show Builder, Center, Column, Directionality, Expanded, Padding, Positioned, Row, SizedBox, Stack;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/editable_text.dart' show EditableText, TextEditingController;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusManager, FocusNode, FocusScopeNode, KeyEventResult, primaryFocus;
+import 'package:flutter/src/widgets/focus_scope.dart' show Focus, FocusScope;
+import 'package:flutter/src/widgets/focus_traversal.dart' show DirectionalFocusIntent, DirectionalFocusTraversalPolicyMixin, ExcludeFocusTraversal, FocusTraversalGroup, FocusTraversalOrder, FocusTraversalPolicy, NextFocusAction, NextFocusIntent, OrderedTraversalPolicy, PreviousFocusAction, PreviousFocusIntent, ReadingOrderTraversalPolicy, RequestFocusAction, RequestFocusIntent, TraversalDirection, TraversalEdgeBehavior, WidgetOrderTraversalPolicy;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, GlobalKey, Widget;
+import 'package:flutter/src/widgets/navigator.dart' show Navigator, Page, Route;
+import 'package:flutter/src/widgets/pages.dart' show PageRouteBuilder;
+import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
+import 'package:flutter/src/widgets/raw_keyboard_listener.dart' show RawKeyboardListener;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_position.dart' show ScrollPositionAlignmentPolicy;
+import 'package:flutter/src/widgets/scroll_view.dart' show ListView;
+import 'package:flutter/src/widgets/shortcuts.dart' show ShortcutActivator, Shortcuts, SingleActivator;
+import 'package:flutter/src/widgets/single_child_scroll_view.dart' show SingleChildScrollView;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'button_tester.dart';

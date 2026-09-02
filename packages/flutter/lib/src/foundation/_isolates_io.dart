@@ -5,7 +5,8 @@
 import 'dart:async';
 import 'dart:isolate';
 
-import 'constants.dart';
+import 'package:flutter/src/foundation/constants.dart' show kReleaseMode;
+
 import 'isolates.dart' as isolates;
 
 export 'isolates.dart' show ComputeCallback;

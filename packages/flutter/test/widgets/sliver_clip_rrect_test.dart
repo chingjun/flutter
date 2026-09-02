@@ -2,8 +2,23 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:ui' show Clip, Color, RRect, Radius, Rect, Size, TextDirection;
+
+import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/painting/border_radius.dart' show BorderRadius, BorderRadiusDirectional;
+import 'package:flutter/src/rendering/proxy_box.dart' show CustomClipper;
+import 'package:flutter/src/rendering/sliver.dart' show RenderSliver, SliverHitTestResult;
+import 'package:flutter/src/rendering/sliver_clip.dart' show ClipOverlapBehavior, RenderSliverClipRRect;
+import 'package:flutter/src/widgets/basic.dart' show Directionality, RepaintBoundary, SizedBox, SliverToBoxAdapter;
+import 'package:flutter/src/widgets/container.dart' show Container;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
+import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
+import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_view.dart' show CustomScrollView;
+import 'package:flutter/src/widgets/sliver.dart' show SliverIgnorePointer;
+import 'package:flutter/src/widgets/sliver_clip.dart' show SliverClipRRect;
+import 'package:flutter/src/widgets/sliver_persistent_header.dart' show SliverPersistentHeader, SliverPersistentHeaderDelegate;
+import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 
 /// Builds a [CustomScrollView] with a pinned 100px header followed by a

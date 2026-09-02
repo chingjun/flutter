@@ -119,6 +119,7 @@ export 'src/widgets/reorderable_list.dart';
 export 'src/widgets/repeating_animation_builder.dart';
 export 'src/widgets/restoration.dart';
 export 'src/widgets/restoration_properties.dart';
+export 'src/widgets/rich_text.dart';
 export 'src/widgets/router.dart';
 export 'src/widgets/routes.dart';
 export 'src/widgets/safe_area.dart';

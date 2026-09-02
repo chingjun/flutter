@@ -2903,14 +2903,7 @@ class RouteBarrierDetails {
 typedef RouteBarrierBuilder =
     Widget Function(BuildContext context, RouteBarrierDetails details, Widget barrier);
 
-/// A callback type for informing that a navigation pop has been invoked,
-/// whether or not it was handled successfully.
-///
-/// Accepts a didPop boolean indicating whether or not back navigation
-/// succeeded.
-///
-/// The `result` contains the pop result.
-typedef PopInvokedWithResultCallback<T> = void Function(bool didPop, T? result);
+// PopInvokedWithResultCallback is defined in navigator.dart.
 
 /// Allows listening to and preventing pops.
 ///

@@ -35,7 +35,6 @@ import 'notification_listener.dart';
 import 'overlay.dart';
 import 'restoration.dart';
 import 'restoration_properties.dart';
-import 'routes.dart';
 import 'ticker_provider.dart';
 
 // Duration for delay before refocusing in android so that the focus won't be interrupted.
@@ -105,6 +104,15 @@ typedef PopPageCallback = bool Function(Route<dynamic> route, dynamic result);
 /// (Otherwise, the page will be interpreted as a new page to show when the
 /// [Navigator.pages] list is next updated.)
 typedef DidRemovePageCallback = void Function(Page<Object?> page);
+
+/// A callback type for informing that a navigation pop has been invoked,
+/// whether or not it was handled successfully.
+///
+/// Accepts a didPop boolean indicating whether or not back navigation
+/// succeeded.
+///
+/// The `result` contains the pop result.
+typedef PopInvokedWithResultCallback<T> = void Function(bool didPop, T? result);
 
 /// Indicates whether the current route should be popped.
 ///
@@ -5134,13 +5142,7 @@ class NavigatorState extends State<Navigator> with TickerProviderStateMixin, Res
       if (route != null) {
         routeJsonable = <String, dynamic>{};
 
-        final String description;
-        if (route is TransitionRoute<dynamic>) {
-          final TransitionRoute<dynamic> transitionRoute = route;
-          description = transitionRoute.debugLabel;
-        } else {
-          description = '$route';
-        }
+        final description = '$route';
         routeJsonable['description'] = description;
 
         final RouteSettings settings = route.settings;

@@ -8,6 +8,8 @@
 /// @docImport 'package:flutter/material.dart';
 /// @docImport 'package:flutter/widgets.dart';
 /// @docImport 'package:flutter_test/flutter_test.dart';
+///
+/// @docImport 'inherited_model.dart';
 library;
 
 import 'dart:async';
@@ -17,11 +19,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/rendering.dart';
 
 import 'binding.dart';
-import 'debug.dart';
+import 'debug_flags.dart';
 import 'focus_manager.dart';
-import 'inherited_model.dart';
-import 'notification_listener.dart';
-import 'widget_inspector.dart';
+import 'notification_core.dart';
 
 export 'package:flutter/foundation.dart'
     show
@@ -3518,7 +3518,7 @@ class _NotificationNode {
 
 bool _isProfileBuildsEnabledFor(Widget widget) {
   return debugProfileBuildsEnabled ||
-      (debugProfileBuildsEnabledUserWidgets && debugIsWidgetLocalCreation(widget));
+      (debugProfileBuildsEnabledUserWidgets && debugIsLocalCreationCallback(widget));
 }
 
 /// An instantiation of a [Widget] at a particular location in the tree.
@@ -7469,4 +7469,123 @@ class _NullWidget extends Widget {
 
   @override
   Element createElement() => throw UnimplementedError();
+}
+
+// The following debug functions were originally in debug.dart but are
+// defined here to avoid a cyclic dependency between framework.dart and
+// debug.dart. They only depend on Widget/Key which are defined in this file.
+
+Key? _firstNonUniqueKey(Iterable<Widget> widgets) {
+  final Set<Key> keySet = HashSet<Key>();
+  for (final widget in widgets) {
+    if (widget.key == null) {
+      continue;
+    }
+    if (!keySet.add(widget.key!)) {
+      return widget.key;
+    }
+  }
+  return null;
+}
+
+/// Asserts if the given child list contains any duplicate non-null keys.
+///
+/// To invoke this function, use the following pattern:
+///
+/// ```dart
+/// class MyWidget extends StatelessWidget {
+///   MyWidget({ super.key, required this.children }) {
+///     assert(!debugChildrenHaveDuplicateKeys(this, children));
+///   }
+///
+///   final List<Widget> children;
+///
+///   // ...
+/// }
+/// ```
+///
+/// If specified, the `message` overrides the default message.
+///
+/// For a version of this function that can be used in contexts where
+/// the list of items does not have a particular parent, see
+/// [debugItemsHaveDuplicateKeys].
+///
+/// Does nothing if asserts are disabled. Always returns false.
+bool debugChildrenHaveDuplicateKeys(Widget parent, Iterable<Widget> children, {String? message}) {
+  assert(() {
+    final Key? nonUniqueKey = _firstNonUniqueKey(children);
+    if (nonUniqueKey != null) {
+      throw FlutterError(
+        "${message ?? 'Duplicate keys found.\n'
+                'If multiple keyed widgets exist as children of another widget, they must have unique keys.'}"
+        '\n$parent has multiple children with key $nonUniqueKey.',
+      );
+    }
+    return true;
+  }());
+  return false;
+}
+
+/// Asserts if the given list of items contains any duplicate non-null keys.
+///
+/// To invoke this function, use the following pattern:
+///
+/// ```dart
+/// assert(!debugItemsHaveDuplicateKeys(items));
+/// ```
+///
+/// For a version of this function specifically intended for parents
+/// checking their children lists, see [debugChildrenHaveDuplicateKeys].
+///
+/// Does nothing if asserts are disabled. Always returns false.
+bool debugItemsHaveDuplicateKeys(Iterable<Widget> items) {
+  assert(() {
+    final Key? nonUniqueKey = _firstNonUniqueKey(items);
+    if (nonUniqueKey != null) {
+      throw FlutterError('Duplicate key found: $nonUniqueKey.');
+    }
+    return true;
+  }());
+  return false;
+}
+
+/// Asserts that the `built` widget is not null.
+///
+/// Used when the given `widget` calls a builder function to check that the
+/// function returned a non-null value, as typically required.
+///
+/// Does nothing when asserts are disabled.
+void debugWidgetBuilderValue(Widget widget, Widget? built) {
+  assert(() {
+    if (built == null) {
+      throw FlutterError.fromParts(<DiagnosticsNode>[
+        ErrorSummary('A build function returned null.'),
+        DiagnosticsProperty<Widget>(
+          'The offending widget is',
+          widget,
+          style: DiagnosticsTreeStyle.errorProperty,
+        ),
+        ErrorDescription('Build functions must never return null.'),
+        ErrorHint(
+          'To return an empty space that causes the building widget to fill available room, return "Container()". '
+          'To return an empty space that takes as little room as possible, return "Container(width: 0.0, height: 0.0)".',
+        ),
+      ]);
+    }
+    if (widget == built) {
+      throw FlutterError.fromParts(<DiagnosticsNode>[
+        ErrorSummary('A build function returned context.widget.'),
+        DiagnosticsProperty<Widget>(
+          'The offending widget is',
+          widget,
+          style: DiagnosticsTreeStyle.errorProperty,
+        ),
+        ErrorDescription(
+          'Build functions must never return their BuildContext parameter\'s widget or a child that contains "context.widget". '
+          'Doing so introduces a loop in the widget tree that can cause the app to crash.',
+        ),
+      ]);
+    }
+    return true;
+  }());
 }

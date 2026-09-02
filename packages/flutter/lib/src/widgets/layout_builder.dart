@@ -11,7 +11,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/scheduler.dart';
 
-import 'debug.dart';
 import 'framework.dart';
 
 /// The signature of the [LayoutBuilder] builder function.

@@ -31,6 +31,7 @@ import 'package:flutter/scheduler.dart';
 import 'basic.dart';
 import 'binding.dart';
 import 'debug.dart';
+import 'debug_flags.dart' as debug_flags;
 import 'framework.dart';
 import 'gesture_detector.dart';
 import 'icon_data.dart';
@@ -1074,6 +1075,10 @@ mixin WidgetInspectorService {
       _debugServiceExtensionsRegistered = true;
       return true;
     }());
+
+    // Set the debugIsWidgetLocalCreation callback so that framework.dart
+    // can determine if a widget is user-created without importing this file.
+    debug_flags.debugIsLocalCreationCallback = (Object widget) => debugIsWidgetLocalCreation(widget as Widget);
 
     SchedulerBinding.instance.addPersistentFrameCallback(_onFrameStart);
 
@@ -2572,8 +2577,8 @@ mixin WidgetInspectorService {
   final _ElementLocationStatsTracker _rebuildStats = _ElementLocationStatsTracker();
   final _ElementLocationStatsTracker _repaintStats = _ElementLocationStatsTracker();
 
-  void _onRebuildWidget(Element element, bool builtOnce) {
-    _rebuildStats.add(element);
+  void _onRebuildWidget(Object element, bool builtOnce) {
+    _rebuildStats.add(element as Element);
   }
 
   void _onPaint(RenderObject renderObject) {

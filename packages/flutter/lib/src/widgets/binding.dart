@@ -46,6 +46,7 @@ import 'package:flutter/src/widgets/framework.dart' show BuildOwner, Element, El
 import 'package:flutter/src/widgets/platform_menu_bar.dart' show DefaultPlatformMenuDelegate, PlatformMenuDelegate;
 import 'package:flutter/src/widgets/service_extensions.dart' show WidgetsServiceExtensions;
 import 'package:flutter/src/widgets/view.dart' show View;
+import 'package:flutter/src/widgets_internal/scroll_behavior_registration.dart' show registerScrollBehaviorCallbacks;
 import 'package:listen/listen.dart' show ValueNotifier;
 import 'package:meta/meta.dart' show internal, mustCallSuper, protected, visibleForTesting;
 
@@ -561,6 +562,11 @@ mixin WidgetsBinding
   void initInstances() {
     super.initInstances();
     _instance = this;
+
+    // Register factory callbacks for widgets used by ScrollBehavior.
+    // This is done here rather than via direct imports in scroll_configuration.dart
+    // to avoid dependency cycles within the widgets library.
+    registerScrollBehaviorCallbacks();
 
     assert(() {
       _debugAddStackFilters();

@@ -15,9 +15,8 @@ import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsetsGeometry;
 import 'package:flutter/src/painting/text_style.dart' show TextStyle;
 import 'package:flutter/src/services/system_chrome.dart' show SystemUiOverlayStyle;
 import 'package:flutter/src/widgets/basic.dart' show SizedBox;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedTheme, Widget;
 import 'package:flutter/src/widgets/icon_theme_data.dart' show IconThemeData;
-import 'package:flutter/src/widgets/inherited_theme.dart' show InheritedTheme;
 import 'package:meta/meta.dart' show immutable;
 
 // Examples can assume:

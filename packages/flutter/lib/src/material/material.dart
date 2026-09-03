@@ -38,10 +38,9 @@ import 'package:flutter/src/rendering/object.dart' show PaintingContext, RenderO
 import 'package:flutter/src/rendering/proxy_box.dart' show RenderProxyBox, ShapeBorderClipper;
 import 'package:flutter/src/scheduler/ticker.dart' show TickerProvider;
 import 'package:flutter/src/widgets/basic.dart' show ClipPath, CustomPaint, Directionality, PhysicalShape;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, SingleChildRenderObjectWidget, State, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, LayoutChangedNotification, NotificationListener, SingleChildRenderObjectWidget, State, StatefulWidget, StatelessWidget, Widget;
 import 'package:flutter/src/widgets/implicit_animations.dart' show AnimatedDefaultTextStyle, AnimatedPhysicalModel, AnimatedWidgetBaseState, ImplicitlyAnimatedWidget, TweenVisitor;
 import 'package:flutter/src/widgets/lookup_boundary.dart' show LookupBoundary;
-import 'package:flutter/src/widgets/notification_listener.dart' show LayoutChangedNotification, NotificationListener;
 import 'package:flutter/src/widgets/ticker_provider.dart' show TickerProviderStateMixin;
 import 'package:meta/meta.dart' show mustCallSuper, protected, visibleForTesting;
 import 'package:vector_math/vector_math_64.dart' show Matrix4;

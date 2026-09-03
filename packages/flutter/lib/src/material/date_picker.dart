@@ -78,8 +78,8 @@ import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, Orientati
 import 'package:flutter/src/widgets/navigator.dart' show Navigator, RouteSettings;
 import 'package:flutter/src/widgets/overflow_bar.dart' show OverflowBar;
 import 'package:flutter/src/widgets/preferred_size.dart' show PreferredSize;
-import 'package:flutter/src/widgets/restoration.dart' show RestorationMixin;
-import 'package:flutter/src/widgets/restoration_properties.dart' show RestorableBool, RestorableDateTimeN, RestorableValue;
+import 'package:flutter/src/widgets/restoration.dart' show RestorationMixin, RestorableValue;
+import 'package:flutter/src/widgets/restoration_properties.dart' show RestorableBool, RestorableDateTimeN;
 import 'package:flutter/src/widgets/safe_area.dart' show SafeArea;
 import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
 import 'package:flutter/src/widgets/scroll_delegate.dart' show SliverChildListDelegate;

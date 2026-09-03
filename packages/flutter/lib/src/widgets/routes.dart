@@ -36,8 +36,7 @@ import 'package:flutter/src/widgets/display_feature_sub_screen.dart' show Displa
 import 'package:flutter/src/widgets/focus_manager.dart' show FocusScopeNode;
 import 'package:flutter/src/widgets/focus_scope.dart' show FocusScope;
 import 'package:flutter/src/widgets/focus_traversal.dart' show TraversalEdgeBehavior;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StatefulWidget, Widget;
-import 'package:flutter/src/widgets/inherited_model.dart' show InheritedModel;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, InheritedModel, State, StatefulWidget, Widget;
 import 'package:flutter/src/widgets/modal_barrier.dart' show AnimatedModalBarrier, ModalBarrier;
 import 'package:flutter/src/widgets/navigator.dart' show NavigationNotification, Navigator, NavigatorObserver, Route, RoutePopDisposition, RoutePredicate, RouteSettings, WillPopCallback;
 import 'package:flutter/src/widgets/overlay.dart' show OverlayEntry;

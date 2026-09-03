@@ -14,8 +14,7 @@ import 'package:flutter/src/painting/colors.dart' show ColorProperty;
 import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsetsGeometry;
 import 'package:flutter/src/painting/notched_shapes.dart' show NotchedShape;
 import 'package:flutter/src/widgets/basic.dart' show SizedBox;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
-import 'package:flutter/src/widgets/inherited_theme.dart' show InheritedTheme;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedTheme, Widget;
 import 'package:meta/meta.dart' show immutable;
 
 /// Defines default property values for descendant [BottomAppBar] widgets.

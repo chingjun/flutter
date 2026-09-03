@@ -4,9 +4,8 @@
 
 import 'dart:ui' show VoidCallback;
 
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, NotificationListener, State, StatefulWidget, Widget;
 import 'package:flutter/src/widgets/navigator.dart' show NavigationNotification;
-import 'package:flutter/src/widgets/notification_listener.dart' show NotificationListener;
 import 'package:flutter/src/widgets/pop_scope.dart' show PopScope;
 import 'package:meta/meta.dart' show optionalTypeArgs;
 

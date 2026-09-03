@@ -8,8 +8,7 @@ library;
 import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsProperty;
 import 'package:flutter/src/material/menu_style.dart' show MenuStyle;
 import 'package:flutter/src/material/theme.dart' show Theme;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
-import 'package:flutter/src/widgets/inherited_theme.dart' show InheritedTheme;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedTheme, Widget;
 import 'package:flutter/src/widgets/widget_state.dart' show WidgetStateProperty;
 import 'package:meta/meta.dart' show immutable;
 

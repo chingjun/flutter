@@ -59,13 +59,12 @@ import 'package:flutter/src/widgets/focus_manager.dart' show FocusHighlightMode,
 import 'package:flutter/src/widgets/focus_scope.dart' show Focus;
 import 'package:flutter/src/widgets/focus_traversal.dart' show DirectionalFocusIntent, TraversalDirection;
 import 'package:flutter/src/widgets/form.dart' show AutovalidateMode, FormField, FormFieldState;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedWidget, SingleChildRenderObjectWidget, State, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, CapturedThemes, InheritedTheme, InheritedWidget, SingleChildRenderObjectWidget, State, StatefulWidget, StatelessWidget, Widget;
 import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
 import 'package:flutter/src/widgets/icon.dart' show Icon;
 import 'package:flutter/src/widgets/icon_theme.dart' show IconTheme;
 import 'package:flutter/src/widgets/icon_theme_data.dart' show IconThemeData;
 import 'package:flutter/src/widgets/indexed_stack.dart' show IndexedStack;
-import 'package:flutter/src/widgets/inherited_theme.dart' show CapturedThemes, InheritedTheme;
 import 'package:flutter/src/widgets/layout_builder.dart' show LayoutBuilder;
 import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, Orientation;
 import 'package:flutter/src/widgets/navigator.dart' show Navigator, NavigatorState;

@@ -30,10 +30,9 @@ import 'package:flutter/src/widgets/default_text_editing_shortcuts.dart' show De
 import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode, KeyEventResult;
 import 'package:flutter/src/widgets/focus_scope.dart' show Focus, FocusScope;
 import 'package:flutter/src/widgets/focus_traversal.dart' show DirectionalFocusAction, DirectionalFocusIntent, FocusTraversalGroup, NextFocusAction, NextFocusIntent, PreviousFocusAction, PreviousFocusIntent, ReadingOrderTraversalPolicy, RequestFocusAction, RequestFocusIntent, TraversalDirection, TraversalEdgeBehavior;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, GlobalObjectKey, State, StatefulWidget, TransitionBuilder, Widget, WidgetBuilder;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, GlobalObjectKey, NotificationListener, NotificationListenerCallback, State, StatefulWidget, TransitionBuilder, Widget, WidgetBuilder;
 import 'package:flutter/src/widgets/localizations.dart' show LocaleListResolutionCallback, LocaleResolutionCallback, Localizations, LocalizationsDelegate, LocalizationsResolver;
 import 'package:flutter/src/widgets/navigator.dart' show NavigationNotification, Navigator, NavigatorObserver, NavigatorState, Route, RouteFactory, RouteSettings;
-import 'package:flutter/src/widgets/notification_listener.dart' show NotificationListener, NotificationListenerCallback;
 import 'package:flutter/src/widgets/pages.dart' show PageRoute;
 import 'package:flutter/src/widgets/performance_overlay.dart' show PerformanceOverlay;
 import 'package:flutter/src/widgets/raw_tooltip.dart' show RawTooltip;

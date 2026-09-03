@@ -19,8 +19,7 @@ import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsetsGeometry;
 import 'package:flutter/src/painting/text_style.dart' show TextStyle;
 import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
 import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
-import 'package:flutter/src/widgets/inherited_theme.dart' show InheritedTheme;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedTheme, Widget;
 import 'package:flutter/src/widgets/widget_state.dart' show WidgetStateProperty;
 import 'package:meta/meta.dart' show immutable;
 

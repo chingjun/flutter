@@ -28,8 +28,7 @@ import 'package:flutter/src/painting/colors.dart' show ColorProperty;
 import 'package:flutter/src/painting/rounded_rectangle_border.dart' show RoundedRectangleBorder;
 import 'package:flutter/src/painting/stadium_border.dart' show StadiumBorder;
 import 'package:flutter/src/painting/text_style.dart' show TextStyle;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
-import 'package:flutter/src/widgets/inherited_theme.dart' show InheritedTheme;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedTheme, Widget;
 import 'package:flutter/src/widgets/widget_state.dart' show WidgetState, WidgetStateProperty, WidgetStatePropertyAll;
 import 'package:meta/meta.dart' show immutable;
 

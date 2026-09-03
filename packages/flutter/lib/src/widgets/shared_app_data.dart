@@ -7,8 +7,7 @@ library;
 
 import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorHint, ErrorSummary, FlutterError;
 import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
-import 'package:flutter/src/widgets/inherited_model.dart' show InheritedModel;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedModel, State, StatefulWidget, Widget;
 
 /// The type of the [SharedAppData.getValue] `init` parameter.
 ///

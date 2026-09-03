@@ -28,8 +28,7 @@ import 'package:flutter/src/widgets/basic.dart' show Builder;
 import 'package:flutter/src/widgets/binding.dart' show RouteInformation, WidgetsBinding, WidgetsBindingObserver;
 import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, InheritedWidget, State, StatefulWidget, Widget;
 import 'package:flutter/src/widgets/navigator.dart' show NavigatorState;
-import 'package:flutter/src/widgets/restoration.dart' show RestorationMixin, UnmanagedRestorationScope;
-import 'package:flutter/src/widgets/restoration_properties.dart' show RestorableValue;
+import 'package:flutter/src/widgets/restoration.dart' show RestorationMixin, RestorableValue, UnmanagedRestorationScope;
 import 'package:listen/listen.dart' show ChangeNotifier, Listenable, ValueListenable;
 import 'package:meta/meta.dart' show protected;
 

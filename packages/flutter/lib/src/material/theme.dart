@@ -16,10 +16,9 @@ import 'package:flutter/src/material/material_localizations.dart' show MaterialL
 import 'package:flutter/src/material/theme_data.dart' show CupertinoBasedMaterialThemeData, MaterialBasedCupertinoThemeData, ThemeData;
 import 'package:flutter/src/material/typography.dart' show ScriptCategory;
 import 'package:flutter/src/widgets/default_selection_style.dart' show DefaultSelectionStyle;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedTheme, StatelessWidget, Widget;
 import 'package:flutter/src/widgets/icon_theme.dart' show IconTheme;
 import 'package:flutter/src/widgets/implicit_animations.dart' show AnimatedWidgetBaseState, ImplicitlyAnimatedWidget, TweenVisitor;
-import 'package:flutter/src/widgets/inherited_theme.dart' show InheritedTheme;
 import 'package:flutter/src/widgets/localizations.dart' show Localizations;
 import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
 

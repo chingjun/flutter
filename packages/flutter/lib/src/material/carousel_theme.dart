@@ -9,8 +9,7 @@ import 'package:flutter/src/material/theme.dart' show Theme;
 import 'package:flutter/src/painting/borders.dart' show OutlinedBorder, ShapeBorder;
 import 'package:flutter/src/painting/colors.dart' show ColorProperty;
 import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
-import 'package:flutter/src/widgets/inherited_theme.dart' show InheritedTheme;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedTheme, Widget;
 import 'package:flutter/src/widgets/widget_state.dart' show WidgetStateProperty;
 import 'package:meta/meta.dart' show immutable;
 

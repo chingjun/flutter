@@ -45,11 +45,10 @@ import 'package:flutter/src/semantics/semantics_service.dart' show SemanticsServ
 import 'package:flutter/src/services/mouse_cursor.dart' show SystemMouseCursors;
 import 'package:flutter/src/widgets/animated_switcher.dart' show AnimatedSwitcher;
 import 'package:flutter/src/widgets/basic.dart' show Builder, Center, ConstrainedBox, CustomPaint, Directionality, FractionalTranslation, IgnorePointer, MouseRegion, Padding, Semantics, SizedBox, Stack;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedTheme, State, StatefulWidget, StatelessWidget, Widget;
 import 'package:flutter/src/widgets/icon_theme.dart' show IconTheme;
 import 'package:flutter/src/widgets/icon_theme_data.dart' show IconThemeData;
 import 'package:flutter/src/widgets/implicit_animations.dart' show AnimatedDefaultTextStyle, AnimatedOpacity;
-import 'package:flutter/src/widgets/inherited_theme.dart' show InheritedTheme;
 import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
 import 'package:flutter/src/widgets/slotted_render_object_widget.dart' show SlottedContainerRenderObjectMixin, SlottedMultiChildRenderObjectWidget;
 import 'package:flutter/src/widgets/text.dart' show DefaultTextStyle, Text;

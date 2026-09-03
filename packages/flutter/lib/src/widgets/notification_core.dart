@@ -11,6 +11,4 @@
 /// @docImport 'size_changed_layout_notifier.dart';
 library;
 
-// Notification is now defined in framework.dart to break the dependency cycle.
-// This file re-exports it for backward compatibility.
-export 'package:flutter/src/widgets/framework.dart' show Notification;
+// Notification is now defined in framework.dart.

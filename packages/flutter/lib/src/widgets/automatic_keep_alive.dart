@@ -19,8 +19,6 @@ import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding, Sched
 import 'package:flutter/src/widgets/framework.dart' show AutomaticKeepAliveClientMixin, BuildContext, Element, KeepAliveNotification, NotificationListener, ParentDataElement, ParentDataWidget, State, StatefulWidget, Widget;
 import 'package:listen/listen.dart' show Listenable;
 
-export 'package:flutter/src/widgets/framework.dart'
-    show AutomaticKeepAliveClientMixin, KeepAliveHandle, KeepAliveNotification;
 
 /// Allows subtrees to request to be kept alive in lazy lists.
 ///

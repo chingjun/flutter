@@ -10,8 +10,7 @@ import 'dart:ui' show Size, VoidCallback;
 import 'package:flutter/src/rendering/box.dart' show RenderBox;
 import 'package:flutter/src/rendering/object.dart' show RenderObject;
 import 'package:flutter/src/rendering/proxy_box.dart' show RenderProxyBox;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, SingleChildRenderObjectWidget;
-import 'package:flutter/src/widgets/notification_listener.dart' show LayoutChangedNotification;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, LayoutChangedNotification, SingleChildRenderObjectWidget;
 
 /// Indicates that the size of one of the descendants of the object receiving
 /// this notification has changed, and that therefore any assumptions about that

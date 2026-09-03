@@ -66,7 +66,6 @@ import 'package:flutter/src/services/text_input.dart' show FloatingCursorDragSta
 import 'package:flutter/src/widgets/_windowing_callbacks.dart' show buildUndoHistoryCallback, intentForMacOSSelectorCallback, maybeOfAutofillGroupCallback, scrollNotificationObserverAddListenerCallback, scrollNotificationObserverMaybeOfCallback, scrollNotificationObserverRemoveListenerCallback;
 import 'package:flutter/src/widgets/actions.dart' show Action, Actions, CallbackAction, ContextAction, DismissIntent, DoNothingAction, Intent;
 
-import 'package:flutter/src/widgets/framework.dart' show AutomaticKeepAliveClientMixin, BuildContext, Element, GlobalKey, MultiChildRenderObjectWidget, SingleChildRenderObjectWidget, State, StatefulWidget, Widget;
 import 'package:flutter/src/widgets/basic.dart' show Builder, CompositedTransformTarget, Directionality, MouseRegion, Semantics, SizedBox;
 import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding, WidgetsBindingObserver;
 import 'package:flutter/src/widgets/constants.dart' show kMinInteractiveDimension;
@@ -76,10 +75,10 @@ import 'package:flutter/src/widgets/focus_manager.dart' show FocusManager, Focus
 import 'package:flutter/src/widgets/focus_scope.dart' show Focus, FocusScope;
 import 'package:flutter/src/widgets/focus_traversal.dart' show DirectionalFocusAction, DirectionalFocusIntent;
 
+import 'package:flutter/src/widgets/framework.dart' show AutomaticKeepAliveClientMixin, BuildContext, Element, GlobalKey, LayoutChangedNotification, MultiChildRenderObjectWidget, NotificationListener, SingleChildRenderObjectWidget, State, StatefulWidget, Widget;
 import 'package:flutter/src/widgets/localizations.dart' show Localizations;
 import 'package:flutter/src/widgets/magnifier.dart' show TextMagnifierConfiguration;
 import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, Orientation;
-import 'package:flutter/src/widgets/notification_listener.dart' show LayoutChangedNotification, NotificationListener;
 import 'package:flutter/src/widgets/scroll_configuration.dart' show ScrollBehavior, ScrollConfiguration;
 import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
 import 'package:flutter/src/widgets/scroll_notification.dart' show ScrollEndNotification, ScrollNotification, ScrollStartNotification;

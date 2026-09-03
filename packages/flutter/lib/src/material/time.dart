@@ -11,7 +11,7 @@ import 'package:flutter/src/services/restoration.dart' show debugIsSerializableF
 import 'package:flutter/src/widgets/debug.dart' show debugCheckHasMediaQuery;
 import 'package:flutter/src/widgets/framework.dart' show BuildContext;
 import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
-import 'package:flutter/src/widgets/restoration_properties.dart' show RestorableValue;
+import 'package:flutter/src/widgets/restoration.dart' show RestorableValue;
 import 'package:meta/meta.dart' show immutable;
 
 /// Whether the [TimeOfDay] is before or after noon.

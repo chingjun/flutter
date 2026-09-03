@@ -16,9 +16,8 @@ import 'package:flutter/src/cupertino/icon_theme_data.dart' show CupertinoIconTh
 import 'package:flutter/src/cupertino/text_theme.dart' show CupertinoTextThemeData;
 import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, Diagnosticable, DiagnosticsProperty, EnumProperty;
 import 'package:flutter/src/painting/text_style.dart' show TextStyle;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedTheme, StatelessWidget, Widget;
 import 'package:flutter/src/widgets/icon_theme.dart' show IconTheme;
-import 'package:flutter/src/widgets/inherited_theme.dart' show InheritedTheme;
 import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
 import 'package:meta/meta.dart' show immutable, protected;
 

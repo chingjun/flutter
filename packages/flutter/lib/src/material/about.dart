@@ -53,9 +53,8 @@ import 'package:flutter/src/widgets/animated_switcher.dart' show AnimatedSwitche
 import 'package:flutter/src/widgets/async.dart' show AsyncSnapshot, ConnectionState, FutureBuilder;
 import 'package:flutter/src/widgets/basic.dart' show Align, BlockSemantics, Center, Column, ConstrainedBox, Expanded, ListBody, MouseRegion, Padding, Row, SizedBox, SliverPadding, Stack;
 import 'package:flutter/src/widgets/draggable_scrollable_sheet.dart' show DraggableScrollableSheet;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, CapturedThemes, GlobalKey, InheritedTheme, State, StatefulWidget, StatelessWidget, Widget;
 import 'package:flutter/src/widgets/icon_theme.dart' show IconTheme;
-import 'package:flutter/src/widgets/inherited_theme.dart' show CapturedThemes, InheritedTheme;
 import 'package:flutter/src/widgets/layout_builder.dart' show LayoutBuilder;
 import 'package:flutter/src/widgets/localizations.dart' show Localizations;
 import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;

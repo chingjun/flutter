@@ -47,10 +47,9 @@ import 'package:flutter/src/services/hardware_keyboard.dart' show HardwareKeyboa
 import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
 import 'package:flutter/src/services/restoration.dart' show RestorationBucket, debugIsSerializableForRestoration;
 import 'package:flutter/src/widgets/basic.dart' show IgnorePointer, Listener, Semantics;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, InheritedElement, InheritedWidget, SingleChildRenderObjectWidget, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, InheritedElement, InheritedWidget, NotificationListener, SingleChildRenderObjectWidget, State, StatefulWidget, Widget;
 import 'package:flutter/src/widgets/gesture_detector.dart' show GestureRecognizerFactory, GestureRecognizerFactoryWithHandlers, RawGestureDetector, RawGestureDetectorState;
 import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
-import 'package:flutter/src/widgets/notification_listener.dart' show NotificationListener;
 import 'package:flutter/src/widgets/restoration.dart' show RestorationMixin, RestorationScope, RestorableValue;
 import 'package:flutter/src/widgets/scroll_activity.dart' show ScrollHoldController;
 import 'package:flutter/src/widgets/scroll_configuration.dart' show ScrollBehavior, ScrollConfiguration;

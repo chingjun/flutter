@@ -14,8 +14,7 @@ import 'package:flutter/src/painting/alignment.dart' show AlignmentGeometry;
 import 'package:flutter/src/painting/borders.dart' show ShapeBorder;
 import 'package:flutter/src/painting/colors.dart' show ColorProperty;
 import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsetsGeometry;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
-import 'package:flutter/src/widgets/inherited_theme.dart' show InheritedTheme;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedTheme, Widget;
 import 'package:meta/meta.dart' show immutable;
 
 // Examples can assume:

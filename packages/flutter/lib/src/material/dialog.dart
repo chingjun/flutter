@@ -46,11 +46,10 @@ import 'package:flutter/src/rendering/flex.dart' show CrossAxisAlignment, MainAx
 import 'package:flutter/src/widgets/basic.dart' show Align, Builder, Column, ConstrainedBox, Directionality, Flexible, IntrinsicWidth, ListBody, Padding, Semantics;
 import 'package:flutter/src/widgets/dialog.dart' show showRawDialog;
 import 'package:flutter/src/widgets/focus_traversal.dart' show TraversalEdgeBehavior;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, StatelessWidget, Widget, WidgetBuilder;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, CapturedThemes, Element, InheritedTheme, StatelessWidget, Widget, WidgetBuilder;
 import 'package:flutter/src/widgets/icon_theme.dart' show IconTheme;
 import 'package:flutter/src/widgets/icon_theme_data.dart' show IconThemeData;
 import 'package:flutter/src/widgets/implicit_animations.dart' show AnimatedPadding;
-import 'package:flutter/src/widgets/inherited_theme.dart' show CapturedThemes, InheritedTheme;
 import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
 import 'package:flutter/src/widgets/navigator.dart' show HeroControllerScope, Navigator, NavigatorState, Page, Route, RouteSettings;
 import 'package:flutter/src/widgets/overflow_bar.dart' show OverflowBar, OverflowBarAlignment;

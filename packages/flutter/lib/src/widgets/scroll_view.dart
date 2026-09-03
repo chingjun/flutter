@@ -25,9 +25,8 @@ import 'package:flutter/src/widgets/basic.dart' show SliverPadding, getAxisDirec
 import 'package:flutter/src/widgets/debug.dart' show debugCheckHasDirectionality;
 import 'package:flutter/src/widgets/focus_manager.dart' show FocusManager, FocusScopeNode;
 import 'package:flutter/src/widgets/focus_scope.dart' show FocusScope;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, IndexedWidgetBuilder, NullableIndexedWidgetBuilder, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, IndexedWidgetBuilder, NotificationListener, NullableIndexedWidgetBuilder, StatelessWidget, Widget;
 import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
-import 'package:flutter/src/widgets/notification_listener.dart' show NotificationListener;
 import 'package:flutter/src/widgets/primary_scroll_controller.dart' show PrimaryScrollController;
 import 'package:flutter/src/widgets/scroll_configuration.dart' show ScrollBehavior, ScrollConfiguration, ScrollViewKeyboardDismissBehavior;
 import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;

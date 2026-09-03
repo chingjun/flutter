@@ -69,11 +69,10 @@ import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding, WidgetsBi
 import 'package:flutter/src/widgets/container.dart' show Container;
 import 'package:flutter/src/widgets/debug.dart' show debugCheckHasDirectionality, debugCheckHasMediaQuery;
 import 'package:flutter/src/widgets/draggable_scrollable_sheet.dart' show DraggableScrollableActuator, DraggableScrollableNotification;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, GlobalKey, InheritedWidget, State, StateSetter, StatefulWidget, StatelessWidget, Widget, WidgetBuilder;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, GlobalKey, InheritedWidget, NotificationListener, State, StateSetter, StatefulWidget, StatelessWidget, Widget, WidgetBuilder;
 import 'package:flutter/src/widgets/layout_builder.dart' show LayoutBuilder;
 import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
 import 'package:flutter/src/widgets/modal_barrier.dart' show ModalBarrier;
-import 'package:flutter/src/widgets/notification_listener.dart' show NotificationListener;
 import 'package:flutter/src/widgets/overflow_bar.dart' show OverflowBar, OverflowBarAlignment;
 import 'package:flutter/src/widgets/preferred_size.dart' show PreferredSizeWidget;
 import 'package:flutter/src/widgets/primary_scroll_controller.dart' show PrimaryScrollController;

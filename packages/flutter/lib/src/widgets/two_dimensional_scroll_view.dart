@@ -15,8 +15,7 @@ import 'package:flutter/src/rendering/viewport.dart' show CacheExtentStyle, Scro
 import 'package:flutter/src/rendering/viewport_offset.dart' show ViewportOffset;
 import 'package:flutter/src/widgets/focus_manager.dart' show FocusManager, FocusScopeNode;
 import 'package:flutter/src/widgets/focus_scope.dart' show FocusScope;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
-import 'package:flutter/src/widgets/notification_listener.dart' show NotificationListener;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, NotificationListener, StatelessWidget, Widget;
 import 'package:flutter/src/widgets/primary_scroll_controller.dart' show PrimaryScrollController;
 import 'package:flutter/src/widgets/scroll_configuration.dart' show ScrollConfiguration, ScrollViewKeyboardDismissBehavior;
 import 'package:flutter/src/widgets/scroll_delegate.dart' show TwoDimensionalChildDelegate;

@@ -5,7 +5,4 @@
 /// @docImport 'package:flutter/material.dart';
 library;
 
-// InheritedTheme and CapturedThemes are now defined in framework.dart
-// to break the dependency cycle. This file re-exports them for backward
-// compatibility.
-export 'package:flutter/src/widgets/framework.dart' show CapturedThemes, InheritedTheme;
+// InheritedTheme and CapturedThemes are now defined in framework.dart.

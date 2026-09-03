@@ -28,11 +28,10 @@ import 'package:flutter/src/rendering/custom_layout.dart' show MultiChildLayoutD
 import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
 import 'package:flutter/src/widgets/basic.dart' show Align, Baseline, ColoredBox, ConstrainedBox, CustomMultiChildLayout, Directionality, ExcludeSemantics, Expanded, IgnorePointer, LayoutId, Padding, Row, Semantics, SizedBox, Stack;
 import 'package:flutter/src/widgets/date.dart' show SelectableDayPredicate;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, TransitionBuilder, Widget;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, NotificationListener, State, StatefulWidget, TransitionBuilder, Widget;
 import 'package:flutter/src/widgets/layout_builder.dart' show LayoutBuilder;
 import 'package:flutter/src/widgets/list_wheel_scroll_view.dart' show ChangeReportingBehavior, FixedExtentScrollController;
 import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
-import 'package:flutter/src/widgets/notification_listener.dart' show NotificationListener;
 import 'package:flutter/src/widgets/scroll_notification.dart' show ScrollEndNotification, ScrollNotification, ScrollStartNotification;
 import 'package:flutter/src/widgets/text.dart' show DefaultTextStyle, Text;
 import 'package:meta/meta.dart' show visibleForTesting;

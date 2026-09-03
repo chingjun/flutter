@@ -7,7 +7,4 @@
 /// @docImport 'inherited_notifier.dart';
 library;
 
-// InheritedModel and InheritedModelElement are now defined in framework.dart
-// to break the dependency cycle. This file re-exports them for backward
-// compatibility.
-export 'package:flutter/src/widgets/framework.dart' show InheritedModel, InheritedModelElement;
+// InheritedModel and InheritedModelElement are now defined in framework.dart.

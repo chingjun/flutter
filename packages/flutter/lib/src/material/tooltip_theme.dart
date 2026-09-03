@@ -14,8 +14,7 @@ import 'package:flutter/src/painting/decoration.dart' show Decoration;
 import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsetsGeometry;
 import 'package:flutter/src/painting/text_style.dart' show TextStyle;
 import 'package:flutter/src/rendering/box.dart' show BoxConstraints;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget;
-import 'package:flutter/src/widgets/inherited_theme.dart' show InheritedTheme;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedTheme, Widget;
 import 'package:flutter/src/widgets/raw_tooltip.dart' show TooltipTriggerMode;
 import 'package:meta/meta.dart' show immutable;
 

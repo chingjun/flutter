@@ -16,8 +16,6 @@ import 'package:flutter/src/widgets/restoration.dart' show RestorableProperty, R
 import 'package:listen/listen.dart' show ChangeNotifier, Listenable;
 
 
-export 'package:flutter/src/widgets/restoration.dart' show RestorableValue;
-
 // _RestorablePrimitiveValueN and its subclasses allows for null values.
 // See [_RestorablePrimitiveValue] for the non-nullable version of this class.
 class _RestorablePrimitiveValueN<T extends Object?> extends RestorableValue<T> {

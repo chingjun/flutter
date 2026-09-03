@@ -79,7 +79,7 @@ import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, 
 import 'package:flutter/src/widgets/localizations.dart' show Localizations;
 import 'package:flutter/src/widgets/magnifier.dart' show TextMagnifierConfiguration;
 import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, Orientation;
-import 'package:flutter/src/widgets/notification_listener.dart' show NotificationListener;
+import 'package:flutter/src/widgets/notification_listener.dart' show LayoutChangedNotification, NotificationListener;
 import 'package:flutter/src/widgets/scroll_configuration.dart' show ScrollBehavior, ScrollConfiguration;
 import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
 import 'package:flutter/src/widgets/scroll_notification.dart' show ScrollEndNotification, ScrollNotification, ScrollStartNotification;
@@ -87,7 +87,7 @@ import 'package:flutter/src/widgets/scroll_physics.dart' show ScrollPhysics;
 import 'package:flutter/src/widgets/scroll_position.dart' show ScrollPosition;
 import 'package:flutter/src/widgets/scrollable.dart' show Scrollable, ScrollableState;
 import 'package:flutter/src/widgets/scrollable_helpers.dart' show ScrollAction, ScrollIncrementType, ScrollIntent;
-import 'package:flutter/src/widgets/size_changed_layout_notifier.dart' show SizeChangedLayoutNotifier;
+
 import 'package:flutter/src/widgets/spell_check.dart' show SpellCheckConfiguration, buildTextSpanWithSpellCheckSuggestions;
 import 'package:flutter/src/widgets/tap_region.dart' show TapRegionCallback, TapRegionUpCallback, TextFieldTapRegion;
 import 'package:flutter/src/widgets/text.dart' show DefaultTextHeightBehavior;
@@ -6023,7 +6023,7 @@ class EditableTextState extends State<EditableText>
                                   _openInputConnection();
                                   _updateSelectionRects(force: true);
                                 },
-                                child: SizeChangedLayoutNotifier(
+                                child: _SizeChangedLayoutNotifier(
                                   child: _Editable(
                                     key: _editableKey,
                                     startHandleLayerLink: _startHandleLayerLink,
@@ -7050,5 +7050,40 @@ class _AppLifecycleObserver with WidgetsBindingObserver {
     if (state == AppLifecycleState.resumed) {
       _onResume();
     }
+  }
+}
+
+/// A minimal inline replacement for [SizeChangedLayoutNotifier] to avoid
+/// importing `size_changed_layout_notifier.dart` and breaking the import cycle.
+///
+/// Dispatches a [LayoutChangedNotification] when the layout size changes.
+class _SizeChangedLayoutNotifier extends SingleChildRenderObjectWidget {
+  const _SizeChangedLayoutNotifier({super.child});
+
+  @override
+  RenderObject createRenderObject(BuildContext context) {
+    return _RenderSizeChangedWithCallback(
+      onLayoutChangedCallback: () {
+        const LayoutChangedNotification().dispatch(context);
+      },
+    );
+  }
+}
+
+class _RenderSizeChangedWithCallback extends RenderProxyBox {
+  _RenderSizeChangedWithCallback({RenderBox? child, required this.onLayoutChangedCallback})
+    : super(child);
+
+  final VoidCallback onLayoutChangedCallback;
+
+  Size? _oldSize;
+
+  @override
+  void performLayout() {
+    super.performLayout();
+    if (_oldSize != null && size != _oldSize) {
+      onLayoutChangedCallback();
+    }
+    _oldSize = size;
   }
 }

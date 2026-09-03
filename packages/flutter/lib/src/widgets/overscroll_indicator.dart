@@ -13,7 +13,7 @@ library;
 import 'dart:async' show Timer;
 import 'dart:math' as math;
 import 'dart:ui' as ui;
-import 'dart:ui' show Canvas, Clip, Color, FilterQuality, Offset, Paint, PaintingStyle, Rect, Size, TextDirection, VoidCallback, clampDouble;
+import 'dart:ui' show Canvas, Clip, Color, FilterQuality, ImageFilter, Offset, Paint, PaintingStyle, Rect, Size, TextDirection, VoidCallback, clampDouble;
 
 import 'package:flutter/src/animation/animation.dart' show Animation, AnimationStatus;
 import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
@@ -32,11 +32,13 @@ import 'package:flutter/src/physics/tolerance.dart' show Tolerance;
 import 'package:flutter/src/physics/utils.dart' show nearEqual;
 import 'package:flutter/src/rendering/box.dart' show RenderBox;
 import 'package:flutter/src/rendering/custom_paint.dart' show CustomPainter;
+import 'package:flutter/src/rendering/layer.dart' show ImageFilterLayer, OffsetLayer;
+import 'package:flutter/src/rendering/object.dart' show RenderObject;
+import 'package:flutter/src/rendering/proxy_box.dart' show RenderProxyBox;
 import 'package:flutter/src/rendering/sliver.dart' show GrowthDirection, applyGrowthDirectionToAxisDirection;
 import 'package:flutter/src/scheduler/ticker.dart' show Ticker, TickerProvider;
 import 'package:flutter/src/widgets/basic.dart' show ClipRect, CustomPaint, Directionality, RepaintBoundary, SizedBox, Transform;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, StatelessWidget, Widget;
-import 'package:flutter/src/widgets/image_filter.dart' show ImageFiltered;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, SingleChildRenderObjectWidget, State, StatefulWidget, StatelessWidget, Widget;
 import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
 import 'package:flutter/src/widgets/notification_core.dart' show Notification;
 import 'package:flutter/src/widgets/notification_listener.dart' show NotificationListener;
@@ -1316,7 +1318,7 @@ class _StretchOverscrollEffectState extends State<_StretchOverscrollEffect> {
       imageFilter = _emptyFilter;
     }
 
-    return ImageFiltered(
+    return _ImageFiltered(
       imageFilter: imageFilter,
       enabled: isShaderNeeded,
       // A nearly-transparent pixels is used to ensure the shader gets applied,
@@ -1367,5 +1369,66 @@ class _StretchEffectShader {
       });
       _initCalled = true;
     }
+  }
+}
+
+/// A minimal [ImageFiltered] equivalent to avoid importing `image_filter.dart`.
+///
+/// This exists solely to break the `overscroll_indicator.dart` →
+/// `image_filter.dart` import cycle.
+class _ImageFiltered extends SingleChildRenderObjectWidget {
+  const _ImageFiltered({required this.imageFilter, required this.enabled, super.child});
+  final ImageFilter imageFilter;
+  final bool enabled;
+
+  @override
+  RenderObject createRenderObject(BuildContext context) =>
+      _ImageFilterRenderObject(imageFilter, enabled);
+
+  @override
+  void updateRenderObject(BuildContext context, RenderObject renderObject) {
+    (renderObject as _ImageFilterRenderObject)
+      ..enabled = enabled
+      ..imageFilter = imageFilter;
+  }
+}
+
+class _ImageFilterRenderObject extends RenderProxyBox {
+  _ImageFilterRenderObject(this._imageFilter, this._enabled);
+
+  bool get enabled => _enabled;
+  bool _enabled;
+  set enabled(bool value) {
+    if (enabled == value) {
+      return;
+    }
+    final bool wasRepaintBoundary = isRepaintBoundary;
+    _enabled = value;
+    if (isRepaintBoundary != wasRepaintBoundary) {
+      markNeedsCompositingBitsUpdate();
+    }
+    markNeedsPaint();
+  }
+
+  ImageFilter get imageFilter => _imageFilter;
+  ImageFilter _imageFilter;
+  set imageFilter(ImageFilter value) {
+    if (value != _imageFilter) {
+      _imageFilter = value;
+      markNeedsCompositedLayerUpdate();
+    }
+  }
+
+  @override
+  bool get alwaysNeedsCompositing => child != null && enabled;
+
+  @override
+  bool get isRepaintBoundary => alwaysNeedsCompositing;
+
+  @override
+  OffsetLayer updateCompositedLayer({required covariant ImageFilterLayer? oldLayer}) {
+    final ImageFilterLayer layer = oldLayer ?? ImageFilterLayer();
+    layer.imageFilter = imageFilter;
+    return layer;
   }
 }

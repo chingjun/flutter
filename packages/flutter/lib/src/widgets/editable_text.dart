@@ -63,7 +63,7 @@ import 'package:flutter/src/services/text_boundary.dart' show CharacterBoundary,
 import 'package:flutter/src/services/text_editing.dart' show TextSelection;
 import 'package:flutter/src/services/text_formatter.dart' show FilteringTextInputFormatter, TextInputFormatter;
 import 'package:flutter/src/services/text_input.dart' show FloatingCursorDragState, RawFloatingCursorPoint, ScribbleClient, SelectionChangedCause, SelectionRect, SmartDashesType, SmartQuotesType, TextCapitalization, TextEditingValue, TextInput, TextInputAction, TextInputClient, TextInputConfiguration, TextInputConnection, TextInputControl, TextInputStyle, TextInputType, TextSelectionDelegate;
-import 'package:flutter/src/widgets/_windowing_callbacks.dart' show maybeOfAutofillGroupCallback, scrollNotificationObserverAddListenerCallback, scrollNotificationObserverMaybeOfCallback, scrollNotificationObserverRemoveListenerCallback;
+import 'package:flutter/src/widgets/_windowing_callbacks.dart' show intentForMacOSSelectorCallback, maybeOfAutofillGroupCallback, scrollNotificationObserverAddListenerCallback, scrollNotificationObserverMaybeOfCallback, scrollNotificationObserverRemoveListenerCallback;
 import 'package:flutter/src/widgets/actions.dart' show Action, Actions, CallbackAction, ContextAction, DismissIntent, DoNothingAction, Intent;
 import 'package:flutter/src/widgets/app_lifecycle_listener.dart' show AppLifecycleListener;
 import 'package:flutter/src/widgets/automatic_keep_alive.dart' show AutomaticKeepAliveClientMixin;
@@ -72,7 +72,6 @@ import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding, WidgetsBi
 import 'package:flutter/src/widgets/constants.dart' show kMinInteractiveDimension;
 import 'package:flutter/src/widgets/context_menu_button_item.dart' show ContextMenuButtonItem, ContextMenuButtonType;
 import 'package:flutter/src/widgets/debug.dart' show debugCheckHasMediaQuery;
-import 'package:flutter/src/widgets/default_text_editing_shortcuts.dart' show intentForMacOSSelector;
 import 'package:flutter/src/widgets/focus_manager.dart' show FocusManager, FocusNode, primaryFocus;
 import 'package:flutter/src/widgets/focus_scope.dart' show Focus, FocusScope;
 import 'package:flutter/src/widgets/focus_traversal.dart' show DirectionalFocusAction, DirectionalFocusIntent;
@@ -84,7 +83,6 @@ import 'package:flutter/src/widgets/notification_listener.dart' show Notificatio
 import 'package:flutter/src/widgets/scroll_configuration.dart' show ScrollBehavior, ScrollConfiguration;
 import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
 import 'package:flutter/src/widgets/scroll_notification.dart' show ScrollEndNotification, ScrollNotification, ScrollStartNotification;
-
 import 'package:flutter/src/widgets/scroll_physics.dart' show ScrollPhysics;
 import 'package:flutter/src/widgets/scroll_position.dart' show ScrollPosition;
 import 'package:flutter/src/widgets/scrollable.dart' show Scrollable, ScrollableState;
@@ -5401,7 +5399,7 @@ class EditableTextState extends State<EditableText>
 
   @override
   void performSelector(String selectorName) {
-    final Intent? intent = intentForMacOSSelector(selectorName);
+    final intent = intentForMacOSSelectorCallback?.call(selectorName) as Intent?;
 
     if (intent != null) {
       final BuildContext? primaryContext = primaryFocus?.context;

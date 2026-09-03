@@ -10,6 +10,7 @@ import 'package:flutter/src/foundation/platform.dart' show TargetPlatform, defau
 import 'package:flutter/src/painting/basic_types.dart' show AxisDirection;
 import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
 import 'package:flutter/src/services/text_input.dart' show SelectionChangedCause;
+import 'package:flutter/src/widgets/_windowing_callbacks.dart' show intentForMacOSSelectorCallback;
 import 'package:flutter/src/widgets/actions.dart' show DismissIntent, Intent;
 import 'package:flutter/src/widgets/focus_traversal.dart' show NextFocusIntent, PreviousFocusIntent;
 import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
@@ -1002,6 +1003,7 @@ class DefaultTextEditingShortcuts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    intentForMacOSSelectorCallback ??= (String name) => intentForMacOSSelector(name);
     Widget result = child;
     final Map<ShortcutActivator, Intent>? disablingShortcut = _getDisablingShortcut();
     if (disablingShortcut != null) {

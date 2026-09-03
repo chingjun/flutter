@@ -105,3 +105,17 @@ void Function(Object context, Object? value)? pageStorageWriteStateCallback;
 /// Set by `page_storage.dart`, called by `scroll_position.dart`.
 @internal
 Object? Function(Object context)? pageStorageReadStateCallback;
+
+/// A callback to perform accessibility evaluations and return formatted results.
+///
+/// Set by `_accessibility_evaluations.dart`, called by `binding.dart`.
+/// Takes the evaluation type, parameters, and the binding, and returns
+/// the formatted result map.
+@internal
+Future<Map<String, Object>> Function(String type, Map<String, String> parameters, Object binding)? performAccessibilityEvaluationCallback;
+
+/// A getter for the root element used by accessibility evaluations.
+///
+/// Set by `binding.dart`, used by `_accessibility_evaluations.dart`.
+@internal
+Object? Function()? accessibilityRootElementGetter;

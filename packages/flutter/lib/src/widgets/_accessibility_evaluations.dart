@@ -19,16 +19,67 @@ import 'package:flutter/src/rendering/object.dart' show RenderObject;
 import 'package:flutter/src/rendering/view.dart' show RenderView;
 import 'package:flutter/src/semantics/semantics.dart' show SemanticsData, SemanticsNode;
 import 'package:flutter/src/widgets/editable_text.dart' show EditableText;
+import 'package:flutter/src/widgets/_windowing_callbacks.dart' show accessibilityRootElementGetter, performAccessibilityEvaluationCallback;
 import 'package:flutter/src/widgets/framework.dart' show Element, Widget;
 import 'package:flutter/src/widgets/text.dart' show DefaultTextStyle, Text;
 import 'package:flutter/src/widgets/title.dart' show Title;
 import 'package:meta/meta.dart' show internal;
 import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
-/// A callback to obtain the root element, set by [WidgetsBinding] to break the
-/// import cycle between binding.dart and _accessibility_evaluations.dart.
+/// Performs an accessibility evaluation and returns formatted results.
+///
+/// This function is registered as the [performAccessibilityEvaluationCallback]
+/// to break the import cycle between binding.dart and this file.
 @internal
-Element? Function()? accessibilityRootElementGetter;
+Future<Map<String, Object>> performAccessibilityEvaluation(
+  String type,
+  Map<String, String> parameters,
+  Object binding,
+) async {
+  performAccessibilityEvaluationCallback ??= performAccessibilityEvaluation;
+
+  final RendererBinding rendererBinding = binding as RendererBinding;
+  switch (type) {
+    case 'MinimumTextContrastEvaluation':
+      if (parameters case {
+        'minNormalTextContrastRatio': final String minNormalTextContrastRatio,
+        'minLargeTextContrastRatio': final String minLargeTextContrastRatio,
+      }) {
+        final EvaluationResult result = await MinimumTextContrastEvaluation(
+          minNormalTextContrastRatio: double.parse(minNormalTextContrastRatio),
+          minLargeTextContrastRatio: double.parse(minLargeTextContrastRatio),
+        ).evaluate(rendererBinding);
+        return _formatEvaluationResult(result.violations);
+      }
+      throw Exception('Invalid arguments');
+    case 'MinimumTapTargetEvaluation':
+      if (parameters case {'targetSize': final String targetSize}) {
+        final EvaluationResult result = await MinimumTapTargetEvaluation(
+          size: Size.square(double.parse(targetSize)),
+        ).evaluate(rendererBinding);
+        return _formatEvaluationResult(result.violations);
+      }
+      throw Exception('Invalid arguments');
+    case 'LabeledTapTargetEvaluation':
+      final EvaluationResult result = await const LabeledTapTargetEvaluation().evaluate(
+        rendererBinding,
+      );
+      return _formatEvaluationResult(result.violations);
+    default:
+      throw Exception('unknown type: $type');
+  }
+}
+
+Map<String, Object> _formatEvaluationResult(List<Violation> violations) {
+  return <String, Object>{
+    'result': violations.map((Violation violation) {
+      return <String, String>{
+        'nodeId': violation.node.id.toString(),
+        'message': violation.reason,
+      };
+    }).toList(),
+  };
+}
 
 const String _kAccessibilityEvaluationsDisabledErrorMessage = '''
 Accessibility evaluations APIs are not enabled.
@@ -397,7 +448,7 @@ class MinimumTextContrastEvaluation extends _ContrastEvaluation {
     final violations = <Violation>[];
     final String text = data.label.isEmpty ? data.value : data.label;
     final Iterable<Element> elements = _collectElementsByText(
-      accessibilityRootElementGetter!()!,
+      accessibilityRootElementGetter!() as Element,
       text,
     );
     for (final element in elements) {
@@ -856,7 +907,7 @@ class TitleEvaluation extends AccessibilityEvaluation {
   FutureOr<EvaluationResult> _evaluate(RendererBinding binding) {
     final violations = <Violation>[];
 
-    final Element? rootElement = accessibilityRootElementGetter?.call();
+    final Element? rootElement = accessibilityRootElementGetter?.call() as Element?;
     if (rootElement != null && !_hasTitleWidget(rootElement)) {
       final SemanticsNode rootNode =
           binding.renderViews.first.owner!.semanticsOwner!.rootSemanticsNode!;

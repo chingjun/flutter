@@ -20,7 +20,7 @@ library;
 
 import 'dart:async';
 import 'dart:developer' as developer;
-import 'dart:ui' show AppExitResponse, AppLifecycleState, FrameTiming, Locale, Size, TimingsCallback, ViewFocusEvent;
+import 'dart:ui' show AppExitResponse, AppLifecycleState, FrameTiming, Locale, TimingsCallback, ViewFocusEvent;
 
 import 'package:flutter/src/foundation/_features.dart' show isWindowingEnabled;
 import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorHint, ErrorSummary, FlutterError, FlutterErrorDetails, PartialStackFrame, RepetitiveStackFrameFilter;
@@ -38,8 +38,7 @@ import 'package:flutter/src/services/message_codec.dart' show MethodCall, Missin
 import 'package:flutter/src/services/predictive_back_event.dart' show PredictiveBackEvent;
 import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
 import 'package:flutter/src/services/system_navigator.dart' show SystemNavigator;
-import 'package:flutter/src/widgets/_accessibility_evaluations.dart' show EvaluationResult, LabeledTapTargetEvaluation, MinimumTapTargetEvaluation, MinimumTextContrastEvaluation, Violation, accessibilityRootElementGetter;
-import 'package:flutter/src/widgets/_windowing_callbacks.dart' show createDefaultWindowingOwnerCallback, debugTransformDebugCreatorCallback, widgetInspectorInitServiceExtensionsCallback, widgetInspectorPerformReassembleCallback;
+import 'package:flutter/src/widgets/_windowing_callbacks.dart' show accessibilityRootElementGetter, createDefaultWindowingOwnerCallback, debugTransformDebugCreatorCallback, performAccessibilityEvaluationCallback, widgetInspectorInitServiceExtensionsCallback, widgetInspectorPerformReassembleCallback;
 import 'package:flutter/src/widgets/accessibility_inspector.dart' show AccessibilityInspector;
 import 'package:flutter/src/widgets/debug_flags.dart' show debugAllowBannerOverrideFlag, debugProfileBuildsEnabled, debugProfileBuildsEnabledUserWidgets, debugShowPerformanceOverlayOverride;
 import 'package:flutter/src/widgets/focus_manager.dart' show FocusManager;
@@ -866,35 +865,11 @@ mixin WidgetsBinding
             throw Exception('type parameter is required');
           }
 
-          switch (type) {
-            case 'MinimumTextContrastEvaluation':
-              if (parameters case {
-                'minNormalTextContrastRatio': final String minNormalTextContrastRatio,
-                'minLargeTextContrastRatio': final String minLargeTextContrastRatio,
-              }) {
-                final EvaluationResult result = await MinimumTextContrastEvaluation(
-                  minNormalTextContrastRatio: double.parse(minNormalTextContrastRatio),
-                  minLargeTextContrastRatio: double.parse(minLargeTextContrastRatio),
-                ).evaluate(this);
-                return _formatEvaluationResult(result.violations);
-              }
-              throw Exception('Invalid arguments');
-            case 'MinimumTapTargetEvaluation':
-              if (parameters case {'targetSize': final String targetSize}) {
-                final EvaluationResult result = await MinimumTapTargetEvaluation(
-                  size: Size.square(double.parse(targetSize)),
-                ).evaluate(this);
-                return _formatEvaluationResult(result.violations);
-              }
-              throw Exception('Invalid arguments');
-            case 'LabeledTapTargetEvaluation':
-              final EvaluationResult result = await const LabeledTapTargetEvaluation().evaluate(
-                this,
-              );
-              return _formatEvaluationResult(result.violations);
-            default:
-              throw Exception('unknown type: $type');
+          final Future<Map<String, Object>> Function(String, Map<String, String>, Object)? callback = performAccessibilityEvaluationCallback;
+          if (callback == null) {
+            throw Exception('Accessibility evaluations not available');
           }
+          return callback(type, parameters, this);
         },
       );
     }
@@ -916,17 +891,6 @@ mixin WidgetsBinding
 
       return true;
     }());
-  }
-
-  Map<String, List<Map<String, String>>> _formatEvaluationResult(List<Violation> violations) {
-    return <String, List<Map<String, String>>>{
-      'result': violations.map((Violation violation) {
-        return <String, String>{
-          'nodeId': violation.node.id.toString(),
-          'message': violation.reason,
-        };
-      }).toList(),
-    };
   }
 
   Future<void> _forceRebuild() {

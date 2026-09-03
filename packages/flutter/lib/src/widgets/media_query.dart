@@ -33,8 +33,7 @@ import 'package:flutter/src/painting/text_scaler.dart' show TextScaler;
 import 'package:flutter/src/widgets/basic.dart' show Builder;
 import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding, WidgetsBindingObserver;
 import 'package:flutter/src/widgets/debug.dart' show debugCheckHasMediaQuery;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
-import 'package:flutter/src/widgets/inherited_model.dart' show InheritedModel;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedModel, State, StatefulWidget, Widget;
 import 'package:meta/meta.dart' show immutable;
 
 // Examples can assume:

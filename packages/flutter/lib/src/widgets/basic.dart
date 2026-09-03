@@ -60,7 +60,6 @@ export 'package:flutter/rendering.dart'
         WrapCrossAlignment;
 export 'package:flutter/services.dart' show AssetBundle;
 export 'directionality.dart';
-export 'rich_text.dart';
 export 'basic_painting.dart';
 export 'basic_layout.dart';
 export 'basic_sliver.dart';

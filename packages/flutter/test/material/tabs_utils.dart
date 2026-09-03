@@ -14,10 +14,9 @@ import 'package:flutter/src/physics/spring_simulation.dart' show SpringDescripti
 import 'package:flutter/src/rendering/box.dart' show RenderBox;
 import 'package:flutter/src/rendering/paragraph.dart' show RenderParagraph;
 import 'package:flutter/src/scheduler/ticker.dart' show TickerProvider;
-import 'package:flutter/src/widgets/automatic_keep_alive.dart' show AutomaticKeepAliveClientMixin;
 import 'package:flutter/src/widgets/basic.dart' show Center;
 import 'package:flutter/src/widgets/container.dart' show Container;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/framework.dart' show AutomaticKeepAliveClientMixin, BuildContext, State, StatefulWidget, Widget;
 import 'package:flutter/src/widgets/scroll_metrics.dart' show ScrollMetrics;
 import 'package:flutter/src/widgets/scroll_physics.dart' show ScrollPhysics;
 import 'package:flutter/src/widgets/text.dart' show Text;

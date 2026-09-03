@@ -4,11 +4,10 @@
 
 import 'dart:ui' show TextDirection, VoidCallback;
 
-import 'package:flutter/src/services/restoration.dart' show RestorationBucket;
 import 'package:flutter/src/widgets/editable_text.dart' show TextEditingController;
+import 'package:flutter/src/widgets/restoration.dart' show RestorableProperty, RestorableValue, RestorationBucket, RestorationMixin, RootRestorationScope;
 import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
-import 'package:flutter/src/widgets/restoration.dart' show RestorableProperty, RestorationMixin, RootRestorationScope;
-import 'package:flutter/src/widgets/restoration_properties.dart' show RestorableBool, RestorableBoolN, RestorableDateTime, RestorableDateTimeN, RestorableDouble, RestorableDoubleN, RestorableEnum, RestorableEnumN, RestorableInt, RestorableIntN, RestorableNum, RestorableNumN, RestorableString, RestorableStringN, RestorableTextEditingController, RestorableValue;
+import 'package:flutter/src/widgets/restoration_properties.dart' show RestorableBool, RestorableBoolN, RestorableDateTime, RestorableDateTimeN, RestorableDouble, RestorableDoubleN, RestorableEnum, RestorableEnumN, RestorableInt, RestorableIntN, RestorableNum, RestorableNumN, RestorableString, RestorableStringN, RestorableTextEditingController;
 import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:leak_tracker_flutter_testing/leak_tracker_flutter_testing.dart';

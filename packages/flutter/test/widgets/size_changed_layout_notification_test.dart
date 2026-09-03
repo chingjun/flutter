@@ -5,7 +5,7 @@
 import 'dart:ui' show Size;
 
 import 'package:flutter/src/widgets/basic.dart' show Center, SizedBox;
-import 'package:flutter/src/widgets/notification_listener.dart' show LayoutChangedNotification, NotificationListener;
+import 'package:flutter/src/widgets/framework.dart' show LayoutChangedNotification, NotificationListener;
 import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
 import 'package:flutter/src/widgets/size_changed_layout_notifier.dart' show SizeChangedLayoutNotification, SizeChangedLayoutNotifier;
 import 'package:flutter_test/flutter_test.dart';

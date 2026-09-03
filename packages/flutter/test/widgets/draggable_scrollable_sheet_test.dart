@@ -14,9 +14,8 @@ import 'package:flutter/src/widgets/animated_switcher.dart' show AnimatedSwitche
 import 'package:flutter/src/widgets/basic.dart' show Align, ColoredBox, Column, Directionality, Padding, SizedBox, Stack, StatefulBuilder;
 import 'package:flutter/src/widgets/container.dart' show Container;
 import 'package:flutter/src/widgets/draggable_scrollable_sheet.dart' show DraggableScrollableActuator, DraggableScrollableController, DraggableScrollableNotification, DraggableScrollableSheet;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, StateSetter, Widget;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, NotificationListener, NotificationListenerCallback, StateSetter, Widget;
 import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
-import 'package:flutter/src/widgets/notification_listener.dart' show NotificationListener, NotificationListenerCallback;
 import 'package:flutter/src/widgets/primary_scroll_controller.dart' show PrimaryScrollController;
 import 'package:flutter/src/widgets/scroll_configuration.dart' show ScrollBehavior, ScrollConfiguration;
 import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;

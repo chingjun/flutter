@@ -12,10 +12,9 @@ import 'package:flutter/src/gestures/monodrag.dart' show GestureVelocityTrackerB
 import 'package:flutter/src/gestures/velocity_tracker.dart' show VelocityTracker;
 import 'package:flutter/src/painting/alignment.dart' show Alignment;
 import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
-import 'package:flutter/src/widgets/automatic_keep_alive.dart' show AutomaticKeepAliveClientMixin;
 import 'package:flutter/src/widgets/basic.dart' show Align, Center, Column, Directionality, Expanded, Padding, Row, SizedBox;
 import 'package:flutter/src/widgets/container.dart' show Container;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
+import 'package:flutter/src/widgets/framework.dart' show AutomaticKeepAliveClientMixin, BuildContext, State, StatefulWidget, Widget;
 import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
 import 'package:flutter/src/widgets/page_view.dart' show PageController, PageView;
 import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;

@@ -83,7 +83,7 @@ import 'package:flutter/src/widgets/default_selection_style.dart' show DefaultSe
 import 'package:flutter/src/widgets/editable_text.dart' show ContentInsertionConfiguration, EditableText, EditableTextState, TextEditingController, ToolbarOptions;
 import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode, FocusScopeNode;
 import 'package:flutter/src/widgets/focus_scope.dart' show Focus, FocusScope;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, GlobalKey, SingleChildRenderObjectWidget, State, StateSetter, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, GlobalKey, LayoutChangedNotification, NotificationListener, SingleChildRenderObjectWidget, State, StateSetter, StatefulWidget, StatelessWidget, Widget;
 import 'package:flutter/src/widgets/gesture_detector.dart' show GestureRecognizerFactory, RawGestureDetector;
 import 'package:flutter/src/widgets/magnifier.dart' show MagnifierController, MagnifierInfo, TextMagnifierConfiguration;
 import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
@@ -98,7 +98,6 @@ import 'package:flutter/src/widgets/scroll_view.dart' show CustomScrollView, Lis
 import 'package:flutter/src/widgets/scrollable.dart' show Scrollable;
 import 'package:flutter/src/widgets/shortcuts.dart' show Shortcuts, SingleActivator;
 import 'package:flutter/src/widgets/single_child_scroll_view.dart' show SingleChildScrollView;
-import 'package:flutter/src/widgets/notification_listener.dart' show LayoutChangedNotification, NotificationListener;
 import 'package:flutter/src/widgets/sliver.dart' show SliverMainAxisGroup;
 import 'package:flutter/src/widgets/spell_check.dart' show SpellCheckConfiguration;
 import 'package:flutter/src/widgets/text.dart' show DefaultTextHeightBehavior, Text;

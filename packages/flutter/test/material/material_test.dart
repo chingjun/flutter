@@ -39,9 +39,8 @@ import 'package:flutter/src/rendering/proxy_box.dart' show RenderClipPath, Rende
 import 'package:flutter/src/services/system_chrome.dart' show SystemChrome, SystemUiOverlayStyle;
 import 'package:flutter/src/widgets/basic.dart' show Builder, Center, Column, CustomPaint, Directionality, Expanded, Offstage, PhysicalShape, RepaintBoundary, SizedBox, Stack;
 import 'package:flutter/src/widgets/container.dart' show Container;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, GlobalKey, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, GlobalKey, LayoutChangedNotification, StatelessWidget, Widget;
 import 'package:flutter/src/widgets/lookup_boundary.dart' show LookupBoundary;
-import 'package:flutter/src/widgets/notification_listener.dart' show LayoutChangedNotification;
 import 'package:flutter/src/widgets/scroll_view.dart' show ListView;
 import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter/src/widgets/view.dart' show View, ViewAnchor;

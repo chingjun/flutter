@@ -5,9 +5,8 @@
 import 'dart:ui' show TextDirection;
 
 import 'package:flutter/src/foundation/key.dart' show Key, UniqueKey, ValueKey;
-import 'package:flutter/src/widgets/automatic_keep_alive.dart' show AutomaticKeepAliveClientMixin;
 import 'package:flutter/src/widgets/basic.dart' show Center, Directionality, SizedBox;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/framework.dart' show AutomaticKeepAliveClientMixin, BuildContext, GlobalKey, State, StatefulWidget, StatelessWidget, Widget;
 import 'package:flutter/src/widgets/scroll_delegate.dart' show SliverChildBuilderDelegate, SliverChildListDelegate;
 import 'package:flutter/src/widgets/scroll_view.dart' show CustomScrollView;
 import 'package:flutter/src/widgets/sliver.dart' show SliverList;

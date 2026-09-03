@@ -37,7 +37,7 @@ import 'package:flutter/src/rendering/object.dart' show RenderObject;
 import 'package:flutter/src/rendering/paragraph.dart' show RenderParagraph;
 import 'package:flutter/src/semantics/semantics.dart' show SemanticsNode;
 import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
-import 'package:flutter/src/services/restoration.dart' show RestorationBucket;
+import 'package:flutter/src/services/restoration.dart' show RestorationBucket, RestorationMixin;
 import 'package:flutter/src/widgets/basic.dart' show Builder, Center, CustomPaint, Directionality, Row, Semantics, SizedBox;
 import 'package:flutter/src/widgets/container.dart' show Container;
 import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
@@ -46,7 +46,7 @@ import 'package:flutter/src/widgets/localizations.dart' show Localizations, Loca
 import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData, Orientation;
 import 'package:flutter/src/widgets/modal_barrier.dart' show ModalBarrier;
 import 'package:flutter/src/widgets/navigator.dart' show Navigator, NavigatorObserver, NavigatorState, RestorableRouteFuture, Route, RouteSettings;
-import 'package:flutter/src/widgets/restoration.dart' show RestorationMixin;
+import 'package:flutter/src/widgets/restoration.dart' show RestorationBucket, RestorationMixin;
 import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';

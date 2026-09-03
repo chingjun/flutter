@@ -24,11 +24,10 @@ import 'package:flutter/src/widgets/editable_text.dart' show TextEditingControll
 import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode, FocusScopeNode;
 import 'package:flutter/src/widgets/focus_scope.dart' show Focus, FocusScope;
 import 'package:flutter/src/widgets/focus_traversal.dart' show TraversalEdgeBehavior;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, GlobalKey, State, StatefulElement, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, GlobalKey, NotificationListener, State, StatefulElement, StatefulWidget, StatelessWidget, Widget;
 import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
 import 'package:flutter/src/widgets/modal_barrier.dart' show AnimatedModalBarrier, ModalBarrier;
 import 'package:flutter/src/widgets/navigator.dart' show NavigationNotification, Navigator, NavigatorObserver, NavigatorState, Route, RoutePopDisposition, RouteSettings;
-import 'package:flutter/src/widgets/notification_listener.dart' show NotificationListener;
 import 'package:flutter/src/widgets/overlay.dart' show OverlayEntry;
 import 'package:flutter/src/widgets/pages.dart' show PageRoute, PageRouteBuilder;
 import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;

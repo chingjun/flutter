@@ -4,7 +4,6 @@
 
 import 'package:flutter/src/foundation/basic_types.dart' show ValueChanged;
 import 'package:flutter/src/widgets/basic.dart' show Semantics, SizedBox;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
 
 /// A minimal slider widget for widget tests that exposes increase/decrease
 /// semantics, avoiding a dependency on the Material library.
@@ -13,6 +12,7 @@ import 'package:flutter/src/widgets/framework.dart' show BuildContext, Stateless
 /// action moves the value by 10%, clamped to [0.0, 1.0].
 ///
 /// See https://github.com/flutter/flutter/issues/177028.
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
 class TestSlider extends StatelessWidget {
   const TestSlider({super.key, required this.value, required this.onChanged});
 

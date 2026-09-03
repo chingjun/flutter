@@ -5,10 +5,10 @@
 import 'package:flutter/src/material/app.dart' show MaterialApp;
 import 'package:flutter/src/material/material.dart' show Material;
 import 'package:flutter/src/material/text_field.dart' show TextField;
-import 'package:flutter/src/services/restoration.dart' show RestorationBucket;
+import 'package:flutter/src/services/restoration.dart' show RestorationBucket, RestorationMixin;
 import 'package:flutter/src/widgets/basic.dart' show Align, SizedBox;
+import 'package:flutter/src/widgets/restoration.dart' show RestorationBucket, RestorationMixin;
 import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
-import 'package:flutter/src/widgets/restoration.dart' show RestorationMixin;
 import 'package:flutter/src/widgets/restoration_properties.dart' show RestorableTextEditingController;
 import 'package:flutter/src/widgets/scrollable.dart' show Scrollable, ScrollableState;
 import 'package:flutter_test/flutter_test.dart';

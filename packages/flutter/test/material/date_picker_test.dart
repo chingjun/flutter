@@ -38,7 +38,7 @@ import 'package:flutter/src/painting/text_scaler.dart' show TextScaler;
 import 'package:flutter/src/semantics/semantics.dart' show SemanticsData, SemanticsNode;
 import 'package:flutter/src/services/clipboard.dart' show Clipboard, ClipboardData;
 import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
-import 'package:flutter/src/services/restoration.dart' show RestorationBucket;
+import 'package:flutter/src/services/restoration.dart' show RestorationBucket, RestorationMixin;
 import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
 import 'package:flutter/src/services/text_input.dart' show TextInputType;
 import 'package:flutter/src/widgets/basic.dart' show Builder, Center, Column, Directionality, SizedBox;
@@ -52,7 +52,7 @@ import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQuer
 import 'package:flutter/src/widgets/modal_barrier.dart' show ModalBarrier;
 import 'package:flutter/src/widgets/navigator.dart' show Navigator, NavigatorObserver, NavigatorState, RestorableRouteFuture, Route, RouteSettings;
 import 'package:flutter/src/widgets/page_view.dart' show PageView;
-import 'package:flutter/src/widgets/restoration.dart' show RestorationMixin;
+import 'package:flutter/src/widgets/restoration.dart' show RestorationBucket, RestorationMixin;
 import 'package:flutter/src/widgets/restoration_properties.dart' show RestorableDateTime;
 import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';

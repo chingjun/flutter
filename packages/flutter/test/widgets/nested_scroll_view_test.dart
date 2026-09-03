@@ -35,11 +35,10 @@ import 'package:flutter/src/rendering/viewport_offset.dart' show ScrollDirection
 import 'package:flutter/src/widgets/basic.dart' show Builder, Center, ClipRect, Directionality, Padding, SizedBox, SliverPadding, SliverToBoxAdapter, StatefulBuilder;
 import 'package:flutter/src/widgets/container.dart' show Container;
 import 'package:flutter/src/widgets/focus_scope.dart' show Focus;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, StateSetter, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, NotificationListener, StateSetter, StatelessWidget, Widget;
 import 'package:flutter/src/widgets/localizations.dart' show DefaultWidgetsLocalizations, Localizations, LocalizationsDelegate;
 import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
 import 'package:flutter/src/widgets/nested_scroll_view.dart' show NestedScrollView, NestedScrollViewState, RenderNestedScrollViewViewport, RenderSliverOverlapAbsorber, SliverOverlapAbsorber, SliverOverlapAbsorberHandle, SliverOverlapInjector;
-import 'package:flutter/src/widgets/notification_listener.dart' show NotificationListener;
 import 'package:flutter/src/widgets/page_storage.dart' show PageStorageKey;
 import 'package:flutter/src/widgets/page_view.dart' show PageView;
 import 'package:flutter/src/widgets/pinned_header_sliver.dart' show PinnedHeaderSliver;

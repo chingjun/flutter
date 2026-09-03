@@ -2,11 +2,11 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/src/services/restoration.dart' show RestorationBucket;
+import 'package:flutter/src/services/restoration.dart' show RestorationBucket, RestorationScope;
 import 'package:flutter/src/widgets/container.dart' show Container;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
-import 'package:flutter/src/widgets/restoration.dart' show RestorationScope;
+import 'package:flutter/src/widgets/restoration.dart' show RestorationBucket, RestorationScope;
 
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
 export '../services/restoration.dart';
 
 class BucketSpy extends StatefulWidget {

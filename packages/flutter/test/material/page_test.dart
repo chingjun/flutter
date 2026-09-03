@@ -28,7 +28,7 @@ import 'package:flutter/src/painting/edge_insets.dart' show EdgeInsets;
 import 'package:flutter/src/rendering/layer.dart' show Layer, OffsetLayer, OpacityLayer, PictureLayer, TransformLayer;
 import 'package:flutter/src/rendering/proxy_box.dart' show RenderDecoratedBox;
 import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
-import 'package:flutter/src/services/restoration.dart' show RestorationBucket;
+import 'package:flutter/src/services/restoration.dart' show RestorationBucket, RestorationMixin, RootRestorationScope;
 import 'package:flutter/src/widgets/basic.dart' show Builder, Center, Column, Directionality, Padding, RepaintBoundary, SizedBox;
 import 'package:flutter/src/widgets/container.dart' show Container;
 import 'package:flutter/src/widgets/focus_manager.dart' show FocusScopeNode;
@@ -41,7 +41,7 @@ import 'package:flutter/src/widgets/navigator.dart' show DefaultTransitionDelega
 import 'package:flutter/src/widgets/page_transitions_builder.dart' show FadeUpwardsPageTransitionsBuilder, PageTransitionsBuilder;
 import 'package:flutter/src/widgets/pages.dart' show PageRouteBuilder;
 import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
-import 'package:flutter/src/widgets/restoration.dart' show RestorationMixin, RootRestorationScope;
+import 'package:flutter/src/widgets/restoration.dart' show RestorationBucket, RestorationMixin, RootRestorationScope;
 import 'package:flutter/src/widgets/restoration_properties.dart' show RestorableInt;
 import 'package:flutter/src/widgets/snapshot_widget.dart' show SnapshotWidget;
 import 'package:flutter/src/widgets/text.dart' show Text;

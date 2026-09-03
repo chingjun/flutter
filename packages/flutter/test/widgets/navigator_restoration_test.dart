@@ -5,14 +5,14 @@
 import 'dart:ui' show TextDirection;
 
 import 'package:flutter/src/foundation/key.dart' show ValueKey;
-import 'package:flutter/src/services/restoration.dart' show RestorationBucket;
+import 'package:flutter/src/services/restoration.dart' show RestorationBucket, RestorationMixin, RootRestorationScope;
 import 'package:flutter/src/widgets/basic.dart' show Center, Column, Directionality;
 import 'package:flutter/src/widgets/container.dart' show Container;
 import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, State, StatefulElement, StatefulWidget, StatelessWidget, Widget, WidgetBuilder;
 import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
 import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
 import 'package:flutter/src/widgets/navigator.dart' show Navigator, NavigatorState, Page, RestorableRouteFuture, Route, RouteSettings;
-import 'package:flutter/src/widgets/restoration.dart' show RestorationMixin, RootRestorationScope;
+import 'package:flutter/src/widgets/restoration.dart' show RestorationBucket, RestorationMixin, RootRestorationScope;
 import 'package:flutter/src/widgets/restoration_properties.dart' show RestorableInt, RestorableString;
 import 'package:flutter/src/widgets/routes.dart' show ModalRoute;
 import 'package:flutter/src/widgets/text.dart' show Text;

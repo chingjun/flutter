@@ -4,11 +4,11 @@
 
 import 'dart:ui' show TextDirection;
 
-import 'package:flutter/src/services/restoration.dart' show RestorationBucket;
+import 'package:flutter/src/services/restoration.dart' show RestorationBucket, RestorationMixin, RootRestorationScope;
 import 'package:flutter/src/widgets/basic.dart' show Directionality;
 import 'package:flutter/src/widgets/framework.dart' show BuildContext, State, StatefulWidget, Widget;
 import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
-import 'package:flutter/src/widgets/restoration.dart' show RestorationMixin, RootRestorationScope;
+import 'package:flutter/src/widgets/restoration.dart' show RestorationBucket, RestorationMixin, RootRestorationScope;
 import 'package:flutter/src/widgets/restoration_properties.dart' show RestorableBool, RestorableInt;
 import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';

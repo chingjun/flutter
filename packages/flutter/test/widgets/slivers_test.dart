@@ -17,10 +17,9 @@ import 'package:flutter/src/rendering/sliver_fixed_extent_list.dart' show Render
 import 'package:flutter/src/rendering/sliver_grid.dart' show SliverGridDelegate, SliverGridDelegateWithFixedCrossAxisCount, SliverGridDelegateWithMaxCrossAxisExtent, SliverGridGeometry, SliverGridLayout;
 import 'package:flutter/src/rendering/viewport.dart' show RenderViewport;
 import 'package:flutter/src/rendering/viewport_offset.dart' show ViewportOffset;
-import 'package:flutter/src/widgets/automatic_keep_alive.dart' show AutomaticKeepAliveClientMixin;
 import 'package:flutter/src/widgets/basic.dart' show Align, Center, ColoredBox, Directionality, IndexedSemantics, KeyedSubtree, Padding, SizedBox, SliverToBoxAdapter;
 import 'package:flutter/src/widgets/container.dart' show Container;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, ErrorWidget, ErrorWidgetBuilder, State, StatefulWidget, StatelessWidget, Widget;
+import 'package:flutter/src/widgets/framework.dart' show AutomaticKeepAliveClientMixin, BuildContext, ErrorWidget, ErrorWidgetBuilder, State, StatefulWidget, StatelessWidget, Widget;
 import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
 import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
 import 'package:flutter/src/widgets/scroll_delegate.dart' show SliverChildBuilderDelegate, SliverChildListDelegate;

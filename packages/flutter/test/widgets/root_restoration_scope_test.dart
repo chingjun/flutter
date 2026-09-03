@@ -7,10 +7,10 @@ import 'dart:ui' show TextDirection;
 
 import 'package:flutter/src/foundation/key.dart' show Key;
 import 'package:flutter/src/foundation/synchronous_future.dart' show SynchronousFuture;
-import 'package:flutter/src/services/restoration.dart' show RestorationBucket;
+import 'package:flutter/src/services/restoration.dart' show RestorationBucket, RootRestorationScope, UnmanagedRestorationScope;
 import 'package:flutter/src/widgets/basic.dart' show Directionality;
+import 'package:flutter/src/widgets/restoration.dart' show RestorationBucket, RootRestorationScope, UnmanagedRestorationScope;
 import 'package:flutter/src/widgets/framework.dart' show GlobalKey;
-import 'package:flutter/src/widgets/restoration.dart' show RootRestorationScope, UnmanagedRestorationScope;
 import 'package:flutter/src/widgets/text.dart' show Text;
 import 'package:flutter_test/flutter_test.dart';
 

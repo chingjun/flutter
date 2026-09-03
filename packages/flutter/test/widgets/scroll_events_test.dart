@@ -6,8 +6,7 @@ import 'dart:async';
 
 import 'package:flutter/src/animation/curves.dart' show Curves;
 import 'package:flutter/src/widgets/basic.dart' show SizedBox;
-import 'package:flutter/src/widgets/framework.dart' show Widget;
-import 'package:flutter/src/widgets/notification_listener.dart' show NotificationListener;
+import 'package:flutter/src/widgets/framework.dart' show NotificationListener, Widget;
 import 'package:flutter/src/widgets/scroll_notification.dart' show ScrollEndNotification, ScrollNotification, ScrollStartNotification, ScrollUpdateNotification;
 import 'package:flutter/src/widgets/scrollable.dart' show Scrollable, ScrollableState;
 import 'package:flutter/src/widgets/single_child_scroll_view.dart' show SingleChildScrollView;

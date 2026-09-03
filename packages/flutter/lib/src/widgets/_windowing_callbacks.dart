@@ -87,3 +87,21 @@ void Function(Object registerServiceExtensionFn)? widgetInspectorInitServiceExte
 /// Set by `widget_inspector.dart`, called by `binding.dart`.
 @internal
 void Function()? widgetInspectorPerformReassembleCallback;
+
+/// A callback to build a [GlowingOverscrollIndicator] widget.
+///
+/// Set by `overscroll_indicator.dart`, called by `scroll_configuration.dart`.
+@internal
+Object Function({required Object axisDirection, required Object color, required Object child})? buildGlowingOverscrollIndicatorCallback;
+
+/// A callback to write scroll state to page storage.
+///
+/// Set by `page_storage.dart`, called by `scroll_position.dart`.
+@internal
+void Function(Object context, Object? value)? pageStorageWriteStateCallback;
+
+/// A callback to read scroll state from page storage.
+///
+/// Set by `page_storage.dart`, called by `scroll_position.dart`.
+@internal
+Object? Function(Object context)? pageStorageReadStateCallback;

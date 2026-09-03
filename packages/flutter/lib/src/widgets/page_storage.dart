@@ -15,6 +15,7 @@ library;
 import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
 import 'package:flutter/src/foundation/collections.dart' show listEquals;
 import 'package:flutter/src/foundation/key.dart' show Key, ValueKey;
+import 'package:flutter/src/widgets/_windowing_callbacks.dart' show pageStorageReadStateCallback, pageStorageWriteStateCallback;
 import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, StatelessWidget, Widget;
 import 'package:meta/meta.dart' show immutable;
 
@@ -242,5 +243,15 @@ class PageStorage extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) => child;
+  Widget build(BuildContext context) {
+    pageStorageWriteStateCallback ??= (Object ctx, Object? value) {
+      final context = ctx as BuildContext;
+      PageStorage.maybeOf(context)?.writeState(context, value);
+    };
+    pageStorageReadStateCallback ??= (Object ctx) {
+      final context = ctx as BuildContext;
+      return PageStorage.maybeOf(context)?.readState(context);
+    };
+    return child;
+  }
 }

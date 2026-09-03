@@ -30,9 +30,9 @@ import 'package:flutter/src/rendering/object.dart' show RenderObject;
 import 'package:flutter/src/rendering/viewport.dart' show RenderAbstractViewport;
 import 'package:flutter/src/rendering/viewport_offset.dart' show ScrollDirection, ViewportOffset;
 import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding, SchedulerPhase;
+import 'package:flutter/src/widgets/_windowing_callbacks.dart' show pageStorageReadStateCallback, pageStorageWriteStateCallback;
 import 'package:flutter/src/widgets/framework.dart' show BuildContext;
 import 'package:flutter/src/widgets/notification_core.dart' show Notification;
-import 'package:flutter/src/widgets/page_storage.dart' show PageStorage;
 import 'package:flutter/src/widgets/scroll_activity.dart' show ScrollActivity, ScrollHoldController;
 import 'package:flutter/src/widgets/scroll_context.dart' show ScrollContext;
 import 'package:flutter/src/widgets/scroll_metrics.dart' show ScrollMetrics;
@@ -522,7 +522,7 @@ abstract class ScrollPosition extends ViewportOffset with ScrollMetrics {
   // TODO(goderbauer): Deprecate this when state restoration supports all features of PageStorage.
   @protected
   void saveScrollOffset() {
-    PageStorage.maybeOf(context.storageContext)?.writeState(context.storageContext, pixels);
+    pageStorageWriteStateCallback?.call(context.storageContext, pixels);
   }
 
   /// Called whenever the [ScrollPosition] is created, to restore the scroll
@@ -545,7 +545,7 @@ abstract class ScrollPosition extends ViewportOffset with ScrollMetrics {
   void restoreScrollOffset() {
     if (!hasPixels) {
       final value =
-          PageStorage.maybeOf(context.storageContext)?.readState(context.storageContext) as double?;
+          pageStorageReadStateCallback?.call(context.storageContext) as double?;
       if (value != null) {
         correctPixels(value);
       }

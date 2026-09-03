@@ -22,6 +22,7 @@ import 'package:flutter/src/gestures/recognizer.dart' show MultitouchDragStrateg
 import 'package:flutter/src/gestures/velocity_tracker.dart' show IOSScrollViewFlingVelocityTracker, MacOSScrollViewFlingVelocityTracker, VelocityTracker;
 import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
 import 'package:flutter/src/widgets/_windowing_callbacks.dart' show buildGlowingOverscrollIndicatorCallback, buildRawScrollbarCallback;
+import 'package:flutter/src/widgets_internal/scroll_behavior_registration.dart' show registerScrollBehaviorCallbacks;
 import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedWidget, Widget;
 import 'package:flutter/src/widgets/scroll_physics.dart' show BouncingScrollPhysics, ClampingScrollPhysics, RangeMaintainingScrollPhysics, ScrollDecelerationRate, ScrollPhysics;
 import 'package:flutter/src/widgets/scrollable_helpers.dart' show ScrollableDetails;
@@ -37,6 +38,14 @@ enum ScrollViewKeyboardDismissBehavior {
   /// `onDrag` means that the [ScrollView] will dismiss an on-screen keyboard
   /// when a drag begins.
   onDrag,
+}
+
+bool _callbacksRegistered = false;
+void _ensureCallbacksRegistered() {
+  if (!_callbacksRegistered) {
+    _callbacksRegistered = true;
+    registerScrollBehaviorCallbacks();
+  }
 }
 
 const Color _kDefaultGlowColor = Color(0xFFFFFFFF);
@@ -176,6 +185,7 @@ class ScrollBehavior {
   Widget buildScrollbar(BuildContext context, Widget child, ScrollableDetails details) {
     // When modifying this function, consider modifying the implementation in
     // the Material and Cupertino subclasses as well.
+    _ensureCallbacksRegistered();
     switch (getPlatform(context)) {
       case TargetPlatform.linux:
       case TargetPlatform.macOS:
@@ -196,6 +206,7 @@ class ScrollBehavior {
   Widget buildOverscrollIndicator(BuildContext context, Widget child, ScrollableDetails details) {
     // When modifying this function, consider modifying the implementation in
     // the Material and Cupertino subclasses as well.
+    _ensureCallbacksRegistered();
     switch (getPlatform(context)) {
       case TargetPlatform.iOS:
       case TargetPlatform.linux:

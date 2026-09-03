@@ -29,7 +29,6 @@ from typing import Dict, List, Set, Tuple
 
 # Default path to all_imports.csv in packages/flutter
 DEFAULT_CSV_PATHS = [
-    "/usr/local/google/home/chingjun/test/flutter-4/packages/flutter/all_imports.csv",
     os.path.join(os.path.dirname(os.path.abspath(__file__)), "all_imports.csv"),
     os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "packages", "flutter", "all_imports.csv"),
     os.path.join(os.getcwd(), "packages", "flutter", "all_imports.csv"),

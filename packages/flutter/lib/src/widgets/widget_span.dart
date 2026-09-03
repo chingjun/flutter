@@ -21,7 +21,7 @@ import 'package:flutter/src/rendering/object.dart' show PaintingContext, RenderO
 import 'package:flutter/src/rendering/paragraph.dart' show PlaceholderSpanIndexSemanticsTag, TextParentData;
 import 'package:flutter/src/widgets/basic.dart' show Semantics;
 import 'package:flutter/src/widgets/framework.dart' show BuildContext, ParentDataWidget, SingleChildRenderObjectWidget, Widget;
-import 'package:flutter/src/widgets/rich_text.dart' show RichText;
+
 import 'package:meta/meta.dart' show immutable;
 import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
@@ -304,7 +304,12 @@ class _WidgetSpanParentData extends ParentDataWidget<TextParentData> {
   }
 
   @override
-  Type get debugTypicalAncestorWidgetClass => RichText;
+  // The actual ancestor type is RichText, but we avoid importing rich_text.dart
+  // to prevent a dependency cycle.
+  Type get debugTypicalAncestorWidgetClass => Object;
+
+  @override
+  String get debugTypicalAncestorWidgetDescription => 'RichText';
 }
 
 // A RenderObjectWidget that automatically applies text scaling on inline

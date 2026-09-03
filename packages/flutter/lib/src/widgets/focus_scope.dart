@@ -26,7 +26,7 @@ import 'package:flutter/src/rendering/proxy_box.dart' show DecorationPosition;
 import 'package:flutter/src/widgets/basic.dart' show Semantics;
 import 'package:flutter/src/widgets/container.dart' show DecoratedBox;
 import 'package:flutter/src/widgets/debug_flags.dart' show debugPaintFocusBoxes;
-import 'package:flutter/src/widgets/focus_manager.dart' show FocusAttachment, FocusNode, FocusOnKeyCallback, FocusOnKeyEventCallback, FocusScopeNode;
+import 'package:flutter/src/widgets/focus_manager.dart' show FocusAttachment, FocusManager, FocusNode, FocusOnKeyCallback, FocusOnKeyEventCallback, FocusScopeNode;
 import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedNotifier, State, StatefulWidget, StatelessWidget, Widget;
 import 'package:flutter/src/widgets/transitions.dart' show ListenableBuilder;
 
@@ -853,7 +853,7 @@ class FocusScope extends Focus {
           scopeOk: true,
           createDependency: createDependency,
         )?.nearestScope ??
-        context.owner!.focusManager.rootScope;
+        (context.owner!.focusManager as FocusManager).rootScope;
   }
 
   @override

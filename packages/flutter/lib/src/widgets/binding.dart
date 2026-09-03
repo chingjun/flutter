@@ -576,7 +576,10 @@ mixin WidgetsBinding
     // Initialization of [_buildOwner] has to be done after
     // [super.initInstances] is called, as it requires [ServicesBinding] to
     // properly setup the [defaultBinaryMessenger] instance.
+    // Set up the focus manager factory before creating the BuildOwner.
+    BuildOwner.focusManagerFactory ??= () => FocusManager()..registerGlobalHandlers();
     _buildOwner = BuildOwner();
+    BuildOwner.defaultBuildOwner = _buildOwner;
     buildOwner!.onBuildScheduled = _handleBuildScheduled;
     platformDispatcher.onLocaleChanged = handleLocaleChanged;
     SystemChannels.navigation.setMethodCallHandler(_handleNavigationInvocation);
@@ -921,7 +924,7 @@ mixin WidgetsBinding
   /// the [FocusScopeNode] for a given [BuildContext].
   ///
   /// See [FocusManager] for more details.
-  FocusManager get focusManager => _buildOwner!.focusManager;
+  FocusManager get focusManager => _buildOwner!.focusManager as FocusManager;
 
   /// A delegate that communicates with a platform plugin for serializing and
   /// managing platform-rendered menu bars created by [PlatformMenuBar].

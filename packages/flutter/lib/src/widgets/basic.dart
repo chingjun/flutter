@@ -50,8 +50,8 @@ import 'package:flutter/src/semantics/semantics.dart' show AccessibilityFocusBlo
 import 'package:flutter/src/services/asset_bundle.dart' show AssetBundle, rootBundle;
 import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor;
 import 'package:flutter/src/services/mouse_tracking.dart' show PointerEnterEventListener, PointerExitEventListener, PointerHoverEventListener;
-import 'package:flutter/src/widgets/debug.dart' show debugCheckHasDirectionality;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, ElementVisitor, GlobalObjectKey, InheritedElement, InheritedWidget, LeafRenderObjectWidget, MultiChildRenderObjectWidget, ParentDataWidget, SingleChildRenderObjectElement, SingleChildRenderObjectWidget, State, StateSetter, StatefulWidget, StatelessWidget, Widget, WidgetBuilder, debugItemsHaveDuplicateKeys;
+import 'package:flutter/src/widgets/directionality.dart' show Directionality, debugCheckHasDirectionality;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, ElementVisitor, GlobalObjectKey, InheritedWidget, LeafRenderObjectWidget, MultiChildRenderObjectWidget, ParentDataWidget, SingleChildRenderObjectElement, SingleChildRenderObjectWidget, State, StateSetter, StatefulWidget, StatelessWidget, Widget, WidgetBuilder, debugItemsHaveDuplicateKeys;
 import 'package:meta/meta.dart' show immutable, protected;
 import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
@@ -106,6 +106,7 @@ export 'package:flutter/rendering.dart'
         WrapAlignment,
         WrapCrossAlignment;
 export 'package:flutter/services.dart' show AssetBundle;
+export 'directionality.dart';
 export 'rich_text.dart';
 
 // Examples can assume:
@@ -115,148 +116,6 @@ export 'rich_text.dart';
 // class Sky extends CustomPainter { @override void paint(Canvas c, Size s) {} @override bool shouldRepaint(Sky s) => false; }
 // late BuildContext context;
 // String userAvatarUrl = '';
-
-// BIDIRECTIONAL TEXT SUPPORT
-
-/// An [InheritedElement] that has hundreds of dependencies but will
-/// infrequently change. This provides a performance tradeoff where building
-/// the [Widget]s is faster but performing updates is slower.
-///
-/// |                     | _UbiquitousInheritedElement | InheritedElement |
-/// |---------------------|------------------------------|------------------|
-/// | insert (best case)  | O(1)                         | O(1)             |
-/// | insert (worst case) | O(1)                         | O(n)             |
-/// | search (best case)  | O(n)                         | O(1)             |
-/// | search (worst case) | O(n)                         | O(n)             |
-///
-/// Insert happens when building the [Widget] tree, search happens when updating
-/// [Widget]s.
-class _UbiquitousInheritedElement extends InheritedElement {
-  /// Creates an element that uses the given widget as its configuration.
-  _UbiquitousInheritedElement(super.widget);
-
-  @override
-  void setDependencies(Element dependent, Object? value) {
-    // This is where the cost of [InheritedElement] is incurred during build
-    // time of the widget tree. Omitting this bookkeeping is where the
-    // performance savings come from.
-    assert(value == null);
-  }
-
-  @override
-  Object? getDependencies(Element dependent) {
-    return null;
-  }
-
-  @override
-  void notifyClients(InheritedWidget oldWidget) {
-    _recurseChildren(this, (Element element) {
-      if (element.doesDependOnInheritedElement(this)) {
-        notifyDependent(oldWidget, element);
-      }
-    });
-  }
-
-  static void _recurseChildren(Element element, ElementVisitor visitor) {
-    element.visitChildren((Element child) {
-      _recurseChildren(child, visitor);
-    });
-    visitor(element);
-  }
-}
-
-/// See also:
-///
-///  * [_UbiquitousInheritedElement], the [Element] for [_UbiquitousInheritedWidget].
-abstract class _UbiquitousInheritedWidget extends InheritedWidget {
-  const _UbiquitousInheritedWidget({super.key, required super.child});
-
-  @override
-  InheritedElement createElement() => _UbiquitousInheritedElement(this);
-}
-
-/// A widget that determines the ambient directionality of text and
-/// text-direction-sensitive render objects.
-///
-/// For example, [Padding] depends on the [Directionality] to resolve
-/// [EdgeInsetsDirectional] objects into absolute [EdgeInsets] objects.
-///
-/// {@tool snippet}
-///
-/// This example uses a right-to-left [TextDirection] and draws a blue box with
-/// a right margin of 8 pixels.
-///
-/// ```dart
-/// Directionality(
-///   textDirection: TextDirection.rtl,
-///   child: Container(
-///     margin: const EdgeInsetsDirectional.only(start: 8),
-///     color: Colors.blue,
-///   ),
-/// )
-/// ```
-/// {@end-tool}
-class Directionality extends _UbiquitousInheritedWidget {
-  /// Creates a widget that determines the directionality of text and
-  /// text-direction-sensitive render objects.
-  const Directionality({super.key, required this.textDirection, required super.child});
-
-  /// The text direction for this subtree.
-  final TextDirection textDirection;
-
-  /// The text direction from the closest instance of this class that encloses
-  /// the given context.
-  ///
-  /// If there is no [Directionality] ancestor widget in the tree at the given
-  /// context, then this will throw a descriptive [FlutterError] in debug mode
-  /// and an exception in release mode.
-  ///
-  /// Typical usage is as follows:
-  ///
-  /// ```dart
-  /// TextDirection textDirection = Directionality.of(context);
-  /// ```
-  ///
-  /// See also:
-  ///
-  ///  * [maybeOf], which will return null if no [Directionality] ancestor
-  ///    widget is in the tree.
-  static TextDirection of(BuildContext context) {
-    assert(debugCheckHasDirectionality(context));
-    final Directionality widget = context.dependOnInheritedWidgetOfExactType<Directionality>()!;
-    return widget.textDirection;
-  }
-
-  /// The text direction from the closest instance of this class that encloses
-  /// the given context.
-  ///
-  /// If there is no [Directionality] ancestor widget in the tree at the given
-  /// context, then this will return null.
-  ///
-  /// Typical usage is as follows:
-  ///
-  /// ```dart
-  /// TextDirection? textDirection = Directionality.maybeOf(context);
-  /// ```
-  ///
-  /// See also:
-  ///
-  ///  * [of], which will throw if no [Directionality] ancestor widget is in the
-  ///    tree.
-  static TextDirection? maybeOf(BuildContext context) {
-    final Directionality? widget = context.dependOnInheritedWidgetOfExactType<Directionality>();
-    return widget?.textDirection;
-  }
-
-  @override
-  bool updateShouldNotify(Directionality oldWidget) => textDirection != oldWidget.textDirection;
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(EnumProperty<TextDirection>('textDirection', textDirection));
-  }
-}
 
 // PAINTING NODES
 

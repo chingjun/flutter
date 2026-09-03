@@ -14,7 +14,7 @@ library;
 
 import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, ErrorHint, ErrorSummary, FlutterError;
 import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode;
-import 'package:flutter/src/widgets/basic.dart' show Directionality;
+
 import 'package:flutter/src/widgets/framework.dart' show BuildContext;
 import 'package:flutter/src/widgets/localizations.dart' show Localizations, WidgetsLocalizations;
 import 'package:flutter/src/widgets/lookup_boundary.dart' show LookupBoundary;
@@ -22,6 +22,7 @@ import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
 import 'package:flutter/src/widgets/overlay.dart' show Overlay;
 
 export 'debug_flags.dart';
+export 'directionality.dart' show debugCheckHasDirectionality;
 export 'framework.dart'
     show debugChildrenHaveDuplicateKeys, debugItemsHaveDuplicateKeys, debugWidgetBuilderValue;
 export 'table.dart' show debugCheckHasTable;
@@ -73,80 +74,7 @@ bool debugCheckHasMediaQuery(BuildContext context) {
   return true;
 }
 
-/// Asserts that the given context has a [Directionality] ancestor.
-///
-/// Used by various widgets to make sure that they are only used in an
-/// appropriate context.
-///
-/// To invoke this function, use the following pattern, typically in the
-/// relevant Widget's build method:
-///
-/// ```dart
-/// assert(debugCheckHasDirectionality(context));
-/// ```
-///
-/// To improve the error messages you can add some extra color using the
-/// named arguments.
-///
-///  * why: explain why the direction is needed, for example "to resolve
-///    the 'alignment' argument". Should be an adverb phrase describing why.
-///  * hint: explain why this might be happening, for example "The default
-///    value of the 'alignment' argument of the $runtimeType widget is an
-///    AlignmentDirectional value.". Should be a fully punctuated sentence.
-///  * alternative: provide additional advice specific to the situation,
-///    especially an alternative to providing a Directionality ancestor.
-///    For example, "Alternatively, consider specifying the 'textDirection'
-///    argument.". Should be a fully punctuated sentence.
-///
-/// Each one can be null, in which case it is skipped (this is the default).
-/// If they are non-null, they are included in the order above, interspersed
-/// with the more generic advice regarding [Directionality].
-///
-/// Always place this before any early returns, so that the invariant is checked
-/// in all cases. This prevents bugs from hiding until a particular codepath is
-/// hit.
-///
-/// Does nothing if asserts are disabled. Always returns true.
-///
-/// See also:
-///
-///  * [debugCheckHasDirectionality], which is a similar, but more general
-///    painting-library level function.
-bool debugCheckHasDirectionality(
-  BuildContext context, {
-  String? why,
-  String? hint,
-  String? alternative,
-}) {
-  assert(() {
-    if (context.widget is! Directionality &&
-        context.getElementForInheritedWidgetOfExactType<Directionality>() == null) {
-      why = why == null ? '' : ' $why';
-      throw FlutterError.fromParts(<DiagnosticsNode>[
-        ErrorSummary('No Directionality widget found.'),
-        ErrorDescription(
-          '${context.widget.runtimeType} widgets require a Directionality widget ancestor$why.\n',
-        ),
-        if (hint != null) ErrorHint(hint),
-        context.describeWidget(
-          'The specific widget that could not find a Directionality ancestor was',
-        ),
-        context.describeOwnershipChain('The ownership chain for the affected widget is'),
-        ErrorHint(
-          'Typically, the Directionality widget is introduced by the WidgetsApp '
-          'widget at the top of your application widget tree. It '
-          'determines the ambient reading direction and is used, for example, to '
-          'determine how to lay out text, how to interpret "start" and "end" '
-          'values, and to resolve EdgeInsetsDirectional, '
-          'AlignmentDirectional, and other *Directional objects.',
-        ),
-        if (alternative != null) ErrorHint(alternative),
-      ]);
-    }
-    return true;
-  }());
-  return true;
-}
+
 
 /// Asserts that the given context has a [Localizations] ancestor that contains
 /// a [WidgetsLocalizations] delegate.

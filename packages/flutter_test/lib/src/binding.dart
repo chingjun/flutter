@@ -1166,7 +1166,7 @@ abstract class TestWidgetsFlutterBinding extends BindingBase
     if (buildOwner == null) {
       return;
     }
-    buildOwner!.focusManager
+    (buildOwner!.focusManager as FocusManager)
         .listenToApplicationLifecycleChangesIfSupported(); // ignore: invalid_use_of_visible_for_testing_member
   }
 
@@ -2164,7 +2164,7 @@ abstract class TestWidgetsFlutterBinding extends BindingBase
     _pendingExceptionDetails = null;
     _parentZone = null;
     _testZone = null;
-    buildOwner!.focusManager.dispose();
+    (buildOwner!.focusManager as FocusManager).dispose();
 
     if (TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger.checkMockMessageHandler(
       SystemChannels.accessibility.name,

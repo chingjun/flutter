@@ -29,9 +29,9 @@ import 'package:flutter/src/rendering/box.dart' show RenderBox;
 import 'package:flutter/src/rendering/error.dart' show RenderErrorBox;
 import 'package:flutter/src/rendering/object.dart' show ContainerParentDataMixin, ContainerRenderObjectMixin, DiagnosticsDebugCreator, ParentData, RenderObject, RenderObjectWithChildMixin;
 import 'package:flutter/src/rendering/sliver.dart' show RenderSliver;
-import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding;
+
 import 'package:flutter/src/widgets/debug_flags.dart' show debugEnhanceBuildTimelineArguments, debugIsLocalCreationCallback, debugOnRebuildDirtyWidget, debugPrintBuildScope, debugPrintGlobalKeyedWidgetLifecycle, debugPrintRebuildDirtyWidgets, debugPrintScheduleBuildForStacks, debugProfileBuildsEnabled, debugProfileBuildsEnabledUserWidgets;
-import 'package:flutter/src/widgets/focus_manager.dart' show FocusManager;
+
 
 import 'package:listen/listen.dart' show ChangeNotifier, Listenable;
 import 'package:meta/meta.dart' show factory, immutable, mustCallSuper, nonVirtual, optionalTypeArgs, protected, visibleForOverriding, visibleForTesting;
@@ -183,7 +183,7 @@ abstract class GlobalKey<T extends State<StatefulWidget>> extends Key {
   /// constructor.
   const GlobalKey.constructor() : super.empty();
 
-  Element? get _currentElement => WidgetsBinding.instance.buildOwner!._globalKeyRegistry[this];
+  Element? get _currentElement => BuildOwner.defaultBuildOwner!._globalKeyRegistry[this];
 
   /// The build context in which the widget with this key builds.
   ///
@@ -2932,12 +2932,21 @@ class BuildOwner {
   /// Creates an object that manages widgets.
   ///
   /// If the `focusManager` argument is not specified or is null, this will
-  /// construct a new [FocusManager] and register its global input handlers
-  /// via [FocusManager.registerGlobalHandlers], which will modify static
-  /// state. Callers wishing to avoid altering this state can explicitly pass
-  /// a focus manager here.
-  BuildOwner({this.onBuildScheduled, FocusManager? focusManager})
-    : focusManager = focusManager ?? (FocusManager()..registerGlobalHandlers());
+  /// use the [focusManagerFactory] callback to create a default focus manager.
+  BuildOwner({this.onBuildScheduled, Object? focusManager})
+    : focusManager = focusManager ?? focusManagerFactory!();
+
+  /// The default [BuildOwner] instance.
+  ///
+  /// This is used internally by [GlobalKey] to look up elements. It is set
+  /// during [WidgetsBinding] initialization. Do not set this directly; it
+  /// is managed by the framework.
+  static BuildOwner? defaultBuildOwner;
+
+  /// Factory callback to create a default focus manager when none is provided
+  /// to the [BuildOwner] constructor. This is set by the widgets library to
+  /// avoid a circular dependency on the focus manager implementation.
+  static Object Function()? focusManagerFactory;
 
   /// Called on each build pass when the first buildable element is marked
   /// dirty.
@@ -2952,14 +2961,12 @@ class BuildOwner {
   /// Rarely used directly. Instead, consider using [FocusScope.of] to obtain
   /// the [FocusScopeNode] for a given [BuildContext].
   ///
-  /// See [FocusManager] for more details.
+  /// See the focus manager library for more details.
   ///
-  /// This field will default to a [FocusManager] that has registered its
-  /// global input handlers via [FocusManager.registerGlobalHandlers]. Callers
-  /// wishing to avoid registering those handlers (and modifying the associated
-  /// static state) can explicitly pass a focus manager to the [BuildOwner.new]
-  /// constructor.
-  FocusManager focusManager;
+  /// The runtime type of this field is `FocusManager`. It is typed as [Object]
+  /// here to avoid a circular import dependency between the framework and the
+  /// focus manager libraries.
+  Object focusManager;
 
   /// Adds an element to the dirty elements list so that it will be rebuilt
   /// when [WidgetsBinding.drawFrame] calls [buildScope].

@@ -1150,7 +1150,7 @@ void main() {
       final Element element4 = tester.element(find.byKey(key4));
       final Element element5 = tester.element(find.byKey(key5));
       final Element element6 = tester.element(find.byKey(key6));
-      final FocusNode root = element1.owner!.focusManager.rootScope;
+      final FocusNode root = (element1.owner!.focusManager as FocusManager).rootScope;
 
       expect(Focus.maybeOf(element1), isNull);
       expect(Focus.maybeOf(element2), isNull);

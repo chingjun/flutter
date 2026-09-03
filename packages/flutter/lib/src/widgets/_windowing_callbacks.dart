@@ -119,3 +119,16 @@ Future<Map<String, Object>> Function(String type, Map<String, String> parameters
 /// Set by `binding.dart`, used by `_accessibility_evaluations.dart`.
 @internal
 Object? Function()? accessibilityRootElementGetter;
+
+/// A callback to get [DefaultSelectionStyle] properties from a [BuildContext].
+///
+/// Returns a record of (selectionColor, mouseCursor).
+/// Set by `default_selection_style.dart`, called by `text.dart`.
+@internal
+({Object? selectionColor, Object? mouseCursor}) Function(Object context)? defaultSelectionStyleOfCallback;
+
+/// The default selection color fallback.
+///
+/// Set by `default_selection_style.dart`, called by `text.dart`.
+@internal
+Object? defaultSelectionStyleDefaultColor;

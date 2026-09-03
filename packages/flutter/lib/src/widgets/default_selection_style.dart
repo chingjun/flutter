@@ -13,6 +13,7 @@ import 'dart:ui' show Color;
 import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
 import 'package:flutter/src/foundation/key.dart' show Key;
 import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor;
+import 'package:flutter/src/widgets/_windowing_callbacks.dart' show defaultSelectionStyleDefaultColor, defaultSelectionStyleOfCallback;
 import 'package:flutter/src/widgets/basic.dart' show Builder;
 import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
 import 'package:flutter/src/widgets/inherited_theme.dart' show InheritedTheme;
@@ -112,6 +113,11 @@ class DefaultSelectionStyle extends InheritedTheme {
   /// DefaultSelectionStyle style = DefaultSelectionStyle.of(context);
   /// ```
   static DefaultSelectionStyle of(BuildContext context) {
+    defaultSelectionStyleOfCallback ??= (Object ctx) {
+      final DefaultSelectionStyle style = DefaultSelectionStyle.of(ctx as BuildContext);
+      return (selectionColor: style.selectionColor as Object?, mouseCursor: style.mouseCursor as Object?);
+    };
+    defaultSelectionStyleDefaultColor ??= defaultColor;
     return context.dependOnInheritedWidgetOfExactType<DefaultSelectionStyle>() ??
         const DefaultSelectionStyle.fallback();
   }

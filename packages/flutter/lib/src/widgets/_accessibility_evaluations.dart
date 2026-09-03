@@ -448,7 +448,7 @@ class MinimumTextContrastEvaluation extends _ContrastEvaluation {
     final violations = <Violation>[];
     final String text = data.label.isEmpty ? data.value : data.label;
     final Iterable<Element> elements = _collectElementsByText(
-      accessibilityRootElementGetter!() as Element,
+      accessibilityRootElementGetter!()! as Element,
       text,
     );
     for (final element in elements) {
@@ -907,7 +907,7 @@ class TitleEvaluation extends AccessibilityEvaluation {
   FutureOr<EvaluationResult> _evaluate(RendererBinding binding) {
     final violations = <Violation>[];
 
-    final Element? rootElement = accessibilityRootElementGetter?.call() as Element?;
+    final rootElement = accessibilityRootElementGetter?.call() as Element?;
     if (rootElement != null && !_hasTitleWidget(rootElement)) {
       final SemanticsNode rootNode =
           binding.renderViews.first.owner!.semanticsOwner!.rootSemanticsNode!;

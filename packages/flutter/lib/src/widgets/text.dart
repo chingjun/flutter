@@ -29,9 +29,9 @@ import 'package:flutter/src/painting/text_span.dart' show TextSpan;
 import 'package:flutter/src/painting/text_style.dart' show TextStyle;
 import 'package:flutter/src/rendering/paragraph.dart' show RenderParagraph;
 import 'package:flutter/src/rendering/selection.dart' show ClearSelectionEvent, SelectParagraphSelectionEvent, Selectable, SelectedContentRange, SelectionEdgeUpdateEvent, SelectionEvent, SelectionEventType, SelectionGeometry, SelectionRegistrar, SelectionResult, TextGranularity;
-import 'package:flutter/src/services/mouse_cursor.dart' show SystemMouseCursors;
+import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor, SystemMouseCursors;
+import 'package:flutter/src/widgets/_windowing_callbacks.dart' show defaultSelectionStyleDefaultColor, defaultSelectionStyleOfCallback;
 import 'package:flutter/src/widgets/basic.dart' show Builder, ExcludeSemantics, MouseRegion, Semantics;
-import 'package:flutter/src/widgets/default_selection_style.dart' show DefaultSelectionStyle;
 import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StatefulWidget, StatelessWidget, Widget;
 import 'package:flutter/src/widgets/inherited_theme.dart' show InheritedTheme;
 import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
@@ -765,7 +765,7 @@ class Text extends StatelessWidget {
     late Widget result;
     if (registrar != null) {
       result = MouseRegion(
-        cursor: DefaultSelectionStyle.of(context).mouseCursor ?? SystemMouseCursors.text,
+        cursor: defaultSelectionStyleOfCallback?.call(context).mouseCursor as MouseCursor? ?? SystemMouseCursors.text,
         child: _SelectableTextContainer(
           textAlign: textAlign ?? defaultTextStyle.textAlign ?? TextAlign.start,
           textDirection:
@@ -784,8 +784,9 @@ class Text extends StatelessWidget {
               DefaultTextHeightBehavior.maybeOf(context),
           selectionColor:
               selectionColor ??
-              DefaultSelectionStyle.of(context).selectionColor ??
-              DefaultSelectionStyle.defaultColor,
+              defaultSelectionStyleOfCallback?.call(context).selectionColor as Color? ??
+              defaultSelectionStyleDefaultColor as Color? ??
+              const Color(0x80808080),
           text: effectiveTextSpan,
         ),
       );
@@ -807,8 +808,9 @@ class Text extends StatelessWidget {
             DefaultTextHeightBehavior.maybeOf(context),
         selectionColor:
             selectionColor ??
-            DefaultSelectionStyle.of(context).selectionColor ??
-            DefaultSelectionStyle.defaultColor,
+            defaultSelectionStyleOfCallback?.call(context).selectionColor as Color? ??
+            defaultSelectionStyleDefaultColor as Color? ??
+            const Color(0x80808080),
         text: effectiveTextSpan,
       );
     }

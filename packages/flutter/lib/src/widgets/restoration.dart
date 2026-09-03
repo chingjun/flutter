@@ -1039,3 +1039,102 @@ mixin RestorationMixin<S extends StatefulWidget> on State<S> {
     super.dispose();
   }
 }
+
+/// A [RestorableProperty] that makes the wrapped value accessible to the owning
+/// [State] object via the [value] getter and setter.
+///
+/// Whenever a new [value] is set, [didUpdateValue] is called. Subclasses should
+/// call [notifyListeners] from this method if the new value changes what
+/// [toPrimitives] returns.
+///
+/// ## Using a RestorableValue
+///
+/// {@tool dartpad}
+/// A [StatefulWidget] that has a restorable [int] property.
+///
+/// ** See code in examples/api/lib/widgets/restoration_properties/restorable_value.0.dart **
+/// {@end-tool}
+///
+/// ## Creating a subclass
+///
+/// {@tool snippet}
+/// This example shows how to create a new `RestorableValue` subclass,
+/// in this case for the [Duration] class.
+///
+/// ```dart
+/// class RestorableDuration extends RestorableValue<Duration> {
+///   @override
+///   Duration createDefaultValue() => Duration.zero;
+///
+///   @override
+///   void didUpdateValue(Duration? oldValue) {
+///     if (oldValue == null || oldValue.inMicroseconds != value.inMicroseconds) {
+///       notifyListeners();
+///     }
+///   }
+///
+///   @override
+///   Duration fromPrimitives(Object? data) {
+///     if (data != null) {
+///       return Duration(microseconds: data as int);
+///     }
+///     return Duration.zero;
+///   }
+///
+///   @override
+///   Object toPrimitives() {
+///     return value.inMicroseconds;
+///   }
+/// }
+/// ```
+/// {@end-tool}
+///
+/// See also:
+///
+///  * [RestorableProperty], which is the super class of this class.
+///  * [RestorationMixin], to which a [RestorableValue] needs to be registered
+///    in order for it to work.
+///  * [RestorableNum], [RestorableDouble], [RestorableInt], [RestorableBool],
+///    [RestorableString], [RestorableTextEditingController], etc. for commonly
+///    used [RestorableValue]s.
+abstract class RestorableValue<T> extends RestorableProperty<T> {
+  /// The current value stored in this property.
+  ///
+  /// A representation of the current value is stored in the restoration data.
+  /// During state restoration, the property will restore the value to what it
+  /// was when the restoration data it is getting restored from was collected.
+  ///
+  /// The [value] can only be accessed after the property has been registered
+  /// with a [RestorationMixin] by calling
+  /// [RestorationMixin.registerForRestoration].
+  T get value {
+    assert(isRegistered);
+    return _value as T;
+  }
+
+  T? _value;
+  set value(T newValue) {
+    assert(isRegistered);
+    if (newValue != _value) {
+      final T? oldValue = _value;
+      _value = newValue;
+      didUpdateValue(oldValue);
+    }
+  }
+
+  @mustCallSuper
+  @override
+  void initWithValue(T value) {
+    _value = value;
+  }
+
+  /// Called whenever a new value is assigned to [value].
+  ///
+  /// The new value can be accessed via the regular [value] getter and the
+  /// previous value is provided as `oldValue`.
+  ///
+  /// Subclasses should call [notifyListeners] from this method, if the new
+  /// value changes what [toPrimitives] returns.
+  @protected
+  void didUpdateValue(T? oldValue);
+}

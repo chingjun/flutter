@@ -51,8 +51,7 @@ import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey
 import 'package:flutter/src/widgets/gesture_detector.dart' show GestureRecognizerFactory, GestureRecognizerFactoryWithHandlers, RawGestureDetector, RawGestureDetectorState;
 import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
 import 'package:flutter/src/widgets/notification_listener.dart' show NotificationListener;
-import 'package:flutter/src/widgets/restoration.dart' show RestorationMixin, RestorationScope;
-import 'package:flutter/src/widgets/restoration_properties.dart' show RestorableValue;
+import 'package:flutter/src/widgets/restoration.dart' show RestorationMixin, RestorationScope, RestorableValue;
 import 'package:flutter/src/widgets/scroll_activity.dart' show ScrollHoldController;
 import 'package:flutter/src/widgets/scroll_configuration.dart' show ScrollBehavior, ScrollConfiguration;
 import 'package:flutter/src/widgets/scroll_context.dart' show ScrollContext;

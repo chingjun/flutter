@@ -29,6 +29,7 @@ import 'package:flutter/src/physics/simulation.dart' show Simulation;
 import 'package:flutter/src/scheduler/binding.dart' show PerformanceModeRequestHandle, SchedulerBinding, SchedulerPhase;
 import 'package:flutter/src/scheduler/ticker.dart' show TickerFuture;
 import 'package:flutter/src/semantics/semantics.dart' show OrdinalSortKey;
+import 'package:flutter/src/widgets/_windowing_callbacks.dart' show isCurrentModalRouteCallback;
 import 'package:flutter/src/widgets/actions.dart' show Action, Actions, DismissAction, DismissIntent, Intent;
 import 'package:flutter/src/widgets/basic.dart' show BackdropFilter, Builder, IgnorePointer, Offstage, RepaintBoundary, Semantics;
 import 'package:flutter/src/widgets/display_feature_sub_screen.dart' show DisplayFeatureSubScreen;
@@ -1280,7 +1281,14 @@ abstract class ModalRoute<T> extends TransitionRoute<T> with LocalHistoryRoute<T
     this.filter,
     this.traversalEdgeBehavior,
     this.directionalTraversalEdgeBehavior,
-  });
+  }) {
+    _ensureCallbacksRegistered();
+  }
+
+  static void _ensureCallbacksRegistered() {
+    isCurrentModalRouteCallback ??= (Object context) =>
+        isCurrentOf(context as BuildContext);
+  }
 
   /// The filter to add to the barrier.
   ///

@@ -24,9 +24,9 @@ import 'package:flutter/src/rendering/box.dart' show BoxHitTestEntry, BoxHitTest
 import 'package:flutter/src/rendering/object.dart' show Constraints, PipelineOwner, RenderObject;
 import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior, RenderProxyBoxWithHitTestBehavior;
 import 'package:flutter/src/semantics/binding.dart' show SemanticsBinding;
+import 'package:flutter/src/widgets/_windowing_callbacks.dart' show isCurrentModalRouteCallback;
 import 'package:flutter/src/widgets/editable_text.dart' show EditableText;
 import 'package:flutter/src/widgets/framework.dart' show BuildContext, SingleChildRenderObjectWidget, Widget;
-import 'package:flutter/src/widgets/routes.dart' show ModalRoute;
 
 // Enable if you want verbose logging about tap region changes.
 const bool _kDebugTapRegion = false;
@@ -582,7 +582,7 @@ class TapRegion extends SingleChildRenderObjectWidget {
 
   @override
   RenderObject createRenderObject(BuildContext context) {
-    final bool isCurrent = ModalRoute.isCurrentOf(context) ?? true;
+    final bool isCurrent = isCurrentModalRouteCallback?.call(context) ?? true;
 
     return RenderTapRegion(
       registry: TapRegionRegistry.maybeOf(context),
@@ -600,7 +600,7 @@ class TapRegion extends SingleChildRenderObjectWidget {
 
   @override
   void updateRenderObject(BuildContext context, covariant RenderTapRegion renderObject) {
-    final bool isCurrent = ModalRoute.isCurrentOf(context) ?? true;
+    final bool isCurrent = isCurrentModalRouteCallback?.call(context) ?? true;
 
     renderObject
       ..registry = TapRegionRegistry.maybeOf(context)

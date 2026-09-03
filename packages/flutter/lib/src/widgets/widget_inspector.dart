@@ -54,7 +54,7 @@ import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior, Rend
 import 'package:flutter/src/rendering/stack.dart' show RenderStack;
 import 'package:flutter/src/rendering/view.dart' show RenderView;
 import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
-import 'package:flutter/src/widgets/_windowing_callbacks.dart' show modalRouteIsCurrentCallback, modalRouteIsOffstageCallback, modalRouteOfCallback;
+import 'package:flutter/src/widgets/_windowing_callbacks.dart' show debugTransformDebugCreatorCallback, modalRouteIsCurrentCallback, modalRouteIsOffstageCallback, modalRouteOfCallback, widgetInspectorInitServiceExtensionsCallback, widgetInspectorPerformReassembleCallback;
 import 'package:flutter/src/widgets/basic.dart' show Column, CustomPaint, Directionality, IgnorePointer, MouseRegion, Positioned, Row, Stack;
 import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding, WidgetsBindingObserver;
 import 'package:flutter/src/widgets/debug_flags.dart' show debugOnRebuildDirtyWidget;
@@ -814,8 +814,20 @@ mixin WidgetInspectorService {
   int _serializeRingIndex = 0;
 
   /// The current [WidgetInspectorService].
-  static WidgetInspectorService get instance => _instance;
+  static WidgetInspectorService get instance {
+    _ensureCallbacksRegistered();
+    return _instance;
+  }
   static WidgetInspectorService _instance = _WidgetInspectorService();
+
+  static void _ensureCallbacksRegistered() {
+    debugTransformDebugCreatorCallback ??= (Iterable<Object> properties) =>
+        debugTransformDebugCreator(properties.cast<DiagnosticsNode>()).cast<Object>();
+    widgetInspectorInitServiceExtensionsCallback ??= (Object registerServiceExtensionFn) =>
+        _instance.initServiceExtensions(registerServiceExtensionFn as RegisterServiceExtensionCallback);
+    widgetInspectorPerformReassembleCallback ??= () =>
+        _instance.performReassemble();
+  }
 
   /// Enables select mode for the Inspector.
   ///

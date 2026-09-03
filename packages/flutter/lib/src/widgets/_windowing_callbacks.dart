@@ -69,3 +69,21 @@ void Function(Object observer, Object listener)? scrollNotificationObserverAddLi
 /// Set by `scroll_notification_observer.dart`, called by `editable_text.dart`.
 @internal
 void Function(Object observer, Object listener)? scrollNotificationObserverRemoveListenerCallback;
+
+/// A callback to transform [DebugCreator] properties for error reporting.
+///
+/// Set by `widget_inspector.dart`, called by `binding.dart`.
+@internal
+Iterable<Object> Function(Iterable<Object> properties)? debugTransformDebugCreatorCallback;
+
+/// A callback to initialize widget inspector service extensions.
+///
+/// Set by `widget_inspector.dart`, called by `binding.dart`.
+@internal
+void Function(Object registerServiceExtensionFn)? widgetInspectorInitServiceExtensionsCallback;
+
+/// A callback to perform reassemble on the widget inspector.
+///
+/// Set by `widget_inspector.dart`, called by `binding.dart`.
+@internal
+void Function()? widgetInspectorPerformReassembleCallback;

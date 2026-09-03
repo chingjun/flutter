@@ -39,7 +39,7 @@ import 'package:flutter/src/services/predictive_back_event.dart' show Predictive
 import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
 import 'package:flutter/src/services/system_navigator.dart' show SystemNavigator;
 import 'package:flutter/src/widgets/_accessibility_evaluations.dart' show EvaluationResult, LabeledTapTargetEvaluation, MinimumTapTargetEvaluation, MinimumTextContrastEvaluation, Violation, accessibilityRootElementGetter;
-import 'package:flutter/src/widgets/_windowing_callbacks.dart' show createDefaultWindowingOwnerCallback;
+import 'package:flutter/src/widgets/_windowing_callbacks.dart' show createDefaultWindowingOwnerCallback, debugTransformDebugCreatorCallback, widgetInspectorInitServiceExtensionsCallback, widgetInspectorPerformReassembleCallback;
 import 'package:flutter/src/widgets/accessibility_inspector.dart' show AccessibilityInspector;
 import 'package:flutter/src/widgets/debug_flags.dart' show debugAllowBannerOverrideFlag, debugProfileBuildsEnabled, debugProfileBuildsEnabledUserWidgets, debugShowPerformanceOverlayOverride;
 import 'package:flutter/src/widgets/focus_manager.dart' show FocusManager;
@@ -47,7 +47,6 @@ import 'package:flutter/src/widgets/framework.dart' show BuildOwner, Element, El
 import 'package:flutter/src/widgets/platform_menu_bar.dart' show DefaultPlatformMenuDelegate, PlatformMenuDelegate;
 import 'package:flutter/src/widgets/service_extensions.dart' show WidgetsServiceExtensions;
 import 'package:flutter/src/widgets/view.dart' show View;
-import 'package:flutter/src/widgets/widget_inspector.dart' show WidgetInspectorService, debugTransformDebugCreator;
 import 'package:listen/listen.dart' show ValueNotifier;
 import 'package:meta/meta.dart' show internal, mustCallSuper, protected, visibleForTesting;
 
@@ -579,7 +578,13 @@ mixin WidgetsBinding
     SystemChannels.backGesture.setMethodCallHandler(_handleBackGestureInvocation);
     SystemChannels.statusBar.setMethodCallHandler(_handleStatusBarActions);
     assert(() {
-      FlutterErrorDetails.propertiesTransformers.add(debugTransformDebugCreator);
+      final Iterable<Object> Function(Iterable<Object>)? callback = debugTransformDebugCreatorCallback;
+      if (callback != null) {
+        FlutterErrorDetails.propertiesTransformers.add(
+          (Iterable<DiagnosticsNode> properties) =>
+              callback(properties.cast<Object>()).cast<DiagnosticsNode>(),
+        );
+      }
       return true;
     }());
     platformMenuDelegate = DefaultPlatformMenuDelegate();
@@ -907,7 +912,7 @@ mixin WidgetsBinding
         },
       );
       AccessibilityInspector.instance.initServiceExtensions(registerServiceExtension);
-      WidgetInspectorService.instance.initServiceExtensions(registerServiceExtension);
+      widgetInspectorInitServiceExtensionsCallback?.call(registerServiceExtension);
 
       return true;
     }());
@@ -1802,7 +1807,7 @@ mixin WidgetsBinding
   @override
   Future<void> performReassemble() {
     assert(() {
-      WidgetInspectorService.instance.performReassemble();
+      widgetInspectorPerformReassembleCallback?.call();
       return true;
     }());
 

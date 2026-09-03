@@ -215,9 +215,3 @@ bool Function(Object controller)? contextMenuControllerIsShownCallback;
 /// Set by registration, called by `text_selection.dart`.
 @internal
 void Function(Object controller)? contextMenuControllerMarkNeedsBuildCallback;
-
-/// A callback that returns the BuildContext of the nearest Navigator, if any.
-///
-/// Set by registration, called by `magnifier.dart`.
-@internal
-Object? Function(Object context)? navigatorMaybeOfContextCallback;

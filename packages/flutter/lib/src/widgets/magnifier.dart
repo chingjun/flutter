@@ -22,7 +22,7 @@ import 'package:flutter/src/rendering/box.dart' show RenderBox;
 import 'package:flutter/src/rendering/layer.dart' show BackdropFilterLayer;
 import 'package:flutter/src/rendering/object.dart' show PaintingContext, RenderObject;
 import 'package:flutter/src/rendering/proxy_box.dart' show CustomClipper, RenderProxyBox;
-import 'package:flutter/src/widgets/_windowing_callbacks.dart' show navigatorMaybeOfContextCallback;
+import 'package:flutter/src/widgets/navigator.dart' show Navigator;
 import 'package:flutter/src/widgets/basic.dart' show ClipPath, IgnorePointer, Opacity, SizedBox, Stack;
 import 'package:flutter/src/widgets/container.dart' show DecoratedBox;
 import 'package:flutter/src/widgets/framework.dart' show BuildContext, CapturedThemes, InheritedTheme, SingleChildRenderObjectWidget, StatelessWidget, Widget, WidgetBuilder;
@@ -260,7 +260,7 @@ class MagnifierController {
 
     final CapturedThemes capturedThemes = InheritedTheme.capture(
       from: context,
-      to: navigatorMaybeOfContextCallback?.call(context) as BuildContext?,
+      to: Navigator.maybeOf(context)?.context,
     );
 
     _overlayEntry = OverlayEntry(

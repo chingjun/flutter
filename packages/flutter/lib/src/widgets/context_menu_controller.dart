@@ -7,7 +7,7 @@ library;
 
 import 'dart:ui' show VoidCallback;
 
-import 'package:flutter/src/widgets/_windowing_callbacks.dart' show navigatorMaybeOfContextCallback;
+import 'package:flutter/src/widgets/navigator.dart' show Navigator;
 import 'package:flutter/src/widgets/framework.dart' show BuildContext, CapturedThemes, InheritedTheme, Widget, WidgetBuilder;
 import 'package:flutter/src/widgets/overlay.dart' show Overlay, OverlayEntry, OverlayState;
 
@@ -76,7 +76,7 @@ class ContextMenuController {
       builder: (BuildContext context) {
         final CapturedThemes capturedThemes = InheritedTheme.capture(
           from: context,
-          to: navigatorMaybeOfContextCallback?.call(context) as BuildContext?,
+          to: Navigator.maybeOf(context)?.context,
         );
         return capturedThemes.wrap(_contextMenuBuilder!(context));
       },

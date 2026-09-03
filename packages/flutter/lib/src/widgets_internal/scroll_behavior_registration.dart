@@ -18,12 +18,11 @@ import 'package:flutter/src/widgets/_windowing_callbacks.dart'
         contextMenuControllerMarkNeedsBuildCallback,
         contextMenuControllerRemoveCallback,
         contextMenuControllerShowCallback,
-        createContextMenuControllerCallback,
-        navigatorMaybeOfContextCallback;
+        createContextMenuControllerCallback;
 import 'package:flutter/src/widgets/context_menu_controller.dart' show ContextMenuController;
 import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
 import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget, WidgetBuilder;
-import 'package:flutter/src/widgets/navigator.dart' show Navigator;
+
 import 'package:flutter/src/widgets/overscroll_indicator.dart'
     show GlowingOverscrollIndicator;
 import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
@@ -108,10 +107,6 @@ void registerScrollBehaviorCallbacks() {
 
   contextMenuControllerMarkNeedsBuildCallback ??= (Object controller) {
     (controller as ContextMenuController).markNeedsBuild();
-  };
-
-  navigatorMaybeOfContextCallback ??= (Object context) {
-    return Navigator.maybeOf(context as BuildContext)?.context;
   };
 
   // Register scrollable lookup functions for focus traversal integration.

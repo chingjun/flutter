@@ -28,7 +28,7 @@ import 'package:flutter/src/widgets/container.dart' show DecoratedBox;
 import 'package:flutter/src/widgets/debug_flags.dart' show debugPaintFocusBoxes;
 import 'package:flutter/src/widgets/focus_manager.dart' show FocusAttachment, FocusManager, FocusNode, FocusOnKeyCallback, FocusOnKeyEventCallback, FocusScopeNode;
 import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedNotifier, State, StatefulWidget, StatelessWidget, Widget;
-import 'package:flutter/src/widgets/transitions.dart' show ListenableBuilder;
+import 'package:flutter/src/widgets/listenable_builder.dart' show ListenableBuilder;
 
 /// A widget that manages a [FocusNode] to allow keyboard focus to be given
 /// to this widget and its descendants.

@@ -63,9 +63,9 @@ import 'package:flutter/src/services/text_boundary.dart' show CharacterBoundary,
 import 'package:flutter/src/services/text_editing.dart' show TextSelection;
 import 'package:flutter/src/services/text_formatter.dart' show FilteringTextInputFormatter, TextInputFormatter;
 import 'package:flutter/src/services/text_input.dart' show FloatingCursorDragState, RawFloatingCursorPoint, ScribbleClient, SelectionChangedCause, SelectionRect, SmartDashesType, SmartQuotesType, TextCapitalization, TextEditingValue, TextInput, TextInputAction, TextInputClient, TextInputConfiguration, TextInputConnection, TextInputControl, TextInputStyle, TextInputType, TextSelectionDelegate;
+import 'package:flutter/src/widgets/_windowing_callbacks.dart' show maybeOfAutofillGroupCallback;
 import 'package:flutter/src/widgets/actions.dart' show Action, Actions, CallbackAction, ContextAction, DismissIntent, DoNothingAction, Intent;
 import 'package:flutter/src/widgets/app_lifecycle_listener.dart' show AppLifecycleListener;
-import 'package:flutter/src/widgets/autofill.dart' show AutofillGroup, AutofillGroupState;
 import 'package:flutter/src/widgets/automatic_keep_alive.dart' show AutomaticKeepAliveClientMixin;
 import 'package:flutter/src/widgets/basic.dart' show Builder, CompositedTransformTarget, Directionality, MouseRegion, Semantics, SizedBox;
 import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding, WidgetsBindingObserver;
@@ -2615,9 +2615,9 @@ class EditableTextState extends State<EditableText>
 
   bool _didAutoFocus = false;
 
-  AutofillGroupState? _currentAutofillScope;
+  Object? _currentAutofillScope;
   @override
-  AutofillScope? get currentAutofillScope => _currentAutofillScope;
+  AutofillScope? get currentAutofillScope => _currentAutofillScope as AutofillScope?;
 
   AutofillClient get _effectiveAutofillClient => widget.autofillClient ?? this;
 
@@ -2694,6 +2694,7 @@ class EditableTextState extends State<EditableText>
     }
     return widget.stylusHandwritingEnabled;
   }
+
 
   late final AppLifecycleListener _appLifecycleListener;
   bool _justResumed = false;
@@ -3419,11 +3420,11 @@ class EditableTextState extends State<EditableText>
         ? widget.style.merge(const TextStyle(fontWeight: FontWeight.bold))
         : widget.style;
 
-    final AutofillGroupState? newAutofillGroup = AutofillGroup.maybeOf(context);
+    final newAutofillGroup = maybeOfAutofillGroupCallback?.call(context) as AutofillScope?;
     if (currentAutofillScope != newAutofillGroup) {
-      _currentAutofillScope?.unregister(autofillId);
+      (_currentAutofillScope as dynamic)?.unregister(autofillId);
       _currentAutofillScope = newAutofillGroup;
-      _currentAutofillScope?.register(_effectiveAutofillClient);
+      (_currentAutofillScope as dynamic)?.register(_effectiveAutofillClient);
     }
 
     if (!_didAutoFocus && widget.autofocus) {
@@ -3552,8 +3553,8 @@ class EditableTextState extends State<EditableText>
     _selectionOverlay?.handlesVisible = widget.showSelectionHandles;
 
     if (widget.autofillClient != oldWidget.autofillClient) {
-      _currentAutofillScope?.unregister(oldWidget.autofillClient?.autofillId ?? autofillId);
-      _currentAutofillScope?.register(_effectiveAutofillClient);
+      (_currentAutofillScope as dynamic)?.unregister(oldWidget.autofillClient?.autofillId ?? autofillId);
+      (_currentAutofillScope as dynamic)?.register(_effectiveAutofillClient);
     }
 
     if (widget.focusNode != oldWidget.focusNode) {
@@ -3671,7 +3672,7 @@ class EditableTextState extends State<EditableText>
   @override
   void dispose() {
     _internalScrollController?.dispose();
-    _currentAutofillScope?.unregister(autofillId);
+    (_currentAutofillScope as dynamic)?.unregister(autofillId);
     widget.controller.removeListener(_didChangeTextEditingValue);
     _floatingCursorResetController?.dispose();
     _floatingCursorResetController = null;

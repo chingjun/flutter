@@ -20,3 +20,27 @@ Object Function()? createDefaultWindowingOwnerCallback;
 /// importing routes.dart. Returns null when there is no modal route.
 @internal
 bool? Function(Object context)? isCurrentModalRouteCallback;
+
+/// A callback to look up the nearest [AutofillGroupState].
+///
+/// Set by `autofill.dart`, called by `editable_text.dart`.
+@internal
+Object? Function(Object context)? maybeOfAutofillGroupCallback;
+
+/// A callback to build a [GlowingOverscrollIndicator] widget.
+///
+/// Set by `overscroll_indicator.dart`, called by `scroll_configuration.dart`.
+/// Parameters: axisDirection (as Object), color (as Object), child (as Object).
+/// Returns the indicator widget (as Object).
+@internal
+Object Function({required Object axisDirection, required Object color, required Object child})?
+    buildGlowingOverscrollIndicatorCallback;
+
+/// A callback to build a [RawScrollbar] widget.
+///
+/// Set by `scrollbar.dart`, called by `scroll_configuration.dart`.
+/// Parameters: controller (as Object?), child (as Object).
+/// Returns the scrollbar widget (as Object).
+@internal
+Object Function({required Object? controller, required Object child})?
+    buildRawScrollbarCallback;

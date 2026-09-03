@@ -10,6 +10,7 @@ library;
 import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
 import 'package:flutter/src/services/autofill.dart' show AutofillClient, AutofillScopeMixin;
 import 'package:flutter/src/services/text_input.dart' show TextInput;
+import 'package:flutter/src/widgets/_windowing_callbacks.dart' show maybeOfAutofillGroupCallback;
 import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedWidget, State, StatefulWidget, Widget;
 import 'package:meta/meta.dart' show protected;
 
@@ -77,6 +78,11 @@ class AutofillGroup extends StatefulWidget {
     required this.child,
     this.onDisposeAction = AutofillContextAction.commit,
   });
+
+  static void _ensureCallbackRegistered() {
+    maybeOfAutofillGroupCallback ??= (Object context) =>
+        maybeOf(context as BuildContext);
+  }
 
   /// Returns the [AutofillGroupState] of the closest [AutofillGroup] widget
   /// which encloses the given context, or null if one cannot be found.
@@ -174,6 +180,12 @@ class AutofillGroupState extends State<AutofillGroup> with AutofillScopeMixin {
   // has no AutofillGroup ancestor). Each topmost AutofillGroup runs its
   // `AutofillGroup.onDisposeAction` when it gets disposed.
   bool _isTopmostAutofillGroup = false;
+
+  @override
+  void initState() {
+    super.initState();
+    AutofillGroup._ensureCallbackRegistered();
+  }
 
   @override
   AutofillClient? getAutofillClient(String autofillId) => _clients[autofillId];

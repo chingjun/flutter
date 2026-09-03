@@ -17,7 +17,7 @@ library;
 import 'dart:async';
 import 'dart:math' as math;
 import 'dart:ui' as ui hide TextStyle;
-import 'dart:ui' show Brightness, Clip, Color, FontWeight, Locale, Offset, Radius, Rect, Size, TextAffinity, TextAlign, TextBox, TextDecoration, TextDirection, TextHeightBehavior, TextPosition, TextRange, VoidCallback, clampDouble;
+import 'dart:ui' show AppLifecycleState, Brightness, Clip, Color, FontWeight, Locale, Offset, Radius, Rect, Size, TextAffinity, TextAlign, TextBox, TextDecoration, TextDirection, TextHeightBehavior, TextPosition, TextRange, VoidCallback, clampDouble;
 
 import 'package:characters/characters.dart' show CharacterRange, StringCharacters;
 import 'package:flutter/src/animation/animation_controller.dart' show AnimationController;
@@ -65,7 +65,7 @@ import 'package:flutter/src/services/text_formatter.dart' show FilteringTextInpu
 import 'package:flutter/src/services/text_input.dart' show FloatingCursorDragState, RawFloatingCursorPoint, ScribbleClient, SelectionChangedCause, SelectionRect, SmartDashesType, SmartQuotesType, TextCapitalization, TextEditingValue, TextInput, TextInputAction, TextInputClient, TextInputConfiguration, TextInputConnection, TextInputControl, TextInputStyle, TextInputType, TextSelectionDelegate;
 import 'package:flutter/src/widgets/_windowing_callbacks.dart' show intentForMacOSSelectorCallback, maybeOfAutofillGroupCallback, scrollNotificationObserverAddListenerCallback, scrollNotificationObserverMaybeOfCallback, scrollNotificationObserverRemoveListenerCallback;
 import 'package:flutter/src/widgets/actions.dart' show Action, Actions, CallbackAction, ContextAction, DismissIntent, DoNothingAction, Intent;
-import 'package:flutter/src/widgets/app_lifecycle_listener.dart' show AppLifecycleListener;
+
 import 'package:flutter/src/widgets/automatic_keep_alive.dart' show AutomaticKeepAliveClientMixin;
 import 'package:flutter/src/widgets/basic.dart' show Builder, CompositedTransformTarget, Directionality, MouseRegion, Semantics, SizedBox;
 import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding, WidgetsBindingObserver;
@@ -2694,7 +2694,8 @@ class EditableTextState extends State<EditableText>
   }
 
 
-  late final AppLifecycleListener _appLifecycleListener;
+
+  late final _AppLifecycleObserver _lifecycleObserver;
   bool _justResumed = false;
 
   @override
@@ -3381,7 +3382,9 @@ class EditableTextState extends State<EditableText>
       keyboardType: widget.keyboardType,
       autofillHints: widget.autofillHints,
     );
-    _appLifecycleListener = AppLifecycleListener(onResume: _onResume);
+
+    _lifecycleObserver = _AppLifecycleObserver(_onResume);
+    WidgetsBinding.instance.addObserver(_lifecycleObserver);
     _initProcessTextActions();
   }
 
@@ -3693,7 +3696,8 @@ class EditableTextState extends State<EditableText>
     clipboardStatus.removeListener(_onChangedClipboardStatus);
     clipboardStatus.dispose();
     _cursorVisibilityNotifier.dispose();
-    _appLifecycleListener.dispose();
+    WidgetsBinding.instance.removeObserver(_lifecycleObserver);
+
     FocusManager.instance.removeListener(_unflagInternalFocus);
     FocusManager.instance.removeListener(_resetJustResumed);
     _disposeScrollNotificationObserver();
@@ -7031,5 +7035,20 @@ class _OverridingTextStyleTextSpanUtils {
       locale: textSpan.locale,
       spellOut: textSpan.spellOut,
     );
+  }
+}
+
+/// A dedicated [WidgetsBindingObserver] that only listens for app lifecycle
+/// resume events, replacing the use of [AppLifecycleListener] to avoid an
+/// import cycle.
+class _AppLifecycleObserver with WidgetsBindingObserver {
+  _AppLifecycleObserver(this._onResume);
+  final VoidCallback _onResume;
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      _onResume();
+    }
   }
 }

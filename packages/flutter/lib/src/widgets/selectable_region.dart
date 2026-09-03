@@ -39,7 +39,7 @@ import 'package:flutter/src/services/process_text.dart' show DefaultProcessTextS
 import 'package:flutter/src/services/system_channels.dart' show SystemChannels;
 import 'package:flutter/src/services/text_editing.dart' show TextSelection;
 import 'package:flutter/src/services/text_input.dart' show SelectionChangedCause, TextEditingValue, TextSelectionDelegate;
-import 'package:flutter/src/widgets/_platform_selectable_region_context_menu_io.dart' show PlatformSelectableRegionContextMenu;
+import 'package:flutter/src/widgets/_windowing_callbacks.dart' show buildPlatformSelectableRegionContextMenuCallback, platformSelectableRegionContextMenuAttachCallback, platformSelectableRegionContextMenuDetachCallback;
 import 'package:flutter/src/widgets/actions.dart' show Action, Actions, CallbackAction, ContextAction, DismissIntent, Intent;
 import 'package:flutter/src/widgets/basic.dart' show CompositedTransformTarget;
 import 'package:flutter/src/widgets/context_menu_button_item.dart' show ContextMenuButtonItem, ContextMenuButtonType;
@@ -556,7 +556,7 @@ class SelectableRegionState extends State<SelectableRegion>
         // value: the browser context menu may have been disabled after this
         // delegate attached, and detach is a no-op for a client that was
         // never the active one.
-        PlatformSelectableRegionContextMenu.detach(_selectionDelegate);
+        platformSelectableRegionContextMenuDetachCallback?.call(_selectionDelegate);
       }
       if (SchedulerBinding.instance.lifecycleState == AppLifecycleState.resumed) {
         // We should only clear the selection when this SelectableRegion loses
@@ -571,7 +571,7 @@ class SelectableRegionState extends State<SelectableRegion>
         _finalizeSelectableRegionStatus();
       }
     } else if (_webContextMenuEnabled) {
-      PlatformSelectableRegionContextMenu.attach(_selectionDelegate);
+      platformSelectableRegionContextMenuAttachCallback?.call(_selectionDelegate);
     }
   }
 
@@ -1965,7 +1965,7 @@ class SelectableRegionState extends State<SelectableRegion>
     _selectable?.removeListener(_updateSelectionStatus);
     _selectable?.pushHandleLayers(null, null);
     if (kIsWeb) {
-      PlatformSelectableRegionContextMenu.detach(_selectionDelegate);
+      platformSelectableRegionContextMenuDetachCallback?.call(_selectionDelegate);
     }
     _selectionDelegate.dispose();
     _selectionStatusNotifier.dispose();
@@ -1990,7 +1990,9 @@ class SelectableRegionState extends State<SelectableRegion>
       child: SelectionContainer(registrar: this, delegate: _selectionDelegate, child: widget.child),
     );
     if (_webContextMenuEnabled) {
-      result = PlatformSelectableRegionContextMenu(child: result);
+      if (buildPlatformSelectableRegionContextMenuCallback != null) {
+        result = buildPlatformSelectableRegionContextMenuCallback!(child: result) as Widget;
+      }
     }
     return TapRegion(
       groupId: SelectableRegion,

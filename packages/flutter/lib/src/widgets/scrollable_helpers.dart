@@ -21,7 +21,7 @@ import 'package:flutter/src/painting/matrix_utils.dart' show MatrixUtils;
 import 'package:flutter/src/rendering/box.dart' show RenderBox;
 import 'package:flutter/src/widgets/actions.dart' show ContextAction, Intent;
 import 'package:flutter/src/widgets/framework.dart' show BuildContext;
-import 'package:flutter/src/widgets/primary_scroll_controller.dart' show PrimaryScrollController;
+import 'package:flutter/src/widgets/_windowing_callbacks.dart' show primaryScrollControllerMaybeOfCallback, primaryScrollControllerOfCallback;
 import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
 import 'package:flutter/src/widgets/scroll_metrics.dart' show ScrollMetrics;
 import 'package:flutter/src/widgets/scroll_physics.dart' show ScrollPhysics;
@@ -421,7 +421,7 @@ class ScrollAction extends ContextAction<ScrollIntent> {
     if (Scrollable.maybeOf(context) != null) {
       return true;
     }
-    final ScrollController? primaryScrollController = PrimaryScrollController.maybeOf(context);
+    final ScrollController? primaryScrollController = primaryScrollControllerMaybeOfCallback?.call(context) as ScrollController?;
     return (primaryScrollController != null) && primaryScrollController.hasClients;
   }
 
@@ -467,7 +467,7 @@ class ScrollAction extends ContextAction<ScrollIntent> {
     assert(context != null, 'Cannot scroll without a context.');
     ScrollableState? state = Scrollable.maybeOf(context!);
     if (state == null) {
-      final ScrollController primaryScrollController = PrimaryScrollController.of(context);
+      final ScrollController primaryScrollController = primaryScrollControllerOfCallback!(context) as ScrollController;
       assert(() {
         if (primaryScrollController.positions.length != 1) {
           throw FlutterError.fromParts(<DiagnosticsNode>[

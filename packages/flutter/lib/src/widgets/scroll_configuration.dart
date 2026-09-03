@@ -21,11 +21,10 @@ import 'package:flutter/src/gestures/monodrag.dart' show GestureVelocityTrackerB
 import 'package:flutter/src/gestures/recognizer.dart' show MultitouchDragStrategy;
 import 'package:flutter/src/gestures/velocity_tracker.dart' show IOSScrollViewFlingVelocityTracker, MacOSScrollViewFlingVelocityTracker, VelocityTracker;
 import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
+import 'package:flutter/src/widgets/_windowing_callbacks.dart' show buildGlowingOverscrollIndicatorCallback, buildRawScrollbarCallback;
 import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedWidget, Widget;
-import 'package:flutter/src/widgets/overscroll_indicator.dart' show GlowingOverscrollIndicator;
 import 'package:flutter/src/widgets/scroll_physics.dart' show BouncingScrollPhysics, ClampingScrollPhysics, RangeMaintainingScrollPhysics, ScrollDecelerationRate, ScrollPhysics;
 import 'package:flutter/src/widgets/scrollable_helpers.dart' show ScrollableDetails;
-import 'package:flutter/src/widgets/scrollbar.dart' show RawScrollbar;
 import 'package:meta/meta.dart' show immutable;
 
 /// A representation of how a [ScrollView] should dismiss the on-screen
@@ -182,7 +181,9 @@ class ScrollBehavior {
       case TargetPlatform.macOS:
       case TargetPlatform.windows:
         assert(details.controller != null);
-        return RawScrollbar(controller: details.controller, child: child);
+        return buildRawScrollbarCallback != null
+            ? buildRawScrollbarCallback!(controller: details.controller, child: child) as Widget
+            : child;
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
       case TargetPlatform.iOS:
@@ -203,11 +204,13 @@ class ScrollBehavior {
         return child;
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
-        return GlowingOverscrollIndicator(
-          axisDirection: details.direction,
-          color: _kDefaultGlowColor,
-          child: child,
-        );
+        return buildGlowingOverscrollIndicatorCallback != null
+            ? buildGlowingOverscrollIndicatorCallback!(
+                axisDirection: details.direction,
+                color: _kDefaultGlowColor,
+                child: child,
+              ) as Widget
+            : child;
     }
   }
 

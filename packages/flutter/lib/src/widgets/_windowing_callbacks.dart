@@ -94,6 +94,12 @@ void Function()? widgetInspectorPerformReassembleCallback;
 @internal
 Object Function({required Object axisDirection, required Object color, required Object child})? buildGlowingOverscrollIndicatorCallback;
 
+/// A callback to build a [RawScrollbar] widget.
+///
+/// Set by `scrollbar.dart`, called by `scroll_configuration.dart`.
+@internal
+Object Function({required Object? controller, required Object child})? buildRawScrollbarCallback;
+
 /// A callback to write scroll state to page storage.
 ///
 /// Set by `page_storage.dart`, called by `scroll_position.dart`.
@@ -132,3 +138,36 @@ Object? Function()? accessibilityRootElementGetter;
 /// Set by `default_selection_style.dart`, called by `text.dart`.
 @internal
 Object? defaultSelectionStyleDefaultColor;
+
+/// A callback to create a [PlatformSelectableRegionContextMenu] widget.
+///
+/// Set by `_platform_selectable_region_context_menu_io.dart`,
+/// called by `selectable_region.dart`.
+@internal
+Object Function({required Object child})? buildPlatformSelectableRegionContextMenuCallback;
+
+/// A callback for [PlatformSelectableRegionContextMenu.attach].
+///
+/// Set by `_platform_selectable_region_context_menu_io.dart`,
+/// called by `selectable_region.dart`.
+@internal
+void Function(Object client)? platformSelectableRegionContextMenuAttachCallback;
+
+/// A callback for [PlatformSelectableRegionContextMenu.detach].
+///
+/// Set by `_platform_selectable_region_context_menu_io.dart`,
+/// called by `selectable_region.dart`.
+@internal
+void Function(Object client)? platformSelectableRegionContextMenuDetachCallback;
+
+/// A callback for [PrimaryScrollController.maybeOf].
+///
+/// Set by `primary_scroll_controller.dart`, called by `scrollable_helpers.dart`.
+@internal
+Object? Function(Object context)? primaryScrollControllerMaybeOfCallback;
+
+/// A callback for [PrimaryScrollController.of].
+///
+/// Set by `primary_scroll_controller.dart`, called by `scrollable_helpers.dart`.
+@internal
+Object Function(Object context)? primaryScrollControllerOfCallback;

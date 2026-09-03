@@ -18,6 +18,7 @@ import 'package:flutter/src/foundation/assertions.dart' show FlutterError;
 import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticPropertiesBuilder, DiagnosticsProperty;
 import 'package:flutter/src/foundation/platform.dart' show TargetPlatform;
 import 'package:flutter/src/painting/basic_types.dart' show Axis;
+import 'package:flutter/src/widgets/_windowing_callbacks.dart' show primaryScrollControllerMaybeOfCallback, primaryScrollControllerOfCallback;
 import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedWidget;
 import 'package:flutter/src/widgets/scroll_configuration.dart' show ScrollConfiguration;
 import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
@@ -151,6 +152,8 @@ class PrimaryScrollController extends InheritedWidget {
   /// * [PrimaryScrollController.of], which is similar to this method, but
   ///   asserts if no [PrimaryScrollController] ancestor is found.
   static ScrollController? maybeOf(BuildContext context) {
+    primaryScrollControllerMaybeOfCallback ??= (Object ctx) => maybeOf(ctx as BuildContext);
+    primaryScrollControllerOfCallback ??= (Object ctx) => of(ctx as BuildContext);
     final PrimaryScrollController? result = context
         .dependOnInheritedWidgetOfExactType<PrimaryScrollController>();
     return result?.controller;

@@ -22,11 +22,11 @@ import 'package:flutter/src/rendering/box.dart' show RenderBox;
 import 'package:flutter/src/rendering/layer.dart' show BackdropFilterLayer;
 import 'package:flutter/src/rendering/object.dart' show PaintingContext, RenderObject;
 import 'package:flutter/src/rendering/proxy_box.dart' show CustomClipper, RenderProxyBox;
+import 'package:flutter/src/widgets/_windowing_callbacks.dart' show navigatorMaybeOfContextCallback;
 import 'package:flutter/src/widgets/basic.dart' show ClipPath, IgnorePointer, Opacity, SizedBox, Stack;
 import 'package:flutter/src/widgets/container.dart' show DecoratedBox;
 import 'package:flutter/src/widgets/framework.dart' show BuildContext, SingleChildRenderObjectWidget, StatelessWidget, Widget, WidgetBuilder;
 import 'package:flutter/src/widgets/inherited_theme.dart' show CapturedThemes, InheritedTheme;
-import 'package:flutter/src/widgets/navigator.dart' show Navigator;
 import 'package:flutter/src/widgets/overlay.dart' show Overlay, OverlayEntry, OverlayState;
 import 'package:listen/listen.dart' show ValueNotifier;
 import 'package:meta/meta.dart' show awaitNotRequired, immutable, visibleForTesting;
@@ -261,7 +261,7 @@ class MagnifierController {
 
     final CapturedThemes capturedThemes = InheritedTheme.capture(
       from: context,
-      to: Navigator.maybeOf(context)?.context,
+      to: navigatorMaybeOfContextCallback?.call(context) as BuildContext?,
     );
 
     _overlayEntry = OverlayEntry(

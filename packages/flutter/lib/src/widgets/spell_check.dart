@@ -14,7 +14,6 @@ import 'package:flutter/src/painting/text_span.dart' show TextSpan;
 import 'package:flutter/src/painting/text_style.dart' show TextStyle;
 import 'package:flutter/src/services/spell_check.dart' show SpellCheckResults, SpellCheckService, SuggestionSpan;
 import 'package:flutter/src/services/text_input.dart' show TextEditingValue;
-import 'package:flutter/src/widgets/editable_text.dart' show EditableTextContextMenuBuilder;
 import 'package:meta/meta.dart' show immutable;
 
 /// Controls how spell check is performed for text input.
@@ -61,7 +60,7 @@ class SpellCheckConfiguration {
 
   /// Builds the toolbar used to display spell check suggestions for misspelled
   /// words.
-  final EditableTextContextMenuBuilder? spellCheckSuggestionsToolbarBuilder;
+  final Function? spellCheckSuggestionsToolbarBuilder;
 
   final bool _spellCheckEnabled;
 
@@ -74,7 +73,7 @@ class SpellCheckConfiguration {
     SpellCheckService? spellCheckService,
     Color? misspelledSelectionColor,
     TextStyle? misspelledTextStyle,
-    EditableTextContextMenuBuilder? spellCheckSuggestionsToolbarBuilder,
+    Function? spellCheckSuggestionsToolbarBuilder,
   }) {
     if (!_spellCheckEnabled) {
       // A new configuration should be constructed to enable spell check.

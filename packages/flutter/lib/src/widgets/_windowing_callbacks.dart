@@ -171,3 +171,53 @@ Object? Function(Object context)? primaryScrollControllerMaybeOfCallback;
 /// Set by `primary_scroll_controller.dart`, called by `scrollable_helpers.dart`.
 @internal
 Object Function(Object context)? primaryScrollControllerOfCallback;
+
+/// A callback to build an [UndoHistory] widget.
+///
+/// Set by registration, called by `editable_text.dart`.
+@internal
+Object Function({
+  required Object value,
+  required Object onTriggered,
+  Object? shouldChangeUndoStack,
+  Object? undoStackModifier,
+  required Object? focusNode,
+  required Object? controller,
+  required Object child,
+})? buildUndoHistoryCallback;
+
+/// A callback to build a [ContextMenuController].
+///
+/// Set by registration, called by `text_selection.dart`.
+@internal
+Object Function({Object? onRemove})? createContextMenuControllerCallback;
+
+/// A callback to show a context menu via [ContextMenuController].
+///
+/// Set by registration, called by `text_selection.dart`.
+@internal
+void Function(Object controller, {required Object context, required Object contextMenuBuilder, Object? debugRequiredFor})? contextMenuControllerShowCallback;
+
+/// A callback to remove a context menu via [ContextMenuController].
+///
+/// Set by registration, called by `text_selection.dart`.
+@internal
+void Function(Object controller)? contextMenuControllerRemoveCallback;
+
+/// Whether a context menu is currently shown via [ContextMenuController].
+///
+/// Set by registration, called by `text_selection.dart`.
+@internal
+bool Function(Object controller)? contextMenuControllerIsShownCallback;
+
+/// A callback to call [ContextMenuController.markNeedsBuild].
+///
+/// Set by registration, called by `text_selection.dart`.
+@internal
+void Function(Object controller)? contextMenuControllerMarkNeedsBuildCallback;
+
+/// A callback that returns the BuildContext of the nearest Navigator, if any.
+///
+/// Set by registration, called by `magnifier.dart`.
+@internal
+Object? Function(Object context)? navigatorMaybeOfContextCallback;

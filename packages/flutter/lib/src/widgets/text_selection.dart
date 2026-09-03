@@ -50,10 +50,10 @@ import 'package:flutter/src/services/system_sound.dart' show SystemSound, System
 import 'package:flutter/src/services/text_boundary.dart' show LineBoundary, ParagraphBoundary, TextBoundary;
 import 'package:flutter/src/services/text_editing.dart' show TextSelection;
 import 'package:flutter/src/services/text_input.dart' show FloatingCursorDragState, RawFloatingCursorPoint, SelectionChangedCause, TextEditingValue, TextSelectionDelegate;
+import 'package:flutter/src/widgets/_windowing_callbacks.dart' show contextMenuControllerIsShownCallback, contextMenuControllerMarkNeedsBuildCallback, contextMenuControllerRemoveCallback, contextMenuControllerShowCallback, createContextMenuControllerCallback;
 import 'package:flutter/src/widgets/basic.dart' show Align, Builder, CompositedTransformFollower, Directionality, ExcludeSemantics, Padding, SizedBox;
 import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding, WidgetsBindingObserver;
 import 'package:flutter/src/widgets/constants.dart' show kMinInteractiveDimension;
-import 'package:flutter/src/widgets/context_menu_controller.dart' show ContextMenuController;
 import 'package:flutter/src/widgets/debug.dart' show debugCheckHasOverlay;
 import 'package:flutter/src/widgets/editable_text.dart' show EditableTextState;
 import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StatefulWidget, Widget, WidgetBuilder;
@@ -694,7 +694,7 @@ class TextSelectionOverlay {
   /// See also:
   ///
   ///   * [toolbarIsVisible], which is whether any toolbar is visible.
-  bool get spellCheckToolbarIsVisible => _selectionOverlay._spellCheckToolbarController.isShown;
+  bool get spellCheckToolbarIsVisible => contextMenuControllerIsShownCallback!(_selectionOverlay._spellCheckToolbarController);
 
   /// {@macro flutter.widgets.SelectionOverlay.hide}
   void hide() => _selectionOverlay.hide();
@@ -1222,8 +1222,8 @@ class SelectionOverlay {
   /// {@endtemplate}
   bool get toolbarIsVisible {
     return selectionControls is TextSelectionHandleControls
-        ? _contextMenuController.isShown || _spellCheckToolbarController.isShown
-        : _toolbar != null || _spellCheckToolbarController.isShown;
+        ? contextMenuControllerIsShownCallback!(_contextMenuController) || contextMenuControllerIsShownCallback!(_spellCheckToolbarController)
+        : _toolbar != null || contextMenuControllerIsShownCallback!(_spellCheckToolbarController);
   }
 
   /// {@template flutter.widgets.SelectionOverlay.magnifierIsVisible}
@@ -1673,9 +1673,9 @@ class SelectionOverlay {
   OverlayEntry? _toolbar;
 
   // Manages the context menu. Not necessarily visible when non-null.
-  final ContextMenuController _contextMenuController = ContextMenuController();
+  final Object _contextMenuController = createContextMenuControllerCallback!();
 
-  final ContextMenuController _spellCheckToolbarController = ContextMenuController();
+  final Object _spellCheckToolbarController = createContextMenuControllerCallback!();
 
   /// {@template flutter.widgets.SelectionOverlay.showHandles}
   /// Builds the handles by inserting them into the [context]'s overlay.
@@ -1746,7 +1746,8 @@ class SelectionOverlay {
     }
 
     final renderBox = context.findRenderObject()! as RenderBox;
-    _contextMenuController.show(
+    contextMenuControllerShowCallback!(
+      _contextMenuController,
       context: context,
       contextMenuBuilder: (BuildContext context) {
         return _SelectionToolbarWrapper(
@@ -1767,7 +1768,8 @@ class SelectionOverlay {
     }
 
     final renderBox = context.findRenderObject()! as RenderBox;
-    _spellCheckToolbarController.show(
+    contextMenuControllerShowCallback!(
+      _spellCheckToolbarController,
       context: context,
       contextMenuBuilder: (BuildContext context) {
         return _SelectionToolbarWrapper(
@@ -1798,10 +1800,10 @@ class SelectionOverlay {
         _handles?.start.markNeedsBuild();
         _handles?.end.markNeedsBuild();
         _toolbar?.markNeedsBuild();
-        if (_contextMenuController.isShown) {
-          _contextMenuController.markNeedsBuild();
-        } else if (_spellCheckToolbarController.isShown) {
-          _spellCheckToolbarController.markNeedsBuild();
+        if (contextMenuControllerIsShownCallback!(_contextMenuController)) {
+          contextMenuControllerMarkNeedsBuildCallback!(_contextMenuController);
+        } else if (contextMenuControllerIsShownCallback!(_spellCheckToolbarController)) {
+          contextMenuControllerMarkNeedsBuildCallback!(_spellCheckToolbarController);
         }
       }, debugLabel: 'SelectionOverlay.markNeedsBuild');
     } else {
@@ -1810,10 +1812,10 @@ class SelectionOverlay {
         _handles!.end.markNeedsBuild();
       }
       _toolbar?.markNeedsBuild();
-      if (_contextMenuController.isShown) {
-        _contextMenuController.markNeedsBuild();
-      } else if (_spellCheckToolbarController.isShown) {
-        _spellCheckToolbarController.markNeedsBuild();
+      if (contextMenuControllerIsShownCallback!(_contextMenuController)) {
+        contextMenuControllerMarkNeedsBuildCallback!(_contextMenuController);
+      } else if (contextMenuControllerIsShownCallback!(_spellCheckToolbarController)) {
+        contextMenuControllerMarkNeedsBuildCallback!(_spellCheckToolbarController);
       }
     }
   }
@@ -1825,8 +1827,8 @@ class SelectionOverlay {
     _magnifierController.hide();
     hideHandles();
     if (_toolbar != null ||
-        _contextMenuController.isShown ||
-        _spellCheckToolbarController.isShown) {
+        contextMenuControllerIsShownCallback!(_contextMenuController) ||
+        contextMenuControllerIsShownCallback!(_spellCheckToolbarController)) {
       hideToolbar();
     }
   }
@@ -1837,8 +1839,8 @@ class SelectionOverlay {
   /// To hide the whole overlay, see [hide].
   /// {@endtemplate}
   void hideToolbar() {
-    _contextMenuController.remove();
-    _spellCheckToolbarController.remove();
+    contextMenuControllerRemoveCallback!(_contextMenuController);
+    contextMenuControllerRemoveCallback!(_spellCheckToolbarController);
     if (_toolbar == null) {
       return;
     }

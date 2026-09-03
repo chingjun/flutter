@@ -63,7 +63,7 @@ import 'package:flutter/src/services/text_boundary.dart' show CharacterBoundary,
 import 'package:flutter/src/services/text_editing.dart' show TextSelection;
 import 'package:flutter/src/services/text_formatter.dart' show FilteringTextInputFormatter, TextInputFormatter;
 import 'package:flutter/src/services/text_input.dart' show FloatingCursorDragState, RawFloatingCursorPoint, ScribbleClient, SelectionChangedCause, SelectionRect, SmartDashesType, SmartQuotesType, TextCapitalization, TextEditingValue, TextInput, TextInputAction, TextInputClient, TextInputConfiguration, TextInputConnection, TextInputControl, TextInputStyle, TextInputType, TextSelectionDelegate;
-import 'package:flutter/src/widgets/_windowing_callbacks.dart' show intentForMacOSSelectorCallback, maybeOfAutofillGroupCallback, scrollNotificationObserverAddListenerCallback, scrollNotificationObserverMaybeOfCallback, scrollNotificationObserverRemoveListenerCallback;
+import 'package:flutter/src/widgets/_windowing_callbacks.dart' show buildUndoHistoryCallback, intentForMacOSSelectorCallback, maybeOfAutofillGroupCallback, scrollNotificationObserverAddListenerCallback, scrollNotificationObserverMaybeOfCallback, scrollNotificationObserverRemoveListenerCallback;
 import 'package:flutter/src/widgets/actions.dart' show Action, Actions, CallbackAction, ContextAction, DismissIntent, DoNothingAction, Intent;
 
 import 'package:flutter/src/widgets/automatic_keep_alive.dart' show AutomaticKeepAliveClientMixin;
@@ -95,7 +95,7 @@ import 'package:flutter/src/widgets/text_editing_intents.dart' show CopySelectio
 import 'package:flutter/src/widgets/text_selection.dart' show ClipboardStatus, ClipboardStatusNotifier, LiveTextInputStatus, LiveTextInputStatusNotifier, TextSelectionControls, TextSelectionHandleControls, TextSelectionOverlay;
 import 'package:flutter/src/widgets/text_selection_toolbar_anchors.dart' show TextSelectionToolbarAnchors;
 import 'package:flutter/src/widgets/ticker_provider.dart' show TickerMode, TickerProviderStateMixin;
-import 'package:flutter/src/widgets/undo_history.dart' show UndoHistory, UndoHistoryController;
+import 'package:flutter/src/widgets/undo_history_controller.dart' show UndoHistoryController;
 import 'package:flutter/src/widgets/view.dart' show View;
 import 'package:flutter/src/widgets/widget_span.dart' show WidgetSpan;
 import 'package:listen/listen.dart' show ValueNotifier;
@@ -5334,7 +5334,7 @@ class EditableTextState extends State<EditableText>
     );
 
     _selectionOverlay!.showSpellCheckSuggestionsToolbar((BuildContext context) {
-      return _spellCheckConfiguration.spellCheckSuggestionsToolbarBuilder!(context, this);
+      return Function.apply(_spellCheckConfiguration.spellCheckSuggestionsToolbarBuilder!, <Object>[context, this]) as Widget;
     });
     return true;
   }
@@ -5931,19 +5931,22 @@ class EditableTextState extends State<EditableText>
               debugLabel: kReleaseMode ? null : 'EditableText',
               child: MouseRegion(
                 cursor: widget.mouseCursor ?? SystemMouseCursors.text,
-                child: UndoHistory<TextEditingValue>(
+                child: buildUndoHistoryCallback!(
                   value: widget.controller,
-                  onTriggered: (TextEditingValue value) {
-                    userUpdateTextEditingValue(value, SelectionChangedCause.keyboard);
+                  onTriggered: (Object value) {
+                    userUpdateTextEditingValue(value as TextEditingValue, SelectionChangedCause.keyboard);
                   },
-                  shouldChangeUndoStack: (TextEditingValue? oldValue, TextEditingValue newValue) {
-                    if (!newValue.selection.isValid) {
+                  shouldChangeUndoStack: (Object? oldValue, Object newValue) {
+                    final newVal = newValue as TextEditingValue;
+                    if (!newVal.selection.isValid) {
                       return false;
                     }
 
                     if (oldValue == null) {
                       return true;
                     }
+
+                    final oldVal = oldValue as TextEditingValue;
 
                     switch (defaultTargetPlatform) {
                       case TargetPlatform.iOS:
@@ -5962,17 +5965,18 @@ class EditableTextState extends State<EditableText>
                         break;
                     }
 
-                    return oldValue.text != newValue.text ||
-                        oldValue.composing != newValue.composing;
+                    return oldVal.text != newVal.text ||
+                        oldVal.composing != newVal.composing;
                   },
-                  undoStackModifier: (TextEditingValue value) {
+                  undoStackModifier: (Object value) {
+                    final val = value as TextEditingValue;
                     // On Android we should discard the composing region when pushing
                     // a new entry to the undo stack. This prevents the TextInputPlugin
                     // from restarting the input on every undo/redo when the composing
                     // region is changed by the framework.
                     return defaultTargetPlatform == TargetPlatform.android
-                        ? value.copyWith(composing: TextRange.empty)
-                        : value;
+                        ? val.copyWith(composing: TextRange.empty)
+                        : val;
                   },
                   focusNode: widget.focusNode,
                   controller: widget.undoController,
@@ -6087,7 +6091,7 @@ class EditableTextState extends State<EditableText>
                       ),
                     ),
                   ),
-                ),
+                ) as Widget,
               ),
             );
           },

@@ -27,6 +27,8 @@ import 'package:flutter/src/widgets/navigator.dart' show Navigator;
 import 'package:flutter/src/widgets/overscroll_indicator.dart'
     show GlowingOverscrollIndicator;
 import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
+import 'package:flutter/src/widgets/scroll_aware_focus.dart' as scroll_aware_focus;
+import 'package:flutter/src/widgets/scrollable.dart' show Scrollable;
 import 'package:flutter/src/widgets/scrollbar.dart' show RawScrollbar;
 import 'package:flutter/src/widgets/undo_history.dart' show UndoHistory;
 import 'package:flutter/src/widgets/undo_history_controller.dart' show UndoHistoryController;
@@ -111,4 +113,10 @@ void registerScrollBehaviorCallbacks() {
   navigatorMaybeOfContextCallback ??= (Object context) {
     return Navigator.maybeOf(context as BuildContext)?.context;
   };
+
+  // Register scrollable lookup functions for focus traversal integration.
+  // This allows focus_traversal.dart to work with scrollable widgets
+  // without directly importing scrollable.dart, breaking the dependency cycle.
+  scroll_aware_focus.scrollableMaybeOf ??= Scrollable.maybeOf;
+  scroll_aware_focus.scrollableEnsureVisible ??= Scrollable.ensureVisible;
 }

@@ -23,7 +23,7 @@ import 'package:flutter/src/widgets/focus_manager.dart' show FocusManager, Focus
 import 'package:flutter/src/widgets/focus_scope.dart' show Focus;
 import 'package:flutter/src/widgets/framework.dart' show BuildContext, Element, InheritedElement, InheritedWidget, State, StatefulWidget, StatelessWidget, Widget;
 import 'package:flutter/src/widgets/scroll_position.dart' show ScrollPositionAlignmentPolicy;
-import 'package:flutter/src/widgets/scrollable.dart' show Scrollable, ScrollableState;
+import 'package:flutter/src/widgets/scroll_aware_focus.dart' show scrollableEnsureVisible, scrollableMaybeOf;
 import 'package:listen/listen.dart' show ChangeNotifier;
 import 'package:meta/meta.dart' show immutable, mustCallSuper, nonVirtual, protected;
 
@@ -219,7 +219,7 @@ abstract class FocusTraversalPolicy with Diagnosticable {
     Curve? curve,
   }) {
     node.requestFocus();
-    Scrollable.ensureVisible(
+    scrollableEnsureVisible?.call(
       node.context!,
       alignment: alignment ?? 1,
       alignmentPolicy: alignmentPolicy ?? ScrollPositionAlignmentPolicy.explicit,
@@ -835,14 +835,14 @@ mixin DirectionalFocusTraversalPolicyMixin on FocusTraversalPolicy {
         if (eligibleNodes.isEmpty) {
           break;
         }
-        final ScrollableState? focusedScrollable = Scrollable.maybeOf(
+        final Object? focusedScrollable = scrollableMaybeOf?.call(
           focusedChild.context!,
           axis: Axis.vertical,
         );
         if (focusedScrollable != null) {
           final Iterable<FocusNode> filteredEligibleNodes = eligibleNodes.where(
             (FocusNode node) =>
-                Scrollable.maybeOf(node.context!, axis: Axis.vertical) == focusedScrollable,
+                scrollableMaybeOf?.call(node.context!, axis: Axis.vertical) == focusedScrollable,
           );
           if (filteredEligibleNodes.isNotEmpty) {
             eligibleNodes = filteredEligibleNodes;
@@ -891,14 +891,14 @@ mixin DirectionalFocusTraversalPolicyMixin on FocusTraversalPolicy {
         if (eligibleNodes.isEmpty) {
           break;
         }
-        final ScrollableState? focusedScrollable = Scrollable.maybeOf(
+        final Object? focusedScrollable = scrollableMaybeOf?.call(
           focusedChild.context!,
           axis: Axis.horizontal,
         );
         if (focusedScrollable != null) {
           final Iterable<FocusNode> filteredEligibleNodes = eligibleNodes.where(
             (FocusNode node) =>
-                Scrollable.maybeOf(node.context!, axis: Axis.horizontal) == focusedScrollable,
+                scrollableMaybeOf?.call(node.context!, axis: Axis.horizontal) == focusedScrollable,
           );
           if (filteredEligibleNodes.isNotEmpty) {
             eligibleNodes = filteredEligibleNodes;
@@ -1151,7 +1151,7 @@ mixin DirectionalFocusTraversalPolicyMixin on FocusTraversalPolicy {
       // Returns true if successfully popped the history.
       bool popOrInvalidate(TraversalDirection direction) {
         final FocusNode lastNode = policyData.history.removeLast().node;
-        if (Scrollable.maybeOf(lastNode.context!) != Scrollable.maybeOf(primaryFocus!.context!)) {
+        if (scrollableMaybeOf?.call(lastNode.context!) != scrollableMaybeOf?.call(primaryFocus!.context!)) {
           invalidateScopeData(nearestScope);
           return false;
         }

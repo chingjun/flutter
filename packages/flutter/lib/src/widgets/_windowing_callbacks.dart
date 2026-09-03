@@ -45,3 +45,27 @@ bool Function(Object route)? modalRouteIsCurrentCallback;
 /// Set by `routes.dart`, called by `widget_inspector.dart`.
 @internal
 bool Function(Object route)? modalRouteIsOffstageCallback;
+
+/// A callback to look up the [ScrollNotificationObserverState].
+///
+/// Set by `scroll_notification_observer.dart`, called by `editable_text.dart`.
+@internal
+Object? Function(Object context)? scrollNotificationObserverMaybeOfCallback;
+
+/// A callback to map a macOS selector name to an [Intent].
+///
+/// Set by `default_text_editing_shortcuts.dart`, called by `editable_text.dart`.
+@internal
+Object? Function(String selectorName)? intentForMacOSSelectorCallback;
+
+/// A callback to add a listener to a [ScrollNotificationObserverState].
+///
+/// Set by `scroll_notification_observer.dart`, called by `editable_text.dart`.
+@internal
+void Function(Object observer, Object listener)? scrollNotificationObserverAddListenerCallback;
+
+/// A callback to remove a listener from a [ScrollNotificationObserverState].
+///
+/// Set by `scroll_notification_observer.dart`, called by `editable_text.dart`.
+@internal
+void Function(Object observer, Object listener)? scrollNotificationObserverRemoveListenerCallback;

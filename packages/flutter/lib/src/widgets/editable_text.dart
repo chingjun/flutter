@@ -63,7 +63,7 @@ import 'package:flutter/src/services/text_boundary.dart' show CharacterBoundary,
 import 'package:flutter/src/services/text_editing.dart' show TextSelection;
 import 'package:flutter/src/services/text_formatter.dart' show FilteringTextInputFormatter, TextInputFormatter;
 import 'package:flutter/src/services/text_input.dart' show FloatingCursorDragState, RawFloatingCursorPoint, ScribbleClient, SelectionChangedCause, SelectionRect, SmartDashesType, SmartQuotesType, TextCapitalization, TextEditingValue, TextInput, TextInputAction, TextInputClient, TextInputConfiguration, TextInputConnection, TextInputControl, TextInputStyle, TextInputType, TextSelectionDelegate;
-import 'package:flutter/src/widgets/_windowing_callbacks.dart' show maybeOfAutofillGroupCallback;
+import 'package:flutter/src/widgets/_windowing_callbacks.dart' show maybeOfAutofillGroupCallback, scrollNotificationObserverAddListenerCallback, scrollNotificationObserverMaybeOfCallback, scrollNotificationObserverRemoveListenerCallback;
 import 'package:flutter/src/widgets/actions.dart' show Action, Actions, CallbackAction, ContextAction, DismissIntent, DoNothingAction, Intent;
 import 'package:flutter/src/widgets/app_lifecycle_listener.dart' show AppLifecycleListener;
 import 'package:flutter/src/widgets/automatic_keep_alive.dart' show AutomaticKeepAliveClientMixin;
@@ -84,7 +84,7 @@ import 'package:flutter/src/widgets/notification_listener.dart' show Notificatio
 import 'package:flutter/src/widgets/scroll_configuration.dart' show ScrollBehavior, ScrollConfiguration;
 import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
 import 'package:flutter/src/widgets/scroll_notification.dart' show ScrollEndNotification, ScrollNotification, ScrollStartNotification;
-import 'package:flutter/src/widgets/scroll_notification_observer.dart' show ScrollNotificationObserver, ScrollNotificationObserverState;
+
 import 'package:flutter/src/widgets/scroll_physics.dart' show ScrollPhysics;
 import 'package:flutter/src/widgets/scroll_position.dart' show ScrollPosition;
 import 'package:flutter/src/widgets/scrollable.dart' show Scrollable, ScrollableState;
@@ -2598,7 +2598,7 @@ class EditableTextState extends State<EditableText>
   bool get _hasInputConnection => _textInputConnection?.attached ?? false;
 
   TextSelectionOverlay? _selectionOverlay;
-  ScrollNotificationObserverState? _scrollNotificationObserver;
+  Object? _scrollNotificationObserver;
   ({TextEditingValue value, Rect selectionBounds})? _dataWhenToolbarShowScheduled;
   bool _listeningToScrollNotificationObserver = false;
 
@@ -3490,9 +3490,13 @@ class EditableTextState extends State<EditableText>
       // scroll notification observer. We only subscribe to the scroll
       // notification observer when the context menu is shown on platforms that
       // support _platformSupportsFadeOnScroll.
-      _scrollNotificationObserver?.removeListener(_handleContextMenuOnParentScroll);
-      _scrollNotificationObserver = ScrollNotificationObserver.maybeOf(context);
-      _scrollNotificationObserver?.addListener(_handleContextMenuOnParentScroll);
+      if (_scrollNotificationObserver != null) {
+        scrollNotificationObserverRemoveListenerCallback?.call(_scrollNotificationObserver!, _handleContextMenuOnParentScroll);
+      }
+      _scrollNotificationObserver = scrollNotificationObserverMaybeOfCallback?.call(context);
+      if (_scrollNotificationObserver != null) {
+        scrollNotificationObserverAddListenerCallback?.call(_scrollNotificationObserver!, _handleContextMenuOnParentScroll);
+      }
     }
   }
 
@@ -3645,7 +3649,7 @@ class EditableTextState extends State<EditableText>
   void _disposeScrollNotificationObserver() {
     _listeningToScrollNotificationObserver = false;
     if (_scrollNotificationObserver != null) {
-      _scrollNotificationObserver!.removeListener(_handleContextMenuOnParentScroll);
+      scrollNotificationObserverRemoveListenerCallback?.call(_scrollNotificationObserver!, _handleContextMenuOnParentScroll);
       _scrollNotificationObserver = null;
     }
   }
@@ -5270,9 +5274,13 @@ class EditableTextState extends State<EditableText>
     // hidden during a scroll on supported platforms.
     if (_platformSupportsFadeOnScroll) {
       _listeningToScrollNotificationObserver = true;
-      _scrollNotificationObserver?.removeListener(_handleContextMenuOnParentScroll);
-      _scrollNotificationObserver = ScrollNotificationObserver.maybeOf(context);
-      _scrollNotificationObserver?.addListener(_handleContextMenuOnParentScroll);
+      if (_scrollNotificationObserver != null) {
+        scrollNotificationObserverRemoveListenerCallback?.call(_scrollNotificationObserver!, _handleContextMenuOnParentScroll);
+      }
+      _scrollNotificationObserver = scrollNotificationObserverMaybeOfCallback?.call(context);
+      if (_scrollNotificationObserver != null) {
+        scrollNotificationObserverAddListenerCallback?.call(_scrollNotificationObserver!, _handleContextMenuOnParentScroll);
+      }
     }
     return true;
   }

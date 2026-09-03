@@ -9,6 +9,7 @@ import 'dart:collection';
 
 import 'package:flutter/src/foundation/assertions.dart' show ErrorDescription, FlutterError, FlutterErrorDetails;
 import 'package:flutter/src/foundation/diagnostics.dart' show DiagnosticsNode, DiagnosticsProperty, DiagnosticsTreeStyle;
+import 'package:flutter/src/widgets/_windowing_callbacks.dart' show scrollNotificationObserverAddListenerCallback, scrollNotificationObserverMaybeOfCallback, scrollNotificationObserverRemoveListenerCallback;
 import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedWidget, State, StatefulWidget, Widget;
 import 'package:flutter/src/widgets/notification_listener.dart' show NotificationListener;
 import 'package:flutter/src/widgets/scroll_notification.dart' show ScrollNotification;
@@ -105,6 +106,12 @@ class ScrollNotificationObserver extends StatefulWidget {
   /// * [ScrollNotificationObserver.of], which is similar to this method, but
   ///   asserts if no [ScrollNotificationObserver] ancestor is found.
   static ScrollNotificationObserverState? maybeOf(BuildContext context) {
+    scrollNotificationObserverMaybeOfCallback ??= (Object ctx) =>
+        ScrollNotificationObserver.maybeOf(ctx as BuildContext);
+    scrollNotificationObserverAddListenerCallback ??= (Object observer, Object listener) =>
+        (observer as ScrollNotificationObserverState).addListener(listener as ScrollNotificationCallback);
+    scrollNotificationObserverRemoveListenerCallback ??= (Object observer, Object listener) =>
+        (observer as ScrollNotificationObserverState).removeListener(listener as ScrollNotificationCallback);
     return context
         .dependOnInheritedWidgetOfExactType<_ScrollNotificationObserverScope>()
         ?._scrollNotificationObserverState;

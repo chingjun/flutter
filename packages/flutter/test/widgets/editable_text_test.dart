@@ -88,7 +88,7 @@ import 'package:flutter/src/widgets/gesture_detector.dart' show GestureRecognize
 import 'package:flutter/src/widgets/magnifier.dart' show MagnifierController, MagnifierInfo, TextMagnifierConfiguration;
 import 'package:flutter/src/widgets/media_query.dart' show MediaQuery, MediaQueryData;
 import 'package:flutter/src/widgets/navigator.dart' show NavigatorState, RouteSettings;
-import 'package:flutter/src/widgets/notification_listener.dart' show NotificationListener;
+
 import 'package:flutter/src/widgets/overlay.dart' show Overlay, OverlayEntry;
 import 'package:flutter/src/widgets/placeholder.dart' show Placeholder;
 import 'package:flutter/src/widgets/scroll_controller.dart' show ScrollController;
@@ -98,7 +98,7 @@ import 'package:flutter/src/widgets/scroll_view.dart' show CustomScrollView, Lis
 import 'package:flutter/src/widgets/scrollable.dart' show Scrollable;
 import 'package:flutter/src/widgets/shortcuts.dart' show Shortcuts, SingleActivator;
 import 'package:flutter/src/widgets/single_child_scroll_view.dart' show SingleChildScrollView;
-import 'package:flutter/src/widgets/size_changed_layout_notifier.dart' show SizeChangedLayoutNotification;
+import 'package:flutter/src/widgets/notification_listener.dart' show LayoutChangedNotification, NotificationListener;
 import 'package:flutter/src/widgets/sliver.dart' show SliverMainAxisGroup;
 import 'package:flutter/src/widgets/spell_check.dart' show SpellCheckConfiguration;
 import 'package:flutter/src/widgets/text.dart' show DefaultTextHeightBehavior, Text;
@@ -18098,8 +18098,8 @@ void main() {
     await tester.pumpWidget(
       MaterialApp(
         home: Scaffold(
-          body: NotificationListener<SizeChangedLayoutNotification>(
-            onNotification: (SizeChangedLayoutNotification notification) {
+          body: NotificationListener<LayoutChangedNotification>(
+            onNotification: (LayoutChangedNotification notification) {
               notifyCount += 1;
               return false;
             },

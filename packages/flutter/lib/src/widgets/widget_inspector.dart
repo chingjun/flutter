@@ -54,6 +54,7 @@ import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior, Rend
 import 'package:flutter/src/rendering/stack.dart' show RenderStack;
 import 'package:flutter/src/rendering/view.dart' show RenderView;
 import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding;
+import 'package:flutter/src/widgets/_windowing_callbacks.dart' show modalRouteIsCurrentCallback, modalRouteIsOffstageCallback, modalRouteOfCallback;
 import 'package:flutter/src/widgets/basic.dart' show Column, CustomPaint, Directionality, IgnorePointer, MouseRegion, Positioned, Row, Stack;
 import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding, WidgetsBindingObserver;
 import 'package:flutter/src/widgets/debug_flags.dart' show debugOnRebuildDirtyWidget;
@@ -61,7 +62,6 @@ import 'package:flutter/src/widgets/framework.dart' show BuildContext, DebugCrea
 import 'package:flutter/src/widgets/gesture_detector.dart' show GestureDetector;
 import 'package:flutter/src/widgets/icon_data.dart' show IconData;
 import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
-import 'package:flutter/src/widgets/routes.dart' show ModalRoute;
 import 'package:flutter/src/widgets/service_extensions.dart' show WidgetInspectorServiceExtensions;
 import 'package:flutter/src/widgets/view.dart' show View;
 import 'package:listen/listen.dart' show ChangeNotifier, ValueNotifier;
@@ -3526,12 +3526,12 @@ Element? _elementForRenderObject(RenderObject? object) {
   return null;
 }
 
-ModalRoute<Object?>? _modalRouteForRenderObject(RenderObject? object) {
+Object? _modalRouteForRenderObject(RenderObject? object) {
   final Element? element = _elementForRenderObject(object);
   if (element == null) {
     return null;
   }
-  return ModalRoute.of<Object?>(element);
+  return modalRouteOfCallback?.call(element);
 }
 
 double _inspectorHitArea(RenderObject object) {
@@ -3539,10 +3539,10 @@ double _inspectorHitArea(RenderObject object) {
   return size.width * size.height;
 }
 
-ModalRoute<Object?>? _inspectorScopeRouteForHits(List<RenderObject> hits) {
+Object? _inspectorScopeRouteForHits(List<RenderObject> hits) {
   for (final hit in hits) {
-    final ModalRoute<Object?>? route = _modalRouteForRenderObject(hit);
-    if (route?.isCurrent ?? false) {
+    final Object? route = _modalRouteForRenderObject(hit);
+    if (route != null && (modalRouteIsCurrentCallback?.call(route) ?? false)) {
       return route;
     }
   }
@@ -3552,7 +3552,7 @@ ModalRoute<Object?>? _inspectorScopeRouteForHits(List<RenderObject> hits) {
   RenderObject? smallestHit;
   double smallestArea = double.infinity;
   for (final hit in hits) {
-    final ModalRoute<Object?>? route = _modalRouteForRenderObject(hit);
+    final Object? route = _modalRouteForRenderObject(hit);
     if (route == null) {
       continue;
     }
@@ -3577,15 +3577,15 @@ List<RenderObject> _filterInspectorHitCandidatesToModalRouteScope(List<RenderObj
   // Ignore widgets that belong to offstage modal routes.
   final List<RenderObject> onstageHits = hits
       .where((RenderObject hit) {
-        final ModalRoute<Object?>? route = _modalRouteForRenderObject(hit);
-        return route == null || !route.offstage;
+        final Object? route = _modalRouteForRenderObject(hit);
+        return route == null || !(modalRouteIsOffstageCallback?.call(route) ?? false);
       })
       .toList();
   if (onstageHits.isEmpty) {
     return onstageHits;
   }
 
-  final ModalRoute<Object?>? scopeRoute = _inspectorScopeRouteForHits(onstageHits);
+  final Object? scopeRoute = _inspectorScopeRouteForHits(onstageHits);
   final List<RenderObject> scopedHits = onstageHits
       .where(
         (RenderObject hit) =>

@@ -27,20 +27,21 @@ bool? Function(Object context)? isCurrentModalRouteCallback;
 @internal
 Object? Function(Object context)? maybeOfAutofillGroupCallback;
 
-/// A callback to build a [GlowingOverscrollIndicator] widget.
+/// A callback to look up the [ModalRoute] for a given [BuildContext].
 ///
-/// Set by `overscroll_indicator.dart`, called by `scroll_configuration.dart`.
-/// Parameters: axisDirection (as Object), color (as Object), child (as Object).
-/// Returns the indicator widget (as Object).
+/// Set by `routes.dart`, called by `widget_inspector.dart`.
+/// Returns the [ModalRoute] as an Object? (to avoid importing routes.dart).
 @internal
-Object Function({required Object axisDirection, required Object color, required Object child})?
-    buildGlowingOverscrollIndicatorCallback;
+Object? Function(Object context)? modalRouteOfCallback;
 
-/// A callback to build a [RawScrollbar] widget.
+/// A callback to check if a [ModalRoute] is current.
 ///
-/// Set by `scrollbar.dart`, called by `scroll_configuration.dart`.
-/// Parameters: controller (as Object?), child (as Object).
-/// Returns the scrollbar widget (as Object).
+/// Set by `routes.dart`, called by `widget_inspector.dart`.
 @internal
-Object Function({required Object? controller, required Object child})?
-    buildRawScrollbarCallback;
+bool Function(Object route)? modalRouteIsCurrentCallback;
+
+/// A callback to check if a [ModalRoute] is offstage.
+///
+/// Set by `routes.dart`, called by `widget_inspector.dart`.
+@internal
+bool Function(Object route)? modalRouteIsOffstageCallback;

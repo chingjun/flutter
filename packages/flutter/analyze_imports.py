@@ -169,6 +169,20 @@ class ImportAnalyzer:
         sccs.sort(key=lambda c: (-len(c), c[0]))
         return sccs
 
+    @staticmethod
+    def count_lines(file_path: str) -> int:
+        """Returns the number of lines in the given file, or 0 if unreadable."""
+        try:
+            with open(file_path, "r", encoding="utf-8", errors="replace") as f:
+                return sum(1 for _ in f)
+        except (OSError, IOError):
+            return 0
+
+    @staticmethod
+    def count_lines_in_cycle(cycle: List[str]) -> int:
+        """Returns the total line count for all files in a cycle group."""
+        return sum(ImportAnalyzer.count_lines(f) for f in cycle)
+
 
 def format_text_output(
     analyzer: ImportAnalyzer,
@@ -256,7 +270,8 @@ def format_text_output(
         lines.append("Definition: In each cycle group, importing ANY single file transitively imports ALL other files in the group.")
         lines.append("-" * 80)
         for i, cycle in enumerate(cycles, 1):
-            lines.append(f"\n[Cycle Group #{i}] ({len(cycle)} files):")
+            total_lines = ImportAnalyzer.count_lines_in_cycle(cycle)
+            lines.append(f"\n[Cycle Group #{i}] ({len(cycle)} files, {total_lines:,} lines):")
             for f in cycle:
                 lines.append(f"  * {f}")
 
@@ -307,6 +322,7 @@ def format_json_output(
             {
                 "cycle_index": i,
                 "file_count": len(cycle),
+                "total_line_count": ImportAnalyzer.count_lines_in_cycle(cycle),
                 "files": cycle,
             }
             for i, cycle in enumerate(cycles, 1)
@@ -341,11 +357,12 @@ def format_csv_output(
         return "\n".join(lines)
 
     if show_cycles and not (show_transitive or show_direct):
-        lines.append("cycle_id,cycle_size,file")
+        lines.append("cycle_id,cycle_size,total_line_count,file")
         for i, cycle in enumerate(cycles, 1):
             if not filter_pattern or any(filter_pattern in f for f in cycle):
+                total_lines = ImportAnalyzer.count_lines_in_cycle(cycle)
                 for f in cycle:
-                    lines.append(f'{i},{len(cycle)},"{f}"')
+                    lines.append(f'{i},{len(cycle)},{total_lines},"{f}"')
         return "\n".join(lines)
 
     # If multiple sections in CSV, output multi-section text
@@ -362,11 +379,12 @@ def format_csv_output(
             lines.append(f'"{src}","{imp}",{cnt},"{";".join(syms)}"')
 
     lines.append("\n# SECTION 3: IMPORT CYCLES")
-    lines.append("cycle_id,cycle_size,file")
+    lines.append("cycle_id,cycle_size,total_line_count,file")
     for i, cycle in enumerate(cycles, 1):
         if not filter_pattern or any(filter_pattern in f for f in cycle):
+            total_lines = ImportAnalyzer.count_lines_in_cycle(cycle)
             for f in cycle:
-                lines.append(f'{i},{len(cycle)},"{f}"')
+                lines.append(f'{i},{len(cycle)},{total_lines},"{f}"')
 
     return "\n".join(lines)
 
@@ -476,9 +494,11 @@ def main():
         print(f"Total Direct Import Edges: {len(direct_symbols):,}")
         print(f"Total Cycle Groups (SCCs > 1): {len(cycles):,}")
         print(f"Total Files in Cycles: {sum(len(c) for c in cycles):,}")
+        print(f"Total Lines in Cycles: {sum(ImportAnalyzer.count_lines_in_cycle(c) for c in cycles):,}")
         print("\nCycle Groups Breakdown:")
         for i, c in enumerate(cycles, 1):
-            print(f"  Group {i:2d}: {len(c):3d} files (e.g. {os.path.basename(c[0])})")
+            total_lines = ImportAnalyzer.count_lines_in_cycle(c)
+            print(f"  Group {i:2d}: {len(c):3d} files, {total_lines:6,} lines (e.g. {os.path.basename(c[0])})")
         print("=" * 80)
         return
 

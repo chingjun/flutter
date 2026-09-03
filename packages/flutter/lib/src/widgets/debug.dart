@@ -25,7 +25,6 @@ export 'debug_flags.dart';
 export 'directionality.dart' show debugCheckHasDirectionality;
 export 'framework.dart'
     show debugChildrenHaveDuplicateKeys, debugItemsHaveDuplicateKeys, debugWidgetBuilderValue;
-export 'table.dart' show debugCheckHasTable;
 
 // Examples can assume:
 // late BuildContext context;

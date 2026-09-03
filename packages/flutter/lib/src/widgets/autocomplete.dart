@@ -25,8 +25,7 @@ import 'package:flutter/src/widgets/constants.dart' show kMinInteractiveDimensio
 import 'package:flutter/src/widgets/editable_text.dart' show TextEditingController;
 import 'package:flutter/src/widgets/focus_manager.dart' show FocusNode;
 import 'package:flutter/src/widgets/focus_scope.dart' show ExcludeFocus;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StatefulWidget, Widget;
-import 'package:flutter/src/widgets/inherited_notifier.dart' show InheritedNotifier;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, InheritedNotifier, State, StatefulWidget, Widget;
 import 'package:flutter/src/widgets/localizations.dart' show WidgetsLocalizations;
 import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
 import 'package:flutter/src/widgets/overlay.dart' show OverlayChildLayoutInfo, OverlayPortal, OverlayPortalController;

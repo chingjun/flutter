@@ -39,12 +39,14 @@ import 'package:flutter/src/rendering/proxy_box.dart' show HitTestBehavior;
 import 'package:flutter/src/rendering/selection.dart' show TextSelectionHandleType;
 import 'package:flutter/src/rendering/stack.dart' show RelativeRect;
 import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding, SchedulerPhase;
+import 'package:flutter/src/semantics/semantics_event.dart' show LongPressSemanticsEvent;
 import 'package:flutter/src/services/clipboard.dart' show Clipboard;
 import 'package:flutter/src/services/haptic_feedback.dart' show HapticFeedback;
 import 'package:flutter/src/services/hardware_keyboard.dart' show HardwareKeyboard;
 import 'package:flutter/src/services/keyboard_key.g.dart' show LogicalKeyboardKey;
 import 'package:flutter/src/services/live_text.dart' show LiveText;
 import 'package:flutter/src/services/scribe.dart' show Scribe;
+import 'package:flutter/src/services/system_sound.dart' show SystemSound, SystemSoundType;
 import 'package:flutter/src/services/text_boundary.dart' show LineBoundary, ParagraphBoundary, TextBoundary;
 import 'package:flutter/src/services/text_editing.dart' show TextSelection;
 import 'package:flutter/src/services/text_input.dart' show FloatingCursorDragState, RawFloatingCursorPoint, SelectionChangedCause, TextEditingValue, TextSelectionDelegate;
@@ -54,7 +56,6 @@ import 'package:flutter/src/widgets/constants.dart' show kMinInteractiveDimensio
 import 'package:flutter/src/widgets/context_menu_controller.dart' show ContextMenuController;
 import 'package:flutter/src/widgets/debug.dart' show debugCheckHasOverlay;
 import 'package:flutter/src/widgets/editable_text.dart' show EditableTextState;
-import 'package:flutter/src/widgets/feedback.dart' show Feedback;
 import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StatefulWidget, Widget, WidgetBuilder;
 import 'package:flutter/src/widgets/gesture_detector.dart' show GestureRecognizerFactory, GestureRecognizerFactoryWithHandlers, RawGestureDetector;
 import 'package:flutter/src/widgets/inherited_theme.dart' show CapturedThemes, InheritedTheme;
@@ -82,6 +83,27 @@ export 'package:flutter/services.dart' show TextSelectionDelegate;
 ///   * [CupertinoTextSelectionToolbar.toolbarBuilder], which is similar, but
 ///     for a Cupertino-style toolbar.
 typedef ToolbarBuilder = Widget Function(BuildContext context, Widget child);
+
+/// Provides platform-specific feedback for a long press.
+///
+/// Inlined from [Feedback.forLongPress] to avoid importing feedback.dart.
+Future<void> _feedbackForLongPress(BuildContext context) {
+  context.findRenderObject()!.sendSemanticsEvent(const LongPressSemanticsEvent());
+  switch (defaultTargetPlatform) {
+    case TargetPlatform.android:
+    case TargetPlatform.fuchsia:
+      return HapticFeedback.vibrate();
+    case TargetPlatform.iOS:
+      return Future.wait(<Future<void>>[
+        SystemSound.play(SystemSoundType.click),
+        HapticFeedback.heavyImpact(),
+      ]);
+    case TargetPlatform.linux:
+    case TargetPlatform.macOS:
+    case TargetPlatform.windows:
+      return Future<void>.value();
+  }
+}
 
 /// ParentData that determines whether or not to paint the corresponding child.
 ///
@@ -2814,7 +2836,7 @@ class TextSelectionGestureDetectorBuilder {
         } else if (renderEditable.readOnly) {
           renderEditable.selectWord(cause: SelectionChangedCause.longPress);
           if (editableText.context.mounted) {
-            Feedback.forLongPress(editableText.context);
+            _feedbackForLongPress(editableText.context);
           }
         } else {
           renderEditable.selectPositionAt(
@@ -2841,7 +2863,7 @@ class TextSelectionGestureDetectorBuilder {
       case TargetPlatform.windows:
         renderEditable.selectWord(cause: SelectionChangedCause.longPress);
         if (editableText.context.mounted) {
-          Feedback.forLongPress(editableText.context);
+          _feedbackForLongPress(editableText.context);
         }
     }
 

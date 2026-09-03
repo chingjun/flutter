@@ -56,9 +56,8 @@ import 'package:flutter/src/widgets/binding.dart' show WidgetsBinding, WidgetsBi
 import 'package:flutter/src/widgets/constants.dart' show kMinInteractiveDimension;
 import 'package:flutter/src/widgets/debug.dart' show debugCheckHasOverlay;
 import 'package:flutter/src/widgets/editable_text.dart' show EditableTextState;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StatefulWidget, Widget, WidgetBuilder;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, CapturedThemes, GlobalKey, InheritedTheme, State, StatefulWidget, Widget, WidgetBuilder;
 import 'package:flutter/src/widgets/gesture_detector.dart' show GestureRecognizerFactory, GestureRecognizerFactoryWithHandlers, RawGestureDetector;
-import 'package:flutter/src/widgets/inherited_theme.dart' show CapturedThemes, InheritedTheme;
 import 'package:flutter/src/widgets/magnifier.dart' show MagnifierController, MagnifierInfo, TextMagnifierConfiguration;
 import 'package:flutter/src/widgets/overlay.dart' show Overlay, OverlayEntry, OverlayState;
 import 'package:flutter/src/widgets/scrollable.dart' show Scrollable, ScrollableState;

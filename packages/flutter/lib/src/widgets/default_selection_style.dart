@@ -15,8 +15,7 @@ import 'package:flutter/src/foundation/key.dart' show Key;
 import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor;
 import 'package:flutter/src/widgets/_windowing_callbacks.dart' show defaultSelectionStyleDefaultColor, defaultSelectionStyleOfCallback;
 import 'package:flutter/src/widgets/basic.dart' show Builder;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, StatelessWidget, Widget;
-import 'package:flutter/src/widgets/inherited_theme.dart' show InheritedTheme;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, InheritedTheme, StatelessWidget, Widget;
 
 // Examples can assume:
 // late BuildContext context;

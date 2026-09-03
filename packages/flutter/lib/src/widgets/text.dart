@@ -32,8 +32,7 @@ import 'package:flutter/src/rendering/selection.dart' show ClearSelectionEvent, 
 import 'package:flutter/src/services/mouse_cursor.dart' show MouseCursor, SystemMouseCursors;
 import 'package:flutter/src/widgets/_windowing_callbacks.dart' show defaultSelectionStyleDefaultColor, defaultSelectionStyleOfCallback;
 import 'package:flutter/src/widgets/basic.dart' show Builder, ExcludeSemantics, MouseRegion, Semantics;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, State, StatefulWidget, StatelessWidget, Widget;
-import 'package:flutter/src/widgets/inherited_theme.dart' show InheritedTheme;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, InheritedTheme, State, StatefulWidget, StatelessWidget, Widget;
 import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
 import 'package:flutter/src/widgets/rich_text.dart' show RichText;
 import 'package:flutter/src/widgets/selectable_region.dart' show StaticSelectionContainerDelegate;

@@ -8,8 +8,7 @@ library;
 import 'dart:ui' show VoidCallback;
 
 import 'package:flutter/src/widgets/_windowing_callbacks.dart' show navigatorMaybeOfContextCallback;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, Widget, WidgetBuilder;
-import 'package:flutter/src/widgets/inherited_theme.dart' show CapturedThemes, InheritedTheme;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, CapturedThemes, InheritedTheme, Widget, WidgetBuilder;
 import 'package:flutter/src/widgets/overlay.dart' show Overlay, OverlayEntry, OverlayState;
 
 /// Builds and manages a context menu at a given location.

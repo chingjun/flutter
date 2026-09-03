@@ -31,8 +31,7 @@ import 'package:flutter/src/rendering/viewport.dart' show RenderAbstractViewport
 import 'package:flutter/src/rendering/viewport_offset.dart' show ScrollDirection, ViewportOffset;
 import 'package:flutter/src/scheduler/binding.dart' show SchedulerBinding, SchedulerPhase;
 import 'package:flutter/src/widgets/_windowing_callbacks.dart' show pageStorageReadStateCallback, pageStorageWriteStateCallback;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext;
-import 'package:flutter/src/widgets/notification_core.dart' show Notification;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, Notification;
 import 'package:flutter/src/widgets/scroll_activity.dart' show ScrollActivity, ScrollHoldController;
 import 'package:flutter/src/widgets/scroll_context.dart' show ScrollContext;
 import 'package:flutter/src/widgets/scroll_metrics.dart' show ScrollMetrics;

@@ -25,8 +25,7 @@ import 'package:flutter/src/rendering/proxy_box.dart' show CustomClipper, Render
 import 'package:flutter/src/widgets/_windowing_callbacks.dart' show navigatorMaybeOfContextCallback;
 import 'package:flutter/src/widgets/basic.dart' show ClipPath, IgnorePointer, Opacity, SizedBox, Stack;
 import 'package:flutter/src/widgets/container.dart' show DecoratedBox;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, SingleChildRenderObjectWidget, StatelessWidget, Widget, WidgetBuilder;
-import 'package:flutter/src/widgets/inherited_theme.dart' show CapturedThemes, InheritedTheme;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, CapturedThemes, InheritedTheme, SingleChildRenderObjectWidget, StatelessWidget, Widget, WidgetBuilder;
 import 'package:flutter/src/widgets/overlay.dart' show Overlay, OverlayEntry, OverlayState;
 import 'package:listen/listen.dart' show ValueNotifier;
 import 'package:meta/meta.dart' show awaitNotRequired, immutable, visibleForTesting;

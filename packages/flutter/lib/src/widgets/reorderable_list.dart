@@ -31,8 +31,7 @@ import 'package:flutter/src/semantics/semantics.dart' show CustomSemanticsAction
 import 'package:flutter/src/widgets/basic.dart' show Directionality, Listener, OverflowBox, Positioned, Semantics, SizedBox, SliverPadding, Transform;
 import 'package:flutter/src/widgets/debug.dart' show debugCheckHasOverlay;
 import 'package:flutter/src/widgets/drag_boundary.dart' show DragBoundary, DragBoundaryDelegate;
-import 'package:flutter/src/widgets/framework.dart' show BuildContext, GlobalKey, GlobalObjectKey, IndexedWidgetBuilder, State, StatefulWidget, StatelessWidget, Widget;
-import 'package:flutter/src/widgets/inherited_theme.dart' show CapturedThemes, InheritedTheme;
+import 'package:flutter/src/widgets/framework.dart' show BuildContext, CapturedThemes, GlobalKey, GlobalObjectKey, IndexedWidgetBuilder, InheritedTheme, State, StatefulWidget, StatelessWidget, Widget;
 import 'package:flutter/src/widgets/localizations.dart' show WidgetsLocalizations;
 import 'package:flutter/src/widgets/media_query.dart' show MediaQuery;
 import 'package:flutter/src/widgets/overlay.dart' show Overlay, OverlayEntry, OverlayState;

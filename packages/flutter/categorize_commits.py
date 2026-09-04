@@ -45,9 +45,9 @@ _RAW_DIMENSIONS = [
 ]
 
 # Merged key order (default)
-_MERGED_KEYS = ["framework", "flutter_tools", "engine", "deps", "ci_yaml", "dev"]
+_MERGED_KEYS = ["framework", "flutter_tools", "engine", "deps", "ci_yaml", "dev", "none_of_above"]
 # Split key order
-_SPLIT_KEYS = ["framework_src", "framework_test", "flutter_tools", "engine", "deps", "ci_yaml", "dev"]
+_SPLIT_KEYS = ["framework_src", "framework_test", "flutter_tools", "engine", "deps", "ci_yaml", "dev", "none_of_above"]
 
 
 def _dim_keys(split: bool) -> List[str]:
@@ -100,13 +100,17 @@ def classify_raw(changed_files: List[str]) -> Dict[str, bool]:
 
 def project_dims(raw: Dict[str, bool], split: bool) -> Dict[str, bool]:
     """Project raw dimensions into the output key set (merged or split)."""
+    any_matched = any(raw.values())
     if split:
-        return {k: raw[k] for k in _SPLIT_KEYS}
+        result = {k: raw[k] for k in _SPLIT_KEYS if k != "none_of_above"}
+        result["none_of_above"] = not any_matched
+        return result
     # Merge framework_src and framework_test into "framework"
     merged: Dict[str, bool] = {}
     merged["framework"] = raw["framework_src"] or raw["framework_test"]
     for k in ["flutter_tools", "engine", "deps", "ci_yaml", "dev"]:
         merged[k] = raw[k]
+    merged["none_of_above"] = not any_matched
     return merged
 
 
@@ -133,7 +137,7 @@ def analyze(repo: str, n: int, split: bool) -> Tuple[List[dict], dict]:
             if dims[key]:
                 dim_counts[key] += 1
 
-        combo_key = "+".join(k for k in dim_keys if dims[k]) or "other"
+        combo_key = "+".join(k for k in dim_keys if dims[k])
         combo_counts[combo_key] += 1
 
         records.append({

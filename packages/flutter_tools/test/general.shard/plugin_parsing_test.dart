@@ -32,8 +32,9 @@ void main() {
       fileSystem: fileSystem,
     );
 
-    final androidPlugin = plugin.platforms[AndroidPlugin.kConfigKey]! as AndroidPlugin;
-    final iosPlugin = plugin.platforms[IOSPlugin.kConfigKey]! as IOSPlugin;
+    final androidPlugin =
+        plugin.platforms[AndroidPlugin.kConfigKey]!.single as AndroidPlatformChannelPlugin;
+    final iosPlugin = plugin.platforms[IOSPlugin.kConfigKey]!.single as IOSPlatformChannelPlugin;
 
     expect(iosPlugin.pluginClass, 'SamplePlugin');
     expect(iosPlugin.classPrefix, 'FLT');
@@ -74,12 +75,16 @@ void main() {
       fileSystem: fileSystem,
     );
 
-    final androidPlugin = plugin.platforms[AndroidPlugin.kConfigKey]! as AndroidPlugin;
-    final iosPlugin = plugin.platforms[IOSPlugin.kConfigKey]! as IOSPlugin;
-    final linuxPlugin = plugin.platforms[LinuxPlugin.kConfigKey]! as LinuxPlugin;
-    final macOSPlugin = plugin.platforms[MacOSPlugin.kConfigKey]! as MacOSPlugin;
-    final webPlugin = plugin.platforms[WebPlugin.kConfigKey]! as WebPlugin;
-    final windowsPlugin = plugin.platforms[WindowsPlugin.kConfigKey]! as WindowsPlugin;
+    final androidPlugin =
+        plugin.platforms[AndroidPlugin.kConfigKey]!.single as AndroidPlatformChannelPlugin;
+    final iosPlugin = plugin.platforms[IOSPlugin.kConfigKey]!.single as IOSPlatformChannelPlugin;
+    final linuxPlugin =
+        plugin.platforms[LinuxPlugin.kConfigKey]!.single as LinuxPlatformChannelPlugin;
+    final macOSPlugin =
+        plugin.platforms[MacOSPlugin.kConfigKey]!.single as MacOSPlatformChannelPlugin;
+    final webPlugin = plugin.platforms[WebPlugin.kConfigKey]!.single as WebPlugin;
+    final windowsPlugin =
+        plugin.platforms[WindowsPlugin.kConfigKey]!.single as WindowsPlatformChannelPlugin;
 
     expect(iosPlugin.pluginClass, 'ISamplePlugin');
     expect(iosPlugin.classPrefix, '');
@@ -128,12 +133,16 @@ void main() {
         fileSystem: fileSystem,
       );
 
-      final androidPlugin = plugin.platforms[AndroidPlugin.kConfigKey]! as AndroidPlugin;
-      final iosPlugin = plugin.platforms[IOSPlugin.kConfigKey]! as IOSPlugin;
-      final linuxPlugin = plugin.platforms[LinuxPlugin.kConfigKey]! as LinuxPlugin;
-      final macOSPlugin = plugin.platforms[MacOSPlugin.kConfigKey]! as MacOSPlugin;
-      final webPlugin = plugin.platforms[WebPlugin.kConfigKey]! as WebPlugin;
-      final windowsPlugin = plugin.platforms[WindowsPlugin.kConfigKey]! as WindowsPlugin;
+      final androidPlugin =
+          plugin.platforms[AndroidPlugin.kConfigKey]!.single as AndroidPlatformChannelPlugin;
+      final iosPlugin = plugin.platforms[IOSPlugin.kConfigKey]!.single as IOSPlatformChannelPlugin;
+      final linuxPlugin =
+          plugin.platforms[LinuxPlugin.kConfigKey]!.single as LinuxPlatformChannelPlugin;
+      final macOSPlugin =
+          plugin.platforms[MacOSPlugin.kConfigKey]!.single as MacOSPlatformChannelPlugin;
+      final webPlugin = plugin.platforms[WebPlugin.kConfigKey]!.single as WebPlugin;
+      final windowsPlugin =
+          plugin.platforms[WindowsPlugin.kConfigKey]!.single as WindowsPlatformChannelPlugin;
 
       expect(iosPlugin.pluginClass, 'ISamplePlugin');
       expect(iosPlugin.classPrefix, '');
@@ -176,17 +185,12 @@ void main() {
       fileSystem: fileSystem,
     );
 
-    final androidPlugin = plugin.platforms[AndroidPlugin.kConfigKey]! as AndroidPlugin;
-    final iOSPlugin = plugin.platforms[IOSPlugin.kConfigKey]! as IOSPlugin;
-    final linuxPlugin = plugin.platforms[LinuxPlugin.kConfigKey]! as LinuxPlugin;
-    final macOSPlugin = plugin.platforms[MacOSPlugin.kConfigKey]! as MacOSPlugin;
-    final windowsPlugin = plugin.platforms[WindowsPlugin.kConfigKey]! as WindowsPlugin;
+    final androidPlugin = plugin.platforms[AndroidPlugin.kConfigKey]!.single as AndroidDartPlugin;
+    final iOSPlugin = plugin.platforms[IOSPlugin.kConfigKey]!.single as IOSDartPlugin;
+    final linuxPlugin = plugin.platforms[LinuxPlugin.kConfigKey]!.single as LinuxDartPlugin;
+    final macOSPlugin = plugin.platforms[MacOSPlugin.kConfigKey]!.single as MacOSDartPlugin;
+    final windowsPlugin = plugin.platforms[WindowsPlugin.kConfigKey]!.single as WindowsDartPlugin;
 
-    expect(androidPlugin.pluginClass, isNull);
-    expect(iOSPlugin.pluginClass, isNull);
-    expect(linuxPlugin.pluginClass, isNull);
-    expect(macOSPlugin.pluginClass, isNull);
-    expect(windowsPlugin.pluginClass, isNull);
     expect(androidPlugin.dartPluginClass, 'ASamplePlugin');
     expect(iOSPlugin.dartPluginClass, 'ISamplePlugin');
     expect(linuxPlugin.dartPluginClass, 'LSamplePlugin');
@@ -421,7 +425,7 @@ void main() {
       fileSystem: fileSystem,
     );
 
-    expect(plugin.platforms, <String, PluginPlatform>{});
+    expect(plugin.platforms, <String, List<PluginPlatform>>{});
     expect(plugin.defaultPackagePlatforms, <String, String>{
       'android': 'sample_package_android',
       'ios': 'sample_package_ios',
@@ -481,7 +485,8 @@ void main() {
       fileSystem: fileSystem,
     );
 
-    final windowsPlugin = plugin.platforms[WindowsPlugin.kConfigKey]! as WindowsPlugin;
+    final windowsPlugin =
+        plugin.platforms[WindowsPlugin.kConfigKey]!.single as WindowsPlatformChannelPlugin;
     expect(windowsPlugin.supportedVariants, <PluginPlatformVariant>[PluginPlatformVariant.win32]);
   });
 
@@ -528,7 +533,8 @@ void main() {
       fileSystem: fileSystem,
     );
 
-    final windowsPlugin = plugin.platforms[WindowsPlugin.kConfigKey]! as WindowsPlugin;
+    final windowsPlugin =
+        plugin.platforms[WindowsPlugin.kConfigKey]!.single as WindowsPlatformChannelPlugin;
     expect(windowsPlugin.supportedVariants, <PluginPlatformVariant>[PluginPlatformVariant.win32]);
   });
 
@@ -552,7 +558,8 @@ void main() {
       fileSystem: fileSystem,
     );
 
-    final windowsPlugin = plugin.platforms[WindowsPlugin.kConfigKey]! as WindowsPlugin;
+    final windowsPlugin =
+        plugin.platforms[WindowsPlugin.kConfigKey]!.single as WindowsPlatformChannelPlugin;
     expect(windowsPlugin.supportedVariants, <PluginPlatformVariant>{});
   });
 
@@ -794,12 +801,148 @@ void main() {
       fileSystem: fileSystem,
     );
 
-    final iosPlugin = plugin.platforms[IOSPlugin.kConfigKey]! as IOSPlugin;
-    final macOSPlugin = plugin.platforms[MacOSPlugin.kConfigKey]! as MacOSPlugin;
+    final iosPlugin = plugin.platforms[IOSPlugin.kConfigKey]!.single as IOSFfiPlugin;
+    final macOSPlugin = plugin.platforms[MacOSPlugin.kConfigKey]!.single as MacOSFfiPlugin;
 
-    expect(iosPlugin.ffiPlugin, isTrue);
     expect(iosPlugin.sharedDarwinSource, isTrue);
-    expect(macOSPlugin.ffiPlugin, isTrue);
     expect(macOSPlugin.sharedDarwinSource, isTrue);
+    expect(iosPlugin.toMap(), <String, Object>{
+      'name': _kTestPluginName,
+      'ffiPlugin': true,
+      'sharedDarwinSource': true,
+    });
+    expect(macOSPlugin.toMap(), <String, Object>{
+      'name': _kTestPluginName,
+      'ffiPlugin': true,
+      'sharedDarwinSource': true,
+    });
+  });
+
+  testWithoutContext('Plugin parsing creates FFI plugin instances across all platforms', () {
+    final fileSystem = MemoryFileSystem.test();
+    const pluginYamlRaw =
+        'platforms:\n'
+        ' android:\n'
+        '  ffiPlugin: true\n'
+        '  dartPluginClass: AndroidDartFfi\n'
+        ' ios:\n'
+        '  ffiPlugin: true\n'
+        ' linux:\n'
+        '  ffiPlugin: true\n'
+        ' macos:\n'
+        '  ffiPlugin: true\n'
+        ' windows:\n'
+        '  ffiPlugin: true\n';
+
+    final pluginYaml = loadYaml(pluginYamlRaw) as YamlMap;
+    final plugin = Plugin.fromYaml(
+      _kTestPluginName,
+      _kTestPluginPath,
+      pluginYaml,
+      null,
+      const <String>[],
+      isDevDependency: false,
+      fileSystem: fileSystem,
+    );
+
+    expect(plugin.platforms[AndroidPlugin.kConfigKey], <Matcher>[
+      isA<AndroidFfiPlugin>(),
+      isA<AndroidDartPlugin>(),
+    ]);
+    expect(plugin.platforms[IOSPlugin.kConfigKey], <Matcher>[isA<IOSFfiPlugin>()]);
+    expect(plugin.platforms[LinuxPlugin.kConfigKey], <Matcher>[isA<LinuxFfiPlugin>()]);
+    expect(plugin.platforms[MacOSPlugin.kConfigKey], <Matcher>[isA<MacOSFfiPlugin>()]);
+    expect(plugin.platforms[WindowsPlugin.kConfigKey], <Matcher>[isA<WindowsFfiPlugin>()]);
+    expect(plugin.platforms[AndroidPlugin.kConfigKey]![0].toMap(), <String, Object>{
+      'name': _kTestPluginName,
+      'ffiPlugin': true,
+    });
+    expect(plugin.platforms[AndroidPlugin.kConfigKey]![1].toMap(), <String, Object>{
+      'name': _kTestPluginName,
+      'dartPluginClass': 'AndroidDartFfi',
+      'dartFileName': 'test_plugin_name.dart',
+    });
+    expect(plugin.platforms[LinuxPlugin.kConfigKey]!.single.toMap(), <String, Object>{
+      'name': _kTestPluginName,
+      'ffiPlugin': true,
+    });
+    expect(plugin.platforms[WindowsPlugin.kConfigKey]!.single.toMap(), <String, Object>{
+      'name': _kTestPluginName,
+      'ffiPlugin': true,
+    });
+    expect(plugin.pluginDartClassPlatforms, <String, DartPluginClassAndFilePair>{
+      'android': const (dartClass: 'AndroidDartFfi', dartFileName: 'test_plugin_name.dart'),
+    });
+  });
+
+  testWithoutContext('Plugin parsing creates multiple plugin instances when a platform specifies multiple plugin types', () {
+    final fileSystem = MemoryFileSystem.test();
+    const pluginYamlRaw =
+        'platforms:\n'
+        ' android:\n'
+        '  package: com.flutter.dev\n'
+        '  pluginClass: ASamplePlugin\n'
+        '  ffiPlugin: true\n'
+        '  dartPluginClass: ADartPlugin\n'
+        ' ios:\n'
+        '  pluginClass: ISamplePlugin\n'
+        '  ffiPlugin: true\n'
+        '  dartPluginClass: IDartPlugin\n'
+        ' linux:\n'
+        '  pluginClass: LSamplePlugin\n'
+        '  ffiPlugin: true\n'
+        '  dartPluginClass: LDartPlugin\n'
+        ' macos:\n'
+        '  pluginClass: MSamplePlugin\n'
+        '  ffiPlugin: true\n'
+        '  dartPluginClass: MDartPlugin\n'
+        ' windows:\n'
+        '  pluginClass: WinSamplePlugin\n'
+        '  ffiPlugin: true\n'
+        '  dartPluginClass: WinDartPlugin\n';
+
+    final pluginYaml = loadYaml(pluginYamlRaw) as YamlMap;
+    final plugin = Plugin.fromYaml(
+      _kTestPluginName,
+      _kTestPluginPath,
+      pluginYaml,
+      null,
+      const <String>[],
+      isDevDependency: false,
+      fileSystem: fileSystem,
+    );
+
+    expect(plugin.platforms[AndroidPlugin.kConfigKey], <Matcher>[
+      isA<AndroidPlatformChannelPlugin>(),
+      isA<AndroidFfiPlugin>(),
+      isA<AndroidDartPlugin>(),
+    ]);
+    expect(plugin.platforms[IOSPlugin.kConfigKey], <Matcher>[
+      isA<IOSPlatformChannelPlugin>(),
+      isA<IOSFfiPlugin>(),
+      isA<IOSDartPlugin>(),
+    ]);
+    expect(plugin.platforms[LinuxPlugin.kConfigKey], <Matcher>[
+      isA<LinuxPlatformChannelPlugin>(),
+      isA<LinuxFfiPlugin>(),
+      isA<LinuxDartPlugin>(),
+    ]);
+    expect(plugin.platforms[MacOSPlugin.kConfigKey], <Matcher>[
+      isA<MacOSPlatformChannelPlugin>(),
+      isA<MacOSFfiPlugin>(),
+      isA<MacOSDartPlugin>(),
+    ]);
+    expect(plugin.platforms[WindowsPlugin.kConfigKey], <Matcher>[
+      isA<WindowsPlatformChannelPlugin>(),
+      isA<WindowsFfiPlugin>(),
+      isA<WindowsDartPlugin>(),
+    ]);
+    expect(plugin.pluginDartClassPlatforms, <String, DartPluginClassAndFilePair>{
+      'android': const (dartClass: 'ADartPlugin', dartFileName: 'test_plugin_name.dart'),
+      'ios': const (dartClass: 'IDartPlugin', dartFileName: 'test_plugin_name.dart'),
+      'linux': const (dartClass: 'LDartPlugin', dartFileName: 'test_plugin_name.dart'),
+      'macos': const (dartClass: 'MDartPlugin', dartFileName: 'test_plugin_name.dart'),
+      'windows': const (dartClass: 'WinDartPlugin', dartFileName: 'test_plugin_name.dart'),
+    });
   });
 }

@@ -659,8 +659,10 @@ void main() {
         path: '/path/to/test_plugin/',
         defaultPackagePlatforms: const <String, String>{},
         pluginDartClassPlatforms: const <String, DartPluginClassAndFilePair>{},
-        platforms: const <String, PluginPlatform>{
-          IOSPlugin.kConfigKey: IOSPlugin(name: 'test_plugin', classPrefix: ''),
+        platforms: const <String, List<PluginPlatform>>{
+          IOSPlugin.kConfigKey: <PluginPlatform>[
+            IOSPlatformChannelPlugin(name: 'test_plugin', pluginClass: 'TestPlugin'),
+          ],
         },
         dependencies: <String>[],
         isDirectDependency: true,
@@ -689,8 +691,10 @@ void main() {
           path: '/path/to/test_plugin/',
           defaultPackagePlatforms: const <String, String>{},
           pluginDartClassPlatforms: const <String, DartPluginClassAndFilePair>{},
-          platforms: const <String, PluginPlatform>{
-            IOSPlugin.kConfigKey: IOSPlugin(name: 'test_plugin', classPrefix: ''),
+          platforms: const <String, List<PluginPlatform>>{
+            IOSPlugin.kConfigKey: <PluginPlatform>[
+              IOSPlatformChannelPlugin(name: 'test_plugin', pluginClass: 'TestPlugin'),
+            ],
           },
           dependencies: <String>[],
           isDirectDependency: true,
@@ -743,8 +747,10 @@ let package = Package(
           path: '/path/to/test_plugin/',
           defaultPackagePlatforms: const <String, String>{},
           pluginDartClassPlatforms: const <String, DartPluginClassAndFilePair>{},
-          platforms: const <String, PluginPlatform>{
-            IOSPlugin.kConfigKey: IOSPlugin(name: 'test_plugin', classPrefix: ''),
+          platforms: const <String, List<PluginPlatform>>{
+            IOSPlugin.kConfigKey: <PluginPlatform>[
+              IOSPlatformChannelPlugin(name: 'test_plugin', pluginClass: 'TestPlugin'),
+            ],
           },
           dependencies: <String>[],
           isDirectDependency: true,
@@ -790,8 +796,10 @@ let package = Package(
         path: '/path/to/test_plugin/',
         defaultPackagePlatforms: const <String, String>{},
         pluginDartClassPlatforms: const <String, DartPluginClassAndFilePair>{},
-        platforms: const <String, PluginPlatform>{
-          MacOSPlugin.kConfigKey: MacOSPlugin(name: 'test_plugin'),
+        platforms: const <String, List<PluginPlatform>>{
+          MacOSPlugin.kConfigKey: <PluginPlatform>[
+            MacOSPlatformChannelPlugin(name: 'test_plugin', pluginClass: 'TestPlugin'),
+          ],
         },
         dependencies: <String>[],
         isDirectDependency: true,
@@ -817,14 +825,16 @@ let package = Package(
         path: '/path/to/test_plugin/',
         defaultPackagePlatforms: const <String, String>{},
         pluginDartClassPlatforms: const <String, DartPluginClassAndFilePair>{},
-        platforms: <String, PluginPlatform>{
-          AndroidPlugin.kConfigKey: AndroidPlugin(
-            name: 'test_plugin',
-            package: 'com.example.test',
-            pluginClass: 'TestPlugin',
-            pluginPath: '/path/to/test_plugin/',
-            fileSystem: MemoryFileSystem.test(),
-          ),
+        platforms: <String, List<PluginPlatform>>{
+          AndroidPlugin.kConfigKey: <PluginPlatform>[
+            AndroidPlatformChannelPlugin(
+              name: 'test_plugin',
+              package: 'com.example.test',
+              pluginClass: 'TestPlugin',
+              pluginPath: '/path/to/test_plugin/',
+              fileSystem: MemoryFileSystem.test(),
+            ),
+          ],
         },
         dependencies: <String>[],
         isDirectDependency: true,
@@ -846,13 +856,21 @@ let package = Package(
         path: '/path/to/test_plugin/',
         defaultPackagePlatforms: const <String, String>{},
         pluginDartClassPlatforms: const <String, DartPluginClassAndFilePair>{},
-        platforms: const <String, PluginPlatform>{
-          IOSPlugin.kConfigKey: IOSPlugin(
-            name: 'test_plugin',
-            classPrefix: '',
-            sharedDarwinSource: true,
-          ),
-          MacOSPlugin.kConfigKey: MacOSPlugin(name: 'test_plugin', sharedDarwinSource: true),
+        platforms: const <String, List<PluginPlatform>>{
+          IOSPlugin.kConfigKey: <PluginPlatform>[
+            IOSPlatformChannelPlugin(
+              name: 'test_plugin',
+              pluginClass: 'TestPlugin',
+              sharedDarwinSource: true,
+            ),
+          ],
+          MacOSPlugin.kConfigKey: <PluginPlatform>[
+            MacOSPlatformChannelPlugin(
+              name: 'test_plugin',
+              pluginClass: 'TestPlugin',
+              sharedDarwinSource: true,
+            ),
+          ],
         },
         dependencies: <String>[],
         isDirectDependency: true,
@@ -1205,7 +1223,7 @@ flutter:
         path: '',
         defaultPackagePlatforms: const <String, String>{IOSPlugin.kConfigKey: 'foo_ios'},
         pluginDartClassPlatforms: const <String, DartPluginClassAndFilePair>{},
-        platforms: const <String, PluginPlatform>{},
+        platforms: const <String, List<PluginPlatform>>{},
         dependencies: const <String>[],
         isDirectDependency: true,
         isDevDependency: false,
@@ -1216,8 +1234,10 @@ flutter:
         implementsPackage: 'foo',
         defaultPackagePlatforms: const <String, String>{},
         pluginDartClassPlatforms: const <String, DartPluginClassAndFilePair>{},
-        platforms: const <String, PluginPlatform>{
-          IOSPlugin.kConfigKey: IOSPlugin(name: 'foo_ios', classPrefix: ''),
+        platforms: const <String, List<PluginPlatform>>{
+          IOSPlugin.kConfigKey: <PluginPlatform>[
+            IOSPlatformChannelPlugin(name: 'foo_ios', pluginClass: 'FooPlugin'),
+          ],
         },
         dependencies: const <String>[],
         isDirectDependency: false,
@@ -1229,8 +1249,10 @@ flutter:
         implementsPackage: 'foo',
         defaultPackagePlatforms: const <String, String>{},
         pluginDartClassPlatforms: const <String, DartPluginClassAndFilePair>{},
-        platforms: const <String, PluginPlatform>{
-          IOSPlugin.kConfigKey: IOSPlugin(name: 'foo_ios_override', classPrefix: ''),
+        platforms: const <String, List<PluginPlatform>>{
+          IOSPlugin.kConfigKey: <PluginPlatform>[
+            IOSPlatformChannelPlugin(name: 'foo_ios_override', pluginClass: 'FooOverridePlugin'),
+          ],
         },
         dependencies: const <String>[],
         isDirectDependency: true,
@@ -1242,13 +1264,16 @@ flutter:
         implementsPackage: 'foo',
         defaultPackagePlatforms: const <String, String>{},
         pluginDartClassPlatforms: const <String, DartPluginClassAndFilePair>{},
-        platforms: <String, PluginPlatform>{
-          AndroidPlugin.kConfigKey: AndroidPlugin(
-            name: 'foo_android',
-            package: 'com.example',
-            pluginPath: '',
-            fileSystem: fileSystem,
-          ),
+        platforms: <String, List<PluginPlatform>>{
+          AndroidPlugin.kConfigKey: <PluginPlatform>[
+            AndroidPlatformChannelPlugin(
+              name: 'foo_android',
+              package: 'com.example',
+              pluginClass: 'FooPlugin',
+              pluginPath: '',
+              fileSystem: fileSystem,
+            ),
+          ],
         },
         dependencies: const <String>[],
         isDirectDependency: false,
@@ -1849,10 +1874,14 @@ class FakeCocoaPods extends Fake implements CocoaPods {
 class FakePlugin extends Fake implements Plugin {
   FakePlugin({
     required this.name,
-    required this.platforms,
+    required Map<String, PluginPlatform> platforms,
     this._pluginSwiftPackageManifestPath,
     this._pluginPodspecPath,
-  });
+  }) : platforms = <String, List<PluginPlatform>>{
+         for (final MapEntry<String, PluginPlatform>(:String key, :PluginPlatform value)
+             in platforms.entries)
+           key: <PluginPlatform>[value],
+       };
 
   final String? _pluginSwiftPackageManifestPath;
 
@@ -1862,7 +1891,7 @@ class FakePlugin extends Fake implements Plugin {
   final String name;
 
   @override
-  final Map<String, PluginPlatform> platforms;
+  final Map<String, List<PluginPlatform>> platforms;
 
   @override
   final List<String> dependencies = const <String>[];

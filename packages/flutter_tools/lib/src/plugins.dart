@@ -178,7 +178,7 @@ class Plugin {
     final YamlMap platformsYaml = platformsValue;
 
     final errors = <String>[];
-    final platforms = <String, PluginPlatform>{};
+    final platforms = <String, List<PluginPlatform>>{};
     // TODO(stuartmorgan): Consider merging web into this common handling; the
     //  fact that its implementation of Dart-only plugins and default packages
     //  are separate is legacy.
@@ -187,7 +187,7 @@ class Plugin {
 
     void parsePlatform<T extends PluginPlatform>(
       String platformKey,
-      ParseResult<T?> Function(YamlMap) parse, {
+      ParseResult<List<T>> Function(YamlMap) parse, {
       bool isWebPlugin = false,
     }) {
       if (!platformsYaml.containsKey(platformKey)) {
@@ -213,20 +213,22 @@ class Plugin {
       final ParseResult<void> result =
           (parser.string(kDefaultPackage, allowNull: false), parse(yamlValue)).flatMap((
             String? defaultPackage,
-            T? parsed,
+            List<T> parsed,
           ) {
             if (defaultPackage != null) {
               defaultPackages[platformKey] = defaultPackage;
-            } else if (parsed != null) {
+            } else if (parsed.isNotEmpty) {
               platforms[platformKey] = parsed;
             } else {
               return .fail(<String>['Invalid "$platformKey" plugin specification.']);
             }
-            if (parsed case DartPlugin(:final String dartPluginClass, :final String dartFileName)) {
-              dartPluginClasses[platformKey] = (
-                dartClass: dartPluginClass,
-                dartFileName: dartFileName,
-              );
+            for (final plugin in parsed) {
+              if (plugin case DartPlugin(:final dartPluginClass, :final dartFileName)) {
+                dartPluginClasses[platformKey] = (
+                  dartClass: dartPluginClass,
+                  dartFileName: dartFileName,
+                );
+              }
             }
             return .pass(null);
           });
@@ -245,7 +247,8 @@ class Plugin {
     parsePlatform(MacOSPlugin.kConfigKey, (YamlMap yaml) => MacOSPlugin.parseFromYaml(name, yaml));
     parsePlatform(
       WebPlugin.kConfigKey,
-      (YamlMap yaml) => WebPlugin.parseFromYaml(name, yaml),
+      (YamlMap yaml) =>
+          WebPlugin.parseFromYaml(name, yaml).map((WebPlugin plugin) => <WebPlugin>[plugin]),
       isWebPlugin: true,
     );
     parsePlatform(
@@ -324,23 +327,27 @@ class Plugin {
       return .fail(errors);
     }
 
-    final platforms = <String, PluginPlatform>{};
+    final platforms = <String, List<PluginPlatform>>{};
     if (pluginClass is String) {
       if (androidPackage is String) {
-        platforms[AndroidPlugin.kConfigKey] = AndroidPlugin(
-          name: name,
-          package: androidPackage,
-          pluginClass: pluginClass,
-          pluginPath: path,
-          fileSystem: fileSystem,
-        );
+        platforms[AndroidPlugin.kConfigKey] = <PluginPlatform>[
+          AndroidPlatformChannelPlugin(
+            name: name,
+            package: androidPackage,
+            pluginClass: pluginClass,
+            pluginPath: path,
+            fileSystem: fileSystem,
+          ),
+        ];
       }
 
-      platforms[IOSPlugin.kConfigKey] = IOSPlugin(
-        name: name,
-        classPrefix: iosPrefix as String? ?? '',
-        pluginClass: pluginClass,
-      );
+      platforms[IOSPlugin.kConfigKey] = <PluginPlatform>[
+        IOSPlatformChannelPlugin(
+          name: name,
+          classPrefix: iosPrefix as String? ?? '',
+          pluginClass: pluginClass,
+        ),
+      ];
     }
     return .pass(
       Plugin(
@@ -417,8 +424,8 @@ class Plugin {
   /// The name of the packages this plugin depends on.
   final List<String> dependencies;
 
-  /// This is a mapping from platform config key to the plugin platform spec.
-  final Map<String, PluginPlatform> platforms;
+  /// This is a mapping from platform config key to the plugin platform specs.
+  final Map<String, List<PluginPlatform>> platforms;
 
   /// This is a mapping from platform config key to the default package implementation.
   final Map<String, String> defaultPackagePlatforms;
@@ -497,15 +504,18 @@ class Plugin {
   }
 
   String? _darwinPluginDirectoryName(String platform) {
-    final PluginPlatform? platformPlugin = platforms[platform];
-    if (platformPlugin == null ||
+    final List<PluginPlatform>? platformPlugins = platforms[platform];
+    if (platformPlugins == null ||
+        platformPlugins.isEmpty ||
         (platform != IOSPlugin.kConfigKey && platform != MacOSPlugin.kConfigKey)) {
       return null;
     }
 
     // iOS and macOS code can be shared in "darwin" directory, otherwise
     // respectively in "ios" or "macos" directories.
-    if (platformPlugin is DarwinPlugin && (platformPlugin as DarwinPlugin).sharedDarwinSource) {
+    if (platformPlugins.any(
+      (PluginPlatform plugin) => plugin is DarwinPlugin && plugin.sharedDarwinSource,
+    )) {
       return 'darwin';
     }
     return platform;

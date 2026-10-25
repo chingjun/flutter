@@ -2999,15 +2999,24 @@ iosPrefix: FLT
             pluginPath: '',
             fileSystem: MemoryFileSystem.test(),
           ),
-          isA<ParseResultFail<AndroidPlugin?>>(),
+          isA<ParseResultFail<List<AndroidPlugin>>>(),
         );
-        expect(IOSPlugin.parseFromYaml('foo', invalidYaml), isA<ParseResultFail<IOSPlugin?>>());
-        expect(MacOSPlugin.parseFromYaml('foo', invalidYaml), isA<ParseResultFail<MacOSPlugin?>>());
+        expect(
+          IOSPlugin.parseFromYaml('foo', invalidYaml),
+          isA<ParseResultFail<List<IOSPlugin>>>(),
+        );
+        expect(
+          MacOSPlugin.parseFromYaml('foo', invalidYaml),
+          isA<ParseResultFail<List<MacOSPlugin>>>(),
+        );
         expect(
           WindowsPlugin.parseFromYaml('foo', invalidYaml),
-          isA<ParseResultFail<WindowsPlugin?>>(),
+          isA<ParseResultFail<List<WindowsPlugin>>>(),
         );
-        expect(LinuxPlugin.parseFromYaml('foo', invalidYaml), isA<ParseResultFail<LinuxPlugin?>>());
+        expect(
+          LinuxPlugin.parseFromYaml('foo', invalidYaml),
+          isA<ParseResultFail<List<LinuxPlugin>>>(),
+        );
         expect(WebPlugin.parseFromYaml('foo', invalidYaml), isA<ParseResultFail<WebPlugin>>());
       });
     });
@@ -3020,9 +3029,13 @@ iosPrefix: FLT
           path: '/path/to/test/',
           defaultPackagePlatforms: const <String, String>{},
           pluginDartClassPlatforms: const <String, DartPluginClassAndFilePair>{},
-          platforms: const <String, PluginPlatform>{
-            IOSPlugin.kConfigKey: IOSPlugin(name: 'test', classPrefix: ''),
-            MacOSPlugin.kConfigKey: MacOSPlugin(name: 'test'),
+          platforms: const <String, List<PluginPlatform>>{
+            IOSPlugin.kConfigKey: <PluginPlatform>[
+              IOSPlatformChannelPlugin(name: 'test', pluginClass: 'TestPlugin'),
+            ],
+            MacOSPlugin.kConfigKey: <PluginPlatform>[
+              MacOSPlatformChannelPlugin(name: 'test', pluginClass: 'TestPlugin'),
+            ],
           },
           dependencies: <String>[],
           isDirectDependency: true,
@@ -3066,13 +3079,21 @@ iosPrefix: FLT
           path: '/path/to/test/',
           defaultPackagePlatforms: const <String, String>{},
           pluginDartClassPlatforms: const <String, DartPluginClassAndFilePair>{},
-          platforms: const <String, PluginPlatform>{
-            IOSPlugin.kConfigKey: IOSPlugin(
-              name: 'test',
-              classPrefix: '',
-              sharedDarwinSource: true,
-            ),
-            MacOSPlugin.kConfigKey: MacOSPlugin(name: 'test', sharedDarwinSource: true),
+          platforms: const <String, List<PluginPlatform>>{
+            IOSPlugin.kConfigKey: <PluginPlatform>[
+              IOSPlatformChannelPlugin(
+                name: 'test',
+                pluginClass: 'TestPlugin',
+                sharedDarwinSource: true,
+              ),
+            ],
+            MacOSPlugin.kConfigKey: <PluginPlatform>[
+              MacOSPlatformChannelPlugin(
+                name: 'test',
+                pluginClass: 'TestPlugin',
+                sharedDarwinSource: true,
+              ),
+            ],
           },
           dependencies: <String>[],
           isDirectDependency: true,
@@ -3120,8 +3141,10 @@ iosPrefix: FLT
           path: '/path/to/test/',
           defaultPackagePlatforms: const <String, String>{},
           pluginDartClassPlatforms: const <String, DartPluginClassAndFilePair>{},
-          platforms: const <String, PluginPlatform>{
-            WindowsPlugin.kConfigKey: WindowsPlugin(name: 'test', pluginClass: ''),
+          platforms: const <String, List<PluginPlatform>>{
+            WindowsPlugin.kConfigKey: <PluginPlatform>[
+              WindowsPlatformChannelPlugin(name: 'test', pluginClass: ''),
+            ],
           },
           dependencies: <String>[],
           isDirectDependency: true,
@@ -3146,9 +3169,13 @@ iosPrefix: FLT
           path: '/path/to/test/',
           defaultPackagePlatforms: const <String, String>{},
           pluginDartClassPlatforms: const <String, DartPluginClassAndFilePair>{},
-          platforms: const <String, PluginPlatform>{
-            IOSPlugin.kConfigKey: IOSPlugin(name: 'test', classPrefix: ''),
-            MacOSPlugin.kConfigKey: MacOSPlugin(name: 'test'),
+          platforms: const <String, List<PluginPlatform>>{
+            IOSPlugin.kConfigKey: <PluginPlatform>[
+              IOSPlatformChannelPlugin(name: 'test', pluginClass: 'TestPlugin'),
+            ],
+            MacOSPlugin.kConfigKey: <PluginPlatform>[
+              MacOSPlatformChannelPlugin(name: 'test', pluginClass: 'TestPlugin'),
+            ],
           },
           dependencies: <String>[],
           isDirectDependency: true,
@@ -3174,13 +3201,21 @@ iosPrefix: FLT
           path: '/path/to/test/',
           defaultPackagePlatforms: const <String, String>{},
           pluginDartClassPlatforms: const <String, DartPluginClassAndFilePair>{},
-          platforms: const <String, PluginPlatform>{
-            IOSPlugin.kConfigKey: IOSPlugin(
-              name: 'test',
-              classPrefix: '',
-              sharedDarwinSource: true,
-            ),
-            MacOSPlugin.kConfigKey: MacOSPlugin(name: 'test', sharedDarwinSource: true),
+          platforms: const <String, List<PluginPlatform>>{
+            IOSPlugin.kConfigKey: <PluginPlatform>[
+              IOSPlatformChannelPlugin(
+                name: 'test',
+                pluginClass: 'TestPlugin',
+                sharedDarwinSource: true,
+              ),
+            ],
+            MacOSPlugin.kConfigKey: <PluginPlatform>[
+              MacOSPlatformChannelPlugin(
+                name: 'test',
+                pluginClass: 'TestPlugin',
+                sharedDarwinSource: true,
+              ),
+            ],
           },
           dependencies: <String>[],
           isDirectDependency: true,
@@ -3748,8 +3783,10 @@ iosPrefix: FLT
         path: '',
         defaultPackagePlatforms: const <String, String>{},
         pluginDartClassPlatforms: const <String, DartPluginClassAndFilePair>{},
-        platforms: const <String, PluginPlatform>{
-          IOSPlugin.kConfigKey: IOSPlugin(name: 'ios_plugin', classPrefix: ''),
+        platforms: const <String, List<PluginPlatform>>{
+          IOSPlugin.kConfigKey: <PluginPlatform>[
+            IOSPlatformChannelPlugin(name: 'ios_plugin', pluginClass: 'IosPlugin'),
+          ],
         },
         dependencies: const <String>[],
         isDirectDependency: true,
@@ -3760,8 +3797,10 @@ iosPrefix: FLT
         path: '',
         defaultPackagePlatforms: const <String, String>{},
         pluginDartClassPlatforms: const <String, DartPluginClassAndFilePair>{},
-        platforms: const <String, PluginPlatform>{
-          MacOSPlugin.kConfigKey: MacOSPlugin(name: 'macos_plugin'),
+        platforms: const <String, List<PluginPlatform>>{
+          MacOSPlugin.kConfigKey: <PluginPlatform>[
+            MacOSPlatformChannelPlugin(name: 'macos_plugin', pluginClass: 'MacosPlugin'),
+          ],
         },
         dependencies: const <String>[],
         isDirectDependency: true,
@@ -3793,7 +3832,7 @@ iosPrefix: FLT
         path: '',
         defaultPackagePlatforms: const <String, String>{IOSPlugin.kConfigKey: 'foo_ios'},
         pluginDartClassPlatforms: const <String, DartPluginClassAndFilePair>{},
-        platforms: const <String, PluginPlatform>{},
+        platforms: const <String, List<PluginPlatform>>{},
         dependencies: const <String>[],
         isDirectDependency: true,
         isDevDependency: false,
@@ -3804,8 +3843,10 @@ iosPrefix: FLT
         implementsPackage: 'foo',
         defaultPackagePlatforms: const <String, String>{},
         pluginDartClassPlatforms: const <String, DartPluginClassAndFilePair>{},
-        platforms: const <String, PluginPlatform>{
-          IOSPlugin.kConfigKey: IOSPlugin(name: 'foo_ios', classPrefix: ''),
+        platforms: const <String, List<PluginPlatform>>{
+          IOSPlugin.kConfigKey: <PluginPlatform>[
+            IOSPlatformChannelPlugin(name: 'foo_ios', pluginClass: 'FooIosPlugin'),
+          ],
         },
         dependencies: const <String>[],
         isDirectDependency: false,
@@ -3817,8 +3858,10 @@ iosPrefix: FLT
         implementsPackage: 'foo',
         defaultPackagePlatforms: const <String, String>{},
         pluginDartClassPlatforms: const <String, DartPluginClassAndFilePair>{},
-        platforms: const <String, PluginPlatform>{
-          IOSPlugin.kConfigKey: IOSPlugin(name: 'foo_ios_override', classPrefix: ''),
+        platforms: const <String, List<PluginPlatform>>{
+          IOSPlugin.kConfigKey: <PluginPlatform>[
+            IOSPlatformChannelPlugin(name: 'foo_ios_override', pluginClass: 'FooIosOverridePlugin'),
+          ],
         },
         dependencies: const <String>[],
         isDirectDependency: true,
@@ -3830,13 +3873,16 @@ iosPrefix: FLT
         implementsPackage: 'foo',
         defaultPackagePlatforms: const <String, String>{},
         pluginDartClassPlatforms: const <String, DartPluginClassAndFilePair>{},
-        platforms: <String, PluginPlatform>{
-          AndroidPlugin.kConfigKey: AndroidPlugin(
-            name: 'foo_android',
-            package: 'com.example',
-            pluginPath: '',
-            fileSystem: fs,
-          ),
+        platforms: <String, List<PluginPlatform>>{
+          AndroidPlugin.kConfigKey: <PluginPlatform>[
+            AndroidPlatformChannelPlugin(
+              name: 'foo_android',
+              package: 'com.example',
+              pluginClass: 'FooAndroidPlugin',
+              pluginPath: '',
+              fileSystem: fs,
+            ),
+          ],
         },
         dependencies: const <String>[],
         isDirectDependency: false,
@@ -3866,7 +3912,7 @@ iosPrefix: FLT
         path: '',
         defaultPackagePlatforms: const <String, String>{IOSPlugin.kConfigKey: 'foo_ios'},
         pluginDartClassPlatforms: const <String, DartPluginClassAndFilePair>{},
-        platforms: const <String, PluginPlatform>{},
+        platforms: const <String, List<PluginPlatform>>{},
         dependencies: const <String>[],
         isDirectDependency: true,
         isDevDependency: false,
@@ -3876,7 +3922,7 @@ iosPrefix: FLT
         path: '',
         defaultPackagePlatforms: const <String, String>{IOSPlugin.kConfigKey: 'bar_ios'},
         pluginDartClassPlatforms: const <String, DartPluginClassAndFilePair>{},
-        platforms: const <String, PluginPlatform>{},
+        platforms: const <String, List<PluginPlatform>>{},
         dependencies: const <String>[],
         isDirectDependency: true,
         isDevDependency: false,
@@ -3886,7 +3932,7 @@ iosPrefix: FLT
         path: '',
         defaultPackagePlatforms: const <String, String>{},
         pluginDartClassPlatforms: const <String, DartPluginClassAndFilePair>{},
-        platforms: const <String, PluginPlatform>{},
+        platforms: const <String, List<PluginPlatform>>{},
         dependencies: const <String>[],
         isDirectDependency: false,
         isDevDependency: false,
@@ -3897,7 +3943,7 @@ iosPrefix: FLT
         implementsPackage: 'some_package',
         defaultPackagePlatforms: const <String, String>{IOSPlugin.kConfigKey: 'some_default'},
         pluginDartClassPlatforms: const <String, DartPluginClassAndFilePair>{},
-        platforms: const <String, PluginPlatform>{},
+        platforms: const <String, List<PluginPlatform>>{},
         dependencies: const <String>[],
         isDirectDependency: true,
         isDevDependency: false,
@@ -3908,8 +3954,10 @@ iosPrefix: FLT
         implementsPackage: 'conflict_foo',
         defaultPackagePlatforms: const <String, String>{},
         pluginDartClassPlatforms: const <String, DartPluginClassAndFilePair>{},
-        platforms: const <String, PluginPlatform>{
-          IOSPlugin.kConfigKey: IOSPlugin(name: 'impl1', classPrefix: ''),
+        platforms: const <String, List<PluginPlatform>>{
+          IOSPlugin.kConfigKey: <PluginPlatform>[
+            IOSPlatformChannelPlugin(name: 'impl1', pluginClass: 'Impl1Plugin'),
+          ],
         },
         dependencies: const <String>[],
         isDirectDependency: true,
@@ -3921,8 +3969,10 @@ iosPrefix: FLT
         implementsPackage: 'conflict_foo',
         defaultPackagePlatforms: const <String, String>{},
         pluginDartClassPlatforms: const <String, DartPluginClassAndFilePair>{},
-        platforms: const <String, PluginPlatform>{
-          IOSPlugin.kConfigKey: IOSPlugin(name: 'impl2', classPrefix: ''),
+        platforms: const <String, List<PluginPlatform>>{
+          IOSPlugin.kConfigKey: <PluginPlatform>[
+            IOSPlatformChannelPlugin(name: 'impl2', pluginClass: 'Impl2Plugin'),
+          ],
         },
         dependencies: const <String>[],
         isDirectDependency: true,
@@ -4129,7 +4179,7 @@ flutter:
       return Plugin(
         name: name,
         path: '/pkgs/$name',
-        platforms: const <String, PluginPlatform>{},
+        platforms: const <String, List<PluginPlatform>>{},
         defaultPackagePlatforms: const <String, String>{},
         pluginDartClassPlatforms: const <String, DartPluginClassAndFilePair>{},
         dependencies: dependencies,

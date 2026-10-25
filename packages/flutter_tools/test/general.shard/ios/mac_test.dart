@@ -613,14 +613,18 @@ duplicate symbol '_$s29plugin_1_name23PluginNamePluginC9setDouble3key5valueySS_S
           plugins: <Plugin>[
             FakePlugin(
               name: 'plugin_1_name',
-              platforms: <String, PluginPlatform>{
-                'ios': const IOSPlugin(name: 'plugin_1_name', classPrefix: ''),
+              platforms: const <String, List<PluginPlatform>>{
+                'ios': <PluginPlatform>[
+                  IOSPlatformChannelPlugin(name: 'plugin_1_name', pluginClass: 'Plugin1'),
+                ],
               },
             ),
             FakePlugin(
               name: 'plugin_2_name',
-              platforms: <String, PluginPlatform>{
-                'ios': const IOSPlugin(name: 'plugin_1_name', classPrefix: ''),
+              platforms: const <String, List<PluginPlatform>>{
+                'ios': <PluginPlatform>[
+                  IOSPlatformChannelPlugin(name: 'plugin_1_name', pluginClass: 'Plugin1'),
+                ],
               },
             ),
           ],
@@ -1414,13 +1418,13 @@ class FakeXcodeProjectInterpreter extends Fake implements XcodeProjectInterprete
 }
 
 class FakePlugin extends Fake implements Plugin {
-  FakePlugin({required this.name, this.platforms = const <String, PluginPlatform>{}});
+  FakePlugin({required this.name, this.platforms = const <String, List<PluginPlatform>>{}});
 
   @override
   final String name;
 
   @override
-  final Map<String, PluginPlatform> platforms;
+  final Map<String, List<PluginPlatform>> platforms;
 
   @override
   String? pluginSwiftPackageManifestPath(FileSystem fileSystem, String platform) {

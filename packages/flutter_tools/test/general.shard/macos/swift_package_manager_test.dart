@@ -1088,10 +1088,15 @@ class FakeXcodeProject extends Fake implements IosProject {
 class FakePlugin extends Fake implements Plugin {
   FakePlugin({
     required this.name,
-    required this.platforms,
+    required Map<String, PluginPlatform> platforms,
     this.hasSwiftPackage = true,
     String? path,
-  }) : path = path ?? '/local/path/to/plugins/$name-1.0.0';
+  }) : platforms = <String, List<PluginPlatform>>{
+         for (final MapEntry<String, PluginPlatform>(:String key, :PluginPlatform value)
+             in platforms.entries)
+           key: <PluginPlatform>[value],
+       },
+       path = path ?? '/local/path/to/plugins/$name-1.0.0';
 
   @override
   final String name;
@@ -1100,7 +1105,7 @@ class FakePlugin extends Fake implements Plugin {
   final String path;
 
   @override
-  final Map<String, PluginPlatform> platforms;
+  final Map<String, List<PluginPlatform>> platforms;
 
   final bool hasSwiftPackage;
 

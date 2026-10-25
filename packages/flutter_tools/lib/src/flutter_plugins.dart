@@ -498,20 +498,20 @@ List<Map<String, Object>> _createPluginMapOfPlatform(
   final Set<String> pluginNames = plugins.map((Plugin plugin) => plugin.name).toSet();
   final pluginInfo = <Map<String, Object>>[];
   for (final plugin in plugins) {
+    final List<PluginPlatform>? platformPlugins = plugin.platforms[platformKey];
     assert(
-      plugin.platforms[platformKey] != null,
+      platformPlugins != null && platformPlugins.isNotEmpty,
       'Plugin ${plugin.name} does not provide an implementation for $platformKey.',
     );
-    final PluginPlatform platformPlugin = plugin.platforms[platformKey]!;
     pluginInfo.add(<String, Object>{
       _kFlutterPluginsNameKey: plugin.name,
       _kFlutterPluginsPathKey: fileSystemUtils.escapePath(plugin.path),
-      if (platformPlugin is DarwinPlugin && (platformPlugin as DarwinPlugin).sharedDarwinSource)
-        _kFlutterPluginsSharedDarwinSource: (platformPlugin as DarwinPlugin).sharedDarwinSource,
-      if (platformPlugin is NativePlugin)
-        _kFlutterPluginsHasNativeBuildKey:
-            (platformPlugin as NativePlugin).hasMethodChannel() ||
-            (platformPlugin as NativePlugin).hasFfi(),
+      if (platformPlugins!.any((PluginPlatform p) => p is DarwinPlugin && p.sharedDarwinSource))
+        _kFlutterPluginsSharedDarwinSource: true,
+      if (platformPlugins.any((PluginPlatform p) => p is! WebPlugin))
+        _kFlutterPluginsHasNativeBuildKey: platformPlugins.any(
+          (PluginPlatform p) => p is NativePlugin,
+        ),
       _kFlutterPluginsDependenciesKey: <String>[...plugin.dependencies.where(pluginNames.contains)],
       _kFlutterPluginsDevDependencyKey: plugin.isDevDependency,
     });
@@ -569,10 +569,15 @@ public final class GeneratedPluginRegistrant {
 }
 ''';
 
-List<Map<String, Object?>> _extractPlatformMaps(Iterable<Plugin> plugins, String type) {
+List<Map<String, Object?>> _extractPlatformMaps<T extends PluginPlatform>(
+  Iterable<Plugin> plugins,
+  String type,
+) {
   return <Map<String, Object?>>[
     for (final Plugin plugin in plugins)
-      if (plugin.platforms[type] case final PluginPlatform platformPlugin) platformPlugin.toMap(),
+      if (plugin.platforms[type] case final List<PluginPlatform> platformPlugins)
+        for (final PluginPlatform platformPlugin in platformPlugins)
+          if (platformPlugin is T) platformPlugin.toMap(),
   ];
 }
 
@@ -586,7 +591,7 @@ Future<void> _writeAndroidPluginRegistrant(
     plugins,
     AndroidPlugin.kConfigKey,
   );
-  final List<Map<String, Object?>> androidPlugins = _extractPlatformMaps(
+  final List<Map<String, Object?>> androidPlugins = _extractPlatformMaps<PlatformChannelPlugin>(
     methodChannelPlugins,
     AndroidPlugin.kConfigKey,
   );
@@ -969,7 +974,7 @@ Future<void> writeIOSPluginRegistrant(
     plugins,
     IOSPlugin.kConfigKey,
   );
-  final List<Map<String, Object?>> iosPlugins = _extractPlatformMaps(
+  final List<Map<String, Object?>> iosPlugins = _extractPlatformMaps<PlatformChannelPlugin>(
     methodChannelPlugins,
     IOSPlugin.kConfigKey,
   );
@@ -1041,13 +1046,11 @@ Future<void> _writeLinuxPluginFiles(
     plugins,
     LinuxPlugin.kConfigKey,
   );
-  final List<Map<String, Object?>> linuxMethodChannelPlugins = _extractPlatformMaps(
-    methodChannelPlugins,
-    LinuxPlugin.kConfigKey,
-  );
+  final List<Map<String, Object?>> linuxMethodChannelPlugins =
+      _extractPlatformMaps<PlatformChannelPlugin>(methodChannelPlugins, LinuxPlugin.kConfigKey);
   final List<Plugin> ffiPlugins = _filterFfiPlugins(plugins, LinuxPlugin.kConfigKey)
     ..removeWhere(methodChannelPlugins.contains);
-  final List<Map<String, Object?>> linuxFfiPlugins = _extractPlatformMaps(
+  final List<Map<String, Object?>> linuxFfiPlugins = _extractPlatformMaps<FfiPlugin>(
     ffiPlugins,
     LinuxPlugin.kConfigKey,
   );
@@ -1129,10 +1132,8 @@ Future<void> writeMacOSPluginRegistrant(
     plugins,
     MacOSPlugin.kConfigKey,
   );
-  final List<Map<String, Object?>> macosMethodChannelPlugins = _extractPlatformMaps(
-    methodChannelPlugins,
-    MacOSPlugin.kConfigKey,
-  );
+  final List<Map<String, Object?>> macosMethodChannelPlugins =
+      _extractPlatformMaps<PlatformChannelPlugin>(methodChannelPlugins, MacOSPlugin.kConfigKey);
   final context = <String, Object>{
     'os': FlutterDarwinPlatform.macos.name,
     'framework': FlutterDarwinPlatform.macos.binaryName,
@@ -1151,16 +1152,9 @@ Future<void> writeMacOSPluginRegistrant(
 /// Filters out any plugins that don't use method channels, and thus shouldn't be added to the native generated registrants.
 List<Plugin> _filterMethodChannelPlugins(List<Plugin> plugins, String platformKey) {
   return plugins.where((Plugin element) {
-    final PluginPlatform? plugin = element.platforms[platformKey];
-    if (plugin == null) {
-      return false;
-    }
-    if (plugin is NativePlugin) {
-      return (plugin as NativePlugin).hasMethodChannel();
-    }
-    // Not all platforms have the ability to create Dart-only plugins. Therefore, any plugin that doesn't
-    // implement NativePlugin is always native.
-    return true;
+    final List<PluginPlatform>? platformPlugins = element.platforms[platformKey];
+    return platformPlugins != null &&
+        platformPlugins.any((PluginPlatform p) => p is PlatformChannelPlugin);
   }).toList();
 }
 
@@ -1169,15 +1163,8 @@ List<Plugin> _filterMethodChannelPlugins(List<Plugin> plugins, String platformKe
 /// FFI plugins do not need native code registration, but their binaries need to be bundled.
 List<Plugin> _filterFfiPlugins(List<Plugin> plugins, String platformKey) {
   return plugins.where((Plugin element) {
-    final PluginPlatform? plugin = element.platforms[platformKey];
-    if (plugin == null) {
-      return false;
-    }
-    if (plugin is NativePlugin) {
-      final plugin_ = plugin as NativePlugin;
-      return plugin_.hasFfi();
-    }
-    return false;
+    final List<PluginPlatform>? platformPlugins = element.platforms[platformKey];
+    return platformPlugins != null && platformPlugins.any((PluginPlatform p) => p is FfiPlugin);
   }).toList();
 }
 
@@ -1188,12 +1175,14 @@ List<Plugin> _filterPluginsByVariant(
   PluginPlatformVariant variant,
 ) {
   return plugins.where((Plugin element) {
-    final PluginPlatform? platformPlugin = element.platforms[platformKey];
-    if (platformPlugin == null) {
+    final List<PluginPlatform>? platformPlugins = element.platforms[platformKey];
+    if (platformPlugins == null) {
       return false;
     }
-    assert(platformPlugin is VariantPlatformPlugin);
-    return (platformPlugin as VariantPlatformPlugin).supportedVariants.contains(variant);
+    final Iterable<VariantPlatformPlugin> variantPlugins = platformPlugins
+        .whereType<VariantPlatformPlugin>();
+    assert(variantPlugins.isNotEmpty);
+    return variantPlugins.any((VariantPlatformPlugin p) => p.supportedVariants.contains(variant));
   }).toList();
 }
 
@@ -1213,13 +1202,11 @@ Future<void> writeWindowsPluginFiles(
     WindowsPlugin.kConfigKey,
     PluginPlatformVariant.win32,
   );
-  final List<Map<String, Object?>> windowsMethodChannelPlugins = _extractPlatformMaps(
-    win32Plugins,
-    WindowsPlugin.kConfigKey,
-  );
+  final List<Map<String, Object?>> windowsMethodChannelPlugins =
+      _extractPlatformMaps<PlatformChannelPlugin>(win32Plugins, WindowsPlugin.kConfigKey);
   final List<Plugin> ffiPlugins = _filterFfiPlugins(plugins, WindowsPlugin.kConfigKey)
     ..removeWhere(methodChannelPlugins.contains);
-  final List<Map<String, Object?>> windowsFfiPlugins = _extractPlatformMaps(
+  final List<Map<String, Object?>> windowsFfiPlugins = _extractPlatformMaps<FfiPlugin>(
     ffiPlugins,
     WindowsPlugin.kConfigKey,
   );
@@ -1272,7 +1259,10 @@ Future<void> _writeWebPluginRegistrant(
   required Logger logger,
   required TemplateRenderer templateRenderer,
 }) async {
-  final List<Map<String, Object?>> webPlugins = _extractPlatformMaps(plugins, WebPlugin.kConfigKey);
+  final List<Map<String, Object?>> webPlugins = _extractPlatformMaps<WebPlugin>(
+    plugins,
+    WebPlugin.kConfigKey,
+  );
   final context = <String, Object>{'methodChannelPlugins': webPlugins};
 
   final File pluginFile = destination.childFile('web_plugin_registrant.dart');

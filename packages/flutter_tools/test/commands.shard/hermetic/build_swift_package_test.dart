@@ -3708,10 +3708,13 @@ class FakePlugin extends Fake implements Plugin {
   String get path => '/path/to/$name';
 
   @override
-  late final Map<String, PluginPlatform> platforms = {
-    darwinPlatform.name: darwinPlatform == FlutterDarwinPlatform.macos
-        ? MacOSPlugin(name: name, pluginClass: '${name}Plugin')
-        : IOSPlugin(name: name, classPrefix: '', pluginClass: '${name}Plugin'),
+  late final Map<String, List<PluginPlatform>> platforms = <String, List<PluginPlatform>>{
+    darwinPlatform.name: <PluginPlatform>[
+      if (darwinPlatform == FlutterDarwinPlatform.macos)
+        MacOSPlatformChannelPlugin(name: name, pluginClass: '${name}Plugin')
+      else
+        IOSPlatformChannelPlugin(name: name, pluginClass: '${name}Plugin'),
+    ],
   };
 
   @override
